@@ -9,3 +9,6 @@ research-only.
 
 See `ARCHITECTURE.md` for component boundaries and `EVALUATION.md` for metric
 and reproducibility rules.
+
+For current opportunity qualification and local result production, see
+`CURRENT_OPPORTUNITIES.md`.

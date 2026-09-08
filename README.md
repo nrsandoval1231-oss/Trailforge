@@ -13,3 +13,21 @@ Run a comparison with:
 
 Historical fixtures are deliberately `UNVERIFIED` until point-in-time
 availability is independently established.
+
+## Current opportunity shortlist
+
+Run the local, machine-readable shortlist against a versioned fixture bundle:
+
+`$env:PYTHONPATH="src"; python -m athena_procurement_arena shortlist --bundle path\to\bundle.json`
+
+The command returns only source-verified records whose lifecycle is `OPEN`,
+`ACTIVE`, or `SOURCES_SOUGHT`, and whose evidence supports prime power of at least
+300 kW within temporary-power or installation scope. Closed, unknown, standby-only,
+maintenance-only, below-threshold, and non-prime records are excluded.
+
+The shortlist is research-only. It does not scrape live sites, infer missing
+requirements, contact vendors, prepare bids, submit responses, or claim awards.
+The current research screen is documented in
+`research/current-opportunity-screen-2026-09-08.md`; the PSEG Long Island/LIPA
+2026 Temporary Generation RFP is held pending per-project capacity and rating
+verification.
