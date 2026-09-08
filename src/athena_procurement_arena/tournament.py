@@ -1,6 +1,7 @@
 """Deterministic tournament floors and Pareto comparison."""
 from __future__ import annotations
 from typing import Any
+from .governance import govern_candidate
 
 def meets_floors(metrics: dict[str, float], floors: dict[str, float]) -> bool:
     return all(metrics.get(name, float("-inf")) >= minimum for name, minimum in floors.items())
@@ -29,3 +30,15 @@ def tournament_decision(candidate_id: str, candidate: dict[str, float], incumben
     if pareto_dominates(candidate, incumbent, minimize=("alerts", "cost")):
         return {"candidate_id": candidate_id, "outcome": "PROMOTE", "reason": "Pareto improvement"}
     return {"candidate_id": candidate_id, "outcome": "REJECT", "reason": "no Pareto improvement"}
+
+
+def governed_tournament(candidate_id: str, candidate: dict[str, float], incumbent: dict[str, float], *,
+                        invariant_failures: int = 0, adversarial_pass: bool = True,
+                        counterfactual_pass: bool = True, holdout_available: bool = False) -> dict[str, Any]:
+    decision = govern_candidate(candidate_id, incumbent, candidate,
+                                invariant_failures=invariant_failures,
+                                adversarial_pass=adversarial_pass,
+                                counterfactual_pass=counterfactual_pass,
+                                holdout_available=holdout_available)
+    return {"candidate_id": decision.candidate_id, "outcome": decision.outcome,
+            "reason": decision.reason, "metrics": decision.metrics}

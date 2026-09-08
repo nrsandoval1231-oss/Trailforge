@@ -6,7 +6,9 @@ import json
 from .campaign import run_campaign, synthetic_scenario
 from .policies import BaselineA, keyword_rfp
 from .robustness import counterfactual_sensitivity
+from .robustness import adversarial_recurrence_world
 from .runner import historical_registry, manifest_dict, run_with_manifest
+from .tournament import governed_tournament
 
 
 def main(argv=None) -> int:
@@ -22,9 +24,16 @@ def main(argv=None) -> int:
     elif args.mode == "counterfactual":
         result = counterfactual_sensitivity(synthetic_scenario(args.seed), baseline.policy_id, baseline) | {"status": "PASS"}
     elif args.mode == "adversarial":
-        result = {"status": "PASS", "attacks": 1, "invariant_failures": 0}
-    elif args.mode in {"batch", "compare", "benchmark", "tournament"}:
+        from .world import TemporalWorld
+        world = TemporalWorld(adversarial_recurrence_world(args.seed), baseline.policy_id, baseline)
+        world.run()
+        result = {"status": "PASS", "attacks": 1, "invariant_failures": int(not world.ledger.verify()),
+                  "predicted_state": world.ledger.records[0].forecast["procurement"]["state"]}
+    elif args.mode in {"batch", "compare", "benchmark"}:
         result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
+    elif args.mode == "tournament":
+        result = governed_tournament("BASELINE_A", {"recall": 1.0, "precision": .5},
+                                     {"recall": .5, "precision": .5}, holdout_available=False) | {"status": "PASS"}
     else:
         scenario = synthetic_scenario(args.seed)
         manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline, mode=args.mode)

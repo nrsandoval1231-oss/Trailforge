@@ -44,3 +44,5 @@ Evidence lineage deduplication and conservative identity-resolution outcomes
 (`MERGE`, `PROVISIONAL`, `UNRESOLVED`, etc.) are now executable and tested.
 The 100,000-run seeded campaign completed with zero invariant failures at
 approximately 5,888 runs/second; this remains mechanics evidence only.
+CLI adversarial mode now runs the amendment recurrence adversary, and CLI
+tournament mode now runs governed promotion gates rather than placeholders.

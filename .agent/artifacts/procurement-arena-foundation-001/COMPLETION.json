@@ -40,6 +40,8 @@
     ,"attention_top_k_metrics": "PASS: K=5,10,25,50"
     ,"lineage_and_identity": "PASS"
     ,"campaign_100000": "PASS: 100000 runs, 0 invariant failures"
+    ,"governed_cli_tournament": "PASS: QUARANTINE without holdout"
+    ,"executed_cli_adversary": "PASS: recurrence remains UNKNOWN"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

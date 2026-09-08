@@ -10,3 +10,11 @@ def test_cli_historical_is_explicitly_unverified(capsys):
     main(["historical"])
     payload = json.loads(capsys.readouterr().out)
     assert all(item["status"] == "UNVERIFIED" for item in payload["fixtures"])
+
+def test_cli_adversarial_and_tournament_execute_governed_paths(capsys):
+    main(["adversarial", "--seed", "5"])
+    adversarial = json.loads(capsys.readouterr().out)
+    main(["tournament"])
+    tournament = json.loads(capsys.readouterr().out)
+    assert adversarial["predicted_state"] == "UNKNOWN"
+    assert tournament["outcome"] == "QUARANTINE"
