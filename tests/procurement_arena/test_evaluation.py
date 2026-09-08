@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from athena_procurement_arena import BaselineA, EvidenceEvent, GroundTruth, Scenario, TemporalWorld
 from athena_procurement_arena.evaluation import evaluate_replay
-from athena_procurement_arena.evaluation import evaluate_power_profile
+from athena_procurement_arena.evaluation import attention_metrics, evaluate_power_profile
 
 def test_evaluator_keeps_component_metrics_separate_and_unknown_power_explicit():
     t = datetime(2026, 1, 1, tzinfo=timezone.utc)
@@ -18,3 +18,8 @@ def test_power_evaluator_reports_numeric_error_only_for_verified_truth():
     profile = ({"gap_mw": 6}, {"gap_mw": 0})
     assert evaluate_power_profile(profile, 6)["peak_gap_error_mw"] == 0
     assert evaluate_power_profile(profile, None)["status"] == "UNAVAILABLE"
+
+def test_attention_metrics_penalize_alert_everything():
+    metrics = attention_metrics(tuple(f"t{i}" for i in range(60)), frozenset({"t59"}))
+    assert metrics["5"]["precision"] == 0 and metrics["50"]["recall"] == 0
+    assert metrics["50"]["precision"] == 0

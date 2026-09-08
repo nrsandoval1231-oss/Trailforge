@@ -38,3 +38,5 @@ Tenant isolation is now enforced on every scenario evidence item; synthetic
 scenario factories assign matching tenant IDs and the full suite is 32 passed.
 
 Packet-named architecture, DSL, policy, evaluation, governance, and historical documentation is present; unverified historical replay remains non-scoreable.
+Evaluation now includes Precision@K/Recall@K attention metrics for K=5, 10,
+25, and 50, with empty/late alerts receiving no early-credit.

@@ -19,6 +19,17 @@ def evaluate_power_profile(profile: tuple[dict[str, Any], ...], expected_peak_ga
             "peak_gap_error_mw": abs(actual - expected_peak_gap_mw)}
 
 
+def attention_metrics(ranked_trail_ids: tuple[str, ...], relevant_ids: frozenset[str], ks=(5, 10, 25, 50)) -> dict[str, dict[str, float]]:
+    """Return Precision@K/Recall@K without rewarding duplicate or excess alerts."""
+    result = {}
+    for k in ks:
+        selected = ranked_trail_ids[:k]
+        hits = len(set(selected) & relevant_ids)
+        result[str(k)] = {"precision": hits / len(selected) if selected else 0.0,
+                          "recall": hits / len(relevant_ids) if relevant_ids else 0.0}
+    return result
+
+
 @dataclass(frozen=True)
 class EvaluationResult:
     discovery: dict[str, float | int | None]

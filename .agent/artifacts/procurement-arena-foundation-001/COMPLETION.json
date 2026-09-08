@@ -37,6 +37,7 @@
     ,"power_evaluator": "PASS"
     ,"tenant_isolation": "PASS: I-07"
     ,"snapshot_immutability": "PASS"
+    ,"attention_top_k_metrics": "PASS: K=5,10,25,50"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",
