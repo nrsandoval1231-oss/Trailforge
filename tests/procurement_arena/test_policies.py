@@ -6,8 +6,13 @@ from athena_procurement_arena import (
     GroundTruth,
     Scenario,
     TemporalWorld,
+    buyer_frequency,
     keyword_rfp,
+    latest_event,
+    seeded_random_eligible,
+    static_weighted_score,
 )
+from athena_procurement_arena.policies import classify_scope
 
 T0 = datetime(2026, 1, 1, tzinfo=UTC)
 
@@ -33,3 +38,18 @@ def test_baseline_handles_routes_extensions_and_power_mismatch():
     assert forecast["procurement"]["state"] == "PRIVATE_PROCUREMENT"
     assert forecast["power"] == {"status": "GAP", "peak_gap_mw": 6}
     assert action == "PREPARE"
+
+
+def test_maintenance_only_is_excluded_but_installation_with_maintenance_is_eligible():
+    maintenance = EvidenceEvent("maintenance", "s", T0, T0, T0, T0,
+                                {"generator": "maintenance services"})
+    install = EvidenceEvent("install", "s", T0, T0, T0, T0,
+                            {"generator": "replacement installation with maintenance"})
+    maintenance_state = {"visible_evidence": (maintenance,), "seed": 1}
+    install_state = {"visible_evidence": (install,), "seed": 1}
+    policies = (keyword_rfp, static_weighted_score, latest_event, buyer_frequency,
+                seeded_random_eligible, BaselineA())
+    assert classify_scope((maintenance,)) == "OUT_OF_SCOPE_MAINTENANCE_ONLY"
+    assert all(policy(maintenance_state)[1] == "IGNORE" for policy in policies)
+    assert classify_scope((install,)) == "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER"
+    assert BaselineA()(install_state)[1] in {"RESEARCH", "PREPARE", "BID_REVIEW"}

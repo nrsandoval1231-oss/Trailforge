@@ -92,6 +92,10 @@ Generator Maintenance Services solicitation. Its official publication, closing,
 addendum, buyer, and scope facts are captured with provenance and a fingerprint.
 It is VERIFIED training evidence but not SEALED_READY because the source does not
 establish a completed award outcome. Current suite is 54 passed.
+Temporary power scope 007 now excludes maintenance-only opportunities across all
+built-in policies. Installation, replacement, rental, and temporary-power work
+remain eligible when maintenance is incidental to that scope. Current suite is
+55 passed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

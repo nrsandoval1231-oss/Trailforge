@@ -52,14 +52,39 @@ def _get(item: Any, name: str, default: Any = None) -> Any:
     return item.get(name, default) if isinstance(item, Mapping) else getattr(item, name, default)
 
 
+def classify_scope(evidence: tuple[Mapping[str, Any], ...]) -> str:
+    """Classify scope; maintenance-only work is outside the commercial target."""
+    text = _text(evidence)
+    maintenance = any(term in text for term in ("maintenance", "maintain", "repair", "service"))
+    in_scope = any(term in text for term in (
+        "temporary", "rental", "install", "installation", "replace", "replacement",
+        "new generator", "emergency generation", "standby generator", "power generation",
+    ))
+    if maintenance and not in_scope:
+        return "OUT_OF_SCOPE_MAINTENANCE_ONLY"
+    if in_scope:
+        return "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER"
+    return "UNKNOWN"
+
+
+def _scope(state: Mapping[str, Any]) -> str:
+    return classify_scope(tuple(state.get("visible_evidence", ())))
+
+
 def keyword_rfp(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
     evidence = state.get("visible_evidence", ())
+    scope = _scope(state)
+    if scope == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+        return {"solicitation_detected": False, "scope": scope, "score": 0}, "IGNORE"
     text = _text(evidence)
     hit = any(word in text for word in ("rfp", "request for proposal", "solicitation"))
     return {"solicitation_detected": hit, "score": 1 if hit else 0}, "BID_REVIEW" if hit else "IGNORE"
 
 
 def static_weighted_score(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+    scope = _scope(state)
+    if scope == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+        return {"scope": scope, "score": 0}, "IGNORE"
     text = _text(state.get("visible_evidence", ()))
     weights = {"capital": 2, "funded": 2, "permit": 1, "engineering": 1, "rfp": 4, "budget": 2}
     score = sum(weight for word, weight in weights.items() if word in text)
@@ -68,11 +93,15 @@ def static_weighted_score(state: Mapping[str, Any]) -> tuple[dict[str, Any], str
 
 def latest_event(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
     evidence = state.get("visible_evidence", ())
+    if _scope(state) == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+        return {"latest_evidence_id": None, "scope": "OUT_OF_SCOPE_MAINTENANCE_ONLY"}, "IGNORE"
     latest = max(evidence, key=lambda item: _get(item, "event_date", ""), default=None)
     return {"latest_evidence_id": _get(latest, "evidence_id") if latest else None}, "WATCH" if latest else "IGNORE"
 
 
 def buyer_frequency(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+    if _scope(state) == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+        return {"buyer_event_count": 0, "scope": "OUT_OF_SCOPE_MAINTENANCE_ONLY"}, "IGNORE"
     buyers = [_get(item, "claims", {}).get("buyer") for item in state.get("visible_evidence", ())]
     count = Counter(x for x in buyers if x)
     recurring = max(count.values(), default=0) >= 3
@@ -80,6 +109,8 @@ def buyer_frequency(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
 
 
 def seeded_random_eligible(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+    if _scope(state) == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+        return {"selected_evidence_id": None, "scope": "OUT_OF_SCOPE_MAINTENANCE_ONLY"}, "IGNORE"
     eligible = sorted(_get(item, "evidence_id", "") for item in state.get("visible_evidence", ()))
     rng = random.Random(int(state.get("seed", 0)) + len(eligible))
     selected = rng.choice(eligible) if eligible else None
@@ -110,12 +141,15 @@ class BaselineA(PolicyContract):
         hits = tuple(term for term in terms if term in text)
         required = [claim.get("required_mw") for claim in trail["claims"] if isinstance(claim.get("required_mw"), (int, float))]
         supply = [claim.get("supply_mw") for claim in trail["claims"] if isinstance(claim.get("supply_mw"), (int, float))]
-        return {"hits": hits, "entity_count": len(trail["entities"]), "text": text,
+        return {"hits": hits, "scope": classify_scope(tuple({"claims": claim} for claim in trail["claims"])),
+                "entity_count": len(trail["entities"]), "text": text,
                 "required_mw": max(required, default=None), "supply_mw": max(supply, default=None)}
 
     def forecastProcurement(self, patterns):
         hits = set(patterns["hits"])
-        if hits and not (hits - {"amendment"}):
+        if patterns["scope"] == "OUT_OF_SCOPE_MAINTENANCE_ONLY":
+            state = "OUT_OF_SCOPE"
+        elif hits and not (hits - {"amendment"}):
             state = "UNKNOWN"
         elif "cancelled" in hits:
             state = "CANCELLED"
@@ -156,6 +190,8 @@ class BaselineA(PolicyContract):
 
     def recommendAction(self, procurement, power, research):
         state = procurement["state"]
+        if state == "OUT_OF_SCOPE":
+            return "IGNORE"
         if state == "SOLICITATION_RELEASED":
             return "BID_REVIEW"
         if power.get("status") == "GAP" and state not in {"CANCELLED", "DEFERRED"}:

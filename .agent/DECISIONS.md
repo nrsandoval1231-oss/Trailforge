@@ -47,7 +47,16 @@
 - Convert source-local times to timezone-aware timestamps and preserve the
   source's point-in-time availability boundary.
 - Keep a verified solicitation without a verified outcome out of sealed holdout
-  scoring.
+scoring.
+
+## Temporary power scope 007
+
+- Treat maintenance-only solicitations as `OUT_OF_SCOPE_MAINTENANCE_ONLY` and
+  return `IGNORE` across built-in policies.
+- Permit maintenance language when paired with installation, replacement, rental,
+  or temporary-power scope because it may be incidental to the target contract.
+- Do not position Trailforge as a maintenance-services lead engine; the target is
+  temporary power and generator installation/replacement procurement.
 
 ## Verified outcome scoring 005
 
