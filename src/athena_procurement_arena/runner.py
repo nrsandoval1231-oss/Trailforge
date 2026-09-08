@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import platform
+import subprocess
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -21,6 +22,7 @@ class RunManifest:
     policy_id: str
     seed: int
     created_at: str
+    source_commit: str
     config: dict[str, Any]
     environment: dict[str, str]
     result_hash: str = ""
@@ -49,8 +51,13 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
                       mode: str = "scenario", config: dict[str, Any] | None = None) -> tuple[RunManifest, tuple[Any, ...]]:
     world = TemporalWorld(scenario, policy_id, policy)
     observations = world.run()
+    try:
+        source_commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                                      check=True).stdout.strip()
+    except (OSError, subprocess.SubprocessError):  # pragma: no cover - only non-git copies
+        source_commit = "UNCOMMITTED_LOCAL"
     manifest = RunManifest(experiment_id, mode, world.scenario_hash, policy_id, scenario.seed,
-        datetime.now(timezone.utc).isoformat(), config or {},
+        datetime.now(timezone.utc).isoformat(), source_commit, config or {},
         {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash())
     return manifest, observations
 

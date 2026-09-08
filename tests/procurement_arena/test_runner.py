@@ -12,3 +12,4 @@ def test_manifest_contains_replay_hash_and_stable_manifest_hash_shape():
     manifest, observations = run_with_manifest(scenario, BaselineA.policy_id, BaselineA())
     payload = manifest_dict(manifest)
     assert observations and payload["result_hash"] and len(payload["manifest_hash"]) == 64
+    assert len(payload["source_commit"]) == 40
