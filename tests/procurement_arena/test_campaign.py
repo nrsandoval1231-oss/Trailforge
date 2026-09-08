@@ -1,5 +1,9 @@
 from athena_procurement_arena import BaselineA, keyword_rfp
-from athena_procurement_arena.campaign import run_campaign, run_family_campaign
+from athena_procurement_arena.campaign import (
+    run_campaign,
+    run_family_campaign,
+    run_regression_campaign,
+)
 
 
 def test_campaign_is_seeded_and_compares_control_and_baseline():
@@ -15,3 +19,9 @@ def test_all_family_templates_execute_for_both_policies():
     assert result["family_count"] == 40
     assert all(policy["runs"] == 40 and policy["invariant_failures"] == 0
                for policy in result["policies"].values())
+
+def test_regression_campaign_reports_separate_metrics():
+    result = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}, seed=30)
+    baseline = result["policies"]["BASELINE_A"]
+    assert baseline["runs"] == 40 and baseline["discovery_recall"] == 1.0
+    assert baseline["power_evaluated_runs"] == 0

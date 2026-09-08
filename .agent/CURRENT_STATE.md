@@ -46,6 +46,8 @@ The 100,000-run seeded campaign completed with zero invariant failures at
 approximately 5,888 runs/second; this remains mechanics evidence only.
 CLI adversarial mode now runs the amendment recurrence adversary, and CLI
 tournament mode now runs governed promotion gates rather than placeholders.
+Family regression now evaluates all 40 templates and nests a governed
+tournament decision with separate policy metrics.
 `verify_replay` now checks an existing manifest's scenario and result hashes
 against a fresh replay.
 Power profiles expose explicit segment durations, and readiness decisions now

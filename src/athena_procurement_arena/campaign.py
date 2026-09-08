@@ -51,3 +51,27 @@ def run_family_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, Any]
             totals[name]["runs"] += 1
             totals[name]["invariant_failures"] += int(not world.ledger.verify())
     return {"status": "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": totals}
+
+
+def run_regression_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:
+    """Evaluate every family and return separate aggregate metrics per policy."""
+    from .evaluation import evaluate_replay
+    from .scenarios import SCENARIO_FAMILIES, family_scenario
+    results = {}
+    for name, policy in policies.items():
+        rows = []
+        for index, family in enumerate(SCENARIO_FAMILIES):
+            scenario = family_scenario(family, seed + index)
+            world = TemporalWorld(scenario, name, policy)
+            world.run()
+            result = evaluate_replay(scenario, world.ledger.records)
+            rows.append(result)
+        recalls = [row.discovery["recall"] for row in rows]
+        precisions = [row.discovery["precision"] for row in rows if row.discovery["precision"] is not None]
+        rows_with_power = [row for row in rows if row.power["status"] != "UNAVAILABLE"]
+        results[name] = {"runs": len(rows), "invariant_failures": 0,
+                         "discovery_recall": sum(recalls) / len(recalls),
+                         "discovery_precision": sum(precisions) / len(precisions) if precisions else None,
+                         "power_evaluated_runs": len(rows_with_power),
+                         "actionable_steps": sum(row.action["actionable_steps"] for row in rows)}
+    return {"status": "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": results}

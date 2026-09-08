@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 
-from .campaign import run_campaign, synthetic_scenario
+from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .policies import BaselineA, keyword_rfp
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -32,8 +32,10 @@ def main(argv=None) -> int:
     elif args.mode in {"batch", "compare", "benchmark"}:
         result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
     elif args.mode == "tournament":
-        result = governed_tournament("BASELINE_A", {"recall": 1.0, "precision": .5},
-                                     {"recall": .5, "precision": .5}, holdout_available=False) | {"status": "PASS"}
+        regression = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
+        result = regression | {"governance": governed_tournament(
+            "BASELINE_A", {"recall": 1.0, "precision": .5},
+            {"recall": .5, "precision": .5}, holdout_available=False)}
     else:
         scenario = synthetic_scenario(args.seed)
         manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline, mode=args.mode)

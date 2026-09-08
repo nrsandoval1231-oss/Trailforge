@@ -19,4 +19,4 @@ def test_cli_adversarial_and_tournament_execute_governed_paths(capsys):
     main(["tournament"])
     tournament = json.loads(capsys.readouterr().out)
     assert adversarial["predicted_state"] == "UNKNOWN"
-    assert tournament["outcome"] == "QUARANTINE"
+    assert tournament["governance"]["outcome"] == "QUARANTINE"
