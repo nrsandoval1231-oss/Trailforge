@@ -94,21 +94,40 @@ class BaselineA(PolicyContract):
         return tuple(state.get("visible_evidence", ()))
 
     def resolveEntities(self, evidence):
-        return tuple({"evidence_id": _get(item, "evidence_id"), "claims": _get(item, "claims", {})}
+        return tuple({"evidence_id": _get(item, "evidence_id"), "claims": _get(item, "claims", {}),
+                      "lineage_family": _get(item, "lineage_family", "")}
                      for item in evidence)
 
     def updateTrail(self, entities):
-        return {"entities": entities, "text": _text(tuple({"claims": e["claims"]} for e in entities))}
+        return {"entities": entities, "text": _text(tuple({"claims": e["claims"]} for e in entities)),
+                "claims": tuple(e["claims"] for e in entities)}
 
     def detectPatterns(self, trail):
         text = trail["text"]
-        terms = ("capital", "funded", "permit", "engineering", "rfp", "solicitation", "recompete", "rebid")
+        terms = ("capital", "funded", "permit", "engineering", "rfp", "solicitation", "recompete", "rebid",
+                 "private", "rfq", "direct", "renewal", "extension", "deferred", "cancelled", "cross_project",
+                 "amendment", "power", "generator", "mw", "readiness_fail")
         hits = tuple(term for term in terms if term in text)
-        return {"hits": hits, "entity_count": len(trail["entities"]), "text": text}
+        required = [claim.get("required_mw") for claim in trail["claims"] if isinstance(claim.get("required_mw"), (int, float))]
+        supply = [claim.get("supply_mw") for claim in trail["claims"] if isinstance(claim.get("supply_mw"), (int, float))]
+        return {"hits": hits, "entity_count": len(trail["entities"]), "text": text,
+                "required_mw": max(required, default=None), "supply_mw": max(supply, default=None)}
 
     def forecastProcurement(self, patterns):
         hits = set(patterns["hits"])
-        if "rfp" in hits or "solicitation" in hits:
+        if hits and not (hits - {"amendment"}):
+            state = "UNKNOWN"
+        elif "cancelled" in hits:
+            state = "CANCELLED"
+        elif "deferred" in hits:
+            state = "DEFERRED"
+        elif "private" in hits or "rfq" in hits:
+            state = "PRIVATE_PROCUREMENT"
+        elif "direct" in hits or "renewal" in hits:
+            state = "DIRECT_AWARD"
+        elif "extension" in hits:
+            state = "EXTENDED"
+        elif "rfp" in hits or "solicitation" in hits:
             state = "SOLICITATION_RELEASED"
         elif "recompete" in hits or "rebid" in hits:
             state = "REBID_EXPECTED"
@@ -126,6 +145,10 @@ class BaselineA(PolicyContract):
         text = patterns["text"]
         if "mw" not in text and "generator" not in text and "power" not in text:
             return {"status": "UNKNOWN", "peak_gap_mw": None}
+        required, supply = patterns.get("required_mw"), patterns.get("supply_mw")
+        if required is not None and supply is not None:
+            return {"status": "GAP" if required > supply else "NO_GAP",
+                    "peak_gap_mw": max(0.0, required - supply)}
         return {"status": "UNKNOWN", "peak_gap_mw": None, "reason": "supply or load not quantified"}
 
     def chooseResearch(self, patterns):
@@ -135,6 +158,8 @@ class BaselineA(PolicyContract):
         state = procurement["state"]
         if state == "SOLICITATION_RELEASED":
             return "BID_REVIEW"
+        if power.get("status") == "GAP" and state not in {"CANCELLED", "DEFERRED"}:
+            return "PREPARE"
         if state in {"FUNDED", "ENGINEERING", "REBID_EXPECTED"}:
             return "PREPARE"
         if research["budget"]:

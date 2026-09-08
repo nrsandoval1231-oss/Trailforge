@@ -61,3 +61,6 @@ accepts the persisted artifact.
 Trailforge is installable from `pyproject.toml`; Ruff passes on project-owned
 code/tests, and the latest 100,000-run benchmark passed at approximately 6,020
 runs/second with zero invariant failures.
+BASELINE_A now explicitly handles private/direct routes, extensions, rebids,
+cancellations, cross-project signals, numeric power mismatch, and amendment-only
+adversarial evidence without promoting it to a procurement signal.
