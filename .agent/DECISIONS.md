@@ -31,4 +31,12 @@
 - Keep threshold results subordinate to the existing governance gates; a lower
   alert count alone is not an accuracy improvement.
 - Continue treating the synthetic family corpus as mechanics evidence, not as a
-  substitute for verified historical holdout evidence.
+ substitute for verified historical holdout evidence.
+
+## Verified fixture boundary 004
+
+- Require provenance and a content fingerprint before accepting a source-backed
+  fixture into a local bundle.
+- Treat train/holdout allocation as separate from evidence verification.
+- Require explicit `SEALED_READY` status for holdout scoring; parsing alone never
+  makes a fixture scoreable.

@@ -82,3 +82,8 @@ as real candidate parameters, including typed EvidenceEvent compatibility. The
 search is deterministic, passed the optimize CLI, and current suite is 48
 passed. No threshold was promoted; synthetic mechanics evidence remains
 insufficient for a production-quality policy claim.
+Verified fixture boundary 004 is now implemented. Versioned fixture bundles
+require source URL, SHA-256 fingerprint, retrieval timestamp, verifier, and
+verification notes; only SEALED_READY fixtures may enter a holdout. Deterministic
+seeded splitting and round-trip loading pass; current suite is 52 passed. No
+historical source evidence has been fabricated or marked verified.

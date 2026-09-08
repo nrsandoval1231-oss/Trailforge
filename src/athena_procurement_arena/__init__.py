@@ -1,6 +1,14 @@
 """Deterministic, research-only Procurement Arena primitives."""
 
 from .athena_optimizer import evaluate_policy, run_athena_optimization
+from .fixtures import (
+    FixtureBundle,
+    VerifiedFixture,
+    content_fingerprint,
+    load_bundle,
+    load_bundle_mapping,
+    split_fixture_ids,
+)
 from .foundation import (
     AvailabilityError,
     EvidenceEvent,
@@ -37,6 +45,7 @@ __all__ = [
     "AvailabilityError",
     "BaselineA",
     "EvidenceEvent",
+    "FixtureBundle",
     "FrozenDecision",
     "FrozenDecisionLedger",
     "GroundTruth",
@@ -49,17 +58,22 @@ __all__ = [
     "ScenarioDsl",
     "Supply",
     "TemporalWorld",
+    "VerifiedFixture",
     "WorldObservation",
     "buyer_frequency",
     "calculate_power_gap",
     "calculate_power_profile",
+    "content_fingerprint",
     "deduplicate_evidence",
     "evaluate_policy",
     "keyword_rfp",
     "latest_event",
+    "load_bundle",
+    "load_bundle_mapping",
     "resolve_identity",
     "run_athena_optimization",
     "seeded_random_eligible",
+    "split_fixture_ids",
     "static_weighted_score",
     "validate_power_scopes",
     "validate_recommended_action",

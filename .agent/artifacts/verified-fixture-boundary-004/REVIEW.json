@@ -1,0 +1,7 @@
+{
+  "task_id": "verified-fixture-boundary-004",
+  "verdict": "PASS",
+  "reviewed": ["Allowed-file diff", "Completion artifact", "52-test suite", "Ruff checks"],
+  "findings": [],
+  "note": "The fixture boundary fails closed on missing provenance and prevents unsealed holdout scoring."
+}
