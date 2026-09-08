@@ -249,3 +249,7 @@ class ActionDecision:
     @property
     def has_mandatory_failure(self) -> bool:
         return any(value == ReadinessStatus.FAIL for value in (self.readiness or {}).values())
+
+    @property
+    def requires_blocker_resolution(self) -> bool:
+        return any(value == ReadinessStatus.UNKNOWN for value in (self.readiness or {}).values())

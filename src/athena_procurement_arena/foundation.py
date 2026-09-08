@@ -148,6 +148,7 @@ def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply
         dependable = None if unknown else sum(item.dependable_mw for item in active_supply)
         gap = None if dependable is None else max(0.0, required - dependable)
         segments.append({"start": start, "end": end, "required_mw": required,
+                         "duration_seconds": (end - start).total_seconds(),
                          "dependable_supply_mw": dependable, "gap_mw": gap,
                          "status": "UNKNOWN" if unknown else ("GAP" if gap else "NO_GAP")})
     return tuple(segments)

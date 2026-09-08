@@ -23,6 +23,7 @@ def test_readiness_mandatory_failure_cannot_be_averaged_away():
     decision = ActionDecision(CustomerAction.READY_FOR_AUTHORIZED_SUBMISSION,
                               readiness={"bonding": ReadinessStatus.FAIL, "technical_fit": ReadinessStatus.PASS})
     assert decision.has_mandatory_failure
+    assert ActionDecision(CustomerAction.PREPARE, readiness={"portal": ReadinessStatus.UNKNOWN}).requires_blocker_resolution
 
 def test_forecast_confidence_is_bounded():
     with pytest.raises(ValueError):

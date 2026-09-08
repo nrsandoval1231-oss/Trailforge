@@ -82,5 +82,5 @@ def test_power_profile_handles_phased_supply_and_unknown_segments():
     unknown = Supply(T0 + timedelta(hours=1), T0 + timedelta(hours=2), None)
     full = Supply(T0 + timedelta(hours=2), T0 + timedelta(hours=3), 10)
     profile = calculate_power_profile((need,), (known, unknown, full))
-    assert profile[0]["gap_mw"] == 6 and profile[0]["status"] == "GAP"
+    assert profile[0]["gap_mw"] == 6 and profile[0]["status"] == "GAP" and profile[0]["duration_seconds"] == 3600
     assert profile[1]["status"] == "UNKNOWN" and profile[2]["status"] == "NO_GAP"
