@@ -48,3 +48,5 @@ CLI adversarial mode now runs the amendment recurrence adversary, and CLI
 tournament mode now runs governed promotion gates rather than placeholders.
 `verify_replay` now checks an existing manifest's scenario and result hashes
 against a fresh replay.
+Power profiles expose explicit segment durations, and readiness decisions now
+distinguish mandatory failures from unknown blocker-resolution requirements.

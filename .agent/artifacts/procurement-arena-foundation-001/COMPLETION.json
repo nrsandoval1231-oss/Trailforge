@@ -43,6 +43,7 @@
     ,"governed_cli_tournament": "PASS: QUARANTINE without holdout"
     ,"executed_cli_adversary": "PASS: recurrence remains UNKNOWN"
     ,"manifest_replay_verifier": "PASS"
+    ,"power_duration_and_readiness_blocker": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",
