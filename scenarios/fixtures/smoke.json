@@ -1,0 +1,23 @@
+{
+  "schema_version": "procurement-arena-scenario-v1",
+  "scenario_id": "fixture-smoke",
+  "version": "1",
+  "seed": 17,
+  "tenant_id": "fixture-tenant",
+  "timeline": ["2026-01-01T00:00:00+00:00", "2026-01-03T00:00:00+00:00"],
+  "evidence": [
+    {
+      "evidence_id": "capital-1",
+      "source_id": "public-plan",
+      "event_date": "2025-12-01T00:00:00+00:00",
+      "document_date": "2025-12-02T00:00:00+00:00",
+      "verified_available_at": "2026-01-01T00:00:00+00:00",
+      "observed_at": "2026-01-01T00:00:00+00:00",
+      "claims": {"capital": "funded", "project": "fixture"},
+      "claim_basis": "REPORTED",
+      "lineage_family": "plan-1",
+      "tenant_id": "fixture-tenant"
+    }
+  ],
+  "truth": {"procurement_episode_id": "fixture-episode", "outcome": "FUNDED"}
+}

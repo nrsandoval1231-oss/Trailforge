@@ -33,3 +33,8 @@ def test_dsl_loads_versioned_json():
 def test_dsl_round_trip_preserves_scenario_hash():
     original = scenario()
     assert validate_scenario(ScenarioDsl.loads(ScenarioDsl.dumps(original))) == validate_scenario(original)
+
+def test_checked_in_fixture_is_versioned_and_valid():
+    from pathlib import Path
+    loaded = ScenarioDsl.loads(Path("scenarios/fixtures/smoke.json").read_text(encoding="utf-8"))
+    assert loaded.scenario_id == "fixture-smoke" and validate_scenario(loaded)

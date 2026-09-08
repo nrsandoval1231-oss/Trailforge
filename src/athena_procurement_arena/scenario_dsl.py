@@ -23,7 +23,8 @@ class ScenarioDsl:
             verified_available_at=_time(item["verified_available_at"]),
             observed_at=_time(item["observed_at"]), claims=item.get("claims", {}),
             claim_basis=item.get("claim_basis", "UNKNOWN"), source_version=item.get("source_version", ""),
-            lineage_family=item.get("lineage_family", ""), is_prediction=item.get("is_prediction", False)
+            lineage_family=item.get("lineage_family", ""), is_prediction=item.get("is_prediction", False),
+            tenant_id=item.get("tenant_id", "default")
         ) for item in raw.get("evidence", ()))
         truth = raw["truth"]
         return Scenario(raw["scenario_id"], raw["version"], raw["seed"],
