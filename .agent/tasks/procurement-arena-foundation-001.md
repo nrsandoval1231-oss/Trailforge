@@ -17,6 +17,7 @@ an immutable frozen-decision ledger.
 - `src/athena_procurement_arena/robustness.py`
 - `src/athena_procurement_arena/campaign.py`
 - `src/athena_procurement_arena/runner.py`
+- `src/athena_procurement_arena/domain.py`
 - `src/athena_procurement_arena/cli.py`
 - `src/athena_procurement_arena/scenarios.py`
 - `src/athena_procurement_arena/tournament.py`
@@ -30,11 +31,17 @@ an immutable frozen-decision ledger.
 - `tests/procurement_arena/test_robustness.py`
 - `tests/procurement_arena/test_campaign.py`
 - `tests/procurement_arena/test_runner.py`
+- `tests/procurement_arena/test_domain.py`
 - `tests/procurement_arena/test_cli.py`
 - `tests/procurement_arena/test_tournament.py`
 - `tests/procurement_arena/test_mutations.py`
 - `tests/procurement_arena/test_governance.py`
 - `docs/PROCUREMENT_ARENA_FOUNDATION.md`
+- `docs/ARCHITECTURE.md`
+- `docs/SCENARIO_DSL.md`
+- `docs/POLICY_CONTRACT.md`
+- `docs/EVALUATION.md`
+- `docs/ATHENA_GOVERNANCE.md`
 - `.agent/tasks/procurement-arena-foundation-001.md`
 - `.agent/artifacts/procurement-arena-foundation-001/COMPLETION.json`
 - `.agent/artifacts/procurement-arena-foundation-001/REVIEW.json`
