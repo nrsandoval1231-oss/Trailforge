@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from athena_procurement_arena import BaselineA, GroundTruth, Scenario
-from athena_procurement_arena.runner import historical_registry, historical_replay, manifest_dict, run_with_manifest
+from athena_procurement_arena.runner import historical_registry, historical_replay, manifest_dict, run_with_manifest, verify_replay
 
 def test_historical_registry_is_unverified_until_availability_is_verified():
     registry = historical_registry()
@@ -15,3 +15,4 @@ def test_manifest_contains_replay_hash_and_stable_manifest_hash_shape():
     payload = manifest_dict(manifest)
     assert observations and payload["result_hash"] and len(payload["manifest_hash"]) == 64
     assert len(payload["source_commit"]) == 40
+    assert verify_replay(manifest, scenario, BaselineA())["status"] == "PASS"

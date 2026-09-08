@@ -74,3 +74,13 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
 
 def manifest_dict(manifest: RunManifest) -> dict[str, Any]:
     return asdict(manifest) | {"manifest_hash": manifest.manifest_hash}
+
+
+def verify_replay(manifest: RunManifest, scenario: Scenario, policy: Any) -> dict[str, Any]:
+    """Verify an existing manifest against a fresh deterministic replay."""
+    world = TemporalWorld(scenario, manifest.policy_id, policy)
+    world.run()
+    checks = {"scenario_hash": world.scenario_hash == manifest.scenario_hash,
+              "result_hash": world.replay_hash() == manifest.result_hash}
+    return {"status": "PASS" if all(checks.values()) else "FAIL", "checks": checks,
+            "manifest_hash": manifest.manifest_hash}

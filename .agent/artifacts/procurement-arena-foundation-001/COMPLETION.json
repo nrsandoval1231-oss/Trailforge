@@ -42,6 +42,7 @@
     ,"campaign_100000": "PASS: 100000 runs, 0 invariant failures"
     ,"governed_cli_tournament": "PASS: QUARANTINE without holdout"
     ,"executed_cli_adversary": "PASS: recurrence remains UNKNOWN"
+    ,"manifest_replay_verifier": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",
