@@ -18,6 +18,7 @@ an immutable frozen-decision ledger.
 - `src/athena_procurement_arena/campaign.py`
 - `src/athena_procurement_arena/runner.py`
 - `src/athena_procurement_arena/domain.py`
+- tenant and authorization invariant checks in `foundation.py`
 - `src/athena_procurement_arena/cli.py`
 - `src/athena_procurement_arena/scenarios.py`
 - `src/athena_procurement_arena/tournament.py`

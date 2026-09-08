@@ -9,6 +9,7 @@ from dataclasses import dataclass, field, fields, replace
 from datetime import datetime
 from enum import StrEnum
 from typing import Any, Mapping
+from types import MappingProxyType
 
 from athena_arena.contracts import canonical_hash
 
@@ -57,13 +58,14 @@ class EvidenceEvent:
     source_version: str = ""
     lineage_family: str = ""
     is_prediction: bool = False
+    tenant_id: str = "default"
 
     def __post_init__(self) -> None:
         for name in ("event_date", "document_date", "verified_available_at", "observed_at"):
             _aware(getattr(self, name), name)
         if not self.evidence_id or not self.source_id:
             raise ValueError("evidence_id and source_id are required")
-        object.__setattr__(self, "claims", dict(self.claims))
+        object.__setattr__(self, "claims", MappingProxyType(dict(self.claims)))
 
     def visible_at(self, simulation_time: datetime) -> bool:
         _aware(simulation_time, "simulation_time")
@@ -175,9 +177,17 @@ def validate_scenario(scenario: Scenario) -> str:
         raise InvariantViolation("duplicate evidence id")
     if any(item.is_prediction for item in scenario.evidence):
         raise InvariantViolation("I-02 prediction-as-evidence")
+    if any(item.tenant_id != scenario.tenant_id for item in scenario.evidence):
+        raise InvariantViolation("I-07 cross-tenant evidence leakage")
     if scenario.truth.solicitation_at is not None:
         _aware(scenario.truth.solicitation_at, "solicitation_at")
     return canonical_hash(scenario)
+
+
+def validate_recommended_action(action: str, *, human_approved: bool = False) -> None:
+    """Recommendations may be recorded; consequential action needs approval."""
+    if action in {"ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"} and not human_approved:
+        raise InvariantViolation("I-10 unauthorized commercial action")
 
 
 @dataclass(frozen=True)
@@ -193,7 +203,7 @@ class FrozenDecision:
 
     def __post_init__(self) -> None:
         _aware(self.simulation_time, "simulation_time")
-        object.__setattr__(self, "forecast", dict(self.forecast))
+        object.__setattr__(self, "forecast", MappingProxyType(dict(self.forecast)))
 
 
 class FrozenDecisionLedger:

@@ -35,6 +35,8 @@
     ,"scenario_roundtrip": "PASS"
     ,"piecewise_power_profile": "PASS"
     ,"power_evaluator": "PASS"
+    ,"tenant_isolation": "PASS: I-07"
+    ,"snapshot_immutability": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

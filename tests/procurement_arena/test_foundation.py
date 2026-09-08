@@ -4,7 +4,7 @@ import pytest
 
 from athena_procurement_arena import (
     EvidenceEvent, FrozenDecision, FrozenDecisionLedger, GroundTruth, InvariantViolation,
-    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, validate_power_scopes, validate_scenario,
+    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, validate_power_scopes, validate_recommended_action, validate_scenario,
 )
 
 T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
@@ -44,6 +44,24 @@ def test_ledger_is_hash_chained_and_rejects_rewrite():
     assert first.record_hash and second.previous_hash == first.record_hash and ledger.verify()
     with pytest.raises(InvariantViolation):
         ledger.append(first)
+
+def test_evidence_and_decision_snapshots_are_detached():
+    claims = {"stage": "funded"}
+    item = evidence("immutable", T0)
+    assert item.claims["x"] == 1
+    with pytest.raises(TypeError):
+        item.claims["x"] = 2
+    decision = FrozenDecision("s", T0, "p", (), {"nested": "value"}, "WATCH")
+    with pytest.raises(TypeError):
+        decision.forecast["nested"] = "changed"
+
+def test_tenant_and_commercial_action_invariants_are_fail_closed():
+    foreign = EvidenceEvent("foreign", "s", T0, T0, T0, T0, tenant_id="other")
+    with pytest.raises(InvariantViolation, match="I-07"):
+        validate_scenario(scenario((foreign,)))
+    with pytest.raises(InvariantViolation, match="I-10"):
+        validate_recommended_action("ENGAGE")
+    validate_recommended_action("ENGAGE", human_approved=True)
 
 def test_overlapping_same_scope_is_rejected():
     a = PowerNeed("a", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=2), 1, 1)

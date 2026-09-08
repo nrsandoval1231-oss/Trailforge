@@ -14,9 +14,10 @@ def synthetic_scenario(seed: int) -> Scenario:
     kind = seed % 4
     claims = ({"capital": "funded"} if kind == 0 else {"permit": "issued"} if kind == 1
               else {"engineering": "active"} if kind == 2 else {"rfp": "released"})
-    event = EvidenceEvent(f"p-{seed}", f"source-{kind}", t, t, t, t, claims)
+    tenant_id = f"tenant-{seed % 3}"
+    event = EvidenceEvent(f"p-{seed}", f"source-{kind}", t, t, t, t, claims, tenant_id=tenant_id)
     return Scenario(f"synthetic-{seed}", "1", seed, (t,), (event,),
-                    GroundTruth(f"p-{seed}", "OPEN"), tenant_id=f"tenant-{seed % 3}")
+                    GroundTruth(f"p-{seed}", "OPEN"), tenant_id=tenant_id)
 
 
 def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:

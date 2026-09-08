@@ -62,7 +62,7 @@ class ScenarioDsl:
                 "evidence_id": item.evidence_id, "source_id": item.source_id,
                 "event_date": item.event_date.isoformat(), "document_date": item.document_date.isoformat(),
                 "verified_available_at": item.verified_available_at.isoformat(),
-                "observed_at": item.observed_at.isoformat(), "claims": item.claims,
+                "observed_at": item.observed_at.isoformat(), "claims": dict(item.claims),
                 "claim_basis": str(item.claim_basis), "source_version": item.source_version,
                 "lineage_family": item.lineage_family, "is_prediction": item.is_prediction,
             } for item in scenario.evidence],
