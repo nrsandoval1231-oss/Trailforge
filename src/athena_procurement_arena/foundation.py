@@ -29,6 +29,14 @@ class ClaimBasis(StrEnum):
     UNKNOWN = "UNKNOWN"
 
 
+class IdentityResolution(StrEnum):
+    MERGE = "MERGE"
+    SPLIT = "SPLIT"
+    REASSIGN = "REASSIGN"
+    UNRESOLVED = "UNRESOLVED"
+    PROVISIONAL = "PROVISIONAL"
+
+
 class PowerScope(StrEnum):
     CONSTRUCTION = "CONSTRUCTION"
     COMMISSIONING = "COMMISSIONING"
@@ -188,6 +196,27 @@ def validate_recommended_action(action: str, *, human_approved: bool = False) ->
     """Recommendations may be recorded; consequential action needs approval."""
     if action in {"ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"} and not human_approved:
         raise InvariantViolation("I-10 unauthorized commercial action")
+
+
+def deduplicate_evidence(items: tuple[EvidenceEvent, ...]) -> tuple[EvidenceEvent, ...]:
+    """Collapse only explicit lineage families; different sources remain distinct."""
+    seen: set[str] = set()
+    result = []
+    for item in items:
+        key = f"lineage:{item.lineage_family}" if item.lineage_family else f"evidence:{item.evidence_id}"
+        if key not in seen:
+            seen.add(key)
+            result.append(item)
+    return tuple(result)
+
+
+def resolve_identity(*, authoritative_ids: tuple[str, ...] = (), name: str = "", geography: str = "") -> IdentityResolution:
+    """Names/geography create candidates only; an authoritative ID permits merge."""
+    if len(set(authoritative_ids)) == 1 and authoritative_ids:
+        return IdentityResolution.MERGE
+    if name or geography:
+        return IdentityResolution.PROVISIONAL
+    return IdentityResolution.UNRESOLVED
 
 
 @dataclass(frozen=True)

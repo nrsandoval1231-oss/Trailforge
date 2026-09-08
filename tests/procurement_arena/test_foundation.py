@@ -4,7 +4,7 @@ import pytest
 
 from athena_procurement_arena import (
     EvidenceEvent, FrozenDecision, FrozenDecisionLedger, GroundTruth, InvariantViolation,
-    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, validate_power_scopes, validate_recommended_action, validate_scenario,
+    IdentityResolution, PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, deduplicate_evidence, resolve_identity, validate_power_scopes, validate_recommended_action, validate_scenario,
 )
 
 T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
@@ -62,6 +62,13 @@ def test_tenant_and_commercial_action_invariants_are_fail_closed():
     with pytest.raises(InvariantViolation, match="I-10"):
         validate_recommended_action("ENGAGE")
     validate_recommended_action("ENGAGE", human_approved=True)
+
+def test_lineage_deduplication_and_conservative_identity_resolution():
+    one = EvidenceEvent("one", "source-a", T0, T0, T0, T0, lineage_family="wire-1")
+    two = EvidenceEvent("two", "source-b", T0, T0, T0, T0, lineage_family="wire-1")
+    assert tuple(item.evidence_id for item in deduplicate_evidence((one, two))) == ("one",)
+    assert resolve_identity(authoritative_ids=("project-1", "project-1")) == IdentityResolution.MERGE
+    assert resolve_identity(name="same name", geography="same city") == IdentityResolution.PROVISIONAL
 
 def test_overlapping_same_scope_is_rejected():
     a = PowerNeed("a", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=2), 1, 1)
