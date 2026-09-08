@@ -26,6 +26,9 @@ class RunManifest:
     config: dict[str, Any]
     environment: dict[str, str]
     result_hash: str = ""
+    metrics: dict[str, Any] = None
+    invariant_results: dict[str, Any] = None
+    artifact_paths: tuple[str, ...] = ()
 
     @property
     def manifest_hash(self) -> str:
@@ -68,7 +71,8 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
         source_commit = "UNCOMMITTED_LOCAL"
     manifest = RunManifest(experiment_id, mode, world.scenario_hash, policy_id, scenario.seed,
         datetime.now(timezone.utc).isoformat(), source_commit, config or {},
-        {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash())
+        {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash(),
+        {"decision_count": len(world.ledger.records)}, {"ledger": world.ledger.verify()}, ())
     return manifest, observations
 
 

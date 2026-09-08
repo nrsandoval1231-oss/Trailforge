@@ -50,3 +50,5 @@ tournament mode now runs governed promotion gates rather than placeholders.
 against a fresh replay.
 Power profiles expose explicit segment durations, and readiness decisions now
 distinguish mandatory failures from unknown blocker-resolution requirements.
+Run manifests now include metrics, invariant results, and artifact paths in
+addition to source/scenario/result hashes.

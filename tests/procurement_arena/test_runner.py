@@ -15,4 +15,5 @@ def test_manifest_contains_replay_hash_and_stable_manifest_hash_shape():
     payload = manifest_dict(manifest)
     assert observations and payload["result_hash"] and len(payload["manifest_hash"]) == 64
     assert len(payload["source_commit"]) == 40
+    assert payload["invariant_results"]["ledger"] is True and "decision_count" in payload["metrics"]
     assert verify_replay(manifest, scenario, BaselineA())["status"] == "PASS"
