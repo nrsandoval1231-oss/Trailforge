@@ -12,3 +12,5 @@ The local mechanics campaign ran 10,000 seeded synthetic scenarios with the
 - Full-family regression: 40/40 registered templates executed through both
   policies with zero invariant failures.
 - CLI integration: all 10 declared modes returned machine-readable `PASS`.
+- Scale benchmark: 100,000 seeded runs completed with zero invariant failures
+  at approximately 5,888 runs/second on the development machine.

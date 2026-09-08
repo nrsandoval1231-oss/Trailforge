@@ -42,3 +42,5 @@ Evaluation now includes Precision@K/Recall@K attention metrics for K=5, 10,
 25, and 50, with empty/late alerts receiving no early-credit.
 Evidence lineage deduplication and conservative identity-resolution outcomes
 (`MERGE`, `PROVISIONAL`, `UNRESOLVED`, etc.) are now executable and tested.
+The 100,000-run seeded campaign completed with zero invariant failures at
+approximately 5,888 runs/second; this remains mechanics evidence only.
