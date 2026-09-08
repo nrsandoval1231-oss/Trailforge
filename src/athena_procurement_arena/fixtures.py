@@ -178,3 +178,14 @@ def score_fixture_bundle(policy_id: str, policy: Any, bundle: FixtureBundle, *, 
             "fixtures": len(selected), "correct": correct,
             "accuracy": round(correct / len(selected), 6),
             "invariant_failures": invariant_failures, "predictions": predictions}
+
+
+def current_target_fixtures(bundle: FixtureBundle) -> tuple[VerifiedFixture, ...]:
+    """Return current, source-verified fixtures meeting the 300 kW prime target."""
+    from .policies import classify_target
+
+    return tuple(
+        item for item in bundle.fixtures
+        if item.current
+        and classify_target(item.scenario.evidence) == "IN_SCOPE_PRIME_POWER_300KW_PLUS"
+    )

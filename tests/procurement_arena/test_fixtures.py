@@ -6,6 +6,7 @@ import pytest
 
 from athena_procurement_arena import (
     content_fingerprint,
+    current_target_fixtures,
     load_bundle_mapping,
     score_fixture_bundle,
     split_fixture_ids,
@@ -14,6 +15,7 @@ from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.foundation import GroundTruth
 from athena_procurement_arena.policies import BaselineA, classify_scope
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
+from athena_procurement_arena.scenarios import family_scenario
 
 
 def _fixture(fixture_id="f1", status="VERIFIED"):
@@ -27,6 +29,28 @@ def _fixture(fixture_id="f1", status="VERIFIED"):
         "verification_notes": "Source and timeline manually checked.",
         "scenario": json.loads(ScenarioDsl.dumps(synthetic_scenario(1))),
     }
+
+
+def test_current_target_shortlist_requires_lifecycle_and_prime_power_gates():
+    qualified = _fixture("open", "VERIFIED")
+    qualified["opportunity_status"] = "OPEN"
+    scenario = family_scenario("public_rfp", 4)
+    scenario = replace(scenario, evidence=tuple(
+        replace(item, claims={key: value for key, value in item.claims.items() if key != "signal"})
+        for item in scenario.evidence
+    ))
+    qualified["scenario"] = json.loads(ScenarioDsl.dumps(scenario))
+    closed = dict(qualified)
+    closed["fixture_id"] = "closed"
+    closed["opportunity_status"] = "CLOSED"
+    unknown = _fixture("unknown", "VERIFIED")
+    bundle = load_bundle_mapping({
+        "schema_version": "procurement-arena-fixture-bundle-v1",
+        "bundle_id": "b4",
+        "version": "1",
+        "fixtures": [qualified, closed, unknown],
+    })
+    assert tuple(item.fixture_id for item in current_target_fixtures(bundle)) == ("open",)
 
 
 def test_verified_bundle_round_trips_and_holdout_is_fail_closed():

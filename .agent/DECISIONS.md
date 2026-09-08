@@ -99,3 +99,10 @@ scoring.
 - Exclude maintenance-only opportunities from training and lead generation.
 - Keep solicitation-only records as verified training evidence until a separate
   source establishes the award or completion outcome.
+
+## Current target shortlist 012
+
+- Require lifecycle, source verification, and 300 kW prime-power qualification
+  together before producing a current lead.
+- Preserve qualified historical records for audit while excluding them from current
+  lead output.

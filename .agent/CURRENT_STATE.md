@@ -113,6 +113,11 @@ Opportunity lifecycle 011 now distinguishes OPEN, ACTIVE, and SOURCES_SOUGHT
 from CLOSED, AWARDED, INACTIVE, and UNKNOWN. Existing Pleasanton and Mobile
 records are explicitly non-current; unknown lifecycle status fails closed. Current
 suite is 59 passed.
+
+Current target shortlist 012 now returns only current source-verified fixtures that
+also meet IN_SCOPE_PRIME_POWER_300KW_PLUS. Closed, unknown, below-threshold,
+backup-only, non-prime, and maintenance-only records fail closed; current suite is
+60 passed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these
