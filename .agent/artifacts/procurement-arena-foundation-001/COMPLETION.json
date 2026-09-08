@@ -30,6 +30,7 @@
     "power_scope_overlap_gate": "PASS: I-12"
     ,"family_regression": "PASS: 40 families x 2 policies"
     ,"cli_integration_sweep": "PASS: 10 modes"
+    ,"local_git_source_revision": "PASS: eb2297abb7266f47a2dc6f9eacba74d4f8042463"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

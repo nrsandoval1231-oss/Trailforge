@@ -25,3 +25,5 @@ Next bounded slice: execute all 40 families through controls/BASELINE_A,
 produce regression metrics, and tighten campaign/tournament reporting.
 The 40-family regression and all 10 declared CLI modes now pass integration
 checks; the full test suite is 23 passed.
+Trailforge is now a local Git repository on `master`; manifests record the
+source commit and the worktree is clean.
