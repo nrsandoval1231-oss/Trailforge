@@ -47,6 +47,16 @@ def historical_registry() -> tuple[dict[str, str], ...]:
                  for key, name in HISTORICAL_FIXTURES.items())
 
 
+def historical_replay(fixture_id: str, *, status: str = "UNVERIFIED") -> dict[str, Any]:
+    """Return a replay gate; current discoverability never implies historical availability."""
+    if fixture_id not in HISTORICAL_FIXTURES:
+        raise KeyError(f"unknown historical fixture: {fixture_id}")
+    if status != "SEALED_READY":
+        return {"fixture_id": fixture_id, "status": status, "scoreable": False,
+                "reason": "timeline and verified availability are not sealed"}
+    return {"fixture_id": fixture_id, "status": "SEALED_READY", "scoreable": True}
+
+
 def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experiment_id: str = "run-001",
                       mode: str = "scenario", config: dict[str, Any] | None = None) -> tuple[RunManifest, tuple[Any, ...]]:
     world = TemporalWorld(scenario, policy_id, policy)

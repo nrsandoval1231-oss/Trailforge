@@ -36,3 +36,5 @@ source commit and the worktree is clean.
 Current full suite: 30 passed.
 Tenant isolation is now enforced on every scenario evidence item; synthetic
 scenario factories assign matching tenant IDs and the full suite is 32 passed.
+
+Packet-named architecture, DSL, policy, evaluation, governance, and historical documentation is present; unverified historical replay remains non-scoreable.
