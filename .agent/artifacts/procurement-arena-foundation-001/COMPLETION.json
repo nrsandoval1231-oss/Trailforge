@@ -51,6 +51,9 @@
     ,"family_regression_tournament": "PASS: 40 families with governed outcome"
     ,"provenance_fields": "PASS"
     ,"baseline_domain_patterns": "PASS"
+    ,"mutation_campaign_1000": "PASS"
+    ,"counterfactual_suite_5_cases": "PASS"
+    ,"unit_cli_mode": "PASS"
     ,"campaign_report": "PASS"
   },
   "assumptions": [

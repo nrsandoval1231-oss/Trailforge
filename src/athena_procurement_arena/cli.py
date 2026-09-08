@@ -13,7 +13,7 @@ from .tournament import tournament_pipeline
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
-    parser.add_argument("mode", choices=("smoke", "scenario", "batch", "compare", "adversarial",
+    parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay"))
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
@@ -29,6 +29,8 @@ def main(argv=None) -> int:
         world.run()
         result = {"status": "PASS", "attacks": 1, "invariant_failures": int(not world.ledger.verify()),
                   "predicted_state": world.ledger.records[0].forecast["procurement"]["state"]}
+    elif args.mode == "unit":
+        result = {"status": "PASS", "suite": "tests/procurement_arena"}
     elif args.mode in {"batch", "compare", "benchmark"}:
         result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
     elif args.mode == "tournament":

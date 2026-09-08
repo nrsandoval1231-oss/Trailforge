@@ -2,7 +2,9 @@ from athena_procurement_arena import BaselineA, keyword_rfp
 from athena_procurement_arena.campaign import (
     run_campaign,
     run_family_campaign,
+    run_mutation_campaign,
     run_regression_campaign,
+    synthetic_scenario,
 )
 
 
@@ -25,3 +27,9 @@ def test_regression_campaign_reports_separate_metrics():
     baseline = result["policies"]["BASELINE_A"]
     assert baseline["runs"] == 40 and baseline["discovery_recall"] == 1.0
     assert baseline["power_evaluated_runs"] == 0
+
+
+def test_one_thousand_mutation_variants_replay_without_invariant_failures():
+    result = run_mutation_campaign(synthetic_scenario(9), 1000, {"BASELINE_A": BaselineA()}, seed=9)
+    assert result["variant_count"] == 1000
+    assert result["policies"]["BASELINE_A"]["invariant_failures"] == 0

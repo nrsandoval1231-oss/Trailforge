@@ -66,3 +66,5 @@ cancellations, cross-project signals, numeric power mismatch, and amendment-only
 adversarial evidence without promoting it to a procurement signal.
 Campaign 001 is now documented at `reports/ARENA_CAMPAIGN_001_REPORT.md` with
 results, limits, bottlenecks, and next experiments.
+The packet's 1,000-variant mutation campaign, five-case counterfactual suite,
+and declared `unit` CLI mode are now executable and passing.

@@ -75,3 +75,16 @@ def run_regression_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, 
                          "power_evaluated_runs": len(rows_with_power),
                          "actionable_steps": sum(row.action["actionable_steps"] for row in rows)}
     return {"status": "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": results}
+
+
+def run_mutation_campaign(base: Scenario, count: int, policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:
+    from .mutations import mutate_scenarios
+    variants = mutate_scenarios(base, count, seed=seed)
+    totals = {name: {"runs": 0, "invariant_failures": 0} for name in policies}
+    for scenario, _ in variants:
+        for name, policy in policies.items():
+            world = TemporalWorld(scenario, name, policy)
+            world.run()
+            totals[name]["runs"] += 1
+            totals[name]["invariant_failures"] += int(not world.ledger.verify())
+    return {"status": "PASS", "variant_count": count, "seed": seed, "policies": totals}
