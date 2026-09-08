@@ -66,6 +66,7 @@ class ScenarioDsl:
                 "observed_at": item.observed_at.isoformat(), "claims": dict(item.claims),
                 "claim_basis": str(item.claim_basis), "source_version": item.source_version,
                 "lineage_family": item.lineage_family, "is_prediction": item.is_prediction,
+                "tenant_id": item.tenant_id,
             } for item in scenario.evidence],
             "truth": {"procurement_episode_id": scenario.truth.procurement_episode_id,
                       "outcome": scenario.truth.outcome,

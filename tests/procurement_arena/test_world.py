@@ -38,3 +38,4 @@ def test_checked_in_fixture_is_versioned_and_valid():
     from pathlib import Path
     loaded = ScenarioDsl.loads(Path("scenarios/fixtures/smoke.json").read_text(encoding="utf-8"))
     assert loaded.scenario_id == "fixture-smoke" and validate_scenario(loaded)
+    assert validate_scenario(ScenarioDsl.loads(ScenarioDsl.dumps(loaded))) == validate_scenario(loaded)

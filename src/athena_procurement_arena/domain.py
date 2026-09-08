@@ -109,6 +109,33 @@ class ResearchDecision:
     cost_units: int = 0
 
 
+@dataclass(frozen=True)
+class PolicyDefinition:
+    policy_id: str
+    version: str
+    config: dict[str, Any]
+    authority: str = "RESEARCH_ONLY"
+
+    def __post_init__(self):
+        if self.authority != "RESEARCH_ONLY":
+            raise ValueError("Trailforge policies are research-only")
+
+
+@dataclass(frozen=True)
+class AthenaExperiment:
+    experiment_id: str
+    candidate_policy_id: str
+    seed: int
+    development_fraction: float = .70
+    sealed_fraction: float = .15
+    prospective_fraction: float = .15
+
+    def __post_init__(self):
+        fractions = (self.development_fraction, self.sealed_fraction, self.prospective_fraction)
+        if any(value < 0 for value in fractions) or abs(sum(fractions) - 1) > 1e-9:
+            raise ValueError("experiment partitions must be non-negative and sum to one")
+
+
 def critical_path_start(deadline: datetime, prerequisites: tuple[tuple[str, int, int], ...]) -> datetime:
     """Compute min_j(D-L_j-B_j) for (name, lead days, buffer days)."""
     _aware(deadline, "deadline")

@@ -5,7 +5,7 @@ from athena_procurement_arena.domain import (
     ProcurementEpisode, ProcurementForecast, ProcurementState, Project, ProjectPhase,
     ReadinessStatus, Site, Solicitation, TrailState,
 )
-from athena_procurement_arena.domain import CustomerState, ResearchDecision, ResearchQuestion, critical_path_start
+from athena_procurement_arena.domain import AthenaExperiment, CustomerState, PolicyDefinition, ResearchDecision, ResearchQuestion, critical_path_start
 from athena_procurement_arena.foundation import PowerScope
 
 def test_domain_keeps_program_project_phase_episode_and_solicitation_distinct():
@@ -34,3 +34,5 @@ def test_customer_research_and_critical_path_contracts():
     assert ResearchQuestion("q", "verify deadline", 2).budget == 2
     assert ResearchDecision("q", True, "within budget").permitted
     assert critical_path_start(t, (("registration", 3, 1), ("bonding", 5, 2))) == datetime(2026, 1, 3, tzinfo=timezone.utc)
+    assert AthenaExperiment("x", "BASELINE_A", 1).sealed_fraction == .15
+    assert PolicyDefinition("BASELINE_A", "1", {}).authority == "RESEARCH_ONLY"

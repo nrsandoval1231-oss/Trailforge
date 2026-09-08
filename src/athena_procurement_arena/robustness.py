@@ -12,7 +12,8 @@ from .world import TemporalWorld
 def paired_extension_worlds(base: Scenario) -> tuple[Scenario, Scenario]:
     """Create a minimally different extension/no-extension pair."""
     extension = EvidenceEvent("extension", "contract", base.timeline[0], base.timeline[0],
-                              base.timeline[0], base.timeline[0], {"contract": "extended"})
+                              base.timeline[0], base.timeline[0], {"contract": "extended"},
+                              tenant_id=base.tenant_id)
     extended = replace(base, evidence=base.evidence + (extension,),
                        truth=GroundTruth(base.truth.procurement_episode_id, "EXTENDED", base.truth.solicitation_at))
     return base, extended
@@ -31,8 +32,6 @@ def counterfactual_sensitivity(base: Scenario, policy_id: str, policy: Any) -> d
 def adversarial_recurrence_world(seed: int = 1) -> Scenario:
     """A recurrence-looking world made only of amendments, not procurements."""
     start = Scenario("adversarial-recurrence", "1", seed, (), (), GroundTruth("none", "CLOSED"))
-    times = tuple(start_time + timedelta(days=i) for i, start_time in enumerate(()))
-    # Construct explicitly to avoid hidden wall-clock state.
     from datetime import datetime, timezone
     t = datetime(2026, 1, 1, tzinfo=timezone.utc)
     events = tuple(EvidenceEvent(f"amendment-{i}", "contract", t, t, t, t,
