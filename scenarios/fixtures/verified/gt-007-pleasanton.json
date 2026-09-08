@@ -1,0 +1,46 @@
+{
+  "schema_version": "procurement-arena-fixture-bundle-v1",
+  "bundle_id": "gt-007-pleasanton-emergency-generator",
+  "version": "1",
+  "holdout_fixture_ids": [],
+  "fixtures": [
+    {
+      "fixture_id": "GT-007",
+      "status": "VERIFIED",
+      "source_url": "https://www.cityofpleasantonca.gov/business/bids/",
+      "source_sha256": "ab727052f1b63aaa834a3951e216c65674addeb77bec3749a15bd797ae6c992a",
+      "retrieved_at": "2026-09-08T00:00:00-05:00",
+      "verified_by": "source-review-2026-09-08",
+      "verification_notes": "Official City of Pleasanton bids page reviewed. SHA-256 covers the captured canonical excerpt. The page supports replacement/installation, advertisement date, and bid date; it does not establish an award outcome, so this is training evidence only and is not sealed.",
+      "scenario": {
+        "schema_version": "procurement-arena-scenario-v1",
+        "scenario_id": "gt-007-pleasanton-emergency-generator",
+        "version": "1",
+        "seed": 7007,
+        "tenant_id": "public-pleasanton",
+        "timeline": ["2026-07-13T07:00:00-07:00", "2026-09-02T11:00:00-07:00"],
+        "evidence": [
+          {
+            "evidence_id": "GT-007-publication",
+            "source_id": "https://www.cityofpleasantonca.gov/business/bids/",
+            "event_date": "2026-07-13T07:00:00-07:00",
+            "document_date": "2026-07-13T07:00:00-07:00",
+            "verified_available_at": "2026-07-13T07:00:00-07:00",
+            "observed_at": "2026-09-08T00:00:00-05:00",
+            "claims": {"solicitation": "released", "scope": "emergency generator replacement and installation", "buyer": "City of Pleasanton", "project_number": "CIP Nos. 26162 & 26250"},
+            "claim_basis": "OFFICIAL_SOURCE",
+            "source_version": "bids-page-2026-09-08",
+            "lineage_family": "GT-007-pleasanton-emergency-generator",
+            "tenant_id": "public-pleasanton",
+            "authority": "CITY_GOVERNMENT_PAGE",
+            "source_spans": ["project title", "scope", "advertisement date", "bid date"],
+            "entity_candidates": ["City of Pleasanton"],
+            "permission_scope": "PUBLIC",
+            "contradictions": []
+          }
+        ],
+        "truth": {"procurement_episode_id": "GT-007", "outcome": "SOLICITATION_RELEASED", "solicitation_at": "2026-07-13T07:00:00-07:00"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "procurement-arena-fixture-bundle-v1",
+  "bundle_id": "gt-008-mobile-emergency-generator",
+  "version": "1",
+  "holdout_fixture_ids": [],
+  "fixtures": [
+    {
+      "fixture_id": "GT-008",
+      "status": "VERIFIED",
+      "source_url": "https://www.cityofmobile.gov/bids/?bid=3885",
+      "source_sha256": "e26e3b48d44e55e034c5379ade9fae636e331586b566083079497058d5679f59",
+      "retrieved_at": "2026-09-08T00:00:00-05:00",
+      "verified_by": "source-review-2026-09-08",
+      "verification_notes": "Official City of Mobile bid page reviewed. SHA-256 covers the captured canonical excerpt. The page supports removal, procurement, and installation of a new 80 kW generator with ATS equipment; it does not establish an award outcome, so this is training evidence only and is not sealed.",
+      "scenario": {
+        "schema_version": "procurement-arena-scenario-v1",
+        "scenario_id": "gt-008-mobile-emergency-generator",
+        "version": "1",
+        "seed": 8008,
+        "tenant_id": "public-mobile",
+        "timeline": ["2025-05-07T00:00:00-05:00", "2025-05-28T14:15:00-05:00"],
+        "evidence": [
+          {
+            "evidence_id": "GT-008-publication",
+            "source_id": "https://www.cityofmobile.gov/bids/?bid=3885",
+            "event_date": "2025-05-07T00:00:00-05:00",
+            "document_date": "2025-05-07T00:00:00-05:00",
+            "verified_available_at": "2025-05-07T00:00:00-05:00",
+            "observed_at": "2026-09-08T00:00:00-05:00",
+            "claims": {"solicitation": "released", "scope": "emergency generator removal procurement and installation", "generator_kw": 80, "buyer": "City of Mobile", "automatic_transfer_switches": 2},
+            "claim_basis": "OFFICIAL_SOURCE",
+            "source_version": "bid=3885",
+            "lineage_family": "GT-008-mobile-emergency-generator",
+            "tenant_id": "public-mobile",
+            "authority": "CITY_GOVERNMENT_PAGE",
+            "source_spans": ["bid title", "bid number", "date posted", "date due", "scope of work"],
+            "entity_candidates": ["City of Mobile"],
+            "permission_scope": "PUBLIC",
+            "contradictions": []
+          }
+        ],
+        "truth": {"procurement_episode_id": "GT-008", "outcome": "SOLICITATION_RELEASED", "solicitation_at": "2025-05-07T00:00:00-05:00"}
+      }
+    }
+  ]
+}

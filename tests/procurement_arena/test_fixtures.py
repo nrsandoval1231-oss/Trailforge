@@ -12,7 +12,7 @@ from athena_procurement_arena import (
 )
 from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.foundation import GroundTruth
-from athena_procurement_arena.policies import BaselineA
+from athena_procurement_arena.policies import BaselineA, classify_scope
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
 
 
@@ -72,6 +72,16 @@ def test_sealed_holdout_scores_exact_outcome_and_unsealed_fails_closed():
                                     "version": "1", "fixtures": [_fixture()], "holdout_fixture_ids": []})
     with pytest.raises(ValueError, match="sealed holdout"):
         score_fixture_bundle("BASELINE_A", BaselineA(), unsealed)
+
+
+def test_source_backed_target_fixtures_are_in_scope_and_not_sealed():
+    for path in ("gt-007-pleasanton.json", "gt-008-mobile.json"):
+        bundle = load_bundle_mapping(json.loads(
+            Path(f"scenarios/fixtures/verified/{path}").read_text(encoding="utf-8")))
+        evidence = bundle.fixtures[0].scenario.evidence
+        assert classify_scope(evidence) == "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER"
+        assert bundle.fixtures[0].status == "VERIFIED"
+        assert bundle.sealed_holdout_available is False
 
 
 def test_source_backed_morgan_hill_fixture_is_verified_but_not_sealed():

@@ -1,0 +1,20 @@
+{
+  "task_id": "source-backed-target-fixtures-009",
+  "status": "COMPLETE",
+  "fixtures": [
+    {"fixture_id": "GT-007", "jurisdiction": "Pleasanton, CA", "scope": "emergency generator replacement and installation", "status": "VERIFIED", "sealed": false},
+    {"fixture_id": "GT-008", "jurisdiction": "Mobile, AL", "scope": "emergency generator removal, procurement, and installation", "status": "VERIFIED", "sealed": false}
+  ],
+  "validation": {
+    "pytest": "57 passed",
+    "ruff": "All checks passed",
+    "fixtures_loaded": 2,
+    "in_scope": 2,
+    "sealed_holdout_fixtures": 0
+  },
+  "limits": [
+    "Both pages establish solicitation scope and timing but not a verified award outcome.",
+    "Neither fixture is eligible for sealed holdout scoring yet.",
+    "No maintenance-only opportunity was added."
+  ]
+}

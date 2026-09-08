@@ -100,6 +100,10 @@ Scope-labeled corpus 008 now carries explicit MAINTENANCE_ONLY,
 TEMPORARY_POWER_OR_INSTALLATION, and UNKNOWN family labels through temporal
 replay. The maintenance-only family is excluded and representative target
 families remain eligible; all 40 templates validate and the suite is 56 passed.
+Source-backed target fixtures 009 adds GT-007 Pleasanton emergency generator
+replacement/installation and GT-008 Mobile emergency generator removal,
+procurement, and installation. Both are VERIFIED, in scope, and non-sealed
+pending verified award outcomes. Current suite is 57 passed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

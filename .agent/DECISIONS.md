@@ -72,4 +72,12 @@ scoring.
   separately from synthetic evidence-visibility metrics.
 - Require `SEALED_READY` for holdout scoring and fail closed otherwise.
 - Attach verified scores to Athena candidates without allowing the score path to
-  bypass existing governance gates.
+ bypass existing governance gates.
+
+## Source-backed target fixtures 009
+
+- Prioritize official records whose scope is generator installation, replacement,
+  procurement, or temporary-power readiness.
+- Exclude maintenance-only opportunities from training and lead generation.
+- Keep solicitation-only records as verified training evidence until a separate
+  source establishes the award or completion outcome.
