@@ -46,6 +46,7 @@ an immutable frozen-decision ledger.
 - `docs/ATHENA_GOVERNANCE.md`
 - `docs/HISTORICAL_FIXTURES.md`
 - `scenarios/fixtures/smoke.json`
+- `reports/ARENA_CAMPAIGN_001_REPORT.md`
 - `.agent/tasks/procurement-arena-foundation-001.md`
 - `.agent/artifacts/procurement-arena-foundation-001/COMPLETION.json`
 - `.agent/artifacts/procurement-arena-foundation-001/REVIEW.json`

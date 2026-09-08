@@ -64,3 +64,5 @@ runs/second with zero invariant failures.
 BASELINE_A now explicitly handles private/direct routes, extensions, rebids,
 cancellations, cross-project signals, numeric power mismatch, and amendment-only
 adversarial evidence without promoting it to a procurement signal.
+Campaign 001 is now documented at `reports/ARENA_CAMPAIGN_001_REPORT.md` with
+results, limits, bottlenecks, and next experiments.

@@ -51,6 +51,7 @@
     ,"family_regression_tournament": "PASS: 40 families with governed outcome"
     ,"provenance_fields": "PASS"
     ,"baseline_domain_patterns": "PASS"
+    ,"campaign_report": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",
