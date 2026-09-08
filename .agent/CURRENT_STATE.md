@@ -17,6 +17,9 @@ The CLI now exposes all declared local mechanics modes and emits JSON output;
 Next bounded slice: expand the scenario-family corpus and add tournament
 minimum floors/Pareto gates; historical scoring remains blocked until fixture
 availability is verified.
+Piecewise power profiles now include need and supply boundaries, preserve
+unknown supply, calculate gap/duration segments, and feed verified numeric
+errors into the evaluator.
 All 40 registered scenario families now produce validated seeded templates.
 Seeded truth-preserving mutations and same-scope power-overlap protection are
 implemented and tested.
@@ -30,4 +33,4 @@ The 40-family regression and all 10 declared CLI modes now pass integration
 checks; the full test suite is 23 passed.
 Trailforge is now a local Git repository on `master`; manifests record the
 source commit and the worktree is clean.
-Current full suite: 28 passed.
+Current full suite: 30 passed.

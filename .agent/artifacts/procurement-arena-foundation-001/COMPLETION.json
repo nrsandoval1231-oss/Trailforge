@@ -33,6 +33,8 @@
     ,"local_git_source_revision": "PASS: eb2297abb7266f47a2dc6f9eacba74d4f8042463"
     ,"typed_domain_contracts": "PASS"
     ,"scenario_roundtrip": "PASS"
+    ,"piecewise_power_profile": "PASS"
+    ,"power_evaluator": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

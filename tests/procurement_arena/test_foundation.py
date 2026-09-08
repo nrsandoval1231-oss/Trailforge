@@ -4,7 +4,7 @@ import pytest
 
 from athena_procurement_arena import (
     EvidenceEvent, FrozenDecision, FrozenDecisionLedger, GroundTruth, InvariantViolation,
-    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, validate_power_scopes, validate_scenario,
+    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, validate_power_scopes, validate_scenario,
 )
 
 T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
@@ -50,3 +50,12 @@ def test_overlapping_same_scope_is_rejected():
     b = PowerNeed("b", PowerScope.CONSTRUCTION, T0 + timedelta(hours=1), T0 + timedelta(hours=3), 1, 1)
     with pytest.raises(InvariantViolation, match="I-12"):
         validate_power_scopes((a, b))
+
+def test_power_profile_handles_phased_supply_and_unknown_segments():
+    need = PowerNeed("n", PowerScope.COMMISSIONING, T0, T0 + timedelta(hours=3), 10, 0)
+    known = Supply(T0, T0 + timedelta(hours=1), 4)
+    unknown = Supply(T0 + timedelta(hours=1), T0 + timedelta(hours=2), None)
+    full = Supply(T0 + timedelta(hours=2), T0 + timedelta(hours=3), 10)
+    profile = calculate_power_profile((need,), (known, unknown, full))
+    assert profile[0]["gap_mw"] == 6 and profile[0]["status"] == "GAP"
+    assert profile[1]["status"] == "UNKNOWN" and profile[2]["status"] == "NO_GAP"

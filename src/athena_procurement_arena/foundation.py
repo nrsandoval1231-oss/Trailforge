@@ -121,6 +121,28 @@ def validate_power_scopes(needs: tuple[PowerNeed, ...]) -> None:
                 raise InvariantViolation("I-12 overlapping power scope double count")
 
 
+def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply, ...] = ()) -> tuple[dict[str, Any], ...]:
+    """Return piecewise G(t) segments across phased/partial/unknown supply."""
+    validate_power_scopes(needs)
+    boundaries = sorted({point for item in needs for point in (item.start, item.end)} |
+                        {point for item in supplies for point in (item.start, item.end)})
+    segments: list[dict[str, Any]] = []
+    for start, end in zip(boundaries, boundaries[1:]):
+        active_needs = [item for item in needs if item.start <= start and end <= item.end]
+        if not active_needs:
+            continue
+        active_supply = [item for item in supplies if item.start < end and start < item.end]
+        required = sum(item.required_mw for item in active_needs)
+        unknown = any(item.dependable_supply_mw is None for item in active_needs) or any(
+            item.dependable_mw is None for item in active_supply)
+        dependable = None if unknown else sum(item.dependable_mw for item in active_supply)
+        gap = None if dependable is None else max(0.0, required - dependable)
+        segments.append({"start": start, "end": end, "required_mw": required,
+                         "dependable_supply_mw": dependable, "gap_mw": gap,
+                         "status": "UNKNOWN" if unknown else ("GAP" if gap else "NO_GAP")})
+    return tuple(segments)
+
+
 @dataclass(frozen=True)
 class GroundTruth:
     procurement_episode_id: str
