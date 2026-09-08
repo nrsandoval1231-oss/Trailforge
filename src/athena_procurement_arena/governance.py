@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Any
 
 
+
 @dataclass(frozen=True)
 class CandidateLesson:
     lesson_id: str
@@ -15,6 +16,42 @@ class CandidateLesson:
     proposed_change: dict[str, Any]
     expected_effect: dict[str, float]
     risks: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class AthenaInput:
+    frozen_state: dict[str, Any]
+    decision: dict[str, Any]
+    forecast: dict[str, Any]
+    verified_outcome: dict[str, Any]
+    evaluation: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class Attribution:
+    attribution_id: str
+    input_ref: str
+    correct_factors: tuple[str, ...] = ()
+    failure_factors: tuple[str, ...] = ()
+    confidence: float = 0.0
+
+    def __post_init__(self):
+        if not 0 <= self.confidence <= 1:
+            raise ValueError("attribution confidence must be between 0 and 1")
+
+
+@dataclass(frozen=True)
+class CandidatePolicy:
+    candidate_id: str
+    source_lesson_id: str
+    policy_version: str
+    parameters: dict[str, Any]
+    self_promoted: bool = False
+
+    def __post_init__(self):
+        if self.self_promoted:
+            raise ValueError("Athena cannot self-promote a candidate policy")
+        object.__setattr__(self, "parameters", dict(self.parameters))
 
 
 @dataclass(frozen=True)
