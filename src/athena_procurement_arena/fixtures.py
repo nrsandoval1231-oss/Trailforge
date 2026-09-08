@@ -12,6 +12,8 @@ from typing import Any
 from .scenario_dsl import ScenarioDsl
 
 ALLOWED_STATUSES = frozenset({"VERIFIED", "SEALED_READY"})
+OPPORTUNITY_STATUSES = frozenset({"OPEN", "ACTIVE", "SOURCES_SOUGHT", "CLOSED", "AWARDED", "INACTIVE", "UNKNOWN"})
+CURRENT_OPPORTUNITY_STATUSES = frozenset({"OPEN", "ACTIVE", "SOURCES_SOUGHT"})
 
 
 def _timestamp(value: str) -> datetime:
@@ -37,6 +39,7 @@ class VerifiedFixture:
     retrieved_at: str
     verified_by: str
     verification_notes: str
+    opportunity_status: str = "UNKNOWN"
 
     def __post_init__(self) -> None:
         if not self.fixture_id:
@@ -49,10 +52,16 @@ class VerifiedFixture:
         _timestamp(self.retrieved_at)
         if not self.verified_by or not self.verification_notes:
             raise ValueError("verified_by and verification_notes are required")
+        if self.opportunity_status not in OPPORTUNITY_STATUSES:
+            raise ValueError("invalid opportunity_status")
 
     @property
     def scoreable(self) -> bool:
         return self.status == "SEALED_READY"
+
+    @property
+    def current(self) -> bool:
+        return self.opportunity_status in CURRENT_OPPORTUNITY_STATUSES
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -63,6 +72,7 @@ class VerifiedFixture:
             "retrieved_at": self.retrieved_at,
             "verified_by": self.verified_by,
             "verification_notes": self.verification_notes,
+            "opportunity_status": self.opportunity_status,
             "scenario": json.loads(ScenarioDsl.dumps(self.scenario)),
         }
 
@@ -109,7 +119,7 @@ def load_bundle_mapping(raw: dict[str, Any]) -> FixtureBundle:
         fixtures.append(VerifiedFixture(
             item["fixture_id"], item["status"], ScenarioDsl.from_mapping(item["scenario"]),
             item["source_url"], item["source_sha256"], item["retrieved_at"],
-            item["verified_by"], item["verification_notes"],
+            item["verified_by"], item["verification_notes"], item.get("opportunity_status", "UNKNOWN"),
         ))
     return FixtureBundle(raw["bundle_id"], str(raw["version"]), tuple(fixtures),
                          tuple(raw.get("holdout_fixture_ids", ())))

@@ -82,6 +82,14 @@ def test_source_backed_target_fixtures_are_in_scope_and_not_sealed():
         assert classify_scope(evidence) == "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER"
         assert bundle.fixtures[0].status == "VERIFIED"
         assert bundle.sealed_holdout_available is False
+        assert bundle.fixtures[0].current is False
+
+
+def test_unknown_lifecycle_status_fails_closed_for_current_leads():
+    bundle = load_bundle_mapping({"schema_version": "procurement-arena-fixture-bundle-v1", "bundle_id": "b3",
+                                  "version": "1", "fixtures": [_fixture()], "holdout_fixture_ids": []})
+    assert bundle.fixtures[0].opportunity_status == "UNKNOWN"
+    assert bundle.fixtures[0].current is False
 
 
 def test_source_backed_morgan_hill_fixture_is_verified_but_not_sealed():

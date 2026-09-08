@@ -12,6 +12,7 @@
       "retrieved_at": "2026-09-08T00:00:00-05:00",
       "verified_by": "source-review-2026-09-08",
       "verification_notes": "Official City of Pleasanton bids page reviewed. SHA-256 covers the captured canonical excerpt. The page supports replacement/installation, advertisement date, and bid date; it does not establish an award outcome, so this is training evidence only and is not sealed.",
+      "opportunity_status": "CLOSED",
       "scenario": {
         "schema_version": "procurement-arena-scenario-v1",
         "scenario_id": "gt-007-pleasanton-emergency-generator",

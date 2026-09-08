@@ -109,6 +109,10 @@ Source-backed target fixtures 009 adds GT-007 Pleasanton emergency generator
 replacement/installation and GT-008 Mobile emergency generator removal,
 procurement, and installation. Both are VERIFIED, in scope, and non-sealed
 pending verified award outcomes. Current suite is 57 passed.
+Opportunity lifecycle 011 now distinguishes OPEN, ACTIVE, and SOURCES_SOUGHT
+from CLOSED, AWARDED, INACTIVE, and UNKNOWN. Existing Pleasanton and Mobile
+records are explicitly non-current; unknown lifecycle status fails closed. Current
+suite is 59 passed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

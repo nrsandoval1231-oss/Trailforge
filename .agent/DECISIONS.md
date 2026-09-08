@@ -49,6 +49,15 @@
 - Keep a verified solicitation without a verified outcome out of sealed holdout
 scoring.
 
+## Opportunity lifecycle 011
+
+- Require a current lifecycle status in addition to source verification and target
+  qualification before displaying a lead.
+- Treat unknown lifecycle as non-current rather than guessing from publication
+  dates or stale search results.
+- Preserve historical records for training and audit, but keep them out of current
+  opportunity output.
+
 ## Temporary power scope 007
 
 - Treat maintenance-only solicitations as `OUT_OF_SCOPE_MAINTENANCE_ONLY` and
