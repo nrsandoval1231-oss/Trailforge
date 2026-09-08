@@ -1,0 +1,23 @@
+{
+  "task_id": "verified-outcome-scoring-005",
+  "status": "COMPLETE",
+  "objective": "Score exact final procurement states against sealed fixture truth.",
+  "implementation": [
+    "Added score_fixture_bundle() for train and holdout subsets.",
+    "Holdout scoring fails closed unless the bundle contains SEALED_READY fixtures.",
+    "Reports exact accuracy, correct count, predictions, and invariant failures.",
+    "Athena optimization can optionally attach verified holdout scores to candidate results."
+  ],
+  "validation": {
+    "pytest": "53 passed",
+    "ruff": "All checks passed",
+    "matching_sealed_fixture": "100% exact outcome accuracy",
+    "unsealed_holdout": "rejected",
+    "invariant_failures": 0
+  },
+  "boundaries": [
+    "The passing fixture is a test contract, not real-world evidence.",
+    "No historical source was fabricated or marked verified.",
+    "No network or live execution was added."
+  ]
+}

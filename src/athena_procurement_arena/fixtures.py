@@ -137,3 +137,34 @@ def split_fixture_ids(fixture_ids: tuple[str, ...], *, holdout_ratio: float = 0.
 def content_fingerprint(text: str) -> str:
     """Return the canonical digest callers can compare with source_sha256."""
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def score_fixture_bundle(policy_id: str, policy: Any, bundle: FixtureBundle, *, subset: str = "holdout") -> dict[str, Any]:
+    """Score exact final procurement states; holdout scoring requires SEALED_READY."""
+    if subset not in {"train", "holdout"}:
+        raise ValueError("subset must be train or holdout")
+    if subset == "holdout":
+        if not bundle.sealed_holdout_available:
+            raise ValueError("sealed holdout is unavailable")
+        selected = tuple(item for item in bundle.fixtures if item.fixture_id in bundle.holdout_fixture_ids)
+    else:
+        selected = tuple(item for item in bundle.fixtures if item.fixture_id not in bundle.holdout_fixture_ids)
+    if not selected:
+        raise ValueError(f"no fixtures available for {subset} scoring")
+    from .world import TemporalWorld
+    correct = 0
+    invariant_failures = 0
+    predictions = []
+    for item in selected:
+        world = TemporalWorld(item.scenario, policy_id, policy)
+        world.run()
+        invariant_failures += int(not world.ledger.verify())
+        predicted = world.ledger.records[-1].forecast.get("procurement", {}).get("state", "UNKNOWN")
+        outcome = item.scenario.truth.outcome
+        correct += int(predicted == outcome)
+        predictions.append({"fixture_id": item.fixture_id, "predicted": predicted, "actual": outcome,
+                            "correct": predicted == outcome})
+    return {"status": "PASS", "subset": subset, "scoreable": subset == "holdout",
+            "fixtures": len(selected), "correct": correct,
+            "accuracy": round(correct / len(selected), 6),
+            "invariant_failures": invariant_failures, "predictions": predictions}

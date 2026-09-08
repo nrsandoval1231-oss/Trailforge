@@ -39,4 +39,12 @@
   fixture into a local bundle.
 - Treat train/holdout allocation as separate from evidence verification.
 - Require explicit `SEALED_READY` status for holdout scoring; parsing alone never
-  makes a fixture scoreable.
+ makes a fixture scoreable.
+
+## Verified outcome scoring 005
+
+- Measure source-backed performance using exact final procurement-state matches,
+  separately from synthetic evidence-visibility metrics.
+- Require `SEALED_READY` for holdout scoring and fail closed otherwise.
+- Attach verified scores to Athena candidates without allowing the score path to
+  bypass existing governance gates.

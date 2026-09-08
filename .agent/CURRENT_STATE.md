@@ -87,3 +87,7 @@ require source URL, SHA-256 fingerprint, retrieval timestamp, verifier, and
 verification notes; only SEALED_READY fixtures may enter a holdout. Deterministic
 seeded splitting and round-trip loading pass; current suite is 52 passed. No
 historical source evidence has been fabricated or marked verified.
+Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
+against exact final procurement outcomes with accuracy, prediction details, and
+invariant status; unsealed holdout scoring fails closed. Athena can attach these
+scores to candidate results. Current suite is 53 passed.

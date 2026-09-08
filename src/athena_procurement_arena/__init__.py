@@ -7,6 +7,7 @@ from .fixtures import (
     content_fingerprint,
     load_bundle,
     load_bundle_mapping,
+    score_fixture_bundle,
     split_fixture_ids,
 )
 from .foundation import (
@@ -72,6 +73,7 @@ __all__ = [
     "load_bundle_mapping",
     "resolve_identity",
     "run_athena_optimization",
+    "score_fixture_bundle",
     "seeded_random_eligible",
     "split_fixture_ids",
     "static_weighted_score",

@@ -1,13 +1,17 @@
 import json
+from dataclasses import replace
 
 import pytest
 
 from athena_procurement_arena import (
     content_fingerprint,
     load_bundle_mapping,
+    score_fixture_bundle,
     split_fixture_ids,
 )
 from athena_procurement_arena.campaign import synthetic_scenario
+from athena_procurement_arena.foundation import GroundTruth
+from athena_procurement_arena.policies import BaselineA
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
 
 
@@ -53,3 +57,17 @@ def test_split_is_seeded_and_does_not_claim_verification():
     assert split_fixture_ids(ids, seed=9) == split_fixture_ids(ids, seed=9)
     train, holdout = split_fixture_ids(ids, seed=9)
     assert set(train).isdisjoint(holdout) and set(train) | set(holdout) == set(ids)
+
+
+def test_sealed_holdout_scores_exact_outcome_and_unsealed_fails_closed():
+    scenario = replace(synthetic_scenario(3), truth=GroundTruth("p-3", "SOLICITATION_RELEASED"))
+    item = _fixture("holdout", "SEALED_READY")
+    item["scenario"] = json.loads(ScenarioDsl.dumps(scenario))
+    bundle = load_bundle_mapping({"schema_version": "procurement-arena-fixture-bundle-v1", "bundle_id": "b1",
+                                  "version": "1", "fixtures": [item], "holdout_fixture_ids": ["holdout"]})
+    result = score_fixture_bundle("BASELINE_A", BaselineA(), bundle)
+    assert result["accuracy"] == 1.0 and result["correct"] == 1
+    unsealed = load_bundle_mapping({"schema_version": "procurement-arena-fixture-bundle-v1", "bundle_id": "b2",
+                                    "version": "1", "fixtures": [_fixture()], "holdout_fixture_ids": []})
+    with pytest.raises(ValueError, match="sealed holdout"):
+        score_fixture_bundle("BASELINE_A", BaselineA(), unsealed)

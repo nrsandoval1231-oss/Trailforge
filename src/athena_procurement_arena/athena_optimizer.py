@@ -79,7 +79,7 @@ def _robustness_pass(policy_id: str, policy: Policy, seed: int) -> tuple[bool, b
     return adversarial_pass, counterfactual_pass
 
 
-def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False) -> dict[str, Any]:
+def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, fixture_bundle: Any = None) -> dict[str, Any]:
     """Run Athena's candidate loop; promotion remains human/holdout gated."""
     incumbent_id = "BASELINE_A"
     incumbent: Policy = BaselineA()
@@ -128,6 +128,10 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False) -
             "candidate_policy": candidate.__dict__,
             "gates": gates,
         }
+        if fixture_bundle is not None:
+            from .fixtures import score_fixture_bundle
+            results[candidate_id]["verified_holdout"] = score_fixture_bundle(
+                candidate_id, policy, fixture_bundle, subset="holdout")
     return {
         "status": "PASS",
         "seed": seed,
