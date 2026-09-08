@@ -1,0 +1,12 @@
+{
+  "task": "current-shortlist-cli-013",
+  "status": "COMPLETE",
+  "command": "python -m athena_procurement_arena shortlist --bundle <path>",
+  "behavior": "Loads a versioned local fixture bundle and emits only current 300 kW-plus prime-power records with provenance fields.",
+  "research_boundary": "No live scraping, source verification, outreach, submissions, or award inference.",
+  "validation": {
+    "pytest": "61 passed",
+    "ruff": "passed",
+    "diff_check": "passed"
+  }
+}

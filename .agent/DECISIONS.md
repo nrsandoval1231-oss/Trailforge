@@ -106,3 +106,10 @@ scoring.
   together before producing a current lead.
 - Preserve qualified historical records for audit while excluding them from current
   lead output.
+
+## Current shortlist CLI 013
+
+- Make result production explicit through a local bundle path rather than silently
+  treating a directory or live feed as verified input.
+- Emit compact provenance-bearing records and reuse the existing fail-closed gate;
+  do not create a second qualification implementation in the CLI.

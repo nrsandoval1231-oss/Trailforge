@@ -118,6 +118,11 @@ Current target shortlist 012 now returns only current source-verified fixtures t
 also meet IN_SCOPE_PRIME_POWER_300KW_PLUS. Closed, unknown, below-threshold,
 backup-only, non-prime, and maintenance-only records fail closed; current suite is
 60 passed.
+
+Current shortlist CLI 013 now exposes `shortlist --bundle <path>` for local,
+machine-readable results. It reuses the current-target gate and emits source URL,
+retrieval time, verifier, lifecycle, and verification notes. Current suite is 61
+passed; no live scraping or outreach is performed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

@@ -5,6 +5,7 @@ import argparse
 import json
 
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
+from .fixtures import current_target_fixtures, load_bundle
 from .policies import BaselineA, keyword_rfp
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -15,7 +16,8 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
-                                          "optimize"))
+                                          "optimize", "shortlist"))
+    parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args(argv)
@@ -23,6 +25,23 @@ def main(argv=None) -> int:
     if args.mode == "optimize":
         from .athena_optimizer import run_athena_optimization
         result = run_athena_optimization(seed=args.seed)
+    elif args.mode == "shortlist":
+        if not args.bundle:
+            parser.error("shortlist requires --bundle <path>")
+        bundle = load_bundle(args.bundle)
+        result = {
+            "status": "PASS",
+            "mode": "shortlist",
+            "count": len(current_target_fixtures(bundle)),
+            "fixtures": [{
+                "fixture_id": item.fixture_id,
+                "source_url": item.source_url,
+                "retrieved_at": item.retrieved_at,
+                "verified_by": item.verified_by,
+                "opportunity_status": item.opportunity_status,
+                "verification_notes": item.verification_notes,
+            } for item in current_target_fixtures(bundle)],
+        }
     elif args.mode == "historical":
         result = {"status": "PASS", "fixtures": historical_registry()}
     elif args.mode == "counterfactual":
