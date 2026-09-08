@@ -2,6 +2,8 @@
 
 Trailforge separates opportunity discovery from verified current lead output.
 
+![Trailforge deterministic opportunity process](graphics/trailforge-deterministic-opportunity-process.png)
+
 ## Qualification gates
 
 A record reaches the current shortlist only when all gates pass:

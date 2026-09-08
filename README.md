@@ -31,3 +31,6 @@ The current research screen is documented in
 `research/current-opportunity-screen-2026-09-08.md`; the PSEG Long Island/LIPA
 2026 Temporary Generation RFP is held pending per-project capacity and rating
 verification.
+
+See the [deterministic opportunity process graphic](docs/graphics/trailforge-deterministic-opportunity-process.png)
+for the complete flow.
