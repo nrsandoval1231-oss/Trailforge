@@ -1,0 +1,52 @@
+from datetime import datetime, timezone, timedelta
+
+import pytest
+
+from athena_procurement_arena import (
+    EvidenceEvent, FrozenDecision, FrozenDecisionLedger, GroundTruth, InvariantViolation,
+    PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, validate_power_scopes, validate_scenario,
+)
+
+T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
+
+
+def evidence(eid, available, *, prediction=False):
+    return EvidenceEvent(eid, "source", T0, T0, available, available, {"x": 1}, is_prediction=prediction)
+
+
+def scenario(items=(evidence("e1", T0),)):
+    return Scenario("s1", "1", 7, (T0, T0 + timedelta(days=1)), tuple(items), GroundTruth("p1", "OPEN"))
+
+
+def test_temporal_cutoff_and_exact_replay_hash():
+    s = scenario((evidence("old", T0), evidence("future", T0 + timedelta(days=2))))
+    assert [e.evidence_id for e in s.evidence if e.visible_at(T0)] == ["old"]
+    assert validate_scenario(s) == validate_scenario(s)
+
+
+def test_prediction_as_evidence_is_invalid():
+    with pytest.raises(InvariantViolation, match="prediction"):
+        validate_scenario(scenario((evidence("p", T0), evidence("pred", T0, prediction=True))))
+
+
+def test_unknown_supply_is_not_zero_and_partial_supply_is_gap():
+    need = PowerNeed("n", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=1), 10, None)
+    assert calculate_power_gap(need)["status"] == "UNKNOWN"
+    known = PowerNeed("n", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=1), 10, 4)
+    assert calculate_power_gap(known)["peak_gap_mw"] == 6
+    assert calculate_power_gap(known, (Supply(T0, T0 + timedelta(hours=1), None),))["status"] == "UNKNOWN"
+
+
+def test_ledger_is_hash_chained_and_rejects_rewrite():
+    ledger = FrozenDecisionLedger()
+    first = ledger.append(FrozenDecision("s1", T0, "BASELINE_A", ("e1",), {"p": 1}, "WATCH"))
+    second = ledger.append(FrozenDecision("s1", T0 + timedelta(days=1), "BASELINE_A", ("e1",), {"p": 2}, "RESEARCH"))
+    assert first.record_hash and second.previous_hash == first.record_hash and ledger.verify()
+    with pytest.raises(InvariantViolation):
+        ledger.append(first)
+
+def test_overlapping_same_scope_is_rejected():
+    a = PowerNeed("a", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=2), 1, 1)
+    b = PowerNeed("b", PowerScope.CONSTRUCTION, T0 + timedelta(hours=1), T0 + timedelta(hours=3), 1, 1)
+    with pytest.raises(InvariantViolation, match="I-12"):
+        validate_power_scopes((a, b))
