@@ -45,3 +45,22 @@ def governed_tournament(candidate_id: str, candidate: dict[str, float], incumben
                                 holdout_available=holdout_available)
     return {"candidate_id": decision.candidate_id, "outcome": decision.outcome,
             "reason": decision.reason, "metrics": decision.metrics}
+
+
+def tournament_pipeline(candidate_id: str, candidate: dict[str, float], incumbent: dict[str, float], *,
+                        invariant_failures: int = 0, floors=None, adversarial_pass: bool = True,
+                        counterfactual_pass: bool = True, holdout_available: bool = False) -> dict[str, Any]:
+    """Run the governed sequence and retain every gate result."""
+    floors = floors or {"recall": 0.0, "precision": 0.0}
+    gates = {"invariant": invariant_failures == 0,
+             "minimum_floors": meets_floors(candidate, floors),
+             "pareto": pareto_dominates(candidate, incumbent, minimize=("alerts", "cost")),
+             "adversarial": adversarial_pass, "counterfactual": counterfactual_pass,
+             "sealed_holdout": holdout_available}
+    if not gates["invariant"] or not gates["minimum_floors"] or not gates["pareto"]:
+        outcome = "REJECT"
+    elif not gates["adversarial"] or not gates["counterfactual"] or not gates["sealed_holdout"]:
+        outcome = "QUARANTINE"
+    else:
+        outcome = "PROMOTE"
+    return {"candidate_id": candidate_id, "outcome": outcome, "gates": gates}

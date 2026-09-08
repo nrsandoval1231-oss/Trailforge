@@ -8,7 +8,7 @@ from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .policies import BaselineA, keyword_rfp
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
-from .tournament import governed_tournament
+from .tournament import tournament_pipeline
 
 
 def main(argv=None) -> int:
@@ -33,7 +33,7 @@ def main(argv=None) -> int:
         result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
     elif args.mode == "tournament":
         regression = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
-        result = regression | {"governance": governed_tournament(
+        result = regression | {"governance": tournament_pipeline(
             "BASELINE_A", {"recall": 1.0, "precision": .5},
             {"recall": .5, "precision": .5}, holdout_available=False)}
     else:

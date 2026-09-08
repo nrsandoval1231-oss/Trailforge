@@ -4,7 +4,7 @@ from athena_procurement_arena.scenarios import (
     family_scenario,
     validate_family_registry,
 )
-from athena_procurement_arena.tournament import tournament_decision
+from athena_procurement_arena.tournament import tournament_decision, tournament_pipeline
 
 
 def test_registry_has_all_forty_declared_families():
@@ -16,3 +16,9 @@ def test_tournament_rejects_weak_candidate_and_promotes_pareto_winner():
     strong = tournament_decision("strong", {"recall": .8, "precision": .7, "cost": 1},
                                  {"recall": .5, "precision": .5, "cost": 2})
     assert weak["outcome"] == "REJECT" and strong["outcome"] == "PROMOTE"
+
+def test_tournament_pipeline_retains_ordered_gate_results():
+    result = tournament_pipeline("candidate", {"recall": .8, "precision": .7},
+                                 {"recall": .5, "precision": .5}, holdout_available=False)
+    assert result["outcome"] == "QUARANTINE"
+    assert tuple(result["gates"]) == ("invariant", "minimum_floors", "pareto", "adversarial", "counterfactual", "sealed_holdout")
