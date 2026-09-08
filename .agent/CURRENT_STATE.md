@@ -123,6 +123,11 @@ Current shortlist CLI 013 now exposes `shortlist --bundle <path>` for local,
 machine-readable results. It reuses the current-target gate and emits source URL,
 retrieval time, verifier, lifecycle, and verification notes. Current suite is 61
 passed; no live scraping or outreach is performed.
+
+Current opportunity screen 014 completed on 2026-09-08 with zero promoted records.
+The strongest 300 kW prime temporary-power match is inactive; other screened records
+are standby/emergency or lack verified capacity/rating evidence. The shortlist
+therefore remains correctly empty pending a primary-source match.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

@@ -1,0 +1,13 @@
+{
+  "task": "current-opportunity-screen-014",
+  "status": "COMPLETE_NO_QUALIFIED_CURRENT_RECORD",
+  "screened_on": "2026-09-08",
+  "target": "current prime power at least 300 kW with temporary-power or installation scope",
+  "promoted_to_verified_fixture": 0,
+  "rejected_or_held": [
+    {"reason": "inactive lifecycle", "record": "USFS 127EAU26Q0062"},
+    {"reason": "standby/emergency scope", "record": "JF0426-40"},
+    {"reason": "capacity or prime rating not verified", "record": "CAL FIRE 2CA08024"}
+  ],
+  "shortlist_behavior": "Correctly remains empty until a current source-backed record passes every gate."
+}

@@ -113,3 +113,10 @@ scoring.
   treating a directory or live feed as verified input.
 - Emit compact provenance-bearing records and reuse the existing fail-closed gate;
   do not create a second qualification implementation in the CLI.
+
+## Current opportunity screen 014
+
+- Do not promote a discovery result when lifecycle, capacity, or prime-rating
+  evidence is missing.
+- Record a screened no-result explicitly so an empty shortlist is explainable and
+  does not pressure the system into inventing qualification.
