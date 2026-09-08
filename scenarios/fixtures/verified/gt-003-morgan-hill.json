@@ -1,0 +1,64 @@
+{
+  "schema_version": "procurement-arena-fixture-bundle-v1",
+  "bundle_id": "gt-003-morgan-hill-2027",
+  "version": "1",
+  "holdout_fixture_ids": [],
+  "fixtures": [
+    {
+      "fixture_id": "GT-003",
+      "status": "VERIFIED",
+      "source_url": "https://www.morganhill.ca.gov/bids.aspx?bidID=501",
+      "source_sha256": "59ffca73d83f2faf5f13a3f48079b56dbe86351a21677e44b9c8bedcabdb3cac",
+      "retrieved_at": "2026-09-08T00:00:00-05:00",
+      "verified_by": "source-review-2026-09-08",
+      "verification_notes": "Official City of Morgan Hill page reviewed. SHA-256 covers the captured canonical excerpt; publication, closing, addendum, buyer, and generator-count facts are verified. The page does not establish a completed award, so this fixture is training evidence only and is not sealed.",
+      "scenario": {
+        "schema_version": "procurement-arena-scenario-v1",
+        "scenario_id": "gt-003-morgan-hill-2027",
+        "version": "1",
+        "seed": 3003,
+        "tenant_id": "public-morgan-hill",
+        "timeline": ["2026-08-06T21:05:00+00:00", "2026-08-25T21:00:00+00:00", "2026-09-08T05:00:00+00:00"],
+        "evidence": [
+          {
+            "evidence_id": "GT-003-publication",
+            "source_id": "https://www.morganhill.ca.gov/bids.aspx?bidID=501",
+            "event_date": "2026-08-06T21:05:00+00:00",
+            "document_date": "2026-08-06T21:05:00+00:00",
+            "verified_available_at": "2026-08-06T21:05:00+00:00",
+            "observed_at": "2026-09-08T05:00:00+00:00",
+            "claims": {"rfp": "released", "buyer": "City of Morgan Hill", "generator_count": 30, "service": "maintenance and repairs"},
+            "claim_basis": "OFFICIAL_SOURCE",
+            "source_version": "bidID=501",
+            "lineage_family": "GT-003-morgan-hill-2027",
+            "tenant_id": "public-morgan-hill",
+            "authority": "CITY_GOVERNMENT_PAGE",
+            "source_spans": ["bid title", "status", "description", "publication date/time", "closing date/time"],
+            "entity_candidates": ["City of Morgan Hill"],
+            "permission_scope": "PUBLIC",
+            "contradictions": []
+          },
+          {
+            "evidence_id": "GT-003-addendum-1",
+            "source_id": "https://www.morganhill.ca.gov/bids.aspx?bidID=501",
+            "event_date": "2026-08-25T21:00:00+00:00",
+            "document_date": "2026-08-25T21:00:00+00:00",
+            "verified_available_at": "2026-08-25T21:00:00+00:00",
+            "observed_at": "2026-09-08T05:00:00+00:00",
+            "claims": {"amendment": "addendum_1", "procurement_episode": "GT-003"},
+            "claim_basis": "OFFICIAL_SOURCE",
+            "source_version": "bidID=501",
+            "lineage_family": "GT-003-morgan-hill-2027",
+            "tenant_id": "public-morgan-hill",
+            "authority": "CITY_GOVERNMENT_PAGE",
+            "source_spans": ["addendum date/time"],
+            "entity_candidates": ["City of Morgan Hill"],
+            "permission_scope": "PUBLIC",
+            "contradictions": []
+          }
+        ],
+        "truth": {"procurement_episode_id": "GT-003", "outcome": "SOLICITATION_RELEASED", "solicitation_at": "2026-08-06T21:05:00+00:00"}
+      }
+    }
+  ]
+}

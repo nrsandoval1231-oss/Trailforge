@@ -41,6 +41,14 @@
 - Require explicit `SEALED_READY` status for holdout scoring; parsing alone never
  makes a fixture scoreable.
 
+## Source-backed fixture 006
+
+- Add only source facts directly supported by an official public page.
+- Convert source-local times to timezone-aware timestamps and preserve the
+  source's point-in-time availability boundary.
+- Keep a verified solicitation without a verified outcome out of sealed holdout
+  scoring.
+
 ## Verified outcome scoring 005
 
 - Measure source-backed performance using exact final procurement-state matches,

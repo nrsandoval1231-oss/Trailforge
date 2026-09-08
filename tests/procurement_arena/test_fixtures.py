@@ -1,5 +1,6 @@
 import json
 from dataclasses import replace
+from pathlib import Path
 
 import pytest
 
@@ -71,3 +72,11 @@ def test_sealed_holdout_scores_exact_outcome_and_unsealed_fails_closed():
                                     "version": "1", "fixtures": [_fixture()], "holdout_fixture_ids": []})
     with pytest.raises(ValueError, match="sealed holdout"):
         score_fixture_bundle("BASELINE_A", BaselineA(), unsealed)
+
+
+def test_source_backed_morgan_hill_fixture_is_verified_but_not_sealed():
+    bundle = load_bundle_mapping(json.loads(
+        Path("scenarios/fixtures/verified/gt-003-morgan-hill.json").read_text(encoding="utf-8")))
+    assert bundle.fixtures[0].status == "VERIFIED"
+    assert bundle.sealed_holdout_available is False
+    assert bundle.fixtures[0].scenario.truth.outcome == "SOLICITATION_RELEASED"
