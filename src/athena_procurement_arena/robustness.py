@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
-from datetime import timedelta
+from datetime import UTC
 from typing import Any
 
 from .foundation import EvidenceEvent, GroundTruth, Scenario
@@ -32,8 +32,8 @@ def counterfactual_sensitivity(base: Scenario, policy_id: str, policy: Any) -> d
 def adversarial_recurrence_world(seed: int = 1) -> Scenario:
     """A recurrence-looking world made only of amendments, not procurements."""
     start = Scenario("adversarial-recurrence", "1", seed, (), (), GroundTruth("none", "CLOSED"))
-    from datetime import datetime, timezone
-    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    from datetime import datetime
+    t = datetime(2026, 1, 1, tzinfo=UTC)
     events = tuple(EvidenceEvent(f"amendment-{i}", "contract", t, t, t, t,
                                  {"amendment": i, "buyer": "same"}) for i in range(3))
     return replace(start, timeline=(t,), evidence=events)

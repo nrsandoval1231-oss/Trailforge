@@ -5,7 +5,7 @@ import random
 from dataclasses import dataclass, replace
 from datetime import timedelta
 
-from .foundation import EvidenceEvent, Scenario, validate_scenario
+from .foundation import Scenario, validate_scenario
 
 
 @dataclass(frozen=True)

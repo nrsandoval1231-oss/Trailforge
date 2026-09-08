@@ -1,4 +1,12 @@
-from athena_procurement_arena.governance import AthenaInput, Attribution, CandidateLesson, CandidatePolicy, NegativeKnowledge, govern_candidate
+from athena_procurement_arena.governance import (
+    AthenaInput,
+    Attribution,
+    CandidateLesson,
+    CandidatePolicy,
+    NegativeKnowledge,
+    govern_candidate,
+)
+
 
 def test_governance_never_self_promotes_without_holdout():
     result = govern_candidate("c1", {"recall": .5}, {"recall": .9}, invariant_failures=0,

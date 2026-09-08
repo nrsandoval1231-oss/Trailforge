@@ -1,20 +1,36 @@
-from datetime import datetime, timezone, timedelta
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
 from athena_procurement_arena import (
-    EvidenceEvent, FrozenDecision, FrozenDecisionLedger, GroundTruth, InvariantViolation,
-    IdentityResolution, PowerNeed, PowerScope, Scenario, Supply, calculate_power_gap, calculate_power_profile, deduplicate_evidence, resolve_identity, validate_power_scopes, validate_recommended_action, validate_scenario,
+    EvidenceEvent,
+    FrozenDecision,
+    FrozenDecisionLedger,
+    GroundTruth,
+    IdentityResolution,
+    InvariantViolation,
+    PowerNeed,
+    PowerScope,
+    Scenario,
+    Supply,
+    calculate_power_gap,
+    calculate_power_profile,
+    deduplicate_evidence,
+    resolve_identity,
+    validate_power_scopes,
+    validate_recommended_action,
+    validate_scenario,
 )
 
-T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
+T0 = datetime(2026, 1, 1, tzinfo=UTC)
 
 
 def evidence(eid, available, *, prediction=False):
     return EvidenceEvent(eid, "source", T0, T0, available, available, {"x": 1}, is_prediction=prediction)
 
 
-def scenario(items=(evidence("e1", T0),)):
+def scenario(items=None):
+    items = (evidence("e1", T0),) if items is None else items
     return Scenario("s1", "1", 7, (T0, T0 + timedelta(days=1)), tuple(items), GroundTruth("p1", "OPEN"))
 
 
@@ -46,7 +62,6 @@ def test_ledger_is_hash_chained_and_rejects_rewrite():
         ledger.append(first)
 
 def test_evidence_and_decision_snapshots_are_detached():
-    claims = {"stage": "funded"}
     item = evidence("immutable", T0)
     assert item.claims["x"] == 1
     with pytest.raises(TypeError):

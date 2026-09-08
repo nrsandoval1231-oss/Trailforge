@@ -45,6 +45,8 @@
     ,"manifest_replay_verifier": "PASS"
     ,"power_duration_and_readiness_blocker": "PASS"
     ,"manifest_metrics_invariants_artifacts": "PASS"
+    ,"packaging_and_ruff": "PASS"
+    ,"latest_campaign_100000": "PASS: 100000 runs, 0 invariant failures at 6019.75 runs/sec"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

@@ -1,5 +1,7 @@
 import json
+
 from athena_procurement_arena.cli import main
+
 
 def test_cli_smoke_emits_machine_readable_manifest(capsys):
     assert main(["smoke", "--seed", "5"]) == 0

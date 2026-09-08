@@ -1,6 +1,7 @@
 from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.mutations import mutate_scenarios
 
+
 def test_mutations_are_seeded_and_preserve_truth():
     base = synthetic_scenario(10)
     first = mutate_scenarios(base, 5, seed=3)

@@ -1,12 +1,16 @@
 """Serialization boundary for versioned Procurement Arena scenarios."""
 from __future__ import annotations
+
 import json
+from collections.abc import Mapping
 from datetime import datetime
-from typing import Any, Mapping
+from typing import Any
+
 from .foundation import EvidenceEvent, GroundTruth, Scenario
 
+
 def _time(value: str) -> datetime:
-    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    parsed = datetime.fromisoformat(value)
     if parsed.tzinfo is None:
         raise ValueError("DSL timestamps must include a timezone")
     return parsed
@@ -46,7 +50,7 @@ class ScenarioDsl:
         else:
             raise ValueError("format must be json or yaml")
         if not isinstance(raw, Mapping):
-            raise ValueError("scenario document must be an object")
+            raise TypeError("scenario document must be an object")
         return cls.from_mapping(raw)
 
     @staticmethod

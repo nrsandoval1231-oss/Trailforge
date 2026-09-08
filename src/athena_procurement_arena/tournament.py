@@ -1,7 +1,10 @@
 """Deterministic tournament floors and Pareto comparison."""
 from __future__ import annotations
+
 from typing import Any
+
 from .governance import govern_candidate
+
 
 def meets_floors(metrics: dict[str, float], floors: dict[str, float]) -> bool:
     return all(metrics.get(name, float("-inf")) >= minimum for name, minimum in floors.items())

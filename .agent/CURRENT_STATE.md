@@ -52,3 +52,6 @@ Power profiles expose explicit segment durations, and readiness decisions now
 distinguish mandatory failures from unknown blocker-resolution requirements.
 Run manifests now include metrics, invariant results, and artifact paths in
 addition to source/scenario/result hashes.
+Trailforge is installable from `pyproject.toml`; Ruff passes on project-owned
+code/tests, and the latest 100,000-run benchmark passed at approximately 6,020
+runs/second with zero invariant failures.

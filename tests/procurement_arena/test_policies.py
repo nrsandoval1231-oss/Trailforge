@@ -1,7 +1,15 @@
-from datetime import datetime, timezone
-from athena_procurement_arena import BaselineA, EvidenceEvent, GroundTruth, Scenario, TemporalWorld, keyword_rfp
+from datetime import UTC, datetime
 
-T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
+from athena_procurement_arena import (
+    BaselineA,
+    EvidenceEvent,
+    GroundTruth,
+    Scenario,
+    TemporalWorld,
+    keyword_rfp,
+)
+
+T0 = datetime(2026, 1, 1, tzinfo=UTC)
 
 def test_baseline_uses_only_visible_evidence_and_contract_is_deterministic():
     early = EvidenceEvent("e1", "s", T0, T0, T0, T0, {"capital": "funded engineering"})

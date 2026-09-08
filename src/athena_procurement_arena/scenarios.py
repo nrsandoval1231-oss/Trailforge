@@ -17,6 +17,7 @@ SCENARIO_FAMILIES = (
 def family_scenario(name: str, seed: int):
     """Return a deterministic runnable template for any registered family."""
     from dataclasses import replace
+
     from .campaign import synthetic_scenario
     if name not in SCENARIO_FAMILIES:
         raise KeyError(f"unknown scenario family: {name}")

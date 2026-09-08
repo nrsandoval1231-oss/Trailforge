@@ -5,7 +5,7 @@ import platform
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from athena_arena.contracts import canonical_hash
@@ -70,7 +70,7 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
     except (OSError, subprocess.SubprocessError):  # pragma: no cover - only non-git copies
         source_commit = "UNCOMMITTED_LOCAL"
     manifest = RunManifest(experiment_id, mode, world.scenario_hash, policy_id, scenario.seed,
-        datetime.now(timezone.utc).isoformat(), source_commit, config or {},
+        datetime.now(UTC).isoformat(), source_commit, config or {},
         {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash(),
         {"decision_count": len(world.ledger.records)}, {"ledger": world.ledger.verify()}, ())
     return manifest, observations

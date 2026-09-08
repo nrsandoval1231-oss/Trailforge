@@ -1,6 +1,7 @@
 # Scenario DSL
 
 The required root field is `schema_version: procurement-arena-scenario-v1`.
+The machine-readable schema is `schemas/procurement-arena-scenario-v1.schema.json`.
 Each scenario contains `scenario_id`, `version`, integer `seed`, ordered
 timezone-aware `timeline`, `evidence`, and `truth`. Evidence must carry
 `event_date`, `document_date`, `verified_available_at`, and `observed_at`.

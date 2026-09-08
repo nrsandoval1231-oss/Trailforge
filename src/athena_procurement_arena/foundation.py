@@ -5,11 +5,13 @@ submission, or execution authority.
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field, fields, replace
 from datetime import datetime
 from enum import StrEnum
-from typing import Any, Mapping
+from itertools import pairwise
 from types import MappingProxyType
+from typing import Any
 
 from athena_arena.contracts import canonical_hash
 
@@ -137,7 +139,7 @@ def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply
     boundaries = sorted({point for item in needs for point in (item.start, item.end)} |
                         {point for item in supplies for point in (item.start, item.end)})
     segments: list[dict[str, Any]] = []
-    for start, end in zip(boundaries, boundaries[1:]):
+    for start, end in pairwise(boundaries):
         active_needs = [item for item in needs if item.start <= start and end <= item.end]
         if not active_needs:
             continue

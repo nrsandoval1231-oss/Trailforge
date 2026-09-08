@@ -1,7 +1,15 @@
-from datetime import datetime, timedelta, timezone
-from athena_procurement_arena import EvidenceEvent, GroundTruth, Scenario, ScenarioDsl, TemporalWorld, validate_scenario
+from datetime import UTC, datetime, timedelta
 
-T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
+from athena_procurement_arena import (
+    EvidenceEvent,
+    GroundTruth,
+    Scenario,
+    ScenarioDsl,
+    TemporalWorld,
+    validate_scenario,
+)
+
+T0 = datetime(2026, 1, 1, tzinfo=UTC)
 
 def scenario():
     return Scenario("world", "1", 99, (T0, T0 + timedelta(days=1)), (

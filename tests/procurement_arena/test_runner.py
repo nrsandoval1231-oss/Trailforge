@@ -1,6 +1,14 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+
 from athena_procurement_arena import BaselineA, GroundTruth, Scenario
-from athena_procurement_arena.runner import historical_registry, historical_replay, manifest_dict, run_with_manifest, verify_replay
+from athena_procurement_arena.runner import (
+    historical_registry,
+    historical_replay,
+    manifest_dict,
+    run_with_manifest,
+    verify_replay,
+)
+
 
 def test_historical_registry_is_unverified_until_availability_is_verified():
     registry = historical_registry()
@@ -9,7 +17,7 @@ def test_historical_registry_is_unverified_until_availability_is_verified():
     assert historical_replay("GT-001", status="SEALED_READY")["scoreable"] is True
 
 def test_manifest_contains_replay_hash_and_stable_manifest_hash_shape():
-    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    t = datetime(2026, 1, 1, tzinfo=UTC)
     scenario = Scenario("manifest", "1", 8, (t,), (), GroundTruth("p", "OPEN"))
     manifest, observations = run_with_manifest(scenario, BaselineA.policy_id, BaselineA())
     payload = manifest_dict(manifest)

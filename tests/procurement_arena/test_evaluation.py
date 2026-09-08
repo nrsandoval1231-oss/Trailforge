@@ -1,10 +1,21 @@
-from datetime import datetime, timezone
-from athena_procurement_arena import BaselineA, EvidenceEvent, GroundTruth, Scenario, TemporalWorld
-from athena_procurement_arena.evaluation import evaluate_replay
-from athena_procurement_arena.evaluation import attention_metrics, evaluate_power_profile
+from datetime import UTC, datetime
+
+from athena_procurement_arena import (
+    BaselineA,
+    EvidenceEvent,
+    GroundTruth,
+    Scenario,
+    TemporalWorld,
+)
+from athena_procurement_arena.evaluation import (
+    attention_metrics,
+    evaluate_power_profile,
+    evaluate_replay,
+)
+
 
 def test_evaluator_keeps_component_metrics_separate_and_unknown_power_explicit():
-    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    t = datetime(2026, 1, 1, tzinfo=UTC)
     event = EvidenceEvent("p1", "s", t, t, t, t, {"funded": True})
     scenario = Scenario("eval", "1", 3, (t,), (event,), GroundTruth("p1", "FUNDED"))
     world = TemporalWorld(scenario, BaselineA.policy_id, BaselineA())

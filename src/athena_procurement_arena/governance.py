@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from typing import Any
 
 
-
 @dataclass(frozen=True)
 class CandidateLesson:
     lesson_id: str

@@ -1,6 +1,7 @@
 from athena_procurement_arena import BaselineA, keyword_rfp
 from athena_procurement_arena.campaign import run_campaign, run_family_campaign
 
+
 def test_campaign_is_seeded_and_compares_control_and_baseline():
     policies = {"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}
     first = run_campaign(100, policies, seed=12)

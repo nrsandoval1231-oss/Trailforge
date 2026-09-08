@@ -1,15 +1,32 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+
 import pytest
+
 from athena_procurement_arena.domain import (
-    ActionDecision, CapitalProgram, CustomerAction, Organization, OrganizationRole,
-    ProcurementEpisode, ProcurementForecast, ProcurementState, Project, ProjectPhase,
-    ReadinessStatus, Site, Solicitation, TrailState,
+    ActionDecision,
+    AthenaExperiment,
+    CapitalProgram,
+    CustomerAction,
+    CustomerState,
+    Organization,
+    OrganizationRole,
+    PolicyDefinition,
+    ProcurementEpisode,
+    ProcurementForecast,
+    ProcurementState,
+    Project,
+    ProjectPhase,
+    ReadinessStatus,
+    ResearchDecision,
+    ResearchQuestion,
+    Site,
+    Solicitation,
+    critical_path_start,
 )
-from athena_procurement_arena.domain import AthenaExperiment, CustomerState, PolicyDefinition, ResearchDecision, ResearchQuestion, critical_path_start
-from athena_procurement_arena.foundation import PowerScope
+
 
 def test_domain_keeps_program_project_phase_episode_and_solicitation_distinct():
-    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    t = datetime(2026, 1, 1, tzinfo=UTC)
     org = Organization("o", "Buyer", (OrganizationRole.BUYER,))
     program = CapitalProgram("program", "Capital", org.organization_id)
     project = Project("project", program.program_id, org.organization_id, ("site",))
@@ -30,10 +47,10 @@ def test_forecast_confidence_is_bounded():
         ProcurementForecast(ProcurementState.FUNDED, 1.1)
 
 def test_customer_research_and_critical_path_contracts():
-    t = datetime(2026, 1, 10, tzinfo=timezone.utc)
+    t = datetime(2026, 1, 10, tzinfo=UTC)
     assert CustomerState("c", 2).attention_budget == 2
     assert ResearchQuestion("q", "verify deadline", 2).budget == 2
     assert ResearchDecision("q", True, "within budget").permitted
-    assert critical_path_start(t, (("registration", 3, 1), ("bonding", 5, 2))) == datetime(2026, 1, 3, tzinfo=timezone.utc)
+    assert critical_path_start(t, (("registration", 3, 1), ("bonding", 5, 2))) == datetime(2026, 1, 3, tzinfo=UTC)
     assert AthenaExperiment("x", "BASELINE_A", 1).sealed_fraction == .15
     assert PolicyDefinition("BASELINE_A", "1", {}).authority == "RESEARCH_ONLY"

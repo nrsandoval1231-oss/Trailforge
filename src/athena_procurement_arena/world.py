@@ -1,10 +1,18 @@
 """Deterministic event-driven scenario replay."""
 from __future__ import annotations
+
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
+
 from athena_arena.contracts import canonical_hash
-from .foundation import FrozenDecision, FrozenDecisionLedger, Scenario, validate_scenario
+
+from .foundation import (
+    FrozenDecision,
+    FrozenDecisionLedger,
+    Scenario,
+    validate_scenario,
+)
 
 PolicyCallback = Callable[[Any], tuple[dict[str, Any], str]]
 

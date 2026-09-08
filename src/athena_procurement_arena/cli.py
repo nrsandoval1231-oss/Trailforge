@@ -3,10 +3,10 @@ from __future__ import annotations
 
 import argparse
 import json
+
 from .campaign import run_campaign, synthetic_scenario
 from .policies import BaselineA, keyword_rfp
-from .robustness import counterfactual_sensitivity
-from .robustness import adversarial_recurrence_world
+from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
 from .tournament import governed_tournament
 

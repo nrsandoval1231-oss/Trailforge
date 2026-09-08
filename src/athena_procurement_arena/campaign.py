@@ -2,15 +2,16 @@
 from __future__ import annotations
 
 import time
-from datetime import datetime, timedelta, timezone
-from typing import Any, Callable
+from collections.abc import Callable
+from datetime import UTC, datetime, timedelta
+from typing import Any
 
 from .foundation import EvidenceEvent, GroundTruth, Scenario
 from .world import TemporalWorld
 
 
 def synthetic_scenario(seed: int) -> Scenario:
-    t = datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(days=seed % 28)
+    t = datetime(2026, 1, 1, tzinfo=UTC) + timedelta(days=seed % 28)
     kind = seed % 4
     claims = ({"capital": "funded"} if kind == 0 else {"permit": "issued"} if kind == 1
               else {"engineering": "active"} if kind == 2 else {"rfp": "released"})
