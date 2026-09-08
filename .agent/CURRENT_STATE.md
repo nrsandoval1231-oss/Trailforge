@@ -61,6 +61,7 @@ accepts the persisted artifact.
 Trailforge is installable from `pyproject.toml`; Ruff passes on project-owned
 code/tests, and the latest 100,000-run benchmark passed at approximately 6,020
 runs/second with zero invariant failures.
+The final current-HEAD benchmark passed at approximately 5,476 runs/second.
 BASELINE_A now explicitly handles private/direct routes, extensions, rebids,
 cancellations, cross-project signals, numeric power mismatch, and amendment-only
 adversarial evidence without promoting it to a procurement signal.
@@ -68,5 +69,6 @@ Campaign 001 is now documented at `reports/ARENA_CAMPAIGN_001_REPORT.md` with
 results, limits, bottlenecks, and next experiments.
 The packet's 1,000-variant mutation campaign, five-case counterfactual suite,
 and declared `unit` CLI mode are now executable and passing.
+Final audit also passed all 11 CLI modes, 1,000 mutations, and 5 counterfactuals.
 Direct coverage now includes state duration, split/reassign identity outcomes,
 and actionable-only useful lead time; current suite is 45 passed.
