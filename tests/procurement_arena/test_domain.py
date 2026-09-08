@@ -31,10 +31,11 @@ def test_domain_keeps_program_project_phase_episode_and_solicitation_distinct():
     program = CapitalProgram("program", "Capital", org.organization_id)
     project = Project("project", program.program_id, org.organization_id, ("site",))
     phase = ProjectPhase("phase", project.project_id, "construction", t)
-    episode = ProcurementEpisode("episode", project.project_id, org.organization_id, ProcurementState.FUNDED, t)
+    episode = ProcurementEpisode("episode", project.project_id, org.organization_id, ProcurementState.FUNDED, t, t.replace(day=2))
     solicitation = Solicitation("solicitation", episode.procurement_episode_id, "PUBLIC_RFP")
     assert len({program.program_id, project.project_id, phase.phase_id, episode.procurement_episode_id, solicitation.solicitation_id}) == 5
     assert Site("site", "Plant").site_id in project.site_ids
+    assert episode.state_duration_seconds == 86400
 
 def test_readiness_mandatory_failure_cannot_be_averaged_away():
     decision = ActionDecision(CustomerAction.READY_FOR_AUTHORIZED_SUBMISSION,

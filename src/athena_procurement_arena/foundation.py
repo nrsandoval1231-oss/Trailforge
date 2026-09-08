@@ -218,8 +218,11 @@ def deduplicate_evidence(items: tuple[EvidenceEvent, ...]) -> tuple[EvidenceEven
     return tuple(result)
 
 
-def resolve_identity(*, authoritative_ids: tuple[str, ...] = (), name: str = "", geography: str = "") -> IdentityResolution:
+def resolve_identity(*, authoritative_ids: tuple[str, ...] = (), name: str = "", geography: str = "",
+                     relationship: IdentityResolution | None = None) -> IdentityResolution:
     """Names/geography create candidates only; an authoritative ID permits merge."""
+    if relationship in {IdentityResolution.SPLIT, IdentityResolution.REASSIGN}:
+        return relationship
     if len(set(authoritative_ids)) == 1 and authoritative_ids:
         return IdentityResolution.MERGE
     if name or geography:

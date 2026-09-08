@@ -30,6 +30,13 @@ def attention_metrics(ranked_trail_ids: tuple[str, ...], relevant_ids: frozenset
     return result
 
 
+def useful_lead_time_seconds(procurement_time, first_detection, *, actionable: bool) -> float | None:
+    """Credit lead time only when the first detection supports a real action."""
+    if not actionable:
+        return None
+    return max(0.0, (procurement_time - first_detection).total_seconds())
+
+
 @dataclass(frozen=True)
 class EvaluationResult:
     discovery: dict[str, float | int | None]

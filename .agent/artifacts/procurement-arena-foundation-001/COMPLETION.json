@@ -54,6 +54,7 @@
     ,"mutation_campaign_1000": "PASS"
     ,"counterfactual_suite_5_cases": "PASS"
     ,"unit_cli_mode": "PASS"
+    ,"state_duration_identity_lead_time": "PASS"
     ,"campaign_report": "PASS"
   },
   "assumptions": [

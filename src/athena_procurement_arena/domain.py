@@ -196,6 +196,18 @@ class ProcurementEpisode:
     buyer_id: str
     state: ProcurementState = ProcurementState.UNKNOWN
     state_since: datetime | None = None
+    state_until: datetime | None = None
+
+    def __post_init__(self):
+        if self.state_since: _aware(self.state_since, "state_since")
+        if self.state_until: _aware(self.state_until, "state_until")
+        if self.state_since and self.state_until and self.state_until < self.state_since:
+            raise ValueError("state_until cannot precede state_since")
+
+    @property
+    def state_duration_seconds(self) -> float | None:
+        return ((self.state_until - self.state_since).total_seconds()
+                if self.state_since and self.state_until else None)
 
 
 @dataclass(frozen=True)

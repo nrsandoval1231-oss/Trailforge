@@ -84,6 +84,8 @@ def test_lineage_deduplication_and_conservative_identity_resolution():
     assert tuple(item.evidence_id for item in deduplicate_evidence((one, two))) == ("one",)
     assert resolve_identity(authoritative_ids=("project-1", "project-1")) == IdentityResolution.MERGE
     assert resolve_identity(name="same name", geography="same city") == IdentityResolution.PROVISIONAL
+    assert resolve_identity(relationship=IdentityResolution.SPLIT) == IdentityResolution.SPLIT
+    assert resolve_identity(relationship=IdentityResolution.REASSIGN) == IdentityResolution.REASSIGN
 
 def test_overlapping_same_scope_is_rejected():
     a = PowerNeed("a", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=2), 1, 1)

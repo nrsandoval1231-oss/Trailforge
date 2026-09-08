@@ -8,6 +8,7 @@ only. It is not evidence of real-world forecasting accuracy.
 ## Results
 
 - Full test suite: 42 passed.
+- Latest full test suite: 45 passed.
 - Ruff: passed for Trailforge-owned source and tests.
 - Scenario-family regression: 40/40 registered families executed through
   `KEYWORD` and `BASELINE_A`; zero invariant failures.

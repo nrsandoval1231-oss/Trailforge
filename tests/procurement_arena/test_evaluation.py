@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from athena_procurement_arena import (
     BaselineA,
@@ -11,6 +11,7 @@ from athena_procurement_arena.evaluation import (
     attention_metrics,
     evaluate_power_profile,
     evaluate_replay,
+    useful_lead_time_seconds,
 )
 
 
@@ -34,3 +35,8 @@ def test_attention_metrics_penalize_alert_everything():
     metrics = attention_metrics(tuple(f"t{i}" for i in range(60)), frozenset({"t59"}))
     assert metrics["5"]["precision"] == 0 and metrics["50"]["recall"] == 0
     assert metrics["50"]["precision"] == 0
+
+def test_useful_lead_time_requires_actionable_detection():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    assert useful_lead_time_seconds(t + timedelta(days=5), t, actionable=False) is None
+    assert useful_lead_time_seconds(t + timedelta(days=5), t, actionable=True) == 432000

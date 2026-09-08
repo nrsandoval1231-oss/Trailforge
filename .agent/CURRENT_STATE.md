@@ -68,3 +68,5 @@ Campaign 001 is now documented at `reports/ARENA_CAMPAIGN_001_REPORT.md` with
 results, limits, bottlenecks, and next experiments.
 The packet's 1,000-variant mutation campaign, five-case counterfactual suite,
 and declared `unit` CLI mode are now executable and passing.
+Direct coverage now includes state duration, split/reassign identity outcomes,
+and actionable-only useful lead time; current suite is 45 passed.
