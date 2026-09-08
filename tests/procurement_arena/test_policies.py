@@ -13,6 +13,7 @@ from athena_procurement_arena import (
     static_weighted_score,
 )
 from athena_procurement_arena.policies import classify_scope
+from athena_procurement_arena.scenarios import family_scenario, family_scope
 
 T0 = datetime(2026, 1, 1, tzinfo=UTC)
 
@@ -53,3 +54,12 @@ def test_maintenance_only_is_excluded_but_installation_with_maintenance_is_eligi
     assert all(policy(maintenance_state)[1] == "IGNORE" for policy in policies)
     assert classify_scope((install,)) == "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER"
     assert BaselineA()(install_state)[1] in {"RESEARCH", "PREPARE", "BID_REVIEW"}
+
+
+def test_family_corpus_carries_commercial_scope_labels():
+    maintenance = family_scenario("service_on_time", 4).evidence
+    installation = family_scenario("replacement_temporary_generation", 4).evidence
+    assert family_scope("service_on_time") == "MAINTENANCE_ONLY"
+    assert family_scope("replacement_temporary_generation") == "TEMPORARY_POWER_OR_INSTALLATION"
+    assert BaselineA()({"visible_evidence": maintenance, "seed": 4})[1] == "IGNORE"
+    assert BaselineA()({"visible_evidence": installation, "seed": 4})[1] in {"RESEARCH", "PREPARE", "BID_REVIEW"}

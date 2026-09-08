@@ -96,6 +96,10 @@ Temporary power scope 007 now excludes maintenance-only opportunities across all
 built-in policies. Installation, replacement, rental, and temporary-power work
 remain eligible when maintenance is incidental to that scope. Current suite is
 55 passed.
+Scope-labeled corpus 008 now carries explicit MAINTENANCE_ONLY,
+TEMPORARY_POWER_OR_INSTALLATION, and UNKNOWN family labels through temporal
+replay. The maintenance-only family is excluded and representative target
+families remain eligible; all 40 templates validate and the suite is 56 passed.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

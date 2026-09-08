@@ -40,6 +40,7 @@ from .policies import (
     static_weighted_score,
 )
 from .scenario_dsl import ScenarioDsl
+from .scenarios import family_scope
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -67,6 +68,7 @@ __all__ = [
     "content_fingerprint",
     "deduplicate_evidence",
     "evaluate_policy",
+    "family_scope",
     "keyword_rfp",
     "latest_event",
     "load_bundle",

@@ -58,6 +58,14 @@ scoring.
 - Do not position Trailforge as a maintenance-services lead engine; the target is
   temporary power and generator installation/replacement procurement.
 
+## Scope-labeled corpus 008
+
+- Carry commercial scope as explicit evidence claims rather than relying only on
+  family names or keyword coincidence.
+- Keep maintenance-only cases in the corpus as negative controls while excluding
+  them from actionable policy output.
+- Keep synthetic scope labels separate from verified real-world evidence claims.
+
 ## Verified outcome scoring 005
 
 - Measure source-backed performance using exact final procurement-state matches,

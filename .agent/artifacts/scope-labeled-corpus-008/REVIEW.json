@@ -1,0 +1,7 @@
+{
+  "task_id": "scope-labeled-corpus-008",
+  "verdict": "PASS",
+  "reviewed": ["Allowed-file diff", "Family scope map", "Policy behavior", "56-test suite", "Ruff checks"],
+  "findings": [],
+  "note": "Synthetic family evidence now carries explicit commercial scope and preserves maintenance exclusion."
+}
