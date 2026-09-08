@@ -69,6 +69,11 @@ class EvidenceEvent:
     lineage_family: str = ""
     is_prediction: bool = False
     tenant_id: str = "default"
+    authority: str = "UNKNOWN"
+    source_spans: tuple[str, ...] = ()
+    entity_candidates: tuple[str, ...] = ()
+    permission_scope: str = "PUBLIC"
+    contradictions: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         for name in ("event_date", "document_date", "verified_available_at", "observed_at"):

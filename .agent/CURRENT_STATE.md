@@ -40,6 +40,8 @@ scenario factories assign matching tenant IDs and the full suite is 32 passed.
 Packet-named architecture, DSL, policy, evaluation, governance, and historical documentation is present; unverified historical replay remains non-scoreable.
 Evaluation now includes Precision@K/Recall@K attention metrics for K=5, 10,
 25, and 50, with empty/late alerts receiving no early-credit.
+Evidence provenance now includes authority, source spans, entity candidates,
+permission scope, and contradiction references through the schema and DSL.
 Evidence lineage deduplication and conservative identity-resolution outcomes
 (`MERGE`, `PROVISIONAL`, `UNRESOLVED`, etc.) are now executable and tested.
 The 100,000-run seeded campaign completed with zero invariant failures at

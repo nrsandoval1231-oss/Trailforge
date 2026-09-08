@@ -47,3 +47,11 @@ def test_checked_in_fixture_is_versioned_and_valid():
     loaded = ScenarioDsl.loads(Path("scenarios/fixtures/smoke.json").read_text(encoding="utf-8"))
     assert loaded.scenario_id == "fixture-smoke" and validate_scenario(loaded)
     assert validate_scenario(ScenarioDsl.loads(ScenarioDsl.dumps(loaded))) == validate_scenario(loaded)
+
+def test_provenance_fields_round_trip_without_losing_contradictions():
+    item = EvidenceEvent("prov", "source", T0, T0, T0, T0, authority="PUBLIC_AUTHORITY",
+                         source_spans=("line 1",), entity_candidates=("project-1",),
+                         permission_scope="TENANT", contradictions=("e2",))
+    source = Scenario("prov", "1", 1, (T0,), (item,), GroundTruth("p", "OPEN"), tenant_id="default")
+    loaded = ScenarioDsl.loads(ScenarioDsl.dumps(source))
+    assert loaded.evidence[0].source_spans == ("line 1",) and loaded.evidence[0].contradictions == ("e2",)

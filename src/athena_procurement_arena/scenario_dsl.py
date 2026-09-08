@@ -29,6 +29,10 @@ class ScenarioDsl:
             claim_basis=item.get("claim_basis", "UNKNOWN"), source_version=item.get("source_version", ""),
             lineage_family=item.get("lineage_family", ""), is_prediction=item.get("is_prediction", False),
             tenant_id=item.get("tenant_id", "default")
+            , authority=item.get("authority", "UNKNOWN"), source_spans=tuple(item.get("source_spans", ()))
+            , entity_candidates=tuple(item.get("entity_candidates", ()))
+            , permission_scope=item.get("permission_scope", "PUBLIC")
+            , contradictions=tuple(item.get("contradictions", ()))
         ) for item in raw.get("evidence", ()))
         truth = raw["truth"]
         return Scenario(raw["scenario_id"], raw["version"], raw["seed"],
@@ -71,6 +75,9 @@ class ScenarioDsl:
                 "claim_basis": str(item.claim_basis), "source_version": item.source_version,
                 "lineage_family": item.lineage_family, "is_prediction": item.is_prediction,
                 "tenant_id": item.tenant_id,
+                "authority": item.authority, "source_spans": item.source_spans,
+                "entity_candidates": item.entity_candidates, "permission_scope": item.permission_scope,
+                "contradictions": item.contradictions,
             } for item in scenario.evidence],
             "truth": {"procurement_episode_id": scenario.truth.procurement_episode_id,
                       "outcome": scenario.truth.outcome,

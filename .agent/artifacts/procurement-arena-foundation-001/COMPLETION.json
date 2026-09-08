@@ -49,6 +49,7 @@
     ,"latest_campaign_100000": "PASS: 100000 runs, 0 invariant failures at 6019.75 runs/sec"
     ,"persisted_manifest_replay": "PASS"
     ,"family_regression_tournament": "PASS: 40 families with governed outcome"
+    ,"provenance_fields": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",

@@ -23,7 +23,12 @@
         "event_date": {"type": "string", "format": "date-time"},
         "document_date": {"type": "string", "format": "date-time"},
         "verified_available_at": {"type": "string", "format": "date-time"},
-        "observed_at": {"type": "string", "format": "date-time"}
+        "observed_at": {"type": "string", "format": "date-time"},
+        "authority": {"type": "string"},
+        "source_spans": {"type": "array", "items": {"type": "string"}},
+        "entity_candidates": {"type": "array", "items": {"type": "string"}},
+        "permission_scope": {"type": "string"},
+        "contradictions": {"type": "array", "items": {"type": "string"}}
       }
     }
   }
