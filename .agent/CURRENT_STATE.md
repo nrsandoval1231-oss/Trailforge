@@ -77,3 +77,8 @@ candidate policies across all 40 scenario families, emits AthenaInput,
 CandidateLesson, and CandidatePolicy artifacts, and routes candidates through
 all six governance gates. The new local `optimize` mode passed; current suite is
 47 passed. Without sealed holdout evidence, promotion count remains zero.
+Athena threshold search 003 now evaluates weighted-score thresholds 2, 4, and 6
+as real candidate parameters, including typed EvidenceEvent compatibility. The
+search is deterministic, passed the optimize CLI, and current suite is 48
+passed. No threshold was promoted; synthetic mechanics evidence remains
+insufficient for a production-quality policy claim.

@@ -23,3 +23,12 @@
   until verified sealed holdout evidence exists.
 - Keep Athena advisory and research-only; it cannot self-promote or perform live
   procurement actions.
+
+## Athena threshold search 003
+
+- Make optimization concrete with a small bounded weighted-score threshold
+  search rather than comparing only fixed policy implementations.
+- Keep threshold results subordinate to the existing governance gates; a lower
+  alert count alone is not an accuracy improvement.
+- Continue treating the synthetic family corpus as mechanics evidence, not as a
+  substitute for verified historical holdout evidence.

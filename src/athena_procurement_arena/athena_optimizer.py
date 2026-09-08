@@ -22,6 +22,24 @@ from .world import TemporalWorld
 Policy = Callable[[Mapping[str, Any]], tuple[dict[str, Any], str]]
 
 
+def weighted_threshold_policy(threshold: int) -> Policy:
+    """Build a policy whose only tunable parameter is the action threshold."""
+    if threshold < 0:
+        raise ValueError("threshold must be non-negative")
+    weights = {"capital": 2, "funded": 2, "permit": 1, "engineering": 1, "rfp": 4, "budget": 2}
+
+    def policy(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+        text = " ".join(
+            str(item.get("claims", {}) if isinstance(item, Mapping) else getattr(item, "claims", {})).lower()
+            for item in state.get("visible_evidence", ())
+        )
+        score = sum(weight for word, weight in weights.items() if word in text)
+        action = "PREPARE" if score >= threshold and score else ("RESEARCH" if score else "IGNORE")
+        return {"score": score, "threshold": threshold}, action
+
+    return policy
+
+
 def evaluate_policy(policy_id: str, policy: Policy, *, seed: int = 1) -> dict[str, Any]:
     """Evaluate a policy on every registered family without using future evidence."""
     rows = []
@@ -70,6 +88,7 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False) -
         "STATIC_WEIGHTED": static_weighted_score,
         "LATEST_EVENT": latest_event,
         "BUYER_FREQUENCY": buyer_frequency,
+        **{f"WEIGHTED_T{threshold}": weighted_threshold_policy(threshold) for threshold in (2, 4, 6)},
     }
     incumbent_metrics = evaluate_policy(incumbent_id, incumbent, seed=seed)
     results: dict[str, Any] = {}
@@ -114,6 +133,7 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False) -
         "seed": seed,
         "incumbent": {"policy_id": incumbent_id, "metrics": incumbent_metrics},
         "holdout_available": holdout_available,
+        "search_space": {"weighted_thresholds": [2, 4, 6]},
         "candidates": results,
         "promotion_count": sum(item["gates"]["outcome"] == "PROMOTE" for item in results.values()),
     }
