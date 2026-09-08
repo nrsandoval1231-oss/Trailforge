@@ -43,7 +43,8 @@ def family_scenario(name: str, seed: int):
     base = synthetic_scenario(seed)
     scope = family_scope(name)
     scope_claim = {"maintenance": "only"} if scope == "MAINTENANCE_ONLY" else (
-        {"temporary": "power_or_installation"} if scope == "TEMPORARY_POWER_OR_INSTALLATION" else {})
+        {"temporary": "power_or_installation", "prime_power": "continuous", "required_kw": 300}
+        if scope == "TEMPORARY_POWER_OR_INSTALLATION" else {})
     evidence = tuple(replace(item, claims={"family": name, "scope": scope, **scope_claim,
                                             "signal": item.claims}) for item in base.evidence)
     return replace(base, scenario_id=f"{name}-{seed}", evidence=evidence)

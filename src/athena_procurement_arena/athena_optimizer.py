@@ -10,6 +10,7 @@ from .governance import AthenaInput, CandidateLesson, CandidatePolicy
 from .policies import (
     BaselineA,
     buyer_frequency,
+    classify_target,
     keyword_rfp,
     latest_event,
     static_weighted_score,
@@ -29,6 +30,9 @@ def weighted_threshold_policy(threshold: int) -> Policy:
     weights = {"capital": 2, "funded": 2, "permit": 1, "engineering": 1, "rfp": 4, "budget": 2}
 
     def policy(state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+        target = classify_target(tuple(state.get("visible_evidence", ())))
+        if target != "IN_SCOPE_PRIME_POWER_300KW_PLUS":
+            return {"scope": target, "score": 0, "threshold": threshold}, "IGNORE"
         text = " ".join(
             str(item.get("claims", {}) if isinstance(item, Mapping) else getattr(item, "claims", {})).lower()
             for item in state.get("visible_evidence", ())

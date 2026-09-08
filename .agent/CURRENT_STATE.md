@@ -100,6 +100,11 @@ Scope-labeled corpus 008 now carries explicit MAINTENANCE_ONLY,
 TEMPORARY_POWER_OR_INSTALLATION, and UNKNOWN family labels through temporal
 replay. The maintenance-only family is excluded and representative target
 families remain eligible; all 40 templates validate and the suite is 56 passed.
+Prime power threshold 010 now requires explicit prime power, at least 300 kW,
+and temporary/install scope before any built-in policy can produce an actionable
+result. Emergency-backup-only, below-threshold, non-prime, and unknown cases are
+excluded or held non-actionable. Current suite is 58 passed. The first exact-fit
+research match is USDA Forest Service notice 127EAU26Q0062, now historical/inactive.
 Source-backed target fixtures 009 adds GT-007 Pleasanton emergency generator
 replacement/installation and GT-008 Mobile emergency generator removal,
 procurement, and installation. Both are VERIFIED, in scope, and non-sealed

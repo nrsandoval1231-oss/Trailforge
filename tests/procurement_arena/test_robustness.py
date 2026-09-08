@@ -20,7 +20,7 @@ def test_counterfactual_pair_is_minimally_different_and_replay_sensitive():
 
 def test_amendment_adversary_does_not_create_three_procurements():
     world = adversarial_recurrence_world(4)
-    assert buyer_frequency({"visible_evidence": world.evidence})[1] == "RESEARCH"
+    assert buyer_frequency({"visible_evidence": world.evidence})[1] == "IGNORE"
     replay = __import__("athena_procurement_arena").TemporalWorld(world, BaselineA.policy_id, BaselineA())
     replay.run()
     assert replay.ledger.records[0].forecast["procurement"]["state"] == "UNKNOWN"

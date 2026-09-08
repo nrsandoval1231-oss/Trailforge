@@ -74,6 +74,15 @@ scoring.
 - Attach verified scores to Athena candidates without allowing the score path to
  bypass existing governance gates.
 
+## Prime power threshold 010
+
+- Set the commercial target at prime/continuous operating power of at least 300
+  kW, with temporary-power or installation scope.
+- Exclude emergency-backup-only opportunities even when their generator rating is
+  300 kW or higher.
+- Treat missing capacity or prime-rating evidence as non-actionable until verified;
+  do not infer qualification from the word generator alone.
+
 ## Source-backed target fixtures 009
 
 - Prioritize official records whose scope is generator installation, replacement,

@@ -7,6 +7,7 @@ from athena_procurement_arena import (
     Scenario,
     TemporalWorld,
     buyer_frequency,
+    classify_target,
     keyword_rfp,
     latest_event,
     seeded_random_eligible,
@@ -33,7 +34,8 @@ def test_keyword_control_is_conservative():
 
 def test_baseline_handles_routes_extensions_and_power_mismatch():
     event = EvidenceEvent("complex", "s", T0, T0, T0, T0,
-                          {"private": "rfq", "extension": True, "required_mw": 10, "supply_mw": 4})
+                          {"private": "rfq", "extension": True, "temporary": "prime power",
+                           "prime_power": "continuous", "required_mw": 10, "supply_mw": 4})
     state = {"visible_evidence": (event,), "seed": 1}
     forecast, action = BaselineA()(state)
     assert forecast["procurement"]["state"] == "PRIVATE_PROCUREMENT"
@@ -45,7 +47,8 @@ def test_maintenance_only_is_excluded_but_installation_with_maintenance_is_eligi
     maintenance = EvidenceEvent("maintenance", "s", T0, T0, T0, T0,
                                 {"generator": "maintenance services"})
     install = EvidenceEvent("install", "s", T0, T0, T0, T0,
-                            {"generator": "replacement installation with maintenance"})
+                            {"generator": "replacement installation with maintenance", "temporary": "power",
+                             "prime_power": "continuous", "required_kw": 300})
     maintenance_state = {"visible_evidence": (maintenance,), "seed": 1}
     install_state = {"visible_evidence": (install,), "seed": 1}
     policies = (keyword_rfp, static_weighted_score, latest_event, buyer_frequency,
@@ -63,3 +66,17 @@ def test_family_corpus_carries_commercial_scope_labels():
     assert family_scope("replacement_temporary_generation") == "TEMPORARY_POWER_OR_INSTALLATION"
     assert BaselineA()({"visible_evidence": maintenance, "seed": 4})[1] == "IGNORE"
     assert BaselineA()({"visible_evidence": installation, "seed": 4})[1] in {"RESEARCH", "PREPARE", "BID_REVIEW"}
+
+
+def test_target_requires_prime_power_at_least_300kw_and_not_backup_only():
+    def event(evidence_id, claims):
+        return EvidenceEvent(evidence_id, "s", T0, T0, T0, T0, claims)
+
+    qualified = event("qualified", {"temporary": "power", "prime": True, "required_kw": 300})
+    below = event("below", {"temporary": "power", "prime": True, "required_kw": 299})
+    backup = event("backup", {"emergency_backup": True, "prime": True, "required_kw": 500})
+    assert classify_target((qualified,)) == "IN_SCOPE_PRIME_POWER_300KW_PLUS"
+    assert classify_target((below,)) == "OUT_OF_SCOPE_BELOW_300KW"
+    assert classify_target((backup,)) == "OUT_OF_SCOPE_EMERGENCY_BACKUP"
+    assert BaselineA()({"visible_evidence": (below,), "seed": 1})[1] == "IGNORE"
+    assert BaselineA()({"visible_evidence": (backup,), "seed": 1})[1] == "IGNORE"
