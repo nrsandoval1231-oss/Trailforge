@@ -14,12 +14,16 @@ from .tournament import tournament_pipeline
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
-                                          "counterfactual", "historical", "tournament", "benchmark", "replay"))
+                                          "counterfactual", "historical", "tournament", "benchmark", "replay",
+                                          "optimize"))
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "historical":
+    if args.mode == "optimize":
+        from .athena_optimizer import run_athena_optimization
+        result = run_athena_optimization(seed=args.seed)
+    elif args.mode == "historical":
         result = {"status": "PASS", "fixtures": historical_registry()}
     elif args.mode == "counterfactual":
         result = counterfactual_sensitivity(synthetic_scenario(args.seed), baseline.policy_id, baseline) | {"status": "PASS"}

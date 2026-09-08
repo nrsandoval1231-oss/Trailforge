@@ -1,5 +1,6 @@
 """Deterministic, research-only Procurement Arena primitives."""
 
+from .athena_optimizer import evaluate_policy, run_athena_optimization
 from .foundation import (
     AvailabilityError,
     EvidenceEvent,
@@ -53,9 +54,11 @@ __all__ = [
     "calculate_power_gap",
     "calculate_power_profile",
     "deduplicate_evidence",
+    "evaluate_policy",
     "keyword_rfp",
     "latest_event",
     "resolve_identity",
+    "run_athena_optimization",
     "seeded_random_eligible",
     "static_weighted_score",
     "validate_power_scopes",

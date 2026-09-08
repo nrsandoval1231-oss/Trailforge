@@ -14,3 +14,12 @@
   every timeline point still receives a frozen ledger record.
 - Synthetic throughput is recorded as a mechanics result only; it is not
   evidence of production forecasting quality.
+## Athena optimization loop 002
+
+- Use a deterministic local adapter as Athena's first optimizer integration.
+- Evaluate candidates on the full 40-family corpus and report discovery, action
+  burden, and cost-proxy metrics separately.
+- Preserve the existing six-gate tournament and default to quarantine/rejection
+  until verified sealed holdout evidence exists.
+- Keep Athena advisory and research-only; it cannot self-promote or perform live
+  procurement actions.

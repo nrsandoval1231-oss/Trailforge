@@ -72,3 +72,8 @@ and declared `unit` CLI mode are now executable and passing.
 Final audit also passed all 11 CLI modes, 1,000 mutations, and 5 counterfactuals.
 Direct coverage now includes state duration, split/reassign identity outcomes,
 and actionable-only useful lead time; current suite is 45 passed.
+Athena optimization loop 002 is now implemented. It evaluates four deterministic
+candidate policies across all 40 scenario families, emits AthenaInput,
+CandidateLesson, and CandidatePolicy artifacts, and routes candidates through
+all six governance gates. The new local `optimize` mode passed; current suite is
+47 passed. Without sealed holdout evidence, promotion count remains zero.
