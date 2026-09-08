@@ -128,6 +128,11 @@ Current opportunity screen 014 completed on 2026-09-08 with zero promoted record
 The strongest 300 kW prime temporary-power match is inactive; other screened records
 are standby/emergency or below 300 kW. The shortlist therefore remains correctly
 empty pending a primary-source match.
+
+Current opportunity screen 015 identified PSEG Long Island/LIPA's official 2026
+Temporary Generation RFP as a promising current candidate with up to 400 MW across
+multiple projects. It remains held because the public source does not verify the
+minimum per-project kW or prime rating; it is not in the shortlist.
 Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these

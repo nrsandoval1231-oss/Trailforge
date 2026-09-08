@@ -1,0 +1,14 @@
+{
+  "task": "current-opportunity-screen-015",
+  "status": "HELD_FOR_PRIMARY_REQUIREMENTS",
+  "record": "PSEG Long Island 2026 Temporary Generation RFP",
+  "official_source": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids",
+  "discovered_summary_source": "https://www.highergov.com/sl/contract-opportunity/ny-request-for-proposals-2026-temporary-g-72186030/",
+  "current": true,
+  "temporary_generation": true,
+  "aggregate_capacity_mw": 400,
+  "minimum_project_kw_verified": false,
+  "prime_rating_verified": false,
+  "promoted_to_shortlist": false,
+  "hold_reason": "Aggregate procurement capacity does not prove the minimum capacity or prime rating of an individual project."
+}

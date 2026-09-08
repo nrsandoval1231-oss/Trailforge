@@ -122,3 +122,9 @@ scoring.
   does not pressure the system into inventing qualification.
 - Treat a 150 kW stationary emergency generator as excluded even when installation
   and transfer-switch work are included.
+
+## Current opportunity screen 015
+
+- Aggregate capacity is not a substitute for per-project capacity evidence.
+- Keep a current temporary-generation RFP held until its primary requirements state
+  both a qualifying capacity and an acceptable prime/operating-power rating.
