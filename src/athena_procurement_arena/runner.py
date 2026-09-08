@@ -1,11 +1,13 @@
 """Reproducible run manifests and historical fixture boundaries."""
 from __future__ import annotations
 
+import json
 import platform
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 from athena_arena.contracts import canonical_hash
@@ -88,3 +90,16 @@ def verify_replay(manifest: RunManifest, scenario: Scenario, policy: Any) -> dic
               "result_hash": world.replay_hash() == manifest.result_hash}
     return {"status": "PASS" if all(checks.values()) else "FAIL", "checks": checks,
             "manifest_hash": manifest.manifest_hash}
+
+
+def write_manifest(manifest: RunManifest, path: str | Path) -> Path:
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(manifest_dict(manifest), sort_keys=True, indent=2), encoding="utf-8")
+    return target
+
+
+def load_manifest(path: str | Path) -> RunManifest:
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    raw.pop("manifest_hash", None)
+    return RunManifest(**raw)
