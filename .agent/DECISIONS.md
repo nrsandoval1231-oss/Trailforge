@@ -120,3 +120,5 @@ scoring.
   evidence is missing.
 - Record a screened no-result explicitly so an empty shortlist is explainable and
   does not pressure the system into inventing qualification.
+- Treat a 150 kW stationary emergency generator as excluded even when installation
+  and transfer-switch work are included.

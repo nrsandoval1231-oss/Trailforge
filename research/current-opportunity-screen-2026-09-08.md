@@ -20,17 +20,17 @@ an emergency stand-by products and debris-removal solicitation. It does not meet
 the prime-power/temporary-operating-power target. Source:
 https://govtribe.com/file/government-file/jf0426-40-specifications-dot-pdf
 
-### Held: CAL FIRE 2CA08024
+### Excluded: CAL FIRE 2CA08024
 
-The record concerns generator, transfer-switch, and CamLok installation and has a
-future bid deadline, but the publicly discoverable summary does not establish a
-300 kW-or-greater prime rating. It remains an unverified discovery candidate, not
-a verified shortlist record. Source:
+The opportunity concerns generator, transfer-switch, and CamLok installation, but
+the available solicitation summary specifies a 150 kW stationary diesel generator
+and describes the purpose as emergency backup. It fails both the 300 kW threshold
+and the prime-power scope requirement. Source:
 https://govtribe.com/opportunity/state-local-contract-opportunity/2ca08024-install-generator-automatic-transfer-switch-and-camlok-2ca08024
 
 ## Outcome
 
 Zero records were promoted. This is an evidence-safe no-result, not an indication
-that the market has no opportunities. The next research slice is to obtain the
-primary CAL FIRE specifications or another primary source that states capacity,
-rating, and scope.
+that the market has no opportunities. The next research slice is to continue
+scanning primary procurement portals for a current record that states capacity,
+prime rating, and temporary/install scope.
