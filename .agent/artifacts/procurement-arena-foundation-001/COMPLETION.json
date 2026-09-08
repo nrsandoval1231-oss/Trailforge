@@ -31,12 +31,14 @@
     ,"family_regression": "PASS: 40 families x 2 policies"
     ,"cli_integration_sweep": "PASS: 10 modes"
     ,"local_git_source_revision": "PASS: eb2297abb7266f47a2dc6f9eacba74d4f8042463"
+    ,"typed_domain_contracts": "PASS"
+    ,"scenario_roundtrip": "PASS"
   },
   "assumptions": [
     "The existing athena_arena canonical hashing contract is safe to reuse.",
     "Unknown supply is represented explicitly and blocks numeric gap certainty."
   ],
   "unresolved_blockers": [
-    "Historical fixtures stay non-scoreable until availability is verified; full-family regression metrics and richer domain-specific mutations remain."
+    "Historical fixtures stay non-scoreable until availability is verified; richer power timelines, holdout/regression gates, and domain-specific mutations remain."
   ]
 }

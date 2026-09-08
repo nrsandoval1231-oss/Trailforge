@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from enum import StrEnum
 from typing import Any
 
@@ -57,6 +57,65 @@ class ReadinessStatus(StrEnum):
     FAIL = "FAIL"
     UNKNOWN = "UNKNOWN"
     NOT_APPLICABLE = "NOT_APPLICABLE"
+
+
+@dataclass(frozen=True)
+class CustomerState:
+    customer_id: str
+    attention_budget: int
+    preferred_action: CustomerAction = CustomerAction.WATCH
+
+    def __post_init__(self):
+        if self.attention_budget < 0:
+            raise ValueError("attention budget cannot be negative")
+
+
+@dataclass(frozen=True)
+class UtilityState:
+    utility_id: str
+    status: str
+    dependable_supply_mw: float | None = None
+    available_at: datetime | None = None
+
+
+@dataclass(frozen=True)
+class Contract:
+    contract_id: str
+    buyer_id: str
+    service_type: str
+    expires_at: datetime | None = None
+    extension_exercised: bool = False
+
+    def __post_init__(self):
+        if self.expires_at: _aware(self.expires_at, "expires_at")
+
+
+@dataclass(frozen=True)
+class ResearchQuestion:
+    question_id: str
+    text: str
+    budget: int = 1
+
+    def __post_init__(self):
+        if not self.text or self.budget < 0:
+            raise ValueError("research question requires text and non-negative budget")
+
+
+@dataclass(frozen=True)
+class ResearchDecision:
+    question_id: str
+    permitted: bool
+    reason: str
+    cost_units: int = 0
+
+
+def critical_path_start(deadline: datetime, prerequisites: tuple[tuple[str, int, int], ...]) -> datetime:
+    """Compute min_j(D-L_j-B_j) for (name, lead days, buffer days)."""
+    _aware(deadline, "deadline")
+    if not prerequisites:
+        return deadline
+    return min(deadline - timedelta(days=lead + buffer_days)
+               for _, lead, buffer_days in prerequisites)
 
 
 @dataclass(frozen=True)

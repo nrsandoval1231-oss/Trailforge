@@ -20,6 +20,9 @@ availability is verified.
 All 40 registered scenario families now produce validated seeded templates.
 Seeded truth-preserving mutations and same-scope power-overlap protection are
 implemented and tested.
+Typed customer, utility, contract, research, readiness, and critical-path
+contracts are implemented. Scenario DSL serialization round-trips with an
+identical hash.
 
 Next bounded slice: execute all 40 families through controls/BASELINE_A,
 produce regression metrics, and tighten campaign/tournament reporting.
@@ -27,3 +30,4 @@ The 40-family regression and all 10 declared CLI modes now pass integration
 checks; the full test suite is 23 passed.
 Trailforge is now a local Git repository on `master`; manifests record the
 source commit and the worktree is clean.
+Current full suite: 28 passed.

@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, timezone
-from athena_procurement_arena import EvidenceEvent, GroundTruth, Scenario, ScenarioDsl, TemporalWorld
+from athena_procurement_arena import EvidenceEvent, GroundTruth, Scenario, ScenarioDsl, TemporalWorld, validate_scenario
 
 T0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
@@ -29,3 +29,7 @@ def test_dsl_loads_versioned_json():
     text = '{"schema_version":"procurement-arena-scenario-v1","scenario_id":"s","version":"1","seed":1,"timeline":["2026-01-01T00:00:00+00:00"],"evidence":[],"truth":{"procurement_episode_id":"p","outcome":"OPEN"}}'
     loaded = ScenarioDsl.loads(text)
     assert loaded.scenario_id == "s" and loaded.timeline == (T0,)
+
+def test_dsl_round_trip_preserves_scenario_hash():
+    original = scenario()
+    assert validate_scenario(ScenarioDsl.loads(ScenarioDsl.dumps(original))) == validate_scenario(original)

@@ -47,3 +47,27 @@ class ScenarioDsl:
         if not isinstance(raw, Mapping):
             raise ValueError("scenario document must be an object")
         return cls.from_mapping(raw)
+
+    @staticmethod
+    def dumps(scenario: Scenario) -> str:
+        """Serialize a validated scenario to canonical JSON."""
+        from .foundation import validate_scenario
+        validate_scenario(scenario)
+        raw = {
+            "schema_version": "procurement-arena-scenario-v1",
+            "scenario_id": scenario.scenario_id, "version": scenario.version, "seed": scenario.seed,
+            "tenant_id": scenario.tenant_id,
+            "timeline": [item.isoformat() for item in scenario.timeline],
+            "evidence": [{
+                "evidence_id": item.evidence_id, "source_id": item.source_id,
+                "event_date": item.event_date.isoformat(), "document_date": item.document_date.isoformat(),
+                "verified_available_at": item.verified_available_at.isoformat(),
+                "observed_at": item.observed_at.isoformat(), "claims": item.claims,
+                "claim_basis": str(item.claim_basis), "source_version": item.source_version,
+                "lineage_family": item.lineage_family, "is_prediction": item.is_prediction,
+            } for item in scenario.evidence],
+            "truth": {"procurement_episode_id": scenario.truth.procurement_episode_id,
+                      "outcome": scenario.truth.outcome,
+                      "solicitation_at": scenario.truth.solicitation_at.isoformat() if scenario.truth.solicitation_at else None},
+        }
+        return json.dumps(raw, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
