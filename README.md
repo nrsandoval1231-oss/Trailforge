@@ -38,5 +38,9 @@ The current research screen is documented in
 2026 Temporary Generation RFP is held pending per-project capacity and rating
 verification.
 
+Validate a local fixture bundle with:
+
+`$env:PYTHONPATH="src"; python -m athena_procurement_arena validate-bundle --bundle path\to\bundle.json`
+
 See the [deterministic opportunity process graphic](docs/graphics/trailforge-deterministic-opportunity-process.png)
 for the complete flow.
