@@ -91,6 +91,45 @@ dates do not establish today's bidding status. Obtain current official
 amendments and distinguish purchase from rental before promoting either.
 Equipment-size resemblance alone is insufficient qualification evidence.
 
+## Screened patterns that do not qualify
+
+Two official SAM.gov records provide useful guardrails for future search and
+triage. They are not opportunities for 2G Rental.
+
+| Record | What it proves | Why it does not qualify |
+| --- | --- | --- |
+| DOE Berkeley Lab temporary-power sources-sought, 2021 | A specific 4 MW temporary package: two 2 MW diesel generators, transformer, load bank, rental term, and testing/commissioning work. | Inactive; diesel-only; includes 24/7 operations for planned shutoffs and unforeseen outages. It violates the fuel and no-emergency-response filters.[11] |
+| White Sands ERCIP microgrid, 2022-23 | A 500 kW natural-gas generator can sit in a solar/BESS microgrid construction package. | Inactive permanent construction project, fixed-price design-bid-build, with generator pad, gas piping and installed infrastructure. It is not a rental scope.[12] |
+
+These examples show why keyword matches need full-scope review. The Berkeley
+record is evidence that multi-MW temporary commissioning work exists, but it
+is a negative commercial-fit example. White Sands is technical-pattern evidence
+only, not a lead or a basis for presuming rental demand.
+
+## PSEG package intake checklist
+
+When the full PSEG package is available, extract the following before deciding
+whether to pursue it:
+
+1. Minimum and maximum capacity per proposed project, aggregation rules, and
+   whether modular units may be combined.
+2. Required fuel(s), fuel-backup/transfer rules, emissions limits and runtime.
+3. Dispatch profile: peaking, continuous, standby, outage response, testing
+   and operations staffing. Flag any emergency-response obligation.
+4. Term, mobilization/service dates, extension rights, demobilization and
+   performance/security requirements.
+5. Interconnection voltage, T&D location/site control, protection, telemetry,
+   grid-code and utility-approval responsibility.
+6. Permitting, noise, environmental, insurance, NY/local licensing and bidder
+   eligibility requirements.
+7. Commercial structure: rental versus capacity/energy sale, PPA terms,
+   firm-price obligations, credit/security and liability.
+8. Bid forms, addenda, questions/answers, mandatory site visits, and exact
+   intent-to-bid instructions.
+
+Mark each item `SUPPORTED`, `INCOMPATIBLE`, or `UNKNOWN`; do not fill gaps
+from generic temporary-generation assumptions.
+
 ## Qualification requirements
 
 | Gate | Required evidence | Without evidence |
@@ -144,3 +183,5 @@ No fully qualified open 2G rental order has been established in this pass.
 8. IESO Nova Scotia, [Addendum 1](https://www.ieso-ns.ca/wp-content/uploads/2026/09/Fast-Acting-Generation-Addendum-1.pdf), September 11, 2026, p. 2.
 9. IESO Nova Scotia, [Tolling Agreement](https://www.ieso-ns.ca/wp-content/uploads/2026/07/Fast-Acting-Generation-Tolling-Agreement.pdf), July 2026, EPC definition and Exhibit T; read with Addendum 1.
 10. Supplied Aura 408 R and Aura 412 R PDFs, p. 1; `260219_CGE_power_reduction_aura_412_etw70d_pub.xlsm`, cached Input_Output values. Engineering applicability unconfirmed.
+11. U.S. Department of Energy, Berkeley Lab, [Provide Temporary Power System for Public Safety Power Shutoff](https://sam.gov/opp/f7fcd9c9835048f3be5289d6572e0272/view), sources sought, February 2021. Inactive historical record.
+12. U.S. Army Corps of Engineers, [Design Bid Build, ERCIP Micro-Grid, White Sands Missile Range](https://sam.gov/opp/59d3e3ca3bfa47c28a70e2976ec015dd/view), notice W912PP22R0006, inactive historical record.
