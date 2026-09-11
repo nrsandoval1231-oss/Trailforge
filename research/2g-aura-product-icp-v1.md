@@ -26,7 +26,12 @@ Prioritize solicitations for natural-gas or dual-fuel prime/bridge power,
 temporary generation at sites with gas access, data-center or critical-load
 resilience, microgrids, distributed generation, and projects seeking lower
 emissions or fuel flexibility. Favor requirements in the 260-500 kW per-unit
-range or scalable multi-unit deployments.
+range or scalable multi-unit deployments. Large permanent-generation or
+industrial-construction projects remain in scope when they separately need
+temporary construction or commissioning power. A 300 MW facility with an
+estimated 3 MW commissioning requirement would map to approximately 6-12 Aura
+408/412-class units, subject to load profile, derating, redundancy, and
+interconnection constraints.
 
 ## Exclusion and downgrade rules
 
@@ -34,7 +39,8 @@ Downgrade or exclude generic diesel-fleet maintenance, broad generator repair
 contracts, rental-only requirements with no natural-gas use case, and projects
 whose response obligation is emergency field service rather than equipment
 provision. Do not infer gas availability, connection feasibility, output after
-derating, or rental demand from a project title.
+derating, commissioning load, or rental demand from a project title. Treat the
+3 MW example as a planning estimate, not evidence, unless the RFP states it.
 
 ## Negative example
 
