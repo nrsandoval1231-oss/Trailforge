@@ -14,7 +14,8 @@ from athena_procurement_arena.runner import (
 
 def test_historical_registry_is_unverified_until_availability_is_verified():
     registry = historical_registry()
-    assert len(registry) == 6 and all(item["scoreable"] == "false" for item in registry)
+    assert tuple(item["fixture_id"] for item in registry) == tuple(f"GT-00{i}" for i in range(1, 7))
+    assert all(item["status"] == "UNVERIFIED" and item["scoreable"] == "false" for item in registry)
     assert historical_replay("GT-001")["scoreable"] is False
     assert historical_replay("GT-001", status="SEALED_READY")["scoreable"] is True
 
