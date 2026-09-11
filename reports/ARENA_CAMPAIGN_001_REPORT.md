@@ -31,8 +31,10 @@ execution-authority path is present.
 
 ## Failures and limits
 
-No current mechanics test failure remains. Historical fixtures GT-001 through
-GT-006 are `UNVERIFIED` and therefore non-scoreable. Synthetic family templates
+No current mechanics test failure remains. The built-in replay registry covers
+historical fixtures GT-001 through GT-006; checked-in source-fixture examples
+GT-003, GT-007, and GT-008 remain non-scoreable until independently sealed.
+Synthetic family templates
 are mechanics fixtures, not verified buyer-history evidence. Power evaluation is
 unavailable when numeric truth is not supplied.
 
