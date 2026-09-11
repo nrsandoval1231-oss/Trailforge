@@ -31,11 +31,12 @@ permanent plant MW alone.
    and microgrid controls for critical 24/7 operations. Its public Q&A asks for
    proof that two 500 kW generators can operate simultaneously at full load,
    confirming that gas capacity and site integration are gating facts in this
-   class of project. The solicitation is closed.
+   class of project. Current status and rental scope require the latest
+   official solicitation and amendments; older notice dates are insufficient.
 4. The JBMDL microgrid presolicitation describes two 500 kW natural-gas
    generators alongside PV, BESS, and a microgrid controller. This is a direct
-   technical pattern for Aura 412-class units, but the response date has
-   passed.
+   equipment-size pattern for Aura 412-class units, not proof of rental demand
+   or current solicitation status.
 
 ## Aura sizing translation
 
@@ -45,13 +46,19 @@ For a stated 3 MW temporary requirement, before derating or redundancy:
 | --- | ---: | --- |
 | Aura 412 R at 500 kW natural gas | 6 | 7 if one-unit N+1 redundancy is required |
 | Aura 408 R at 310 kW natural gas | 10 | 11 if one-unit N+1 redundancy is required |
-| Aura 408 example at 246 kW site output | 13 | 14 if one-unit N+1 redundancy is required |
+| Hypothetical usable output of 246 kW/unit | 13 | 14 for one-unit N+1; not validated Aura sizing |
 
-The Aura workbook's example at 875 m altitude, 45 C, and MTZ 80 calculates
+The Aura workbook's cached example at 875 m altitude, 45 C, and MTZ 80 shows
 approximately 246 kW electrical output and approximately 222 kW island output
-for an Aura 408. This is why site conditions, operating mode, step loading,
+for an Aura 408. Formulas and model applicability were not validated; the
+246 kW table row is arithmetic, not an island-mode guarantee. Site conditions,
+operating mode, step loading,
 gas pressure, and redundancy must be requested before converting a project
 requirement into unit count.
+
+The companion `commissioning-power-market-evidence-2026-09-11.md` adds a
+specific commissioning case at the 350 MW Azure Sky facility and corrected
+procurement classifications. It does not establish a universal sizing ratio.
 
 ## ICP update
 
