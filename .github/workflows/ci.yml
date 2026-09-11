@@ -16,11 +16,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install project and checks
         run: |
-          & 'C:\Users\nrsan\AppData\Local\Programs\Python\Python313\python.exe' -m pip install --upgrade pip
-          & 'C:\Users\nrsan\AppData\Local\Programs\Python\Python313\python.exe' -m pip install -e . pytest ruff
+          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --upgrade pip
+          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install -e . pytest ruff
       - name: Test suite
-        run: '& ''C:\Users\nrsan\AppData\Local\Programs\Python\Python313\python.exe'' -m pytest -q'
+        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m pytest -q'
       - name: Compile source
-        run: '& ''C:\Users\nrsan\AppData\Local\Programs\Python\Python313\python.exe'' -m compileall -q src'
+        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m compileall -q src'
       - name: Ruff
-        run: '& ''C:\Users\nrsan\AppData\Local\Programs\Python\Python313\Scripts\ruff.exe'' check src tests'
+        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m ruff check src tests'
