@@ -7,6 +7,12 @@ outreach, bid autofill, submission, broker, or execution authority.
 ## Check
 `$env:PYTHONPATH="src"; python -m pytest -q`
 
+The complete local gate is available on Windows with
+`powershell -ExecutionPolicy Bypass -File scripts\validate.ps1`; it runs the
+test suite, source compilation, and Ruff. GitHub Actions is configured for the
+same checks, but the private repository currently has no available hosted or
+self-hosted runner, so a remote run may fail before checkout.
+
 Run a comparison with:
 
 `$env:PYTHONPATH="src"; python -m athena_procurement_arena compare --count 1000 --seed 21`
