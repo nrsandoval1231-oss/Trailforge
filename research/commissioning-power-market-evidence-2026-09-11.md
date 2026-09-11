@@ -106,6 +106,37 @@ record is evidence that multi-MW temporary commissioning work exists, but it
 is a negative commercial-fit example. White Sands is technical-pattern evidence
 only, not a lead or a basis for presuming rental demand.
 
+### Long Island Montauk: strong technical pattern, excluded commercial scope
+
+LIPA's 2021 environmental determination describes up to six modular CNG-fired
+generators totaling 6 MW, with transformers, switchgear and controls. It
+included planned March-May circuit-connection support, for which LIPA expected
+up to 200 operating hours, plus 2021-2024 transmission-upgrade and seasonal
+support.[13]
+
+This is concrete evidence that a six-MW modular gas package can support
+planned transmission construction work. It is not a 2G lead: the document is
+historical, the equipment was to be removed in fall 2024, and the scope also
+included contingency use when a transmission line failed. That emergency/
+outage obligation conflicts with the current 2G screen. Do not revive it as a
+prospect or use it to assume an open PSEG rental requirement.
+
+### Texas data-center bridge power: current market signal, committed supplier
+
+Prometheus Hyperscale announced a 2025 partnership with Conduit Power for up
+to 300 MW of hybrid gas-and-battery bridge/backup power at each of two initial
+Texas data-center projects, with an initial facility anticipated in 2026.[14]
+Conduit describes itself as the project IPP/EPC/operator, and its separate
+five-MW Permian example was engineered, procured, constructed and operated
+under a long-term services agreement.[15]
+
+This validates the grid-delay bridge-power category and shows that natural-gas
+generation is being contracted early in large data-center development. It is
+not an available equipment-rental opportunity: a named provider and equipment
+approach are already announced, capacity is far beyond Aura unit scale, and no
+public subcontract package was found. Keep it as a market signal only; do not
+contact the parties or call it a lead.
+
 ## PSEG package intake checklist
 
 When the full PSEG package is available, extract the following before deciding
@@ -185,3 +216,6 @@ No fully qualified open 2G rental order has been established in this pass.
 10. Supplied Aura 408 R and Aura 412 R PDFs, p. 1; `260219_CGE_power_reduction_aura_412_etw70d_pub.xlsm`, cached Input_Output values. Engineering applicability unconfirmed.
 11. U.S. Department of Energy, Berkeley Lab, [Provide Temporary Power System for Public Safety Power Shutoff](https://sam.gov/opp/f7fcd9c9835048f3be5289d6572e0272/view), sources sought, February 2021. Inactive historical record.
 12. U.S. Army Corps of Engineers, [Design Bid Build, ERCIP Micro-Grid, White Sands Missile Range](https://sam.gov/opp/59d3e3ca3bfa47c28a70e2976ec015dd/view), notice W912PP22R0006, inactive historical record.
+13. Long Island Power Authority, [Montauk Temporary Generation Facility negative declaration](https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf), March 11, 2021. Historical and expired project record.
+14. Prometheus Hyperscale, [Prometheus Hyperscale and Conduit Power partnership](https://www.prometheushyperscale.com/news/prometheus-hyperscale-and-conduit-power-partnership), September 3, 2025.
+15. Conduit Power, [Sunbridge gas facility commercial operations](https://conduitpower.com/conduit-sunbridge-gas-facility-permian), April 2, 2024.
