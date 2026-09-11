@@ -31,3 +31,19 @@ The RFP PDF establishes requirements and the official bid page establishes the
 published solicitation record. Neither establishes award, realized rental
 volume, or a complete point-in-time outcome timeline. Keep the fixture
 non-scoreable and do not mark it `SEALED_READY`.
+
+## 2G qualification gate
+
+Treat the fit as `ACTIONABLE` only if 2G can document all of the following:
+
+- California license classification and City of Morgan Hill business-license
+  path.
+- 24/7 emergency dispatch with a documented two-hour site-response capability.
+- Service coverage for the full 10-500 kW fleet, or a named maintenance partner.
+- Load-bank testing, oil analysis, electronic reporting, and parts support.
+- Rental inventory or an approved supplier path for the requested capacities,
+  with delivery, installation, maintenance, and pickup included in weekly rates.
+- Insurance, prevailing-wage, DIR, and proposal-form compliance.
+
+Any missing item keeps the result at `REVIEW_REQUIRED`; it does not become an
+automatic fit or customer-ready opportunity.
