@@ -36,7 +36,13 @@ def test_current_target_shortlist_requires_lifecycle_and_prime_power_gates():
     qualified["opportunity_status"] = "OPEN"
     scenario = family_scenario("public_rfp", 4)
     scenario = replace(scenario, evidence=tuple(
-        replace(item, claims={key: value for key, value in item.claims.items() if key != "signal"})
+        replace(item, claims={
+            key: value for key, value in item.claims.items() if key != "signal"
+        } | {
+            "commissioning_scope": "planned temporary power",
+            "required_kw": 300,
+            "primary_fuel": "propane",
+        })
         for item in scenario.evidence
     ))
     qualified["scenario"] = json.loads(ScenarioDsl.dumps(scenario))

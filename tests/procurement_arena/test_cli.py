@@ -31,8 +31,9 @@ def test_cli_shortlist_emits_only_current_qualified_provenance(tmp_path, capsys)
         evidence["claims"] = {
             "scope": "TEMPORARY_POWER_OR_INSTALLATION",
             "temporary": "power_or_installation",
-            "prime_power": "continuous",
+            "commissioning_scope": "planned temporary power",
             "required_kw": 300,
+            "primary_fuel": "natural gas",
         }
     bundle_path = tmp_path / "bundle.json"
     bundle_path.write_text(json.dumps({
@@ -56,6 +57,7 @@ def test_cli_shortlist_emits_only_current_qualified_provenance(tmp_path, capsys)
     payload = json.loads(capsys.readouterr().out)
     assert payload["count"] == 1
     assert payload["fixtures"][0]["source_url"] == "https://example.com/current-1"
+    assert payload["fixtures"][0]["screen"]["status"] == "QUALIFIED"
 
 
 def test_cli_validate_bundle_reports_holdout_gate(tmp_path, capsys):

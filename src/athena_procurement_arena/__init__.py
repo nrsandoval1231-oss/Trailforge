@@ -41,11 +41,14 @@ from .policies import (
     seeded_random_eligible,
     static_weighted_score,
 )
+from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
+    "AuraRfpScreen",
+    "AuraRfpScreenStatus",
     "AvailabilityError",
     "BaselineA",
     "EvidenceEvent",
@@ -80,6 +83,7 @@ __all__ = [
     "resolve_identity",
     "run_athena_optimization",
     "score_fixture_bundle",
+    "screen_aura_rental_candidate",
     "seeded_random_eligible",
     "split_fixture_ids",
     "static_weighted_score",

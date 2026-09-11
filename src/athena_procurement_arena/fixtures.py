@@ -181,11 +181,11 @@ def score_fixture_bundle(policy_id: str, policy: Any, bundle: FixtureBundle, *, 
 
 
 def current_target_fixtures(bundle: FixtureBundle) -> tuple[VerifiedFixture, ...]:
-    """Return current, source-verified fixtures meeting the 300 kW prime target."""
-    from .policies import classify_target
+    """Return current fixtures that pass the fail-closed Aura rental intake gate."""
+    from .rfp_intake import AuraRfpScreenStatus, screen_aura_rental_candidate
 
     return tuple(
         item for item in bundle.fixtures
         if item.current
-        and classify_target(item.scenario.evidence) == "IN_SCOPE_PRIME_POWER_300KW_PLUS"
+        and screen_aura_rental_candidate(item.scenario.evidence).status == AuraRfpScreenStatus.QUALIFIED
     )

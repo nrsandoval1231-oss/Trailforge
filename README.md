@@ -27,9 +27,14 @@ Run the local, machine-readable shortlist against a versioned fixture bundle:
 `$env:PYTHONPATH="src"; python -m athena_procurement_arena shortlist --bundle path\to\bundle.json`
 
 The command returns only source-verified records whose lifecycle is `OPEN`,
-`ACTIVE`, or `SOURCES_SOUGHT`, and whose evidence supports prime power of at least
-300 kW within temporary-power or installation scope. Closed, unknown, standby-only,
-maintenance-only, below-threshold, and non-prime records are excluded.
+`ACTIVE`, or `SOURCES_SOUGHT`, with explicit planned temporary, construction,
+commissioning, energization, or bridge-power scope; an explicitly captured
+requirement of at least 300 kW; and captured natural-gas or propane fuel
+compatibility. It rejects emergency/contingency work, permanent capacity or PPA
+structures, maintenance-only work, incompatible fuel, and below-threshold work.
+Missing scope, requirement, or fuel evidence stays out of the shortlist with a
+machine-readable review reason. A parent facility's nameplate capacity never
+substitutes for the temporary-power requirement.
 
 The shortlist is research-only. It does not scrape live sites, infer missing
 requirements, contact vendors, prepare bids, submit responses, or claim awards.

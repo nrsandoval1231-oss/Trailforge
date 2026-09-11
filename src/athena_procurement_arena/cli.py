@@ -7,6 +7,7 @@ import json
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .fixtures import current_target_fixtures, load_bundle
 from .policies import BaselineA, keyword_rfp
+from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
 from .tournament import tournament_pipeline
@@ -34,10 +35,11 @@ def main(argv=None) -> int:
                       "fixtures": len(bundle.fixtures), "holdout_available": bundle.sealed_holdout_available}
             print(json.dumps(result, sort_keys=True, default=str))
             return 0
+        shortlisted = current_target_fixtures(bundle)
         result = {
             "status": "PASS",
             "mode": "shortlist",
-            "count": len(current_target_fixtures(bundle)),
+            "count": len(shortlisted),
             "fixtures": [{
                 "fixture_id": item.fixture_id,
                 "source_url": item.source_url,
@@ -45,7 +47,8 @@ def main(argv=None) -> int:
                 "verified_by": item.verified_by,
                 "opportunity_status": item.opportunity_status,
                 "verification_notes": item.verification_notes,
-            } for item in current_target_fixtures(bundle)],
+                "screen": screen_aura_rental_candidate(item.scenario.evidence).as_dict(),
+            } for item in shortlisted],
         }
     elif args.mode == "historical":
         result = {"status": "PASS", "fixtures": historical_registry()}
