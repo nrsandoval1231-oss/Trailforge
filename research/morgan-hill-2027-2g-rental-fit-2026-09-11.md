@@ -43,7 +43,16 @@ Treat the fit as `ACTIONABLE` only if 2G can document all of the following:
 - Load-bank testing, oil analysis, electronic reporting, and parts support.
 - Rental inventory or an approved supplier path for the requested capacities,
   with delivery, installation, maintenance, and pickup included in weekly rates.
+- Fuel type, runtime, paralleling, sound, emissions, and connection requirements
+  for any future rental deployment.
 - Insurance, prevailing-wage, DIR, and proposal-form compliance.
 
 Any missing item keeps the result at `REVIEW_REQUIRED`; it does not become an
 automatic fit or customer-ready opportunity.
+
+## Material unknowns
+
+The RFP does not state an expected rental volume, fuel type for rental units,
+runtime profile, paralleling requirement, or electrical interconnection detail.
+The equipment schedule describes the City's existing fleet, not a forecast of
+future rental demand. These gaps prevent a capacity or revenue estimate.
