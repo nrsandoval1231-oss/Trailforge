@@ -28,10 +28,11 @@ resilience, microgrids, distributed generation, and projects seeking lower
 emissions or fuel flexibility. Favor requirements in the 260-500 kW per-unit
 range or scalable multi-unit deployments. Large permanent-generation or
 industrial-construction projects remain in scope when they separately need
-temporary construction or commissioning power. A 300 MW facility with an
-estimated 3 MW commissioning requirement would map to approximately 6-12 Aura
-408/412-class units, subject to load profile, derating, redundancy, and
-interconnection constraints.
+temporary construction or commissioning power. A 300 MW facility with a
+project-stated 3 MW commissioning requirement would map to approximately 6-12
+Aura 408/412-class units, subject to load profile, derating, redundancy, and
+interconnection constraints. Do not infer the 3 MW requirement from the 300 MW
+nameplate; it must be stated or evidenced in the project documents.
 
 ## Exclusion and downgrade rules
 
