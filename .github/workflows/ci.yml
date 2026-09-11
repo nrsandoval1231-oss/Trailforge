@@ -16,8 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install project and checks
         run: |
-          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --upgrade pip
-          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install -e . pytest ruff
+          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --break-system-packages --upgrade pip
+          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --break-system-packages -e . pytest ruff
       - name: Test suite
         run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m pytest -q'
       - name: Compile source
