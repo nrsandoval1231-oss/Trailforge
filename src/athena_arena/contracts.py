@@ -1,14 +1,16 @@
 """Immutable, domain-neutral contracts for Athena Arena V0."""
 from __future__ import annotations
+
+import json
+from collections.abc import Mapping
 from dataclasses import dataclass, field, fields, is_dataclass
 from datetime import datetime
 from enum import StrEnum
 from hashlib import sha256
-import json
 from math import isfinite
 from types import MappingProxyType
 from typing import Any, Protocol, runtime_checkable
-from collections.abc import Mapping
+
 
 def _norm(v: Any) -> Any:
     if isinstance(v, StrEnum): return v.value

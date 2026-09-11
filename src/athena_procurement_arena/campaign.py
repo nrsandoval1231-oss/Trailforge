@@ -60,16 +60,18 @@ def run_regression_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, 
     results = {}
     for name, policy in policies.items():
         rows = []
+        invariant_failures = 0
         for index, family in enumerate(SCENARIO_FAMILIES):
             scenario = family_scenario(family, seed + index)
             world = TemporalWorld(scenario, name, policy)
             world.run()
             result = evaluate_replay(scenario, world.ledger.records)
+            invariant_failures += int(not world.ledger.verify())
             rows.append(result)
         recalls = [row.discovery["recall"] for row in rows]
         precisions = [row.discovery["precision"] for row in rows if row.discovery["precision"] is not None]
         rows_with_power = [row for row in rows if row.power["status"] != "UNAVAILABLE"]
-        results[name] = {"runs": len(rows), "invariant_failures": 0,
+        results[name] = {"runs": len(rows), "invariant_failures": invariant_failures,
                          "discovery_recall": sum(recalls) / len(recalls),
                          "discovery_precision": sum(precisions) / len(precisions) if precisions else None,
                          "power_evaluated_runs": len(rows_with_power),

@@ -1,3 +1,4 @@
+import athena_procurement_arena.campaign as campaign_module
 from athena_procurement_arena import BaselineA, keyword_rfp
 from athena_procurement_arena.campaign import (
     run_campaign,
@@ -27,6 +28,32 @@ def test_regression_campaign_reports_separate_metrics():
     baseline = result["policies"]["BASELINE_A"]
     assert baseline["runs"] == 40 and baseline["discovery_recall"] == 1.0
     assert baseline["power_evaluated_runs"] == 0
+
+
+def test_regression_campaign_counts_ledger_invariant_failures(monkeypatch):
+    real_world = campaign_module.TemporalWorld
+
+    class FailingLedger:
+        def __init__(self, ledger):
+            self.records = ledger.records
+
+        def verify(self):
+            return False
+
+    class FailingVerificationWorld:
+        def __init__(self, *args, **kwargs):
+            self._world = real_world(*args, **kwargs)
+
+        def run(self):
+            self._world.run()
+
+        @property
+        def ledger(self):
+            return FailingLedger(self._world.ledger)
+
+    monkeypatch.setattr(campaign_module, "TemporalWorld", FailingVerificationWorld)
+    result = run_regression_campaign({"BASELINE_A": BaselineA()}, seed=30)
+    assert result["policies"]["BASELINE_A"]["invariant_failures"] == 40
 
 
 def test_one_thousand_mutation_variants_replay_without_invariant_failures():

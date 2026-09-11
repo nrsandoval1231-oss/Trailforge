@@ -7,7 +7,7 @@ only. It is not evidence of real-world forecasting accuracy.
 
 ## Results
 
-- Latest full test suite: 45 passed.
+- Latest full test suite: 62 passed.
 - Ruff: passed for Trailforge-owned source and tests.
 - Scenario-family regression: 40/40 registered families executed through
   `KEYWORD` and `BASELINE_A`; zero invariant failures.
@@ -16,6 +16,7 @@ only. It is not evidence of real-world forecasting accuracy.
 - 100,000-run seeded campaign: zero invariant failures; approximately 5,476
   runs/second on Windows 11 / Python 3.13.15.
 - CLI integration: all 10 declared modes returned machine-readable `PASS`.
+- Regression reporting now counts ledger invariant failures per scenario family.
 - Tournament: candidate is `QUARANTINE` when sealed holdout evidence is absent.
 - Adversarial recurrence: amendment-only observations remain `UNKNOWN`.
 - Counterfactual extension pair: replay hashes change when the extension fact
