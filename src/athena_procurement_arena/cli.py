@@ -16,7 +16,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
-                                          "optimize", "shortlist"))
+                                          "optimize", "shortlist", "validate-bundle"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
@@ -25,10 +25,15 @@ def main(argv=None) -> int:
     if args.mode == "optimize":
         from .athena_optimizer import run_athena_optimization
         result = run_athena_optimization(seed=args.seed)
-    elif args.mode == "shortlist":
+    elif args.mode in {"shortlist", "validate-bundle"}:
         if not args.bundle:
-            parser.error("shortlist requires --bundle <path>")
+            parser.error(f"{args.mode} requires --bundle <path>")
         bundle = load_bundle(args.bundle)
+        if args.mode == "validate-bundle":
+            result = {"status": "PASS", "mode": args.mode, "bundle_id": bundle.bundle_id,
+                      "fixtures": len(bundle.fixtures), "holdout_available": bundle.sealed_holdout_available}
+            print(json.dumps(result, sort_keys=True, default=str))
+            return 0
         result = {
             "status": "PASS",
             "mode": "shortlist",

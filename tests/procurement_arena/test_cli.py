@@ -56,3 +56,16 @@ def test_cli_shortlist_emits_only_current_qualified_provenance(tmp_path, capsys)
     payload = json.loads(capsys.readouterr().out)
     assert payload["count"] == 1
     assert payload["fixtures"][0]["source_url"] == "https://example.com/current-1"
+
+
+def test_cli_validate_bundle_reports_holdout_gate(tmp_path, capsys):
+    bundle_path = tmp_path / "bundle.json"
+    bundle_path.write_text(json.dumps({
+        "schema_version": "procurement-arena-fixture-bundle-v1",
+        "bundle_id": "validation-test", "version": "1", "fixtures": [],
+        "holdout_fixture_ids": [],
+    }), encoding="utf-8")
+    assert main(["validate-bundle", "--bundle", str(bundle_path)]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload == {"bundle_id": "validation-test", "fixtures": 0,
+                       "holdout_available": False, "mode": "validate-bundle", "status": "PASS"}
