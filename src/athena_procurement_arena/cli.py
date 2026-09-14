@@ -19,7 +19,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
-                                          "optimize", "shortlist", "validate-bundle", "capture"))
+                                          "optimize", "shortlist", "validate-bundle", "capture", "discover", "sources"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     capture_group = parser.add_argument_group("capture", "manually reviewed listing intake")
     capture_group.add_argument("--fixture-id", help="stable record ID, e.g. GT-009")
@@ -37,11 +37,47 @@ def main(argv=None) -> int:
     capture_group.add_argument("--fuel", help="fuel requirement as stated by the source")
     capture_group.add_argument("--solicitation-number", help="official solicitation number")
     capture_group.add_argument("--out", help="path to write the fixture bundle")
+    discovery_group = parser.add_argument_group("discovery", "multi-source candidate discovery")
+    discovery_group.add_argument("--sources", help="path to a source config file or directory")
+    discovery_group.add_argument("--source", help="run only this source_id")
+    discovery_group.add_argument("--dry-run", dest="dry_run",
+                                 help="parse this saved response instead of fetching; validates selectors offline")
+    discovery_group.add_argument("--cache-dir", default="scenarios/fixtures/raw",
+                                 help="where retrieved bytes are written for provenance")
+    discovery_group.add_argument("--min-score", type=int, default=1, help="minimum triage score to queue")
+    discovery_group.add_argument("--limit", type=int, default=50, help="maximum candidates to return")
+    discovery_group.add_argument("--all", action="store_true", help="include disabled sources")
+    discovery_group.add_argument("--ignore-robots", action="store_true",
+                                 help="bypass robots.txt; only for sources you are authorized to retrieve")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "capture":
+    if args.mode in {"discover", "sources"}:
+        from .discovery import builtin_sources, load_sources, parse_source
+        from .discovery.pipeline import discover, write_queue
+        configs = (load_sources(args.sources) if args.sources
+                   else builtin_sources(enabled_only=not args.all))
+        if args.source:
+            configs = tuple(item for item in configs if item.source_id == args.source)
+            if not configs:
+                parser.error(f"no source config with source_id {args.source!r}")
+        if args.mode == "sources":
+            result = {"status": "PASS", "mode": "sources", "count": len(configs),
+                      "sources": [item.as_dict() for item in configs]}
+        elif args.dry_run:
+            if len(configs) != 1:
+                parser.error("--dry-run needs exactly one source; pass --source <id>")
+            records = parse_source(configs[0], Path(args.dry_run).read_text(encoding="utf-8"))
+            result = {"status": "PASS", "mode": "discover", "dry_run": args.dry_run,
+                      "source_id": configs[0].source_id, "rows": len(records),
+                      "records": list(records)}
+        else:
+            result = discover(configs, cache_dir=args.cache_dir, minimum_score=args.min_score,
+                              limit=args.limit, respect_robots=not args.ignore_robots)
+            if args.out:
+                result["written"] = write_queue(result, args.out)
+    elif args.mode == "capture":
         missing = [name for name in ("fixture_id", "source_url", "excerpt", "buyer", "scope",
                                      "published_at", "retrieved_at", "verified_by", "notes")
                    if not getattr(args, name)]

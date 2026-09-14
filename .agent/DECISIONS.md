@@ -159,3 +159,27 @@ scoring.
   with the missing-evidence reason, exactly as a hand-authored bundle would.
 - Keep capture offline. Discovery (finding listings) remains out of scope and is
   a separate decision, not an implicit consequence of this one.
+
+## Multi-source discovery 018
+
+- Discovery proposes; a human disposes. Nothing in `discovery/` can mark evidence
+  verified, and a `ReviewCandidate` carries no verifier field to set. Promotion
+  runs through `capture`, which requires a named reviewer and the source text.
+- Make the boundary structural rather than advisory: the review queue is a
+  different type from a fixture, so there is no path that accidentally promotes.
+- Site coverage is configuration, not code. A jurisdiction is a `SourceConfig`
+  entry with selectors, so breadth does not multiply parsers to maintain and a
+  markup change is a selector fix scoped to one source.
+- A shipped source config stays disabled until its selectors are verified against
+  a live response. Writing a config from documented shapes is not verification.
+- One failing source never fails the sweep, and an erroring source contributes no
+  rows rather than stale or inferred ones.
+- Triage ranks reviewer attention and qualifies nothing. Keep it separate from the
+  fail-closed screen: a HIGH band is not a qualification, a zero is not a
+  rejection.
+- Retrieval conduct is part of the contract: honor robots.txt, rate limit per
+  host, identify the agent, refuse non-HTTPS, and cache raw bytes so the capture
+  fingerprint covers bytes actually retrieved.
+- Accepted trade-off: HTML scraping across many jurisdictions is fragile by
+  nature. The mitigation is config isolation and offline selector validation, not
+  a claim of robustness.

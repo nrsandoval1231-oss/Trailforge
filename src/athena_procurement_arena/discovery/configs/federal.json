@@ -1,0 +1,31 @@
+[
+  {
+    "source_id": "sam-gov-opportunities",
+    "name": "SAM.gov Contract Opportunities",
+    "url": "https://api.sam.gov/opportunities/v2/search",
+    "kind": "json_api",
+    "jurisdiction": "US-FEDERAL",
+    "api_key_env": "SAM_API_KEY",
+    "params": {
+      "api_key": "{api_key}",
+      "limit": "100",
+      "postedFrom": "01/01/2026",
+      "postedTo": "12/31/2026",
+      "ptype": "o,p,r",
+      "ncode": "532412"
+    },
+    "selectors": {
+      "row": "opportunitiesData",
+      "title": "title",
+      "url": "uiLink",
+      "buyer": "fullParentPathName",
+      "published": "postedDate",
+      "closes": "responseDeadLine",
+      "solicitation_number": "solicitationNumber",
+      "summary": "description"
+    },
+    "rate_limit_seconds": 1.0,
+    "enabled": false,
+    "notes": "Official SAM.gov Opportunities API. Requires a free api.data.gov key in SAM_API_KEY. NAICS 532412 is construction equipment rental; see docs/DISCOVERY.md for the other target codes. Disabled until the key is set and the response shape is verified against a live call."
+  }
+]

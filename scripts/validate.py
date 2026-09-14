@@ -6,6 +6,7 @@ GitHub Actions workflow run the same steps so local and remote results agree.
 from __future__ import annotations
 
 import importlib.util
+import os
 import shutil
 import subprocess
 import sys
@@ -43,11 +44,21 @@ def _steps() -> list[tuple[str, list[str]]]:
     return steps
 
 
+def _env() -> dict[str, str]:
+    """Put `src` on the path so the gate runs from a clean, uninstalled checkout."""
+    env = dict(os.environ)
+    existing = env.get("PYTHONPATH", "")
+    src = str(ROOT / "src")
+    if src not in existing.split(os.pathsep):
+        env["PYTHONPATH"] = os.pathsep.join(part for part in (src, existing) if part)
+    return env
+
+
 def main() -> int:
-    env_note = "" if (ROOT / "pyproject.toml").exists() else " (run from the repository root)"
+    env = _env()
     for name, command in _steps():
-        print(f"==> {name}{env_note}", flush=True)
-        completed = subprocess.run(command, cwd=ROOT)
+        print(f"==> {name}", flush=True)
+        completed = subprocess.run(command, cwd=ROOT, env=env)
         if completed.returncode != 0:
             print(f"Validation failed at: {name}", file=sys.stderr)
             return completed.returncode

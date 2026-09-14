@@ -1,0 +1,22 @@
+[
+  {
+    "source_id": "example-city-bids",
+    "name": "Example City Bid Listings (template)",
+    "url": "https://example-city.gov/bids",
+    "kind": "html_list",
+    "jurisdiction": "US-CA-EXAMPLE",
+    "selectors": {
+      "row": "table.bids tbody tr",
+      "title": "td.title a",
+      "url": "td.title a@href",
+      "buyer": "td.department",
+      "published": "td.posted@datetime",
+      "closes": "td.due@datetime",
+      "solicitation_number": "td.number",
+      "summary": "td.description"
+    },
+    "rate_limit_seconds": 3.0,
+    "enabled": false,
+    "notes": "Template showing the html_list selector shape, including the sel@attr form for attributes. Copy this per jurisdiction, set real selectors, verify with `discover --source <id> --dry-run <saved.html>`, then enable."
+  }
+]

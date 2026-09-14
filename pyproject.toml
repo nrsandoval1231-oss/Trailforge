@@ -11,12 +11,16 @@ requires-python = ">=3.11"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"athena_procurement_arena.discovery" = ["configs/*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.15"]
+discovery = ["beautifulsoup4>=4.12"]
+dev = ["pytest>=8", "ruff>=0.15", "beautifulsoup4>=4.12"]
 
 [project.scripts]
 trailforge = "athena_procurement_arena.cli:main"

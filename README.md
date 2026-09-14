@@ -84,8 +84,35 @@ field you do not pass stays absent, and the screen returns `NEEDS_REVIEW` with
 the missing-evidence reason rather than a qualification. The emitted bundle is
 an ordinary bundle — `validate-bundle` and `shortlist` read it unchanged.
 
-Capture is an intake path, not a discovery feed. Finding listings is still
-manual.
+## Finding opportunities
+
+`discover` sweeps configured procurement sources and returns a ranked review
+queue:
+
+```
+python -m athena_procurement_arena sources --all
+python -m athena_procurement_arena discover --min-score 4 --limit 25 --out queue.json
+```
+
+Site coverage is configuration, not code — adding a jurisdiction is a JSON entry
+with CSS selectors, validated offline against a saved page:
+
+```
+python -m athena_procurement_arena discover --source my-city --dry-run saved.html
+```
+
+Discovery proposes and a human disposes. Its output is `AWAITING_REVIEW`
+candidates, never evidence: nothing in `discovery/` can mark a record `VERIFIED`,
+and a candidate cannot reach the shortlist. Promoting one still goes through
+`capture`, which requires a named reviewer and the retrieved source text.
+Retrieval honors `robots.txt`, rate limits per host, and caches raw bytes so the
+fingerprint on a verified record is the digest of what was actually retrieved.
+
+Both shipped source configs are **disabled** until their selectors are verified
+against a live response. See [docs/DISCOVERY.md](docs/DISCOVERY.md) for adding
+sites, retrieval conduct, and the federal NAICS/PSC codes worth targeting.
+
+Install the parser with `pip install -e ".[discovery]"`.
 
 Validate a local fixture bundle with:
 

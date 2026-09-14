@@ -166,3 +166,18 @@ command. Captured bundles are ordinary bundles: `validate-bundle` and `shortlist
 read them unchanged, and `current_target_fixtures` applies the same fail-closed
 gate. Omitted fields are never inferred. Capture performs no network access;
 discovery remains manual and out of scope. Current suite: 75 passed.
+
+Multi-source discovery 018 adds the funnel's front end. `discovery/` sweeps
+configured sources (HTML listing pages via CSS selectors, JSON APIs via dotted
+paths), ranks rows by triage relevance, and emits an AWAITING_REVIEW queue.
+Adding a jurisdiction is a JSON config entry rather than a parser module, and
+`discover --source <id> --dry-run <saved file>` validates selectors offline
+before any live request. Retrieval honors robots.txt, rate limits per host,
+refuses non-HTTPS, caps response size, and caches raw bytes that `capture`
+fingerprints, so provenance runs unbroken from retrieval to shortlist. One
+failing source does not fail the sweep. The review queue is a distinct type from
+a fixture and cannot reach the shortlist; promotion runs through `capture` and
+requires a named reviewer. Both shipped configs (SAM.gov v2, an HTML template)
+ship DISABLED: they were written from documented shapes and have not been
+verified against a live response, which cannot be done from the build sandbox
+since it reaches only package registries. Current suite: 87 passed.
