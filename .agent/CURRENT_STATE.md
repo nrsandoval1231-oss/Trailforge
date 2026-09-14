@@ -155,3 +155,14 @@ cross-platform gate that Windows, Linux, and CI all invoke.
 Current suite: 69 passed. All 12 local CLI mechanics modes plus `shortlist` and
 `validate-bundle` pass. No new research claims, fixtures, or verified evidence
 were introduced by this audit.
+
+Candidate capture 017 adds the missing intake path. Capturing one opportunity
+previously meant hand-authoring roughly 47 lines of nested JSON — evidence
+events, timeline, truth record, tenant and lineage IDs, provenance, and a
+manually computed SHA-256 — which is why only three fixtures existed. The new
+`capture` CLI mode builds a validated single-fixture bundle from operator-supplied
+facts, fingerprints a saved source excerpt, and screens the result in one
+command. Captured bundles are ordinary bundles: `validate-bundle` and `shortlist`
+read them unchanged, and `current_target_fixtures` applies the same fail-closed
+gate. Omitted fields are never inferred. Capture performs no network access;
+discovery remains manual and out of scope. Current suite: 75 passed.

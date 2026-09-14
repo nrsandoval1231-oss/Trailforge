@@ -145,3 +145,17 @@ scoring.
 - Pin the Ruff ruleset in `pyproject.toml` so an upstream default change cannot
   silently alter the gate.
 - Run CI on a hosted runner. A gate bound to one personal machine is not a gate.
+
+## Candidate capture 017
+
+- Treat capture cost as a first-class constraint: a screen with no usable intake
+  path produces an empty shortlist regardless of how correct it is.
+- Derive the source fingerprint from a saved excerpt file rather than a
+  hand-entered digest, so a record cannot exist without the evidence text it
+  claims to rest on. This strengthens provenance rather than relaxing it.
+- Emit ordinary fixture bundles and reuse the existing gate and screen; capture
+  adds no second qualification implementation and no privileged path.
+- Never infer an omitted field. An uncaptured requirement returns NEEDS_REVIEW
+  with the missing-evidence reason, exactly as a hand-authored bundle would.
+- Keep capture offline. Discovery (finding listings) remains out of scope and is
+  a separate decision, not an implicit consequence of this one.

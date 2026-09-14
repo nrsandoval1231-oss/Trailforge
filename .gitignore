@@ -4,3 +4,4 @@ __pycache__/
 .ruff_cache/
 .firecrawl/
 *.egg-info/
+scenarios/fixtures/candidates/

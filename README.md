@@ -56,6 +56,37 @@ parent-facility capacity, and multi-project program aggregates are recorded but
 never accepted as the stated per-project requirement, and evidence carrying only
 those returns `CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY`.
 
+## Capturing an opportunity
+
+Screening is only half the loop; a record has to get in. `capture` turns one
+manually reviewed public listing into a validated fixture bundle and screens it
+immediately:
+
+```
+python -m athena_procurement_arena capture \
+  --fixture-id GT-009 \
+  --source-url https://example-city.gov/bids/2026-tempgen \
+  --excerpt saved-excerpt.txt \
+  --buyer "Example County" \
+  --scope "temporary power for construction and commissioning" \
+  --published-at 2026-09-02T09:00:00-05:00 \
+  --retrieved-at 2026-09-14T08:00:00-05:00 \
+  --verified-by nick-2026-09-14 \
+  --notes "Official bid page reviewed." \
+  --required-kw 750 --fuel "natural gas" \
+  --out scenarios/fixtures/candidates/gt-009.json
+```
+
+`--excerpt` is a file containing the source text you actually saved; its SHA-256
+becomes the record's fingerprint, so a record cannot be created without the
+evidence it rests on. Capture performs no network access and infers nothing: a
+field you do not pass stays absent, and the screen returns `NEEDS_REVIEW` with
+the missing-evidence reason rather than a qualification. The emitted bundle is
+an ordinary bundle — `validate-bundle` and `shortlist` read it unchanged.
+
+Capture is an intake path, not a discovery feed. Finding listings is still
+manual.
+
 Validate a local fixture bundle with:
 
 `python -m athena_procurement_arena validate-bundle --bundle path/to/bundle.json`

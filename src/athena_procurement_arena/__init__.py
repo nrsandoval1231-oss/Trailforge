@@ -1,6 +1,7 @@
 """Deterministic, research-only Procurement Arena primitives."""
 
 from .athena_optimizer import evaluate_policy, run_athena_optimization
+from .capture import CaptureRequest, build_candidate_bundle, capture_listing
 from .fixtures import (
     FixtureBundle,
     VerifiedFixture,
@@ -47,6 +48,9 @@ from .scenarios import family_scope
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
+    "CaptureRequest",
+    "build_candidate_bundle",
+    "capture_listing",
     "AuraRfpScreen",
     "AuraRfpScreenStatus",
     "AvailabilityError",
