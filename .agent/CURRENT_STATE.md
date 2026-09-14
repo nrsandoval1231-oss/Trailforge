@@ -137,3 +137,21 @@ Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these
 scores to candidate results. Current suite is 53 passed.
+
+Repository audit 016 closed three gaps between documented policy and executable
+behavior. (1) The Aura intake screen accepted equipment nameplate ratings and
+multi-project program aggregates as the stated per-project requirement, so a
+400 MW aggregate qualified against the 300 kW gate — exactly the case screen 015
+records as held. Requirement and rating/aggregate fields are now separate; only
+requirement fields satisfy the gate, and rating-only evidence returns
+NEEDS_REVIEW with `CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY`. (2) The Ruff
+gate was failing with 82 E701/E702 errors despite the documented claim that it
+passed; project-owned code is now expanded and clean under a ruleset pinned in
+`pyproject.toml` (E4, E7, E9, F, I, UP, B). (3) CI targeted a self-hosted Windows
+runner with an absolute path to one personal machine and therefore never ran; it
+now runs on hosted `ubuntu-latest`, and `scripts/validate.py` is the single
+cross-platform gate that Windows, Linux, and CI all invoke.
+
+Current suite: 69 passed. All 12 local CLI mechanics modes plus `shortlist` and
+`validate-bundle` pass. No new research claims, fixtures, or verified evidence
+were introduced by this audit.

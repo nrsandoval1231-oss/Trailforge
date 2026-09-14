@@ -49,6 +49,48 @@ def test_parent_capacity_and_missing_fuel_stay_out_of_shortlist():
         "required_kw": 500,
     }))
     assert parent_only.status == AuraRfpScreenStatus.NEEDS_REVIEW
-    assert parent_only.reason_codes == ("REQUIRED_CAPACITY_NOT_CAPTURED",)
+    assert parent_only.reason_codes == (
+        "REQUIRED_CAPACITY_NOT_CAPTURED",
+        "CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY",
+    )
+    assert parent_only.required_kw is None
     assert missing_fuel.status == AuraRfpScreenStatus.NEEDS_REVIEW
     assert missing_fuel.reason_codes == ("FUEL_REQUIREMENT_NOT_CAPTURED",)
+
+
+def test_program_aggregate_capacity_cannot_satisfy_the_minimum():
+    """A multi-project program total is not per-project requirement evidence."""
+    aggregate = screen_aura_rental_candidate(_evidence({
+        "commissioning_scope": "planned temporary generation program",
+        "program_mw": 400,
+        "primary_fuel": "natural gas",
+    }))
+    assert aggregate.status == AuraRfpScreenStatus.NEEDS_REVIEW
+    assert "CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY" in aggregate.reason_codes
+    assert aggregate.required_kw is None
+
+
+def test_equipment_rating_cannot_satisfy_the_minimum():
+    """A generator nameplate rating is not evidence of the load to be served."""
+    rating_only = screen_aura_rental_candidate(_evidence({
+        "construction_scope": "planned bridge power",
+        "generator_kw": 2000,
+        "primary_fuel": "natural gas",
+    }))
+    assert rating_only.status == AuraRfpScreenStatus.NEEDS_REVIEW
+    assert rating_only.reason_codes == (
+        "REQUIRED_CAPACITY_NOT_CAPTURED",
+        "CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY",
+    )
+
+
+def test_stated_requirement_still_qualifies_alongside_a_rating():
+    """A captured requirement governs even when a rating is also recorded."""
+    both = screen_aura_rental_candidate(_evidence({
+        "construction_scope": "planned bridge power",
+        "construction_kw": 750,
+        "generator_kw": 2000,
+        "primary_fuel": "natural gas",
+    }))
+    assert both.status == AuraRfpScreenStatus.QUALIFIED
+    assert both.required_kw == 750

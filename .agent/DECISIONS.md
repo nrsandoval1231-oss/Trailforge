@@ -128,3 +128,20 @@ scoring.
 - Aggregate capacity is not a substitute for per-project capacity evidence.
 - Keep a current temporary-generation RFP held until its primary requirements state
   both a qualifying capacity and an acceptable prime/operating-power rating.
+
+## Repository audit 016
+
+- Capacity evidence is typed by role, not just by unit: requirement fields
+  (`required_*`, `temporary_*`, `commissioning_*`, `construction_*`, `bridge_*`)
+  can satisfy the minimum-capacity gate; rating and aggregate fields
+  (`generator_*`, `prime_*`, `nameplate_*`, `standby_*`, `facility_capacity_mw`,
+  `aggregate_mw`, `program_mw`, `total_mw`) never can.
+- Report the distinction explicitly with
+  `CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY` so a held record is
+  explainable rather than silently absent.
+- Keep one implementation of the validation gate (`scripts/validate.py`) that
+  Windows, Linux, and CI all invoke, so a passing local run means a passing
+  remote run.
+- Pin the Ruff ruleset in `pyproject.toml` so an upstream default change cannot
+  silently alter the gate.
+- Run CI on a hosted runner. A gate bound to one personal machine is not a gate.

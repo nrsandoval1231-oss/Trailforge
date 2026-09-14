@@ -29,7 +29,8 @@ def test_world_reveals_only_available_evidence_and_freezes_each_step():
 
 def test_same_seed_and_inputs_replay_identically():
     first, second = TemporalWorld(scenario(), "BASELINE_A", policy), TemporalWorld(scenario(), "BASELINE_A", policy)
-    first.run(); second.run()
+    first.run()
+    second.run()
     assert first.scenario_hash == second.scenario_hash
     assert first.replay_hash() == second.replay_hash()
 
