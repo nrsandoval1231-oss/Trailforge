@@ -1,5 +1,7 @@
 import json
+from types import SimpleNamespace
 
+from athena_procurement_arena import cli
 from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.cli import main
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
@@ -71,3 +73,15 @@ def test_cli_validate_bundle_reports_holdout_gate(tmp_path, capsys):
     payload = json.loads(capsys.readouterr().out)
     assert payload == {"bundle_id": "validation-test", "fixtures": 0,
                        "holdout_available": False, "mode": "validate-bundle", "status": "PASS"}
+
+
+def test_cli_unit_executes_pytest_and_propagates_its_status(monkeypatch, capsys):
+    monkeypatch.setattr(cli.subprocess, "run", lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout="2 passed"))
+    assert main(["unit"]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "PASS" and payload["returncode"] == 0
+
+    monkeypatch.setattr(cli.subprocess, "run", lambda *args, **kwargs: SimpleNamespace(returncode=1, stdout="1 failed"))
+    assert main(["unit"]) == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "FAIL" and payload["returncode"] == 1

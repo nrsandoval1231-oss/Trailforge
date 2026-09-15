@@ -137,3 +137,14 @@ Verified outcome scoring 005 is now implemented. Sealed fixtures can be replayed
 against exact final procurement outcomes with accuracy, prediction details, and
 invariant status; unsealed holdout scoring fails closed. Athena can attach these
 scores to candidate results. Current suite is 53 passed.
+
+Canonical PRD alignment 016 verified the authoritative Build Packet #0 retained
+under Nucleus archive (SHA-256 `7abb4c4aeb6ab049ea1f2f8888f76bc4f9e96daa3217797b07706bf7858236d8`).
+The mutation engine now covers deterministic availability, lineage, route,
+funding, supply, demand, authority, duplication, identity, buyer, schedule, and
+contradiction variants while preserving GroundTruth. The CLI `unit` mode executes
+pytest and returns its real status. Campaign output now records latency, peak
+Python memory, in-memory storage, model calls/cost, and failures. Current suite
+is 68 passed. Historical and prospective evidence remain intentionally
+non-scoreable until independently sealed; no promotion or real-world accuracy
+claim is authorized.

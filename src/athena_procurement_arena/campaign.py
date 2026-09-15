@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import time
+import tracemalloc
 from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -25,19 +26,36 @@ def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str,
     if count < 1:
         raise ValueError("campaign count must be positive")
     started = time.perf_counter()
+    tracemalloc.start()
+    world_seconds = 0.0
     totals = {name: {"runs": 0, "actionable": 0, "invariant_failures": 0} for name in policies}
     for offset in range(count):
         scenario = synthetic_scenario(seed + offset)
         for name, policy in policies.items():
             world = TemporalWorld(scenario, name, policy)
+            world_started = time.perf_counter()
             world.run()
+            world_seconds += time.perf_counter() - world_started
             totals[name]["runs"] += 1
             totals[name]["actionable"] += sum(
                 record.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for record in world.ledger.records)
             totals[name]["invariant_failures"] += int(not world.ledger.verify())
     elapsed = time.perf_counter() - started
+    _, peak_memory_bytes = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    executed_runs = count * len(policies)
     return {"status": "PASS", "count": count, "seed": seed, "policies": totals,
-            "elapsed_seconds": round(elapsed, 6), "runs_per_second": round(count / elapsed, 2)}
+            "elapsed_seconds": round(elapsed, 6), "runs_per_second": round(count / elapsed, 2),
+            "observability": {
+                "executed_policy_runs": executed_runs,
+                "average_policy_latency_ms": round((world_seconds / executed_runs) * 1000, 4),
+                "policy_runner_seconds": round(world_seconds, 6),
+                "peak_memory_bytes": peak_memory_bytes,
+                "storage_bytes": 0,
+                "athena_model_calls": 0,
+                "estimated_cost": 0.0,
+                "failures": sum(item["invariant_failures"] for item in totals.values()),
+            }}
 
 
 def run_family_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:

@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
+import sys
+from pathlib import Path
 
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .fixtures import current_target_fixtures, load_bundle
@@ -61,7 +64,19 @@ def main(argv=None) -> int:
         result = {"status": "PASS", "attacks": 1, "invariant_failures": int(not world.ledger.verify()),
                   "predicted_state": world.ledger.records[0].forecast["procurement"]["state"]}
     elif args.mode == "unit":
-        result = {"status": "PASS", "suite": "tests/procurement_arena"}
+        suite = Path(__file__).resolve().parents[2] / "tests" / "procurement_arena"
+        completed = subprocess.run(
+            [sys.executable, "-m", "pytest", "-q", str(suite)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        result = {
+            "status": "PASS" if completed.returncode == 0 else "FAIL",
+            "suite": str(suite),
+            "returncode": completed.returncode,
+            "output": completed.stdout.strip(),
+        }
     elif args.mode in {"batch", "compare", "benchmark"}:
         result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
     elif args.mode == "tournament":
@@ -74,4 +89,4 @@ def main(argv=None) -> int:
         manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline, mode=args.mode)
         result = manifest_dict(manifest) | {"observations": len(observations), "status": "PASS"}
     print(json.dumps(result, sort_keys=True, default=str))
-    return 0
+    return 0 if result["status"] == "PASS" else 1

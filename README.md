@@ -17,6 +17,10 @@ Run a comparison with:
 
 `uv run --python 3.11 python -m athena_procurement_arena compare --count 1000 --seed 21`
 
+Run the required domain and invariant suite through the CLI with:
+
+`uv run --python 3.11 --with pytest python -m athena_procurement_arena unit`
+
 Historical fixtures are deliberately `UNVERIFIED` until point-in-time
 availability is independently established.
 

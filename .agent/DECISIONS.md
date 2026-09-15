@@ -128,3 +128,14 @@ scoring.
 - Aggregate capacity is not a substitute for per-project capacity evidence.
 - Keep a current temporary-generation RFP held until its primary requirements state
   both a qualifying capacity and an acceptable prime/operating-power rating.
+
+## Canonical PRD alignment 016
+
+- Treat the retained Athena Procurement Arena Build Packet #0 as the controlling
+  Trailforge product specification, with its hash recorded in `docs/PRD_ALIGNMENT.md`.
+- Expand deterministic mutations without changing GroundTruth or making synthetic
+  mechanics evidence appear historical.
+- A CLI `unit` mode must execute and propagate the domain/invariant suite status;
+  a descriptive unconditional `PASS` is not valid execution evidence.
+- Report zero model calls and zero storage bytes explicitly for the current local,
+  in-memory Arena rather than omitting those observability dimensions.
