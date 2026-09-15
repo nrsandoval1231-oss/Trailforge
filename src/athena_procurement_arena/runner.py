@@ -63,7 +63,8 @@ def historical_replay(fixture_id: str, *, status: str = "UNVERIFIED") -> dict[st
 
 
 def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experiment_id: str = "run-001",
-                      mode: str = "scenario", config: dict[str, Any] | None = None) -> tuple[RunManifest, tuple[Any, ...]]:
+                      mode: str = "scenario", config: dict[str, Any] | None = None,
+                      created_at: datetime | None = None) -> tuple[RunManifest, tuple[Any, ...]]:
     world = TemporalWorld(scenario, policy_id, policy)
     observations = world.run()
     try:
@@ -72,7 +73,7 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
     except (OSError, subprocess.SubprocessError):  # pragma: no cover - only non-git copies
         source_commit = "UNCOMMITTED_LOCAL"
     manifest = RunManifest(experiment_id, mode, world.scenario_hash, policy_id, scenario.seed,
-        datetime.now(UTC).isoformat(), source_commit, config or {},
+        (created_at or datetime.now(UTC)).isoformat(), source_commit, config or {},
         {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash(),
         {"decision_count": len(world.ledger.records)}, {"ledger": world.ledger.verify()}, ())
     return manifest, observations

@@ -148,3 +148,8 @@ Python memory, in-memory storage, model calls/cost, and failures. Current suite
 is 68 passed. Historical and prospective evidence remain intentionally
 non-scoreable until independently sealed; no promotion or real-world accuracy
 claim is authorized.
+
+Prospective shadow hook 017 now captures manually verified source provenance and
+an immutable prediction manifest with `execution_authority = ABSENT`. Capture
+rejects known outcomes and invalid fingerprints. It is not a shadow outcome
+cohort, scoring path, network feed, or commercial execution path.

@@ -10,3 +10,12 @@ historical availability, then marks the fixture `SEALED_READY`.
 Current discoverability is not proof of past availability. Known outcomes must
 remain invisible to earlier replay points. Small fixture counts must not be
 presented as statistically significant forecasting evidence.
+
+## Prospective shadow capture
+
+`capture_prospective_shadow` records a manually verified source URL/fingerprint,
+capture time, frozen prediction manifest, and replay hash without recording an
+outcome or granting execution authority. It is a local intake boundary only:
+there is no network acquisition, scoring, outreach, bid preparation, or
+submission path. A later outcome requires separate governed sealing before it
+can affect evaluation.

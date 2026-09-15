@@ -44,6 +44,7 @@ from .policies import (
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
+from .shadow import ProspectiveShadowRecord, capture_prospective_shadow
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -61,6 +62,7 @@ __all__ = [
     "PolicyContract",
     "PowerNeed",
     "PowerScope",
+    "ProspectiveShadowRecord",
     "Scenario",
     "ScenarioDsl",
     "Supply",
@@ -70,6 +72,7 @@ __all__ = [
     "buyer_frequency",
     "calculate_power_gap",
     "calculate_power_profile",
+    "capture_prospective_shadow",
     "classify_target",
     "content_fingerprint",
     "current_target_fixtures",

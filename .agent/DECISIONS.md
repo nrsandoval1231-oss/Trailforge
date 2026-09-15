@@ -139,3 +139,10 @@ scoring.
   a descriptive unconditional `PASS` is not valid execution evidence.
 - Report zero model calls and zero storage bytes explicitly for the current local,
   in-memory Arena rather than omitting those observability dimensions.
+
+## Prospective shadow hook 017
+
+- Capture prospective evidence manually and locally with a source fingerprint,
+  supplied capture timestamp, frozen prediction manifest, and no outcome.
+- A prospective capture remains non-scoreable and execution-authority-free until
+  a separate governed outcome-sealing process exists.

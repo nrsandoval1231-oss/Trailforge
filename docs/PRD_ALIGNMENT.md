@@ -50,9 +50,12 @@ calls/cost (both zero), and failures alongside seed and policy totals.
 
 ## Evidence boundary still intentionally unresolved
 
-No historical fixture is marked `SEALED_READY`, and no prospective shadow cohort
-exists. This is **not** a product misalignment: the packet requires unknown or
-unverified timelines to remain non-scoreable, and the implementation quarantines
-candidate promotion until sealed-holdout evidence is available. Therefore the
-Arena is aligned as a deterministic mechanics and governance environment, but it
-does not claim real-world forecast accuracy or a promoted production algorithm.
+No historical fixture is marked `SEALED_READY`, and no prospective outcome cohort
+exists. The local prospective-shadow capture hook stores only point-in-time
+provenance and an immutable prediction; it cannot accept outcomes, score a
+candidate, or grant authority. This is **not** a product misalignment: the packet
+requires unknown or unverified timelines to remain non-scoreable, and the
+implementation quarantines candidate promotion until sealed-holdout evidence is
+available. Therefore the Arena is aligned as a deterministic mechanics and
+governance environment, but it does not claim real-world forecast accuracy or a
+promoted production algorithm.
