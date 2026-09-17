@@ -146,3 +146,10 @@ scoring.
   supplied capture timestamp, frozen prediction manifest, and no outcome.
 - A prospective capture remains non-scoreable and execution-authority-free until
   a separate governed outcome-sealing process exists.
+## Prospective outcome seal 018
+
+- Bind a ProspectiveShadowRecord to a verified outcome only through an explicit, named reviewer and a local immutable seal.
+- Preserve execution authority ABSENT on every seal and cohort; verified prospective outcomes do not grant promotion.
+- Store seals and cohorts as versioned JSON with stable hashes; round-trip loading must reproduce the original hash.
+- Apply the existing tournament governance floors and Pareto comparison to cohort metrics, not to individual seals.
+- Keep the entire pipeline local and network-free; outcomes are supplied, never inferred or scraped.

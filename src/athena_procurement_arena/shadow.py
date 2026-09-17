@@ -1,8 +1,10 @@
 """Immutable, local capture records for a prospective shadow cohort."""
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
 from athena_arena.contracts import canonical_hash
@@ -78,3 +80,44 @@ def capture_prospective_shadow(*, record_id: str, captured_at: datetime, source_
         payload,
         manifest.result_hash,
     )
+
+def shadow_as_dict(record: ProspectiveShadowRecord) -> dict[str, Any]:
+    return {
+        "schema_version": "procurement-arena-prospective-shadow-v1",
+        "record_id": record.record_id,
+        "captured_at": record.captured_at.isoformat(),
+        "source_url": record.source_url,
+        "source_sha256": record.source_sha256,
+        "verified_by": record.verified_by,
+        "manifest": record.manifest,
+        "prediction_hash": record.prediction_hash,
+        "execution_authority": record.execution_authority,
+        "record_hash": record.record_hash,
+    }
+
+
+def shadow_from_dict(raw: dict[str, Any]) -> ProspectiveShadowRecord:
+    if raw.get("schema_version") != "procurement-arena-prospective-shadow-v1":
+        raise ValueError("unsupported prospective shadow schema_version")
+    return ProspectiveShadowRecord(
+        record_id=raw["record_id"],
+        captured_at=datetime.fromisoformat(raw["captured_at"]),
+        source_url=raw["source_url"],
+        source_sha256=_validate_digest(raw["source_sha256"]),
+        verified_by=raw["verified_by"],
+        manifest=dict(raw["manifest"]),
+        prediction_hash=raw["prediction_hash"],
+        execution_authority=raw["execution_authority"],
+    )
+
+
+def write_shadow_record(record: ProspectiveShadowRecord, path: str | Path) -> Path:
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(shadow_as_dict(record), sort_keys=True, indent=2), encoding="utf-8")
+    return target
+
+
+def load_shadow_record(path: str | Path) -> ProspectiveShadowRecord:
+    return shadow_from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
+

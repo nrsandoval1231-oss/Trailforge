@@ -5,14 +5,23 @@ import argparse
 import json
 import subprocess
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .fixtures import current_target_fixtures, load_bundle
 from .policies import BaselineA, keyword_rfp
+from .prospective_seal import (
+    evaluate_cohort,
+    load_seal,
+    seal_prospective_outcome,
+    write_cohort,
+    write_seal,
+)
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
+from .shadow import load_shadow_record
 from .tournament import tournament_pipeline
 
 
@@ -20,10 +29,20 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
-                                          "optimize", "shortlist", "validate-bundle"))
+                                          "optimize", "shortlist", "validate-bundle",
+                                          "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
+    parser.add_argument("--outcome", help="verified outcome state for seal-prospective")
+    parser.add_argument("--verified-by", help="reviewer name for seal-prospective / evaluate-cohort")
+    parser.add_argument("--verified-at", help="ISO timestamp for seal-prospective (default now)")
+    parser.add_argument("--output", help="output path for seal-prospective / evaluate-cohort")
+    parser.add_argument("--seals", nargs="+", help="paths to sealed outcome JSON files for evaluate-cohort")
+    parser.add_argument("--cohort-id", help="cohort identifier for evaluate-cohort")
+    parser.add_argument("--floor-accuracy", type=float, default=0.0, help="minimum cohort accuracy floor")
+    parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
     if args.mode == "optimize":
@@ -84,6 +103,34 @@ def main(argv=None) -> int:
         result = regression | {"governance": tournament_pipeline(
             "BASELINE_A", {"recall": 1.0, "precision": .5},
             {"recall": .5, "precision": .5}, holdout_available=False)}
+    elif args.mode == "seal-prospective":
+        if not args.shadow or not args.outcome or not args.verified_by or not args.output:
+            parser.error("seal-prospective requires --shadow, --outcome, --verified-by, and --output")
+        shadow = load_shadow_record(args.shadow)
+        verified_at = datetime.fromisoformat(args.verified_at) if args.verified_at else datetime.now(UTC)
+        seal = seal_prospective_outcome(
+            shadow,
+            seal_id=Path(args.output).stem,
+            verified_outcome=args.outcome,
+            verified_at=verified_at,
+            verified_by=args.verified_by,
+        )
+        write_seal(seal, args.output)
+        result = {"status": "PASS", "mode": "seal-prospective", "seal_id": seal.seal_id,
+                  "seal_hash": seal.seal_hash, "output": args.output}
+    elif args.mode == "evaluate-cohort":
+        if not args.seals or not args.cohort_id or not args.output:
+            parser.error("evaluate-cohort requires --seals, --cohort-id, and --output")
+        seals = tuple(load_seal(item) for item in args.seals)
+        cohort = evaluate_cohort(
+            args.cohort_id,
+            seals,
+            floors={"accuracy": args.floor_accuracy},
+            incumbent_metrics={"accuracy": args.incumbent_accuracy, "incorrect": len(seals)},
+        )
+        write_cohort(cohort, args.output)
+        result = {"status": "PASS", "mode": "evaluate-cohort", "cohort_id": cohort.cohort_id,
+                  "metrics": cohort.metrics, "governance": cohort.governance, "output": args.output}
     else:
         scenario = synthetic_scenario(args.seed)
         manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline, mode=args.mode)

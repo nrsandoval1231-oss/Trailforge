@@ -153,3 +153,4 @@ Prospective shadow hook 017 now captures manually verified source provenance and
 an immutable prediction manifest with `execution_authority = ABSENT`. Capture
 rejects known outcomes and invalid fingerprints. It is not a shadow outcome
 cohort, scoring path, network feed, or commercial execution path.
+Prospective outcome seal 018 now binds captured shadow predictions to locally verified outcomes, producing an immutable ProspectiveOutcomeSeal with execution authority ABSENT. Seals round-trip through JSON, cohort-level evaluation applies governance floors and Pareto comparison, and the `seal-prospective` and `evaluate-cohort` CLI modes persist results locally. No network access, outcome inference, or promotion authority is introduced. Current suite is 80 passed.

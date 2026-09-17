@@ -48,13 +48,23 @@ _PERMANENT_TERMS = (
 )
 _MAINTENANCE_TERMS = ("maintenance", "maintain", "repair", "service")
 _FUEL_FIELDS = frozenset({"fuel", "fuel_type", "primary_fuel", "required_fuel", "fuel_requirement"})
-_KW_FIELDS = frozenset({
+
+# Fields that state what the opportunity actually requires.  Only these can
+# satisfy the minimum-capacity gate.
+_REQUIREMENT_KW_FIELDS = frozenset({
     "required_kw", "temporary_kw", "commissioning_kw", "construction_kw", "bridge_kw",
-    "generator_kw", "prime_kw",
 })
-_MW_FIELDS = frozenset({
+_REQUIREMENT_MW_FIELDS = frozenset({
     "required_mw", "temporary_mw", "commissioning_mw", "construction_mw", "bridge_mw",
-    "generator_mw", "prime_mw",
+})
+
+# Fields that describe equipment ratings, parent facility nameplate, or program
+# aggregates.  They are recorded but never substituted for a stated requirement:
+# a 400 MW multi-project program does not evidence a qualifying per-project load.
+_RATING_KW_FIELDS = frozenset({"generator_kw", "prime_kw", "nameplate_kw", "standby_kw"})
+_RATING_MW_FIELDS = frozenset({
+    "generator_mw", "prime_mw", "nameplate_mw", "standby_mw",
+    "facility_capacity_mw", "aggregate_mw", "program_mw", "total_mw",
 })
 
 
@@ -66,20 +76,34 @@ def _text(evidence: tuple[EvidenceEvent, ...]) -> str:
     return " ".join(f"{key} {value}" for claim in _claims(evidence) for key, value in claim.items()).lower()
 
 
-def _required_kw(evidence: tuple[EvidenceEvent, ...]) -> float | None:
+def _capacity_kw(evidence: tuple[EvidenceEvent, ...], kw_fields: frozenset[str],
+                 mw_fields: frozenset[str]) -> float | None:
+    """Return the largest captured capacity in kW across the given field sets."""
     values: list[float] = []
     for claim in _claims(evidence):
         for key, value in claim.items():
             normalized = str(key).lower()
-            if normalized not in _KW_FIELDS | _MW_FIELDS:
+            if normalized not in kw_fields | mw_fields:
+                continue
+            if isinstance(value, bool):
                 continue
             try:
                 numeric = float(value)
             except (TypeError, ValueError):
                 continue
             if numeric >= 0:
-                values.append(numeric * 1000 if normalized in _MW_FIELDS else numeric)
+                values.append(numeric * 1000 if normalized in mw_fields else numeric)
     return max(values, default=None)
+
+
+def _required_kw(evidence: tuple[EvidenceEvent, ...]) -> float | None:
+    """Return the captured requirement only; ratings and aggregates never count."""
+    return _capacity_kw(evidence, _REQUIREMENT_KW_FIELDS, _REQUIREMENT_MW_FIELDS)
+
+
+def _rating_kw(evidence: tuple[EvidenceEvent, ...]) -> float | None:
+    """Return captured equipment/facility/program capacity, which is not a requirement."""
+    return _capacity_kw(evidence, _RATING_KW_FIELDS, _RATING_MW_FIELDS)
 
 
 def _fuel_text(evidence: tuple[EvidenceEvent, ...]) -> str:
@@ -98,8 +122,9 @@ def screen_aura_rental_candidate(
 
     Qualification requires explicit planned-power scope, an explicitly captured
     requirement at or above ``minimum_kw``, and natural-gas or propane fuel
-    evidence.  A parent facility's capacity is deliberately not a substitute for
-    the commissioning/construction requirement.
+    evidence.  Equipment ratings, parent-facility nameplate, and multi-project
+    program aggregates are deliberately not substitutes for a stated
+    commissioning/construction requirement.
     """
     text = _text(evidence)
     if any(term in text for term in _EMERGENCY_TERMS):
@@ -115,7 +140,10 @@ def screen_aura_rental_candidate(
 
     required_kw = _required_kw(evidence)
     if required_kw is None:
-        return AuraRfpScreen(AuraRfpScreenStatus.NEEDS_REVIEW, ("REQUIRED_CAPACITY_NOT_CAPTURED",))
+        reason_codes = ("REQUIRED_CAPACITY_NOT_CAPTURED",)
+        if _rating_kw(evidence) is not None:
+            reason_codes += ("CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY",)
+        return AuraRfpScreen(AuraRfpScreenStatus.NEEDS_REVIEW, reason_codes)
     if required_kw < minimum_kw:
         return AuraRfpScreen(
             AuraRfpScreenStatus.REJECTED,

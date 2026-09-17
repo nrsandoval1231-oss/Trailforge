@@ -72,10 +72,12 @@ def run_with_manifest(scenario: Scenario, policy_id: str, policy: Any, *, experi
                                       check=True).stdout.strip()
     except (OSError, subprocess.SubprocessError):  # pragma: no cover - only non-git copies
         source_commit = "UNCOMMITTED_LOCAL"
+    final_state = world.ledger.records[-1].forecast.get("procurement", {}).get("state", "UNKNOWN") if world.ledger.records else "UNKNOWN"
     manifest = RunManifest(experiment_id, mode, world.scenario_hash, policy_id, scenario.seed,
         (created_at or datetime.now(UTC)).isoformat(), source_commit, config or {},
         {"python": sys.version.split()[0], "platform": platform.platform()}, world.replay_hash(),
-        {"decision_count": len(world.ledger.records)}, {"ledger": world.ledger.verify()}, ())
+        {"decision_count": len(world.ledger.records), "final_procurement_state": final_state},
+        {"ledger": world.ledger.verify()}, ())
     return manifest, observations
 
 
