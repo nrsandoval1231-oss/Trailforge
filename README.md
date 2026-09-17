@@ -51,6 +51,15 @@ Validate a local fixture bundle with:
 
 `uv run --python 3.11 python -m athena_procurement_arena validate-bundle --bundle path\to\bundle.json`
 
+Screen every record in a local bundle with explainable dispositions, provenance,
+reason codes, and next actions:
+
+`uv run --python 3.11 python -m athena_procurement_arena screen-bundle --bundle path\to\bundle.json`
+
+This is the operator queue for a bundle: qualified records are surfaced, while
+missing evidence, rejected scope, and non-current records remain visible rather
+than disappearing into an empty shortlist.
+
 See the [deterministic opportunity process graphic](docs/graphics/trailforge-deterministic-opportunity-process.png)
 for the complete flow.
 Seal a captured prospective shadow prediction against a verified outcome:

@@ -155,3 +155,20 @@ rejects known outcomes and invalid fingerprints. It is not a shadow outcome
 cohort, scoring path, network feed, or commercial execution path.
 Prospective outcome seal 018 now binds captured shadow predictions to locally verified outcomes, producing an immutable ProspectiveOutcomeSeal with execution authority ABSENT. Seals round-trip through JSON, cohort-level evaluation applies governance floors and Pareto comparison, and the `seal-prospective` and `evaluate-cohort` CLI modes persist results locally. No network access, outcome inference, or promotion authority is introduced. Current suite is 80 passed.
 Repository audit infrastructure 019 ports the remaining CI/Ruff/validation fixes from PR #1: a pinned Ruff ruleset (E4, E7, E9, F, I, UP, B) and line length in `pyproject.toml`, a cross-platform `scripts/validate.py` gate, a `scripts/validate.ps1` delegate, and a hosted `ubuntu-latest` GitHub Actions workflow. The E701/E702 compressed-statement style issues are expanded across `athena_arena.contracts` and procurement-arena domain/robustness/tests. No discovery, capture acquisition, or network code was ported. Current suite is 85 passed; the single `validate.py` gate passes on a clean checkout.
+
+Explainable bundle screen 020 is implemented in the local CLI. `screen-bundle`
+emits every fixture with lifecycle/currentness, source provenance, qualification
+disposition, reason codes, and deterministic next action, plus disposition
+counts. The existing shortlist gate is unchanged. The bounded repair ensured
+rating/aggregate-only capacity maps to per-project-capacity verification before
+the generic missing-requirement action. Current suite is 86 passed; the complete
+local validation gate and all three real verified bundle smoke screens pass.
+The verified bundles remain non-current or held, and no live opportunity,
+accuracy, promotion, network, or execution claim is authorized.
+Project signal ledger 021 is now implemented as a deterministic local chronology
+for project announcements, feasibility, permitting, EPCM, construction,
+power/fuel, procurement, and operating signals. Public and confidential evidence
+classes require separate provenance, source hashes, and reviewers; traces sort by
+observed time and exact signal ID and expose the earliest signal. Current suite is
+90 passed and the complete local validation gate passes. Public capture,
+identity resolution, Athena optimization, and outcome backtesting remain deferred.

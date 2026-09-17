@@ -160,3 +160,24 @@ scoring.
 - Run CI on hosted `ubuntu-latest` instead of an unreproducible self-hosted Windows runner.
 - Expand compressed one-line statements to satisfy the pinned E7 rules on all project-owned code.
 - Do not port PR #1's discovery or capture-acquisition modules; keep the repository network-free.
+
+## Explainable bundle screen 020
+
+- Make the local bundle an operator-usable screening queue by emitting every
+  fixture, not only shortlist survivors.
+- Preserve qualification semantics and expose non-current, held, and rejected
+  states with explicit reason codes and deterministic next actions.
+- Keep current qualified records at human review and keep all external action,
+  discovery, and execution authority absent.
+
+## Project signal ledger 021
+
+- Represent project chronology separately from current opportunity output so
+  historical cases can improve the system without being presented as leads.
+- Keep public and confidential evidence classes structurally separate; public
+  signals require an HTTP(S) source and confidential signals require a local
+  source reference.
+- Make earliest-signal selection deterministic from observed timestamps and
+  exact signal IDs; never infer missing project events from later evidence.
+- Defer live acquisition and Athena optimization until the signal contract is
+  validated against retained, independently reviewed outcomes.

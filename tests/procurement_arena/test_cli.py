@@ -76,6 +76,38 @@ def test_cli_validate_bundle_reports_holdout_gate(tmp_path, capsys):
                        "holdout_available": False, "mode": "validate-bundle", "status": "PASS"}
 
 
+def test_cli_screen_bundle_explains_every_fixture_and_next_action(tmp_path, capsys):
+    scenario = synthetic_scenario(5)
+    scenario_raw = json.loads(ScenarioDsl.dumps(scenario))
+    for evidence in scenario_raw["evidence"]:
+        evidence["claims"] = {"construction_scope": "planned bridge power", "program_mw": 400}
+    bundle_path = tmp_path / "bundle.json"
+    bundle_path.write_text(json.dumps({
+        "schema_version": "procurement-arena-fixture-bundle-v1",
+        "bundle_id": "screen-test", "version": "1",
+        "fixtures": [{
+            "fixture_id": "held-1", "status": "VERIFIED", "opportunity_status": "OPEN",
+            "source_url": "https://example.com/held-1", "source_sha256": "a" * 64,
+            "retrieved_at": "2026-09-08T12:00:00+00:00", "verified_by": "reviewer",
+            "verification_notes": "Requirement needs verification.", "scenario": scenario_raw,
+        }, {
+            "fixture_id": "closed-1", "status": "VERIFIED", "opportunity_status": "CLOSED",
+            "source_url": "https://example.com/closed-1", "source_sha256": "b" * 64,
+            "retrieved_at": "2026-09-08T12:00:00+00:00", "verified_by": "reviewer",
+            "verification_notes": "Closed record.", "scenario": scenario_raw,
+        }],
+    }), encoding="utf-8")
+
+    assert main(["screen-bundle", "--bundle", str(bundle_path)]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["count"] == 2
+    assert payload["counts"] == {"NEEDS_REVIEW": 1, "NOT_CURRENT": 1, "QUALIFIED": 0, "REJECTED": 0}
+    by_id = {item["fixture_id"]: item for item in payload["fixtures"]}
+    assert by_id["held-1"]["next_action"] == "VERIFY_PER_PROJECT_REQUIRED_CAPACITY"
+    assert by_id["closed-1"]["disposition"] == "NOT_CURRENT"
+    assert by_id["closed-1"]["next_action"] == "ARCHIVE_OR_MONITOR_LIFECYCLE"
+
+
 def test_cli_unit_executes_pytest_and_propagates_its_status(monkeypatch, capsys):
     monkeypatch.setattr(cli.subprocess, "run", lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout="2 passed"))
     assert main(["unit"]) == 0

@@ -61,6 +61,15 @@ from .shadow import (
     load_shadow_record,
     write_shadow_record,
 )
+from .signal_ledger import (
+    EvidenceClass,
+    ProjectSignal,
+    ProjectTrace,
+    SignalType,
+    load_trace,
+    trace_project_signals,
+    write_trace,
+)
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -69,6 +78,7 @@ __all__ = [
     "AvailabilityError",
     "BaselineA",
     "EvidenceEvent",
+    "EvidenceClass",
     "FixtureBundle",
     "FrozenDecision",
     "FrozenDecisionLedger",
@@ -78,11 +88,14 @@ __all__ = [
     "PolicyContract",
     "PowerNeed",
     "PowerScope",
+    "ProjectSignal",
+    "ProjectTrace",
     "ProspectiveCohort",
     "ProspectiveOutcomeSeal",
     "ProspectiveShadowRecord",
     "Scenario",
     "ScenarioDsl",
+    "SignalType",
     "Supply",
     "TemporalWorld",
     "VerifiedFixture",
@@ -113,11 +126,14 @@ __all__ = [
     "seal_prospective_outcome",
     "seeded_random_eligible",
     "split_fixture_ids",
+    "trace_project_signals",
     "static_weighted_score",
     "validate_power_scopes",
     "validate_recommended_action",
     "validate_scenario",
     "write_cohort",
+    "write_trace",
+    "load_trace",
     "write_seal",
     "write_shadow_record",
 ]

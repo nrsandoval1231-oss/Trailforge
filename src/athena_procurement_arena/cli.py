@@ -25,12 +25,60 @@ from .shadow import load_shadow_record
 from .tournament import tournament_pipeline
 
 
+def _next_action(reason_codes: tuple[str, ...], *, current: bool) -> str:
+    """Map fail-closed screen reasons to a deterministic operator action."""
+    if not current:
+        return "ARCHIVE_OR_MONITOR_LIFECYCLE"
+    if not reason_codes:
+        return "HUMAN_REVIEW_FOR_NEXT_STEP"
+    if "CAPACITY_EVIDENCE_IS_RATING_OR_AGGREGATE_ONLY" in reason_codes:
+        return "VERIFY_PER_PROJECT_REQUIRED_CAPACITY"
+    if any(code.endswith("NOT_CAPTURED") or code.endswith("UNSUPPORTED") for code in reason_codes):
+        return "VERIFY_MISSING_SOURCE_REQUIREMENT"
+    if "INCOMPATIBLE_FUEL" in reason_codes:
+        return "REJECT_INCOMPATIBLE_FUEL"
+    if any(code.endswith("BELOW_MINIMUM") for code in reason_codes):
+        return "REJECT_BELOW_MINIMUM"
+    if any("REJECTED" in code or "SCOPE" in code for code in reason_codes):
+        return "REJECT_OUT_OF_SCOPE"
+    return "HUMAN_REVIEW_FOR_NEXT_STEP"
+
+
+def _screen_bundle(bundle) -> dict:
+    """Return an explainable, provenance-bearing screen for every fixture."""
+    records = []
+    for item in bundle.fixtures:
+        screen = screen_aura_rental_candidate(item.scenario.evidence)
+        if not item.current:
+            disposition = "NOT_CURRENT"
+            reason_codes = ("OPPORTUNITY_NOT_CURRENT",)
+        else:
+            disposition = str(screen.status)
+            reason_codes = screen.reason_codes
+        records.append({
+            "fixture_id": item.fixture_id,
+            "source_url": item.source_url,
+            "retrieved_at": item.retrieved_at,
+            "verified_by": item.verified_by,
+            "opportunity_status": item.opportunity_status,
+            "disposition": disposition,
+            "reason_codes": list(reason_codes),
+            "next_action": _next_action(reason_codes, current=item.current),
+            "screen": screen.as_dict(),
+            "verification_notes": item.verification_notes,
+        })
+    counts = {key: sum(item["disposition"] == key for item in records)
+              for key in ("QUALIFIED", "NEEDS_REVIEW", "REJECTED", "NOT_CURRENT")}
+    return {"status": "PASS", "mode": "screen-bundle", "bundle_id": bundle.bundle_id,
+            "count": len(records), "counts": counts, "fixtures": records}
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
@@ -48,13 +96,17 @@ def main(argv=None) -> int:
     if args.mode == "optimize":
         from .athena_optimizer import run_athena_optimization
         result = run_athena_optimization(seed=args.seed)
-    elif args.mode in {"shortlist", "validate-bundle"}:
+    elif args.mode in {"shortlist", "screen-bundle", "validate-bundle"}:
         if not args.bundle:
             parser.error(f"{args.mode} requires --bundle <path>")
         bundle = load_bundle(args.bundle)
         if args.mode == "validate-bundle":
             result = {"status": "PASS", "mode": args.mode, "bundle_id": bundle.bundle_id,
                       "fixtures": len(bundle.fixtures), "holdout_available": bundle.sealed_holdout_available}
+            print(json.dumps(result, sort_keys=True, default=str))
+            return 0
+        if args.mode == "screen-bundle":
+            result = _screen_bundle(bundle)
             print(json.dumps(result, sort_keys=True, default=str))
             return 0
         shortlisted = current_target_fixtures(bundle)
