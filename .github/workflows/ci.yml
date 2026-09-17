@@ -10,24 +10,34 @@ permissions:
 
 jobs:
   checks:
-    runs-on: [self-hosted, Windows, X64]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Install project and checks
         run: |
-          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --break-system-packages --upgrade pip
-          & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m pip install --break-system-packages -e . pytest ruff
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
       - name: Test suite
-        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m pytest -q'
+        run: python -m pytest -q
+
       - name: Compile source
-        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m compileall -q src'
+        run: python -m compileall -q src
+
       - name: Ruff
-        run: '& ''C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe'' -m ruff check src tests'
+        run: python -m ruff check src tests scripts
+
       - name: Validate checked-in fixture bundles
-        shell: powershell
         run: |
-          Get-ChildItem scenarios\fixtures\verified -Filter *.json | ForEach-Object {
-            & 'C:\Users\nrsan\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python.exe' -m athena_procurement_arena validate-bundle --bundle $_.FullName
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          }
+          for bundle in scenarios/fixtures/verified/*.json; do
+            echo "::group::$bundle"
+            python -m athena_procurement_arena validate-bundle --bundle "$bundle"
+            echo "::endgroup::"
+          done

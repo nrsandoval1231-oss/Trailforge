@@ -1,7 +1,8 @@
 import json
+from datetime import UTC, datetime
 from types import SimpleNamespace
 
-from athena_procurement_arena import cli
+from athena_procurement_arena import BaselineA, capture_prospective_shadow, cli, write_shadow_record
 from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.cli import main
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
@@ -85,3 +86,79 @@ def test_cli_unit_executes_pytest_and_propagates_its_status(monkeypatch, capsys)
     assert main(["unit"]) == 1
     payload = json.loads(capsys.readouterr().out)
     assert payload["status"] == "FAIL" and payload["returncode"] == 1
+def test_cli_seal_prospective_creates_outcome_seal(tmp_path, capsys):
+    shadow = capture_prospective_shadow(
+        record_id="cli-shadow-1",
+        captured_at=datetime(2026, 9, 14, tzinfo=UTC),
+        source_url="https://example.com/record",
+        source_sha256="a" * 64,
+        verified_by="human-reviewer",
+        scenario=synthetic_scenario(8),
+        policy_id="BASELINE_A",
+        policy=BaselineA(),
+    )
+    shadow_path = tmp_path / "shadow.json"
+    write_shadow_record(shadow, shadow_path)
+    predicted = shadow.manifest["metrics"]["final_procurement_state"]
+    seal_path = tmp_path / "seal.json"
+    assert main([
+        "seal-prospective",
+        "--shadow", str(shadow_path),
+        "--outcome", predicted,
+        "--verified-by", "outcome-reviewer",
+        "--output", str(seal_path),
+    ]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "PASS"
+    assert payload["mode"] == "seal-prospective"
+    assert seal_path.exists()
+
+
+def test_cli_evaluate_cohort_aggregates_seals(tmp_path, capsys):
+    seal_paths = []
+    expected_correct = 0
+    for i in range(3):
+        seed = 8 + i
+        record = capture_prospective_shadow(
+            record_id=f"cli-shadow-{i}",
+            captured_at=datetime(2026, 9, 14, tzinfo=UTC),
+            source_url="https://example.com/record",
+            source_sha256="a" * 64,
+            verified_by="human-reviewer",
+            scenario=synthetic_scenario(seed),
+            policy_id="BASELINE_A",
+            policy=BaselineA(),
+        )
+        predicted = record.manifest["metrics"]["final_procurement_state"]
+        # Two correct, one deliberately wrong
+        outcome = predicted if i < 2 else ("AWARDED" if predicted != "AWARDED" else "SOLICITATION_RELEASED")
+        expected_correct += int(outcome == predicted)
+        shadow_path = tmp_path / f"shadow-{i}.json"
+        write_shadow_record(record, shadow_path)
+        seal_path = tmp_path / f"seal-{i}.json"
+        main([
+            "seal-prospective",
+            "--shadow", str(shadow_path),
+            "--outcome", outcome,
+            "--verified-by", "outcome-reviewer",
+            "--output", str(seal_path),
+        ])
+        seal_paths.append(str(seal_path))
+
+    cohort_path = tmp_path / "cohort.json"
+    capsys.readouterr()  # flush prior seal-prospective output
+    assert main([
+        "evaluate-cohort",
+        "--seals", *seal_paths,
+        "--cohort-id", "cli-cohort-1",
+        "--floor-accuracy", "0.5",
+        "--incumbent-accuracy", "0.5",
+        "--output", str(cohort_path),
+    ]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "PASS"
+    assert payload["mode"] == "evaluate-cohort"
+    assert payload["metrics"]["seals"] == 3
+    assert payload["metrics"]["correct"] == expected_correct
+    assert cohort_path.exists()
+

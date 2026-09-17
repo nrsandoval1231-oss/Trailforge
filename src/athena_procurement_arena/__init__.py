@@ -41,10 +41,26 @@ from .policies import (
     seeded_random_eligible,
     static_weighted_score,
 )
+from .prospective_seal import (
+    ProspectiveCohort,
+    ProspectiveOutcomeSeal,
+    evaluate_cohort,
+    evaluate_prediction,
+    load_cohort,
+    load_seal,
+    seal_prospective_outcome,
+    write_cohort,
+    write_seal,
+)
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
-from .shadow import ProspectiveShadowRecord, capture_prospective_shadow
+from .shadow import (
+    ProspectiveShadowRecord,
+    capture_prospective_shadow,
+    load_shadow_record,
+    write_shadow_record,
+)
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -62,6 +78,8 @@ __all__ = [
     "PolicyContract",
     "PowerNeed",
     "PowerScope",
+    "ProspectiveCohort",
+    "ProspectiveOutcomeSeal",
     "ProspectiveShadowRecord",
     "Scenario",
     "ScenarioDsl",
@@ -77,20 +95,29 @@ __all__ = [
     "content_fingerprint",
     "current_target_fixtures",
     "deduplicate_evidence",
+    "evaluate_cohort",
     "evaluate_policy",
+    "evaluate_prediction",
     "family_scope",
     "keyword_rfp",
     "latest_event",
     "load_bundle",
     "load_bundle_mapping",
+    "load_cohort",
+    "load_seal",
+    "load_shadow_record",
     "resolve_identity",
     "run_athena_optimization",
     "score_fixture_bundle",
     "screen_aura_rental_candidate",
+    "seal_prospective_outcome",
     "seeded_random_eligible",
     "split_fixture_ids",
     "static_weighted_score",
     "validate_power_scopes",
     "validate_recommended_action",
     "validate_scenario",
+    "write_cohort",
+    "write_seal",
+    "write_shadow_record",
 ]
