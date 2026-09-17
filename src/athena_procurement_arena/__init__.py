@@ -52,6 +52,7 @@ from .prospective_seal import (
     write_cohort,
     write_seal,
 )
+from .public_capture import PublicCapture, capture_markdown, capture_with_firecrawl, load_capture, write_capture
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
@@ -86,6 +87,7 @@ __all__ = [
     "IdentityResolution",
     "InvariantViolation",
     "PolicyContract",
+    "PublicCapture",
     "PowerNeed",
     "PowerScope",
     "ProjectSignal",
@@ -104,6 +106,8 @@ __all__ = [
     "calculate_power_gap",
     "calculate_power_profile",
     "capture_prospective_shadow",
+    "capture_markdown",
+    "capture_with_firecrawl",
     "classify_target",
     "content_fingerprint",
     "current_target_fixtures",
@@ -116,6 +120,7 @@ __all__ = [
     "latest_event",
     "load_bundle",
     "load_bundle_mapping",
+    "load_capture",
     "load_cohort",
     "load_seal",
     "load_shadow_record",
@@ -132,6 +137,7 @@ __all__ = [
     "validate_recommended_action",
     "validate_scenario",
     "write_cohort",
+    "write_capture",
     "write_trace",
     "load_trace",
     "write_seal",

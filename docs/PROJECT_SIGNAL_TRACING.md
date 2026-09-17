@@ -24,6 +24,14 @@ Every signal retains a SHA-256 source fingerprint, reviewer, claims, and stable
 signal hash. Missing events remain missing; the trace never infers an award,
 construction, operation, or power requirement from a later signal.
 
+## Public capture boundary
+
+The explicit `capture-public` command uses Firecrawl for one public URL at a
+time and stores raw markdown as a tamper-detecting local capture. Capture is
+evidence collection only: it does not extract claims, qualify an opportunity,
+identify a person for outreach, or create an Athena training label. Captures
+must be reviewed before becoming `ProjectSignal` records.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

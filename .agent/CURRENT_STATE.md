@@ -172,3 +172,10 @@ classes require separate provenance, source hashes, and reviewers; traces sort b
 observed time and exact signal ID and expose the earliest signal. Current suite is
 90 passed and the complete local validation gate passes. Public capture,
 identity resolution, Athena optimization, and outcome backtesting remain deferred.
+Controlled public capture 022 now provides an explicit one-URL `capture-public`
+mode through the Firecrawl CLI. It rejects non-public/local targets, records raw
+markdown with content and capture hashes, refuses overwrite, and keeps captured
+text separate from reviewed signals. A real Orla SEC release capture completed
+locally with stable hashes; current suite is 94 passed and the full validation
+gate passes. Automatic extraction, identity resolution, Athena optimization,
+and recurring discovery remain deferred.

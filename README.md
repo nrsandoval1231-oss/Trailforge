@@ -51,6 +51,13 @@ Validate a local fixture bundle with:
 
 `uv run --python 3.11 python -m athena_procurement_arena validate-bundle --bundle path\to\bundle.json`
 
+Capture one public page locally for review:
+
+`uv run --python 3.11 python -m athena_procurement_arena capture-public --url https://example.com/project --capture-id project-2026-09-17 --captured-by reviewer --output .firecrawl/project-2026-09-17.json`
+
+Capture is raw evidence only. It does not infer claims, qualify projects, or
+contact anyone; confidential documents must never be supplied to this command.
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 

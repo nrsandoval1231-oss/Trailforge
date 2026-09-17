@@ -181,3 +181,14 @@ scoring.
   exact signal IDs; never infer missing project events from later evidence.
 - Defer live acquisition and Athena optimization until the signal contract is
   validated against retained, independently reviewed outcomes.
+
+## Controlled public capture 022
+
+- Make acquisition explicit and one URL per invocation; raw capture is evidence
+  collection, not a qualified lead or training label.
+- Resolve the Firecrawl executable through the Windows `.cmd` launcher or PATH
+  so local and CI environments do not silently diverge.
+- Preserve raw content, source URL, provider job ID, capture time, content hash,
+  and capture hash; refuse silent overwrite and reject obvious private targets.
+- Keep public capture separate from signal extraction, identity resolution,
+  Athena optimization, and outreach.

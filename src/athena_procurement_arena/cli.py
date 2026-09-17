@@ -18,6 +18,7 @@ from .prospective_seal import (
     write_cohort,
     write_seal,
 )
+from .public_capture import capture_with_firecrawl, write_capture
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -78,8 +79,11 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
+    parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
+    parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
+    parser.add_argument("--captured-by", help="operator identity for capture-public")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
@@ -93,7 +97,15 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "optimize":
+    if args.mode == "capture-public":
+        if not args.url or not args.capture_id or not args.captured_by or not args.output:
+            parser.error("capture-public requires --url, --capture-id, --captured-by, and --output")
+        capture = capture_with_firecrawl(args.url, capture_id=args.capture_id, captured_by=args.captured_by)
+        write_capture(capture, args.output)
+        result = {"status": "PASS", "mode": "capture-public", "capture_id": capture.capture_id,
+                  "source_url": capture.source_url, "content_sha256": capture.content_sha256,
+                  "capture_hash": capture.capture_hash, "output": args.output}
+    elif args.mode == "optimize":
         from .athena_optimizer import run_athena_optimization
         result = run_athena_optimization(seed=args.seed)
     elif args.mode in {"shortlist", "screen-bundle", "validate-bundle"}:
