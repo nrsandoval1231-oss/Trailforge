@@ -1,7 +1,8 @@
 import json
+from datetime import UTC, datetime
 from types import SimpleNamespace
 
-from athena_procurement_arena import cli
+from athena_procurement_arena import BaselineA, capture_prospective_shadow, cli, write_shadow_record
 from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.cli import main
 from athena_procurement_arena.scenario_dsl import ScenarioDsl
@@ -85,15 +86,6 @@ def test_cli_unit_executes_pytest_and_propagates_its_status(monkeypatch, capsys)
     assert main(["unit"]) == 1
     payload = json.loads(capsys.readouterr().out)
     assert payload["status"] == "FAIL" and payload["returncode"] == 1
-from datetime import UTC, datetime
-
-from athena_procurement_arena import (
-    BaselineA,
-    capture_prospective_shadow,
-    write_shadow_record,
-)
-
-
 def test_cli_seal_prospective_creates_outcome_seal(tmp_path, capsys):
     shadow = capture_prospective_shadow(
         record_id="cli-shadow-1",

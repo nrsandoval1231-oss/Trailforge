@@ -87,7 +87,8 @@ class Contract:
     extension_exercised: bool = False
 
     def __post_init__(self):
-        if self.expires_at: _aware(self.expires_at, "expires_at")
+        if self.expires_at:
+            _aware(self.expires_at, "expires_at")
 
 
 @dataclass(frozen=True)
@@ -183,8 +184,10 @@ class ProjectPhase:
     end: datetime | None = None
 
     def __post_init__(self):
-        if self.start: _aware(self.start, "start")
-        if self.end: _aware(self.end, "end")
+        if self.start:
+            _aware(self.start, "start")
+        if self.end:
+            _aware(self.end, "end")
         if self.start and self.end and self.end <= self.start:
             raise ValueError("phase end must follow start")
 
@@ -199,8 +202,10 @@ class ProcurementEpisode:
     state_until: datetime | None = None
 
     def __post_init__(self):
-        if self.state_since: _aware(self.state_since, "state_since")
-        if self.state_until: _aware(self.state_until, "state_until")
+        if self.state_since:
+            _aware(self.state_since, "state_since")
+        if self.state_until:
+            _aware(self.state_until, "state_until")
         if self.state_since and self.state_until and self.state_until < self.state_since:
             raise ValueError("state_until cannot precede state_since")
 

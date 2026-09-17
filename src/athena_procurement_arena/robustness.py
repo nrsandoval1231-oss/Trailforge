@@ -22,7 +22,8 @@ def paired_extension_worlds(base: Scenario) -> tuple[Scenario, Scenario]:
 def counterfactual_sensitivity(base: Scenario, policy_id: str, policy: Any) -> dict[str, Any]:
     left, right = paired_extension_worlds(base)
     left_world, right_world = TemporalWorld(left, policy_id, policy), TemporalWorld(right, policy_id, policy)
-    left_world.run(); right_world.run()
+    left_world.run()
+    right_world.run()
     left_actions = tuple(item.action for item in left_world.ledger.records)
     right_actions = tuple(item.action for item in right_world.ledger.records)
     changed = left_actions != right_actions or left_world.replay_hash() != right_world.replay_hash()
@@ -38,7 +39,8 @@ def counterfactual_fact_sensitivity(base: Scenario, policy_id: str, policy: Any,
                       truth=GroundTruth(base.truth.procurement_episode_id, outcome, base.truth.solicitation_at))
     left = TemporalWorld(base, policy_id, policy)
     right = TemporalWorld(altered, policy_id, policy)
-    left.run(); right.run()
+    left.run()
+    right.run()
     return {"fact": fact_name, "changed": left.replay_hash() != right.replay_hash(),
             "left_hash": left.replay_hash(), "right_hash": right.replay_hash()}
 

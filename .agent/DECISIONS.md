@@ -153,3 +153,10 @@ scoring.
 - Store seals and cohorts as versioned JSON with stable hashes; round-trip loading must reproduce the original hash.
 - Apply the existing tournament governance floors and Pareto comparison to cohort metrics, not to individual seals.
 - Keep the entire pipeline local and network-free; outcomes are supplied, never inferred or scraped.
+## Repository audit infrastructure 019
+
+- Pin the Ruff ruleset and line length so upstream default changes cannot silently move the gate.
+- Provide one cross-platform validation script (`scripts/validate.py`) that Windows, Linux, and CI all invoke.
+- Run CI on hosted `ubuntu-latest` instead of an unreproducible self-hosted Windows runner.
+- Expand compressed one-line statements to satisfy the pinned E7 rules on all project-owned code.
+- Do not port PR #1's discovery or capture-acquisition modules; keep the repository network-free.

@@ -55,10 +55,10 @@ See the [deterministic opportunity process graphic](docs/graphics/trailforge-det
 for the complete flow.
 Seal a captured prospective shadow prediction against a verified outcome:
 
-`uv run --python 3.11 python -m athena_procurement_arena seal-prospective --shadow path	o\shadow.json --outcome SOLICITATION_RELEASED --verified-by reviewer --output path	o\seal.json`
+`uv run --python 3.11 python -m athena_procurement_arena seal-prospective --shadow path/to/shadow.json --outcome SOLICITATION_RELEASED --verified-by reviewer --output path/to/seal.json`
 
 Evaluate a cohort of sealed outcomes with governance floors:
 
-`uv run --python 3.11 python -m athena_procurement_arena evaluate-cohort --seals seal-1.json seal-2.json --cohort-id cohort-1 --output path	o\cohort.json`
+`uv run --python 3.11 python -m athena_procurement_arena evaluate-cohort --seals seal-1.json seal-2.json --cohort-id cohort-1 --output path/to/cohort.json`
 
 Both commands are local, network-free, and preserve ABSENT execution authority.
