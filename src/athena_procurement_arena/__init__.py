@@ -72,6 +72,7 @@ from .signal_ledger import (
     write_trace,
 )
 from .signal_review import SignalCandidate, accept_candidate, candidate_from_capture, write_signal
+from .trace_backtest import TraceBacktest, backtest_traces, load_traces, write_backtest
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -102,6 +103,7 @@ __all__ = [
     "SignalType",
     "Supply",
     "TemporalWorld",
+    "TraceBacktest",
     "VerifiedFixture",
     "WorldObservation",
     "buyer_frequency",
@@ -134,6 +136,8 @@ __all__ = [
     "seeded_random_eligible",
     "split_fixture_ids",
     "trace_project_signals",
+    "backtest_traces",
+    "load_traces",
     "accept_candidate",
     "candidate_from_capture",
     "static_weighted_score",
@@ -143,6 +147,7 @@ __all__ = [
     "write_cohort",
     "write_capture",
     "write_trace",
+    "write_backtest",
     "load_trace",
     "write_seal",
     "write_shadow_record",

@@ -203,3 +203,14 @@ scoring.
   signal cannot be replayed against a different capture.
 - Keep identity resolution, backtesting, and Athena learning downstream of this
   reviewed boundary.
+
+## Project trace backtest 024
+
+- Measure lead time only from a reviewed early signal that strictly precedes an
+  explicitly observed target signal in the same exact project trace.
+- Treat traces without a target or without a qualifying early signal as
+  unresolved; do not label them false alarms without a sealed negative cohort.
+- Persist coverage, unresolved counts, matched lead seconds, and a stable report
+  hash through an explicit local CLI mode.
+- Keep identity resolution, outcome sealing, Athena optimization, crawling,
+  outreach, and promotion authority outside this packet.

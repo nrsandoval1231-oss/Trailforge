@@ -185,4 +185,10 @@ signal type, observed time, claims, and a quote present in the capture. The
 accepted signal retains the candidate hash, source content hash, URL, and quote.
 An absent quote fails closed; the Orla capture produced a reviewed signal
 locally. Current suite is 97 passed and the complete validation gate passes.
-Identity resolution, trace backtesting, and Athena optimization remain deferred.
+Project trace backtest 024 now measures deterministic lead time from selected
+reviewed signal types to an explicit target signal type. Traces without the
+target or without a preceding early signal remain unresolved; they are not
+false alarms. The CLI emits a stable hash-bound report, and the smoke test
+produced one matched 40-day case. Current suite is 100 passed and the complete
+validation gate passes. Identity resolution, sealed negative/outcome cohorts,
+and Athena optimization remain deferred.

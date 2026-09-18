@@ -37,6 +37,11 @@ identity, signal type, observed timestamp, claims, and a quote that is present
 in the captured source. Accepted signals retain the candidate hash and source
 quote so later Athena evaluation can audit the decision boundary.
 
+`backtest-traces` measures lead time from selected early signal types to an
+explicit target signal type. Traces without the target, or targets without an
+earlier selected signal, remain unresolved. They are not treated as false
+alarms until an independently sealed negative outcome exists.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

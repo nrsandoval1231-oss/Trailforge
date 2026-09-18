@@ -26,6 +26,7 @@ from .shadow import load_shadow_record
 from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
 from .tournament import tournament_pipeline
+from .trace_backtest import backtest_traces, load_traces, write_backtest
 
 
 def _next_action(reason_codes: tuple[str, ...], *, current: bool) -> str:
@@ -81,7 +82,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -95,6 +96,9 @@ def main(argv=None) -> int:
     parser.add_argument("--source-quote", help="exact quote from the raw capture")
     parser.add_argument("--claims-json", default="{}", help="JSON claims for review-signal")
     parser.add_argument("--reviewed-by", help="named reviewer for review-signal")
+    parser.add_argument("--traces", nargs="+", help="trace JSON files for backtest-traces")
+    parser.add_argument("--target-type", choices=[item.value for item in SignalType])
+    parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
@@ -108,7 +112,18 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "review-signal":
+    if args.mode == "backtest-traces":
+        if not args.traces or not args.target_type or not args.early_types or not args.output:
+            parser.error("backtest-traces requires --traces, --target-type, --early-types, and --output")
+        report = backtest_traces(
+            load_traces(args.traces), target_signal_type=SignalType(args.target_type),
+            early_signal_types=tuple(SignalType(item) for item in args.early_types),
+        )
+        write_backtest(report, args.output)
+        result = {"status": "PASS", "mode": "backtest-traces", "report_hash": report.report_hash,
+                  "coverage": report.coverage, "target_cases": report.target_cases,
+                  "matched_cases": report.matched_cases, "output": args.output}
+    elif args.mode == "review-signal":
         required = (args.capture, args.signal_id, args.project_id, args.signal_type, args.signal_title,
                     args.observed_at, args.source_quote, args.reviewed_by, args.output)
         if not all(required):

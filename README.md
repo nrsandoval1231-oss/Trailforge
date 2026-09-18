@@ -62,6 +62,10 @@ Convert a reviewed capture into a signal only with an exact source quote:
 
 `uv run --python 3.11 python -m athena_procurement_arena review-signal --capture .firecrawl/capture.json --signal-id orla-feasibility-2026 --project-id south-railroad --signal-type CONSTRUCTION_APPROVED --signal-title "Construction spending approved" --observed-at 2026-01-14T00:00:00+00:00 --source-quote "exact quote from capture" --reviewed-by reviewer --output .firecrawl/signal.json`
 
+Backtest reviewed traces against a later observed milestone:
+
+`uv run --python 3.11 python -m athena_procurement_arena backtest-traces --traces trace-1.json trace-2.json --target-type PROCUREMENT_SIGNAL --early-types FEASIBILITY_COMPLETE POWER_REQUIREMENT --output .firecrawl/backtest.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 
