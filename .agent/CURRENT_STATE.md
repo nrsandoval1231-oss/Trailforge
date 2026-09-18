@@ -179,3 +179,10 @@ text separate from reviewed signals. A real Orla SEC release capture completed
 locally with stable hashes; current suite is 94 passed and the full validation
 gate passes. Automatic extraction, identity resolution, Athena optimization,
 and recurring discovery remain deferred.
+Reviewed signal candidate 023 now converts a raw public capture into a
+`ProjectSignal` only when a named reviewer supplies exact project identity,
+signal type, observed time, claims, and a quote present in the capture. The
+accepted signal retains the candidate hash, source content hash, URL, and quote.
+An absent quote fails closed; the Orla capture produced a reviewed signal
+locally. Current suite is 97 passed and the complete validation gate passes.
+Identity resolution, trace backtesting, and Athena optimization remain deferred.

@@ -192,3 +192,14 @@ scoring.
   and capture hash; refuse silent overwrite and reject obvious private targets.
 - Keep public capture separate from signal extraction, identity resolution,
   Athena optimization, and outreach.
+
+## Reviewed signal candidate 023
+
+- Require an exact source quote from the immutable capture before a candidate
+  can become a signal.
+- Require a named reviewer and reviewed timestamp; reviewer-supplied claims are
+  retained as claims, not silently promoted to ground truth.
+- Bind accepted signals to both the capture hash and source-content hash so a
+  signal cannot be replayed against a different capture.
+- Keep identity resolution, backtesting, and Athena learning downstream of this
+  reviewed boundary.

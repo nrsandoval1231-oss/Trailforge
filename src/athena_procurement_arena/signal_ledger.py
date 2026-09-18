@@ -54,6 +54,7 @@ class ProjectSignal:
     claims: dict[str, Any]
     source_url: str | None = None
     source_ref: str | None = None
+    source_quote: str | None = None
 
     def __post_init__(self) -> None:
         _aware(self.observed_at, "observed_at")
@@ -82,6 +83,7 @@ class ProjectSignal:
             "evidence_class": self.evidence_class,
             "source_url": self.source_url,
             "source_ref": self.source_ref,
+            "source_quote": self.source_quote,
             "source_sha256": self.source_sha256,
             "verified_by": self.verified_by,
             "claims": self.claims,
@@ -140,6 +142,7 @@ def load_trace(path: str | Path) -> ProjectTrace:
             signal_type=SignalType(item["signal_type"]), title=item["title"],
             evidence_class=EvidenceClass(item["evidence_class"]),
             source_url=item.get("source_url"), source_ref=item.get("source_ref"),
+            source_quote=item.get("source_quote"),
             source_sha256=item["source_sha256"], verified_by=item["verified_by"],
             claims=item.get("claims", {}),
         ))

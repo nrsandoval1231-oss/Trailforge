@@ -58,6 +58,10 @@ Capture one public page locally for review:
 Capture is raw evidence only. It does not infer claims, qualify projects, or
 contact anyone; confidential documents must never be supplied to this command.
 
+Convert a reviewed capture into a signal only with an exact source quote:
+
+`uv run --python 3.11 python -m athena_procurement_arena review-signal --capture .firecrawl/capture.json --signal-id orla-feasibility-2026 --project-id south-railroad --signal-type CONSTRUCTION_APPROVED --signal-title "Construction spending approved" --observed-at 2026-01-14T00:00:00+00:00 --source-quote "exact quote from capture" --reviewed-by reviewer --output .firecrawl/signal.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 

@@ -29,8 +29,13 @@ construction, operation, or power requirement from a later signal.
 The explicit `capture-public` command uses Firecrawl for one public URL at a
 time and stores raw markdown as a tamper-detecting local capture. Capture is
 evidence collection only: it does not extract claims, qualify an opportunity,
-identify a person for outreach, or create an Athena training label. Captures
-must be reviewed before becoming `ProjectSignal` records.
+ identify a person for outreach, or create an Athena training label. Captures
+ must be reviewed before becoming `ProjectSignal` records.
+
+The explicit `review-signal` command requires a named reviewer, exact project
+identity, signal type, observed timestamp, claims, and a quote that is present
+in the captured source. Accepted signals retain the candidate hash and source
+quote so later Athena evaluation can audit the decision boundary.
 
 ## Athena learning boundary
 

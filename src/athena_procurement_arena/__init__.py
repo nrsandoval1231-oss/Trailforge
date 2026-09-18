@@ -71,6 +71,7 @@ from .signal_ledger import (
     trace_project_signals,
     write_trace,
 )
+from .signal_review import SignalCandidate, accept_candidate, candidate_from_capture, write_signal
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
@@ -97,6 +98,7 @@ __all__ = [
     "ProspectiveShadowRecord",
     "Scenario",
     "ScenarioDsl",
+    "SignalCandidate",
     "SignalType",
     "Supply",
     "TemporalWorld",
@@ -132,6 +134,8 @@ __all__ = [
     "seeded_random_eligible",
     "split_fixture_ids",
     "trace_project_signals",
+    "accept_candidate",
+    "candidate_from_capture",
     "static_weighted_score",
     "validate_power_scopes",
     "validate_recommended_action",
@@ -142,4 +146,5 @@ __all__ = [
     "load_trace",
     "write_seal",
     "write_shadow_record",
+    "write_signal",
 ]
