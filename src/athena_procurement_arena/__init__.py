@@ -78,6 +78,13 @@ from .rfp_candidate_capture import (
     write_accepted_rfp_bundle,
     write_rfp_candidate,
 )
+from .rfp_candidate_queue import (
+    PENDING_REVIEW,
+    RfpCandidateQueue,
+    RfpCandidateQueueRecord,
+    build_rfp_candidate_queue,
+    write_rfp_candidate_queue,
+)
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
@@ -129,6 +136,8 @@ __all__ = [
     "RetrospectiveOutcomeCohort",
     "RetrospectiveEvaluation",
     "RfpCandidateCapture",
+    "RfpCandidateQueue",
+    "RfpCandidateQueueRecord",
     "PowerNeed",
     "PowerScope",
     "ProjectSignal",
@@ -150,6 +159,7 @@ __all__ = [
     "VerifiedFixture",
     "WorldObservation",
     "buyer_frequency",
+    "build_rfp_candidate_queue",
     "calculate_power_gap",
     "calculate_power_profile",
     "capture_prospective_shadow",
@@ -212,9 +222,11 @@ __all__ = [
     "write_retrospective_evaluation",
     "write_accepted_rfp_bundle",
     "write_rfp_candidate",
+    "write_rfp_candidate_queue",
     "write_resolved_traces",
     "load_trace",
     "write_seal",
     "write_shadow_record",
     "write_signal",
+    "PENDING_REVIEW",
 ]

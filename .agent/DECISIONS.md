@@ -281,3 +281,11 @@ scoring.
 - Require an explicit non-UNKNOWN lifecycle. Candidate capture alone is never
   a shortlist path; only the existing fail-closed RFP screen can qualify an
   accepted fixture.
+
+## RFP candidate review queue 031
+
+- Batch only hash-valid local candidates into an immutable PENDING_REVIEW queue.
+- Store the minimum review identity: candidate ID, hash, and local path. Never
+  retain raw excerpts or quotes in the queue.
+- Revalidate queue records on hash and serialization so direct object mutation
+  cannot turn a review queue into an acceptance or evidence-leak path.

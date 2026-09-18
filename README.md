@@ -72,6 +72,14 @@ non-`UNKNOWN` lifecycle; it does not infer missing capacity or fuel facts, and
 the resulting fixture still has to pass the normal screen before it appears in
 the shortlist.
 
+Batch existing candidate JSON files into a local, hash-bound human-review queue:
+
+`uv run --python 3.11 python -m athena_procurement_arena build-rfp-review-queue --candidates .firecrawl/rfp-1-candidate.json .firecrawl/rfp-2-candidate.json --queue-id queue-1 --assembled-by review-coordinator --assembled-at 2026-09-03T00:00:00+00:00 --output .firecrawl/rfp-review-queue.json`
+
+Every queue record remains `PENDING_REVIEW` and contains only its candidate path,
+ID, and hash. Queue construction does not accept, screen, shortlist, or fetch a
+candidate, and it refuses to overwrite an existing output.
+
 Convert a reviewed capture into a signal only with an exact source quote:
 
 `uv run --python 3.11 python -m athena_procurement_arena review-signal --capture .firecrawl/capture.json --signal-id orla-feasibility-2026 --project-id south-railroad --signal-type CONSTRUCTION_APPROVED --signal-title "Construction spending approved" --observed-at 2026-01-14T00:00:00+00:00 --source-quote "exact quote from capture" --reviewed-by reviewer --output .firecrawl/signal.json`

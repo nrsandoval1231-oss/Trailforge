@@ -36,6 +36,7 @@ from .rfp_candidate_capture import (
     write_accepted_rfp_bundle,
     write_rfp_candidate,
 )
+from .rfp_candidate_queue import build_rfp_candidate_queue, write_rfp_candidate_queue
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -107,7 +108,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "build-rfp-review-queue", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -123,6 +124,8 @@ def main(argv=None) -> int:
     parser.add_argument("--reviewed-by", help="named reviewer for review-signal")
     parser.add_argument("--candidate", help="hash-bound RFP candidate JSON for accept-rfp-candidate")
     parser.add_argument("--candidate-id", help="stable RFP candidate identifier for capture-rfp-candidate")
+    parser.add_argument("--candidates", nargs="+", help="hash-bound RFP candidate JSON files for review queue")
+    parser.add_argument("--queue-id", help="stable identifier for an RFP candidate review queue")
     parser.add_argument("--excerpt-file", help="local UTF-8 source excerpt file for RFP candidate capture/review")
     parser.add_argument("--buyer", help="reviewed buyer name for capture-rfp-candidate")
     parser.add_argument("--scope", help="reviewed scope text for capture-rfp-candidate")
@@ -169,7 +172,20 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "capture-rfp-candidate":
+    if args.mode == "build-rfp-review-queue":
+        required = (args.candidates, args.queue_id, args.assembled_by, args.assembled_at, args.output)
+        if not all(required):
+            parser.error("build-rfp-review-queue requires --candidates, --queue-id, --assembled-by, "
+                         "--assembled-at, and --output")
+        queue = build_rfp_candidate_queue(
+            args.candidates, queue_id=args.queue_id, assembled_by=args.assembled_by,
+            assembled_at=datetime.fromisoformat(args.assembled_at),
+        )
+        write_rfp_candidate_queue(queue, args.output)
+        result = {"status": "PASS", "mode": args.mode, "queue_id": queue.queue_id,
+                  "candidate_count": queue.candidate_count, "queue_hash": queue.queue_hash,
+                  "output": args.output}
+    elif args.mode == "capture-rfp-candidate":
         required = (args.candidate_id, args.source_url, args.excerpt_file, args.source_quote, args.buyer,
                     args.scope, args.published_at, args.retrieved_at, args.captured_by, args.output)
         if not all(required):

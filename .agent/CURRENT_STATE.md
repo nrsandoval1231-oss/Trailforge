@@ -232,3 +232,10 @@ fixture bundle. The ordinary existing screen remains the only path to a shortlis
 Current suite is 118 passed and the complete local validation gate passes. This
 is a local reviewed intake boundary only: no acquisition, automatic acceptance,
 outreach, pricing, submission, Athena update, or promotion is authorized.
+
+RFP candidate review queue 031 batches valid hash-bound candidate JSON files
+into a deterministic local PENDING_REVIEW manifest. Queue records retain only
+candidate ID, candidate hash, and source path; they are frozen and revalidated
+before serialization, rejecting raw excerpts, quotes, altered state, duplicates,
+naive timestamps, and overwrite. Current suite is 124 passed. The queue cannot
+accept, qualify, shortlist, fetch, contact, or promote a candidate.
