@@ -247,3 +247,14 @@ scoring.
 - Preserve unresolved and missing-target semantics; descriptive lead time is
   not a positive or negative outcome label.
 - Do not update Athena until independently sealed retrospective outcomes exist.
+
+## Retrospective outcome seal 028
+
+- Require an explicit reviewer statement and exact evidence quote for every
+  retrospective state: observed, not observed by cutoff, or inconclusive.
+- Bind each seal to the exact trace hash, target signal type, cutoff, reviewer,
+  timestamp, and evidence fingerprint.
+- Require a target signal ID only for an observed target; never infer a target
+  from its absence or from a later unrelated event.
+- Keep sealed outcomes as evaluation evidence only; Athena updates, promotion,
+  outreach, and execution authority remain absent.

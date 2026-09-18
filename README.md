@@ -72,6 +72,10 @@ Backtest reviewed traces against a later observed milestone:
 
 `uv run --python 3.11 python -m athena_procurement_arena backtest-cohort --cohort .firecrawl/cohort.json --target-type PROCUREMENT_SIGNAL --early-types FEASIBILITY_COMPLETE POWER_REQUIREMENT --output .firecrawl/cohort-backtest.json`
 
+Outcome sealing is explicit and reviewer-bound:
+
+`uv run --python 3.11 python -m athena_procurement_arena seal-trace-outcome --trace trace.json --seal-id seal-1 --target-type PROCUREMENT_SIGNAL --outcome-state OBSERVED --target-signal-id target-1 --cutoff-at 2026-09-18T12:00:00+00:00 --source-sha256 <sha256> --source-quote "exact reviewer evidence" --reviewer-statement "Target verified." --reviewed-by reviewer --reviewed-at 2026-09-18T12:00:00+00:00 --source-url https://example.com/review --output .firecrawl/seal.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 

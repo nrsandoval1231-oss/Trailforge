@@ -54,6 +54,16 @@ from .prospective_seal import (
     write_seal,
 )
 from .public_capture import PublicCapture, capture_markdown, capture_with_firecrawl, load_capture, write_capture
+from .retrospective_seal import (
+    RetrospectiveOutcomeCohort,
+    TraceOutcomeSeal,
+    TraceOutcomeState,
+    build_outcome_cohort,
+    load_outcome_seal,
+    seal_trace_outcome,
+    write_outcome_cohort,
+    write_outcome_seal,
+)
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
@@ -101,6 +111,7 @@ __all__ = [
     "InvariantViolation",
     "PolicyContract",
     "PublicCapture",
+    "RetrospectiveOutcomeCohort",
     "PowerNeed",
     "PowerScope",
     "ProjectSignal",
@@ -117,6 +128,8 @@ __all__ = [
     "TraceBacktest",
     "CohortTraceBacktest",
     "TraceCohortManifest",
+    "TraceOutcomeSeal",
+    "TraceOutcomeState",
     "VerifiedFixture",
     "WorldObservation",
     "buyer_frequency",
@@ -147,6 +160,7 @@ __all__ = [
     "run_athena_optimization",
     "score_fixture_bundle",
     "screen_aura_rental_candidate",
+    "seal_trace_outcome",
     "seal_prospective_outcome",
     "seeded_random_eligible",
     "split_fixture_ids",
@@ -154,8 +168,10 @@ __all__ = [
     "backtest_traces",
     "backtest_cohort",
     "build_trace_cohort",
+    "build_outcome_cohort",
     "load_traces",
     "load_trace_cohort",
+    "load_outcome_seal",
     "accept_candidate",
     "candidate_from_capture",
     "static_weighted_score",
@@ -168,6 +184,8 @@ __all__ = [
     "write_backtest",
     "write_cohort_backtest",
     "write_trace_cohort",
+    "write_outcome_cohort",
+    "write_outcome_seal",
     "write_resolved_traces",
     "load_trace",
     "write_seal",

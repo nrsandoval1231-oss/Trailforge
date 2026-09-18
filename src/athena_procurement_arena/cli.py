@@ -20,6 +20,13 @@ from .prospective_seal import (
     write_seal,
 )
 from .public_capture import capture_with_firecrawl, load_capture, write_capture
+from .retrospective_seal import (
+    TraceOutcomeState,
+    build_outcome_cohort,
+    seal_trace_outcome,
+    write_outcome_cohort,
+    write_outcome_seal,
+)
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -84,7 +91,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -103,6 +110,18 @@ def main(argv=None) -> int:
     parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
     parser.add_argument("--identity-reviews", help="hash-bound identity review JSON for resolve-traces")
     parser.add_argument("--cohort", help="verified trace cohort manifest for backtest-cohort")
+    parser.add_argument("--trace", help="reviewed trace JSON for seal-trace-outcome")
+    parser.add_argument("--seal-id", help="seal identifier for seal-trace-outcome")
+    parser.add_argument("--outcome-state", choices=[item.value for item in TraceOutcomeState])
+    parser.add_argument("--target-signal-id", help="observed target signal ID for seal-trace-outcome")
+    parser.add_argument("--cutoff-at", help="timezone-aware cutoff timestamp for seal-trace-outcome")
+    parser.add_argument("--source-sha256", help="evidence SHA-256 for seal-trace-outcome")
+    parser.add_argument("--reviewer-statement", help="explicit reviewer outcome statement")
+    parser.add_argument("--reviewed-at", help="timezone-aware review timestamp")
+    parser.add_argument("--source-url", help="public evidence URL for outcome seal")
+    parser.add_argument("--source-ref", help="confidential evidence reference for outcome seal")
+    parser.add_argument("--trace-cohort-hash", help="verified trace cohort hash for outcome cohort")
+    parser.add_argument("--outcome-seals", nargs="+", help="outcome seal JSON files for build-outcome-cohort")
     parser.add_argument("--cohort-id", help="cohort identifier for build-trace-cohort / evaluate-cohort")
     parser.add_argument("--assembled-by", help="reviewer identity for build-trace-cohort")
     parser.add_argument("--assembled-at", help="timezone-aware ISO timestamp for build-trace-cohort")
@@ -118,7 +137,43 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "backtest-cohort":
+    if args.mode == "seal-trace-outcome":
+        required = (args.trace, args.seal_id, args.target_type, args.outcome_state, args.cutoff_at,
+                    args.source_sha256, args.source_quote, args.reviewer_statement, args.reviewed_by,
+                    args.reviewed_at, args.output)
+        if not all(required):
+            parser.error("seal-trace-outcome requires --trace, --seal-id, --target-type, --outcome-state, "
+                         "--cutoff-at, --source-sha256, --source-quote, --reviewer-statement, --reviewed-by, "
+                         "--reviewed-at, and --output")
+        from .signal_ledger import EvidenceClass, load_trace
+        seal = seal_trace_outcome(load_trace(args.trace), seal_id=args.seal_id,
+                                  target_signal_type=SignalType(args.target_type),
+                                  cutoff_at=datetime.fromisoformat(args.cutoff_at),
+                                  outcome_state=TraceOutcomeState(args.outcome_state),
+                                  source_sha256=args.source_sha256, source_quote=args.source_quote,
+                                  reviewer_statement=args.reviewer_statement, reviewed_by=args.reviewed_by,
+                                  reviewed_at=datetime.fromisoformat(args.reviewed_at),
+                                  evidence_class=EvidenceClass.PUBLIC if args.source_url else EvidenceClass.CONFIDENTIAL,
+                                  source_url=args.source_url, source_ref=args.source_ref,
+                                  target_signal_id=args.target_signal_id)
+        write_outcome_seal(seal, args.output)
+        result = {"status": "PASS", "mode": "seal-trace-outcome", "seal_id": seal.seal_id,
+                  "seal_hash": seal.seal_hash, "outcome_state": seal.outcome_state, "output": args.output}
+    elif args.mode == "build-outcome-cohort":
+        if not args.outcome_seals or not args.cohort_id or not args.trace_cohort_hash or not args.target_type or not args.assembled_by or not args.assembled_at or not args.output:
+            parser.error("build-outcome-cohort requires --outcome-seals, --cohort-id, --trace-cohort-hash, "
+                         "--target-type, --assembled-by, --assembled-at, and --output")
+        cohort = build_outcome_cohort(args.outcome_seals, cohort_id=args.cohort_id,
+                                      trace_cohort_hash=args.trace_cohort_hash,
+                                      target_signal_type=SignalType(args.target_type),
+                                      created_by=args.assembled_by,
+                                      created_at=datetime.fromisoformat(args.assembled_at))
+        write_outcome_cohort(cohort, args.output)
+        result = {"status": "PASS", "mode": "build-outcome-cohort", "cohort_id": cohort.cohort_id,
+                  "cohort_hash": cohort.cohort_hash, "observed_count": cohort.observed_count,
+                  "not_observed_count": cohort.not_observed_count, "inconclusive_count": cohort.inconclusive_count,
+                  "output": args.output}
+    elif args.mode == "backtest-cohort":
         if not args.cohort or not args.target_type or not args.early_types or not args.output:
             parser.error("backtest-cohort requires --cohort, --target-type, --early-types, and --output")
         report = backtest_cohort(args.cohort, target_signal_type=SignalType(args.target_type),

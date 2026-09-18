@@ -209,3 +209,10 @@ lead-time measurement, and binds the result to both the cohort hash and report
 hash. The CLI smoke test produced one matched case at 100% coverage; current
 suite is 107 passed and the complete validation gate passes. Sealed positive
 and negative outcomes are still required before Athena learning.
+Retrospective outcome seal 028 now supports explicit `OBSERVED`,
+`NOT_OBSERVED_BY_CUTOFF`, and `INCONCLUSIVE` states with reviewer statements,
+exact evidence quotes, timestamps, and trace-hash binding. Outcome cohorts are
+bound to the reviewed trace-cohort hash and expose deterministic state counts;
+the CLI smoke test produced one observed seal. Current suite is 110 passed and
+the complete validation gate passes. No Athena update or predictive claim is
+authorized.

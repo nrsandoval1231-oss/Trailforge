@@ -56,6 +56,13 @@ label or a claim that every project had a positive outcome.
 that manifest. Its report includes both the cohort hash and the backtest hash,
 so a result is bound to the exact reviewed evidence set used to produce it.
 
+`seal-trace-outcome` is the retrospective outcome boundary. A reviewer must
+explicitly state whether the target was observed, not observed by a cutoff, or
+inconclusive, and bind that statement to evidence. The seal also records the
+trace hash, target signal type, reviewer, timestamp, and exact evidence quote.
+`build-outcome-cohort` groups those seals under the verified trace-cohort hash;
+it does not update Athena or claim predictive accuracy.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and
