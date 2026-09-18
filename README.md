@@ -113,6 +113,11 @@ than disappearing into an empty shortlist.
 
 See the [deterministic opportunity process graphic](docs/graphics/trailforge-deterministic-opportunity-process.png)
 for the complete flow.
+
+## Historical research case
+
+See [USACE Puerto Rico power-stabilization trace](docs/USACE_PUERTO_RICO_POWER_TRACE.md).
+It is unreviewed historical research, not a current opportunity or predictive claim.
 Seal a captured prospective shadow prediction against a verified outcome:
 
 `uv run --python 3.11 python -m athena_procurement_arena seal-prospective --shadow path/to/shadow.json --outcome SOLICITATION_RELEASED --verified-by reviewer --output path/to/seal.json`
