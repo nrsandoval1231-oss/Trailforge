@@ -258,3 +258,16 @@ scoring.
   from its absence or from a later unrelated event.
 - Keep sealed outcomes as evaluation evidence only; Athena updates, promotion,
   outreach, and execution authority remain absent.
+
+## Retrospective cohort evaluation 029
+
+- Preserve one backtest case and exact trace hash for every reviewed project,
+  including projects without an observed target.
+- Count an early-signal alert only when its recorded observation timestamp is
+  on or before that project's sealed outcome cutoff.
+- Require matching trace-cohort hashes, target signal types, and per-project
+  trace hashes before scoring any seal.
+- Exclude inconclusive outcomes from confusion metrics and keep missing or
+  unsealed projects explicit rather than converting them into negatives.
+- Treat precision, recall, accuracy, and false-alarm rate as descriptive
+  evaluation evidence only; no Athena update or promotion follows automatically.

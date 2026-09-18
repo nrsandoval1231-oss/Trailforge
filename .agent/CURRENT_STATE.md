@@ -216,3 +216,10 @@ bound to the reviewed trace-cohort hash and expose deterministic state counts;
 the CLI smoke test produced one observed seal. Current suite is 110 passed and
 the complete validation gate passes. No Athena update or predictive claim is
 authorized.
+Retrospective cohort evaluation 029 now preserves one hash-bound case per trace
+and compares cutoff-valid early-signal alerts with explicit sealed outcomes.
+Matching cohort, target-type, and per-project trace hashes are mandatory;
+inconclusive outcomes and unsealed projects remain visible but unscored. An
+independent audit found and then verified the repair for post-cutoff alerts.
+Current suite is 114 passed and the complete validation gate passes. The
+one-case smoke evaluation is mechanics proof only, not predictive evidence.

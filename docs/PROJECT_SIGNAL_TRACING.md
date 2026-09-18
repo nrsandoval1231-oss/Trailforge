@@ -63,6 +63,14 @@ trace hash, target signal type, reviewer, timestamp, and exact evidence quote.
 `build-outcome-cohort` groups those seals under the verified trace-cohort hash;
 it does not update Athena or claim predictive accuracy.
 
+`evaluate-retrospective` compares the alert status in a cohort-bound backtest
+with explicit sealed outcomes only when cohort hashes, target signal types, and
+per-project trace hashes all match. It reports true/false positives and
+negatives, precision, recall, accuracy, and false-alarm rate. Inconclusive
+outcomes and unsealed projects remain visible but are excluded from those
+metrics. The evaluation is evidence for later governance review; it does not
+promote or modify Athena.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

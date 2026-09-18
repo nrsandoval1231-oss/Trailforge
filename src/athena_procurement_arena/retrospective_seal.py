@@ -122,6 +122,10 @@ def load_outcome_seal(path: str | Path) -> TraceOutcomeSeal:
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
     if raw.get("schema_version") != "trailforge-trace-outcome-seal-v1":
         raise ValueError("unsupported trace outcome seal schema_version")
+    return _outcome_seal_from_dict(raw)
+
+
+def _outcome_seal_from_dict(raw: dict[str, object]) -> TraceOutcomeSeal:
     seal = TraceOutcomeSeal(raw["seal_id"], raw["project_id"], raw["trace_hash"],
                             SignalType(raw["target_signal_type"]), datetime.fromisoformat(raw["cutoff_at"]),
                             TraceOutcomeState(raw["outcome_state"]), raw["source_sha256"],
@@ -198,3 +202,17 @@ def write_outcome_cohort(cohort: RetrospectiveOutcomeCohort, path: str | Path) -
     if destination.exists():
         raise FileExistsError(f"outcome cohort output already exists: {destination}")
     destination.write_text(json.dumps(cohort.as_dict(), sort_keys=True, indent=2) + "\n", encoding="utf-8")
+
+
+def load_outcome_cohort(path: str | Path) -> RetrospectiveOutcomeCohort:
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    if raw.get("schema_version") != "trailforge-retrospective-outcome-cohort-v1":
+        raise ValueError("unsupported retrospective outcome cohort schema_version")
+    cohort = RetrospectiveOutcomeCohort(
+        str(raw["cohort_id"]), str(raw["trace_cohort_hash"]), SignalType(raw["target_signal_type"]),
+        tuple(_outcome_seal_from_dict(dict(item)) for item in raw["seals"]),
+        str(raw["created_by"]), datetime.fromisoformat(str(raw["created_at"])),
+    )
+    if raw.get("cohort_hash") != cohort.cohort_hash:
+        raise ValueError("retrospective outcome cohort hash mismatch")
+    return cohort

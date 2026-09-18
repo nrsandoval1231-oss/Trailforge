@@ -20,9 +20,11 @@ from .prospective_seal import (
     write_seal,
 )
 from .public_capture import capture_with_firecrawl, load_capture, write_capture
+from .retrospective_evaluation import evaluate_retrospective, write_retrospective_evaluation
 from .retrospective_seal import (
     TraceOutcomeState,
     build_outcome_cohort,
+    load_outcome_cohort,
     seal_trace_outcome,
     write_outcome_cohort,
     write_outcome_seal,
@@ -34,7 +36,14 @@ from .shadow import load_shadow_record
 from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
 from .tournament import tournament_pipeline
-from .trace_backtest import backtest_cohort, backtest_traces, load_traces, write_backtest, write_cohort_backtest
+from .trace_backtest import (
+    backtest_cohort,
+    backtest_traces,
+    load_cohort_backtest,
+    load_traces,
+    write_backtest,
+    write_cohort_backtest,
+)
 from .trace_cohort import build_trace_cohort, write_trace_cohort
 
 
@@ -91,7 +100,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -122,6 +131,8 @@ def main(argv=None) -> int:
     parser.add_argument("--source-ref", help="confidential evidence reference for outcome seal")
     parser.add_argument("--trace-cohort-hash", help="verified trace cohort hash for outcome cohort")
     parser.add_argument("--outcome-seals", nargs="+", help="outcome seal JSON files for build-outcome-cohort")
+    parser.add_argument("--cohort-backtest", help="cohort-bound backtest JSON for evaluate-retrospective")
+    parser.add_argument("--outcome-cohort", help="retrospective outcome cohort JSON for evaluate-retrospective")
     parser.add_argument("--cohort-id", help="cohort identifier for build-trace-cohort / evaluate-cohort")
     parser.add_argument("--assembled-by", help="reviewer identity for build-trace-cohort")
     parser.add_argument("--assembled-at", help="timezone-aware ISO timestamp for build-trace-cohort")
@@ -137,7 +148,18 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "seal-trace-outcome":
+    if args.mode == "evaluate-retrospective":
+        if not args.cohort_backtest or not args.outcome_cohort or not args.output:
+            parser.error("evaluate-retrospective requires --cohort-backtest, --outcome-cohort, and --output")
+        evaluation = evaluate_retrospective(load_cohort_backtest(args.cohort_backtest),
+                                            load_outcome_cohort(args.outcome_cohort))
+        write_retrospective_evaluation(evaluation, args.output)
+        result = {"status": "PASS", "mode": "evaluate-retrospective",
+                  "evaluation_hash": evaluation.evaluation_hash,
+                  "evaluated_count": evaluation.evaluated_count,
+                  "precision": evaluation.precision, "recall": evaluation.recall,
+                  "false_alarm_rate": evaluation.false_alarm_rate, "output": args.output}
+    elif args.mode == "seal-trace-outcome":
         required = (args.trace, args.seal_id, args.target_type, args.outcome_state, args.cutoff_at,
                     args.source_sha256, args.source_quote, args.reviewer_statement, args.reviewed_by,
                     args.reviewed_at, args.output)

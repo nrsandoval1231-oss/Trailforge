@@ -43,6 +43,9 @@ def test_backtest_keeps_missing_target_and_missing_early_signal_unresolved():
     assert report.unresolved_without_target == 1
     assert report.unresolved_without_early_signal == 1
     assert report.coverage == 0.0
+    assert len(report.cases) == 2
+    assert {case["project_id"] for case in report.cases} == {"project-1", "project-2"}
+    assert all(case["trace_hash"] for case in report.cases)
 
 
 def test_backtest_requires_early_signal_types():

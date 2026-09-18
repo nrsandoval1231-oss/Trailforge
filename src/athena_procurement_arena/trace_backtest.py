@@ -93,6 +93,19 @@ def backtest_traces(traces: tuple[ProjectTrace, ...] | list[ProjectTrace], *,
         targets = [item for item in trace.signals if item.signal_type == target_signal_type]
         if not targets:
             unresolved_without_target += 1
+            candidates = [item for item in trace.signals if item.signal_type in early_signal_types]
+            earliest = min(candidates, key=lambda item: (item.observed_at, item.signal_id)) if candidates else None
+            cases.append({
+                "project_id": trace.project_id,
+                "trace_hash": trace.trace_hash,
+                "target_signal_id": None,
+                "target_observed": False,
+                "earliest_signal_id": earliest.signal_id if earliest else None,
+                "earliest_signal_observed_at": earliest.observed_at.isoformat() if earliest else None,
+                "alerted": earliest is not None,
+                "matched": False,
+                "lead_seconds": None,
+            })
             continue
         target = min(targets, key=lambda item: (item.observed_at, item.signal_id))
         target_cases += 1
@@ -100,15 +113,21 @@ def backtest_traces(traces: tuple[ProjectTrace, ...] | list[ProjectTrace], *,
                       if item.signal_type in early_signal_types and item.observed_at < target.observed_at]
         if not candidates:
             unresolved_without_early_signal += 1
-            cases.append({"project_id": trace.project_id, "target_signal_id": target.signal_id,
-                          "matched": False})
+            cases.append({"project_id": trace.project_id, "trace_hash": trace.trace_hash,
+                          "target_signal_id": target.signal_id, "target_observed": True,
+                          "earliest_signal_id": None, "earliest_signal_observed_at": None,
+                          "alerted": False, "matched": False,
+                          "lead_seconds": None})
             continue
         earliest = min(candidates, key=lambda item: (item.observed_at, item.signal_id))
         lead = int((target.observed_at - earliest.observed_at) / timedelta(seconds=1))
         matched_cases += 1
         lead_seconds.append(lead)
-        cases.append({"project_id": trace.project_id, "target_signal_id": target.signal_id,
-                      "earliest_signal_id": earliest.signal_id, "matched": True,
+        cases.append({"project_id": trace.project_id, "trace_hash": trace.trace_hash,
+                      "target_signal_id": target.signal_id, "target_observed": True,
+                      "earliest_signal_id": earliest.signal_id,
+                      "earliest_signal_observed_at": earliest.observed_at.isoformat(),
+                      "alerted": True, "matched": True,
                       "lead_seconds": lead})
     return TraceBacktest(target_signal_type, tuple(early_signal_types), len(traces), target_cases,
                          matched_cases, unresolved_without_target, unresolved_without_early_signal,
@@ -121,6 +140,33 @@ def backtest_cohort(path: str | Path, *, target_signal_type: SignalType,
     report = backtest_traces(traces, target_signal_type=target_signal_type,
                              early_signal_types=early_signal_types)
     return CohortTraceBacktest(manifest.cohort_id, manifest.cohort_hash, report)
+
+
+def _trace_backtest_from_dict(raw: dict[str, object]) -> TraceBacktest:
+    if raw.get("schema_version") != "trailforge-trace-backtest-v1":
+        raise ValueError("unsupported trace backtest schema_version")
+    report = TraceBacktest(
+        SignalType(str(raw["target_signal_type"])),
+        tuple(SignalType(str(item)) for item in raw["early_signal_types"]),
+        int(raw["traces"]), int(raw["target_cases"]), int(raw["matched_cases"]),
+        int(raw["unresolved_without_target"]), int(raw["unresolved_without_early_signal"]),
+        tuple(int(item) for item in raw["lead_seconds"]),
+        tuple(dict(item) for item in raw["cases"]),
+    )
+    if raw.get("report_hash") != report.report_hash:
+        raise ValueError("trace backtest report hash mismatch")
+    return report
+
+
+def load_cohort_backtest(path: str | Path) -> CohortTraceBacktest:
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    if raw.get("schema_version") != "trailforge-cohort-trace-backtest-v1":
+        raise ValueError("unsupported cohort trace backtest schema_version")
+    report = CohortTraceBacktest(str(raw["cohort_id"]), str(raw["cohort_hash"]),
+                                 _trace_backtest_from_dict(dict(raw["report"])))
+    if raw.get("report_hash") != report.report_hash:
+        raise ValueError("cohort trace backtest hash mismatch")
+    return report
 
 
 def load_traces(paths: tuple[str, ...] | list[str]) -> tuple[ProjectTrace, ...]:

@@ -54,11 +54,17 @@ from .prospective_seal import (
     write_seal,
 )
 from .public_capture import PublicCapture, capture_markdown, capture_with_firecrawl, load_capture, write_capture
+from .retrospective_evaluation import (
+    RetrospectiveEvaluation,
+    evaluate_retrospective,
+    write_retrospective_evaluation,
+)
 from .retrospective_seal import (
     RetrospectiveOutcomeCohort,
     TraceOutcomeSeal,
     TraceOutcomeState,
     build_outcome_cohort,
+    load_outcome_cohort,
     load_outcome_seal,
     seal_trace_outcome,
     write_outcome_cohort,
@@ -88,6 +94,7 @@ from .trace_backtest import (
     TraceBacktest,
     backtest_cohort,
     backtest_traces,
+    load_cohort_backtest,
     load_traces,
     write_backtest,
     write_cohort_backtest,
@@ -112,6 +119,7 @@ __all__ = [
     "PolicyContract",
     "PublicCapture",
     "RetrospectiveOutcomeCohort",
+    "RetrospectiveEvaluation",
     "PowerNeed",
     "PowerScope",
     "ProjectSignal",
@@ -145,6 +153,7 @@ __all__ = [
     "evaluate_cohort",
     "evaluate_policy",
     "evaluate_prediction",
+    "evaluate_retrospective",
     "family_scope",
     "keyword_rfp",
     "latest_event",
@@ -172,6 +181,8 @@ __all__ = [
     "load_traces",
     "load_trace_cohort",
     "load_outcome_seal",
+    "load_outcome_cohort",
+    "load_cohort_backtest",
     "accept_candidate",
     "candidate_from_capture",
     "static_weighted_score",
@@ -186,6 +197,7 @@ __all__ = [
     "write_trace_cohort",
     "write_outcome_cohort",
     "write_outcome_seal",
+    "write_retrospective_evaluation",
     "write_resolved_traces",
     "load_trace",
     "write_seal",

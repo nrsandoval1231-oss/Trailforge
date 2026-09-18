@@ -76,6 +76,10 @@ Outcome sealing is explicit and reviewer-bound:
 
 `uv run --python 3.11 python -m athena_procurement_arena seal-trace-outcome --trace trace.json --seal-id seal-1 --target-type PROCUREMENT_SIGNAL --outcome-state OBSERVED --target-signal-id target-1 --cutoff-at 2026-09-18T12:00:00+00:00 --source-sha256 <sha256> --source-quote "exact reviewer evidence" --reviewer-statement "Target verified." --reviewed-by reviewer --reviewed-at 2026-09-18T12:00:00+00:00 --source-url https://example.com/review --output .firecrawl/seal.json`
 
+Evaluate a cohort-bound backtest only against its matching sealed outcome cohort:
+
+`uv run --python 3.11 python -m athena_procurement_arena evaluate-retrospective --cohort-backtest .firecrawl/cohort-backtest.json --outcome-cohort .firecrawl/outcome-cohort.json --output .firecrawl/evaluation.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 
