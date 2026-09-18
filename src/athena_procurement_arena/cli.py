@@ -29,6 +29,13 @@ from .retrospective_seal import (
     write_outcome_cohort,
     write_outcome_seal,
 )
+from .rfp_candidate_capture import (
+    accept_rfp_candidate,
+    candidate_from_excerpt,
+    load_rfp_candidate,
+    write_accepted_rfp_bundle,
+    write_rfp_candidate,
+)
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
 from .runner import historical_registry, manifest_dict, run_with_manifest
@@ -100,7 +107,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -114,6 +121,20 @@ def main(argv=None) -> int:
     parser.add_argument("--source-quote", help="exact quote from the raw capture")
     parser.add_argument("--claims-json", default="{}", help="JSON claims for review-signal")
     parser.add_argument("--reviewed-by", help="named reviewer for review-signal")
+    parser.add_argument("--candidate", help="hash-bound RFP candidate JSON for accept-rfp-candidate")
+    parser.add_argument("--candidate-id", help="stable RFP candidate identifier for capture-rfp-candidate")
+    parser.add_argument("--excerpt-file", help="local UTF-8 source excerpt file for RFP candidate capture/review")
+    parser.add_argument("--buyer", help="reviewed buyer name for capture-rfp-candidate")
+    parser.add_argument("--scope", help="reviewed scope text for capture-rfp-candidate")
+    parser.add_argument("--published-at", help="timezone-aware source publication timestamp")
+    parser.add_argument("--retrieved-at", help="timezone-aware local retrieval timestamp")
+    parser.add_argument("--required-kw", type=float, help="explicit source-backed per-project requirement in kW")
+    parser.add_argument("--fuel", help="explicit source-backed fuel requirement")
+    parser.add_argument("--solicitation-number", help="source-backed solicitation identifier")
+    parser.add_argument("--closes-at", help="timezone-aware source closing timestamp")
+    parser.add_argument("--opportunity-status", help="explicit lifecycle for accept-rfp-candidate")
+    parser.add_argument("--fixture-id", help="verified fixture identifier for accept-rfp-candidate")
+    parser.add_argument("--verification-notes", help="review notes for accept-rfp-candidate")
     parser.add_argument("--traces", nargs="+", help="trace JSON files for backtest-traces")
     parser.add_argument("--target-type", choices=[item.value for item in SignalType])
     parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
@@ -148,7 +169,43 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "evaluate-retrospective":
+    if args.mode == "capture-rfp-candidate":
+        required = (args.candidate_id, args.source_url, args.excerpt_file, args.source_quote, args.buyer,
+                    args.scope, args.published_at, args.retrieved_at, args.captured_by, args.output)
+        if not all(required):
+            parser.error("capture-rfp-candidate requires --candidate-id, --source-url, --excerpt-file, "
+                         "--source-quote, --buyer, --scope, --published-at, --retrieved-at, --captured-by, and --output")
+        candidate = candidate_from_excerpt(
+            excerpt=Path(args.excerpt_file).read_text(encoding="utf-8"), candidate_id=args.candidate_id,
+            source_url=args.source_url, source_quote=args.source_quote, buyer=args.buyer, scope=args.scope,
+            published_at=datetime.fromisoformat(args.published_at), retrieved_at=datetime.fromisoformat(args.retrieved_at),
+            captured_by=args.captured_by, required_kw=args.required_kw, fuel=args.fuel,
+            solicitation_number=args.solicitation_number,
+            closes_at=datetime.fromisoformat(args.closes_at) if args.closes_at else None,
+        )
+        write_rfp_candidate(candidate, args.output)
+        result = {"status": "PASS", "mode": args.mode, "candidate_id": candidate.candidate_id,
+                  "candidate_hash": candidate.candidate_hash, "source_sha256": candidate.source_sha256,
+                  "output": args.output}
+    elif args.mode == "accept-rfp-candidate":
+        required = (args.candidate, args.excerpt_file, args.fixture_id, args.reviewed_by,
+                    args.verification_notes, args.opportunity_status, args.output)
+        if not all(required):
+            parser.error("accept-rfp-candidate requires --candidate, --excerpt-file, --fixture-id, --reviewed-by, "
+                         "--verification-notes, --opportunity-status, and --output")
+        bundle = accept_rfp_candidate(
+            load_rfp_candidate(args.candidate), excerpt=Path(args.excerpt_file).read_text(encoding="utf-8"),
+            fixture_id=args.fixture_id, reviewed_by=args.reviewed_by,
+            verification_notes=args.verification_notes, opportunity_status=args.opportunity_status,
+        )
+        write_accepted_rfp_bundle(bundle, args.output)
+        fixture = bundle.fixtures[0]
+        result = {"status": "PASS", "mode": args.mode, "fixture_id": fixture.fixture_id,
+                  "candidate_hash": fixture.scenario.evidence[0].claims["rfp_candidate_hash"],
+                  "opportunity_status": fixture.opportunity_status,
+                  "screen": screen_aura_rental_candidate(fixture.scenario.evidence).as_dict(),
+                  "shortlisted": bool(current_target_fixtures(bundle)), "output": args.output}
+    elif args.mode == "evaluate-retrospective":
         if not args.cohort_backtest or not args.outcome_cohort or not args.output:
             parser.error("evaluate-retrospective requires --cohort-backtest, --outcome-cohort, and --output")
         evaluation = evaluate_retrospective(load_cohort_backtest(args.cohort_backtest),

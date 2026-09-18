@@ -70,6 +70,14 @@ from .retrospective_seal import (
     write_outcome_cohort,
     write_outcome_seal,
 )
+from .rfp_candidate_capture import (
+    RfpCandidateCapture,
+    accept_rfp_candidate,
+    candidate_from_excerpt,
+    load_rfp_candidate,
+    write_accepted_rfp_bundle,
+    write_rfp_candidate,
+)
 from .rfp_intake import AuraRfpScreen, AuraRfpScreenStatus, screen_aura_rental_candidate
 from .scenario_dsl import ScenarioDsl
 from .scenarios import family_scope
@@ -120,6 +128,7 @@ __all__ = [
     "PublicCapture",
     "RetrospectiveOutcomeCohort",
     "RetrospectiveEvaluation",
+    "RfpCandidateCapture",
     "PowerNeed",
     "PowerScope",
     "ProjectSignal",
@@ -159,6 +168,7 @@ __all__ = [
     "latest_event",
     "load_bundle",
     "load_bundle_mapping",
+    "load_rfp_candidate",
     "load_identity_reviews",
     "load_capture",
     "load_cohort",
@@ -184,6 +194,8 @@ __all__ = [
     "load_outcome_cohort",
     "load_cohort_backtest",
     "accept_candidate",
+    "accept_rfp_candidate",
+    "candidate_from_excerpt",
     "candidate_from_capture",
     "static_weighted_score",
     "validate_power_scopes",
@@ -198,6 +210,8 @@ __all__ = [
     "write_outcome_cohort",
     "write_outcome_seal",
     "write_retrospective_evaluation",
+    "write_accepted_rfp_bundle",
+    "write_rfp_candidate",
     "write_resolved_traces",
     "load_trace",
     "write_seal",

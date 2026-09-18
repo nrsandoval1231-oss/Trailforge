@@ -223,3 +223,12 @@ inconclusive outcomes and unsealed projects remain visible but unscored. An
 independent audit found and then verified the repair for post-cutoff alerts.
 Current suite is 114 passed and the complete validation gate passes. The
 one-case smoke evaluation is mechanics proof only, not predictive evidence.
+
+Manual RFP candidate capture 030 now converts a locally saved source excerpt
+into a hash-bound candidate without retaining the raw excerpt in candidate JSON.
+Only a named nonblank reviewer can accept the same hash-matching excerpt, exact
+quote, review notes, and explicit non-UNKNOWN lifecycle into a standard verified
+fixture bundle. The ordinary existing screen remains the only path to a shortlist.
+Current suite is 118 passed and the complete local validation gate passes. This
+is a local reviewed intake boundary only: no acquisition, automatic acceptance,
+outreach, pricing, submission, Athena update, or promotion is authorized.

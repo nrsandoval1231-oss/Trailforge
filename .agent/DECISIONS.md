@@ -271,3 +271,13 @@ scoring.
   unsealed projects explicit rather than converting them into negatives.
 - Treat precision, recall, accuracy, and false-alarm rate as descriptive
   evaluation evidence only; no Athena update or promotion follows automatically.
+
+## Manual RFP candidate capture 030
+
+- Preserve the useful local candidate-capture idea from PR #1, but require a
+  two-step hash-bound boundary rather than creating fixtures directly.
+- Keep raw local excerpts out of candidate JSON; re-hash and re-check the exact
+  quote during named review before creating a standard verified fixture bundle.
+- Require an explicit non-UNKNOWN lifecycle. Candidate capture alone is never
+  a shortlist path; only the existing fail-closed RFP screen can qualify an
+  accepted fixture.

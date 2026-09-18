@@ -58,6 +58,20 @@ Capture one public page locally for review:
 Capture is raw evidence only. It does not infer claims, qualify projects, or
 contact anyone; confidential documents must never be supplied to this command.
 
+Create a hash-bound candidate from a locally saved public source excerpt, then
+have a named reviewer accept the *same* excerpt into the existing fixture and
+screening path:
+
+`uv run --python 3.11 python -m athena_procurement_arena capture-rfp-candidate --candidate-id rfp-1 --source-url https://example.com/rfp --excerpt-file .firecrawl/rfp-1.txt --source-quote "exact quote from excerpt" --buyer "Buyer name" --scope "temporary construction power" --published-at 2026-09-01T00:00:00+00:00 --retrieved-at 2026-09-02T00:00:00+00:00 --captured-by operator --output .firecrawl/rfp-1-candidate.json`
+
+`uv run --python 3.11 python -m athena_procurement_arena accept-rfp-candidate --candidate .firecrawl/rfp-1-candidate.json --excerpt-file .firecrawl/rfp-1.txt --fixture-id fixture-1 --reviewed-by reviewer --verification-notes "Verified against saved source." --opportunity-status OPEN --output fixtures/rfp-1.json`
+
+Candidate JSON retains only the source fingerprint and exact quote, not the raw
+excerpt. Acceptance rechecks both. It requires review notes and an explicit
+non-`UNKNOWN` lifecycle; it does not infer missing capacity or fuel facts, and
+the resulting fixture still has to pass the normal screen before it appears in
+the shortlist.
+
 Convert a reviewed capture into a signal only with an exact source quote:
 
 `uv run --python 3.11 python -m athena_procurement_arena review-signal --capture .firecrawl/capture.json --signal-id orla-feasibility-2026 --project-id south-railroad --signal-type CONSTRUCTION_APPROVED --signal-title "Construction spending approved" --observed-at 2026-01-14T00:00:00+00:00 --source-quote "exact quote from capture" --reviewed-by reviewer --output .firecrawl/signal.json`
