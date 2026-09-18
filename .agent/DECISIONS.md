@@ -237,3 +237,13 @@ scoring.
   negative outcome label.
 - Keep portability packaging, outcome sealing, Athena optimization, crawling,
   outreach, and promotion authority outside this packet.
+
+## Cohort-bound backtest 027
+
+- Require the cohort manifest and every referenced trace hash to verify before
+  calculating lead time.
+- Bind every cohort backtest report to the exact cohort hash as well as its own
+  report hash.
+- Preserve unresolved and missing-target semantics; descriptive lead time is
+  not a positive or negative outcome label.
+- Do not update Athena until independently sealed retrospective outcomes exist.

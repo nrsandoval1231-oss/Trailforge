@@ -1,0 +1,7 @@
+{
+  "task_id": "cohort-bound-backtest-027",
+  "verdict": "PASS",
+  "scope_check": "Backtests can only run after the manifest and every referenced trace hash verify successfully.",
+  "evidence_check": "Focused test, full gate, and end-to-end cohort/backtest CLI checks passed with stable hashes.",
+  "remaining_risk": "Lead-time remains descriptive until independently sealed positive and negative outcomes exist; no Athena update is authorized."
+}

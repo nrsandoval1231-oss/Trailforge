@@ -73,7 +73,15 @@ from .signal_ledger import (
     write_trace,
 )
 from .signal_review import SignalCandidate, accept_candidate, candidate_from_capture, write_signal
-from .trace_backtest import TraceBacktest, backtest_traces, load_traces, write_backtest
+from .trace_backtest import (
+    CohortTraceBacktest,
+    TraceBacktest,
+    backtest_cohort,
+    backtest_traces,
+    load_traces,
+    write_backtest,
+    write_cohort_backtest,
+)
 from .trace_cohort import TraceCohortManifest, build_trace_cohort, load_trace_cohort, write_trace_cohort
 from .world import TemporalWorld, WorldObservation
 
@@ -107,6 +115,7 @@ __all__ = [
     "Supply",
     "TemporalWorld",
     "TraceBacktest",
+    "CohortTraceBacktest",
     "TraceCohortManifest",
     "VerifiedFixture",
     "WorldObservation",
@@ -143,6 +152,7 @@ __all__ = [
     "split_fixture_ids",
     "trace_project_signals",
     "backtest_traces",
+    "backtest_cohort",
     "build_trace_cohort",
     "load_traces",
     "load_trace_cohort",
@@ -156,6 +166,7 @@ __all__ = [
     "write_capture",
     "write_trace",
     "write_backtest",
+    "write_cohort_backtest",
     "write_trace_cohort",
     "write_resolved_traces",
     "load_trace",

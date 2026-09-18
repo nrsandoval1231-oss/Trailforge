@@ -70,6 +70,8 @@ Backtest reviewed traces against a later observed milestone:
 
 `uv run --python 3.11 python -m athena_procurement_arena build-trace-cohort --traces trace-1.json trace-2.json --cohort-id reviewed-2026-01 --assembled-by reviewer --assembled-at 2026-09-18T12:00:00+00:00 --output .firecrawl/cohort.json`
 
+`uv run --python 3.11 python -m athena_procurement_arena backtest-cohort --cohort .firecrawl/cohort.json --target-type PROCUREMENT_SIGNAL --early-types FEASIBILITY_COMPLETE POWER_REQUIREMENT --output .firecrawl/cohort-backtest.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 

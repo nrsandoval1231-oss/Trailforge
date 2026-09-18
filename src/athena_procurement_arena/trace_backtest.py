@@ -9,6 +9,7 @@ from pathlib import Path
 from athena_arena.contracts import canonical_hash
 
 from .signal_ledger import ProjectTrace, SignalType, load_trace
+from .trace_cohort import load_trace_cohort
 
 
 @dataclass(frozen=True)
@@ -56,6 +57,26 @@ class TraceBacktest:
         }
 
 
+@dataclass(frozen=True)
+class CohortTraceBacktest:
+    cohort_id: str
+    cohort_hash: str
+    report: TraceBacktest
+
+    @property
+    def report_hash(self) -> str:
+        return canonical_hash(self)
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "schema_version": "trailforge-cohort-trace-backtest-v1",
+            "cohort_id": self.cohort_id,
+            "cohort_hash": self.cohort_hash,
+            "report": self.report.as_dict(),
+            "report_hash": self.report_hash,
+        }
+
+
 def backtest_traces(traces: tuple[ProjectTrace, ...] | list[ProjectTrace], *,
                     target_signal_type: SignalType,
                     early_signal_types: tuple[SignalType, ...]) -> TraceBacktest:
@@ -94,6 +115,14 @@ def backtest_traces(traces: tuple[ProjectTrace, ...] | list[ProjectTrace], *,
                          tuple(sorted(lead_seconds)), tuple(cases))
 
 
+def backtest_cohort(path: str | Path, *, target_signal_type: SignalType,
+                    early_signal_types: tuple[SignalType, ...]) -> CohortTraceBacktest:
+    manifest, traces = load_trace_cohort(path)
+    report = backtest_traces(traces, target_signal_type=target_signal_type,
+                             early_signal_types=early_signal_types)
+    return CohortTraceBacktest(manifest.cohort_id, manifest.cohort_hash, report)
+
+
 def load_traces(paths: tuple[str, ...] | list[str]) -> tuple[ProjectTrace, ...]:
     if not paths:
         raise ValueError("at least one trace path is required")
@@ -101,6 +130,13 @@ def load_traces(paths: tuple[str, ...] | list[str]) -> tuple[ProjectTrace, ...]:
 
 
 def write_backtest(report: TraceBacktest, path: str | Path) -> None:
+    destination = Path(path)
+    if destination.exists():
+        raise FileExistsError(f"backtest output already exists: {destination}")
+    destination.write_text(json.dumps(report.as_dict(), sort_keys=True, indent=2) + "\n", encoding="utf-8")
+
+
+def write_cohort_backtest(report: CohortTraceBacktest, path: str | Path) -> None:
     destination = Path(path)
     if destination.exists():
         raise FileExistsError(f"backtest output already exists: {destination}")

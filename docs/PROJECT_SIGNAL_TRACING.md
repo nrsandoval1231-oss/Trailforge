@@ -52,6 +52,10 @@ each project ID and trace hash, rejects duplicate projects, and re-verifies the
 member files when loaded. The cohort is a research container, not a training
 label or a claim that every project had a positive outcome.
 
+`backtest-cohort` runs lead-time measurement only after loading and verifying
+that manifest. Its report includes both the cohort hash and the backtest hash,
+so a result is bound to the exact reviewed evidence set used to produce it.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

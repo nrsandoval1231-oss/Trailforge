@@ -204,3 +204,8 @@ CLI smoke test produced a two-project cohort; current suite is 106 passed and
 the complete validation gate passes. The cohort is a research container only;
 outcome labels, automatic identity resolution, and Athena optimization remain
 deferred.
+Cohort-bound backtest 027 now loads and verifies a trace cohort before running
+lead-time measurement, and binds the result to both the cohort hash and report
+hash. The CLI smoke test produced one matched case at 100% coverage; current
+suite is 107 passed and the complete validation gate passes. Sealed positive
+and negative outcomes are still required before Athena learning.

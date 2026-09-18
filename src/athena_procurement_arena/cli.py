@@ -27,7 +27,7 @@ from .shadow import load_shadow_record
 from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
 from .tournament import tournament_pipeline
-from .trace_backtest import backtest_traces, load_traces, write_backtest
+from .trace_backtest import backtest_cohort, backtest_traces, load_traces, write_backtest, write_cohort_backtest
 from .trace_cohort import build_trace_cohort, write_trace_cohort
 
 
@@ -84,7 +84,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "resolve-traces", "build-trace-cohort", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -102,6 +102,7 @@ def main(argv=None) -> int:
     parser.add_argument("--target-type", choices=[item.value for item in SignalType])
     parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
     parser.add_argument("--identity-reviews", help="hash-bound identity review JSON for resolve-traces")
+    parser.add_argument("--cohort", help="verified trace cohort manifest for backtest-cohort")
     parser.add_argument("--cohort-id", help="cohort identifier for build-trace-cohort / evaluate-cohort")
     parser.add_argument("--assembled-by", help="reviewer identity for build-trace-cohort")
     parser.add_argument("--assembled-at", help="timezone-aware ISO timestamp for build-trace-cohort")
@@ -117,7 +118,16 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "build-trace-cohort":
+    if args.mode == "backtest-cohort":
+        if not args.cohort or not args.target_type or not args.early_types or not args.output:
+            parser.error("backtest-cohort requires --cohort, --target-type, --early-types, and --output")
+        report = backtest_cohort(args.cohort, target_signal_type=SignalType(args.target_type),
+                                 early_signal_types=tuple(SignalType(item) for item in args.early_types))
+        write_cohort_backtest(report, args.output)
+        result = {"status": "PASS", "mode": "backtest-cohort", "cohort_id": report.cohort_id,
+                  "cohort_hash": report.cohort_hash, "report_hash": report.report_hash,
+                  "coverage": report.report.coverage, "output": args.output}
+    elif args.mode == "build-trace-cohort":
         if not args.traces or not args.cohort_id or not args.assembled_by or not args.assembled_at or not args.output:
             parser.error("build-trace-cohort requires --traces, --cohort-id, --assembled-by, --assembled-at, and --output")
         manifest = build_trace_cohort(args.traces, cohort_id=args.cohort_id, assembled_by=args.assembled_by,
