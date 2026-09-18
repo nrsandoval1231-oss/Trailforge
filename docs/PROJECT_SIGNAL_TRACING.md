@@ -42,6 +42,11 @@ explicit target signal type. Traces without the target, or targets without an
 earlier selected signal, remain unresolved. They are not treated as false
 alarms until an independently sealed negative outcome exists.
 
+The `resolve-traces` command is the identity boundary. It joins project IDs
+only through a hash-bound, reviewer-authored identity review with an exact
+quote and source provenance. Conflicting reviews fail closed; no name,
+geography, or URL similarity is enough to merge traces automatically.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

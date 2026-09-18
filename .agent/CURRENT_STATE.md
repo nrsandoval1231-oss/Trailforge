@@ -192,3 +192,9 @@ false alarms. The CLI emits a stable hash-bound report, and the smoke test
 produced one matched 40-day case. Current suite is 100 passed and the complete
 validation gate passes. Identity resolution, sealed negative/outcome cohorts,
 and Athena optimization remain deferred.
+Project identity review 025 now provides a reviewer-controlled `resolve-traces`
+boundary. Explicit evidence-bound identity reviews can merge aliases into a
+canonical project, preserve the review hash on re-keyed signals, and fail closed
+on conflicting reviews or missing public provenance. Current suite is 103 passed
+and the complete validation gate passes. Automatic entity resolution, sealed
+negative/outcome cohorts, and Athena optimization remain deferred.

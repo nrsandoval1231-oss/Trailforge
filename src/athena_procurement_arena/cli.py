@@ -10,6 +10,7 @@ from pathlib import Path
 
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
 from .fixtures import current_target_fixtures, load_bundle
+from .identity_review import load_identity_reviews, resolve_traces, write_resolved_traces
 from .policies import BaselineA, keyword_rfp
 from .prospective_seal import (
     evaluate_cohort,
@@ -82,7 +83,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "resolve-traces", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -99,6 +100,7 @@ def main(argv=None) -> int:
     parser.add_argument("--traces", nargs="+", help="trace JSON files for backtest-traces")
     parser.add_argument("--target-type", choices=[item.value for item in SignalType])
     parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
+    parser.add_argument("--identity-reviews", help="hash-bound identity review JSON for resolve-traces")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
@@ -112,7 +114,14 @@ def main(argv=None) -> int:
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "backtest-traces":
+    if args.mode == "resolve-traces":
+        if not args.traces or not args.identity_reviews or not args.output:
+            parser.error("resolve-traces requires --traces, --identity-reviews, and --output")
+        resolved = resolve_traces(load_traces(args.traces), load_identity_reviews(args.identity_reviews))
+        write_resolved_traces(resolved, args.output)
+        result = {"status": "PASS", "mode": "resolve-traces", "trace_count": len(resolved),
+                  "signal_count": sum(len(trace.signals) for trace in resolved), "output": args.output}
+    elif args.mode == "backtest-traces":
         if not args.traces or not args.target_type or not args.early_types or not args.output:
             parser.error("backtest-traces requires --traces, --target-type, --early-types, and --output")
         report = backtest_traces(

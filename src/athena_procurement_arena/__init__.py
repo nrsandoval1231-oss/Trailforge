@@ -31,6 +31,7 @@ from .foundation import (
     validate_recommended_action,
     validate_scenario,
 )
+from .identity_review import ProjectIdentityReview, load_identity_reviews, resolve_traces, write_resolved_traces
 from .policies import (
     BaselineA,
     PolicyContract,
@@ -87,6 +88,7 @@ __all__ = [
     "FrozenDecisionLedger",
     "GroundTruth",
     "IdentityResolution",
+    "ProjectIdentityReview",
     "InvariantViolation",
     "PolicyContract",
     "PublicCapture",
@@ -124,11 +126,13 @@ __all__ = [
     "latest_event",
     "load_bundle",
     "load_bundle_mapping",
+    "load_identity_reviews",
     "load_capture",
     "load_cohort",
     "load_seal",
     "load_shadow_record",
     "resolve_identity",
+    "resolve_traces",
     "run_athena_optimization",
     "score_fixture_bundle",
     "screen_aura_rental_candidate",
@@ -148,6 +152,7 @@ __all__ = [
     "write_capture",
     "write_trace",
     "write_backtest",
+    "write_resolved_traces",
     "load_trace",
     "write_seal",
     "write_shadow_record",

@@ -1,0 +1,7 @@
+{
+  "task_id": "project-identity-review-025",
+  "verdict": "PASS",
+  "scope_check": "Only explicit identity reviews can merge project IDs; unreviewed IDs remain separate.",
+  "evidence_check": "The full deterministic gate passed, including merge, conflict, and missing-public-provenance tests.",
+  "remaining_risk": "Identity quality still depends on reviewer judgment and source evidence; no automatic entity resolution or predictive claim is authorized."
+}

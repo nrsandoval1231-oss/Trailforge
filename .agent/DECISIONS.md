@@ -214,3 +214,15 @@ scoring.
   hash through an explicit local CLI mode.
 - Keep identity resolution, outcome sealing, Athena optimization, crawling,
   outreach, and promotion authority outside this packet.
+
+## Project identity review 025
+
+- Join project IDs only through a reviewer-authored identity review with a
+  canonical ID, member IDs, source provenance, exact quote, rationale, and
+  review timestamp.
+- Preserve the identity review hash in every re-keyed signal so trace joins are
+  auditable and reproducible.
+- Reject conflicting identity assertions; do not merge from name, geography,
+  or URL similarity alone.
+- Keep automatic entity resolution, outcome sealing, Athena optimization,
+  crawling, outreach, and promotion authority outside this boundary.

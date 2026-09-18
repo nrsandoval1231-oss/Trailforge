@@ -66,6 +66,8 @@ Backtest reviewed traces against a later observed milestone:
 
 `uv run --python 3.11 python -m athena_procurement_arena backtest-traces --traces trace-1.json trace-2.json --target-type PROCUREMENT_SIGNAL --early-types FEASIBILITY_COMPLETE POWER_REQUIREMENT --output .firecrawl/backtest.json`
 
+`uv run --python 3.11 python -m athena_procurement_arena resolve-traces --traces alias-a.json alias-b.json --identity-reviews identity-reviews.json --output .firecrawl/resolved-traces.json`
+
 Screen every record in a local bundle with explainable dispositions, provenance,
 reason codes, and next actions:
 
