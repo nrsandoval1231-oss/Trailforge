@@ -198,3 +198,9 @@ canonical project, preserve the review hash on re-keyed signals, and fail closed
 on conflicting reviews or missing public provenance. Current suite is 103 passed
 and the complete validation gate passes. Automatic entity resolution, sealed
 negative/outcome cohorts, and Athena optimization remain deferred.
+Reviewed trace cohort 026 now assembles multiple reviewed traces into a local
+hash-bound manifest with unique project IDs and member-hash revalidation. The
+CLI smoke test produced a two-project cohort; current suite is 106 passed and
+the complete validation gate passes. The cohort is a research container only;
+outcome labels, automatic identity resolution, and Athena optimization remain
+deferred.

@@ -226,3 +226,14 @@ scoring.
   or URL similarity alone.
 - Keep automatic entity resolution, outcome sealing, Athena optimization,
   crawling, outreach, and promotion authority outside this boundary.
+
+## Reviewed trace cohort 026
+
+- Assemble only reviewed traces into a manifest keyed by unique project ID,
+  source path, and exact trace hash.
+- Re-verify the cohort hash and every member trace when loading the manifest;
+  tampering or replacement fails closed.
+- Treat the cohort as a reusable research container, not as a positive or
+  negative outcome label.
+- Keep portability packaging, outcome sealing, Athena optimization, crawling,
+  outreach, and promotion authority outside this packet.

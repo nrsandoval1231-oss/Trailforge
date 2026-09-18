@@ -47,6 +47,11 @@ only through a hash-bound, reviewer-authored identity review with an exact
 quote and source provenance. Conflicting reviews fail closed; no name,
 geography, or URL similarity is enough to merge traces automatically.
 
+`build-trace-cohort` creates a local manifest of reviewed traces. It records
+each project ID and trace hash, rejects duplicate projects, and re-verifies the
+member files when loaded. The cohort is a research container, not a training
+label or a claim that every project had a positive outcome.
+
 ## Athena learning boundary
 
 Athena may later compare signal sequences, lead time, precision, recall, and

@@ -28,6 +28,7 @@ from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
 from .tournament import tournament_pipeline
 from .trace_backtest import backtest_traces, load_traces, write_backtest
+from .trace_cohort import build_trace_cohort, write_trace_cohort
 
 
 def _next_action(reason_codes: tuple[str, ...], *, current: bool) -> str:
@@ -83,7 +84,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "resolve-traces", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "backtest-traces", "resolve-traces", "build-trace-cohort", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -101,6 +102,9 @@ def main(argv=None) -> int:
     parser.add_argument("--target-type", choices=[item.value for item in SignalType])
     parser.add_argument("--early-types", nargs="+", choices=[item.value for item in SignalType])
     parser.add_argument("--identity-reviews", help="hash-bound identity review JSON for resolve-traces")
+    parser.add_argument("--cohort-id", help="cohort identifier for build-trace-cohort / evaluate-cohort")
+    parser.add_argument("--assembled-by", help="reviewer identity for build-trace-cohort")
+    parser.add_argument("--assembled-at", help="timezone-aware ISO timestamp for build-trace-cohort")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
@@ -109,12 +113,20 @@ def main(argv=None) -> int:
     parser.add_argument("--verified-at", help="ISO timestamp for seal-prospective (default now)")
     parser.add_argument("--output", help="output path for seal-prospective / evaluate-cohort")
     parser.add_argument("--seals", nargs="+", help="paths to sealed outcome JSON files for evaluate-cohort")
-    parser.add_argument("--cohort-id", help="cohort identifier for evaluate-cohort")
     parser.add_argument("--floor-accuracy", type=float, default=0.0, help="minimum cohort accuracy floor")
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "resolve-traces":
+    if args.mode == "build-trace-cohort":
+        if not args.traces or not args.cohort_id or not args.assembled_by or not args.assembled_at or not args.output:
+            parser.error("build-trace-cohort requires --traces, --cohort-id, --assembled-by, --assembled-at, and --output")
+        manifest = build_trace_cohort(args.traces, cohort_id=args.cohort_id, assembled_by=args.assembled_by,
+                                      assembled_at=datetime.fromisoformat(args.assembled_at))
+        write_trace_cohort(manifest, args.output)
+        result = {"status": "PASS", "mode": "build-trace-cohort", "cohort_id": manifest.cohort_id,
+                  "project_count": manifest.project_count, "cohort_hash": manifest.cohort_hash,
+                  "output": args.output}
+    elif args.mode == "resolve-traces":
         if not args.traces or not args.identity_reviews or not args.output:
             parser.error("resolve-traces requires --traces, --identity-reviews, and --output")
         resolved = resolve_traces(load_traces(args.traces), load_identity_reviews(args.identity_reviews))
