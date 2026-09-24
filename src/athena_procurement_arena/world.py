@@ -11,6 +11,7 @@ from .foundation import (
     FrozenDecision,
     FrozenDecisionLedger,
     Scenario,
+    validate_recommended_action,
     validate_scenario,
 )
 
@@ -38,16 +39,18 @@ class TemporalWorld:
     def step(self) -> WorldObservation:
         if self._cursor + 1 >= len(self.scenario.timeline):
             raise StopIteration("scenario timeline exhausted")
-        self._cursor += 1
-        now = self.scenario.timeline[self._cursor]
+        next_cursor = self._cursor + 1
+        now = self.scenario.timeline[next_cursor]
         visible = tuple(sorted(e.evidence_id for e in self.scenario.evidence if e.visible_at(now)))
         visible_items = tuple(e for e in self.scenario.evidence if e.evidence_id in visible)
         state = {"scenario_id": self.scenario.scenario_id, "time": now,
                  "visible_evidence_ids": visible, "visible_evidence": visible_items,
                  "seed": self.scenario.seed}
         forecast, action = self.policy(state)
+        validate_recommended_action(action)
         decision = self.ledger.append(FrozenDecision(self.scenario.scenario_id, now,
             self.policy_id, visible, forecast, action))
+        self._cursor = next_cursor
         return WorldObservation(self.scenario.scenario_id, now, visible, decision.record_hash)
 
     def run(self) -> tuple[WorldObservation, ...]:

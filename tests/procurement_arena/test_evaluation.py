@@ -1,8 +1,11 @@
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 
 from athena_procurement_arena import (
     BaselineA,
     EvidenceEvent,
+    FrozenDecision,
+    FrozenDecisionLedger,
     GroundTruth,
     Scenario,
     TemporalWorld,
@@ -25,6 +28,25 @@ def test_evaluator_keeps_component_metrics_separate_and_unknown_power_explicit()
     assert set(result.as_dict()) == {"discovery", "trail", "procurement", "power", "action", "efficiency", "invariant_status"}
     assert result.power["status"] == "UNAVAILABLE"
     assert result.discovery["precision"] == 1.0
+    assert result.invariant_status == "PASS"
+
+def test_evaluator_fails_on_corrupt_ledger_and_keeps_missing_basis_unknown():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    scenario = Scenario("eval", "1", 3, (t,), (), GroundTruth("p1", "FUNDED"))
+    world = TemporalWorld(scenario, BaselineA.policy_id, BaselineA())
+    world.run()
+    assert evaluate_replay(scenario, ()).invariant_status == "UNKNOWN"
+    corrupted = (replace(world.ledger.records[0], record_hash="bad"),)
+    assert evaluate_replay(scenario, corrupted).invariant_status == "FAIL"
+
+def test_evaluator_fails_verified_unauthorized_actions():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    scenario = Scenario("eval", "1", 3, (t,), (), GroundTruth("p1", "FUNDED"))
+    for action in ("ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"):
+        ledger = FrozenDecisionLedger()
+        ledger.append(FrozenDecision("eval", t, "policy", (), {}, action))
+        assert ledger.verify()
+        assert evaluate_replay(scenario, ledger.records).invariant_status == "FAIL"
 
 def test_power_evaluator_reports_numeric_error_only_for_verified_truth():
     profile = ({"gap_mw": 6}, {"gap_mw": 0})

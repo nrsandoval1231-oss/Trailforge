@@ -70,6 +70,22 @@ def test_evidence_and_decision_snapshots_are_detached():
     with pytest.raises(TypeError):
         decision.forecast["nested"] = "changed"
 
+def test_nested_forecast_is_detached_deeply_and_remains_hash_valid():
+    source = {"nested": {"items": [1, {"value": "before"}], "tags": {"a", "b"}}}
+    ledger = FrozenDecisionLedger()
+    record = ledger.append(FrozenDecision("s", T0, "p", (), source, "WATCH"))
+    source["nested"]["items"][1]["value"] = "after"
+    source["nested"]["items"].append(3)
+    source["nested"]["tags"].add("c")
+    assert record.forecast["nested"]["items"][1]["value"] == "before"
+    assert record.forecast["nested"]["items"] == (1, {"value": "before"})
+    assert record.forecast["nested"]["tags"] == frozenset({"a", "b"})
+    with pytest.raises(TypeError):
+        record.forecast["nested"]["items"][1]["value"] = "mutated"
+    with pytest.raises(AttributeError):
+        record.forecast["nested"]["items"].append(4)
+    assert ledger.verify()
+
 def test_tenant_and_commercial_action_invariants_are_fail_closed():
     foreign = EvidenceEvent("foreign", "s", T0, T0, T0, T0, tenant_id="other")
     with pytest.raises(InvariantViolation, match="I-07"):

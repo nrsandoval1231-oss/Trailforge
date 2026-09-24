@@ -1,8 +1,11 @@
 from datetime import UTC, datetime, timedelta
 
+import pytest
+
 from athena_procurement_arena import (
     EvidenceEvent,
     GroundTruth,
+    InvariantViolation,
     Scenario,
     ScenarioDsl,
     TemporalWorld,
@@ -26,6 +29,14 @@ def test_world_reveals_only_available_evidence_and_freezes_each_step():
     assert observations[0].visible_evidence_ids == ("early",)
     assert observations[1].visible_evidence_ids == ("early", "late")
     assert len(world.ledger.records) == 2 and world.ledger.verify()
+
+@pytest.mark.parametrize("action", ["ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"])
+def test_world_rejects_unapproved_consequential_actions_without_recording(action):
+    world = TemporalWorld(scenario(), "test", lambda state: ({}, action))
+    with pytest.raises(InvariantViolation, match="I-10"):
+        world.step()
+    assert world.ledger.records == ()
+    assert world._cursor == -1
 
 def test_same_seed_and_inputs_replay_identically():
     first, second = TemporalWorld(scenario(), "BASELINE_A", policy), TemporalWorld(scenario(), "BASELINE_A", policy)

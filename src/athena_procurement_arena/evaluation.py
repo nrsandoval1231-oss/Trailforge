@@ -1,10 +1,28 @@
 """Component metrics for deterministic policy replay."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import Any
 
+from athena_arena.contracts import canonical_hash
+
 from .foundation import FrozenDecision, Scenario
+
+
+def _verify_decisions(decisions: tuple[FrozenDecision, ...]) -> bool | None:
+    """Verify supplied decision hashes; missing decisions have no basis."""
+    if not decisions:
+        return None
+    previous = ""
+    for decision in decisions:
+        if decision.previous_hash != previous:
+            return False
+        payload = {item.name: getattr(decision, item.name) for item in fields(decision)
+                   if item.name != "record_hash"}
+        if decision.record_hash != canonical_hash(payload):
+            return False
+        previous = decision.record_hash
+    return True
 
 
 def evaluate_power_profile(profile: tuple[dict[str, Any], ...], expected_peak_gap_mw: float | None) -> dict[str, Any]:
@@ -45,7 +63,7 @@ class EvaluationResult:
     power: dict[str, float | int | None]
     action: dict[str, float | int | None]
     efficiency: dict[str, float | int | None]
-    invariant_status: str = "PASS"
+    invariant_status: str = "UNKNOWN"
 
     def as_dict(self) -> dict[str, Any]:
         return {"discovery": self.discovery, "trail": self.trail, "procurement": self.procurement,
@@ -55,6 +73,14 @@ class EvaluationResult:
 
 def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -> EvaluationResult:
     """Evaluate independently observable dimensions; unavailable truth stays unavailable."""
+    verified = _verify_decisions(decisions)
+    if verified is None:
+        invariant_status = "UNKNOWN"
+    elif not verified or any(item.action in {"ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"}
+                             for item in decisions):
+        invariant_status = "FAIL"
+    else:
+        invariant_status = "PASS"
     visible = set().union(*(set(item.visible_evidence_ids) for item in decisions)) if decisions else set()
     expected = scenario.truth.procurement_episode_id
     recognized = any(expected in item.visible_evidence_ids for item in decisions)
@@ -74,4 +100,5 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
         power={"numeric_error_mw": None, "status": "UNAVAILABLE"},
         action={"actionable_steps": actionable, "attention_burden": len(decisions)},
         efficiency={"decision_count": len(decisions)},
+        invariant_status=invariant_status,
     )

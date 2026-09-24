@@ -44,7 +44,8 @@ def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str,
     _, peak_memory_bytes = tracemalloc.get_traced_memory()
     tracemalloc.stop()
     executed_runs = count * len(policies)
-    return {"status": "PASS", "count": count, "seed": seed, "policies": totals,
+    failures = sum(item["invariant_failures"] for item in totals.values())
+    return {"status": "FAIL" if failures else "PASS", "count": count, "seed": seed, "policies": totals,
             "elapsed_seconds": round(elapsed, 6), "runs_per_second": round(count / elapsed, 2),
             "observability": {
                 "executed_policy_runs": executed_runs,
@@ -54,7 +55,7 @@ def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str,
                 "storage_bytes": 0,
                 "athena_model_calls": 0,
                 "estimated_cost": 0.0,
-                "failures": sum(item["invariant_failures"] for item in totals.values()),
+                "failures": failures,
             }}
 
 
@@ -68,7 +69,8 @@ def run_family_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, Any]
             world.run()
             totals[name]["runs"] += 1
             totals[name]["invariant_failures"] += int(not world.ledger.verify())
-    return {"status": "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": totals}
+    failures = sum(item["invariant_failures"] for item in totals.values())
+    return {"status": "FAIL" if failures else "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": totals}
 
 
 def run_regression_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:
@@ -94,7 +96,8 @@ def run_regression_campaign(policies: dict[str, Callable[[Any], tuple[dict[str, 
                          "discovery_precision": sum(precisions) / len(precisions) if precisions else None,
                          "power_evaluated_runs": len(rows_with_power),
                          "actionable_steps": sum(row.action["actionable_steps"] for row in rows)}
-    return {"status": "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": results}
+    failures = sum(item["invariant_failures"] for item in results.values())
+    return {"status": "FAIL" if failures else "PASS", "family_count": len(SCENARIO_FAMILIES), "seed": seed, "policies": results}
 
 
 def run_mutation_campaign(base: Scenario, count: int, policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:
@@ -107,4 +110,5 @@ def run_mutation_campaign(base: Scenario, count: int, policies: dict[str, Callab
             world.run()
             totals[name]["runs"] += 1
             totals[name]["invariant_failures"] += int(not world.ledger.verify())
-    return {"status": "PASS", "variant_count": count, "seed": seed, "policies": totals}
+    failures = sum(item["invariant_failures"] for item in totals.values())
+    return {"status": "FAIL" if failures else "PASS", "variant_count": count, "seed": seed, "policies": totals}

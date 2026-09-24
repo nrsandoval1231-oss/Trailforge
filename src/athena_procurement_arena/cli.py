@@ -368,7 +368,8 @@ def main(argv=None) -> int:
         from .world import TemporalWorld
         world = TemporalWorld(adversarial_recurrence_world(args.seed), baseline.policy_id, baseline)
         world.run()
-        result = {"status": "PASS", "attacks": 1, "invariant_failures": int(not world.ledger.verify()),
+        failures = int(not world.ledger.verify())
+        result = {"status": "FAIL" if failures else "PASS", "attacks": 1, "invariant_failures": failures,
                   "predicted_state": world.ledger.records[0].forecast["procurement"]["state"]}
     elif args.mode == "unit":
         suite = Path(__file__).resolve().parents[2] / "tests" / "procurement_arena"

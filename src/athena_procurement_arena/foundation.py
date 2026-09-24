@@ -24,6 +24,17 @@ class InvariantViolation(ValueError):
     """A hard Arena invariant was violated."""
 
 
+def _deep_freeze(value: Any) -> Any:
+    """Detach nested containers and expose immutable equivalents."""
+    if isinstance(value, Mapping):
+        return MappingProxyType({key: _deep_freeze(item) for key, item in value.items()})
+    if isinstance(value, (list, tuple)):
+        return tuple(_deep_freeze(item) for item in value)
+    if isinstance(value, (set, frozenset)):
+        return frozenset(_deep_freeze(item) for item in value)
+    return value
+
+
 class ClaimBasis(StrEnum):
     REPORTED = "REPORTED"
     CALCULATED = "CALCULATED"
@@ -243,7 +254,7 @@ class FrozenDecision:
 
     def __post_init__(self) -> None:
         _aware(self.simulation_time, "simulation_time")
-        object.__setattr__(self, "forecast", MappingProxyType(dict(self.forecast)))
+        object.__setattr__(self, "forecast", _deep_freeze(self.forecast))
 
 
 class FrozenDecisionLedger:

@@ -1,0 +1,75 @@
+{
+  "packet": "arena-invariant-repair-033",
+  "status": "IMPLEMENTED_PENDING_CONTROLLER_REVIEW",
+  "base_sha": "24c7990149190fdb9632c5f3401f0773fc1e9b38",
+  "branch": "codex/arena-invariant-repair-033",
+  "changed_files": [
+    "src/athena_procurement_arena/campaign.py",
+    "src/athena_procurement_arena/cli.py",
+    "src/athena_procurement_arena/evaluation.py",
+    "src/athena_procurement_arena/foundation.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_campaign.py",
+    "tests/procurement_arena/test_cli.py",
+    "tests/procurement_arena/test_evaluation.py",
+    "tests/procurement_arena/test_foundation.py",
+    "tests/procurement_arena/test_world.py",
+    ".agent/artifacts/arena-invariant-repair-033/COMPLETION.md",
+    ".agent/artifacts/arena-invariant-repair-033/COMPLETION.json"
+  ],
+  "validation": {
+    "full_local": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "tests_passed": 132,
+      "compilation": "PASS",
+      "ruff": "PASS",
+      "bundle_checks": [
+        {"fixture": "GT-003", "status": "PASS", "holdout_available": false},
+        {"fixture": "GT-007", "status": "PASS", "holdout_available": false},
+        {"fixture": "GT-008", "status": "PASS", "holdout_available": false}
+      ]
+    },
+    "focused": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_evaluation.py",
+      "exit_code": 0,
+      "tests_passed": 6
+    },
+    "git_diff_check": {"command": "git diff --check", "exit_code": 0}
+  },
+  "repairs": [
+    {
+      "attempt": 1,
+      "issue": "Ruff import-order findings after initial implementation",
+      "outcome": "Imports corrected; complete local validation passed."
+    },
+    {
+      "attempt": 2,
+      "issue": "Controller probe showed verified unauthorized ENGAGE decision could yield evaluator PASS",
+      "outcome": "Evaluator now returns FAIL for ENGAGE and READY_FOR_AUTHORIZED_SUBMISSION; focused and full local validation passed."
+    }
+  ],
+  "repair_count": 2,
+  "authority": {
+    "scope": "Research-only deterministic Arena mechanics",
+    "real_world_forecast_accuracy": "UNKNOWN",
+    "commercial_approval": "ABSENT",
+    "policy_promotion": "NOT PERFORMED",
+    "network_or_github_validation": "NOT PERFORMED",
+    "commit_push_merge_deploy": "NOT PERFORMED"
+  },
+  "independent_review": "PENDING_CONTROLLER_REVIEW",
+  "metrics": {
+    "utc_start": "UNKNOWN",
+    "utc_finish": "UNKNOWN",
+    "planning_duration": "UNKNOWN",
+    "build_duration": "UNKNOWN",
+    "validation_duration": "UNKNOWN",
+    "audit_duration": "UNKNOWN",
+    "elapsed_to_accepted": "UNKNOWN",
+    "model": "UNKNOWN",
+    "config_identity": "UNKNOWN",
+    "measured_tokens": "UNKNOWN",
+    "token_usage": "UNKNOWN"
+  }
+}

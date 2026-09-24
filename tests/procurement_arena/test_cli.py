@@ -26,6 +26,33 @@ def test_cli_adversarial_and_tournament_execute_governed_paths(capsys):
     assert adversarial["predicted_state"] == "UNKNOWN"
     assert tournament["governance"]["outcome"] == "QUARANTINE"
 
+def test_cli_campaign_propagates_invariant_failure(monkeypatch, capsys):
+    monkeypatch.setattr(cli, "run_campaign", lambda *args, **kwargs: {
+        "status": "FAIL", "policies": {"BASELINE_A": {"invariant_failures": 1}}})
+    assert main(["batch", "--count", "1"]) == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "FAIL"
+
+def test_cli_adversarial_propagates_bad_ledger(monkeypatch, capsys):
+    import athena_procurement_arena.world as world_module
+    class BadLedger:
+        records = (SimpleNamespace(forecast={"procurement": {"state": "UNKNOWN"}}),)
+
+        def verify(self):
+            return False
+
+    class BadWorld:
+        def __init__(self, *args, **kwargs):
+            self.ledger = BadLedger()
+
+        def run(self):
+            return ()
+
+    monkeypatch.setattr(world_module, "TemporalWorld", BadWorld)
+    assert main(["adversarial", "--seed", "5"]) == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "FAIL" and payload["invariant_failures"] == 1
+
 
 def test_cli_shortlist_emits_only_current_qualified_provenance(tmp_path, capsys):
     scenario = synthetic_scenario(5)
