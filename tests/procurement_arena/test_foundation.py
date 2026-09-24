@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 
 import pytest
@@ -85,6 +86,16 @@ def test_nested_forecast_is_detached_deeply_and_remains_hash_valid():
     with pytest.raises(AttributeError):
         record.forecast["nested"]["items"].append(4)
     assert ledger.verify()
+
+def test_nested_mutable_dataclass_forecast_is_rejected():
+    @dataclass
+    class MutableForecast:
+        items: list[str]
+
+    caller_value = MutableForecast(["before"])
+    with pytest.raises(InvariantViolation, match="dataclass values are unsupported"):
+        FrozenDecision("s", T0, "p", (), {"nested": [{"payload": caller_value}]}, "WATCH")
+    caller_value.items.append("after")
 
 def test_tenant_and_commercial_action_invariants_are_fail_closed():
     foreign = EvidenceEvent("foreign", "s", T0, T0, T0, T0, tenant_id="other")

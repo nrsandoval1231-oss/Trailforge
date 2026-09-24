@@ -6,7 +6,7 @@ submission, or execution authority.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass, field, fields, replace
+from dataclasses import dataclass, field, fields, is_dataclass, replace
 from datetime import datetime
 from enum import StrEnum
 from itertools import pairwise
@@ -26,6 +26,8 @@ class InvariantViolation(ValueError):
 
 def _deep_freeze(value: Any) -> Any:
     """Detach nested containers and expose immutable equivalents."""
+    if is_dataclass(value):
+        raise InvariantViolation("forecast dataclass values are unsupported")
     if isinstance(value, Mapping):
         return MappingProxyType({key: _deep_freeze(item) for key, item in value.items()})
     if isinstance(value, (list, tuple)):
