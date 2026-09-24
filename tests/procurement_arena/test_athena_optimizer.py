@@ -1,6 +1,7 @@
 import pytest
 
 from athena_procurement_arena.athena_optimizer import (
+    _robustness_pass,
     evaluate_policy,
     run_athena_optimization,
     weighted_threshold_policy,
@@ -36,3 +37,17 @@ def test_weighted_threshold_is_bounded_and_tunable():
     assert low["runs"] == high["runs"] == 40
     assert low["invariant_failures"] == high["invariant_failures"] == 0
     assert low["alerts"] >= high["alerts"]
+
+
+def test_athena_counterfactual_gate_rejects_confidence_only_response():
+    def confidence_only(state):
+        extension_seen = any(
+            "contract_extension" in item.claims for item in state["visible_evidence"]
+        )
+        confidence = 0.2 if extension_seen else 0.1
+        return {"procurement": {"state": "UNKNOWN", "confidence": confidence},
+                "power": {"status": "UNKNOWN", "peak_gap_mw": None}}, "IGNORE"
+
+    adversarial_pass, counterfactual_pass = _robustness_pass("CONFIDENCE_ONLY", confidence_only, 9)
+    assert adversarial_pass is True
+    assert counterfactual_pass is False

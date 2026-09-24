@@ -10,7 +10,11 @@ from .world import TemporalWorld
 
 
 def paired_extension_worlds(base: Scenario) -> tuple[Scenario, Scenario]:
-    """Create a minimally different extension/no-extension pair."""
+    """Add the synthetic extension claim used to probe policy response.
+
+    The claim deliberately uses ``extension=True`` because BASELINE_A recognizes
+    that token. It is a counterfactual signal, not a change to fixture truth.
+    """
     extension = EvidenceEvent("extension", "contract", base.timeline[0], base.timeline[0],
                               base.timeline[0], base.timeline[0], {"extension": True},
                               tenant_id=base.tenant_id)
@@ -27,23 +31,35 @@ def counterfactual_sensitivity(base: Scenario, policy_id: str, policy: Any) -> d
     left_result = _material_result(left_world)
     right_result = _material_result(right_world)
     changed = left_result != right_result
+    confidence_changed = _confidence(left_world) != _confidence(right_world)
     return {"changed": changed, "observed_material_change": changed,
+            "observed_confidence_change": confidence_changed,
             "left_material": left_result, "right_material": right_result,
             "left_hash": left_world.replay_hash(), "right_hash": right_world.replay_hash()}
 
 
 def _material_result(world: TemporalWorld) -> dict[str, Any]:
-    """Return policy answers, excluding provenance and descriptive pattern details."""
+    """Return substantive policy answers, excluding confidence and provenance."""
     decision = world.ledger.records[-1]
     procurement = decision.forecast.get("procurement", {})
     power = decision.forecast.get("power", {})
     return {
         "procurement_state": procurement.get("state"),
-        "procurement_confidence": procurement.get("confidence"),
         "power_status": power.get("status"),
         "power_gap_mw": power.get("peak_gap_mw"),
         "action": decision.action,
     }
+
+
+def _confidence(world: TemporalWorld) -> Any:
+    return world.ledger.records[-1].forecast.get("procurement", {}).get("confidence")
+
+
+def _confidence_increased(left: TemporalWorld, right: TemporalWorld) -> bool:
+    left_value, right_value = _confidence(left), _confidence(right)
+    return (isinstance(left_value, (int, float)) and not isinstance(left_value, bool)
+            and isinstance(right_value, (int, float)) and not isinstance(right_value, bool)
+            and right_value > left_value)
 
 
 def counterfactual_fact_sensitivity(base: Scenario, policy_id: str, policy: Any,
@@ -61,9 +77,13 @@ def counterfactual_fact_sensitivity(base: Scenario, policy_id: str, policy: Any,
     left_material = _material_result(left)
     right_material = _material_result(right)
     changed = left_material != right_material
-    passed = changed == expected_change
+    confidence_increased = _confidence_increased(left, right)
+    # Required cases demand a substantive policy response. Stability cases also
+    # reject confidence inflation even when state, power, and action stay fixed.
+    passed = changed if expected_change else not changed and not confidence_increased
     return {"fact": fact_name, "expected_material_change": expected_change,
             "observed_material_change": changed, "changed": changed, "passed": passed,
+            "confidence_increased": confidence_increased,
             "left_material": left_material, "right_material": right_material,
             "left_hash": left.replay_hash(), "right_hash": right.replay_hash()}
 

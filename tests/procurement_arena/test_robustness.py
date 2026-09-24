@@ -60,3 +60,27 @@ def test_constant_policy_fails_required_change_despite_distinct_replay_hashes():
     assert extension["left_hash"] != extension["right_hash"]
     assert extension["changed"] is False
     assert extension["passed"] is False
+
+
+def test_confidence_only_policy_fails_required_change_and_stability_inflation():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    base = Scenario("confidence-only", "1", 9, (t,), (), GroundTruth("p", "OPEN"))
+
+    def confidence_only(state):
+        claims = [item.claims for item in state["visible_evidence"]]
+        confidence = 0.2 if any(any(name in row for name in (
+            "contract_extension", "cancellation", "private_procurement",
+            "duplicate_procurement", "unknown_supply",
+        )) for row in claims) else 0.1
+        return {"procurement": {"state": "UNKNOWN", "confidence": confidence},
+                "power": {"status": "UNKNOWN", "peak_gap_mw": None}}, "IGNORE"
+
+    results = counterfactual_suite(base, "CONFIDENCE_ONLY", confidence_only)
+    by_fact = {item["fact"]: item for item in results}
+    for fact in ("contract_extension", "cancellation", "private_procurement"):
+        assert by_fact[fact]["observed_material_change"] is False
+        assert by_fact[fact]["confidence_increased"] is True
+        assert by_fact[fact]["passed"] is False
+    for fact in ("duplicate_procurement", "unknown_supply"):
+        assert by_fact[fact]["confidence_increased"] is True
+        assert by_fact[fact]["passed"] is False

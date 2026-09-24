@@ -1,0 +1,8 @@
+{
+  "candidate": "a89751add5ae8776d9e50857b37ac654999e00f5",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "finding": "A policy that changes only procurement confidence for required-change facts passes despite unchanged procurement state, power status/gap, and action.",
+  "evidence": "Read-only diagnostic showed UNKNOWN/UNKNOWN/IGNORE with confidence 0.1 to 0.2 reports passed=true for all five pairs; robustness.py included confidence in the sole change predicate.",
+  "direction": "Separate substantive response from confidence; required-change pairs must alter state, power, or action, while stability pairs must reject certainty inflation. Add regression and optimizer-gate assertion. Document extension helper evidence semantics."
+}
