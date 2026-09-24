@@ -1,7 +1,8 @@
 # Episode: arena-invariant-repair-033
 
-State: Build Packet #0 audit at `24c7990` returned `CORRECT` for mutable nested
-forecasts and false-clean invariant status. The repository was clean on `main`.
+State: Build Packet #0 audit of `b73dd45` returned `CORRECT` for mutable nested
+forecasts and false-clean invariant status. Commit `24c7990` later recorded
+that audit and became packet 033's base; the repository was clean on `main`.
 
 Decision: repair only those two hard-invariant surfaces on local branch
 `codex/arena-invariant-repair-033`; use the complete local validation gate and
