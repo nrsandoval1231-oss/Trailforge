@@ -1,40 +1,40 @@
 {
   "packet": "counterfactual-sensitivity-034",
   "status": "REPAIR_READY_FOR_REVIEW",
-  "base_commit": "a89751add5ae8776d9e50857b37ac654999e00f5",
+  "base_commit": "dac2ed431fc9ae1332ad82a90b8a07f06aedad4c",
   "candidate": "uncommitted working tree on codex/counterfactual-sensitivity-034; no commit created",
-  "repair_summary": "Addressed Astra REVIEW-1 CORRECT finding: confidence-only changes no longer count as substantive policy response, and stability cases reject confidence inflation.",
+  "repair_summary": "Addressed Astra REVIEW-2 CORRECT finding. Stability checks now treat newly asserted numeric confidence after missing/unknown confidence as inflation and fail closed.",
   "implementation": [
-    "Substantive response compares procurement state, power status/gap, and recommended action; confidence is measured separately.",
-    "Required-change pairs pass only when substantive response changes. Stability pairs pass only when substantive response is stable and confidence does not increase.",
-    "Replay hashes remain provenance and cannot satisfy the counterfactual gate.",
-    "Documented paired_extension_worlds extension=True as the recognized synthetic counterfactual signal, not fixture truth manipulation."
+    "Substantive policy response compares procurement state, power status/gap, and action independently of confidence.",
+    "Required-change cases require substantive response. Stability cases require no substantive response and no confidence increase.",
+    "Numeric confidence after absent or nonnumeric prior confidence is an increase; numeric-to-numeric confidence is an increase only when the new value is higher.",
+    "Replay hashes remain provenance. The extension helper uses extension=True as a synthetic recognized signal and does not alter fixture truth."
   ],
   "baseline_a_synthetic_seed_9": {
     "passed": ["contract_extension", "duplicate_procurement", "unknown_supply", "private_procurement"],
     "failed": ["cancellation"],
-    "note": "Cancellation remains a visible sensitivity failure; policy and fixtures were not changed to force a pass."
+    "note": "Cancellation remains an observed sensitivity failure; policy and fixtures were not changed to force a pass."
   },
   "changed_files": [
     "src/athena_procurement_arena/robustness.py",
     "tests/procurement_arena/test_robustness.py",
-    "tests/procurement_arena/test_athena_optimizer.py"
+    ".agent/artifacts/counterfactual-sensitivity-034/COMPLETION.json"
   ],
   "validation": [
     {
       "command": "uv run --python 3.11 --with pytest pytest -q tests/procurement_arena/test_robustness.py tests/procurement_arena/test_athena_optimizer.py",
       "exit_code": 0,
-      "result": "9 passed"
+      "result": "10 passed"
     },
     {
-      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/robustness.py tests/procurement_arena/test_robustness.py tests/procurement_arena/test_athena_optimizer.py",
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/robustness.py tests/procurement_arena/test_robustness.py",
       "exit_code": 0,
       "result": "All checks passed"
     },
     {
       "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
       "exit_code": 0,
-      "result": "136 tests passed; source compilation passed; Ruff passed; all three verified fixture bundles passed"
+      "result": "137 tests passed; source compilation passed; Ruff passed; all three verified fixture bundles passed"
     },
     {
       "command": "git diff --check",
@@ -43,7 +43,7 @@
     }
   ],
   "unknowns": [
-    "GitHub CI/network validation was not run per packet.",
-    "Candidate remains uncommitted for controller and fresh independent review."
+    "GitHub CI/network validation was not run per instruction.",
+    "Candidate remains uncommitted for fresh independent review."
   ]
 }

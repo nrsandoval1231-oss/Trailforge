@@ -57,9 +57,13 @@ def _confidence(world: TemporalWorld) -> Any:
 
 def _confidence_increased(left: TemporalWorld, right: TemporalWorld) -> bool:
     left_value, right_value = _confidence(left), _confidence(right)
-    return (isinstance(left_value, (int, float)) and not isinstance(left_value, bool)
-            and isinstance(right_value, (int, float)) and not isinstance(right_value, bool)
-            and right_value > left_value)
+    right_is_numeric = isinstance(right_value, (int, float)) and not isinstance(right_value, bool)
+    if not right_is_numeric:
+        return False
+    left_is_numeric = isinstance(left_value, (int, float)) and not isinstance(left_value, bool)
+    # A newly asserted numeric confidence after missing/unknown confidence is
+    # an increase in certainty, and stability cases must fail closed on it.
+    return not left_is_numeric or right_value > left_value
 
 
 def counterfactual_fact_sensitivity(base: Scenario, policy_id: str, policy: Any,

@@ -84,3 +84,29 @@ def test_confidence_only_policy_fails_required_change_and_stability_inflation():
     for fact in ("duplicate_procurement", "unknown_supply"):
         assert by_fact[fact]["confidence_increased"] is True
         assert by_fact[fact]["passed"] is False
+
+
+def test_stability_cases_reject_numeric_confidence_from_none_or_missing():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    base = Scenario("unknown-confidence", "1", 9, (t,), (), GroundTruth("p", "OPEN"))
+
+    for prior_confidence in (None, "missing"):
+        def policy(state, confidence=prior_confidence):
+            added_claims = [item.claims for item in state["visible_evidence"]]
+            stability_fact = any(any(name in claims for name in (
+                "duplicate_procurement", "unknown_supply",
+            )) for claims in added_claims)
+            procurement = {"state": "UNKNOWN"}
+            if confidence != "missing":
+                procurement["confidence"] = 0.9 if stability_fact else confidence
+            elif stability_fact:
+                procurement["confidence"] = 0.9
+            return {"procurement": procurement,
+                    "power": {"status": "UNKNOWN", "peak_gap_mw": None}}, "IGNORE"
+
+        results = counterfactual_suite(base, "UNKNOWN_CONFIDENCE", policy)
+        for case in results:
+            if case["fact"] in {"duplicate_procurement", "unknown_supply"}:
+                assert case["observed_material_change"] is False
+                assert case["confidence_increased"] is True
+                assert case["passed"] is False
