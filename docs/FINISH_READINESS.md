@@ -1,12 +1,17 @@
 # Finish readiness — Build Packet #0
 
-Snapshot basis: local `main` and GitHub `main` at
-`ad55a4e46747fd70a9a072c746696f863b7d866f` before this documentation
-candidate. The controlling packet and its hash are identified in
+Audit basis: merged local `main` and GitHub `main` at
+`b73dd45330b4628f1ba3c2680e99176db10a3400` before this audit-report
+revision. The controlling packet and its hash are identified in
 [PRD alignment](PRD_ALIGNMENT.md). This is an evidence inventory, not final
 acceptance or a real-world accuracy claim.
 
 ## 1. Requirements supported by repository evidence
+
+The [20-item acceptance audit](BUILD_PACKET_0_AUDIT.md) of the merged code
+returned `CORRECT`: four bounded items have repository proof, fifteen are
+partial, and durable negative knowledge is unproven. The table below locates
+existing mechanics; it is not a claim that these item groups are complete.
 
 | Build Packet #0 definition-of-done items | Current evidence |
 | --- | --- |
@@ -22,18 +27,16 @@ Synthetic fixtures and tests prove mechanics only.
 
 ## 2. Fresh independent acceptance needed
 
-An independent reviewer must inspect the exact final candidate against all 20
-packet items, the first execution campaign requirements, current code/tests,
-and the local validation evidence. In particular, confirm the 40-family and
-1,000-variant coverage, the 10,000-run claim and 100,000-run path, manifest
-replay, invariant failures, the authority boundary, and that the documents do
-not turn mechanics evidence into completion or accuracy claims. This document
-does not grant that acceptance.
+The independent 20-item audit found frozen-ledger, invariant invalidation,
+counterfactual sensitivity, power accounting, and evidence-persistence gaps.
+After bounded repairs, a fresh reviewer must inspect the exact new candidate
+against all packet items and the first execution campaign. The current audit
+does not grant packet acceptance.
 
 ## 3. External blocker
 
-The latest GitHub `main` CI run for the baseline SHA
-([run 35389917871](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/35389917871))
+The latest GitHub `main` CI run for the merged SHA
+([run 36067565548](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36067565548))
 failed before any steps started. GitHub's check annotation says recent account
 payments failed or the spending limit needs to be increased. This is an
 account/billing blocker; the remote test result remains unavailable. Keep the
