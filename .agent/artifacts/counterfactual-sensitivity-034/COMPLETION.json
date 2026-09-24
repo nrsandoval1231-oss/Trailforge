@@ -1,0 +1,48 @@
+{
+  "packet": "counterfactual-sensitivity-034",
+  "status": "PASS",
+  "base_commit": "e62df7a73f31fc41329bdeffdc985e32d5940d03",
+  "candidate": "uncommitted working tree on codex/counterfactual-sensitivity-034; no commit created",
+  "implementation": [
+    "Compare material procurement state/confidence, power status/gap, and recommended action; preserve replay hashes as provenance only.",
+    "Each suite row reports expected_material_change, observed_material_change, and passed.",
+    "Define expected changes for extension, cancellation, and private procurement; expect stability for duplicate and unknown-supply evidence.",
+    "Athena robustness gating consumes passed, so replay-hash changes cannot satisfy the gate."
+  ],
+  "baseline_a_synthetic_seed_9": {
+    "passed": ["contract_extension", "duplicate_procurement", "unknown_supply", "private_procurement"],
+    "failed": ["cancellation"],
+    "note": "Cancellation remains a visible sensitivity failure; policy or fixtures were not changed to force a pass."
+  },
+  "changed_files": [
+    "src/athena_procurement_arena/robustness.py",
+    "src/athena_procurement_arena/athena_optimizer.py",
+    "tests/procurement_arena/test_robustness.py"
+  ],
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest -q tests/procurement_arena/test_robustness.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "result": "7 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/robustness.py src/athena_procurement_arena/athena_optimizer.py tests/procurement_arena/test_robustness.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "134 tests passed; compile source passed; Ruff passed; three verified fixture bundles passed"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "Passed; Git reported LF-to-CRLF normalization warnings for the three modified source/test files"
+    }
+  ],
+  "unknowns": [
+    "GitHub CI/network validation was not run per packet.",
+    "The working tree remains uncommitted for controller review."
+  ]
+}

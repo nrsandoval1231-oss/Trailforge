@@ -1,6 +1,7 @@
 from datetime import UTC, datetime
 
 from athena_procurement_arena import BaselineA, GroundTruth, Scenario
+from athena_procurement_arena.campaign import synthetic_scenario
 from athena_procurement_arena.policies import buyer_frequency
 from athena_procurement_arena.robustness import (
     adversarial_recurrence_world,
@@ -29,4 +30,33 @@ def test_required_counterfactual_suite_covers_five_decisive_facts():
     t = datetime(2026, 1, 1, tzinfo=UTC)
     base = Scenario("suite", "1", 1, (t,), (), GroundTruth("p", "OPEN"))
     results = counterfactual_suite(base, BaselineA.policy_id, BaselineA())
-    assert len(results) == 5 and all(item["changed"] for item in results)
+    assert len(results) == 5
+    assert {item["fact"]: item["expected_material_change"] for item in results} == {
+        "contract_extension": True, "duplicate_procurement": False,
+        "unknown_supply": False, "cancellation": True, "private_procurement": True,
+    }
+    assert all("passed" in item and "observed_material_change" in item for item in results)
+    assert {item["fact"] for item in results if item["passed"]} == {
+        "contract_extension", "duplicate_procurement", "unknown_supply", "private_procurement",
+    }
+
+    baseline = counterfactual_suite(synthetic_scenario(9), BaselineA.policy_id, BaselineA())
+    assert {item["fact"] for item in baseline if item["passed"]} == {
+        "contract_extension", "duplicate_procurement", "unknown_supply", "private_procurement",
+    }
+    assert [item["fact"] for item in baseline if not item["passed"]] == ["cancellation"]
+
+
+def test_constant_policy_fails_required_change_despite_distinct_replay_hashes():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    base = Scenario("constant", "1", 9, (t,), (), GroundTruth("p", "OPEN"))
+
+    def ignore(_state):
+        return {"procurement": {"state": "UNKNOWN", "confidence": 0.0},
+                "power": {"status": "UNKNOWN", "peak_gap_mw": None}}, "IGNORE"
+
+    results = counterfactual_suite(base, "IGNORE", ignore)
+    extension = next(item for item in results if item["fact"] == "contract_extension")
+    assert extension["left_hash"] != extension["right_hash"]
+    assert extension["changed"] is False
+    assert extension["passed"] is False

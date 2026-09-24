@@ -79,7 +79,7 @@ def _robustness_pass(policy_id: str, policy: Policy, seed: int) -> tuple[bool, b
         for record in adversarial.ledger.records
     )
     cases = counterfactual_suite(synthetic_scenario(seed), policy_id, policy)
-    counterfactual_pass = all(case["changed"] for case in cases)
+    counterfactual_pass = all(case["passed"] for case in cases)
     return adversarial_pass, counterfactual_pass
 
 
