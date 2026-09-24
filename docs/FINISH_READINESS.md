@@ -29,6 +29,11 @@ Synthetic fixtures and tests prove mechanics only.
 
 The independent 20-item audit found frozen-ledger, invariant invalidation,
 counterfactual sensitivity, power accounting, and evidence-persistence gaps.
+Local packet 033 repaired the frozen-ledger and invariant-status paths and
+received an independent `ACCEPT` for that bounded slice at `4dc86a5`;
+the [review record](../.agent/artifacts/arena-invariant-repair-033/REVIEW.json)
+retains the exact candidate and local gate. Counterfactual, power, and durable
+knowledge gaps remain open.
 After bounded repairs, a fresh reviewer must inspect the exact new candidate
 against all packet items and the first execution campaign. The current audit
 does not grant packet acceptance.
