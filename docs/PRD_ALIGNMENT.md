@@ -20,8 +20,10 @@ separate evaluation dimensions, invariant checks, seeded mutations, power-scope
 accounting, adversarial/counterfactual cases, Athena candidate artifacts,
 tournament gates, negative knowledge, fixture registry, manifests, and local
 validation. The retained [Campaign 001 report](../reports/ARENA_CAMPAIGN_001_REPORT.md)
-records the 40-family regression, 1,000 variants, 10,000-run campaign, and a
-100,000-run benchmark. These are repository and historical campaign claims,
+records the 40-family regression, 10,000-run campaign, and a 100,000-run
+benchmark. The 1,000-variant mutation check is in
+`tests/procurement_arena/test_campaign.py`. These are repository and historical
+campaign claims,
 not an independent acceptance verdict for the current candidate.
 
 See [Finish readiness](FINISH_READINESS.md) for the requirement evidence map,

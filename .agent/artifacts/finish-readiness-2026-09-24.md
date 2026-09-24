@@ -16,7 +16,13 @@ GitHub `main` run 35389917871 targeted the baseline SHA and failed with zero job
 ## Validation
 
 - `uv run --python 3.11 --with pytest --with ruff python scripts/validate.py`: exit 0; 124 tests passed, source compiled, Ruff passed, GT-003/007/008 bundles validated with `holdout_available: false`.
-- `git diff --check`: exit 0 before handoff creation; repeat on the final candidate.
+- `git diff --cached --check`: exit 0 on the staged documentation candidate.
+
+The independent audit of local candidate
+`7d38cee5b237de1c2d877383ef36f07351824dff` returned `CORRECT`: PRD
+alignment had attributed the 1,000-variant result to Campaign 001, which does
+not record that result. The correction cites the current campaign test. The
+earlier verdict does not cover the corrected candidate.
 
 ## Remaining UNKNOWNs and next bounded packet
 
