@@ -1,0 +1,20 @@
+{
+  "packet": "counterfactual-sensitivity-034",
+  "exact_candidate": "bd8d2a69ca7cd9376476544733fb8536e79fde36",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "bounded counterfactual sensitivity repair only",
+  "independent_review": "Substantive state, power, or action changes are required where expected; stability cases reject certainty inflation, including missing or nonnumeric to numeric confidence. Athena consumes the per-case pass result. Retained fixtures and BASELINE_A were unchanged; cancellation remains a visible failed case.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "137 tests passed; compilation, Ruff, and three verified fixture bundle checks passed; each bundle reported holdout_available false"
+  },
+  "prior_rejections": [
+    "REVIEW-1.json: a89751add5ae8776d9e50857b37ac654999e00f5, CORRECT",
+    "REVIEW-2.json: dac2ed431fc9ae1332ad82a90b8a07f06aedad4c, CORRECT"
+  ],
+  "full_packet_0_accepted": false,
+  "real_world_accuracy": "UNKNOWN",
+  "holdout_available": false
+}
