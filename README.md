@@ -1,8 +1,10 @@
 # Trailforge
 #
 Trailforge is Athena's research-only Procurement Arena: a deterministic
-environment for testing evidence-trail policies. It has no scraper, customer
-outreach, bid autofill, submission, broker, or execution authority.
+environment for testing evidence-trail policies. It permits explicit,
+reviewer-bound public capture, but has no autonomous discovery, production
+scraper, customer outreach, bid autofill, submission, broker, or execution
+authority.
 
 ## Check
 `uv run --python 3.11 --with pytest --with ruff python -m pytest -q`
@@ -10,8 +12,10 @@ outreach, bid autofill, submission, broker, or execution authority.
 The complete local gate is available on Windows with
 `powershell -ExecutionPolicy Bypass -File scripts\validate.ps1`; it runs the
 test suite, source compilation, and Ruff. GitHub Actions is configured for the
-same checks, but the private repository currently has no available hosted or
-self-hosted runner, so a remote run may fail before checkout.
+same checks. The latest `main` run was blocked before steps started by a GitHub
+account payment or spending-limit annotation; remote validation is pending
+resolution of that external issue. See [finish readiness](docs/FINISH_READINESS.md)
+for the current evidence and acceptance boundaries.
 
 Run a comparison with:
 
@@ -21,8 +25,10 @@ Run the required domain and invariant suite through the CLI with:
 
 `uv run --python 3.11 --with pytest python -m athena_procurement_arena unit`
 
-Historical fixtures are deliberately `UNVERIFIED` until point-in-time
-availability is independently established.
+The built-in historical replay registry is `UNVERIFIED`. Checked-in
+source-backed GT-003, GT-007, and GT-008 bundles are `VERIFIED`, but none is
+`SEALED_READY` or part of a sealed holdout. They remain non-scoreable as
+real-world forecast evidence.
 
 ## Current opportunity shortlist
 
