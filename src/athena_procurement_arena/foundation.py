@@ -263,6 +263,9 @@ def validate_scenario(scenario: Scenario) -> str:
         raise InvariantViolation("duplicate evidence id")
     if any(item.is_prediction for item in scenario.evidence):
         raise InvariantViolation("I-02 prediction-as-evidence")
+    if any(not isinstance(item.permission_scope, str) or item.permission_scope != "PUBLIC"
+           for item in scenario.evidence):
+        raise InvariantViolation("I-08 evidence permission scope is not explicitly granted")
     if any(item.tenant_id != scenario.tenant_id for item in scenario.evidence):
         raise InvariantViolation("I-07 cross-tenant evidence leakage")
     if scenario.truth.solicitation_at is not None:

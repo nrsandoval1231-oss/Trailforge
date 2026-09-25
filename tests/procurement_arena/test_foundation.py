@@ -69,6 +69,22 @@ def test_prediction_as_evidence_is_invalid():
         validate_scenario(scenario((evidence("p", T0), evidence("pred", T0, prediction=True))))
 
 
+@pytest.mark.parametrize("permission_scope", ["TENANT", "", "UNKNOWN", None, "PUBLIC "])
+def test_only_exact_public_permission_scope_is_granted(permission_scope):
+    item = EvidenceEvent("scoped", "source", T0, T0, T0, T0,
+                         permission_scope=permission_scope)
+    scoped_scenario = Scenario("scoped", "1", 1, (T0,), (item,),
+                               GroundTruth("p", "OPEN"), tenant_id="default")
+    with pytest.raises(InvariantViolation, match="I-08"):
+        validate_scenario(scoped_scenario)
+
+
+def test_public_permission_scope_is_accepted():
+    item = EvidenceEvent("public", "source", T0, T0, T0, T0,
+                         permission_scope="PUBLIC")
+    assert validate_scenario(scenario((item,)))
+
+
 def test_unknown_supply_is_not_zero_and_partial_supply_is_gap():
     need = PowerNeed("n", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=1), 10, None)
     assert calculate_power_gap(need)["status"] == "UNKNOWN"

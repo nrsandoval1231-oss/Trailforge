@@ -37,6 +37,9 @@ class TemporalWorld:
         return self._scenario_hash
 
     def step(self) -> WorldObservation:
+        # Revalidate the publicly reachable scenario in case a caller replaces
+        # it after construction; permission must hold at each policy boundary.
+        validate_scenario(self.scenario)
         if self._cursor + 1 >= len(self.scenario.timeline):
             raise StopIteration("scenario timeline exhausted")
         next_cursor = self._cursor + 1

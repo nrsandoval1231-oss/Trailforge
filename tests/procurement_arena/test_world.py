@@ -39,6 +39,41 @@ def test_world_rejects_unapproved_consequential_actions_without_recording(action
     assert world.ledger.records == ()
     assert world._cursor == -1
 
+
+@pytest.mark.parametrize("permission_scope", ["TENANT", "UNKNOWN", "", None])
+def test_world_rejects_ungranted_scope_before_policy_or_ledger(permission_scope):
+    base = scenario()
+    restricted = EvidenceEvent("restricted", "s", T0, T0, T0, T0,
+                               tenant_id="default", permission_scope=permission_scope)
+    source = Scenario("restricted-world", "1", 99, base.timeline, (restricted,),
+                      GroundTruth("p", "OPEN"), tenant_id="default")
+    calls = []
+
+    def should_not_run(state):
+        calls.append(state)
+        return ({}, "WATCH")
+
+    with pytest.raises(InvariantViolation, match="I-08"):
+        TemporalWorld(source, "test", should_not_run)
+    assert calls == []
+
+
+def test_world_revalidates_permission_scope_before_each_policy_call():
+    calls = []
+    world = TemporalWorld(scenario(), "test", lambda state: (calls.append(state) or {}, "WATCH"))
+    base = scenario()
+    restricted = EvidenceEvent("restricted", "s", T0, T0, T0, T0,
+                               tenant_id="default", permission_scope="TENANT")
+    world.scenario = Scenario("restricted-world", "1", 99, base.timeline, (restricted,),
+                              GroundTruth("p", "OPEN"), tenant_id="default")
+
+    with pytest.raises(InvariantViolation, match="I-08"):
+        world.step()
+    assert calls == []
+    assert world.ledger.records == ()
+    assert world._cursor == -1
+
+
 def test_same_seed_and_inputs_replay_identically():
     first, second = TemporalWorld(scenario(), "BASELINE_A", policy), TemporalWorld(scenario(), "BASELINE_A", policy)
     first.run()
@@ -96,7 +131,7 @@ def test_checked_in_fixture_is_versioned_and_valid():
 def test_provenance_fields_round_trip_without_losing_contradictions():
     item = EvidenceEvent("prov", "source", T0, T0, T0, T0, authority="PUBLIC_AUTHORITY",
                          source_spans=("line 1",), entity_candidates=("project-1",),
-                         permission_scope="TENANT", contradictions=("e2",))
+                         permission_scope="PUBLIC", contradictions=("e2",))
     source = Scenario("prov", "1", 1, (T0,), (item,), GroundTruth("p", "OPEN"), tenant_id="default")
     loaded = ScenarioDsl.loads(ScenarioDsl.dumps(source))
     assert loaded.evidence[0].source_spans == ("line 1",) and loaded.evidence[0].contradictions == ("e2",)
