@@ -155,6 +155,18 @@ def test_power_profile_sums_active_loads_but_credits_shared_supply_once():
     assert segment["gap_mw"] == 9
 
 
+def test_surplus_baseline_cannot_transfer_between_overlapping_scopes():
+    end = T0 + timedelta(hours=1)
+    construction = PowerNeed("construction", PowerScope.CONSTRUCTION, T0, end, 1, 10)
+    operational = PowerNeed("operational", PowerScope.OPERATIONAL, T0, end, 10, 0)
+    assert calculate_power_gap(construction)["peak_gap_mw"] == 0
+    assert calculate_power_gap(operational)["peak_gap_mw"] == 10
+    segment, = calculate_power_profile((construction, operational))
+    assert segment["required_mw"] == 11
+    assert segment["dependable_supply_mw"] == 1
+    assert segment["gap_mw"] == 10
+
+
 def test_unknown_baseline_and_unknown_active_supply_remain_unknown():
     end = T0 + timedelta(hours=1)
     unknown_baseline = PowerNeed("n", PowerScope.CONSTRUCTION, T0, end, 10, None)

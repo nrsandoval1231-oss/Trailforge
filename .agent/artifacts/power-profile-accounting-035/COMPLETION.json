@@ -6,19 +6,20 @@
     {
       "command": "uv run --python 3.11 --with pytest pytest -q tests/procurement_arena/test_foundation.py tests/procurement_arena/test_evaluation.py",
       "exit_code": 0,
-      "evidence": "21 passed"
+      "evidence": "22 passed, including surplus-baseline cross-scope regression"
     },
     {
       "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
       "exit_code": 0,
-      "evidence": "141 passed; compile, Ruff, and 3 bundle validations passed"
+      "evidence": "142 passed; compile, Ruff, and 3 bundle validations passed"
     }
   ],
-  "accounting_rule": "Sum simultaneously active need loads. Supply claims are not presumed independent: credit only the largest known baseline or active external claim once against combined load. Any active unknown claim makes that segment unknown. Primitive peak is the maximum piecewise gap; any unknown segment makes primitive peak unknown.",
+  "accounting_rule": "Sum simultaneously active need loads. Cap each known baseline claim at its own need load, then treat baseline and active external claims as non-additive and credit only the largest once against combined load. Any active unknown claim makes that segment unknown. Primitive peak is the maximum piecewise gap; any unknown segment makes primitive peak unknown.",
+  "repair": "Addressed Astra CORRECT finding: prevent surplus baseline capacity from one active scope transferring to another without allocation evidence.",
   "boundaries": [
     "Same-scope overlapping needs remain rejected by I-12",
     "Synthetic tests establish implementation behavior only, not real-world power forecast accuracy",
     "No network validation, commit, push, merge, or deploy"
   ],
-  "next": "Controller reruns local gate and commissions independent Astra audit on exact candidate"
+  "next": "Controller commissions fresh independent Astra audit on repaired exact candidate"
 }

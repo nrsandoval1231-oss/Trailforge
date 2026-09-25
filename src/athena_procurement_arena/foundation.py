@@ -159,9 +159,12 @@ def validate_power_scopes(needs: tuple[PowerNeed, ...]) -> None:
 def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply, ...] = ()) -> tuple[dict[str, Any], ...]:
     """Return piecewise G(t), crediting non-additive supply claims once.
 
-    Active needs' loads are summed. Baseline and active external supply claims
-    are not assumed independent, so only the largest claim is credited against
-    that combined load. Any active unknown claim keeps the interval UNKNOWN.
+    Active needs' loads are summed. Each baseline claim is capped at its own
+    need's load before baseline and active external claims are combined; this
+    prevents surplus from one scope transferring to another without allocation
+    evidence. Claims are otherwise not assumed independent, so only the
+    largest is credited once. Any active unknown claim keeps the interval
+    UNKNOWN.
     """
     validate_power_scopes(needs)
     boundaries = sorted({point for item in needs for point in (item.start, item.end)} |
@@ -173,7 +176,9 @@ def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply
             continue
         active_supply = [item for item in supplies if item.start < end and start < item.end]
         required = sum(item.required_mw for item in active_needs)
-        supply_claims = [item.dependable_supply_mw for item in active_needs]
+        supply_claims = [min(item.required_mw, item.dependable_supply_mw)
+                         if item.dependable_supply_mw is not None else None
+                         for item in active_needs]
         supply_claims.extend(item.dependable_mw for item in active_supply)
         unknown = any(claim is None for claim in supply_claims)
         dependable = None if unknown else max(supply_claims, default=0.0)
