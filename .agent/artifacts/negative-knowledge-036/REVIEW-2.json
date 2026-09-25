@@ -1,0 +1,8 @@
+{
+  "candidate": "800285e40364209a852cbda15db969547c90b8a0",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "finding": "Preflight idea identity omits the run seed and scenario/evaluator implementation. A later changed run could be skipped under an old rejection even though the evaluated full lesson would differ.",
+  "evidence_boundary": "The reviewer saw concurrent uncommitted edits while probing; only committed candidate 800285e was audited. Probe output from the dirty worktree was not accepted as candidate evidence.",
+  "direction": "Bind preflight reuse to deterministic run seed and evaluation context, or return an explicit conflict when the context cannot be established. Freeze a new exact candidate and rerun local validation and independent audit."
+}

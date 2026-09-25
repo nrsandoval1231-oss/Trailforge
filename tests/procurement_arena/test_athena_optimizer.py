@@ -98,6 +98,31 @@ def test_athena_does_not_skip_changed_lesson_with_same_id():
     assert result["conflicts"]["KEYWORD"] == "REJECTED_IDENTITY_CONFLICT"
 
 
+def test_athena_preflight_conflicts_when_seed_changes():
+    initial = run_athena_optimization(seed=7)
+    rejected = CandidateLesson(**initial["candidates"]["KEYWORD"]["lesson"])
+    store = NegativeKnowledge()
+    store.reject(rejected)
+    result = run_athena_optimization(seed=8, negative_knowledge=store)
+    assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"
+    assert "KEYWORD" in result["conflicts"]
+
+
+def test_athena_preflight_conflicts_when_evaluation_source_changes(monkeypatch, tmp_path):
+    initial = run_athena_optimization(seed=7)
+    rejected = CandidateLesson(**initial["candidates"]["KEYWORD"]["lesson"])
+    store = NegativeKnowledge()
+    store.reject(rejected)
+    source = tmp_path / "changed-context.py"
+    source.write_text("changed evaluation context\n")
+    import athena_procurement_arena.athena_optimizer as optimizer
+    monkeypatch.setitem(optimizer._EVALUATION_CONTEXT_PATHS, "changed-context", source)
+    result = run_athena_optimization(seed=7, negative_knowledge=store)
+    assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"
+
+
 def test_weighted_threshold_is_bounded_and_tunable():
     with pytest.raises(ValueError):
         weighted_threshold_policy(-1)

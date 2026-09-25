@@ -3,14 +3,15 @@
   "status": "BUILDER_COMPLETE",
   "base_commit": "5d422ecffb9debbff7158731741adcd8558ac9aa",
   "candidate": "uncommitted working tree on codex/negative-knowledge-036; no commit created",
-  "summary": "Repair Astra CORRECT findings: compare canonical typed lesson serialization and classify stable, policy-bound idea identity before candidate execution.",
+  "summary": "Repair Astra CORRECT findings: compare canonical typed lesson serialization and classify seed-, evaluation-context-, and policy-bound idea identity before candidate execution.",
   "implementation": [
     "NegativeKnowledge.save writes a schema-versioned canonical JSON payload with SHA-256 integrity; create mode prevents replacing an existing snapshot.",
     "NegativeKnowledge.load validates envelope, version, content hash, lesson shape, and unique lesson IDs before exposing a fresh store.",
     "Rejected lesson mappings are detached on storage and when read. Full lesson comparison uses canonical JSON SHA-256, distinguishing values such as true and 1. Reusing an ID with changed serialized content returns CONFLICT and preserves the original lesson.",
     "Optimizer preflight uses a stable idea identity over lesson ID, hypothesis, cohort, affected policy, proposed change, risks, and a fingerprint of policy module source, bytecode, and captured configuration. It runs before candidate evaluation, robustness, CandidatePolicy, and tournament work.",
-    "Preflight reports REJECTED_IDEA with the stored full lesson digest; it does not label preflight identity as whole-record equality. Changed idea or policy identity returns top-level CONFLICT, while other candidates proceed.",
-    "The optimizer reuse test saves the rejected lesson, loads it into a fresh NegativeKnowledge instance, and verifies the second run skips it before candidate evaluation and robustness. Tests cover bool/int identity distinction and mismatched snapshot schema.",
+    "Preflight binds the seed, scenario registry, optimizer/evaluator/robustness/tournament source modules, and policy identity. Missing source fingerprints or changed run context produce top-level CONFLICT rather than reuse.",
+    "Preflight reports REJECTED_IDEA with the stored full lesson digest; it does not label preflight identity as whole-record equality. Changed idea, policy, seed, or evaluation context returns top-level CONFLICT, while other candidates proceed.",
+    "The optimizer reuse test saves the rejected lesson, loads it into a fresh NegativeKnowledge instance, and verifies the same-context second run skips it before candidate evaluation, robustness, CandidatePolicy, and tournament. Tests cover bool/int identity distinction, changed seed/source-context conflict, and mismatched snapshot schema.",
     "Default optimizer behavior and holdout promotion gates remain unchanged; no real-world accuracy claim is made."
   ],
   "changed_files": [
@@ -52,14 +53,24 @@
       "evidence": "13 passed after Astra CORRECT repair, including typed serialization distinction and preflight skip before evaluation, robustness, CandidatePolicy, and tournament."
     },
     {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_governance.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "evidence": "15 passed after adding seed and evaluation-source context identity checks."
+    },
+    {
       "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
       "exit_code": 1,
-      "evidence": "148 tests and compile passed; Ruff found one import-order issue in the repair. Fixed and reran the full gate."
+      "evidence": "148 tests and compile passed; Ruff found one import-order issue in the first repair iteration. Fixed and reran the full gate."
     },
     {
       "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
       "exit_code": 0,
       "evidence": "148 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed after Astra CORRECT repair."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "evidence": "Final repair gate: 150 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed."
     },
     {
       "command": "git diff --check",

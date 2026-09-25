@@ -27,6 +27,16 @@ from .world import TemporalWorld
 
 Policy = Callable[[Mapping[str, Any]], tuple[dict[str, Any], str]]
 
+_EVALUATION_CONTEXT_PATHS: dict[str, Path] = {__name__: Path(__file__)}
+for _context_function in (
+    evaluate_replay, family_scenario, adversarial_recurrence_world,
+    counterfactual_suite, synthetic_scenario, tournament_pipeline,
+):
+    _context_module = inspect.getmodule(_context_function)
+    _context_path = inspect.getsourcefile(_context_module) if _context_module is not None else None
+    if _context_module is not None and _context_path is not None:
+        _EVALUATION_CONTEXT_PATHS[_context_module.__name__] = Path(_context_path)
+
 
 def _policy_fingerprint(policy: Policy) -> str | None:
     """Bind a preflight idea to its implementation module and captured config."""
@@ -45,6 +55,27 @@ def _policy_fingerprint(policy: Policy) -> str | None:
     except (OSError, TypeError, ValueError, AttributeError):
         return None
     return hashlib.sha256(module_digest + code_digest + captures).hexdigest()
+
+
+def _evaluation_context_fingerprint(seed: int) -> str | None:
+    """Bind idea reuse to the exact run seed and evaluation/gate source context."""
+    module_digests: dict[str, str] = {}
+    for module_name, source_path in _EVALUATION_CONTEXT_PATHS.items():
+        try:
+            module_digests[module_name] = hashlib.sha256(source_path.read_bytes()).hexdigest()
+        except OSError:
+            return None
+    context = {
+        "seed": seed,
+        "scenario_families": list(SCENARIO_FAMILIES),
+        "modules": module_digests,
+    }
+    try:
+        serialized = json.dumps(context, sort_keys=True, separators=(",", ":"),
+                                 ensure_ascii=False, allow_nan=False)
+    except (TypeError, ValueError):
+        return None
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def weighted_threshold_policy(threshold: int) -> Policy:
@@ -120,14 +151,19 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
         **{f"WEIGHTED_T{threshold}": weighted_threshold_policy(threshold) for threshold in (2, 4, 6)},
     }
     incumbent_metrics = evaluate_policy(incumbent_id, incumbent, seed=seed)
+    evaluation_context = _evaluation_context_fingerprint(seed)
     results: dict[str, Any] = {}
     for candidate_id, policy in candidates.items():
         lesson_id = f"lesson-{candidate_id.lower()}"
         hypothesis = f"Evaluate whether {candidate_id} improves evidence efficiency over {incumbent_id}."
         policy_fingerprint = _policy_fingerprint(policy)
-        proposed_change = {"candidate_policy": candidate_id, "policy_fingerprint": policy_fingerprint}
+        proposed_change = {
+            "candidate_policy": candidate_id,
+            "policy_fingerprint": policy_fingerprint,
+            "evaluation_context_fingerprint": evaluation_context,
+        }
         if negative_knowledge is not None:
-            if policy_fingerprint is None and negative_knowledge.contains(lesson_id):
+            if (policy_fingerprint is None or evaluation_context is None) and negative_knowledge.contains(lesson_id):
                 disposition = "CONFLICT"
             else:
                 disposition = negative_knowledge.classify_idea(
