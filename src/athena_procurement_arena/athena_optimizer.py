@@ -5,6 +5,7 @@ import hashlib
 import inspect
 import json
 import marshal
+import os
 from collections.abc import Callable, Mapping
 from pathlib import Path
 from typing import Any
@@ -27,17 +28,6 @@ from .world import TemporalWorld
 
 Policy = Callable[[Mapping[str, Any]], tuple[dict[str, Any], str]]
 
-_EVALUATION_CONTEXT_PATHS: dict[str, Path] = {__name__: Path(__file__)}
-for _context_function in (
-    evaluate_replay, family_scenario, adversarial_recurrence_world,
-    counterfactual_suite, synthetic_scenario, tournament_pipeline,
-):
-    _context_module = inspect.getmodule(_context_function)
-    _context_path = inspect.getsourcefile(_context_module) if _context_module is not None else None
-    if _context_module is not None and _context_path is not None:
-        _EVALUATION_CONTEXT_PATHS[_context_module.__name__] = Path(_context_path)
-
-
 def _policy_fingerprint(policy: Policy) -> str | None:
     """Bind a preflight idea to its implementation module and captured config."""
     code = getattr(policy, "__code__", None)
@@ -57,18 +47,63 @@ def _policy_fingerprint(policy: Policy) -> str | None:
     return hashlib.sha256(module_digest + code_digest + captures).hexdigest()
 
 
-def _evaluation_context_fingerprint(seed: int) -> str | None:
-    """Bind idea reuse to the exact run seed and evaluation/gate source context."""
-    module_digests: dict[str, str] = {}
-    for module_name, source_path in _EVALUATION_CONTEXT_PATHS.items():
+def _default_arena_source_roots() -> dict[str, Path]:
+    source_root = Path(__file__).resolve().parent.parent
+    return {
+        "athena_procurement_arena": source_root / "athena_procurement_arena",
+        "athena_arena": source_root / "athena_arena",
+    }
+
+
+def _arena_source_inventory(package_roots: Mapping[str, Path] | None = None) -> list[dict[str, str]] | None:
+    """Hash every Python source file in both local Arena packages."""
+    roots = package_roots if package_roots is not None else _default_arena_source_roots()
+    if set(roots) != {"athena_procurement_arena", "athena_arena"}:
+        return None
+    inventory: list[dict[str, str]] = []
+    for package in sorted(roots):
+        root = Path(roots[package])
         try:
-            module_digests[module_name] = hashlib.sha256(source_path.read_bytes()).hexdigest()
-        except OSError:
+            if not root.is_dir() or (package == "athena_procurement_arena" and not (root / "__init__.py").is_file()):
+                return None
+            def raise_walk_error(error: OSError) -> None:
+                raise error
+
+            found_source = False
+            for current, directories, filenames in os.walk(root, onerror=raise_walk_error, followlinks=False):
+                current_path = Path(current)
+                directories.sort()
+                filenames.sort()
+                if any((current_path / name).is_symlink() for name in directories + filenames):
+                    return None
+                for filename in filenames:
+                    source_file = current_path / filename
+                    if source_file.suffix != ".py":
+                        continue
+                    if not source_file.resolve().is_relative_to(root.resolve()):
+                        return None
+                    found_source = True
+                    inventory.append({
+                        "package": package,
+                        "path": source_file.relative_to(root).as_posix(),
+                        "sha256": hashlib.sha256(source_file.read_bytes()).hexdigest(),
+                    })
+            if not found_source:
+                return None
+        except (OSError, RuntimeError, ValueError):
             return None
+    return inventory
+
+
+def _evaluation_context_fingerprint(seed: int, *, package_roots: Mapping[str, Path] | None = None) -> str | None:
+    """Bind reuse to seed/registry and the complete local Arena source surface."""
+    inventory = _arena_source_inventory(package_roots)
+    if inventory is None:
+        return None
     context = {
         "seed": seed,
         "scenario_families": list(SCENARIO_FAMILIES),
-        "modules": module_digests,
+        "source_inventory": inventory,
     }
     try:
         serialized = json.dumps(context, sort_keys=True, separators=(",", ":"),

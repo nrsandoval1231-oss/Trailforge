@@ -1,6 +1,11 @@
+import shutil
+
 import pytest
 
 from athena_procurement_arena.athena_optimizer import (
+    _arena_source_inventory,
+    _default_arena_source_roots,
+    _evaluation_context_fingerprint,
     _robustness_pass,
     evaluate_policy,
     run_athena_optimization,
@@ -109,15 +114,82 @@ def test_athena_preflight_conflicts_when_seed_changes():
     assert "KEYWORD" in result["conflicts"]
 
 
-def test_athena_preflight_conflicts_when_evaluation_source_changes(monkeypatch, tmp_path):
+def test_athena_preflight_conflicts_when_evaluation_source_changes(monkeypatch):
     initial = run_athena_optimization(seed=7)
     rejected = CandidateLesson(**initial["candidates"]["KEYWORD"]["lesson"])
     store = NegativeKnowledge()
     store.reject(rejected)
-    source = tmp_path / "changed-context.py"
-    source.write_text("changed evaluation context\n")
     import athena_procurement_arena.athena_optimizer as optimizer
-    monkeypatch.setitem(optimizer._EVALUATION_CONTEXT_PATHS, "changed-context", source)
+    monkeypatch.setattr(optimizer, "_evaluation_context_fingerprint", lambda seed: "changed-context")
+    result = run_athena_optimization(seed=7, negative_knowledge=store)
+    assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"
+
+
+def test_arena_source_inventory_includes_world_and_foundation():
+    inventory = _arena_source_inventory()
+    assert inventory is not None
+    paths = {(entry["package"], entry["path"]) for entry in inventory}
+    assert ("athena_procurement_arena", "world.py") in paths
+    assert ("athena_procurement_arena", "foundation.py") in paths
+    assert any(package == "athena_arena" for package, _ in paths)
+
+
+@pytest.mark.parametrize("changed_path", ["world.py", "foundation.py"])
+def test_arena_source_fingerprint_changes_for_world_and_foundation_copy(tmp_path, changed_path):
+    original_roots = _default_arena_source_roots()
+    copied_roots = {}
+    for package, root in original_roots.items():
+        copied = tmp_path / package
+        shutil.copytree(root, copied)
+        copied_roots[package] = copied
+    before = _evaluation_context_fingerprint(7, package_roots=copied_roots)
+    assert before is not None
+    changed_source = copied_roots["athena_procurement_arena"] / changed_path
+    changed_source.write_text(changed_source.read_text(encoding="utf-8") + "\n# changed test copy\n", encoding="utf-8")
+    after = _evaluation_context_fingerprint(7, package_roots=copied_roots)
+    assert after is not None
+    assert after != before
+
+
+def test_loaded_store_conflicts_when_world_source_copy_changes(monkeypatch, tmp_path):
+    initial = run_athena_optimization(seed=7)
+    rejected = CandidateLesson(**initial["candidates"]["KEYWORD"]["lesson"])
+    store = NegativeKnowledge()
+    store.reject(rejected)
+    snapshot = tmp_path / "negative-knowledge.json"
+    store.save(snapshot)
+    loaded_store = NegativeKnowledge.load(snapshot)
+
+    copied_roots = {}
+    for package, root in _default_arena_source_roots().items():
+        copied = tmp_path / package
+        shutil.copytree(root, copied)
+        copied_roots[package] = copied
+    world_source = copied_roots["athena_procurement_arena"] / "world.py"
+    world_source.write_text(world_source.read_text(encoding="utf-8") + "\n# changed test copy\n", encoding="utf-8")
+    import athena_procurement_arena.athena_optimizer as optimizer
+    monkeypatch.setattr(optimizer, "_default_arena_source_roots", lambda: copied_roots)
+
+    result = run_athena_optimization(seed=7, negative_knowledge=loaded_store)
+    assert result["status"] == "CONFLICT"
+    assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"
+
+
+def test_missing_arena_source_root_cannot_produce_reusable_context(tmp_path):
+    roots = _default_arena_source_roots()
+    roots["athena_arena"] = tmp_path / "missing-shared-package"
+    assert _evaluation_context_fingerprint(7, package_roots=roots) is None
+
+
+def test_athena_conflicts_when_source_fingerprint_unavailable(monkeypatch):
+    initial = run_athena_optimization(seed=7)
+    rejected = CandidateLesson(**initial["candidates"]["KEYWORD"]["lesson"])
+    store = NegativeKnowledge()
+    store.reject(rejected)
+    import athena_procurement_arena.athena_optimizer as optimizer
+    monkeypatch.setattr(optimizer, "_evaluation_context_fingerprint", lambda seed: None)
     result = run_athena_optimization(seed=7, negative_knowledge=store)
     assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
     assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"

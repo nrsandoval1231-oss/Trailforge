@@ -1,0 +1,9 @@
+{
+  "candidate": "c9a5fd7d99130aad37eab82c3a56c5dd125f12cd",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "finding": "The handpicked evaluation-context manifest excludes world.py and foundation.py, which affect candidate evaluation semantics.",
+  "evidence": "Read-only in-process probe changed EvidenceEvent.visible_at after a rejection: the same-seed full lesson changed from recall/precision 1.0/1.0 to 0.0/0.0, but reused optimization still reported SKIPPED.",
+  "direction": "Default repair budget exhausted. Return to Build Packet #0's negative-knowledge intent and issue a revised bounded packet using conservative complete local source fingerprinting, then rerun the full local gate and fresh independent audit.",
+  "worktree_probe_boundary": "No repository files were edited by the reviewer."
+}

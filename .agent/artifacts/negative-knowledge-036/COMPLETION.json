@@ -1,23 +1,22 @@
 {
-  "packet": "negative-knowledge-036",
+  "packet": "negative-knowledge-context-036b",
   "status": "BUILDER_COMPLETE",
-  "base_commit": "5d422ecffb9debbff7158731741adcd8558ac9aa",
+  "base_commit": "c9a5fd7d99130aad37eab82c3a56c5dd125f12cd",
   "candidate": "uncommitted working tree on codex/negative-knowledge-036; no commit created",
-  "summary": "Repair Astra CORRECT findings: compare canonical typed lesson serialization and classify seed-, evaluation-context-, and policy-bound idea identity before candidate execution.",
+  "summary": "Packet 036b REDIRECT repair: fingerprint all source files in the local athena_procurement_arena and shared athena_arena packages, bound to seed and scenario registry, before reusing negative knowledge.",
   "implementation": [
     "NegativeKnowledge.save writes a schema-versioned canonical JSON payload with SHA-256 integrity; create mode prevents replacing an existing snapshot.",
     "NegativeKnowledge.load validates envelope, version, content hash, lesson shape, and unique lesson IDs before exposing a fresh store.",
     "Rejected lesson mappings are detached on storage and when read. Full lesson comparison uses canonical JSON SHA-256, distinguishing values such as true and 1. Reusing an ID with changed serialized content returns CONFLICT and preserves the original lesson.",
     "Optimizer preflight uses a stable idea identity over lesson ID, hypothesis, cohort, affected policy, proposed change, risks, and a fingerprint of policy module source, bytecode, and captured configuration. It runs before candidate evaluation, robustness, CandidatePolicy, and tournament work.",
-    "Preflight binds the seed, scenario registry, optimizer/evaluator/robustness/tournament source modules, and policy identity. Missing source fingerprints or changed run context produce top-level CONFLICT rather than reuse.",
+    "Evaluation context fingerprints every Python source file in both local Arena packages using deterministic package-relative paths and SHA-256 digests, along with seed and scenario registry. Directory traversal errors, missing roots, unreadable files, or symlinks yield no fingerprint and therefore a visible conflict for stored lessons.",
+    "The complete package inventory includes world.py and foundation.py, closing the missed dependency found in REVIEW-3. Changes in any package source conservatively invalidate preflight reuse.",
     "Preflight reports REJECTED_IDEA with the stored full lesson digest; it does not label preflight identity as whole-record equality. Changed idea, policy, seed, or evaluation context returns top-level CONFLICT, while other candidates proceed.",
-    "The optimizer reuse test saves the rejected lesson, loads it into a fresh NegativeKnowledge instance, and verifies the same-context second run skips it before candidate evaluation, robustness, CandidatePolicy, and tournament. Tests cover bool/int identity distinction, changed seed/source-context conflict, and mismatched snapshot schema.",
+    "Tests prove same-context loaded-store skip before candidate evaluation, robustness, CandidatePolicy, and tournament; changed seed and temporary-copy world.py/foundation.py conflicts; an end-to-end loaded-store conflict after copied world.py changes; missing-source conflict; and world/foundation package enumeration. No repository source is modified by these tests.",
     "Default optimizer behavior and holdout promotion gates remain unchanged; no real-world accuracy claim is made."
   ],
   "changed_files": [
-    "src/athena_procurement_arena/governance.py",
     "src/athena_procurement_arena/athena_optimizer.py",
-    "tests/procurement_arena/test_governance.py",
     "tests/procurement_arena/test_athena_optimizer.py",
     ".agent/artifacts/negative-knowledge-036/COMPLETION.json"
   ],
@@ -71,6 +70,21 @@
       "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
       "exit_code": 0,
       "evidence": "Final repair gate: 150 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "evidence": "14 passed for packet 036b, including same-context early skip, complete package inventory, temporary-copy world.py/foundation.py changes, end-to-end loaded-store conflict after copied world.py change, changed seed, and missing-source conflict."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "evidence": "Packet 036b final gate: 155 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "evidence": "Final gate after end-to-end copied-world-source conflict coverage: 156 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed."
     },
     {
       "command": "git diff --check",
