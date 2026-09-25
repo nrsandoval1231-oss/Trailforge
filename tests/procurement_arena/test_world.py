@@ -46,6 +46,38 @@ def test_same_seed_and_inputs_replay_identically():
     assert first.scenario_hash == second.scenario_hash
     assert first.replay_hash() == second.replay_hash()
 
+
+def test_future_review_attestation_is_hidden_until_review_time_without_mutating_scenario():
+    review_at = T0 + timedelta(days=1)
+    attestation = ActionSupportAttestation("episode-1", "PREPARE", "reviewer", review_at,
+                                          "line 1", "Specific supported basis")
+    event = EvidenceEvent("reviewed", "source", T0, T0, T0, T0,
+                          source_spans=("line 1",), action_support=attestation)
+    source = Scenario("reviewed-world", "1", 7, (T0, review_at), (event,),
+                      GroundTruth("episode-1", "OPEN"))
+    snapshots = []
+
+    def inspect(state):
+        visible_event, = state["visible_evidence"]
+        snapshots.append(visible_event.action_support)
+        return ({}, "WATCH")
+
+    first = TemporalWorld(source, "inspect", inspect)
+    first.run()
+    original_hash = validate_scenario(source)
+    assert snapshots == [None, attestation]
+    assert source.evidence[0].action_support == attestation
+    assert first.scenario_hash == original_hash
+
+    repeated_snapshots = []
+    second = TemporalWorld(source, "inspect", lambda state: (
+        repeated_snapshots.append(state["visible_evidence"][0].action_support) or {}, "WATCH"
+    ))
+    second.run()
+    assert repeated_snapshots == snapshots
+    assert second.scenario_hash == original_hash
+    assert second.replay_hash() == first.replay_hash()
+
 def test_dsl_loads_versioned_json():
     text = '{"schema_version":"procurement-arena-scenario-v1","scenario_id":"s","version":"1","seed":1,"timeline":["2026-01-01T00:00:00+00:00"],"evidence":[],"truth":{"procurement_episode_id":"p","outcome":"OPEN"}}'
     loaded = ScenarioDsl.loads(text)

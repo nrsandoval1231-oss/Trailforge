@@ -23,6 +23,8 @@ measured from the earliest qualifying decision. Missing or mismatched
 attestations leave lead time `null`. Reviewer attestations are trusted
 annotations, not independently verified proof that an action was objectively
 sufficient. Synthetic mechanics do not establish real-world accuracy.
+In temporal policy replay, a visible event's `action_support` annotation is
+withheld until its `reviewed_at` time; base evidence visibility is unchanged.
 
 `run_with_manifest` records scenario hash, policy, seed, environment, result
 hash, and local source commit. The CLI's `batch`, `compare`, `benchmark`, and

@@ -1,0 +1,10 @@
+{
+  "packet": "episode-action-basis-039",
+  "exact_candidate": "4f1639fc64d8cc8e9f86b7953a2626e86a887ab0",
+  "raw_verdict": "CORRECT",
+  "harness_result": "FIX",
+  "finding": "Useful lead accepts one attested member of an otherwise invalid discovery basis. Hash-valid decisions citing ['e', null] or ['e', 'not-visible'] yield discovery precision null and recall zero yet useful_lead_seconds 432000.",
+  "additional_risk": "TemporalWorld exposes action_support to the policy as soon as its evidence event is visible, even when the attestation reviewed_at lies in the future.",
+  "controller_direction": "Bounded repair: require the existing complete supported-discovery eligibility before lead credit, and hide future-reviewed action_support from the policy until review time. Add regressions and revalidate locally.",
+  "full_build_packet_0_accepted": false
+}

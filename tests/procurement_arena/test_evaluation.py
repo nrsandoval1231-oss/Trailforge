@@ -146,6 +146,11 @@ def test_useful_lead_requires_matching_reviewed_episode_evidence_and_frozen_acti
     absent_claim = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["absent-from-scenario"]}}
     assert score(claim=absent_claim, visible=("absent-from-scenario",)).procurement[
         "useful_lead_seconds"] is None
+    for basis in (["e1", None], ["e1", "not-visible"]):
+        mixed = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": basis}}
+        result = score(claim=mixed, visible=("e1",))
+        assert result.discovery["precision"] is None and result.discovery["recall"] == 0.0
+        assert result.procurement["useful_lead_seconds"] is None
     assert score(corrupt=True).procurement["useful_lead_seconds"] is None
 
 

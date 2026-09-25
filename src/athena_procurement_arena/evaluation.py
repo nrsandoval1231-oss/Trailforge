@@ -86,7 +86,7 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
         invariant_status = "PASS"
     visible = set().union(*(set(item.visible_evidence_ids) for item in decisions)) if decisions else set()
     expected = scenario.truth.procurement_episode_id
-    claims: list[tuple[FrozenDecision, str]] = []
+    claims: list[tuple[FrozenDecision, str, tuple[str, ...]]] = []
     for decision in decisions:
         claim = decision.forecast.get("discovery")
         if not isinstance(claim, Mapping):
@@ -96,9 +96,9 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
         if (isinstance(episode_id, str) and episode_id.strip() and isinstance(basis, (tuple, list))
                 and basis and all(isinstance(item, str) and item.strip() for item in basis)
                 and set(basis).issubset(decision.visible_evidence_ids)):
-            claims.append((decision, episode_id))
+            claims.append((decision, episode_id, tuple(basis)))
     # Count each claimed episode once so repeating a claim cannot improve precision.
-    claimed_episode_ids = {episode_id for _, episode_id in claims}
+    claimed_episode_ids = {episode_id for _, episode_id, _ in claims}
     recognized = expected in claimed_episode_ids
     precision = (int(expected in claimed_episode_ids) / len(claimed_episode_ids)
                  if claimed_episode_ids else None)
@@ -118,19 +118,21 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
     if verified is True and scenario_valid and scenario.truth.solicitation_at is not None:
         evidence_by_id = {item.evidence_id: item for item in scenario.evidence}
         qualifying: list[FrozenDecision] = []
-        for decision in decisions:
+        for decision, episode_id, basis in claims:
             if decision.scenario_id != scenario.scenario_id:
+                continue
+            if episode_id != expected:
                 continue
             if decision.simulation_time >= scenario.truth.solicitation_at:
                 continue
-            claim = decision.forecast.get("discovery")
-            if not isinstance(claim, Mapping) or claim.get("episode_id") != expected:
-                continue
-            basis = claim.get("basis_evidence_ids")
-            if not isinstance(basis, (tuple, list)) or not basis:
+            basis_events = [evidence_by_id.get(evidence_id) for evidence_id in basis]
+            # A mixed or incomplete basis cannot borrow one attested member to
+            # qualify the whole discovery claim for lead credit.
+            if any(event is None or not event.visible_at(decision.simulation_time)
+                   for event in basis_events):
                 continue
             for evidence_id in basis:
-                event = evidence_by_id.get(evidence_id) if isinstance(evidence_id, str) else None
+                event = evidence_by_id[evidence_id]
                 attestation = event.action_support if event is not None else None
                 if (event is None or attestation is None or event.is_prediction or event.contradictions
                         or evidence_id not in decision.visible_evidence_ids

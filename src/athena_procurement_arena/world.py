@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any
 
 from athena_arena.contracts import canonical_hash
@@ -42,7 +42,11 @@ class TemporalWorld:
         next_cursor = self._cursor + 1
         now = self.scenario.timeline[next_cursor]
         visible = tuple(sorted(e.evidence_id for e in self.scenario.evidence if e.visible_at(now)))
-        visible_items = tuple(e for e in self.scenario.evidence if e.evidence_id in visible)
+        visible_items = tuple(
+            replace(e, action_support=None)
+            if e.action_support is not None and e.action_support.reviewed_at > now else e
+            for e in self.scenario.evidence if e.evidence_id in visible
+        )
         state = {"scenario_id": self.scenario.scenario_id, "time": now,
                  "visible_evidence_ids": visible, "visible_evidence": visible_items,
                  "seed": self.scenario.seed}

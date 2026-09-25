@@ -1,0 +1,51 @@
+{
+  "task_id": "episode-action-basis-039-repair-1",
+  "status": "IMPLEMENTED_AWAITING_INDEPENDENT_REVIEW",
+  "base": {
+    "branch": "codex/episode-action-basis-039",
+    "sha": "4f1639fc64d8cc8e9f86b7953a2626e86a887ab0"
+  },
+  "objective": "Close mixed-invalid-basis lead credit and future-reviewed annotation exposure.",
+  "implementation": [
+    "Lead evaluation now consumes the same fully eligible explicit discovery claims used by discovery scoring: nonblank string episode ID, nonempty basis of nonblank strings, and all basis IDs declared visible by the frozen decision.",
+    "Lead additionally requires every basis event to exist in the scenario and be actually visible at decision time; at least one cited event must carry a matching valid action-support attestation.",
+    "TemporalWorld supplies policy a detached EvidenceEvent copy with action_support removed before reviewed_at; the source Scenario remains unchanged and the annotation appears at/after reviewed_at.",
+    "Tests cover invalid mixed bases, pre/post review state visibility, unchanged scenario hash, and deterministic replay hash. Evaluation docs describe the annotation visibility boundary."
+  ],
+  "changed_files": [
+    "src/athena_procurement_arena/evaluation.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_evaluation.py",
+    "tests/procurement_arena/test_world.py",
+    "docs/EVALUATION.md",
+    ".agent/artifacts/episode-action-basis-039/REPAIR-1-HANDOFF.json"
+  ],
+  "validation": {
+    "focused": {
+      "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_evaluation.py tests/procurement_arena/test_world.py",
+      "exit_code": 0,
+      "result": "21 passed"
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    "full_local_gate": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "builder_exit_code": 0,
+      "controller_exit_code": 0,
+      "result": "163 passed; compilation, Ruff, and three verified bundle checks passed; all bundles reported holdout_available false"
+    }
+  },
+  "boundaries": [
+    "Research-only authority preserved; no real-world outcomes or annotations invented.",
+    "Protected fixtures, canonical requirements, CI, and promotion gates were not changed.",
+    "No network/GitHub validation, commit, merge, push, or deploy."
+  ],
+  "unknowns": [
+    "Full Build Packet #0 acceptance remains false per the retained Astra review.",
+    "Independent controller validation and fresh Astra audit are pending.",
+    "Real-world outcome evidence and predictive accuracy remain UNKNOWN.",
+    "Review-attestation correctness remains a human reviewer trust boundary."
+  ]
+}
