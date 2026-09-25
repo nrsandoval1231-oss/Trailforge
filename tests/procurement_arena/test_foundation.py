@@ -4,6 +4,7 @@ from datetime import UTC, datetime, timedelta
 import pytest
 
 from athena_procurement_arena import (
+    ActionSupportAttestation,
     EvidenceEvent,
     FrozenDecision,
     FrozenDecisionLedger,
@@ -39,6 +40,28 @@ def test_temporal_cutoff_and_exact_replay_hash():
     s = scenario((evidence("old", T0), evidence("future", T0 + timedelta(days=2))))
     assert [e.evidence_id for e in s.evidence if e.visible_at(T0)] == ["old"]
     assert validate_scenario(s) == validate_scenario(s)
+
+
+def test_action_support_attestation_requires_exact_supported_evidence_and_chronology():
+    attestation = ActionSupportAttestation("p1", "PREPARE", "reviewer", T0, "line 1", "Supports planning")
+    valid = EvidenceEvent("e1", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                         action_support=attestation)
+    assert valid.action_support == attestation
+    with pytest.raises(ValueError, match="source_span"):
+        EvidenceEvent("e2", "source", T0, T0, T0, T0, source_spans=("line 2",),
+                      action_support=attestation)
+    with pytest.raises(ValueError, match="chronology"):
+        EvidenceEvent("e3", "source", T0, T0, T0, T0,
+                      source_spans=("line 1",), action_support=ActionSupportAttestation(
+                          "p1", "PREPARE", "reviewer", T0 - timedelta(seconds=1), "line 1", "Supports planning"))
+    with pytest.raises(ValueError, match="PREPARE or BID_REVIEW"):
+        ActionSupportAttestation("p1", "WATCH", "reviewer", T0, "line 1", "Supports planning")
+    with pytest.raises(InvariantViolation, match="prediction"):
+        EvidenceEvent("e4", "source", T0, T0, T0, T0, is_prediction=True,
+                      source_spans=("line 1",), action_support=attestation)
+    with pytest.raises(InvariantViolation, match="contradictory"):
+        EvidenceEvent("e5", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                      contradictions=("other",), action_support=attestation)
 
 
 def test_prediction_as_evidence_is_invalid():

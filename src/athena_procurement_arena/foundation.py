@@ -63,6 +63,33 @@ class PowerScope(StrEnum):
     OTHER = "OTHER"
 
 
+@dataclass(frozen=True)
+class ActionSupportAttestation:
+    """Reviewer attestation that one exact evidence span supports an action."""
+
+    procurement_episode_id: str
+    action: str
+    reviewer: str
+    reviewed_at: datetime
+    source_span: str
+    rationale: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.reviewed_at, datetime):
+            raise ValueError("reviewed_at must be a datetime")
+        _aware(self.reviewed_at, "reviewed_at")
+        if any(not isinstance(value, str) for value in (
+            self.procurement_episode_id, self.action, self.reviewer, self.source_span, self.rationale
+        )):
+            raise ValueError("attestation fields must be strings")
+        if not self.procurement_episode_id.strip():
+            raise ValueError("attestation procurement_episode_id is required")
+        if self.action not in {"PREPARE", "BID_REVIEW"}:
+            raise ValueError("attestation action must be PREPARE or BID_REVIEW")
+        if not self.reviewer.strip() or not self.source_span.strip() or not self.rationale.strip():
+            raise ValueError("attestation reviewer, source_span, and rationale are required")
+
+
 def _aware(value: datetime, name: str) -> None:
     if value.tzinfo is None or value.utcoffset() is None:
         raise ValueError(f"{name} must be timezone-aware")
@@ -87,6 +114,7 @@ class EvidenceEvent:
     entity_candidates: tuple[str, ...] = ()
     permission_scope: str = "PUBLIC"
     contradictions: tuple[str, ...] = ()
+    action_support: ActionSupportAttestation | None = None
 
     def __post_init__(self) -> None:
         for name in ("event_date", "document_date", "verified_available_at", "observed_at"):
@@ -94,6 +122,19 @@ class EvidenceEvent:
         if not self.evidence_id or not self.source_id:
             raise ValueError("evidence_id and source_id are required")
         object.__setattr__(self, "claims", MappingProxyType(dict(self.claims)))
+        if self.action_support is not None:
+            if self.is_prediction:
+                raise InvariantViolation("prediction evidence cannot carry action support")
+            if self.contradictions:
+                raise InvariantViolation("contradictory evidence cannot carry action support")
+            if not isinstance(self.action_support, ActionSupportAttestation):
+                raise ValueError("action_support must be an ActionSupportAttestation")
+            if self.action_support.source_span not in self.source_spans:
+                raise ValueError("attested source_span must exactly match an event source span")
+            if self.action_support.reviewed_at < max(
+                self.event_date, self.document_date, self.verified_available_at, self.observed_at
+            ):
+                raise ValueError("attestation review cannot precede evidence chronology")
 
     def visible_at(self, simulation_time: datetime) -> bool:
         _aware(simulation_time, "simulation_time")

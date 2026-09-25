@@ -7,7 +7,7 @@ from typing import Any
 
 from athena_arena.contracts import canonical_hash
 
-from .foundation import FrozenDecision, Scenario
+from .foundation import FrozenDecision, Scenario, validate_scenario
 
 
 def _verify_decisions(decisions: tuple[FrozenDecision, ...]) -> bool | None:
@@ -106,10 +106,47 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
     predicted_states = [item.forecast.get("procurement", {}).get("state") for item in decisions]
     next_event_known = scenario.truth.outcome in predicted_states
     actionable = sum(item.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for item in decisions)
-    # The current evidence contract has no typed episode linkage or
-    # customer-action sufficiency field, so visible basis IDs cannot justify
-    # useful-lead credit even for PREPARE/BID_REVIEW decisions.
+    # Unattested visibility and action alone cannot justify useful-lead credit.
     useful_lead = None
+    # Useful lead requires a fully validated scenario and hash-valid records on
+    # this scenario, with the attested evidence actually visible at the decision.
+    try:
+        validate_scenario(scenario)
+        scenario_valid = True
+    except (TypeError, ValueError):
+        scenario_valid = False
+    if verified is True and scenario_valid and scenario.truth.solicitation_at is not None:
+        evidence_by_id = {item.evidence_id: item for item in scenario.evidence}
+        qualifying: list[FrozenDecision] = []
+        for decision in decisions:
+            if decision.scenario_id != scenario.scenario_id:
+                continue
+            if decision.simulation_time >= scenario.truth.solicitation_at:
+                continue
+            claim = decision.forecast.get("discovery")
+            if not isinstance(claim, Mapping) or claim.get("episode_id") != expected:
+                continue
+            basis = claim.get("basis_evidence_ids")
+            if not isinstance(basis, (tuple, list)) or not basis:
+                continue
+            for evidence_id in basis:
+                event = evidence_by_id.get(evidence_id) if isinstance(evidence_id, str) else None
+                attestation = event.action_support if event is not None else None
+                if (event is None or attestation is None or event.is_prediction or event.contradictions
+                        or evidence_id not in decision.visible_evidence_ids
+                        or not event.visible_at(decision.simulation_time)
+                        or attestation.reviewed_at > decision.simulation_time
+                        or attestation.procurement_episode_id != expected
+                        or attestation.action != decision.action):
+                    continue
+                if decision.action in {"PREPARE", "BID_REVIEW"}:
+                    qualifying.append(decision)
+                    break
+        if qualifying:
+            first = min(qualifying, key=lambda item: item.simulation_time)
+            useful_lead = useful_lead_time_seconds(
+                scenario.truth.solicitation_at, first.simulation_time, actionable=True
+            )
     return EvaluationResult(
         discovery={"precision": precision, "recall": recall, "visible_evidence": len(visible)},
         trail={"episode_resolved": int(recognized), "entity_linkage": None},

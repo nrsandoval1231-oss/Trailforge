@@ -6,7 +6,7 @@ from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
-from .foundation import EvidenceEvent, GroundTruth, Scenario
+from .foundation import ActionSupportAttestation, EvidenceEvent, GroundTruth, Scenario
 
 
 def _time(value: str) -> datetime:
@@ -33,6 +33,13 @@ class ScenarioDsl:
             , entity_candidates=tuple(item.get("entity_candidates", ()))
             , permission_scope=item.get("permission_scope", "PUBLIC")
             , contradictions=tuple(item.get("contradictions", ()))
+            , action_support=(ActionSupportAttestation(
+                procurement_episode_id=item["action_support"]["procurement_episode_id"],
+                action=item["action_support"]["action"], reviewer=item["action_support"]["reviewer"],
+                reviewed_at=_time(item["action_support"]["reviewed_at"]),
+                source_span=item["action_support"]["source_span"],
+                rationale=item["action_support"]["rationale"],
+            ) if item.get("action_support") is not None else None)
         ) for item in raw.get("evidence", ()))
         truth = raw["truth"]
         return Scenario(raw["scenario_id"], raw["version"], raw["seed"],
@@ -78,6 +85,14 @@ class ScenarioDsl:
                 "authority": item.authority, "source_spans": item.source_spans,
                 "entity_candidates": item.entity_candidates, "permission_scope": item.permission_scope,
                 "contradictions": item.contradictions,
+                **({"action_support": {
+                    "procurement_episode_id": item.action_support.procurement_episode_id,
+                    "action": item.action_support.action,
+                    "reviewer": item.action_support.reviewer,
+                    "reviewed_at": item.action_support.reviewed_at.isoformat(),
+                    "source_span": item.action_support.source_span,
+                    "rationale": item.action_support.rationale,
+                }} if item.action_support is not None else {}),
             } for item in scenario.evidence],
             "truth": {"procurement_episode_id": scenario.truth.procurement_episode_id,
                       "outcome": scenario.truth.outcome,

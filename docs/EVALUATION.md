@@ -10,13 +10,19 @@ all basis IDs were visible to that decision. `discovery.precision` is `null`
 when there are no supported explicit claims; a known positive truth still
 receives a recall miss. Precision deduplicates by claimed episode identity, so
 repeated claims cannot change it. Visibility by itself is not a discovery
-claim. `useful_lead_seconds` remains `null` because the current evidence
-schema has no typed episode linkage or customer-action sufficiency field.
-`PREPARE` or `BID_REVIEW` plus visible IDs cannot establish that the cited
-content supports a real customer action; `WATCH` and `RESEARCH` cannot earn
-lead-time credit either. A future evidence contract must establish
-deterministic linkage and sufficiency before useful lead time can be scored.
-These mechanics do not establish real-world accuracy.
+claim. `useful_lead_seconds` can be scored only when the cited event has an
+optional `action_support` attestation naming the exact procurement episode,
+`PREPARE` or `BID_REVIEW`, a reviewer, review time, exact source span, and
+specific rationale. The span must belong to that event; the event cannot be
+prediction evidence or carry contradiction references. The review must follow
+the evidence chronology and already exist at the frozen decision time. Replay
+also requires a valid decision hash on the same scenario, an explicit correct
+discovery claim that cites the event, actual visibility at decision time, an
+action matching the attestation, and a decision before solicitation. Lead is
+measured from the earliest qualifying decision. Missing or mismatched
+attestations leave lead time `null`. Reviewer attestations are trusted
+annotations, not independently verified proof that an action was objectively
+sufficient. Synthetic mechanics do not establish real-world accuracy.
 
 `run_with_manifest` records scenario hash, policy, seed, environment, result
 hash, and local source commit. The CLI's `batch`, `compare`, `benchmark`, and

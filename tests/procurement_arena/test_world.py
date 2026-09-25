@@ -3,6 +3,7 @@ from datetime import UTC, datetime, timedelta
 import pytest
 
 from athena_procurement_arena import (
+    ActionSupportAttestation,
     EvidenceEvent,
     GroundTruth,
     InvariantViolation,
@@ -67,3 +68,15 @@ def test_provenance_fields_round_trip_without_losing_contradictions():
     source = Scenario("prov", "1", 1, (T0,), (item,), GroundTruth("p", "OPEN"), tenant_id="default")
     loaded = ScenarioDsl.loads(ScenarioDsl.dumps(source))
     assert loaded.evidence[0].source_spans == ("line 1",) and loaded.evidence[0].contradictions == ("e2",)
+
+
+def test_action_support_attestation_round_trips_with_stable_scenario_hash():
+    attestation = ActionSupportAttestation("episode-1", "PREPARE", "reviewer", T0,
+                                          "line 1", "Specific supported basis")
+    item = EvidenceEvent("reviewed", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                         action_support=attestation)
+    original = Scenario("reviewed", "1", 1, (T0,), (item,), GroundTruth("episode-1", "OPEN"))
+    serialized = ScenarioDsl.dumps(original)
+    loaded = ScenarioDsl.loads(serialized)
+    assert loaded.evidence[0].action_support == attestation
+    assert validate_scenario(loaded) == validate_scenario(original)

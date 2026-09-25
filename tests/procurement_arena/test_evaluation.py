@@ -2,6 +2,7 @@ from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 
 from athena_procurement_arena import (
+    ActionSupportAttestation,
     BaselineA,
     EvidenceEvent,
     FrozenDecision,
@@ -103,6 +104,65 @@ def test_discovery_requires_explicit_visible_basis_and_action_for_useful_lead():
     assert watch.discovery["recall"] == 1.0
     assert watch.procurement["useful_lead_seconds"] is None
     assert watch.invariant_status == "PASS"
+
+
+def test_useful_lead_requires_matching_reviewed_episode_evidence_and_frozen_action():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    solicitation = t + timedelta(days=5)
+    attestation = ActionSupportAttestation("episode-1", "BID_REVIEW", "reviewer", t,
+                                          "solicitation line", "Explicit bid deadline and scope")
+    evidence = EvidenceEvent("e1", "source", t, t, t, t,
+                             source_spans=("solicitation line",), action_support=attestation)
+    scenario = Scenario("lead", "1", 1, (t,), (evidence,),
+                        GroundTruth("episode-1", "OPEN", solicitation_at=solicitation))
+    forecast = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["e1"]}}
+
+    def score(*, time=t, decision_scenario="lead", visible=("e1",), claim=forecast,
+              action="BID_REVIEW", review=attestation, evidence_id="e1", corrupt=False):
+        event = replace(evidence, action_support=review)
+        candidate = replace(scenario, evidence=(replace(event, evidence_id=evidence_id),))
+        ledger = FrozenDecisionLedger()
+        record = ledger.append(FrozenDecision(decision_scenario, time, "policy", visible, claim, action))
+        if corrupt:
+            record = replace(record, action="PREPARE")
+            decisions = (record,)
+        else:
+            decisions = ledger.records
+        return evaluate_replay(candidate, decisions)
+
+    assert score().procurement["useful_lead_seconds"] == 5 * 86400
+    assert score(action="PREPARE").procurement["useful_lead_seconds"] is None
+    assert score(action="RESEARCH").procurement["useful_lead_seconds"] is None
+    assert score(time=t + timedelta(days=1), review=replace(attestation, reviewed_at=t + timedelta(days=2))).procurement[
+        "useful_lead_seconds"] is None
+    assert score(time=solicitation).procurement["useful_lead_seconds"] is None
+    assert score(time=solicitation + timedelta(seconds=1)).procurement["useful_lead_seconds"] is None
+    assert score(visible=()).procurement["useful_lead_seconds"] is None
+    assert score(decision_scenario="other").procurement["useful_lead_seconds"] is None
+    wrong_episode = replace(attestation, procurement_episode_id="other")
+    assert score(review=wrong_episode).procurement["useful_lead_seconds"] is None
+    unrelated = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["unrelated"]}}
+    assert score(claim=unrelated).procurement["useful_lead_seconds"] is None
+    absent_claim = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["absent-from-scenario"]}}
+    assert score(claim=absent_claim, visible=("absent-from-scenario",)).procurement[
+        "useful_lead_seconds"] is None
+    assert score(corrupt=True).procurement["useful_lead_seconds"] is None
+
+
+def test_useful_lead_uses_earliest_qualifying_decision():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    solicitation = t + timedelta(days=5)
+    attestation = ActionSupportAttestation("episode-1", "PREPARE", "reviewer", t,
+                                          "line 1", "Specific basis")
+    event = EvidenceEvent("e1", "source", t, t, t, t, source_spans=("line 1",),
+                          action_support=attestation)
+    scenario = Scenario("earliest", "1", 1, (t,), (event,),
+                        GroundTruth("episode-1", "OPEN", solicitation_at=solicitation))
+    forecast = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["e1"]}}
+    ledger = FrozenDecisionLedger()
+    ledger.append(FrozenDecision("earliest", t + timedelta(days=2), "policy", ("e1",), forecast, "PREPARE"))
+    ledger.append(FrozenDecision("earliest", t + timedelta(days=1), "policy", ("e1",), forecast, "PREPARE"))
+    assert evaluate_replay(scenario, ledger.records).procurement["useful_lead_seconds"] == 4 * 86400
 
 
 def test_repeated_episode_claims_do_not_inflate_discovery_precision():

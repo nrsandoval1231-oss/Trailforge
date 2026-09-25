@@ -28,8 +28,22 @@
         "source_spans": {"type": "array", "items": {"type": "string"}},
         "entity_candidates": {"type": "array", "items": {"type": "string"}},
         "permission_scope": {"type": "string"},
-        "contradictions": {"type": "array", "items": {"type": "string"}}
+        "contradictions": {"type": "array", "items": {"type": "string"}},
+        "action_support": {"$ref": "#/$defs/actionSupportAttestation"}
       }
+    },
+    "actionSupportAttestation": {
+      "type": "object",
+      "required": ["procurement_episode_id", "action", "reviewer", "reviewed_at", "source_span", "rationale"],
+      "properties": {
+        "procurement_episode_id": {"type": "string", "minLength": 1},
+        "action": {"enum": ["PREPARE", "BID_REVIEW"]},
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "source_span": {"type": "string", "minLength": 1},
+        "rationale": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
     }
   }
 }
