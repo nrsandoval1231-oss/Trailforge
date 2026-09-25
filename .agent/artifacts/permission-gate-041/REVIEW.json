@@ -1,0 +1,19 @@
+{
+  "packet": "permission-gate-041",
+  "exact_candidate": "cc48a469c99ac02cadde01d67d3ec280a7a6590d",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "PUBLIC-only evidence permission enforcement in TemporalWorld replay",
+  "independent_review": "The exact PUBLIC check runs at construction and each step before evidence exposure, policy callback, cursor advance or ledger append. A post-construction replacement with TENANT evidence is tested. Unchanged PUBLIC replay retains temporal behavior; no non-public grant or protected-surface edit was introduced.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "174 tests passed; compilation, Ruff, and three verified bundle checks passed; each bundle reported holdout_available false"
+  },
+  "controller_direction": "CONTINUE",
+  "full_build_packet_0_accepted": false,
+  "remaining_boundary": "Direct policy callbacks are not standalone authorization boundaries; this packet covers TemporalWorld replay.",
+  "real_world_outcomes": "UNKNOWN",
+  "governed_holdout": "UNKNOWN",
+  "real_world_accuracy": "UNKNOWN"
+}

@@ -65,7 +65,11 @@ requires independent human review. The fresh
 [packet 040 re-audit](BUILD_PACKET_0_REAUDIT_040.md) at clean local `main`
 `32a536f` returned `CORRECT`: nine bounded mechanisms `PROVEN`, eleven
 requirements `PARTIAL`. It identifies fail-closed evidence permissions (I-08)
-as the next bounded repair. Full Build Packet #0 acceptance remains open.
+as the next bounded repair. Packet 041 then enforced the current public-only
+replay boundary and received an independent bounded `ACCEPT` at `cc48a46` in
+its [review record](../.agent/artifacts/permission-gate-041/REVIEW.json).
+The packet 040 item counts remain a snapshot of its audited SHA; a fresh full
+audit is needed to update them. Full Build Packet #0 acceptance remains open.
 
 ## 3. External blocker
 
