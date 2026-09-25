@@ -71,6 +71,14 @@ its [review record](../.agent/artifacts/permission-gate-041/REVIEW.json).
 The packet 040 item counts remain a snapshot of its audited SHA; a fresh full
 audit is needed to update them. Full Build Packet #0 acceptance remains open.
 
+Packet 042 then tightened replay identity: saved manifest hashes are checked
+on load, local source-commit mismatches fail verification, and a replaced
+scenario cannot retain the world's original hash during replay. Its exact code
+candidate `7881171` received an independent bounded `ACCEPT` in the
+[review record](../.agent/artifacts/replay-identity-042/REVIEW.json). This does
+not prove clean source-tree identity, policy/config equivalence, complete
+per-run campaign traces, or full manifest reproducibility.
+
 ## 3. External blocker
 
 The last inspected GitHub CI run for older SHA `b73dd45`

@@ -1,5 +1,20 @@
 # Procurement Arena current state
 
+## Current checkpoint (2026-09-25)
+
+The entries below are chronological build notes, not a current completion
+claim. Clean local `main` at the start of this checkpoint was `1319d32` after
+packet 041; packet 042's exact reviewed code candidate is `7881171` and its
+independent bounded verdict is `ACCEPT`. Packet 040's independent full
+20-item Build Packet #0 re-audit at `32a536f` returned `CORRECT`: nine
+bounded mechanisms `PROVEN`, eleven requirements `PARTIAL`. Packet 041
+enforced public-only evidence permission in replay, and packet 042 checks
+persisted manifest hashes, local commit identity, and scenario hash drift.
+Their bounded reviews do not update the packet 040 item counts or certify the
+full packet. Local validation only; sealed real outcomes, governed holdout
+comparison, policy-promotion decision, and real-world accuracy remain
+`UNKNOWN`. The Arena retains research-only authority.
+
 Foundation slice `procurement-arena-foundation-001` passed local validation.
 The repository now has research-only typed temporal evidence, scenario
 validation, conservative power-gap primitives, and an immutable frozen
