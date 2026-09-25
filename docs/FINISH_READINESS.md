@@ -39,8 +39,13 @@ retains the local gate and two rejected candidates. `BASELINE_A` still fails
 the cancellation sensitivity case. Packet 035 reconciled synthetic power
 accounting and received an independent `ACCEPT` at `c3fe02e`; its
 [review record](../.agent/artifacts/power-profile-accounting-035/REVIEW.json)
-retains the local gate and rejected first candidate. Durable negative
-knowledge remains unproven, and a fresh full acceptance audit is still needed.
+retains the local gate and rejected first candidate. Packet 036/036b added
+durable negative-knowledge snapshots and exact-context reuse, receiving an
+independent `ACCEPT` at `711b5b8`; its
+[review record](../.agent/artifacts/negative-knowledge-036/REVIEW.json)
+retains three rejected candidates and the local gate. A fresh full acceptance
+audit is still needed, and these bounded verdicts do not prove real-world
+performance.
 After bounded repairs, a fresh reviewer must inspect the exact new candidate
 against all packet items and the first execution campaign. The current audit
 does not grant packet acceptance.
