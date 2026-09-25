@@ -1,0 +1,10 @@
+{
+  "candidate": "f40c66e97d5a125ac821108bdfa0bdf5f06aabf9",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "findings": [
+    "Dataclass/dict equality treats True and 1 as equal. Distinct serialized lessons under one ID are silently classified as the same rejection.",
+    "The optimizer evaluates each candidate policy and runs robustness before consulting negative knowledge, repeating rejected candidate work even though it later skips CandidatePolicy/tournament construction."
+  ],
+  "direction": "Compare validated canonical serialized lesson content with type distinctions. Establish a stable content-bound preflight identity before candidate execution so an exact rejected idea can skip evaluation/robustness/tournament, while changed identity conflicts and other candidates proceed. Preserve authority and promotion gates."
+}

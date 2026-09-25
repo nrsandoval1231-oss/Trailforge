@@ -1,7 +1,12 @@
 """Deterministic Athena adapter for bounded policy optimization."""
 from __future__ import annotations
 
+import hashlib
+import inspect
+import json
+import marshal
 from collections.abc import Callable, Mapping
+from pathlib import Path
 from typing import Any
 
 from .campaign import synthetic_scenario
@@ -21,6 +26,25 @@ from .tournament import tournament_pipeline
 from .world import TemporalWorld
 
 Policy = Callable[[Mapping[str, Any]], tuple[dict[str, Any], str]]
+
+
+def _policy_fingerprint(policy: Policy) -> str | None:
+    """Bind a preflight idea to its implementation module and captured config."""
+    code = getattr(policy, "__code__", None)
+    source_path = inspect.getsourcefile(policy)
+    if code is None or source_path is None:
+        return None
+    try:
+        closure = [cell.cell_contents for cell in (getattr(policy, "__closure__", None) or ())]
+        captures = json.dumps(
+            {"defaults": getattr(policy, "__defaults__", None), "closure": closure},
+            sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+        module_digest = hashlib.sha256(Path(source_path).read_bytes()).digest()
+        code_digest = marshal.dumps((code.co_code, code.co_consts, code.co_names, code.co_varnames))
+    except (OSError, TypeError, ValueError, AttributeError):
+        return None
+    return hashlib.sha256(module_digest + code_digest + captures).hexdigest()
 
 
 def weighted_threshold_policy(threshold: int) -> Policy:
@@ -98,30 +122,38 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
     incumbent_metrics = evaluate_policy(incumbent_id, incumbent, seed=seed)
     results: dict[str, Any] = {}
     for candidate_id, policy in candidates.items():
+        lesson_id = f"lesson-{candidate_id.lower()}"
+        hypothesis = f"Evaluate whether {candidate_id} improves evidence efficiency over {incumbent_id}."
+        policy_fingerprint = _policy_fingerprint(policy)
+        proposed_change = {"candidate_policy": candidate_id, "policy_fingerprint": policy_fingerprint}
+        if negative_knowledge is not None:
+            if policy_fingerprint is None and negative_knowledge.contains(lesson_id):
+                disposition = "CONFLICT"
+            else:
+                disposition = negative_knowledge.classify_idea(
+                    lesson_id, hypothesis, SCENARIO_FAMILIES, incumbent_id, proposed_change,
+                )
+            if disposition != "NEW":
+                stored_lesson = next(item for item in negative_knowledge.lessons if item.lesson_id == lesson_id)
+                reason = "REJECTED_IDEA" if disposition == "REJECTED" else "REJECTED_IDENTITY_CONFLICT"
+                results[candidate_id] = {
+                    "status": "SKIPPED" if disposition == "REJECTED" else "CONFLICT",
+                    "skip_reason": reason,
+                    "lesson": stored_lesson.__dict__,
+                    "lesson_digest": negative_knowledge.lesson_digest(lesson_id),
+                }
+                continue
         metrics = evaluate_policy(candidate_id, policy, seed=seed)
         adversarial_pass, counterfactual_pass = _robustness_pass(candidate_id, policy, seed)
         lesson = CandidateLesson(
-            lesson_id=f"lesson-{candidate_id.lower()}",
-            hypothesis=f"Evaluate whether {candidate_id} improves evidence efficiency over {incumbent_id}.",
+            lesson_id=lesson_id,
+            hypothesis=hypothesis,
             supporting_cohort=SCENARIO_FAMILIES,
             counterexamples=tuple(family for family in SCENARIO_FAMILIES if metrics["recall"] < incumbent_metrics["recall"]),
             affected_policy=incumbent_id,
-            proposed_change={"candidate_policy": candidate_id},
+            proposed_change=proposed_change,
             expected_effect={"recall": metrics["recall"], "precision": metrics["precision"]},
         )
-        if negative_knowledge is not None:
-            if negative_knowledge.match(lesson):
-                results[candidate_id] = {
-                    "status": "SKIPPED", "skip_reason": "EXACT_REJECTED_LESSON",
-                    "lesson": lesson.__dict__,
-                }
-                continue
-            if negative_knowledge.conflict(lesson):
-                results[candidate_id] = {
-                    "status": "CONFLICT", "skip_reason": "REJECTED_LESSON_ID_CONTENT_CONFLICT",
-                    "lesson": lesson.__dict__,
-                }
-                continue
         candidate = CandidatePolicy(candidate_id, lesson.lesson_id, "1", {"policy_id": candidate_id})
         gates = tournament_pipeline(
             candidate_id,

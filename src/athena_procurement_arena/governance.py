@@ -68,6 +68,8 @@ class PromotionDecision:
 class NegativeKnowledge:
     SNAPSHOT_SCHEMA = "athena-negative-knowledge"
     SNAPSHOT_VERSION = 1
+    # Idea identity excludes evaluated effects/counterexamples, which are outcomes
+    # of running the candidate. The remaining fields describe the proposed idea.
 
     def __init__(self) -> None:
         self._lessons: dict[str, CandidateLesson] = {}
@@ -100,10 +102,30 @@ class NegativeKnowledge:
                                tuple(data["counterexamples"]), data["affected_policy"],
                                data["proposed_change"], data["expected_effect"], tuple(data["risks"]))
 
+    @staticmethod
+    def _canonical_digest(value: Any) -> str:
+        serialized = json.dumps(value, sort_keys=True, separators=(",", ":"),
+                                ensure_ascii=False, allow_nan=False)
+        return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+    @classmethod
+    def _exact_digest(cls, lesson: CandidateLesson) -> str:
+        return cls._canonical_digest(cls._lesson_data(lesson))
+
+    @classmethod
+    def _idea_digest(cls, lesson_id: str, hypothesis: str, supporting_cohort: tuple[str, ...],
+                     affected_policy: str, proposed_change: dict[str, Any],
+                     risks: tuple[str, ...] = ()) -> str:
+        return cls._canonical_digest({
+            "lesson_id": lesson_id, "hypothesis": hypothesis,
+            "supporting_cohort": list(supporting_cohort), "affected_policy": affected_policy,
+            "proposed_change": proposed_change, "risks": list(risks),
+        })
+
     def reject(self, lesson: CandidateLesson) -> str:
         existing = self._lessons.get(lesson.lesson_id)
         if existing is not None:
-            return "REJECTED" if existing == lesson else "CONFLICT"
+            return "REJECTED" if self._exact_digest(existing) == self._exact_digest(lesson) else "CONFLICT"
         detached = self._lesson_from_data(json.loads(json.dumps(self._lesson_data(lesson), allow_nan=False)))
         self._lessons[lesson.lesson_id] = detached
         return "REJECTED"
@@ -112,10 +134,31 @@ class NegativeKnowledge:
         return lesson_id in self._lessons
 
     def match(self, lesson: CandidateLesson) -> bool:
-        return self._lessons.get(lesson.lesson_id) == lesson
+        existing = self._lessons.get(lesson.lesson_id)
+        return existing is not None and self._exact_digest(existing) == self._exact_digest(lesson)
 
     def conflict(self, lesson: CandidateLesson) -> bool:
         return lesson.lesson_id in self._lessons and not self.match(lesson)
+
+    def classify_idea(self, lesson_id: str, hypothesis: str, supporting_cohort: tuple[str, ...],
+                      affected_policy: str, proposed_change: dict[str, Any],
+                      risks: tuple[str, ...] = ()) -> str:
+        """Classify stable proposed-idea content before candidate execution."""
+        existing = self._lessons.get(lesson_id)
+        if existing is None:
+            return "NEW"
+        proposed_digest = self._idea_digest(lesson_id, hypothesis, supporting_cohort,
+                                            affected_policy, proposed_change, risks)
+        existing_digest = self._idea_digest(
+            existing.lesson_id, existing.hypothesis, existing.supporting_cohort,
+            existing.affected_policy, existing.proposed_change, existing.risks,
+        )
+        return "REJECTED" if proposed_digest == existing_digest else "CONFLICT"
+
+    def lesson_digest(self, lesson_id: str) -> str | None:
+        """Return the exact persisted lesson digest for audit output."""
+        lesson = self._lessons.get(lesson_id)
+        return None if lesson is None else self._exact_digest(lesson)
 
     def save(self, path: str | Path) -> None:
         target = Path(path)

@@ -56,6 +56,13 @@ def test_negative_knowledge_rejects_tampering_duplicate_ids_and_changed_identity
     assert store.reject(lesson) == "REJECTED"
     assert store.reject(changed) == "CONFLICT"
     assert store.lessons == (lesson,)
+    boolean_lesson = CandidateLesson("typed", "x", (), (), "BASELINE_A", {"enabled": True}, {})
+    integer_lesson = CandidateLesson("typed", "x", (), (), "BASELINE_A", {"enabled": 1}, {})
+    assert store.reject(boolean_lesson) == "REJECTED"
+    assert store.reject(integer_lesson) == "CONFLICT"
+    assert not store.match(integer_lesson)
+    assert store.conflict(integer_lesson)
+    assert store.classify_idea("typed", "x", (), "BASELINE_A", {"enabled": 1}) == "CONFLICT"
     path = tmp_path / "negative.json"
     store.save(path)
     raw = json.loads(path.read_text())

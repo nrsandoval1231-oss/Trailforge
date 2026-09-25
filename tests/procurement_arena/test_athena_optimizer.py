@@ -39,19 +39,44 @@ def test_athena_skips_loaded_exact_rejected_lesson_and_preserves_other_candidate
     store.save(snapshot)
     loaded_store = NegativeKnowledge.load(snapshot)
     tournament_calls = []
+    evaluation_calls = []
+    robustness_calls = []
+    policy_calls = []
     import athena_procurement_arena.athena_optimizer as optimizer
     real_tournament = optimizer.tournament_pipeline
+    real_evaluate = optimizer.evaluate_policy
+    real_robustness = optimizer._robustness_pass
+    real_candidate_policy = optimizer.CandidatePolicy
 
     def track_tournament(candidate_id, *args, **kwargs):
         tournament_calls.append(candidate_id)
         return real_tournament(candidate_id, *args, **kwargs)
 
+    def track_evaluation(policy_id, *args, **kwargs):
+        evaluation_calls.append(policy_id)
+        return real_evaluate(policy_id, *args, **kwargs)
+
+    def track_robustness(policy_id, *args, **kwargs):
+        robustness_calls.append(policy_id)
+        return real_robustness(policy_id, *args, **kwargs)
+
+    def track_candidate_policy(candidate_id, *args, **kwargs):
+        policy_calls.append(candidate_id)
+        return real_candidate_policy(candidate_id, *args, **kwargs)
+
     monkeypatch.setattr(optimizer, "tournament_pipeline", track_tournament)
+    monkeypatch.setattr(optimizer, "evaluate_policy", track_evaluation)
+    monkeypatch.setattr(optimizer, "_robustness_pass", track_robustness)
+    monkeypatch.setattr(optimizer, "CandidatePolicy", track_candidate_policy)
     result = run_athena_optimization(seed=7, negative_knowledge=loaded_store)
     assert result["status"] == "PASS"
     assert result["candidates"]["KEYWORD"]["status"] == "SKIPPED"
-    assert result["candidates"]["KEYWORD"]["skip_reason"] == "EXACT_REJECTED_LESSON"
-    assert result["skipped_candidates"]["KEYWORD"] == "EXACT_REJECTED_LESSON"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDEA"
+    assert len(result["candidates"]["KEYWORD"]["lesson_digest"]) == 64
+    assert result["skipped_candidates"]["KEYWORD"] == "REJECTED_IDEA"
+    assert "KEYWORD" not in evaluation_calls
+    assert "KEYWORD" not in robustness_calls
+    assert "KEYWORD" not in policy_calls
     assert "KEYWORD" not in tournament_calls
     assert len(result["candidates"]) == 7
     assert all(key in result["candidates"] for key in tournament_calls)
@@ -69,8 +94,8 @@ def test_athena_does_not_skip_changed_lesson_with_same_id():
     result = run_athena_optimization(seed=7, negative_knowledge=store)
     assert result["status"] == "CONFLICT"
     assert result["candidates"]["KEYWORD"]["status"] == "CONFLICT"
-    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_LESSON_ID_CONTENT_CONFLICT"
-    assert result["conflicts"]["KEYWORD"] == "REJECTED_LESSON_ID_CONTENT_CONFLICT"
+    assert result["candidates"]["KEYWORD"]["skip_reason"] == "REJECTED_IDENTITY_CONFLICT"
+    assert result["conflicts"]["KEYWORD"] == "REJECTED_IDENTITY_CONFLICT"
 
 
 def test_weighted_threshold_is_bounded_and_tunable():
