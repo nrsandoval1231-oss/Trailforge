@@ -74,7 +74,7 @@ def test_useful_lead_time_requires_actionable_detection():
 def test_discovery_requires_explicit_visible_basis_and_action_for_useful_lead():
     t = datetime(2026, 1, 1, tzinfo=UTC)
     solicitation = t + timedelta(days=5)
-    event = EvidenceEvent("e1", "s", t, t, t, t, {"rfp": True})
+    event = EvidenceEvent("e1", "weather-source", t, t, t, t, {"weather": "clear"})
     scenario = Scenario("claim", "1", 3, (t,), (event,),
                         GroundTruth("episode-1", "OPEN", solicitation_at=solicitation))
 
@@ -86,7 +86,7 @@ def test_discovery_requires_explicit_visible_basis_and_action_for_useful_lead():
     correct = {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["e1"]}}
     result = score(correct, "BID_REVIEW")
     assert result.discovery["precision"] == result.discovery["recall"] == 1.0
-    assert result.procurement["useful_lead_seconds"] == 5 * 86400
+    assert result.procurement["useful_lead_seconds"] is None
     assert result.invariant_status == "PASS"
 
     ignored = score({}, "IGNORE")
@@ -103,3 +103,20 @@ def test_discovery_requires_explicit_visible_basis_and_action_for_useful_lead():
     assert watch.discovery["recall"] == 1.0
     assert watch.procurement["useful_lead_seconds"] is None
     assert watch.invariant_status == "PASS"
+
+
+def test_repeated_episode_claims_do_not_inflate_discovery_precision():
+    t = datetime(2026, 1, 1, tzinfo=UTC)
+    event = EvidenceEvent("e1", "s", t, t, t, t, {"signal": "visible"})
+    scenario = Scenario("dedupe", "1", 1, (t,), (event,), GroundTruth("episode-1", "OPEN"))
+    ledger = FrozenDecisionLedger()
+    ledger.append(FrozenDecision("dedupe", t, "policy", ("e1",),
+                                 {"discovery": {"episode_id": "wrong", "basis_evidence_ids": ["e1"]}},
+                                 "WATCH"))
+    for _ in range(9):
+        ledger.append(FrozenDecision("dedupe", t, "policy", ("e1",),
+                                     {"discovery": {"episode_id": "episode-1", "basis_evidence_ids": ["e1"]}},
+                                     "WATCH"))
+    result = evaluate_replay(scenario, ledger.records)
+    assert result.discovery["precision"] == 0.5
+    assert result.discovery["recall"] == 1.0

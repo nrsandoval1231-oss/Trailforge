@@ -1,16 +1,19 @@
 {
   "task_id": "policy-dependent-evaluation-038",
-  "status": "IMPLEMENTED",
+  "status": "REPAIR_IMPLEMENTED",
   "objective": "Make discovery and useful lead metrics depend on explicit evidence-supported policy forecasts.",
-  "implementation": [
-    "Score only explicit discovery claims with an episode_id and nonempty basis_evidence_ids visible at the decision time.",
-    "Compute precision over supported explicit claims; keep precision null when no claim is scoreable and preserve recall misses for known truth.",
-    "Credit useful lead time only from the first supported correct claim paired with PREPARE or BID_REVIEW.",
-    "Document the forecast claim and metric contract; regression campaign aggregation preserves null precision."
-  ],
+  "repair": {
+    "review": "Astra CORRECT at exact candidate 57c14508cf688f792b758b43825e02e7a1aee795; preserved in REVIEW-1.json.",
+    "changes": [
+      "Deduplicate supported claims by episode_id before computing precision, so repeated claims cannot inflate it.",
+      "Keep correct explicit claims and recall independent from useful lead; useful_lead_seconds remains null because current evidence has no typed episode linkage or customer-action sufficiency contract.",
+      "Add regression coverage for repeated correct claims and a correct claim citing unrelated visible weather evidence.",
+      "Document the fail-closed lead-time limit."
+    ]
+  },
   "validation": {
-    "focused": "uv run --python 3.11 --with pytest python -m pytest tests/procurement_arena/test_evaluation.py tests/procurement_arena/test_campaign.py -q: exit 0, 14 passed",
-    "full_local_gate": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py: exit 0, 157 passed; compile, Ruff, and three bundle validations passed",
+    "focused": "uv run --python 3.11 --with pytest python -m pytest tests/procurement_arena/test_evaluation.py tests/procurement_arena/test_campaign.py -q: exit 0, 15 passed",
+    "full_local_gate": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py: exit 0, 158 passed; compile, Ruff, and three bundle validations passed",
     "diff_check": "git diff --check: exit 0"
   },
   "boundaries": [
@@ -20,6 +23,7 @@
   ],
   "unknowns": [
     "Real-world outcome and holdout evidence remain UNKNOWN.",
+    "Useful lead time remains UNKNOWN until typed evidence can establish episode linkage and customer-action sufficiency.",
     "Forecast claims with absent or non-visible bases are not scoreable."
   ]
 }

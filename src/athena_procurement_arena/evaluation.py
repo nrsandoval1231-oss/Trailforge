@@ -97,21 +97,19 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
                 and basis and all(isinstance(item, str) and item.strip() for item in basis)
                 and set(basis).issubset(decision.visible_evidence_ids)):
             claims.append((decision, episode_id))
-    correct = [(decision, episode_id) for decision, episode_id in claims if episode_id == expected]
-    recognized = bool(correct)
-    precision = sum(episode_id == expected for _, episode_id in claims) / len(claims) if claims else None
+    # Count each claimed episode once so repeating a claim cannot improve precision.
+    claimed_episode_ids = {episode_id for _, episode_id in claims}
+    recognized = expected in claimed_episode_ids
+    precision = (int(expected in claimed_episode_ids) / len(claimed_episode_ids)
+                 if claimed_episode_ids else None)
     recall = 1.0 if recognized else 0.0
     predicted_states = [item.forecast.get("procurement", {}).get("state") for item in decisions]
     next_event_known = scenario.truth.outcome in predicted_states
     actionable = sum(item.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for item in decisions)
+    # The current evidence contract has no typed episode linkage or
+    # customer-action sufficiency field, so visible basis IDs cannot justify
+    # useful-lead credit even for PREPARE/BID_REVIEW decisions.
     useful_lead = None
-    if scenario.truth.solicitation_at and recognized:
-        actionable_claims = [decision for decision, episode_id in correct
-                             if decision.action in {"PREPARE", "BID_REVIEW"}]
-        if actionable_claims:
-            first = min(item.simulation_time for item in actionable_claims)
-            useful_lead = useful_lead_time_seconds(
-                scenario.truth.solicitation_at, first, actionable=True)
     return EvaluationResult(
         discovery={"precision": precision, "recall": recall, "visible_evidence": len(visible)},
         trail={"episode_resolved": int(recognized), "entity_linkage": None},

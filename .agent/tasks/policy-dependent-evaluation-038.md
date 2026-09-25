@@ -41,8 +41,12 @@ protected evidence.
    recall miss.
 3. Useful lead time requires an evidence-supported correct claim and a real
    actionable recommendation such as `PREPARE` or `BID_REVIEW`; early `WATCH`
-   or vague `RESEARCH` receives no lead-time credit. Use the existing
-   `useful_lead_time_seconds` helper and preserve temporal cutoff/replay.
+   or vague `RESEARCH` receives no lead-time credit. The independent review
+   of first candidate `57c1450` found that a visible but unrelated fact can
+   be cited to manufacture lead time. If the current evidence contract cannot
+   establish episode linkage and customer-action sufficiency, leave replay
+   lead time unavailable; retain the `useful_lead_time_seconds` helper for
+   cases with a proven actionable detection basis. Preserve temporal cutoff.
 4. Regression campaign aggregation remains deterministic and handles absent
    precision without inventing a value. Adjust tests that previously asserted
    full recall from mere visibility; assert meaningful discrimination between
