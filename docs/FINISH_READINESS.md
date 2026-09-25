@@ -45,9 +45,13 @@ independent `ACCEPT` at `711b5b8`; its
 retains three rejected candidates and the local gate. The fresh full audit
 still found eleven partial items, including policy-dependent evaluator scoring,
 the shared control contract, invariant coverage, and promotion/replay gates.
-The next bounded packet addresses discovery and actionable lead-time scoring;
-then an independent reviewer must inspect that new exact candidate. Current
-evidence does not grant Build Packet #0 acceptance.
+Packet 038 removed visibility-only discovery credit and repeated-claim
+inflation and received an independent `ACCEPT` at `03b0d7f`; its
+[review record](../.agent/artifacts/policy-dependent-evaluation-038/REVIEW.json)
+preserves the rejected first candidate. Semantic evidence support for a
+discovery claim is still unproven, and useful lead time remains unavailable
+until a typed episode-linkage and customer-action sufficiency contract exists.
+Current evidence does not grant Build Packet #0 acceptance.
 
 ## 3. External blocker
 
