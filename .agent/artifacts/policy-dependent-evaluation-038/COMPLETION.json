@@ -1,0 +1,25 @@
+{
+  "task_id": "policy-dependent-evaluation-038",
+  "status": "IMPLEMENTED",
+  "objective": "Make discovery and useful lead metrics depend on explicit evidence-supported policy forecasts.",
+  "implementation": [
+    "Score only explicit discovery claims with an episode_id and nonempty basis_evidence_ids visible at the decision time.",
+    "Compute precision over supported explicit claims; keep precision null when no claim is scoreable and preserve recall misses for known truth.",
+    "Credit useful lead time only from the first supported correct claim paired with PREPARE or BID_REVIEW.",
+    "Document the forecast claim and metric contract; regression campaign aggregation preserves null precision."
+  ],
+  "validation": {
+    "focused": "uv run --python 3.11 --with pytest python -m pytest tests/procurement_arena/test_evaluation.py tests/procurement_arena/test_campaign.py -q: exit 0, 14 passed",
+    "full_local_gate": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py: exit 0, 157 passed; compile, Ruff, and three bundle validations passed",
+    "diff_check": "git diff --check: exit 0"
+  },
+  "boundaries": [
+    "Synthetic mechanics only; no real-world forecasting accuracy or holdout evidence is claimed.",
+    "No policy logic, fixtures, tournament gates, execution authority, CI, protected evidence, or historical campaign report was changed.",
+    "No network, GitHub validation, commit, push, merge, or deploy was performed."
+  ],
+  "unknowns": [
+    "Real-world outcome and holdout evidence remain UNKNOWN.",
+    "Forecast claims with absent or non-visible bases are not scoreable."
+  ]
+}

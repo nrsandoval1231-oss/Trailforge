@@ -1,6 +1,7 @@
 """Component metrics for deterministic policy replay."""
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, fields
 from typing import Any
 
@@ -85,16 +86,32 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
         invariant_status = "PASS"
     visible = set().union(*(set(item.visible_evidence_ids) for item in decisions)) if decisions else set()
     expected = scenario.truth.procurement_episode_id
-    recognized = any(expected in item.visible_evidence_ids for item in decisions)
-    precision = 1.0 if recognized and visible else (0.0 if visible else None)
+    claims: list[tuple[FrozenDecision, str]] = []
+    for decision in decisions:
+        claim = decision.forecast.get("discovery")
+        if not isinstance(claim, Mapping):
+            continue
+        episode_id = claim.get("episode_id")
+        basis = claim.get("basis_evidence_ids")
+        if (isinstance(episode_id, str) and episode_id.strip() and isinstance(basis, (tuple, list))
+                and basis and all(isinstance(item, str) and item.strip() for item in basis)
+                and set(basis).issubset(decision.visible_evidence_ids)):
+            claims.append((decision, episode_id))
+    correct = [(decision, episode_id) for decision, episode_id in claims if episode_id == expected]
+    recognized = bool(correct)
+    precision = sum(episode_id == expected for _, episode_id in claims) / len(claims) if claims else None
     recall = 1.0 if recognized else 0.0
     predicted_states = [item.forecast.get("procurement", {}).get("state") for item in decisions]
     next_event_known = scenario.truth.outcome in predicted_states
     actionable = sum(item.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for item in decisions)
     useful_lead = None
     if scenario.truth.solicitation_at and recognized:
-        first = next(item.simulation_time for item in decisions if expected in item.visible_evidence_ids)
-        useful_lead = max(0.0, (scenario.truth.solicitation_at - first).total_seconds())
+        actionable_claims = [decision for decision, episode_id in correct
+                             if decision.action in {"PREPARE", "BID_REVIEW"}]
+        if actionable_claims:
+            first = min(item.simulation_time for item in actionable_claims)
+            useful_lead = useful_lead_time_seconds(
+                scenario.truth.solicitation_at, first, actionable=True)
     return EvaluationResult(
         discovery={"precision": precision, "recall": recall, "visible_evidence": len(visible)},
         trail={"episode_resolved": int(recognized), "entity_linkage": None},

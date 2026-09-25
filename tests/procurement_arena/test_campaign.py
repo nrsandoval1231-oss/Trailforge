@@ -26,9 +26,20 @@ def test_all_family_templates_execute_for_both_policies():
                for policy in result["policies"].values())
 
 def test_regression_campaign_reports_separate_metrics():
-    result = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}, seed=30)
+    def evidence_supported_policy(state):
+        visible = tuple(state["visible_evidence_ids"])
+        if not visible:
+            return {}, "IGNORE"
+        return {"discovery": {"episode_id": visible[0], "basis_evidence_ids": [visible[0]]}}, "PREPARE"
+
+    result = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA(),
+                                      "SUPPORTED": evidence_supported_policy}, seed=30)
     baseline = result["policies"]["BASELINE_A"]
-    assert baseline["runs"] == 40 and baseline["discovery_recall"] == 1.0
+    supported = result["policies"]["SUPPORTED"]
+    assert baseline["runs"] == 40 and baseline["discovery_recall"] == 0.0
+    assert baseline["discovery_precision"] is None
+    assert supported["discovery_recall"] == 1.0 and supported["discovery_precision"] == 1.0
+    assert supported["actionable_steps"] == 40
     assert baseline["power_evaluated_runs"] == 0
 
 
