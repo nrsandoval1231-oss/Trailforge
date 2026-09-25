@@ -61,8 +61,11 @@ received an independent bounded `ACCEPT` in the
 [review record](../.agent/artifacts/episode-action-basis-039/REVIEW.json).
 That review does not establish that any real source span supports a customer
 action: no real-world attestation was added, and semantic sufficiency still
-requires independent human review. A fresh full 20-item acceptance audit is
-still needed for the integrated local candidate.
+requires independent human review. The fresh
+[packet 040 re-audit](BUILD_PACKET_0_REAUDIT_040.md) at clean local `main`
+`32a536f` returned `CORRECT`: nine bounded mechanisms `PROVEN`, eleven
+requirements `PARTIAL`. It identifies fail-closed evidence permissions (I-08)
+as the next bounded repair. Full Build Packet #0 acceptance remains open.
 
 ## 3. External blocker
 
