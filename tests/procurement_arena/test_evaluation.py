@@ -53,6 +53,12 @@ def test_power_evaluator_reports_numeric_error_only_for_verified_truth():
     assert evaluate_power_profile(profile, 6)["peak_gap_error_mw"] == 0
     assert evaluate_power_profile(profile, None)["status"] == "UNAVAILABLE"
 
+
+def test_power_evaluator_does_not_score_partially_unknown_peak():
+    profile = ({"gap_mw": 6}, {"gap_mw": None, "status": "UNKNOWN"})
+    result = evaluate_power_profile(profile, 6)
+    assert result == {"status": "UNKNOWN", "peak_gap_error_mw": None}
+
 def test_attention_metrics_penalize_alert_everything():
     metrics = attention_metrics(tuple(f"t{i}" for i in range(60)), frozenset({"t59"}))
     assert metrics["5"]["precision"] == 0 and metrics["50"]["recall"] == 0

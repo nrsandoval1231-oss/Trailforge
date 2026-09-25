@@ -1,0 +1,24 @@
+{
+  "task_id": "power-profile-accounting-035",
+  "status": "BUILDER_COMPLETE",
+  "objective": "Make primitive and piecewise power accounting consistent, conservative, and fail-closed for unknown supply.",
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest -q tests/procurement_arena/test_foundation.py tests/procurement_arena/test_evaluation.py",
+      "exit_code": 0,
+      "evidence": "21 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "evidence": "141 passed; compile, Ruff, and 3 bundle validations passed"
+    }
+  ],
+  "accounting_rule": "Sum simultaneously active need loads. Supply claims are not presumed independent: credit only the largest known baseline or active external claim once against combined load. Any active unknown claim makes that segment unknown. Primitive peak is the maximum piecewise gap; any unknown segment makes primitive peak unknown.",
+  "boundaries": [
+    "Same-scope overlapping needs remain rejected by I-12",
+    "Synthetic tests establish implementation behavior only, not real-world power forecast accuracy",
+    "No network validation, commit, push, merge, or deploy"
+  ],
+  "next": "Controller reruns local gate and commissions independent Astra audit on exact candidate"
+}

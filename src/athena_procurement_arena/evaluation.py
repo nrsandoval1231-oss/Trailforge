@@ -32,6 +32,8 @@ def evaluate_power_profile(profile: tuple[dict[str, Any], ...], expected_peak_ga
     known = [item["gap_mw"] for item in profile if item.get("gap_mw") is not None]
     if not known:
         return {"status": "UNKNOWN", "peak_gap_error_mw": None}
+    if any(item.get("gap_mw") is None for item in profile):
+        return {"status": "UNKNOWN", "peak_gap_error_mw": None}
     actual = max(known)
     return {"status": "PASS", "peak_gap_mw": actual,
             "peak_gap_error_mw": abs(actual - expected_peak_gap_mw)}

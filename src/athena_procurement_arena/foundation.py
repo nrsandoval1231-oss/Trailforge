@@ -134,12 +134,17 @@ class Supply:
 
 
 def calculate_power_gap(need: PowerNeed, supplies: tuple[Supply, ...] = ()) -> dict[str, Any]:
-    """Calculate a conservative gap; unknown supply remains explicitly unknown."""
-    relevant = [s for s in supplies if s.start < need.end and need.start < s.end]
-    if need.dependable_supply_mw is None or any(s.dependable_mw is None for s in relevant):
+    """Calculate a conservative gap; supply claims are non-additive.
+
+    A need's baseline and overlapping external claims may describe the same
+    capacity, so credit only the largest claim. The same rule applies across
+    simultaneously active needs: aggregate load, but credit globally shared
+    supply at most once until independent allocation is evidenced.
+    """
+    profile = calculate_power_profile((need,), supplies)
+    if any(item["gap_mw"] is None for item in profile):
         return {"status": "UNKNOWN", "peak_gap_mw": None, "need_id": need.need_id}
-    supply = max((s.dependable_mw for s in relevant), default=need.dependable_supply_mw)
-    gap = max(0.0, need.required_mw - supply)
+    gap = max((item["gap_mw"] for item in profile), default=0.0)
     return {"status": "GAP" if gap else "NO_GAP", "peak_gap_mw": gap, "need_id": need.need_id}
 
 
@@ -152,7 +157,12 @@ def validate_power_scopes(needs: tuple[PowerNeed, ...]) -> None:
 
 
 def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply, ...] = ()) -> tuple[dict[str, Any], ...]:
-    """Return piecewise G(t) segments across phased/partial/unknown supply."""
+    """Return piecewise G(t), crediting non-additive supply claims once.
+
+    Active needs' loads are summed. Baseline and active external supply claims
+    are not assumed independent, so only the largest claim is credited against
+    that combined load. Any active unknown claim keeps the interval UNKNOWN.
+    """
     validate_power_scopes(needs)
     boundaries = sorted({point for item in needs for point in (item.start, item.end)} |
                         {point for item in supplies for point in (item.start, item.end)})
@@ -163,9 +173,10 @@ def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply
             continue
         active_supply = [item for item in supplies if item.start < end and start < item.end]
         required = sum(item.required_mw for item in active_needs)
-        unknown = any(item.dependable_supply_mw is None for item in active_needs) or any(
-            item.dependable_mw is None for item in active_supply)
-        dependable = None if unknown else sum(item.dependable_mw for item in active_supply)
+        supply_claims = [item.dependable_supply_mw for item in active_needs]
+        supply_claims.extend(item.dependable_mw for item in active_supply)
+        unknown = any(claim is None for claim in supply_claims)
+        dependable = None if unknown else max(supply_claims, default=0.0)
         gap = None if dependable is None else max(0.0, required - dependable)
         segments.append({"start": start, "end": end, "required_mw": required,
                          "duration_seconds": (end - start).total_seconds(),

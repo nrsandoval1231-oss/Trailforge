@@ -128,3 +128,37 @@ def test_power_profile_handles_phased_supply_and_unknown_segments():
     profile = calculate_power_profile((need,), (known, unknown, full))
     assert profile[0]["gap_mw"] == 6 and profile[0]["status"] == "GAP" and profile[0]["duration_seconds"] == 3600
     assert profile[1]["status"] == "UNKNOWN" and profile[2]["status"] == "NO_GAP"
+    assert calculate_power_gap(need, (known, full))["peak_gap_mw"] == max(
+        item["gap_mw"] for item in calculate_power_profile((need,), (known, full))) == 10
+    assert calculate_power_gap(need, (known, unknown, full))["status"] == "UNKNOWN"
+
+
+def test_power_profile_credits_known_baseline_once_and_matches_primitive():
+    need = PowerNeed("n", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=1), 10, 4)
+    segment, = calculate_power_profile((need,))
+    assert segment["dependable_supply_mw"] == 4
+    assert segment["gap_mw"] == calculate_power_gap(need)["peak_gap_mw"] == 6
+    # Baseline and external claims are not presumed independent.
+    overlapping_claim = Supply(T0, T0 + timedelta(hours=1), 3)
+    segment, = calculate_power_profile((need,), (overlapping_claim,))
+    assert segment["dependable_supply_mw"] == 4
+
+
+def test_power_profile_sums_active_loads_but_credits_shared_supply_once():
+    end = T0 + timedelta(hours=1)
+    first = PowerNeed("a", PowerScope.CONSTRUCTION, T0, end, 10, 4)
+    second = PowerNeed("b", PowerScope.OPERATIONAL, T0, end, 5, 3)
+    shared = Supply(T0, end, 6)
+    segment, = calculate_power_profile((first, second), (shared,))
+    assert segment["required_mw"] == 15
+    assert segment["dependable_supply_mw"] == 6
+    assert segment["gap_mw"] == 9
+
+
+def test_unknown_baseline_and_unknown_active_supply_remain_unknown():
+    end = T0 + timedelta(hours=1)
+    unknown_baseline = PowerNeed("n", PowerScope.CONSTRUCTION, T0, end, 10, None)
+    assert calculate_power_profile((unknown_baseline,))[0]["status"] == "UNKNOWN"
+    known_baseline = PowerNeed("k", PowerScope.CONSTRUCTION, T0, end, 10, 4)
+    unknown = Supply(T0, end, None)
+    assert calculate_power_profile((known_baseline,), (unknown,))[0]["status"] == "UNKNOWN"
