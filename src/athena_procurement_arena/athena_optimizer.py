@@ -6,7 +6,7 @@ from typing import Any
 
 from .campaign import synthetic_scenario
 from .evaluation import evaluate_replay
-from .governance import AthenaInput, CandidateLesson, CandidatePolicy
+from .governance import AthenaInput, CandidateLesson, CandidatePolicy, NegativeKnowledge
 from .policies import (
     BaselineA,
     buyer_frequency,
@@ -83,7 +83,8 @@ def _robustness_pass(policy_id: str, policy: Policy, seed: int) -> tuple[bool, b
     return adversarial_pass, counterfactual_pass
 
 
-def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, fixture_bundle: Any = None) -> dict[str, Any]:
+def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, fixture_bundle: Any = None,
+                            negative_knowledge: NegativeKnowledge | None = None) -> dict[str, Any]:
     """Run Athena's candidate loop; promotion remains human/holdout gated."""
     incumbent_id = "BASELINE_A"
     incumbent: Policy = BaselineA()
@@ -108,6 +109,19 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
             proposed_change={"candidate_policy": candidate_id},
             expected_effect={"recall": metrics["recall"], "precision": metrics["precision"]},
         )
+        if negative_knowledge is not None:
+            if negative_knowledge.match(lesson):
+                results[candidate_id] = {
+                    "status": "SKIPPED", "skip_reason": "EXACT_REJECTED_LESSON",
+                    "lesson": lesson.__dict__,
+                }
+                continue
+            if negative_knowledge.conflict(lesson):
+                results[candidate_id] = {
+                    "status": "CONFLICT", "skip_reason": "REJECTED_LESSON_ID_CONTENT_CONFLICT",
+                    "lesson": lesson.__dict__,
+                }
+                continue
         candidate = CandidatePolicy(candidate_id, lesson.lesson_id, "1", {"policy_id": candidate_id})
         gates = tournament_pipeline(
             candidate_id,
@@ -136,12 +150,17 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
             from .fixtures import score_fixture_bundle
             results[candidate_id]["verified_holdout"] = score_fixture_bundle(
                 candidate_id, policy, fixture_bundle, subset="holdout")
+    conflicts = {key: item["skip_reason"] for key, item in results.items() if item.get("status") == "CONFLICT"}
     return {
-        "status": "PASS",
+        "status": "CONFLICT" if conflicts else "PASS",
         "seed": seed,
         "incumbent": {"policy_id": incumbent_id, "metrics": incumbent_metrics},
         "holdout_available": holdout_available,
         "search_space": {"weighted_thresholds": [2, 4, 6]},
         "candidates": results,
-        "promotion_count": sum(item["gates"]["outcome"] == "PROMOTE" for item in results.values()),
+        "skipped_candidates": {
+            key: item["skip_reason"] for key, item in results.items() if item.get("status") == "SKIPPED"
+        },
+        "conflicts": conflicts,
+        "promotion_count": sum(item.get("gates", {}).get("outcome") == "PROMOTE" for item in results.values()),
     }

@@ -1,7 +1,11 @@
 """Explicit Athena learning artifacts and deterministic promotion gates."""
 from __future__ import annotations
 
+import hashlib
+import json
+from copy import deepcopy
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 
@@ -62,18 +66,93 @@ class PromotionDecision:
 
 
 class NegativeKnowledge:
+    SNAPSHOT_SCHEMA = "athena-negative-knowledge"
+    SNAPSHOT_VERSION = 1
+
     def __init__(self) -> None:
         self._lessons: dict[str, CandidateLesson] = {}
 
-    def reject(self, lesson: CandidateLesson) -> None:
-        self._lessons[lesson.lesson_id] = lesson
+    @staticmethod
+    def _lesson_data(lesson: CandidateLesson) -> dict[str, Any]:
+        return {
+            "lesson_id": lesson.lesson_id, "hypothesis": lesson.hypothesis,
+            "supporting_cohort": list(lesson.supporting_cohort),
+            "counterexamples": list(lesson.counterexamples),
+            "affected_policy": lesson.affected_policy,
+            "proposed_change": deepcopy(lesson.proposed_change),
+            "expected_effect": deepcopy(lesson.expected_effect), "risks": list(lesson.risks),
+        }
+
+    @staticmethod
+    def _lesson_from_data(data: dict[str, Any]) -> CandidateLesson:
+        expected = {"lesson_id", "hypothesis", "supporting_cohort", "counterexamples",
+                    "affected_policy", "proposed_change", "expected_effect", "risks"}
+        if not isinstance(data, dict) or set(data) != expected:
+            raise ValueError("malformed negative knowledge lesson")
+        if not all(isinstance(data[k], str) for k in ("lesson_id", "hypothesis", "affected_policy")):
+            raise ValueError("malformed negative knowledge lesson fields")
+        if not all(isinstance(data[k], list) and all(isinstance(v, str) for v in data[k])
+                   for k in ("supporting_cohort", "counterexamples", "risks")):
+            raise ValueError("malformed negative knowledge cohorts")
+        if not isinstance(data["proposed_change"], dict) or not isinstance(data["expected_effect"], dict):
+            raise ValueError("malformed negative knowledge effects")
+        return CandidateLesson(data["lesson_id"], data["hypothesis"], tuple(data["supporting_cohort"]),
+                               tuple(data["counterexamples"]), data["affected_policy"],
+                               data["proposed_change"], data["expected_effect"], tuple(data["risks"]))
+
+    def reject(self, lesson: CandidateLesson) -> str:
+        existing = self._lessons.get(lesson.lesson_id)
+        if existing is not None:
+            return "REJECTED" if existing == lesson else "CONFLICT"
+        detached = self._lesson_from_data(json.loads(json.dumps(self._lesson_data(lesson), allow_nan=False)))
+        self._lessons[lesson.lesson_id] = detached
+        return "REJECTED"
 
     def contains(self, lesson_id: str) -> bool:
         return lesson_id in self._lessons
 
+    def match(self, lesson: CandidateLesson) -> bool:
+        return self._lessons.get(lesson.lesson_id) == lesson
+
+    def conflict(self, lesson: CandidateLesson) -> bool:
+        return lesson.lesson_id in self._lessons and not self.match(lesson)
+
+    def save(self, path: str | Path) -> None:
+        target = Path(path)
+        lessons = [self._lesson_data(item) for item in sorted(self._lessons.values(), key=lambda x: x.lesson_id)]
+        payload = {"schema": self.SNAPSHOT_SCHEMA, "version": self.SNAPSHOT_VERSION, "lessons": lessons}
+        canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+        snapshot = {**payload, "sha256": hashlib.sha256(canonical.encode("utf-8")).hexdigest()}
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("x", encoding="utf-8", newline="\n") as stream:
+            json.dump(snapshot, stream, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
+            stream.write("\n")
+
+    @classmethod
+    def load(cls, path: str | Path) -> NegativeKnowledge:
+        try:
+            snapshot = json.loads(Path(path).read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError("invalid negative knowledge snapshot") from exc
+        if not isinstance(snapshot, dict) or set(snapshot) != {"schema", "version", "lessons", "sha256"}:
+            raise ValueError("mismatched negative knowledge snapshot schema")
+        payload = {key: snapshot[key] for key in ("schema", "version", "lessons")}
+        if payload["schema"] != cls.SNAPSHOT_SCHEMA or payload["version"] != cls.SNAPSHOT_VERSION or not isinstance(payload["lessons"], list):
+            raise ValueError("mismatched negative knowledge snapshot schema")
+        canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+        if not isinstance(snapshot["sha256"], str) or hashlib.sha256(canonical.encode("utf-8")).hexdigest() != snapshot["sha256"]:
+            raise ValueError("negative knowledge snapshot hash mismatch")
+        store = cls()
+        for data in payload["lessons"]:
+            lesson = cls._lesson_from_data(data)
+            if lesson.lesson_id in store._lessons:
+                raise ValueError("duplicate negative knowledge lesson id")
+            store._lessons[lesson.lesson_id] = lesson
+        return store
+
     @property
     def lessons(self) -> tuple[CandidateLesson, ...]:
-        return tuple(self._lessons.values())
+        return tuple(self._lesson_from_data(self._lesson_data(item)) for item in self._lessons.values())
 
 
 def govern_candidate(candidate_id: str, incumbent_metrics: dict[str, float], candidate_metrics: dict[str, float],

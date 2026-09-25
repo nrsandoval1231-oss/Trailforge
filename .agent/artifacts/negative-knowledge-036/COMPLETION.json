@@ -1,0 +1,59 @@
+{
+  "packet": "negative-knowledge-036",
+  "status": "BUILDER_COMPLETE",
+  "base_commit": "5d422ecffb9debbff7158731741adcd8558ac9aa",
+  "candidate": "uncommitted working tree on codex/negative-knowledge-036; no commit created",
+  "summary": "Persist rejected candidate lessons in a deterministic versioned snapshot and make the optimizer surface exact rejections and same-ID content conflicts.",
+  "implementation": [
+    "NegativeKnowledge.save writes a schema-versioned canonical JSON payload with SHA-256 integrity; create mode prevents replacing an existing snapshot.",
+    "NegativeKnowledge.load validates envelope, version, content hash, lesson shape, and unique lesson IDs before exposing a fresh store.",
+    "Rejected lesson mappings are detached on storage and when read. Reusing an ID with changed content returns CONFLICT and preserves the original lesson.",
+    "An optimizer run supplied with a store skips exact matching lessons before candidate policy and tournament creation, reports machine-readable skip reasons, and continues other candidates. Changed same-ID content returns an explicit top-level CONFLICT.",
+    "The optimizer reuse test saves the rejected lesson, loads it into a fresh NegativeKnowledge instance, and verifies the second run skips it. Snapshot tests also reject mismatched schema identity.",
+    "Default optimizer behavior and holdout promotion gates remain unchanged; no real-world accuracy claim is made."
+  ],
+  "changed_files": [
+    "src/athena_procurement_arena/governance.py",
+    "src/athena_procurement_arena/athena_optimizer.py",
+    "tests/procurement_arena/test_governance.py",
+    "tests/procurement_arena/test_athena_optimizer.py",
+    ".agent/artifacts/negative-knowledge-036/COMPLETION.json"
+  ],
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_governance.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 1,
+      "evidence": "Initial run: 11 passed, 1 failed; it exposed mutable mapping leakage from the lessons property. Fixed by deep-copying lesson mappings."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_governance.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "evidence": "12 passed after repair."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 1,
+      "evidence": "Initial full gate: 147 tests passed and compile passed; Ruff found import-order, quoted-annotation, and test import-placement issues. Fixed all reported lint errors."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_governance.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "evidence": "13 passed, including fresh-instance load and reuse plus mismatched-schema rejection."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "evidence": "148 tests passed; source compilation and Ruff passed; all three verified fixture bundle validations passed."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "evidence": "Passed; Git reported LF-to-CRLF normalization warnings for modified source/test files."
+    }
+  ],
+  "unknowns": [
+    "GitHub CI and network validation were not run per packet.",
+    "Candidate is uncommitted and awaits controller validation and independent Astra audit.",
+    "No holdout availability or real-world accuracy is established by these tests."
+  ]
+}
