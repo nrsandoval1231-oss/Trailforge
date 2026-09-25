@@ -53,6 +53,17 @@ discovery claim is still unproven, and useful lead time remains unavailable
 until a typed episode-linkage and customer-action sufficiency contract exists.
 Current evidence does not grant Build Packet #0 acceptance.
 
+Packet 039 adds an optional reviewer-attested episode/action evidence contract
+and gives replay a fail-closed way to score useful lead for a qualifying
+synthetic decision. Its first candidate was rejected for mixed-basis credit and
+future-reviewed annotation exposure; the repaired code candidate `33131a0`
+received an independent bounded `ACCEPT` in the
+[review record](../.agent/artifacts/episode-action-basis-039/REVIEW.json).
+That review does not establish that any real source span supports a customer
+action: no real-world attestation was added, and semantic sufficiency still
+requires independent human review. A fresh full 20-item acceptance audit is
+still needed for the integrated local candidate.
+
 ## 3. External blocker
 
 The last inspected GitHub CI run for older SHA `b73dd45`
