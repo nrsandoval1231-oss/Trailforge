@@ -36,8 +36,11 @@ retains the exact candidate and local gate. Packet 034 repaired counterfactual
 false positives and received an independent `ACCEPT` at `bd8d2a6`; its
 [review record](../.agent/artifacts/counterfactual-sensitivity-034/REVIEW.json)
 retains the local gate and two rejected candidates. `BASELINE_A` still fails
-the cancellation sensitivity case. Power accounting and durable negative
-knowledge gaps remain open.
+the cancellation sensitivity case. Packet 035 reconciled synthetic power
+accounting and received an independent `ACCEPT` at `c3fe02e`; its
+[review record](../.agent/artifacts/power-profile-accounting-035/REVIEW.json)
+retains the local gate and rejected first candidate. Durable negative
+knowledge remains unproven, and a fresh full acceptance audit is still needed.
 After bounded repairs, a fresh reviewer must inspect the exact new candidate
 against all packet items and the first execution campaign. The current audit
 does not grant packet acceptance.

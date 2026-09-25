@@ -1,0 +1,16 @@
+{
+  "packet": "power-profile-accounting-035",
+  "exact_candidate": "c3fe02ebfcf646370a57404fbe806b7a45b8d64e",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "bounded synthetic power accounting repair only",
+  "independent_review": "Known baseline supply is credited consistently; primitive peak follows temporal profile; active unknown supply and partial unknown peak evaluation fail closed; each baseline is capped at its own need load before conservative non-additive combination; I-12 remains enforced.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "142 tests passed; compilation, Ruff, and three verified fixture bundle checks passed; each bundle reported holdout_available false"
+  },
+  "prior_rejection": "REVIEW-1.json: be284722d38b2c4d4b4aa00e295c490e85ce4580, CORRECT",
+  "full_packet_0_accepted": false,
+  "real_world_power_accuracy": "UNKNOWN"
+}
