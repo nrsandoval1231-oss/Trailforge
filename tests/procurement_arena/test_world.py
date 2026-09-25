@@ -74,6 +74,20 @@ def test_world_revalidates_permission_scope_before_each_policy_call():
     assert world._cursor == -1
 
 
+def test_world_rejects_public_scenario_replacement_before_policy_or_ledger():
+    calls = []
+    world = TemporalWorld(scenario(), "test", lambda state: (calls.append(state) or {}, "WATCH"))
+    replacement = Scenario("replacement", "1", 99, scenario().timeline, scenario().evidence,
+                           GroundTruth("p", "OPEN"))
+    world.scenario = replacement
+
+    with pytest.raises(InvariantViolation, match="scenario hash changed after construction"):
+        world.step()
+    assert calls == []
+    assert world.ledger.records == ()
+    assert world._cursor == -1
+
+
 def test_same_seed_and_inputs_replay_identically():
     first, second = TemporalWorld(scenario(), "BASELINE_A", policy), TemporalWorld(scenario(), "BASELINE_A", policy)
     first.run()

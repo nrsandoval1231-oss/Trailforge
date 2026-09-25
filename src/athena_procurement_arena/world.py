@@ -10,6 +10,7 @@ from athena_arena.contracts import canonical_hash
 from .foundation import (
     FrozenDecision,
     FrozenDecisionLedger,
+    InvariantViolation,
     Scenario,
     validate_recommended_action,
     validate_scenario,
@@ -39,7 +40,9 @@ class TemporalWorld:
     def step(self) -> WorldObservation:
         # Revalidate the publicly reachable scenario in case a caller replaces
         # it after construction; permission must hold at each policy boundary.
-        validate_scenario(self.scenario)
+        current_scenario_hash = validate_scenario(self.scenario)
+        if current_scenario_hash != self._scenario_hash:
+            raise InvariantViolation("scenario hash changed after construction")
         if self._cursor + 1 >= len(self.scenario.timeline):
             raise StopIteration("scenario timeline exhausted")
         next_cursor = self._cursor + 1

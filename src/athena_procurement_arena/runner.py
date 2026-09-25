@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import platform
+import re
 import subprocess
 import sys
 from dataclasses import asdict, dataclass
@@ -89,8 +90,16 @@ def verify_replay(manifest: RunManifest, scenario: Scenario, policy: Any) -> dic
     """Verify an existing manifest against a fresh deterministic replay."""
     world = TemporalWorld(scenario, manifest.policy_id, policy)
     world.run()
+    try:
+        current_commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                                        check=True).stdout.strip()
+        source_commit_matches = (re.fullmatch(r"[0-9a-f]{40}", current_commit) is not None
+                                 and current_commit == manifest.source_commit)
+    except (OSError, subprocess.SubprocessError):  # pragma: no cover - non-git copies
+        source_commit_matches = False
     checks = {"scenario_hash": world.scenario_hash == manifest.scenario_hash,
-              "result_hash": world.replay_hash() == manifest.result_hash}
+              "result_hash": world.replay_hash() == manifest.result_hash,
+              "source_commit": source_commit_matches}
     return {"status": "PASS" if all(checks.values()) else "FAIL", "checks": checks,
             "manifest_hash": manifest.manifest_hash}
 
@@ -104,5 +113,12 @@ def write_manifest(manifest: RunManifest, path: str | Path) -> Path:
 
 def load_manifest(path: str | Path) -> RunManifest:
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
-    raw.pop("manifest_hash", None)
-    return RunManifest(**raw)
+    stored_hash = raw.pop("manifest_hash", None)
+    if not isinstance(stored_hash, str) or re.fullmatch(r"[0-9a-f]{64}", stored_hash) is None:
+        raise ValueError("manifest_hash is missing or malformed")
+    if "artifact_paths" in raw:
+        raw["artifact_paths"] = tuple(raw["artifact_paths"])
+    manifest = RunManifest(**raw)
+    if manifest.manifest_hash != stored_hash:
+        raise ValueError("manifest_hash does not match manifest contents")
+    return manifest

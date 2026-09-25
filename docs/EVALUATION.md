@@ -30,6 +30,12 @@ withheld until its `reviewed_at` time; base evidence visibility is unchanged.
 hash, and local source commit. The CLI's `batch`, `compare`, `benchmark`, and
 `tournament` modes use seeded synthetic runs. A green synthetic campaign proves
 mechanics and comparative robustness only, not real-world forecasting accuracy.
+Loading a persisted manifest requires its stored content hash to match the
+loaded fields. `verify_replay` also checks that the recorded source commit is
+the current local `git rev-parse HEAD`, along with scenario and result hashes.
+This check identifies the commit only: it does not detect uncommitted source
+edits or establish policy/config equivalence. If local Git identity is
+unavailable, source-commit verification fails closed.
 
 `calculate_power_profile` evaluates phased intervals at every need and supply
 boundary. Unknown supply produces an unknown segment; verified numeric profiles

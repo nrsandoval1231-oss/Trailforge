@@ -1,0 +1,60 @@
+{
+  "task_id": "replay-identity-042",
+  "status": "BUILDER_IMPLEMENTED_AWAITING_REVIEW",
+  "base": {
+    "branch": "codex/replay-identity-042",
+    "sha": "1319d32caccc678e7e15ba3047f818da50e0a957"
+  },
+  "implementation": [
+    "load_manifest now requires a well-formed stored SHA-256 and rejects a digest mismatch before returning RunManifest; artifact_paths is restored to tuple form for exact object round-trip.",
+    "verify_replay adds a source_commit check against local git rev-parse HEAD and fails that check when Git identity is unavailable.",
+    "TemporalWorld.step validates scenario permissions first, then compares the validated scenario hash to its constructor-bound hash before policy invocation, cursor advance, or ledger append.",
+    "Docs state that commit identity does not detect uncommitted edits or establish policy/config equivalence."
+  ],
+  "changed_files": [
+    "src/athena_procurement_arena/runner.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_runner.py",
+    "tests/procurement_arena/test_world.py",
+    "docs/EVALUATION.md",
+    ".agent/artifacts/replay-identity-042/COMPLETION.json"
+  ],
+  "validation": {
+    "focused_attempt_1": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_runner.py tests/procurement_arena/test_world.py",
+      "exit_code": 1,
+      "result": "23 passed, 1 failed: JSON list artifact_paths did not preserve tuple equality on load. Corrected loader to restore tuple representation."
+    },
+    "focused_attempt_2": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_runner.py tests/procurement_arena/test_world.py",
+      "exit_code": 0,
+      "result": "24 passed"
+    },
+    "full_local_gate_attempt_1": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 1,
+      "result": "181 passed; source compilation passed; Ruff failed on unsorted imports in test_runner.py. Fixed import ordering before final frozen validation."
+    },
+    "focused_final": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_runner.py tests/procurement_arena/test_world.py",
+      "exit_code": 0,
+      "result": "25 passed"
+    },
+    "full_local_gate": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "182 passed; source compilation and Ruff passed; three verified bundle validations passed and each reported holdout_available false."
+    }
+  },
+  "boundaries": [
+    "I-08 permission validation remains first when step observes a replacement scenario.",
+    "No protected or excluded files changed.",
+    "No network/GitHub validation, commit, merge, push, or deploy was performed.",
+    "Does not upgrade Build Packet #0 item 15 to complete."
+  ],
+  "unknowns": [
+    "Source commit verification identifies only current local HEAD; it does not detect uncommitted edits or prove policy/config equivalence.",
+    "Independent controller validation and Astra audit remain pending.",
+    "Real-world outcome and holdout evidence remain UNKNOWN and outside this packet."
+  ]
+}
