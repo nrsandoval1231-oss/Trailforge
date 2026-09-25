@@ -12,9 +12,9 @@ authority.
 The complete local gate is available on Windows with
 `powershell -ExecutionPolicy Bypass -File scripts\validate.ps1`; it runs the
 test suite, source compilation, and Ruff. GitHub Actions is configured for the
-same checks. The latest `main` run was blocked before steps started by a GitHub
-account payment or spending-limit annotation; remote validation is pending
-resolution of that external issue. See [finish readiness](docs/FINISH_READINESS.md)
+same checks. The last inspected run at an older commit was blocked before
+steps started by a GitHub account payment or spending-limit annotation. The
+current candidate is validated locally only. See [finish readiness](docs/FINISH_READINESS.md)
 for the current evidence and acceptance boundaries.
 
 Run a comparison with:

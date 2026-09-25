@@ -1,17 +1,16 @@
 # Finish readiness — Build Packet #0
 
-Audit basis: merged local `main` and GitHub `main` at
-`b73dd45330b4628f1ba3c2680e99176db10a3400` before this audit-report
-revision. The controlling packet and its hash are identified in
+Audit basis: clean local `main` at `501efe73f313c3e031887ba10d8490b204eaa926`.
+The controlling packet and its hash are identified in
 [PRD alignment](PRD_ALIGNMENT.md). This is an evidence inventory, not final
-acceptance or a real-world accuracy claim.
+acceptance or a real-world accuracy claim. Local `main` has not been remotely
+validated at this SHA.
 
 ## 1. Requirements supported by repository evidence
 
-The [20-item acceptance audit](BUILD_PACKET_0_AUDIT.md) of the merged code
-returned `CORRECT`: four bounded items have repository proof, fifteen are
-partial, and durable negative knowledge is unproven. The table below locates
-existing mechanics; it is not a claim that these item groups are complete.
+The fresh [20-item re-audit](BUILD_PACKET_0_REAUDIT.md) returned `CORRECT`:
+nine bounded mechanisms have repository proof and eleven items remain partial.
+The table below locates existing mechanics; it does not upgrade partial items.
 
 | Build Packet #0 definition-of-done items | Current evidence |
 | --- | --- |
@@ -43,21 +42,22 @@ retains the local gate and rejected first candidate. Packet 036/036b added
 durable negative-knowledge snapshots and exact-context reuse, receiving an
 independent `ACCEPT` at `711b5b8`; its
 [review record](../.agent/artifacts/negative-knowledge-036/REVIEW.json)
-retains three rejected candidates and the local gate. A fresh full acceptance
-audit is still needed, and these bounded verdicts do not prove real-world
-performance.
-After bounded repairs, a fresh reviewer must inspect the exact new candidate
-against all packet items and the first execution campaign. The current audit
-does not grant packet acceptance.
+retains three rejected candidates and the local gate. The fresh full audit
+still found eleven partial items, including policy-dependent evaluator scoring,
+the shared control contract, invariant coverage, and promotion/replay gates.
+The next bounded packet addresses discovery and actionable lead-time scoring;
+then an independent reviewer must inspect that new exact candidate. Current
+evidence does not grant Build Packet #0 acceptance.
 
 ## 3. External blocker
 
-The latest GitHub `main` CI run for the merged SHA
+The last inspected GitHub CI run for older SHA `b73dd45`
 ([run 36067565548](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36067565548))
 failed before any steps started. GitHub's check annotation says recent account
 payments failed or the spending limit needs to be increased. This is an
 account/billing blocker; the remote test result remains unavailable. Keep the
-existing CI gate intact and rerun it after the account issue is resolved.
+existing CI gate intact. Per the current instruction, validation from here is
+local only; no remote result is claimed for the current candidate.
 
 ## 4. Missing real-world evidence and decision
 
