@@ -6,6 +6,10 @@ reviewer-bound public capture, but has no autonomous discovery, production
 scraper, customer outreach, bid autofill, submission, broker, or execution
 authority.
 
+## Build approach
+
+Start with one small, reproducible scenario-to-outcome path. Build it, run it, observe the result, fix what fails, and ship. Add tournament or review machinery only when an explicit comparison needs it. Temporal evidence, deterministic evaluation, and the research-only boundary remain core requirements.
+
 ## Check
 `uv run --python 3.11 --with pytest --with ruff python -m pytest -q`
 
