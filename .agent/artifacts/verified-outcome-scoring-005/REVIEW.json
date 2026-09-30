@@ -1,7 +1,0 @@
-{
-  "task_id": "verified-outcome-scoring-005",
-  "verdict": "PASS",
-  "reviewed": ["Allowed-file diff", "Completion artifact", "53-test suite", "Ruff checks"],
-  "findings": [],
-  "note": "Exact outcome scoring is isolated from synthetic visibility metrics and fails closed without a sealed holdout."
-}

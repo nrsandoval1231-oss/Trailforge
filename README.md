@@ -12,9 +12,11 @@ authority.
 The complete local gate is available on Windows with
 `powershell -ExecutionPolicy Bypass -File scripts\validate.ps1`; it runs the
 test suite, source compilation, and Ruff. GitHub Actions is configured for the
-same checks. The latest `main` run was blocked before steps started by a GitHub
-account payment or spending-limit annotation; remote validation is pending
-resolution of that external issue. See [finish readiness](docs/FINISH_READINESS.md)
+same checks. The latest `main` run
+([run 36068552414](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36068552414),
+commit `24c7990149190fdb9632c5f3401f0773fc1e9b38`) was blocked before steps
+started by a GitHub account payment or spending-limit annotation; remote
+validation is pending resolution of that external issue. See [finish readiness](docs/FINISH_READINESS.md)
 for the current evidence and acceptance boundaries.
 
 Run a comparison with:

@@ -1,7 +1,0 @@
-{
-  "task_id": "reviewed-signal-candidate-023",
-  "verdict": "PASS",
-  "scope_check": "Only explicit reviewed candidates become signals; the source capture remains immutable evidence.",
-  "evidence_check": "Full deterministic gate passed; absent source quote was rejected; exact Orla quote produced a stable signal hash.",
-  "remaining_risk": "Project identity and claims are reviewer-supplied and require independent review before Athena training or backtesting."
-}

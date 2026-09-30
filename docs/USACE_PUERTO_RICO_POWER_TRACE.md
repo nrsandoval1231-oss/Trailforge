@@ -10,4 +10,4 @@ Historical raw research case only; not a current opportunity, reviewed Trailforg
 
 The earliest retained RFI to this award spans **215 days**. It is not proof that the RFI was the earliest signal available anywhere.
 
-Three primary captures and four intermediate official captures are retained locally under ignored `.firecrawl/`; committed inventory metadata preserves source URLs and hashes without copying raw source text. Named review, identity resolution, and outcome sealing are still required before this case may enter a Trailforge trace cohort or evaluation.
+Three primary captures and four intermediate official captures are retained locally under ignored `.firecrawl/`. Committed inventory metadata is `.agent/artifacts/usace-puerto-rico-trace-inventory-032/RESEARCH_SNAPSHOT.json`; it preserves source URLs and hashes without copying raw source text. Named review, identity resolution, and outcome sealing are still required before this case may enter a Trailforge trace cohort or evaluation.

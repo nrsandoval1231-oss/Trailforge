@@ -1,7 +1,0 @@
-{
-  "task_id": "source-backed-target-fixtures-009",
-  "verdict": "PASS",
-  "reviewed": ["Official source facts", "Scope classification", "Fixture provenance", "57-test suite", "Ruff checks"],
-  "findings": [],
-  "note": "Both fixtures are in-scope installation/replacement opportunities and remain non-sealed pending outcome evidence."
-}

@@ -1,1 +1,0 @@
-{"task_id":"rfp-candidate-review-queue-031","verdict":"PASS","reviewer":"Astra independent audit","repair_verified":"Frozen allowlisted records reject injected raw fields and non-PENDING_REVIEW state; no bypass introduced."}
