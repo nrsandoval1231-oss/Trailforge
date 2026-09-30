@@ -1,7 +1,0 @@
-{
-  "task_id": "source-backed-fixture-006",
-  "verdict": "PASS",
-  "reviewed": ["Official source facts", "Fixture provenance", "Temporal availability", "54-test suite", "Ruff checks"],
-  "findings": [],
-  "note": "GT-003 is correctly source-backed training evidence and remains outside sealed holdout scoring."
-}

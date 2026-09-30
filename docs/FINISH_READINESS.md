@@ -35,12 +35,13 @@ does not grant packet acceptance.
 
 ## 3. External blocker
 
-The latest GitHub `main` CI run for the merged SHA
-([run 36067565548](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36067565548))
-failed before any steps started. GitHub's check annotation says recent account
-payments failed or the spending limit needs to be increased. This is an
-account/billing blocker; the remote test result remains unavailable. Keep the
-existing CI gate intact and rerun it after the account issue is resolved.
+The latest GitHub `main` CI run
+([run 36068552414](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36068552414))
+targets `24c7990149190fdb9632c5f3401f0773fc1e9b38` and failed before any steps
+started. GitHub's check annotation says recent account payments failed or the
+spending limit needs to be increased. This is an account/billing blocker; the
+remote test result remains unavailable. Keep the existing CI gate intact and
+rerun it after the account issue is resolved.
 
 ## 4. Missing real-world evidence and decision
 

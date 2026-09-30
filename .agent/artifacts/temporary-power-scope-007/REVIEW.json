@@ -1,7 +1,0 @@
-{
-  "task_id": "temporary-power-scope-007",
-  "verdict": "PASS",
-  "reviewed": ["Allowed-file diff", "Scope classifier", "Built-in policy behavior", "55-test suite", "Ruff checks"],
-  "findings": [],
-  "note": "Maintenance-only opportunities are excluded while installation contracts containing incidental maintenance remain eligible."
-}

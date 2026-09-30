@@ -1,5 +1,9 @@
 # Trailforge Arena Campaign 001
 
+> **Behind HEAD.** This file is a retained earlier checkpoint. Its test count,
+> CLI mode count, throughput figures, and "no network" statement describe that
+> checkpoint, not the current tree.
+
 ## Scope
 
 This campaign validates deterministic mechanics and comparative policy behavior

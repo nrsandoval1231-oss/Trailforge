@@ -1,8 +1,0 @@
-{
-  "task_id": "controlled-public-capture-022",
-  "verdict": "PASS",
-  "scope_check": "The adapter is opt-in, one URL at a time, and preserves raw capture content without qualification or signal promotion.",
-  "evidence_check": "Full deterministic gate passed and a real SEC Orla release capture completed with stable hashes.",
-  "repair_record": "Windows Firecrawl launcher resolution was corrected from bare executable lookup to firecrawl.cmd/firecrawl PATH resolution.",
-  "remaining_risk": "The ignored local capture has not yet been converted into a reviewed ProjectSignal; extraction and identity resolution remain separate work."
-}

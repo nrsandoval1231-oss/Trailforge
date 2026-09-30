@@ -1,7 +1,0 @@
-{
-  "task_id": "retrospective-outcome-seal-028",
-  "verdict": "PASS",
-  "scope_check": "Only explicit reviewer-supplied outcome statements become seals; the implementation does not infer missing outcomes.",
-  "evidence_check": "Focused tests, full deterministic gate, and both outcome CLI stages passed with stable hashes.",
-  "remaining_risk": "A sealed cohort is evaluation evidence, not a model promotion decision; independent cohort design and governance metrics remain required."
-}

@@ -5,6 +5,8 @@ artifact. `govern_candidate` requires zero hard-invariant failures, robustness
 passes, sealed-holdout evidence, minimum floors, and objective improvement
 before promotion. Otherwise the result is rejected or quarantined.
 
-`NegativeKnowledge` preserves rejected lessons so failed ideas are not silently
-rediscovered. No Athena artifact self-promotes and no Trailforge artifact grants
-commercial or execution authority.
+`NegativeKnowledge` keeps rejected lessons in an in-memory dictionary on one
+instance so failed ideas are not silently rediscovered during that process.
+It has no save or load path and does not persist across runs. No Athena
+artifact self-promotes and no Trailforge artifact grants commercial or
+execution authority.

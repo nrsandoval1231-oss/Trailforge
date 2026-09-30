@@ -1,8 +1,0 @@
-{
-  "task_id": "retrospective-cohort-evaluation-029",
-  "verdict": "PASS",
-  "audit_sequence": ["FIX: alert timestamp was not compared with outcome cutoff", "PASS: repaired timestamp boundary independently verified"],
-  "scope_check": "The evaluator measures only explicit sealed outcomes and does not modify Athena, promote a policy, infer missing labels, or add external authority.",
-  "evidence_check": "Independent audit confirmed cutoff-aware alerts, fail-closed timestamps, cohort/target/trace hash matching, visible exclusions, correct metrics, 11 focused tests, 114 full tests, and the CLI hashes.",
-  "remaining_risk": "The one-case CLI result proves mechanics only and provides no evidence of predictive value or generalization."
-}

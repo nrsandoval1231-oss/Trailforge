@@ -1,7 +1,0 @@
-{
-  "task_id": "project-signal-ledger-021",
-  "verdict": "PASS",
-  "scope_check": "Signal chronology is isolated from current opportunity qualification and does not add acquisition or execution authority.",
-  "evidence_check": "Full deterministic validation passed, including the new ledger tests and existing fixture gates.",
-  "risk": "Signal identity resolution and public capture are intentionally deferred to later bounded packets."
-}

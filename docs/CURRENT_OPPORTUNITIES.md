@@ -6,24 +6,28 @@ Trailforge separates opportunity discovery from verified current lead output.
 
 ## Qualification gates
 
-A record reaches the current shortlist only when all gates pass:
+`current_target_fixtures` places a record on the current shortlist only when the
+fixture is source-verified and current (`OPEN`, `ACTIVE`, or `SOURCES_SOUGHT`)
+and `screen_aura_rental_candidate` returns `QUALIFIED`.
 
-1. The source record is locally captured and source-verified.
-2. The opportunity lifecycle is `OPEN`, `ACTIVE`, or `SOURCES_SOUGHT`.
-3. The source evidence identifies prime/continuous operating power.
-4. Required capacity is at least 300 kW.
-5. The scope includes temporary power or generator installation/replacement.
+That screen requires all of the following:
 
-Emergency-backup-only and maintenance-only records are excluded. Maintenance that
-is incidental to a qualifying installation or rental does not by itself disqualify
-the record.
+1. Planned temporary, construction, commissioning, energization, startup, or
+   bridge-power scope, including grid or utility delay.
+2. An explicitly captured requirement of at least 300 kW. Equipment ratings,
+   parent-facility nameplate, and program aggregates do not satisfy this gate.
+3. Captured natural-gas or propane compatibility (`natural gas`, `cng`,
+   `propane`, or `lpg`).
+
+Emergency or contingency scope, permanent capacity or PPA structures,
+maintenance-only work, diesel or light fuel oil, and a requirement below 300 kW
+are rejected. Missing planned scope, requirement, or fuel stays `NEEDS_REVIEW`
+and off the shortlist.
 
 ## Running results
 
-```powershell
-cd C:\Users\nrsan\Trailforge
-$env:PYTHONPATH="src"
-python -m athena_procurement_arena shortlist --bundle path\to\bundle.json
+```text
+uv run --python 3.11 python -m athena_procurement_arena shortlist --bundle path/to/bundle.json
 ```
 
 The output is JSON with `status`, `count`, and compact provenance-bearing

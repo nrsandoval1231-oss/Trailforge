@@ -1,5 +1,0 @@
-{
-  "task_id": "prospective-shadow-hook-017",
-  "verdict": "PASS",
-  "finding": "The capture record is provenance-bound, outcome-free, deterministic with an explicit capture time, and authority-free."
-}
