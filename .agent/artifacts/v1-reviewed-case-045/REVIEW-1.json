@@ -1,0 +1,27 @@
+{
+  "verdict": "FIX",
+  "scope": "Slice 3A only",
+  "base_sha": "096c65345eeeba18de051cbdf73d73cab0068f33",
+  "reviewer": "gpt-6-sol",
+  "reasoning_effort": "medium",
+  "session_id": "01a0f825-8c16-7e80-8ac9-aaa57f1d1750",
+  "started_at_utc": "2026-10-01T15:46:45.400846Z",
+  "finished_at_utc": "2026-10-01T15:52:57.795212Z",
+  "reported_total_tokens": 11206,
+  "raw_review": "REVIEW-1.md",
+  "reproduced_findings": [
+    "Explicit null fixture_context bypasses validation with coherent outer hashes",
+    "Malformed nested source_url or scenario yields uncaught AttributeError",
+    "Legacy scenario and replay silently ignore bundle-selection flags",
+    "README contains placeholder checkout path and undefined scenarioFile"
+  ],
+  "controller_direction": "CORRECT",
+  "repair_packet": "../../tasks/v1-reviewed-case-045-repair1.md",
+  "candidate_sha256": {
+    "README.md": "491651f33be829e63f0c596935533629a653e125e03c51592b1817dbb3c6ab40",
+    "docs/SLICE3_CASE_READINESS.md": "6a36757634c284f3fe3bb263650d22e6e5112e5627296f33f1d417e7fd00816d",
+    "src/athena_procurement_arena/cli.py": "ffe19da8e1e3f0e438be0fb798e0df384b6918f3305c8de43883d8eea1337744",
+    "src/athena_procurement_arena/runner.py": "7d72d17cee4fbdfc679d2a63fb13ae9215b7366f65ed7b74c4ef7a86837d5da2",
+    "tests/procurement_arena/test_fixture_experiment.py": "c932506b15fda3b0427b092147bd4020a2157f33bc3667f59b15d0476568b737"
+  }
+}

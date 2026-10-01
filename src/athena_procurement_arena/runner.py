@@ -154,17 +154,22 @@ def _manifest_hash(payload: dict[str, Any]) -> str:
 
 
 def create_experiment(scenario_text: str, source_path: str, directory: str | Path,
-                      policy: Any, policy_id: str = "BASELINE_A") -> dict[str, Any]:
+                      policy: Any, policy_id: str = "BASELINE_A", *,
+                      fixture_context: dict[str, Any] | None = None) -> dict[str, Any]:
     _validate_policy(policy, policy_id)
+    scenario = ScenarioDsl.loads(scenario_text)
+    if fixture_context is not None:
+        _verify_fixture_context(fixture_context, scenario)
     target = Path(directory)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.mkdir(parents=False, exist_ok=False)
-    scenario = ScenarioDsl.loads(scenario_text)
     world = TemporalWorld(scenario, policy_id, policy)
     world.run()
     input_payload = {"source_path": source_path, "input_sha256": hashlib.sha256(scenario_text.encode()).hexdigest(),
                      "input_text": scenario_text, "scenario_id": scenario.scenario_id,
                      "scenario_version": scenario.version, "seed": scenario.seed}
+    if fixture_context is not None:
+        input_payload["fixture_context"] = fixture_context
     decisions = {"ledger_hash": world.replay_hash(), "ledger_verified": world.ledger.verify(),
                  "records": world.ledger.records, "decision_snapshots": world.decision_snapshots}
     evaluation = {"status": "UNSEALED", "scoring": "UNSCORED",
@@ -280,6 +285,8 @@ def verify_experiment(directory: str | Path) -> tuple[dict[str, Any], dict[str, 
     if (not isinstance(evaluation, dict) or evaluation.get("status") != "UNSEALED"
             or evaluation.get("scoring") != "UNSCORED" or evaluation.get("outcome_metrics") != "UNAVAILABLE"):
         raise ValueError("invalid unsealed evaluation semantics")
+    if "fixture_context" in saved_input:
+        _verify_fixture_context(saved_input["fixture_context"], scenario)
     truth = scenario.truth
     if evaluation.get("declared_truth") != {"status": "UNVERIFIED", "values": {
             "procurement_episode_id": truth.procurement_episode_id, "outcome": truth.outcome,
@@ -361,6 +368,37 @@ def verify_experiment(directory: str | Path) -> tuple[dict[str, Any], dict[str, 
             if item != expected:
                 raise ValueError("decision evidence snapshot does not match retained scenario")
     return manifest, loaded
+
+
+def _verify_fixture_context(context: Any, scenario: Scenario) -> None:
+    """Verify retained bundle bytes and selected fixture without source access."""
+    from .fixtures import load_bundle_mapping
+    if (not isinstance(context, dict) or context.get("input_kind") != "fixture_bundle"
+            or not isinstance(context.get("bundle_text"), str)
+            or not isinstance(context.get("bundle_sha256"), str)
+            or not isinstance(context.get("bundle_source_path"), str)
+            or not isinstance(context.get("fixture_id"), str)):
+        raise ValueError("fixture context is malformed")
+    bundle_text = context["bundle_text"]
+    if hashlib.sha256(bundle_text.encode()).hexdigest() != context["bundle_sha256"]:
+        raise ValueError("retained fixture bundle hash mismatch")
+    try:
+        raw = json.loads(bundle_text)
+        if not isinstance(raw, dict):
+            raise ValueError("bundle must be an object")
+        bundle = load_bundle_mapping(raw)
+    except (ValueError, TypeError, KeyError, AttributeError, json.JSONDecodeError) as exc:
+        raise ValueError("retained fixture bundle is malformed") from exc
+    selected = [item for item in bundle.fixtures if item.fixture_id == context["fixture_id"]]
+    if len(selected) != 1:
+        raise ValueError("retained fixture selection is missing or ambiguous")
+    if selected[0].scenario != scenario:
+        raise ValueError("selected fixture scenario does not match retained input")
+    if context.get("bundle_id") != bundle.bundle_id or context.get("bundle_version") != bundle.version:
+        raise ValueError("fixture bundle context binding mismatch")
+    if (not isinstance(context.get("fixture"), dict)
+            or context["fixture"] != selected[0].as_dict()):
+        raise ValueError("selected fixture provenance context does not match retained bundle")
 
 
 def _contains_symlink(path: Path) -> bool:
