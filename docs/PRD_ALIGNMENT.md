@@ -1,47 +1,39 @@
-# Canonical PRD alignment
+# TrailForge Product Direction
 
-## Authority
+## Mission
 
-The controlling specification is **Athena Procurement Arena — Build Packet #0**,
-version 1.0 (2026-09-08), retained outside this repository. Its verified
-SHA-256 is
-`7abb4c4aeb6ab049ea1f2f8888f76bc4f9e96daa3217797b07706bf7858236d8`.
+TrailForge is the evidence-backed experimentation system for finding power projects earlier than conventional market discovery.
 
-This repository implements the research-only Arena, not the future production
-Procurement Intelligence Engine. The packet's no-UI, no-production-scraper,
-no-autofill, no-submission, and no-runtime-authority boundaries remain binding.
-The owner authorized one narrow exception to the no-UI exclusion on 2026-10-01:
-the optional [local experiment workbench](LOCAL_UI_SCOPE.md). It does not
-replace or certify Build Packet #0 and grants no production execution authority.
+**Core question:** Which observable signals consistently reveal an emerging temporary/distributed-power opportunity early enough for us to reach the direct customer or project buying chain first?
 
-## Current assessment
+This supersedes older product-direction language that treated completion of a generic procurement research Arena as the primary goal. Existing deterministic research infrastructure remains valid where it serves this mission.
 
-The repository contains implementation and tests for the packet's DSL, temporal
-world and evidence gates, `BASELINE_A` contract and standalone controls, frozen ledger,
-separate evaluation dimensions, invariant checks, seeded mutations, power-scope
-accounting, adversarial/counterfactual cases, Athena candidate artifacts,
-tournament gates, negative knowledge, fixture registry, manifests, and local
-validation. The retained [Campaign 001 report](../reports/ARENA_CAMPAIGN_001_REPORT.md)
-records the 40-family regression, 10,000-run campaign, and a 100,000-run
-benchmark. The 1,000-variant mutation check is in
-`tests/procurement_arena/test_campaign.py`. These are repository and historical
-campaign claims,
-not an independent acceptance verdict for the current candidate.
+## User and workflow
 
-See [Finish readiness](FINISH_READINESS.md) and the
-[independent 20-item re-audit](BUILD_PACKET_0_REAUDIT.md) for the current
-requirement evidence map, the local acceptance gaps, the historical GitHub
-CI blocker, and the missing
-real-world holdout evidence. The campaign report's `66 passed` is its historical
-snapshot, not the current test count.
+Primary user: Nick / 2G commercial intelligence operator.
 
-## Evidence boundary
+`historical project -> source-backed timeline -> time-bounded replay -> candidate signal -> first actionable date -> direct buying chain -> downstream milestone -> lead-time measurement -> policy learning`
 
-The checked-in source-backed bundles are `VERIFIED`, with no `SEALED_READY`
-fixtures or holdout IDs. The built-in GT-001 through GT-006 replay registry is
-`UNVERIFIED`. Local prospective capture and sealing mechanisms do not establish
-that a real outcome cohort has been independently sealed. Synthetic mechanics
-and comparative tests do not prove real-world forecasting accuracy. A governed
-challenger-versus-baseline holdout comparison and resulting policy-promotion
-decision remain unproven. Missing evidence stays `UNKNOWN`; Athena has no
-authority to promote itself or execute commercial actions.
+Live flow after validation:
+
+`signal -> project -> power-gap hypothesis -> direct customer/EPC/GC/electrical contractor -> conversation -> verified requirement -> fuel/provider selection`
+
+Fuel providers are not the upstream lead source.
+
+## Successful session
+
+A session answers: what was the earliest valid signal; when was it actually available; would the policy have surfaced the project; how many days before the obvious downstream signal; who in the direct buying chain was identifiable then; and what action burden did the signal create?
+
+## V1 acceptance
+
+V1 is achieved when the current engine/workbench can evaluate a real historical cohort and produce inspectable lead-time results for candidate signal families. Initial target: 20-50 real projects.
+
+Primary metric: lead-time advantage. Secondary: coverage, action burden, evidence quality, buyer-path availability.
+
+## GridLens relationship
+
+TrailForge = research/proving ground. GridLens = live discovery/commercial surface. A policy moves to GridLens only after historical evidence shows useful lead-time advantage and tolerable noise.
+
+## Not next
+
+No new orchestration frameworks, governance machinery without a correctness need, fuel-provider-first discovery, generic RFP aggregation as the primary product, autonomous outreach, hosted infrastructure, or unrelated UI polish.
