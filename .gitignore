@@ -4,4 +4,6 @@ __pycache__/
 .ruff_cache/
 .firecrawl/
 *.egg-info/
+build/
+dist/
 uv.lock

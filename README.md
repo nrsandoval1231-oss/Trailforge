@@ -29,6 +29,26 @@ Run the required domain and invariant suite through the CLI with:
 
 `uv run --python 3.11 --with pytest python -m athena_procurement_arena unit`
 
+Run the local scenario/replay mechanics using the scenario nested in the
+source-backed GT-003 bundle. The scenario command saves a new manifest and
+refuses to overwrite an existing file; replay reads that saved file in a
+separate process:
+
+```powershell
+$bundle = Get-Content -Raw scenarios/fixtures/verified/gt-003-morgan-hill.json | ConvertFrom-Json
+$scenarioFile = Join-Path $env:TEMP 'trailforge-gt003-scenario.json'
+$manifestFile = Join-Path $env:TEMP 'trailforge-gt003-manifest.json'
+$json = $bundle.fixtures[0].scenario | ConvertTo-Json -Depth 100
+[System.IO.File]::WriteAllText($scenarioFile, $json, [System.Text.UTF8Encoding]::new($false))
+uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --output $manifestFile
+uv run --python 3.11 python -m athena_procurement_arena replay --scenario-file $scenarioFile --manifest $manifestFile
+```
+
+This unsealed source-backed input demonstrates mechanics only; it does not
+establish historical accuracy or scoreable evidence. The former seed-only
+pseudo-replay has been intentionally removed. Use `smoke` for an explicit
+synthetic mechanics run.
+
 The built-in historical replay registry is `UNVERIFIED`. Checked-in
 source-backed GT-003, GT-007, and GT-008 bundles are `VERIFIED`, but none is
 `SEALED_READY` or part of a sealed holdout. They remain non-scoreable as

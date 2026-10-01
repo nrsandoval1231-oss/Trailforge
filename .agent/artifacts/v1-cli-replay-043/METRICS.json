@@ -1,0 +1,21 @@
+{
+  "task_id": "v1-cli-replay-043",
+  "started_utc": "2026-10-01T13:22:35.583995Z",
+  "finished_utc": "2026-10-01T13:57:39Z",
+  "timing_basis": "first builder launch to controller handoff record; includes user interruption and audit activity; not active execution duration",
+  "lane": "one bounded builder followed by independent review",
+  "model": "gpt-6-luna low; independent gpt-6-sol medium",
+  "config_identity": "Initial launch user config loaded (codex doctor confirmed); repair/re-review used explicit --ignore-user-config model/reasoning/approval overrides. No configuration changes made.",
+  "planning_seconds": null,
+  "build_seconds": null,
+  "validation_seconds": null,
+  "audit_seconds": null,
+  "elapsed_to_accepted_seconds": null,
+  "repair_count": 2,
+  "repair_count_basis": "builder-reported initial Ruff import ordering correction plus independent-review non-object-manifest repair",
+  "scope_risk_match": null,
+  "tokens": {"input_measured": null, "output_measured": null, "input_unknown": true, "output_unknown": true},
+  "reported_cli_total_tokens": {"initial_builder": null, "review_1": 62576, "repair": 29386, "review_2": 39876},
+  "acceptance": {"status": "PASS", "independent_review": "REVIEW-2.md", "accepted_at_utc": "2026-10-01T13:55:23.209966Z"},
+  "notes": "CLI aggregate token figures are reported totals, not measured input/output decomposition. Original builder finish times retained as its claims in COMPLETION.json. No speedup comparison or full-product acceptance claimed. MCP startup warnings did not change code validation results."
+}

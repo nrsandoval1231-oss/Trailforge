@@ -39,7 +39,8 @@ from .rfp_candidate_capture import (
 from .rfp_candidate_queue import build_rfp_candidate_queue, write_rfp_candidate_queue
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
-from .runner import historical_registry, manifest_dict, run_with_manifest
+from .runner import historical_registry, load_manifest, manifest_dict, run_with_manifest, verify_replay
+from .scenario_dsl import ScenarioDsl
 from .shadow import load_shadow_record
 from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
@@ -167,12 +168,54 @@ def main(argv=None) -> int:
     parser.add_argument("--verified-by", help="reviewer name for seal-prospective / evaluate-cohort")
     parser.add_argument("--verified-at", help="ISO timestamp for seal-prospective (default now)")
     parser.add_argument("--output", help="output path for seal-prospective / evaluate-cohort")
+    parser.add_argument("--scenario-file", help="scenario JSON input for scenario/replay")
+    parser.add_argument("--manifest", help="saved run manifest for replay")
     parser.add_argument("--seals", nargs="+", help="paths to sealed outcome JSON files for evaluate-cohort")
     parser.add_argument("--floor-accuracy", type=float, default=0.0, help="minimum cohort accuracy floor")
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
-    if args.mode == "build-rfp-review-queue":
+    scenario_modes = {"scenario", "replay"}
+    if args.mode not in scenario_modes and (args.scenario_file or args.manifest):
+        parser.error("--scenario-file and --manifest are only valid for scenario/replay")
+    if args.mode == "scenario" and args.manifest:
+        parser.error("scenario mode does not accept --manifest")
+    if args.mode == "replay" and args.output:
+        parser.error("replay does not support --output")
+    if args.mode == "scenario":
+        try:
+            if not args.scenario_file or not args.output:
+                raise ValueError("scenario requires --scenario-file and --output")
+            scenario = ScenarioDsl.loads(Path(args.scenario_file).read_text(encoding="utf-8"))
+            manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline)
+            if not isinstance(manifest.invariant_results, dict) or manifest.invariant_results.get("ledger") is not True:
+                raise ValueError("scenario ledger invariant is missing or false")
+            target = Path(args.output)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("x", encoding="utf-8") as stream:
+                json.dump(manifest_dict(manifest), stream, sort_keys=True, indent=2)
+            result = manifest_dict(manifest) | {"observations": len(observations), "output": str(target), "status": "PASS"}
+        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            result = {"status": "FAIL", "mode": "scenario", "error": str(exc)}
+    elif args.mode == "replay":
+        try:
+            if not args.scenario_file or not args.manifest:
+                raise ValueError("replay requires --scenario-file and --manifest")
+            scenario = ScenarioDsl.loads(Path(args.scenario_file).read_text(encoding="utf-8"))
+            manifest = load_manifest(args.manifest)
+            if manifest.policy_id != "BASELINE_A" or manifest.config != {}:
+                raise ValueError("replay supports BASELINE_A with empty config only")
+            if not isinstance(manifest.invariant_results, dict) or manifest.invariant_results.get("ledger") is not True:
+                raise ValueError("manifest ledger invariant is missing or false")
+            result = verify_replay(manifest, scenario, baseline) | {"mode": "replay"}
+        except (OSError, ValueError, TypeError, KeyError, AttributeError, json.JSONDecodeError) as exc:
+            result = {"status": "FAIL", "mode": "replay", "error": str(exc)}
+    elif args.mode == "smoke":
+        scenario = synthetic_scenario(args.seed)
+        manifest, observations = run_with_manifest(scenario, baseline.policy_id, baseline, mode="smoke")
+        valid = isinstance(manifest.invariant_results, dict) and manifest.invariant_results.get("ledger") is True
+        result = manifest_dict(manifest) | {"observations": len(observations), "status": "PASS" if valid else "FAIL"}
+    elif args.mode == "build-rfp-review-queue":
         required = (args.candidates, args.queue_id, args.assembled_by, args.assembled_at, args.output)
         if not all(required):
             parser.error("build-rfp-review-queue requires --candidates, --queue-id, --assembled-by, "
