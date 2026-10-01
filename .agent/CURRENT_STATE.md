@@ -1,5 +1,9 @@
 # TrailForge current state — 2026-10-01
 
+## Latest direction — local UI extension
+
+PR #4 is merged at `3cedc8711ceec0ac411f04911fa24186a0d6ceb1`; local/remote main and post-merge CI36897460144 were verified. The owner authorized the local workbench with Astra as builder. [Packet LOCAL-UI-047](tasks/local-ui-047.md) is VALIDATED, AWAITING INDEPENDENT REVIEW on codex/trailforge-local-ui. [Scope/finish contract](../docs/LOCAL_UI_SCOPE.md) records the narrow no-UI exception. Controller final gate:297 passed/1 Windows-privilege skip; source/installed-wheel lifecycle and real browser save/inspect/replay/restart passed. One Windows transport repair; original failure retained. No commit/push/merge/deploy. South Valley source/availability attestation remains pending. Older local-only S3A statements below are historical, not current release status.
+
 ## Accepted local checkpoint
 
 Slices 1 and 2 are merged. Slice 3A is accepted locally for the bounded CLI V1 path. Full Slice 3, V1 and Build Packet #0 are not complete. Research-only; no execution or promotion authority.

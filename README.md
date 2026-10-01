@@ -11,6 +11,11 @@ authority.
 Start with one small, reproducible scenario-to-outcome path. Build it, run it, observe the result, fix what fails, and ship. Add tournament or review machinery only when an explicit comparison needs it. Temporal evidence, deterministic evaluation, and the research-only boundary remain core requirements.
 
 ## Check
+Optional local workbench: run `uv run --python 3.11 trailforge-ui`, then open
+the printed loopback URL to choose GT-003, save, inspect and replay experiments.
+Results remain UNSEALED / UNSCORED. See [local UI quickstart](docs/LOCAL_UI.md)
+for Windows commands, restart recovery, installed-wheel use and boundaries.
+
 `uv run --python 3.11 --with pytest --with ruff python -m pytest -q`
 
 The complete local gate is available on Windows with

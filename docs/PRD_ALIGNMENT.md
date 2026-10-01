@@ -10,6 +10,9 @@ SHA-256 is
 This repository implements the research-only Arena, not the future production
 Procurement Intelligence Engine. The packet's no-UI, no-production-scraper,
 no-autofill, no-submission, and no-runtime-authority boundaries remain binding.
+The owner authorized one narrow exception to the no-UI exclusion on 2026-10-01:
+the optional [local experiment workbench](LOCAL_UI_SCOPE.md). It does not
+replace or certify Build Packet #0 and grants no production execution authority.
 
 ## Current assessment
 

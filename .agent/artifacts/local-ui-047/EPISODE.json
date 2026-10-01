@@ -1,0 +1,36 @@
+{
+  "task_id": "LOCAL-UI-047",
+  "first_controller_clock_utc": "2026-10-01T17:57:03.7331967Z",
+  "independent_acceptance_utc": "2026-10-01T18:37:54Z",
+  "exact_turn_start_utc": null,
+  "lane": "full; single builder with explicit owner Astra override",
+  "requested_builder_model": "gpt-6-astra",
+  "requested_builder_reasoning": "medium",
+  "reviewer_role": "sol",
+  "runtime_model_and_loaded_config_identity": "UNKNOWN beyond tool dispatch configuration",
+  "planning_seconds": null,
+  "build_seconds": null,
+  "validation_seconds": null,
+  "final_pytest_reported_seconds": 58.58,
+  "audit_seconds": 139,
+  "elapsed_to_accepted_seconds": null,
+  "elapsed_measurement_note": "Exact turn start and overlapping phase durations were not instrumented; do not infer speedup or exact total from partial clocks.",
+  "repair_count": 1,
+  "tokens": {"input_measured": null, "output_measured": null, "status": "UNKNOWN"},
+  "attempts": [
+    {"candidate": 1, "controller_result": "FIX", "failed_gate": "Windows ConnectionAbortedError10053 in chunked-header rejection", "passed": 288, "failed": 1, "skipped": 1, "retained": "CANDIDATE-1-VALIDATION.md"},
+    {"candidate": 2, "controller_result": "PASS", "passed": 297, "failed": 0, "skipped": 1, "independent_result": "PASS", "retained": "CANDIDATE.json and REVIEW.json"}
+  ],
+  "state_decision_action_outcome": "Accepted CLI -> owner-authorized optional loopback UI -> one Astra implementation plus one bounded transport repair -> full gate/runtime/browser proof -> independent Sol PASS -> local owner handoff",
+  "attribution": "Failure occurred on Windows rejected-header connection teardown, not engine/policy/evidence semantics. Delayed-body regression distinguishes the transport race from nondeterministic experiment behavior.",
+  "candidate_lesson": {
+    "rule": "For an early-reject local HTTP adapter, exercise a delayed request body and bound cleanup by both elapsed time and bytes; retain strict protocol-status assertions.",
+    "evidence": "REPAIR-1-COMPLETION.json before-repair four failures; final controller full suite includes the repaired delayed-body and bounded-drain tests",
+    "metric": "delayed_body_rejection_regression_failures",
+    "direction": "decrease; four pre-repair failures to zero in final gate",
+    "disposition": "PROMOTE locally as retained regression coverage, not a global skill or policy change",
+    "reversibility": "Isolated WorkbenchServer.shutdown_request and its tests; any alternative must retain explicit rejection and bounded cleanup requirements"
+  },
+  "acceptance_scope": "Local workbench only; no source promotion or parent completion",
+  "release_authority": "No new commit/push/merge/deployment authorized or performed"
+}
