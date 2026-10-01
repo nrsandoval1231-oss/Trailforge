@@ -1,18 +1,13 @@
-# Athena Trailforge Procurement Arena
+# TrailForge Historical Signal Arena
 
-Trailforge implements the research path `SCENARIO CORPUS -> TEMPORAL WORLD ->
-POLICY RUNNER -> FROZEN LEDGER -> EVALUATOR -> ATHENA GOVERNANCE -> TOURNAMENT`.
-Evidence is visible only after verified availability. Predictions, future
-outcomes, and unapproved commercial actions never enter the evidence or
-execution path. The current implementation is local, deterministic, and
-research-only.
+The Arena is TrailForge's deterministic historical proving environment, not the product objective by itself.
 
-Replay accepts evidence only when its permission scope is the exact `PUBLIC`
-label. Tenant matching alone does not authorize evidence; non-public access
-requires a separate governed authorization contract.
+`HISTORICAL PROJECT COHORT -> TEMPORAL EVIDENCE -> SIGNAL POLICY -> FROZEN LEDGER -> LEAD-TIME EVALUATION -> INSPECT/REPLAY`
 
-See `ARCHITECTURE.md` for component boundaries and `EVALUATION.md` for metric
-and reproducibility rules.
+Evidence becomes visible only at verified historical availability. Later project outcomes and procurement events cannot leak backward.
 
-For current opportunity qualification and local result production, see
-`CURRENT_OPPORTUNITIES.md`.
+Compare signal families by earliest valid surfaced date, lead-time advantage, project coverage, action burden, and buyer-path availability at signal time.
+
+Research remains local and deterministic. Customer outreach remains outside the Arena.
+
+See `PRD_ALIGNMENT.md` for product direction and `PROJECT_SIGNAL_TRACING.md` for the historical trace contract.

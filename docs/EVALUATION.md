@@ -1,45 +1,25 @@
-# Evaluation and reproducibility
+# TrailForge Evaluation
 
-`evaluate_replay` reports discovery, trail, procurement, power, action, and
-efficiency dimensions independently. Missing verified truth or unknown supply
-remains unavailable; it is not converted into a score.
+## Primary outcome
 
-Discovery is policy dependent. A forecast may include a `discovery` object with
-an `episode_id` and nonempty `basis_evidence_ids`. A claim is scored only when
-all basis IDs were visible to that decision. `discovery.precision` is `null`
-when there are no supported explicit claims; a known positive truth still
-receives a recall miss. Precision deduplicates by claimed episode identity, so
-repeated claims cannot change it. Visibility by itself is not a discovery
-claim. `useful_lead_seconds` can be scored only when the cited event has an
-optional `action_support` attestation naming the exact procurement episode,
-`PREPARE` or `BID_REVIEW`, a reviewer, review time, exact source span, and
-specific rationale. The span must belong to that event; the event cannot be
-prediction evidence or carry contradiction references. The review must follow
-the evidence chronology and already exist at the frozen decision time. Replay
-also requires a valid decision hash on the same scenario, an explicit correct
-discovery claim that cites the event, actual visibility at decision time, an
-action matching the attestation, and a decision before solicitation. Lead is
-measured from the earliest qualifying decision. Missing or mismatched
-attestations leave lead time `null`. Reviewer attestations are trusted
-annotations, not independently verified proof that an action was objectively
-sufficient. Synthetic mechanics do not establish real-world accuracy.
-In temporal policy replay, a visible event's `action_support` annotation is
-withheld until its `reviewed_at` time; base evidence visibility is unchanged.
+TrailForge optimizes for **useful lead-time advantage**, not synthetic policy scores or completion of governance machinery.
 
-`run_with_manifest` records scenario hash, policy, seed, environment, result
-hash, and local source commit. The CLI's `batch`, `compare`, `benchmark`, and
-`tournament` modes use seeded synthetic runs. A green synthetic campaign proves
-mechanics and comparative robustness only, not real-world forecasting accuracy.
-Loading a persisted manifest requires its stored content hash to match the
-loaded fields. `verify_replay` also checks that the recorded source commit is
-the current local `git rev-parse HEAD`, along with scenario and result hashes.
-This check identifies the commit only: it does not detect uncommitted source
-edits or establish policy/config equivalence. If local Git identity is
-unavailable, source-commit verification fails closed.
+For each historical project, measure time between the earliest date the policy could validly surface the project using then-available evidence and a later verified conventional/obvious milestone.
 
-`calculate_power_profile` evaluates phased intervals at every need and supply
-boundary. Unknown supply produces an unknown segment; verified numeric profiles
-can be passed to `evaluate_power_profile` for peak-gap error.
+`lead_time_advantage_days = (obvious_milestone - first_valid_surface) / 1 day`
 
-`attention_metrics` reports Precision@K and Recall@K at K=5, 10, 25, and 50;
-it treats duplicate/excess alerts as attention burden rather than free recall.
+No score is produced when either timestamp is unsupported.
+
+## Cohort metrics
+
+Where evidence supports them, report median/distribution of lead-time advantage, percentage surfaced before the obvious milestone, unresolved count, action burden, buyer-path availability at first surface, and source coverage by signal family. False-positive rate requires a defensible negative cohort.
+
+Never convert UNKNOWN/inconclusive cases into negatives.
+
+## What does not establish success
+
+Test count, synthetic throughput, more alerts, attractive UI, one anecdotal hit, an already-public RFP, or identifying a fuel provider already aware of the project.
+
+## Promotion
+
+A signal family becomes a candidate for GridLens when repeated historical evidence shows material lead-time advantage with tolerable action burden and explainable provenance. Promotion is deliberate, never automatic.
