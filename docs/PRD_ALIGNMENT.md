@@ -3,9 +3,8 @@
 ## Authority
 
 The controlling specification is **Athena Procurement Arena — Build Packet #0**,
-version 1.0 (2026-09-08), retained at
-`C:\Users\nrsan\Nucleus\90_Archive\Records\project-doc-versions-2026-09\Athena_Procurement_Arena_Build_Packet_0_COMPLETE.md`.
-Its verified SHA-256 is
+version 1.0 (2026-09-08), retained outside this repository. Its verified
+SHA-256 is
 `7abb4c4aeb6ab049ea1f2f8888f76bc4f9e96daa3217797b07706bf7858236d8`.
 
 This repository implements the research-only Arena, not the future production

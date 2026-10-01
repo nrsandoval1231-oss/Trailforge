@@ -89,6 +89,10 @@ account/billing blocker; the remote test result remains unavailable. Keep the
 existing CI gate intact. Per the current instruction, validation from here is
 local only; no remote result is claimed for the current candidate.
 
+The 2026-10-01 audit observed newer run `36793116570` failing before steps;
+annotation access was denied, so its cause remains UNKNOWN. Historical billing
+annotations are not proof of the newer failure's cause.
+
 ## 4. Missing real-world evidence and decision
 
 - Independently verified, sealed historical timelines and final outcomes,

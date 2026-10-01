@@ -15,9 +15,10 @@ the earliest signal is a deterministic property, not a model judgment.
 
 ## Evidence classes
 
-`PUBLIC` evidence requires an HTTP(S) source URL and can be acquired through a
-future controlled public-capture adapter. `CONFIDENTIAL` evidence requires a
-local/source reference and remains distinct from public evidence. Confidential
+`PUBLIC` evidence requires an HTTP(S) source URL and can be acquired through
+the implemented `capture-public` command, which runs the Firecrawl CLI for one
+public URL at a time. `CONFIDENTIAL` evidence requires a local/source
+reference and remains distinct from public evidence. Confidential
 attachments must not be committed to or uploaded through the public repository.
 
 Every signal retains a SHA-256 source fingerprint, reviewer, claims, and stable
