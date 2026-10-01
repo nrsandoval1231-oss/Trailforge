@@ -29,8 +29,12 @@ def test_capture_freezes_content_and_round_trips(tmp_path):
 def test_capture_rejects_non_public_targets():
     with pytest.raises(ValueError, match=r"HTTP\(S\)"):
         capture_markdown("file:///secret", "content", capture_id="cap-1", captured_by="operator")
-    with pytest.raises(ValueError, match="private"):
+    with pytest.raises(ValueError, match="non-public"):
         capture_markdown("http://192.168.1.10/source", "content", capture_id="cap-1", captured_by="operator")
+    for url in ("http://172.17.0.1/source", "http://[fd00::1]/source", "http://127.0.0.1/source",
+                "http://user:password@example.com/source", "http://server.localhost/source"):
+        with pytest.raises(ValueError):
+            capture_markdown(url, "content", capture_id="cap-1", captured_by="operator")
 
 
 def test_firecrawl_capture_is_explicit_and_raw(monkeypatch, tmp_path):

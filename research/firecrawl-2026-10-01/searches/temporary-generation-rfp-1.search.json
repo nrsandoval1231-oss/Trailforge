@@ -1,0 +1,164 @@
+{
+  "categories": [
+    "pdf"
+  ],
+  "domain": "psegliny.com",
+  "hits": [
+    {
+      "description": "LIPA is seeking to procure either (i) up to 685 MW of Capacity from one or more generating facilities 1 through 9 of this RFP,",
+      "position": 1,
+      "source_type": "web",
+      "title": "2025 PJM Request for Proposals",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/A3A2FAD9983C40E6BCB8B4C8DB76743B.ashx"
+    },
+    {
+      "description": "This fee will be based on a scale of $1.5 per kW of load reduction or power production offered. This applies to all technologies requested in ...",
+      "position": 2,
+      "source_type": "web",
+      "title": "Request for Proposals South Fork Resources (“RFP” or “ ...",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2015southforkrfp/-/media/328205D0545045D8A81383554C4BFB0A.ashx"
+    },
+    {
+      "description": "PJM Request for Proposals for Capacity or Capacity and Energy (“2026 PJM RFP”) to replace an existing soon-to-expire capacity contract with a ...",
+      "position": 3,
+      "source_type": "web",
+      "title": "2026 PJM Request for Proposals",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/43B5E092A9524655AA4AC2FE44A80761.ashx"
+    },
+    {
+      "description": "PSEG Long Island is responsible for power supply planning and procurement, various power purchase agreements with third-party generation and ...",
+      "position": 4,
+      "source_type": "web",
+      "title": "2026 Request for Information Clean & Non-Emitting ...",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/E8B6CF57FA56498198DB2716432883B0.ashx"
+    },
+    {
+      "description": "Bid – means an offer to sell or bid to purchase Energy that is duly submitted to the NYISO ... but are not limited to, incremental costs of generation to supply ...",
+      "position": 5,
+      "source_type": "web",
+      "title": "ADDENDUM NO. 1: ISSUED JANUARY 16, 2026",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/FA1B2F1296B547D697811B582EED6850.ashx"
+    },
+    {
+      "description": "The ESCO is an eligible supplier under the Long Island Choice Program and desires to supply electric generation service to LI Choice Customers.",
+      "position": 6,
+      "source_type": "web",
+      "title": "October 28, 1999",
+      "url": "https://www.psegliny.com/aboutpseglongisland/ratesandtariffs/tariffs/-/media/426AF1C91D1440B59F5032E1BC58F4BD.ashx"
+    }
+  ],
+  "limit": 10,
+  "provider": "firecrawl",
+  "provider_job_id": "01a0f9ab-d926-72af-bfc5-3f927742506c",
+  "query": "site:psegliny.com temporary generation RFP temporary power procurement",
+  "raw_response": {
+    "creditsUsed": 4,
+    "data": {
+      "news": [
+        {
+          "position": 1,
+          "title": "[PDF] 2025 PJM Request for Proposals - PSEG Long Island",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/A3A2FAD9983C40E6BCB8B4C8DB76743B.ashx"
+        },
+        {
+          "position": 2,
+          "title": "[PDF] Request for Proposals South Fork Resources (“RFP” or “2015 SF ...",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2015southforkrfp/-/media/328205D0545045D8A81383554C4BFB0A.ashx"
+        },
+        {
+          "position": 3,
+          "title": "[PDF] 2026 PJM Request for Proposals - PSEG Long Island",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/43B5E092A9524655AA4AC2FE44A80761.ashx"
+        },
+        {
+          "position": 4,
+          "title": "[PDF] 2026 Request for Information Clean & Non-Emitting Resources on ...",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/E8B6CF57FA56498198DB2716432883B0.ashx"
+        },
+        {
+          "position": 5,
+          "title": "[PDF] Alternative Standards for Episodic Generation Overview 40 CFR 262 ...",
+          "url": "https://www.deq.nc.gov/episodic-generation-guidance-1/download?attachment"
+        },
+        {
+          "category": "pdf",
+          "position": 6,
+          "title": "[PDF] Renewable Power Generation Costs 2020 - IRENA",
+          "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2021/Jun/IRENA_Power_Generation_Costs_2020.pdf"
+        },
+        {
+          "category": "pdf",
+          "position": 7,
+          "title": "[PDF] Additional Evidence on College Experiences and Outcomes",
+          "url": "https://thrive.arizona.edu/sites/default/files/First-Generation%20College%20Students%2C%20College%20Experiences%20and%20Outcomes.pdf"
+        },
+        {
+          "category": "pdf",
+          "position": 8,
+          "title": "[PDF] Stress in America™ Generation Z",
+          "url": "https://www.apa.org/news/press/releases/stress/2018/stress-gen-z.pdf"
+        },
+        {
+          "category": "pdf",
+          "position": 9,
+          "title": "[PDF] Fiscal Year 2026 Next Generation Warning System Grant Program",
+          "url": "https://www.fema.gov/sites/default/files/documents/fema_gpd_ngws-nofo_fy2026.pdf"
+        },
+        {
+          "category": "pdf",
+          "position": 10,
+          "title": "[PDF] Technology Roadmap Update for Generation IV Nuclear Energy ...",
+          "url": "https://www.gen-4.org/gif/upload/docs/application/pdf/2014-03/gif-tru2014.pdf"
+        }
+      ],
+      "web": [
+        {
+          "description": "LIPA is seeking to procure either (i) up to 685 MW of Capacity from one or more generating facilities 1 through 9 of this RFP,",
+          "position": 1,
+          "title": "2025 PJM Request for Proposals",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/A3A2FAD9983C40E6BCB8B4C8DB76743B.ashx"
+        },
+        {
+          "description": "This fee will be based on a scale of $1.5 per kW of load reduction or power production offered. This applies to all technologies requested in ...",
+          "position": 2,
+          "title": "Request for Proposals South Fork Resources (“RFP” or “ ...",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2015southforkrfp/-/media/328205D0545045D8A81383554C4BFB0A.ashx"
+        },
+        {
+          "description": "PJM Request for Proposals for Capacity or Capacity and Energy (“2026 PJM RFP”) to replace an existing soon-to-expire capacity contract with a ...",
+          "position": 3,
+          "title": "2026 PJM Request for Proposals",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/43B5E092A9524655AA4AC2FE44A80761.ashx"
+        },
+        {
+          "description": "PSEG Long Island is responsible for power supply planning and procurement, various power purchase agreements with third-party generation and ...",
+          "position": 4,
+          "title": "2026 Request for Information Clean & Non-Emitting ...",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/E8B6CF57FA56498198DB2716432883B0.ashx"
+        },
+        {
+          "description": "Bid – means an offer to sell or bid to purchase Energy that is duly submitted to the NYISO ... but are not limited to, incremental costs of generation to supply ...",
+          "position": 5,
+          "title": "ADDENDUM NO. 1: ISSUED JANUARY 16, 2026",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/FA1B2F1296B547D697811B582EED6850.ashx"
+        },
+        {
+          "description": "The ESCO is an eligible supplier under the Long Island Choice Program and desires to supply electric generation service to LI Choice Customers.",
+          "position": 6,
+          "title": "October 28, 1999",
+          "url": "https://www.psegliny.com/aboutpseglongisland/ratesandtariffs/tariffs/-/media/426AF1C91D1440B59F5032E1BC58F4BD.ashx"
+        }
+      ]
+    },
+    "id": "01a0f9ab-d926-72af-bfc5-3f927742506c",
+    "success": true
+  },
+  "requested_query": "temporary generation RFP temporary power procurement",
+  "retrieved_at": "2026-10-01T22:53:08.824565+00:00",
+  "schema_version": "trailforge-firecrawl-search-v1",
+  "search_id": "temporary-generation-rfp-1",
+  "sources": [
+    "web",
+    "news"
+  ]
+}

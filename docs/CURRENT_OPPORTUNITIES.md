@@ -1,21 +1,11 @@
-# Current Opportunities
+# Current opportunities
 
-TrailForge is not the primary live opportunity queue. GridLens should become that surface.
+The owner's 2026-10-01 build order authorizes an initial local TrailForge operator queue in two lanes, alongside the signal laboratory. This supersedes the earlier restriction that TrailForge could not have a live operator surface. GridLens handoff remains a later bounded slice.
 
-TrailForge proves which signal families deserve to feed live discovery. Existing current-opportunity screening can remain for research/regression, but new work should not optimize TrailForge around generic RFP aggregation or already-obvious solicitations.
+See [retained real acquisition evidence](../research/firecrawl-2026-10-01/README.md) and [operator commands](FIRECRAWL_WORKSPACE.md).
 
-## Commercial sequence
+Early projects retain identity, why the evidence matters, possible power gap, buyer organizations, unknown requirements and next verification action. No discovered RFP in the captured search set is not proof that none exists anywhere.
 
-1. Detect an early project signal.
-2. Establish project identity.
-3. Form a bounded power-gap hypothesis.
-4. Identify the direct customer/project buying chain.
-5. Contact the customer/EPC/GC/electrical contractor.
-6. Verify MW, timing, duration, voltage, redundancy, site constraints and fuel availability.
-7. Select generation and fuel strategy.
+Active RFPs retain the public landing page, accessible original documents, exact requirement citations, deadline and freshness state, strict 2G-fit result and missing forms/clarifications. Active status is time-bound and does not certify that private portal amendments were checked. Human portal review remains necessary before a response.
 
-Fuel vendors support fulfillment after the opportunity is understood; they are not the default upstream lead channel.
-
-## GridLens handoff
-
-Validated signal policies should eventually emit project, evidence, first-seen time, power-gap hypothesis, evidence state, likely direct buying organizations/roles, and next verification action. Never invent unsupported MW, duration, authority, or fuel claims.
+No autonomous outreach, bid submission or automatic GridLens transfer occurs. Qualification is independent of discovery: an active RFP may be NOT FIT under the current rental screen.

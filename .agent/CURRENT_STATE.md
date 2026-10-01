@@ -1,39 +1,16 @@
-# TrailForge Current State — 2026-10-01
+# TrailForge current state — 2026-10-01
 
-## Product reset
+## Owner direction
+TrailForge now has two connected operating lanes: early-project discovery before a temporary-power RFP, and active solicitation capture/qualification/response preparation. The merged early-project reset is retained. The latest owner build order makes public acquisition and two real operator outputs the immediate milestone.
 
-The owner reset TrailForge around one commercial objective:
+## Candidate
+Base `fd772eb2475b24e65ab2221aeeaf8cfe6f1d14e3`; branch `codex/trailforge-firecrawl-vertical-slice`. The original dirty checkout is preserved. One Luna implements [FC-050](tasks/firecrawl-050.md); parent checks real sources. [Work graph](WORK_GRAPH_V1.md).
 
-**Prove which early signals can identify real power projects before conventional market discovery, so the direct customer/project team can be contacted first; fuel providers are selected afterward.**
+## Boundaries
+Existing engine, fixture/replay provenance and experiment workbench remain intact. Firecrawl acquires; TrailForge classifies and qualifies. UNKNOWN stays UNKNOWN. No autonomous contact/submission, merge, deployment, GridLens promotion or claimed historical predictive quality.
 
-This supersedes older next-step language prioritizing completion of the generic Procurement Arena, additional governance machinery, or RFP-first discovery.
+## Candidate validation
+Real early project and active solicitation are implemented with immutable documents, cited requirements, deduplication, deadline state, fit reasons, next actions and local workspace. The initial independent review returned FIX; its three findings are repaired. Final gate and re-review receipts govern acceptance, not this status note. A completed slice does not complete the historical-cohort objective.
 
-## Current implementation
-
-Main includes the deterministic research engine and merged local experiment workbench from PR #5. Existing evidence/replay/provenance infrastructure is retained. Historical agent packets/review artifacts remain evidence of prior work and must not be rewritten to match this reset.
-
-## Current gap
-
-The engine has not yet demonstrated repeatable lead-time advantage on a meaningful cohort of real power projects. Synthetic mechanics, test counts, already-obvious RFPs, and UI completion do not answer that question.
-
-## Active frontier: HISTORICAL-COHORT-001
-
-Assemble and run approximately 20-50 real historical power projects through the temporal replay engine.
-
-Per project: source-backed chronology; first valid policy surface; verified conventional downstream milestone; lead-time advantage where supported; buyer-path evidence at first surface; unresolved evidence; signal family.
-
-Cohort: lead-time distribution by signal family, coverage, action burden, unresolved cases, buyer-path availability.
-
-## Build priority
-
-1. Adapt existing trace/experiment path to cohort execution.
-2. Collect/review first historical cohort.
-3. Evaluate candidate signal families.
-4. Identify at least one repeatably useful early signal.
-5. Define minimal GridLens live integration.
-
-Do not start another architecture initiative before this experiment is runnable.
-
-`SIGNAL -> PROJECT -> POWER-GAP HYPOTHESIS -> DIRECT BUYING CHAIN -> CUSTOMER CONVERSATION -> VERIFIED REQUIREMENT -> FUEL STRATEGY`
-
-Fuel-provider-first discovery is not the product direction.
+## Next
+Finish FC-050 then HC-001 using existing trace/replay. Preserve unavailable attachments, unverified amendments, missing customer requirements and missing historical availability as explicit gaps.

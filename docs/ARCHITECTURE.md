@@ -1,19 +1,21 @@
-# TrailForge Architecture
+# TrailForge architecture
 
-## Smallest useful system
+## Implemented operational slice
+
+`Public web -> configurable Firecrawl search -> selected public scrape -> PublicCapture + acquisition metadata -> manually extracted cited facts -> canonical opportunity -> deterministic identity and rental-fit screen -> local operator HTML/JSON workspace`
+
+The adapter reuses the existing `PublicCapture` format and content/hash verification. Raw provider responses and query provenance are retained. Source versions are not overwritten. Original PDFs are retained independently from parsed text and checked by SHA-256. Firecrawl acquires content; operator-reviewed extraction and TrailForge classification/qualification own the commercial interpretation.
+
+`PRE_RFP_PROJECT` and `ACTIVE_RFP` are separate from qualification. Missing technical facts remain UNKNOWN. Program capacity and facility nameplate are not substituted for required temporary load. Strong organization/identifier or project/location identity permits deterministic deduplication; ambiguity remains separate. Known fields carry exact source spans. These spans prove provenance, not independent semantic truth: initial extraction is manual and must be reviewed.
+
+The workspace is local, with early projects, active RFPs, response preparation and a link to the existing Signal Lab. It cannot submit bids or contact buyers. No database, provider framework, hosted service or multi-agent runtime was introduced.
+
+## Preserved signal laboratory
 
 `Project Timeline -> TemporalWorld -> Signal Policy -> FrozenDecisionLedger -> Lead-Time Evaluator -> Experiment Store/Replay`
 
-The architecture answers: **would this signal policy have surfaced the project earlier using only evidence available at the time?**
-
-Project timelines retain source-backed signals and availability times. TemporalWorld prevents future leakage. Signal Policy deterministically decides whether visible evidence warrants human commercial review. FrozenDecisionLedger retains exact evidence and decisions. Lead-Time Evaluator compares first valid surface with a later verified conventional milestone. Experiment Store/Replay preserves inspectability and deterministic replay.
+Live captures do not become verified historical fixtures automatically. HC-001 will use the existing trace/cohort/backtest infrastructure after this acquisition slice. The laboratory tests whether a policy could surface a project earlier using only evidence available then.
 
 ## Commercial boundary
 
-`TrailForge signal -> direct customer/project team -> verify power gap -> choose generation/fuel solution`
-
-Fuel-provider discovery must not become the upstream architecture.
-
-## Build rule
-
-Use the existing engine. Add only what is required to run real historical cohorts and measure lead-time advantage. Do not add databases, distributed services, agents, governance layers, or new policy frameworks unless a concrete experiment requires them.
+Reach the direct customer/project team; verify a power gap; then choose generation and fuel strategy. A live lead is a hypothesis until verified. Historical signal quality and GridLens promotion require repeated evidence.

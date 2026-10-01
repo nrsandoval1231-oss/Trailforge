@@ -1,0 +1,94 @@
+{
+  "schema_version": "trailforge-opportunity-input-v1",
+  "opportunity_id": "plaza500-south-phase1",
+  "kind": "PRE_RFP_PROJECT",
+  "title": "Plaza 500 South (Phase 1)",
+  "identity": {
+    "organization": "PLAZA 500 PROPERTY OWNER LP",
+    "official_id": "BLDC-2026-00118",
+    "project": "Plaza 500 South (Phase 1)",
+    "location": "6299 EDSALL RD ALEXANDRIA, VA 22312"
+  },
+  "reviewed_by": "codex-source-review (extraction only; customer verification pending)",
+  "reviewed_at": "2026-10-01T23:00:33.050682+00:00",
+  "sources": [
+    {
+      "capture_file": "../captures/plaza-detail-initial.capture.json"
+    },
+    {
+      "capture_file": "../captures/plaza-permit.capture.json"
+    },
+    {
+      "capture_file": "../captures/plaza-parcel.capture.json"
+    },
+    {
+      "capture_file": "../captures/edsall.capture.json"
+    },
+    {
+      "capture_file": "../captures/edsall-agenda.capture.json"
+    },
+    {
+      "capture_file": "../captures/edsall-hearing.capture.json"
+    }
+  ],
+  "field_evidence": {
+    "title": {
+      "capture_file": "../captures/plaza-detail-initial.capture.json",
+      "quote": "Plaza 500 South (Phase 1)"
+    },
+    "identity.official_id": {
+      "capture_file": "../captures/plaza-detail-initial.capture.json",
+      "quote": "BLDC-2026-00118"
+    },
+    "identity.project": {
+      "capture_file": "../captures/plaza-detail-initial.capture.json",
+      "quote": "Plaza 500 South (Phase 1)"
+    },
+    "identity.location": {
+      "capture_file": "../captures/plaza-detail-initial.capture.json",
+      "quote": "6299 EDSALL RD ALEXANDRIA, VA 22312"
+    },
+    "identity.organization": {
+      "capture_file": "../captures/plaza-parcel.capture.json",
+      "quote": "PLAZA 500 PROPERTY OWNER LP"
+    },
+    "direct_buyer_orgs": {
+      "capture_file": "../captures/plaza-parcel.capture.json",
+      "quote": "PLAZA 500 PROPERTY OWNER LP"
+    }
+  },
+  "published_at": null,
+  "deadline": null,
+  "requirements": {
+    "scope": "New Data Center Core/Shell (Phase 1); temporary-power need UNKNOWN"
+  },
+  "requirement_quotes": {
+    "scope": {
+      "capture_file": "../captures/plaza-detail-initial.capture.json",
+      "quote": "New Data Center Core/Shell (Phase 1)"
+    }
+  },
+  "signal_family": "DATA_CENTER_PERMIT_AND_SUBSTATION_PERMITTING",
+  "power_gap_hypothesis": "A new data-center shell permit is in review while the associated Edsall substation hearing has moved to December 2 and utility energization is planned for Q2 2028. Investigate whether construction or commissioning precedes permanent power. There is no verified gap, required MW, fuel plan or temporary-power procurement in these sources.",
+  "direct_buyer_orgs": [
+    "PLAZA 500 PROPERTY OWNER LP"
+  ],
+  "roles": [],
+  "earliest_signal": {
+    "value": "2026-05-21",
+    "capture_file": "../captures/plaza-permit.capture.json",
+    "quote": "| 05/21/2026 | **SP-2024-00003-1** | Site Plan Revision | Site | MASON | STARWOOD PLAZA 500 | Submitted |"
+  },
+  "next_action": "Ask the property owner/developer project team to identify who controls construction and commissioning power, confirm project readiness and permanent-service date, and verify any MW/duration/fuel gap. Contractor not selected in the captured permit. Identify a public business contact before outreach; do not call the county reviewer as if they were the buyer.",
+  "notes": "Earliest listed project signal in this limited capture set is May 21, 2026; not the globally earliest signal or historically verified available_at. July 16 building application remains In Review. The county permit says the contractor will be selected later. Parcel uses 6295 Edsall while the building permit specifies 6299 and flags address corrections; preserve that distinction. Edsall is a related utility project, not a duplicate of the data center. No project temporary-power RFP was identified in the captured scoped search; RFP existence elsewhere remains UNKNOWN. Planning opposition/hearing delay could delay or cancel the project; verify before pursuit.",
+  "documents": [
+    {
+      "title": "County agenda: Edsall hearing moved to December 2, 2026",
+      "url": "https://www.fairfaxcounty.gov/planningcommission/sites/planningcommission/files/Assets/calendar/2026/9.24.26.pdf",
+      "source_type": "public-pdf",
+      "capture_file": "../captures/edsall-agenda.capture.json",
+      "original_file": "../originals/fairfax-2026-09-24-agenda.pdf",
+      "sha256": "56c488625bf13822cf85aa55d0615e2f14c16ca7519b6da973fdd57909f8a458"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "schema_version": "trailforge-opportunity-input-v1",
+  "opportunity_id": "lipa-tempgen-2026",
+  "kind": "ACTIVE_RFP",
+  "title": "2026 Temporary Generation RFP",
+  "identity": {
+    "organization": "Long Island Power Authority",
+    "official_id": "238662",
+    "project": "2026 Temporary Generation RFP",
+    "location": "LIPA Service Territory"
+  },
+  "reviewed_by": "codex-source-review (extraction only; human commercial approval pending)",
+  "reviewed_at": "2026-10-01T23:03:43.387134+00:00",
+  "sources": [
+    {
+      "capture_file": "../captures/lipa-landing-v2.capture.json"
+    },
+    {
+      "capture_file": "../captures/lipa-rfp.capture.json"
+    },
+    {
+      "capture_file": "../captures/lipa-interconnection.capture.json"
+    }
+  ],
+  "field_evidence": {
+    "title": {
+      "capture_file": "../captures/lipa-landing-v2.capture.json",
+      "quote": "2026 Temporary Generation RFP"
+    },
+    "identity.organization": {
+      "capture_file": "../captures/lipa-landing-v2.capture.json",
+      "quote": "Long Island Power Authority"
+    },
+    "identity.official_id": {
+      "capture_file": "../captures/lipa-landing-v2.capture.json",
+      "quote": "238662"
+    },
+    "identity.project": {
+      "capture_file": "../captures/lipa-landing-v2.capture.json",
+      "quote": "2026 Temporary Generation RFP"
+    },
+    "identity.location": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "LIPA Service Territory"
+    },
+    "direct_buyer_orgs": {
+      "capture_file": "../captures/lipa-landing-v2.capture.json",
+      "quote": "PSEG Long Island, LLC (“PSEG Long Island”), on behalf of the Long Island Power Authority (“LIPA”) is issuing this 2026 Request for Proposals for Temporary Generation (“2026 Temporary Generation RFP” or “RFP”) for the purpose of maintaining reliability for Long Island customers."
+    }
+  },
+  "published_at": {
+    "value": "2026-07-27",
+    "capture_file": "../captures/lipa-rfp.capture.json",
+    "quote": "Issued: July 27, 2026"
+  },
+  "deadline": {
+    "value": "2026-10-30T17:00:00-04:00",
+    "capture_file": "../captures/lipa-landing-v2.capture.json",
+    "quote": "| Proposal Submittal Deadline | October 30, 2026 5:00 PM EPT |"
+  },
+  "requirements": {
+    "required_kw": 5000,
+    "program_mw": 400,
+    "scope": "Temporary Generation under a Power Purchase Agreement; minimum 5 MW per project",
+    "voltage": "Transmission 23 kV and above, or distribution at 13 kV only; interconnection procedures depend on connection type",
+    "duty": "Dispatchable capacity and scheduled hourly energy product",
+    "fuel": "Respondent may supply adequate fuel or elect LIPA supply; natural gas projects require gas interconnection infrastructure; project-specific fuel not selected",
+    "duration": "3-year base term; extension up to October 31, 2039, terminable by LIPA during extension with 12 months notice",
+    "mobilization": "Service commencement between May 1, 2028 (preferred) and May 1, 2030; specific mobilization date UNKNOWN",
+    "prebid": "Webinar August 5, 2026 11:00 AM EPT; site visits August 20 and 27, 2026 (past at capture)",
+    "emissions": "Describe pollutant control under NY/local requirements; report PM10/2.5, NOx, SOx, CO, VOC, NH3, sulfuric acid and CO2 metrics; numeric permit limits depend on project",
+    "insurance": "Appendix E: employer liability $1M; auto $5M; CGL $10M; pollution $5M and professional $5M when applicable; builders risk subject to stated terms",
+    "forms": [
+      "Contingent Fee Certification",
+      "Contractor Disclosure of Prior Non-Responsibility Determinations",
+      "MacBride Fair Employment Principles",
+      "Non-Collusive Bidding Certification",
+      "NYS Vendor Responsibility Questionnaire",
+      "Sexual Harassment Policy",
+      "Gender-Based Violence and the Workplace Certification",
+      "MWBE and SDVOB forms or applicable explanation",
+      "Respondent Data Form (Excel)"
+    ],
+    "certifications": [
+      "If selected: NYS Vendor ID/VendRep; for LIPA sites: ISNETworld active account, rating C or better"
+    ],
+    "submission": "Proposals must be submitted via PowerAdvocate; human submission only",
+    "clarifications": "Questions July 28-October 16, 2026; intent to bid October 16, 2026 5PM EPT",
+    "runtime": null,
+    "redundancy": null,
+    "bonding": null
+  },
+  "requirement_quotes": {
+    "required_kw": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "A minimum of 5 MW of Contract Capacity from each Project."
+    },
+    "program_mw": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "LIPA is seeking to secure up to 400 MW of Contract Capacity"
+    },
+    "scope": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "1.3.8 *Power Purchase Agreement or Agreement* – means the agreement setting forth the \ncommercial terms for selected Respondent’s mobilization, operation, maintenance, and \nDemobilization of the Project and LIPA’s purchase of Capacity and Energy from the selected \nProject(s) during the Service Term."
+    },
+    "voltage": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "2.2.5 Arrange for the Project to be interconnected to LIPA’s T&D System. If the Project is to be \ninterconnected at transmission voltage (23 kV and above), comply with the applicable \nrequirements set forth in NYISO Rules. If the Project is to be interconnected at distribution \nvoltage (at 13kV only), comply with the PSEG LI Small Generator Interconnection Procedure \n(“SGIP”). Execute the applicable Interconnection Agreement.\n\n---"
+    },
+    "duty": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "e) **Energy Product:** In addition to the Capacity Product above, the Proposal must include \nan Energy Product, from the same Project(s), in an hourly amount up to the equivalent \nCapacity Product as scheduled by LIPA."
+    },
+    "fuel": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "2.2.15 Provide bulk storage fuel tanks and required fuel transfer piping if Project is fueled by liquid \nfuel and any necessary containment as required.\n\n2.2.16 Provide and install the infrastructure required for the interconnection to the local natural gas \ndelivery system if the Project is fueled by natural gas.\n\n2.2.17 Provide cabling and terminations for auxiliary power requirements.\n\n2.2.18 List any NYSDEC approvals needed, including but not limited to, SPDES wastewater \ndischarge, Solid Waste Management Facility, Hazardous Waste Management Facility, Air \nPollution Control (Title V or State Facility Permit), Water Withdrawal over 20 MGD for Cooling \nWater, Waste Transporter.\n\n2.2.19 Assume responsibility for any Custom Duties, Taxes, and local authority permits, if \napplicable.\n\n2.2.20 Assume responsibility for all necessary environmental, noise, construction, and operation \npermits required by local agencies.\n\n2.2.21 Assume responsibility for environmental/emissions reporting as required by Federal and \nNYS agencies.\n\n---\n\n2.2.22 Ensure the availability of craft labor necessary to prepare the Site and perform the equipment \ninterconnections.\n\n2.2.23 Provide, install and operate the Generator Step-up Transformer(s) (**GSU).**\n\n2.2.24 Provide all cabling from GSU’s high voltage connections to LIPA substation.\n\n2.2.25 Identify any underground obstructions.\n\n2.2.26 Provide and install protective relay equipment for GSUs.\n\n2.2.27 Provide professional engineer **(PE)** reviews and stamps on Respondent drawings as \nrequired.\n\n2.2.28 Provide a community outreach plan.\n\n2.2.29 Plan for, provide, and install noise attenuation and visual screening measures appropriate \nfor densely populated and heavily trafficked neighborhoods to limit environmental and \ncommunity impacts.\n\n2.2.30 Comply with all local, NYS and Federal codes and obtain all permits and required licenses.  \nWith respect to a Project located in a Disadvantaged Community or within one-half mile of a \nDisadvantaged Community, please see Section 5.3.11.\n\n### 2.3 Fuel Supply\n\n2.3.1 Respondent shall be responsible for supplying adequate fuel to meet LIPA’s generation \nschedules. At Respondent’s option, LIPA will supply the fuel meeting Generating Unit \nspecifications and, with respect to liquid fuel, will ensure that the Project’s bulk storage tanks\nare maintained at sufficient levels to accommodate LIPA generation schedules.\nRespondents may offer either or both fuel supply options in their Proposals and provide \ncorresponding pricing offers. If the Project consists of battery storage Generating Units, LIPA \nwill provide charging energy."
+    },
+    "duration": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "b) **Service Term:** LIPA is seeking a Service Term for Temporary Generation beginning \nbetween May 1, 2028 (preferred) and May 1, 2030, for a 3-yr base term (**“Base Term”**)\nplus an extended term up to October 31, 2039 (full extended term preferred), provided \nthat LIPA will have the option to terminate the agreement at any time during the extended \nterm with 12 months advance notice."
+    },
+    "mobilization": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "b) **Service Term:** LIPA is seeking a Service Term for Temporary Generation beginning \nbetween May 1, 2028 (preferred) and May 1, 2030, for a 3-yr base term (**“Base Term”**)"
+    },
+    "prebid": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "| Webinar | August 5, 2026, 11:00 AM EPT |\n| LIPA Site Visit(s) | August 20 and August 27, 2026 |"
+    },
+    "emissions": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "5.3.7.4.1. The Proposal shall describe the technologies and operational strategies that will be used \nto control air pollutant emissions, if any, as well as related performance in conformance \nwith New York State and local requirements. This shall include, but are not limited to:\n\na) PM10/2.5, NOx, SOx, CO, VOC, NH3, and sulfuric acid emissions in ppm and lb/hr \nduring normal operation and start up at 0 deg F, 59 F and 95 F\n\nb) CO2 emissions in lb/MWh (gross) at the design heat rate (HHV)\n\nc) Exhaust gas characteristics (e.g., volumetric and mass flow rate, temperature, \nmoisture)\n\nd) Heat input in MMBtu/hr HHV"
+    },
+    "insurance": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "## 1. Insurance Policies and Limits:\n\n### 1.1 Workers’ Compensation/Employer’s Liability:\n\nWorkers’ Compensation insurance including coverage for occupational disease, covering all \nemployees in compliance with all applicable state and federal laws, and Employer’s Liability \nInsurance of not less than $1,000,000 each accident/$1,000,000 disease per employee/$1,000,000 \ndisease policy limit.\n\n### 1.2 Automobile Liability:\n\nAutomobile Liability Insurance covering all owned, non–owned and hired vehicles with a combined \nsingle limit for bodily injury and property damage liability in an amount not less than $5,000,000 \neach occurrence.\n\n### 1.3 Commercial General Liability:\n\nCommercial General Liability insurance including contractual liability coverage for the indemnity \nprovisions of this Agreement for Bodily Injury, personal Injury and Property Damage Liability in \namounts no less than $10,000,000 each occurrence and in the annual aggregate.\n\n### 1.4 Umbrella or Excess Liability:\n\nThe limits of insurance specified in the foregoing Sections 1.1 through 1.3 may be satisfied by the \nspecified limits in the separate policies or with the purchase of Umbrella or Excess Liability \ninsurance which, in combination with the limits of the separate policies provides the total limit \nrequired by each type of insurance.\n\n### 1.5 Builders Risk Property Insurance:\n\nFrom and after the date that Seller or its contractors commence construction at the Site, and subject \nto availability on commercially reasonable terms, Property Insurance providing coverage as \nrequired by its Lenders or if there are no Lenders for all risks of direct physical loss or damage \n(including the perils of flood, earthquake and named windstorm to, and for the total replacement \ncost value of, all property and equipment of Seller used for probable maximum loss as determined \nby a third party independent appraiser, to (subject to standard loss sublimits) all property and \nequipment of Seller used for or in connection with the Capacity provided under this Agreement. \nSuch coverage shall provide the costs of continuing expenses and additional expenses necessary \nto continue operations, insofar as reasonably possible, following loss of or damage to the property \nand equipment of Seller.\n\n### 1.6 Pollution/Environmental Liability\n\n---\n\nPollution/Environmental Liability insurance with a limit of not less than five million dollars \n($5,000,000) for each occurrence where the Work involves or includes Contractor handling, \ntransporting, disposing, or performing work or operations with Hazardous Materials, contaminants, \nwaste, toxic materials, or any potential pollutants.\n\n### 1.7 Professional Liability\n\nProfessional Liability insurance with a limit of not less than five million dollars ($5,000,000) per \nclaim where the Work involves or includes Contractor providing or performing design, architectural, \nengineering, consulting, or any professional services. If the Professional Liability insurance is \nclaims-made, the coverage shall remain in place for the greater of: (i) three (3) years from the \nexpiration of this Contract as amended; or (ii) three (3) years from the date Company accepts the \nWork.\n\n## 2. General Provisions."
+    },
+    "forms": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "5.3.17.1 Each Proposal shall, as applicable, include signed and completed copies of the following \nprocurement forms, which are available on Power Advocate:\n\na) Contingent Fee Certification\n\nb) Contractor Disclosure of Prior Non-Responsibility Determinations\n\nc) MacBride Fair Employment Principles\n\nd) Non-Collusive Bidding Certification e) NYS Vendor Responsibility Questionnaire\n\nf) Sexual Harassment Policy for All Employers in New York State\n\ng) Gender-Based Violence and the Workplace Certification\n\nh) All MWBE and SVDOB related forms (*)\n\ni) (*) In the case that the Respondent itself or any of its contractors are unable to comply \nwith the NYS MWBE and/or SDVOB hiring guidelines, they should provide a statement \nto that effect in the Proposal in lieu of submitting the forms noted above.\n\n#### 5.3.18 <u>Respondent Data Form</u>\n\n5.3.18 Respondent Data Form\n\n5.3.18.1 The Respondent Data Form is a Microsoft Excel file formatted for the Respondent to \nprovide relevant key Project information. This form is available for download from Power \nAdvocate. Respondents shall fill in this Excel file with all required information regarding the \nProposal and submit as an Excel file."
+    },
+    "certifications": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "5.3.19.1 As specified in Section 6.4.4, if selected in this procurement, the Respondent will be \nrequired to obtain a NYS Vendor Identification Number (“Vendor ID”) from the OSC, enroll \nin the OSC’s VendRep System, and file the completed Vendor Responsibility \nQuestionnaire with the OSC upon being selected for Agreement negotiations. Accordingly, \n(i) if the Respondent is not already enrolled in the OSC’s VendRep System, the \nRespondent shall provide a statement affirming that if selected in this procurement, it will \ndo so, or (ii) if the Respondent is already enrolled in the OSC’s VendRep System, the \nRespondent shall provide the Vendor ID in its Proposal.\n\n#### 5.3.20 <u>Respondent Requirements for Health &#38; Safety</u>\n\n5.3.20 Respondent Requirements for Health & Safety\n\n5.3.20.1 If a Respondent’s is proposing a Project located on a LIPA Site, the Respondent is required \nto have an active account in ISNETworld prior submission of the Proposal and shall provide \nthe ISNETworld System ID.\n\n5.3.20.2 PSEG Long Island requires all Respondents working on LIPA property to have an active \nISNETworld profile with a rating of “C” or better.  Respondents who do not meet this \nrequirement will not be considered for this procurement."
+    },
+    "submission": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "2.10.2 Respondent must submit their Proposals via the Power Advocate platform. Respondents\nmust also direct all other communications and questions regarding this RFP via Power \nAdvocate (see Section 2.12). All written communications from LIPA to the Respondent will \nbe sent via Power Advocate.\n\n##"
+    },
+    "clarifications": {
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "quote": "| Question Submittal Window | July 28, 2026 – October 16, 2026 |\n| Webinar | August 5, 2026, 11:00 AM EPT |\n| LIPA Site Visit(s) | August 20 and August 27, 2026 |\n| Notification of Intent to Bid | October 16, 2026 5:00PM EPT |"
+    }
+  },
+  "signal_family": "PUBLIC_TEMPORARY_GENERATION_SOLICITATION",
+  "power_gap_hypothesis": "Not an early-signal result: public utility reliability procurement while longer-term resources are developed. Direct rental fit and project execution capability require human review.",
+  "direct_buyer_orgs": [
+    "Long Island Power Authority",
+    "PSEG Long Island"
+  ],
+  "roles": [],
+  "earliest_signal": null,
+  "next_action": "Human go/no-go: assess whether a developer partnership can satisfy the PPA, 5 MW minimum project and 3-year base term. Check PowerAdvocate amendments and site/contract documents through authorized access; intent due October 16 at 5 p.m. EPT, questions close October 16, proposals October 30 at 5 p.m. EPT. Do not submit automatically.",
+  "notes": "OPEN as of captured public schedule only. Portal amendments, required form originals, site details and PPA form are not captured. The strict legacy rental screen may reject a PPA; this is not a claim that 2G equipment cannot participate through a partner. No bid-ready or QUALIFIED claim. 400 MW is an aggregate upper bound; 5 MW is per-project minimum. Full extended term ends October 31, 2039. Date-only issued date is not verified historical availability.",
+  "documents": [
+    {
+      "title": "Original 2026 Temporary Generation RFP including appendices A-E",
+      "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx",
+      "source_type": "public-pdf",
+      "capture_file": "../captures/lipa-rfp.capture.json",
+      "original_file": "../originals/lipa-2026-temporary-generation-rfp.pdf",
+      "sha256": "d0e0b7bcb6329ee387f6ed978aa597c0362694d314ec1a60dbb63e9eefeded87"
+    },
+    {
+      "title": "Public generator transmission interconnection requirements",
+      "url": "https://www.psegliny.com/aboutpseglongisland/-/media/B85AB8C5A5404FF8A344606A0A8892E8.ashx",
+      "source_type": "public-pdf",
+      "capture_file": "../captures/lipa-interconnection.capture.json",
+      "original_file": "../originals/lipa-generator-interconnection.pdf",
+      "sha256": "c75de56f432068821f41ca95715b4bfb7eceb25cc358b5b388ac7cfd39b67339"
+    },
+    {
+      "title": "PowerAdvocate PPA, procurement forms, respondent workbook and amendments: NOT CAPTURED; authorized operator access required",
+      "url": "https://www.poweradvocate.com/pR.do?okey=238662&pubEvent=true",
+      "source_type": "portal-access-required"
+    }
+  ]
+}

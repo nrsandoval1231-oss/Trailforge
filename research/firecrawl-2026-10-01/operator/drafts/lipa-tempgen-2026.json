@@ -1,0 +1,44 @@
+{
+  "completion_state": "DRAFT_FOR_HUMAN_GO_NO_GO_NOT_BID_READY",
+  "draft_placeholders": {
+    "executive_summary": "DRAFT FOR INTERNAL REVIEW: PSEG Long Island seeks temporary generation projects on behalf of LIPA. The captured RFP specifies at least 5 MW per project, a three-year base term starting between May 1, 2028 and May 1, 2030, and an optional extended term through October 31, 2039. A direct rental response has not been qualified. Determine whether a developer-led partnership can provide the PPA, site control, interconnection, operating and financial obligations before preparing a proposal. No 2G capacity, pricing, availability or compliance is asserted. Source: RFP sections 1.3.8, 1.4.1, 2.1 and 2.2.",
+    "technical_response": "TBD by engineering: proposed site and minimum 5 MW configuration; 13 kV distribution or 23 kV+ transmission route; dispatchability, interconnection protection, emissions/permits, fuel interconnection, commissioning tests and operations plan. Review public RFP Appendix C and the retained interconnection requirements. No equipment model or verified site design selected.",
+    "commercial_response": "TBD by authorized commercial/legal review: PPA counterparty/developer partnership, pricing, three-year base term and extension options, site control, security equal to 30% of Notional Value per section 5.3.13.4, insurance under Appendix E, required procurement forms and NYS/ISNETworld requirements. The 30% obligation is seller security, not a stated bid bond. Check private portal amendments and obtain missing form originals with authorized access."
+  },
+  "opportunity_id": "lipa-tempgen-2026",
+  "outline": [
+    "1 Cover Letter",
+    "2 Table of Contents",
+    "3 Executive Summary",
+    "4 Proposed Pricing",
+    "5 Site Information/Requirements",
+    "6 Development Plan and Schedule",
+    "7 Technical Response",
+    "8 Electrical Equipment",
+    "9 Commissioning Test",
+    "10 Operations Plan",
+    "11 Disadvantaged Communities",
+    "12 Respondent Data and Relevant Experience",
+    "13 Financial Standing",
+    "14 Confidentiality",
+    "15 LIPA Power Purchase Agreement",
+    "16 Insurance Requirements",
+    "17 Procurement Forms",
+    "18 Respondent Data Form",
+    "19 NYS OSC Vendor Registration",
+    "20 Status and Reporting",
+    "21 Technical Requirements Compliance Statement",
+    "22 Disclosures"
+  ],
+  "schema_version": "trailforge-rfp-draft-v1",
+  "unanswered_questions": [
+    "Can 2G participate through a qualified developer/PPA counterparty rather than direct rental?",
+    "Which site, interconnection voltage and net project capacity can be offered?",
+    "What fuel, runtime, redundancy and emissions permits apply to the selected design?",
+    "Have addenda and any revised schedule been checked in PowerAdvocate?",
+    "Are site visits/webinar participation prerequisites still satisfiable?",
+    "Who will own operations, site control, seller security, insurance and contracting obligations?",
+    "Obtain required form originals, respondent Excel file, PPA and site data through authorized access."
+  ],
+  "outline_source": "Original RFP section 5.2.2, retained lipa-rfp capture; inspect source for applicability."
+}

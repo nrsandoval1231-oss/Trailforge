@@ -1,22 +1,14 @@
-# TrailForge Active Work Graph — 2026-10-01 Reset
+# TrailForge active work graph — owner dual-lane direction, 2026-10-01
 
-Historical V1 slices and acceptance artifacts remain preserved in Git and `.agent/artifacts`. They are not the active build graph.
+The merged early-project reset remains authoritative. The owner subsequently authorized a connected active-RFP lane and ordered real public acquisition before the cohort. Historical artifacts remain unchanged.
 
-| Node | Dependency | State | Result |
+| Node | Dependencies | State | Acceptance |
 | --- | --- | --- | --- |
-| RESET | current main + owner direction | DEFINED | Objective reset to early-project lead-time advantage |
-| HC-001 | RESET | NEXT | Historical cohort schema/runner using existing trace + experiment infrastructure |
-| HC-002 | HC-001 | PENDING | First 20-50 source-backed historical power projects |
-| HC-003 | HC-002 | PENDING | Lead time, coverage, action burden, buyer-path evaluation |
-| SIGNAL-001 | HC-003 | PENDING | Select evidence-backed signal families worth live use |
-| GL-HANDOFF-001 | SIGNAL-001 | PENDING | Minimal GridLens contract for winning signals |
+| FC-050 A/B | RESET | VALIDATION / RE-REVIEW | Firecrawl search -> retained captures -> cited opportunity -> dedup -> strict fit -> inspectable local workspace; real early project plus active solicitation with original document/deadline/next action |
+| HC-001 | FC-050 | NEXT | Small real historical cohort through existing trace/replay, first policy surface and supported lead-time results |
+| HC-002/003 | HC-001 | PENDING | Expand toward 20–50 projects; compare lead time, coverage, misses, action burden and buyer path |
+| SIGNAL-001 | HC-003 | PENDING | Repeated historical support for signal rules; no claim from one live example |
+| LIVE-001 | SIGNAL-001 | PENDING | Ranked human-review queue using tested rules |
+| GL-HANDOFF-001 | SIGNAL-001 | PENDING | Minimal evidence-bound validated-project interface |
 
-## HC-001 acceptance
-
-One command/workbench flow can run multiple historical project traces through existing temporal policy mechanics and produce per-project first-surface time plus cohort-level lead-time results without future leakage.
-
-No new governance framework, distributed architecture, autonomous outreach, or fuel-provider-first workflow is authorized by this graph.
-
-## Commercial order
-
-`early signal -> project -> direct buying chain -> customer conversation -> verified power gap -> generation/fuel solution`
+Packet: `.agent/tasks/firecrawl-050.md`. One builder; serial validation/integration. No autonomous outreach, submission, merge or deployment. Live records are not verified historical fixtures.

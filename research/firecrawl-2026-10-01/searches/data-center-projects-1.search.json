@@ -1,0 +1,158 @@
+{
+  "categories": [],
+  "domain": null,
+  "hits": [
+    {
+      "description": "Black & Veatch has been selected to construct substations at six of the global firm's expanding data center locations. The advantage to the owner is they can ...",
+      "position": 1,
+      "source_type": "web",
+      "title": "Substations for fast expansion",
+      "url": "https://www.bv.com/projects/leading-data-center-provider-turns-to-substations-to-solve-fast-expansion-needs"
+    },
+    {
+      "description": "Commonwealth engineered an integrated substation design program focused on capacity, voltage support, and selective fault clearing for mission‑critical data ...",
+      "position": 2,
+      "source_type": "web",
+      "title": "Hyper-Competitive Data Center Solutions",
+      "url": "https://www.cai-engr.com/projects/substation-solutions-for-data-centers"
+    },
+    {
+      "description": "Colocated substations give data centers faster power, greater resilience, and reduced latency. Explore the benefits, risks, and planning ...",
+      "position": 3,
+      "source_type": "web",
+      "title": "Colocated Substations for Data Centers: Benefits, Risks & ...",
+      "url": "https://www.hanwhadatacenters.com/blog/colocated-substations-for-data-centers-benefits-risks-strategy/"
+    },
+    {
+      "description": "Data center substations can cost $5M-$100M+ and take years to build. See what drives the design, timeline, and budget before you break ...",
+      "position": 4,
+      "source_type": "web",
+      "title": "Data Center Substation Design: Complete 2026 Guide",
+      "url": "https://www.truelook.com/blog/data-center-substation-design"
+    },
+    {
+      "description": "The scope of this project included civil and foundation construction of a 230kV / 34.5kV substation switchyard, including five XFMR foundations & oil ...",
+      "position": 5,
+      "source_type": "web",
+      "title": "Keeley Civil Spotlight: Data Center Substation",
+      "url": "https://www.keeleyconstruction.com/single-post/keeley-civil-spotlight-data-center-substation"
+    },
+    {
+      "description": "Skip the line and build your own data center substation with Beta's strong utility partnerships and decades of high-voltage EPC experience.",
+      "position": 6,
+      "source_type": "web",
+      "title": "Turnkey Data Center Substations",
+      "url": "https://www.betaengineering.com/powering-data-centers"
+    },
+    {
+      "description": "They typically require additional transformers, switchgear, upgrades to the transmission system, or new substations before data center power can be delivered.",
+      "position": 7,
+      "source_type": "web",
+      "title": "Data Center Power: How U.S. Utilities Decide Who Gets ...",
+      "url": "https://future-bridge.us/data-center-power-how-us-utilities-decide-who-gets-connected-first/"
+    },
+    {
+      "description": "The global data center substation market to reach USD 21.01 billion by 2034, expanding at a 7.81% CAGR during the forecast period 2026-2034. ...",
+      "position": 8,
+      "source_type": "web",
+      "title": "Data Center Substation Market Size, Share, Trends, 2034",
+      "url": "https://www.fortunebusinessinsights.com/data-center-substation-market-111347"
+    },
+    {
+      "description": "In this video, we walk step-by-step through the complete electrical path inside a data center — from utility power generation to the server ...",
+      "position": 9,
+      "source_type": "web",
+      "title": "Data Center Power Flow: From Utility Grid to Server Rack",
+      "url": "https://www.youtube.com/watch?v=Y_8P3wzxsqY"
+    },
+    {
+      "description": "Modular and phased construction aligned with utility power availability enables faster capacity deployment and risk mitigation. Early-stage ...",
+      "position": 10,
+      "source_type": "web",
+      "title": "Power Strategies for Data Center Construction",
+      "url": "https://constructionsuperconference.com/news/power-strategies-for-data-center-construction/133345/"
+    }
+  ],
+  "limit": 10,
+  "provider": "firecrawl",
+  "provider_job_id": "01a0f9b3-c250-7462-9fb8-bca2448d1051",
+  "query": "data center project power utility substation construction",
+  "raw_response": {
+    "creditsUsed": 2,
+    "data": {
+      "news": [],
+      "web": [
+        {
+          "description": "Black & Veatch has been selected to construct substations at six of the global firm's expanding data center locations. The advantage to the owner is they can ...",
+          "position": 1,
+          "title": "Substations for fast expansion",
+          "url": "https://www.bv.com/projects/leading-data-center-provider-turns-to-substations-to-solve-fast-expansion-needs"
+        },
+        {
+          "description": "Commonwealth engineered an integrated substation design program focused on capacity, voltage support, and selective fault clearing for mission‑critical data ...",
+          "position": 2,
+          "title": "Hyper-Competitive Data Center Solutions",
+          "url": "https://www.cai-engr.com/projects/substation-solutions-for-data-centers"
+        },
+        {
+          "description": "Colocated substations give data centers faster power, greater resilience, and reduced latency. Explore the benefits, risks, and planning ...",
+          "position": 3,
+          "title": "Colocated Substations for Data Centers: Benefits, Risks & ...",
+          "url": "https://www.hanwhadatacenters.com/blog/colocated-substations-for-data-centers-benefits-risks-strategy/"
+        },
+        {
+          "description": "Data center substations can cost $5M-$100M+ and take years to build. See what drives the design, timeline, and budget before you break ...",
+          "position": 4,
+          "title": "Data Center Substation Design: Complete 2026 Guide",
+          "url": "https://www.truelook.com/blog/data-center-substation-design"
+        },
+        {
+          "description": "The scope of this project included civil and foundation construction of a 230kV / 34.5kV substation switchyard, including five XFMR foundations & oil ...",
+          "position": 5,
+          "title": "Keeley Civil Spotlight: Data Center Substation",
+          "url": "https://www.keeleyconstruction.com/single-post/keeley-civil-spotlight-data-center-substation"
+        },
+        {
+          "description": "Skip the line and build your own data center substation with Beta's strong utility partnerships and decades of high-voltage EPC experience.",
+          "position": 6,
+          "title": "Turnkey Data Center Substations",
+          "url": "https://www.betaengineering.com/powering-data-centers"
+        },
+        {
+          "description": "They typically require additional transformers, switchgear, upgrades to the transmission system, or new substations before data center power can be delivered.",
+          "position": 7,
+          "title": "Data Center Power: How U.S. Utilities Decide Who Gets ...",
+          "url": "https://future-bridge.us/data-center-power-how-us-utilities-decide-who-gets-connected-first/"
+        },
+        {
+          "description": "The global data center substation market to reach USD 21.01 billion by 2034, expanding at a 7.81% CAGR during the forecast period 2026-2034. ...",
+          "position": 8,
+          "title": "Data Center Substation Market Size, Share, Trends, 2034",
+          "url": "https://www.fortunebusinessinsights.com/data-center-substation-market-111347"
+        },
+        {
+          "description": "In this video, we walk step-by-step through the complete electrical path inside a data center — from utility power generation to the server ...",
+          "position": 9,
+          "title": "Data Center Power Flow: From Utility Grid to Server Rack",
+          "url": "https://www.youtube.com/watch?v=Y_8P3wzxsqY"
+        },
+        {
+          "description": "Modular and phased construction aligned with utility power availability enables faster capacity deployment and risk mitigation. Early-stage ...",
+          "position": 10,
+          "title": "Power Strategies for Data Center Construction",
+          "url": "https://constructionsuperconference.com/news/power-strategies-for-data-center-construction/133345/"
+        }
+      ]
+    },
+    "id": "01a0f9b3-c250-7462-9fb8-bca2448d1051",
+    "success": true
+  },
+  "requested_query": "data center project power utility substation construction",
+  "retrieved_at": "2026-10-01T23:01:46.500847+00:00",
+  "schema_version": "trailforge-firecrawl-search-v1",
+  "search_id": "data-center-projects-1",
+  "sources": [
+    "web",
+    "news"
+  ]
+}

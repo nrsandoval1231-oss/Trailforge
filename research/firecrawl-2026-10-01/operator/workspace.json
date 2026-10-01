@@ -1,0 +1,598 @@
+{
+  "opportunities": [
+    {
+      "canonical_project_id": "705c171eb045deb716393171a78540d0b327e24912a946229ec00132151b5331",
+      "deadline": {
+        "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+        "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+        "quote": "| Proposal Submittal Deadline | October 30, 2026 5:00 PM EPT |",
+        "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp",
+        "value": "2026-10-30T17:00:00-04:00"
+      },
+      "direct_buyer_orgs": [
+        "Long Island Power Authority",
+        "PSEG Long Island"
+      ],
+      "documents": [
+        {
+          "capture_file": "captures\\ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880.capture.json",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "original_file": "documents\\d0e0b7bcb6329ee387f6ed978aa597c0362694d314ec1a60dbb63e9eefeded87.pdf",
+          "original_sha256": "d0e0b7bcb6329ee387f6ed978aa597c0362694d314ec1a60dbb63e9eefeded87",
+          "source_type": "public-pdf",
+          "title": "Original 2026 Temporary Generation RFP including appendices A-E",
+          "url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        {
+          "capture_file": "captures\\0b62c362fc2bb818fbbc1c958ce6e70ad6188328e5b104db1e96dd81b615be63.capture.json",
+          "capture_sha256": "f95b1d6b31109eb1705eeb61f249b4aac6d575b38b3bc00bd4b887b42d368135",
+          "original_file": "documents\\c75de56f432068821f41ca95715b4bfb7eceb25cc358b5b388ac7cfd39b67339.pdf",
+          "original_sha256": "c75de56f432068821f41ca95715b4bfb7eceb25cc358b5b388ac7cfd39b67339",
+          "source_type": "public-pdf",
+          "title": "Public generator transmission interconnection requirements",
+          "url": "https://www.psegliny.com/aboutpseglongisland/-/media/B85AB8C5A5404FF8A344606A0A8892E8.ashx"
+        },
+        {
+          "capture_file": null,
+          "capture_sha256": null,
+          "original_file": null,
+          "original_sha256": null,
+          "source_type": "portal-access-required",
+          "title": "PowerAdvocate PPA, procurement forms, respondent workbook and amendments: NOT CAPTURED; authorized operator access required",
+          "url": "https://www.poweradvocate.com/pR.do?okey=238662&pubEvent=true"
+        }
+      ],
+      "earliest_signal": null,
+      "field_evidence": {
+        "direct_buyer_orgs": {
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "quote": "PSEG Long Island, LLC (“PSEG Long Island”), on behalf of the Long Island Power Authority (“LIPA”) is issuing this 2026 Request for Proposals for Temporary Generation (“2026 Temporary Generation RFP” or “RFP”) for the purpose of maintaining reliability for Long Island customers.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp"
+        },
+        "identity.location": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "LIPA Service Territory",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "identity.official_id": {
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "quote": "238662",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp"
+        },
+        "identity.organization": {
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "quote": "Long Island Power Authority",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp"
+        },
+        "identity.project": {
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "quote": "2026 Temporary Generation RFP",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp"
+        },
+        "title": {
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "quote": "2026 Temporary Generation RFP",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp"
+        }
+      },
+      "first_seen_at": "2026-10-01T22:54:44.262991+00:00",
+      "identity": {
+        "location": "LIPA Service Territory",
+        "official_id": "238662",
+        "organization": "Long Island Power Authority",
+        "project": "2026 Temporary Generation RFP"
+      },
+      "identity_key": "705c171eb045deb716393171a78540d0b327e24912a946229ec00132151b5331",
+      "identity_resolution": "RESOLVED",
+      "kind": "ACTIVE_RFP",
+      "missing_information": [
+        "redundancy",
+        "runtime",
+        "bonding"
+      ],
+      "next_action": "Human go/no-go: assess whether a developer partnership can satisfy the PPA, 5 MW minimum project and 3-year base term. Check PowerAdvocate amendments and site/contract documents through authorized access; intent due October 16 at 5 p.m. EPT, questions close October 16, proposals October 30 at 5 p.m. EPT. Do not submit automatically.",
+      "notes": "OPEN as of captured public schedule only. Portal amendments, required form originals, site details and PPA form are not captured. The strict legacy rental screen may reject a PPA; this is not a claim that 2G equipment cannot participate through a partner. No bid-ready or QUALIFIED claim. 400 MW is an aggregate upper bound; 5 MW is per-project minimum. Full extended term ends October 31, 2039. Date-only issued date is not verified historical availability.",
+      "opportunity_id": "lipa-tempgen-2026",
+      "opportunity_type": "ACTIVE_RFP",
+      "power_gap_hypothesis": "Not an early-signal result: public utility reliability procurement while longer-term resources are developed. Direct rental fit and project execution capability require human review.",
+      "project_id": "705c171eb045deb716393171a78540d0b327e24912a946229ec00132151b5331",
+      "published_at": {
+        "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+        "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+        "quote": "Issued: July 27, 2026",
+        "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx",
+        "value": "2026-07-27"
+      },
+      "qualification": {
+        "amendments_status": "UNKNOWN",
+        "capture_fresh": "FRESH_ACQUISITION_MAX_AGE_ZERO",
+        "deadline_current": true,
+        "lifecycle_status": "OPEN_AS_OF_PUBLIC_SOURCE",
+        "reason_codes": [
+          "PERMANENT_CAPACITY_OR_PPA_SCOPE"
+        ],
+        "required_kw": null,
+        "screen_status": "REJECTED",
+        "status": "NOT_FIT"
+      },
+      "qualification_assessed_at": "2026-10-01T23:27:03.801684+00:00",
+      "record_hash": "ebe002b02e4be8fe1d67ca27e4500fdccc7b2aea28a7e739a12c0375febebdb0",
+      "requirement_quotes": {
+        "certifications": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "5.3.19.1 As specified in Section 6.4.4, if selected in this procurement, the Respondent will be \nrequired to obtain a NYS Vendor Identification Number (“Vendor ID”) from the OSC, enroll \nin the OSC’s VendRep System, and file the completed Vendor Responsibility \nQuestionnaire with the OSC upon being selected for Agreement negotiations. Accordingly, \n(i) if the Respondent is not already enrolled in the OSC’s VendRep System, the \nRespondent shall provide a statement affirming that if selected in this procurement, it will \ndo so, or (ii) if the Respondent is already enrolled in the OSC’s VendRep System, the \nRespondent shall provide the Vendor ID in its Proposal.\n\n#### 5.3.20 <u>Respondent Requirements for Health &#38; Safety</u>\n\n5.3.20 Respondent Requirements for Health & Safety\n\n5.3.20.1 If a Respondent’s is proposing a Project located on a LIPA Site, the Respondent is required \nto have an active account in ISNETworld prior submission of the Proposal and shall provide \nthe ISNETworld System ID.\n\n5.3.20.2 PSEG Long Island requires all Respondents working on LIPA property to have an active \nISNETworld profile with a rating of “C” or better.  Respondents who do not meet this \nrequirement will not be considered for this procurement.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "clarifications": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "| Question Submittal Window | July 28, 2026 – October 16, 2026 |\n| Webinar | August 5, 2026, 11:00 AM EPT |\n| LIPA Site Visit(s) | August 20 and August 27, 2026 |\n| Notification of Intent to Bid | October 16, 2026 5:00PM EPT |",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "duration": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "b) **Service Term:** LIPA is seeking a Service Term for Temporary Generation beginning \nbetween May 1, 2028 (preferred) and May 1, 2030, for a 3-yr base term (**“Base Term”**)\nplus an extended term up to October 31, 2039 (full extended term preferred), provided \nthat LIPA will have the option to terminate the agreement at any time during the extended \nterm with 12 months advance notice.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "duty": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "e) **Energy Product:** In addition to the Capacity Product above, the Proposal must include \nan Energy Product, from the same Project(s), in an hourly amount up to the equivalent \nCapacity Product as scheduled by LIPA.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "emissions": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "5.3.7.4.1. The Proposal shall describe the technologies and operational strategies that will be used \nto control air pollutant emissions, if any, as well as related performance in conformance \nwith New York State and local requirements. This shall include, but are not limited to:\n\na) PM10/2.5, NOx, SOx, CO, VOC, NH3, and sulfuric acid emissions in ppm and lb/hr \nduring normal operation and start up at 0 deg F, 59 F and 95 F\n\nb) CO2 emissions in lb/MWh (gross) at the design heat rate (HHV)\n\nc) Exhaust gas characteristics (e.g., volumetric and mass flow rate, temperature, \nmoisture)\n\nd) Heat input in MMBtu/hr HHV",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "forms": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "5.3.17.1 Each Proposal shall, as applicable, include signed and completed copies of the following \nprocurement forms, which are available on Power Advocate:\n\na) Contingent Fee Certification\n\nb) Contractor Disclosure of Prior Non-Responsibility Determinations\n\nc) MacBride Fair Employment Principles\n\nd) Non-Collusive Bidding Certification e) NYS Vendor Responsibility Questionnaire\n\nf) Sexual Harassment Policy for All Employers in New York State\n\ng) Gender-Based Violence and the Workplace Certification\n\nh) All MWBE and SVDOB related forms (*)\n\ni) (*) In the case that the Respondent itself or any of its contractors are unable to comply \nwith the NYS MWBE and/or SDVOB hiring guidelines, they should provide a statement \nto that effect in the Proposal in lieu of submitting the forms noted above.\n\n#### 5.3.18 <u>Respondent Data Form</u>\n\n5.3.18 Respondent Data Form\n\n5.3.18.1 The Respondent Data Form is a Microsoft Excel file formatted for the Respondent to \nprovide relevant key Project information. This form is available for download from Power \nAdvocate. Respondents shall fill in this Excel file with all required information regarding the \nProposal and submit as an Excel file.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "fuel": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "2.2.15 Provide bulk storage fuel tanks and required fuel transfer piping if Project is fueled by liquid \nfuel and any necessary containment as required.\n\n2.2.16 Provide and install the infrastructure required for the interconnection to the local natural gas \ndelivery system if the Project is fueled by natural gas.\n\n2.2.17 Provide cabling and terminations for auxiliary power requirements.\n\n2.2.18 List any NYSDEC approvals needed, including but not limited to, SPDES wastewater \ndischarge, Solid Waste Management Facility, Hazardous Waste Management Facility, Air \nPollution Control (Title V or State Facility Permit), Water Withdrawal over 20 MGD for Cooling \nWater, Waste Transporter.\n\n2.2.19 Assume responsibility for any Custom Duties, Taxes, and local authority permits, if \napplicable.\n\n2.2.20 Assume responsibility for all necessary environmental, noise, construction, and operation \npermits required by local agencies.\n\n2.2.21 Assume responsibility for environmental/emissions reporting as required by Federal and \nNYS agencies.\n\n---\n\n2.2.22 Ensure the availability of craft labor necessary to prepare the Site and perform the equipment \ninterconnections.\n\n2.2.23 Provide, install and operate the Generator Step-up Transformer(s) (**GSU).**\n\n2.2.24 Provide all cabling from GSU’s high voltage connections to LIPA substation.\n\n2.2.25 Identify any underground obstructions.\n\n2.2.26 Provide and install protective relay equipment for GSUs.\n\n2.2.27 Provide professional engineer **(PE)** reviews and stamps on Respondent drawings as \nrequired.\n\n2.2.28 Provide a community outreach plan.\n\n2.2.29 Plan for, provide, and install noise attenuation and visual screening measures appropriate \nfor densely populated and heavily trafficked neighborhoods to limit environmental and \ncommunity impacts.\n\n2.2.30 Comply with all local, NYS and Federal codes and obtain all permits and required licenses.  \nWith respect to a Project located in a Disadvantaged Community or within one-half mile of a \nDisadvantaged Community, please see Section 5.3.11.\n\n### 2.3 Fuel Supply\n\n2.3.1 Respondent shall be responsible for supplying adequate fuel to meet LIPA’s generation \nschedules. At Respondent’s option, LIPA will supply the fuel meeting Generating Unit \nspecifications and, with respect to liquid fuel, will ensure that the Project’s bulk storage tanks\nare maintained at sufficient levels to accommodate LIPA generation schedules.\nRespondents may offer either or both fuel supply options in their Proposals and provide \ncorresponding pricing offers. If the Project consists of battery storage Generating Units, LIPA \nwill provide charging energy.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "insurance": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "## 1. Insurance Policies and Limits:\n\n### 1.1 Workers’ Compensation/Employer’s Liability:\n\nWorkers’ Compensation insurance including coverage for occupational disease, covering all \nemployees in compliance with all applicable state and federal laws, and Employer’s Liability \nInsurance of not less than $1,000,000 each accident/$1,000,000 disease per employee/$1,000,000 \ndisease policy limit.\n\n### 1.2 Automobile Liability:\n\nAutomobile Liability Insurance covering all owned, non–owned and hired vehicles with a combined \nsingle limit for bodily injury and property damage liability in an amount not less than $5,000,000 \neach occurrence.\n\n### 1.3 Commercial General Liability:\n\nCommercial General Liability insurance including contractual liability coverage for the indemnity \nprovisions of this Agreement for Bodily Injury, personal Injury and Property Damage Liability in \namounts no less than $10,000,000 each occurrence and in the annual aggregate.\n\n### 1.4 Umbrella or Excess Liability:\n\nThe limits of insurance specified in the foregoing Sections 1.1 through 1.3 may be satisfied by the \nspecified limits in the separate policies or with the purchase of Umbrella or Excess Liability \ninsurance which, in combination with the limits of the separate policies provides the total limit \nrequired by each type of insurance.\n\n### 1.5 Builders Risk Property Insurance:\n\nFrom and after the date that Seller or its contractors commence construction at the Site, and subject \nto availability on commercially reasonable terms, Property Insurance providing coverage as \nrequired by its Lenders or if there are no Lenders for all risks of direct physical loss or damage \n(including the perils of flood, earthquake and named windstorm to, and for the total replacement \ncost value of, all property and equipment of Seller used for probable maximum loss as determined \nby a third party independent appraiser, to (subject to standard loss sublimits) all property and \nequipment of Seller used for or in connection with the Capacity provided under this Agreement. \nSuch coverage shall provide the costs of continuing expenses and additional expenses necessary \nto continue operations, insofar as reasonably possible, following loss of or damage to the property \nand equipment of Seller.\n\n### 1.6 Pollution/Environmental Liability\n\n---\n\nPollution/Environmental Liability insurance with a limit of not less than five million dollars \n($5,000,000) for each occurrence where the Work involves or includes Contractor handling, \ntransporting, disposing, or performing work or operations with Hazardous Materials, contaminants, \nwaste, toxic materials, or any potential pollutants.\n\n### 1.7 Professional Liability\n\nProfessional Liability insurance with a limit of not less than five million dollars ($5,000,000) per \nclaim where the Work involves or includes Contractor providing or performing design, architectural, \nengineering, consulting, or any professional services. If the Professional Liability insurance is \nclaims-made, the coverage shall remain in place for the greater of: (i) three (3) years from the \nexpiration of this Contract as amended; or (ii) three (3) years from the date Company accepts the \nWork.\n\n## 2. General Provisions.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "mobilization": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "b) **Service Term:** LIPA is seeking a Service Term for Temporary Generation beginning \nbetween May 1, 2028 (preferred) and May 1, 2030, for a 3-yr base term (**“Base Term”**)",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "prebid": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "| Webinar | August 5, 2026, 11:00 AM EPT |\n| LIPA Site Visit(s) | August 20 and August 27, 2026 |",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "program_mw": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "LIPA is seeking to secure up to 400 MW of Contract Capacity",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "required_kw": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "A minimum of 5 MW of Contract Capacity from each Project.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "scope": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "1.3.8 *Power Purchase Agreement or Agreement* – means the agreement setting forth the \ncommercial terms for selected Respondent’s mobilization, operation, maintenance, and \nDemobilization of the Project and LIPA’s purchase of Capacity and Energy from the selected \nProject(s) during the Service Term.",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "submission": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "2.10.2 Respondent must submit their Proposals via the Power Advocate platform. Respondents\nmust also direct all other communications and questions regarding this RFP via Power \nAdvocate (see Section 2.12). All written communications from LIPA to the Respondent will \nbe sent via Power Advocate.\n\n##",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        },
+        "voltage": {
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "quote": "2.2.5 Arrange for the Project to be interconnected to LIPA’s T&D System. If the Project is to be \ninterconnected at transmission voltage (23 kV and above), comply with the applicable \nrequirements set forth in NYISO Rules. If the Project is to be interconnected at distribution \nvoltage (at 13kV only), comply with the PSEG LI Small Generator Interconnection Procedure \n(“SGIP”). Execute the applicable Interconnection Agreement.\n\n---",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx"
+        }
+      },
+      "requirements": {
+        "bonding": null,
+        "certifications": [
+          "If selected: NYS Vendor ID/VendRep; for LIPA sites: ISNETworld active account, rating C or better"
+        ],
+        "clarifications": "Questions July 28-October 16, 2026; intent to bid October 16, 2026 5PM EPT",
+        "deadline": null,
+        "duration": "3-year base term; extension up to October 31, 2039, terminable by LIPA during extension with 12 months notice",
+        "duty": "Dispatchable capacity and scheduled hourly energy product",
+        "emissions": "Describe pollutant control under NY/local requirements; report PM10/2.5, NOx, SOx, CO, VOC, NH3, sulfuric acid and CO2 metrics; numeric permit limits depend on project",
+        "forms": [
+          "Contingent Fee Certification",
+          "Contractor Disclosure of Prior Non-Responsibility Determinations",
+          "MacBride Fair Employment Principles",
+          "Non-Collusive Bidding Certification",
+          "NYS Vendor Responsibility Questionnaire",
+          "Sexual Harassment Policy",
+          "Gender-Based Violence and the Workplace Certification",
+          "MWBE and SDVOB forms or applicable explanation",
+          "Respondent Data Form (Excel)"
+        ],
+        "fuel": "Respondent may supply adequate fuel or elect LIPA supply; natural gas projects require gas interconnection infrastructure; project-specific fuel not selected",
+        "insurance": "Appendix E: employer liability $1M; auto $5M; CGL $10M; pollution $5M and professional $5M when applicable; builders risk subject to stated terms",
+        "mobilization": "Service commencement between May 1, 2028 (preferred) and May 1, 2030; specific mobilization date UNKNOWN",
+        "prebid": "Webinar August 5, 2026 11:00 AM EPT; site visits August 20 and 27, 2026 (past at capture)",
+        "program_mw": 400,
+        "redundancy": null,
+        "required_kw": 5000,
+        "runtime": null,
+        "scope": "Temporary Generation under a Power Purchase Agreement; minimum 5 MW per project",
+        "submission": "Proposals must be submitted via PowerAdvocate; human submission only",
+        "voltage": "Transmission 23 kV and above, or distribution at 13 kV only; interconnection procedures depend on connection type"
+      },
+      "response_workspace": {
+        "draft_file": "drafts/lipa-tempgen-2026.json"
+      },
+      "reviewed_at": "2026-10-01T23:03:43.387134+00:00",
+      "reviewed_by": "codex-source-review (extraction only; human commercial approval pending)",
+      "roles": [],
+      "schema_version": "trailforge-opportunity-v1",
+      "signal_family": "PUBLIC_TEMPORARY_GENERATION_SOLICITATION",
+      "sources": {
+        "0b62c362fc2bb818fbbc1c958ce6e70ad6188328e5b104db1e96dd81b615be63": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\0b62c362fc2bb818fbbc1c958ce6e70ad6188328e5b104db1e96dd81b615be63.capture.json",
+          "capture_hash": "0b62c362fc2bb818fbbc1c958ce6e70ad6188328e5b104db1e96dd81b615be63",
+          "capture_id": "lipa-interconnection",
+          "captured_at": "2026-10-01T22:56:49.900454+00:00",
+          "completed_at": null,
+          "content_sha256": "f95b1d6b31109eb1705eeb61f249b4aac6d575b38b3bc00bd4b887b42d368135",
+          "domain": "https://www.psegliny.com/aboutpseglongisland/-/media/B85AB8C5A5404FF8A344606A0A8892E8.ashx",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9af-44a7-76a9-9d60-1afbd50d4b8d",
+          "query": "follow public links from retained project or RFP source",
+          "retrieved_at": "2026-10-01T22:56:49.907734+00:00",
+          "scraped_at": null,
+          "source_type": "public-technical-attachment",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/-/media/B85AB8C5A5404FF8A344606A0A8892E8.ashx",
+          "title": null
+        },
+        "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880.capture.json",
+          "capture_hash": "ddbcd02ab38357e72290b6db8b9acdd041af00754bc534feb27a67c258235880",
+          "capture_id": "lipa-rfp",
+          "captured_at": "2026-10-01T22:54:44.262991+00:00",
+          "completed_at": null,
+          "content_sha256": "dbf1f8ae7d473f4a658c38ae04de45fcae884132f33e7274c9dcd4f1449c25e1",
+          "domain": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ad-564e-706d-b373-b6dffb444e17",
+          "query": "Plaza 500 data center permitting and temporary generation RFP discovery",
+          "retrieved_at": "2026-10-01T22:54:44.263985+00:00",
+          "scraped_at": null,
+          "source_type": "public-rfp-pdf",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/-/media/410C1F9AA8D0458BA0B2AE70D0B5EA2D.ashx",
+          "title": null
+        },
+        "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863": {
+          "cache_state": "UNKNOWN",
+          "cached_at": null,
+          "capture_file": "captures\\f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863.capture.json",
+          "capture_hash": "f5d143d7ad9d0c0cc86f38ca621c2c77f79de3066a536eda1df62bf59e808863",
+          "capture_id": "lipa-landing-v2",
+          "captured_at": "2026-10-01T23:02:45.974435+00:00",
+          "completed_at": "2026-10-01T23:02:45.974435+00:00",
+          "content_sha256": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+          "domain": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9b4-b1dd-765c-9082-e22dd0d7f40b",
+          "query": "temporary generation 2026 RFP; official landing linked by discovery",
+          "retrieved_at": "2026-10-01T23:02:45.974435+00:00",
+          "scraped_at": null,
+          "source_type": "official-solicitation",
+          "source_url": "https://www.psegliny.com/aboutpseglongisland/proposalsandbids/2026tempgenrfp",
+          "title": "\n\n2026 Temporary Generation RFP - PSEG Long Island    "
+        }
+      },
+      "status": "OPEN_AS_OF_PUBLIC_SOURCE",
+      "title": "2026 Temporary Generation RFP",
+      "vertical": "PUBLIC_TEMPORARY_GENERATION_SOLICITATION"
+    },
+    {
+      "canonical_project_id": "0d3e3aba7410253b459ba0bc496d04123d5db1c2fe98d0b6c175fd0679b52f19",
+      "deadline": null,
+      "direct_buyer_orgs": [
+        "PLAZA 500 PROPERTY OWNER LP"
+      ],
+      "documents": [
+        {
+          "capture_file": "captures\\5d4ecac6a754e71013183dd75494f2e3bc7d2c908b819e5a51d5f367a3f006bd.capture.json",
+          "capture_sha256": "aa3ea6282a5a646b39c34178e3e30f7fad463b491ef4a2fe57377260644b4c93",
+          "original_file": "documents\\56c488625bf13822cf85aa55d0615e2f14c16ca7519b6da973fdd57909f8a458.pdf",
+          "original_sha256": "56c488625bf13822cf85aa55d0615e2f14c16ca7519b6da973fdd57909f8a458",
+          "source_type": "public-pdf",
+          "title": "County agenda: Edsall hearing moved to December 2, 2026",
+          "url": "https://www.fairfaxcounty.gov/planningcommission/sites/planningcommission/files/Assets/calendar/2026/9.24.26.pdf"
+        }
+      ],
+      "earliest_signal": {
+        "capture_hash": "8749b92bd8fdcfe38b3d9dcecf803290021cf5f35b36805fe3480a142cbcf2cd",
+        "capture_sha256": "875d6cb74f515efcd6333533778bec7c6af27cf8fee52fb7916d85ebdadb9221",
+        "quote": "| 05/21/2026 | **SP-2024-00003-1** | Site Plan Revision | Site | MASON | STARWOOD PLAZA 500 | Submitted |",
+        "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/GlobalSearchResults.aspx?QueryText=0812010007",
+        "value": "2026-05-21"
+      },
+      "field_evidence": {
+        "direct_buyer_orgs": {
+          "capture_hash": "6776ae0a8503c90e36cdb77dc41168bbb8190d190cc8378fe92d81ed0bc67618",
+          "capture_sha256": "46046f78a97308f96b96d8a4f5aee6da1627b571366a58f486dfdee20f9e9646",
+          "quote": "PLAZA 500 PROPERTY OWNER LP",
+          "source_url": "https://www.fairfaxcounty.gov/gisapps/ParcelInfoReportJade/ParcelInfoReport.aspx?ParcelID=0812010007"
+        },
+        "identity.location": {
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "quote": "6299 EDSALL RD ALEXANDRIA, VA 22312",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection="
+        },
+        "identity.official_id": {
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "quote": "BLDC-2026-00118",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection="
+        },
+        "identity.organization": {
+          "capture_hash": "6776ae0a8503c90e36cdb77dc41168bbb8190d190cc8378fe92d81ed0bc67618",
+          "capture_sha256": "46046f78a97308f96b96d8a4f5aee6da1627b571366a58f486dfdee20f9e9646",
+          "quote": "PLAZA 500 PROPERTY OWNER LP",
+          "source_url": "https://www.fairfaxcounty.gov/gisapps/ParcelInfoReportJade/ParcelInfoReport.aspx?ParcelID=0812010007"
+        },
+        "identity.project": {
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "quote": "Plaza 500 South (Phase 1)",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection="
+        },
+        "title": {
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "quote": "Plaza 500 South (Phase 1)",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection="
+        }
+      },
+      "first_seen_at": "2026-10-01T22:54:44.266896+00:00",
+      "identity": {
+        "location": "6299 EDSALL RD ALEXANDRIA, VA 22312",
+        "official_id": "BLDC-2026-00118",
+        "organization": "PLAZA 500 PROPERTY OWNER LP",
+        "project": "Plaza 500 South (Phase 1)"
+      },
+      "identity_key": "0d3e3aba7410253b459ba0bc496d04123d5db1c2fe98d0b6c175fd0679b52f19",
+      "identity_resolution": "RESOLVED",
+      "kind": "PRE_RFP_PROJECT",
+      "missing_information": [
+        "required_kw",
+        "program_mw",
+        "voltage",
+        "duty",
+        "redundancy",
+        "runtime",
+        "fuel",
+        "emissions",
+        "mobilization",
+        "duration",
+        "deadline",
+        "prebid",
+        "bonding",
+        "insurance",
+        "certifications",
+        "forms",
+        "submission",
+        "clarifications"
+      ],
+      "next_action": "Ask the property owner/developer project team to identify who controls construction and commissioning power, confirm project readiness and permanent-service date, and verify any MW/duration/fuel gap. Contractor not selected in the captured permit. Identify a public business contact before outreach; do not call the county reviewer as if they were the buyer.",
+      "notes": "Earliest listed project signal in this limited capture set is May 21, 2026; not the globally earliest signal or historically verified available_at. July 16 building application remains In Review. The county permit says the contractor will be selected later. Parcel uses 6295 Edsall while the building permit specifies 6299 and flags address corrections; preserve that distinction. Edsall is a related utility project, not a duplicate of the data center. No project temporary-power RFP was identified in the captured scoped search; RFP existence elsewhere remains UNKNOWN. Planning opposition/hearing delay could delay or cancel the project; verify before pursuit.",
+      "opportunity_id": "plaza500-south-phase1",
+      "opportunity_type": "PRE_RFP_PROJECT",
+      "power_gap_hypothesis": "A new data-center shell permit is in review while the associated Edsall substation hearing has moved to December 2 and utility energization is planned for Q2 2028. Investigate whether construction or commissioning precedes permanent power. There is no verified gap, required MW, fuel plan or temporary-power procurement in these sources.",
+      "project_id": "0d3e3aba7410253b459ba0bc496d04123d5db1c2fe98d0b6c175fd0679b52f19",
+      "published_at": null,
+      "qualification": {
+        "reason_codes": [
+          "NOT_AN_ACTIVE_RFP"
+        ],
+        "status": "NOT_SCREENED"
+      },
+      "qualification_assessed_at": "2026-10-01T23:27:04.029201+00:00",
+      "record_hash": "ca59a7baf609ac594b4275f49f072176c1298ef2fca4d51e4560f3f1eac89bf3",
+      "requirement_quotes": {
+        "scope": {
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "quote": "New Data Center Core/Shell (Phase 1)",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection="
+        }
+      },
+      "requirements": {
+        "bonding": null,
+        "certifications": null,
+        "clarifications": null,
+        "deadline": null,
+        "duration": null,
+        "duty": null,
+        "emissions": null,
+        "forms": null,
+        "fuel": null,
+        "insurance": null,
+        "mobilization": null,
+        "prebid": null,
+        "program_mw": null,
+        "redundancy": null,
+        "required_kw": null,
+        "runtime": null,
+        "scope": "New Data Center Core/Shell (Phase 1); temporary-power need UNKNOWN",
+        "submission": null,
+        "voltage": null
+      },
+      "response_workspace": {
+        "draft_file": "drafts/plaza500-south-phase1.json"
+      },
+      "reviewed_at": "2026-10-01T23:03:43.387134+00:00",
+      "reviewed_by": "codex-source-review (extraction only; customer verification pending)",
+      "roles": [],
+      "schema_version": "trailforge-opportunity-v1",
+      "signal_family": "DATA_CENTER_PERMIT_AND_SUBSTATION_PERMITTING",
+      "sources": {
+        "5d4ecac6a754e71013183dd75494f2e3bc7d2c908b819e5a51d5f367a3f006bd": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\5d4ecac6a754e71013183dd75494f2e3bc7d2c908b819e5a51d5f367a3f006bd.capture.json",
+          "capture_hash": "5d4ecac6a754e71013183dd75494f2e3bc7d2c908b819e5a51d5f367a3f006bd",
+          "capture_id": "edsall-agenda",
+          "captured_at": "2026-10-01T22:56:23.960147+00:00",
+          "completed_at": null,
+          "content_sha256": "aa3ea6282a5a646b39c34178e3e30f7fad463b491ef4a2fe57377260644b4c93",
+          "domain": "https://www.fairfaxcounty.gov/planningcommission/sites/planningcommission/files/Assets/calendar/2026/9.24.26.pdf",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ae-e061-7192-8623-ea46c88b1e4f",
+          "query": "follow public links from retained project or RFP source",
+          "retrieved_at": "2026-10-01T22:56:23.961149+00:00",
+          "scraped_at": null,
+          "source_type": "municipal-planning-agenda",
+          "source_url": "https://www.fairfaxcounty.gov/planningcommission/sites/planningcommission/files/Assets/calendar/2026/9.24.26.pdf",
+          "title": "FAIRFAX COUNTY PLANNING COMMISSION"
+        },
+        "6776ae0a8503c90e36cdb77dc41168bbb8190d190cc8378fe92d81ed0bc67618": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\6776ae0a8503c90e36cdb77dc41168bbb8190d190cc8378fe92d81ed0bc67618.capture.json",
+          "capture_hash": "6776ae0a8503c90e36cdb77dc41168bbb8190d190cc8378fe92d81ed0bc67618",
+          "capture_id": "plaza-parcel",
+          "captured_at": "2026-10-01T22:54:45.300234+00:00",
+          "completed_at": null,
+          "content_sha256": "46046f78a97308f96b96d8a4f5aee6da1627b571366a58f486dfdee20f9e9646",
+          "domain": "https://www.fairfaxcounty.gov/gisapps/ParcelInfoReportJade/ParcelInfoReport.aspx?ParcelID=0812010007",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ad-5943-72b8-a9de-66ff8fc6ea64",
+          "query": "Plaza 500 data center permitting and temporary generation RFP discovery",
+          "retrieved_at": "2026-10-01T22:54:45.300234+00:00",
+          "scraped_at": null,
+          "source_type": "municipal-parcel",
+          "source_url": "https://www.fairfaxcounty.gov/gisapps/ParcelInfoReportJade/ParcelInfoReport.aspx?ParcelID=0812010007",
+          "title": "\n\tFairfax County General Parcel Report - Application Example - Fairfax County, Virginia\n"
+        },
+        "698f08283598e332594975b53dba693bd66a6640faee5b0af270aacc1116ea94": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\698f08283598e332594975b53dba693bd66a6640faee5b0af270aacc1116ea94.capture.json",
+          "capture_hash": "698f08283598e332594975b53dba693bd66a6640faee5b0af270aacc1116ea94",
+          "capture_id": "edsall",
+          "captured_at": "2026-10-01T22:54:44.266896+00:00",
+          "completed_at": null,
+          "content_sha256": "4c0473e26a6588e249a491affa15fdde409dfb4e2007ef866f15bf7c18a1519a",
+          "domain": "https://www.dominionenergy.com/about/delivering-energy/electric-projects/power-line-projects/edsall",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ad-58be-70b8-8ec2-ccca582b631a",
+          "query": "Plaza 500 data center permitting and temporary generation RFP discovery",
+          "retrieved_at": "2026-10-01T22:54:44.266896+00:00",
+          "scraped_at": null,
+          "source_type": "utility-project",
+          "source_url": "https://www.dominionenergy.com/about/delivering-energy/electric-projects/power-line-projects/edsall",
+          "title": "Edsall | Dominion Energy"
+        },
+        "7098b735017607834bfab0dd773125464a34bacc73fd1e5ffb33d4b730f75402": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\7098b735017607834bfab0dd773125464a34bacc73fd1e5ffb33d4b730f75402.capture.json",
+          "capture_hash": "7098b735017607834bfab0dd773125464a34bacc73fd1e5ffb33d4b730f75402",
+          "capture_id": "edsall-hearing",
+          "captured_at": "2026-10-01T22:56:29.594573+00:00",
+          "completed_at": null,
+          "content_sha256": "ef7ae0d73a60d2a909b46e037b315d3aa5f23cb18688359b61fc72ee29cb299c",
+          "domain": "https://alextimes.com/featured-news/fairfax-county-data-center-substation-hearing-postponed-to-december/",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ae-e1ae-7533-9c71-a84a1bcfbbb0",
+          "query": "follow public links from retained project or RFP source",
+          "retrieved_at": "2026-10-01T22:56:29.595579+00:00",
+          "scraped_at": null,
+          "source_type": "construction-news",
+          "source_url": "https://alextimes.com/featured-news/fairfax-county-data-center-substation-hearing-postponed-to-december/",
+          "title": "Fairfax County data center substation hearing postponed to December - Alexandria Times"
+        },
+        "8749b92bd8fdcfe38b3d9dcecf803290021cf5f35b36805fe3480a142cbcf2cd": {
+          "cache_state": null,
+          "cached_at": null,
+          "capture_file": "captures\\8749b92bd8fdcfe38b3d9dcecf803290021cf5f35b36805fe3480a142cbcf2cd.capture.json",
+          "capture_hash": "8749b92bd8fdcfe38b3d9dcecf803290021cf5f35b36805fe3480a142cbcf2cd",
+          "capture_id": "plaza-permit",
+          "captured_at": "2026-10-01T22:54:46.273268+00:00",
+          "completed_at": null,
+          "content_sha256": "875d6cb74f515efcd6333533778bec7c6af27cf8fee52fb7916d85ebdadb9221",
+          "domain": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/GlobalSearchResults.aspx?QueryText=0812010007",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9ad-57e7-712b-88c9-d993129d4404",
+          "query": "Plaza 500 data center permitting and temporary generation RFP discovery",
+          "retrieved_at": "2026-10-01T22:54:46.273268+00:00",
+          "scraped_at": null,
+          "source_type": "municipal-permit-index",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/GlobalSearchResults.aspx?QueryText=0812010007",
+          "title": "\n\t\n        PLUS ACA-Accela Citizen Access1\n    \n"
+        },
+        "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc": {
+          "cache_state": "UNKNOWN",
+          "cached_at": null,
+          "capture_file": "captures\\d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc.capture.json",
+          "capture_hash": "d3095a67a36451678acffb2ee4d97cc3a38a704b0ee577776a5051d8f54de5cc",
+          "capture_id": "plaza-detail",
+          "captured_at": "2026-10-01T23:01:50.518262+00:00",
+          "completed_at": "2026-10-01T23:01:50.518262+00:00",
+          "content_sha256": "5234fa38a08b04403f5422988bbaf71a8b320962e640602d4425e943e70b3b70",
+          "domain": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection=",
+          "freshness_requested_max_age_ms": 0,
+          "provider": "firecrawl",
+          "provider_job_id": "01a0f9b3-c230-71c0-b249-0147f82da184",
+          "query": "Plaza 500 site plan public permit link",
+          "retrieved_at": "2026-10-01T23:01:50.518262+00:00",
+          "scraped_at": null,
+          "source_type": "municipal-building-permit",
+          "source_url": "https://plus.fairfaxcounty.gov/CitizenAccess/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=01M8T&agencyCode=FFX&IsToShowInspection=",
+          "title": "\n\t\n        PLUS ACA-Accela Citizen Access2\n    \n"
+        }
+      },
+      "status": "PRE_RFP_PROJECT",
+      "title": "Plaza 500 South (Phase 1)",
+      "vertical": "DATA_CENTER_PERMIT_AND_SUBSTATION_PERMITTING"
+    }
+  ],
+  "schema_version": "trailforge-operator-workspace-v1",
+  "updated_at": "2026-10-01T23:27:04.029201+00:00"
+}

@@ -1,39 +1,27 @@
-# TrailForge Product Direction
+# TrailForge product direction
 
-## Mission
+The 2026-10-01 owner build instruction extends the merged early-project reset with a connected active-RFP operating lane. It preserves the mission of reaching direct project buyers before conventional discovery and explicitly authorizes acquisition and response preparation now.
 
-TrailForge is the evidence-backed experimentation system for finding power projects earlier than conventional market discovery.
+## Mission and users
 
-**Core question:** Which observable signals consistently reveal an emerging temporary/distributed-power opportunity early enough for us to reach the direct customer or project buying chain first?
+Nick / 2G commercial intelligence operator needs evidence-backed early projects worth investigating and active temporary/distributed-power solicitations worth screening. Acquisition favors recall; qualification favors precision.
 
-This supersedes older product-direction language that treated completion of a generic procurement research Arena as the primary goal. Existing deterministic research infrastructure remains valid where it serves this mission.
+Early flow: SIGNAL -> PROJECT -> POWER-GAP HYPOTHESIS -> DIRECT BUYING CHAIN -> CUSTOMER CONTACT -> VERIFIED REQUIREMENT -> SOLUTION/FUEL STRATEGY.
 
-## User and workflow
+RFP flow: SOLICITATION -> CAPTURE -> REQUIREMENTS -> 2G FIT -> DEADLINE/BUYER/FORMS -> RESPONSE WORKSPACE -> DRAFT -> HUMAN REVIEW -> HUMAN SUBMISSION.
 
-Primary user: Nick / 2G commercial intelligence operator.
+## First acceptance
 
-`historical project -> source-backed timeline -> time-bounded replay -> candidate signal -> first actionable date -> direct buying chain -> downstream milestone -> lead-time measurement -> policy learning`
+One real public early project and one real active solicitation pass through implemented Firecrawl acquisition to retained evidence and inspectable, deduplicated operator records. The RFP includes original documents, cited requirements, qualification, deadline and next action. Qualification may reject a candidate; discovery cannot override the evidence to produce a favorable fit.
 
-Live flow after validation:
+## ICP
 
-`signal -> project -> power-gap hypothesis -> direct customer/EPC/GC/electrical contractor -> conversation -> verified requirement -> fuel/provider selection`
+Roughly 300 kW+ temporary, bridge, construction, commissioning, energization-delay and prime/continuous generation; multi-MW is especially valuable. Natural gas/propane compatibility must be evidenced. Prioritize data centers, oil/gas fixed infrastructure, utility/speed-to-power, industrial/construction. Avoid tiny standby, residential, maintenance-only and re-renter optimization. An existing conservative rental-fit screen is retained; its limitations are explicit rather than silently changing historical policy.
 
-Fuel providers are not the upstream lead source.
+## Next research milestone
 
-## Successful session
+HC-001 uses existing trace/replay mechanics for a small real cohort, expanding toward 20–50 projects. Measure first valid signal/policy surface, conventional milestone, lead time, buyer-path availability, misses and unresolved cases. Date-only publication is not proof of historical availability. One live anecdote does not validate a signal family.
 
-A session answers: what was the earliest valid signal; when was it actually available; would the policy have surfaced the project; how many days before the obvious downstream signal; who in the direct buying chain was identifiable then; and what action burden did the signal create?
+## Boundaries
 
-## V1 acceptance
-
-V1 is achieved when the current engine/workbench can evaluate a real historical cohort and produce inspectable lead-time results for candidate signal families. Initial target: 20-50 real projects.
-
-Primary metric: lead-time advantage. Secondary: coverage, action burden, evidence quality, buyer-path availability.
-
-## GridLens relationship
-
-TrailForge = research/proving ground. GridLens = live discovery/commercial surface. A policy moves to GridLens only after historical evidence shows useful lead-time advantage and tolerable noise.
-
-## Not next
-
-No new orchestration frameworks, governance machinery without a correctness need, fuel-provider-first discovery, generic RFP aggregation as the primary product, autonomous outreach, hosted infrastructure, or unrelated UI polish.
+No new orchestration/governance framework, hosted service, autonomous outreach/submission, or automatic GridLens promotion. The operator workspace is separate from verified simulation fixtures. UNKNOWN remains UNKNOWN; exact citations remain inspectable. GridLens handoff follows repeated useful historical evidence.

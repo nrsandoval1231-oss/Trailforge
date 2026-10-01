@@ -1,0 +1,17 @@
+{
+  "completion_state": "NOT_STARTED",
+  "draft_placeholders": {
+    "commercial_response": "",
+    "executive_summary": "",
+    "technical_response": ""
+  },
+  "opportunity_id": "plaza500-south-phase1",
+  "outline": [
+    "Buyer and project context",
+    "Requirements and citations",
+    "Compliance matrix",
+    "Unanswered questions",
+    "Commercial and technical assumptions"
+  ],
+  "schema_version": "trailforge-rfp-draft-v1"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "file": "originals/fairfax-2026-09-24-agenda.pdf",
+    "sha256": "56c488625bf13822cf85aa55d0615e2f14c16ca7519b6da973fdd57909f8a458",
+    "bytes": 205961,
+    "saved_at": "2026-10-01T22:50:09.959887+00:00",
+    "timestamp_basis": "local completed download file mtime"
+  },
+  {
+    "file": "originals/lipa-2026-temporary-generation-rfp.pdf",
+    "sha256": "d0e0b7bcb6329ee387f6ed978aa597c0362694d314ec1a60dbb63e9eefeded87",
+    "bytes": 593225,
+    "saved_at": "2026-10-01T22:44:21.279569+00:00",
+    "timestamp_basis": "local completed download file mtime"
+  },
+  {
+    "file": "originals/lipa-generator-interconnection.pdf",
+    "sha256": "c75de56f432068821f41ca95715b4bfb7eceb25cc358b5b388ac7cfd39b67339",
+    "bytes": 587655,
+    "saved_at": "2026-10-01T22:50:10.371500+00:00",
+    "timestamp_basis": "local completed download file mtime"
+  }
+]

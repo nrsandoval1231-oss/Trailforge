@@ -1,0 +1,166 @@
+{
+  "categories": [
+    "pdf"
+  ],
+  "domain": null,
+  "hits": [
+    {
+      "description": "This document contains temporary regulations regarding general requirements for Trump accounts, the establishment of an initial Trump account ( ...",
+      "position": 1,
+      "source_type": "web",
+      "title": "[TD 10056] RIN 1545-BS27 Trump Accounts AGENCY",
+      "url": "https://public-inspection.federalregister.gov/2026-20026.pdf"
+    },
+    {
+      "description": "A contract of sale or conveyance must be included with the application. APPLICATION FOR A NEW BUSINESS (the applicant is not purchasing the existing business).",
+      "position": 2,
+      "source_type": "web",
+      "title": "APPLICATION FOR TEMPORARY RETAIL (ST) PERMIT",
+      "url": "https://sla.ny.gov/temporary-operating-permit-application-retailers-0"
+    },
+    {
+      "description": "A temporary license is only valid for 45 days and cannot be renewed, reinstated or reapplied for. This application is for contractors with a current out of ...",
+      "position": 3,
+      "source_type": "web",
+      "title": "TEMPORARY CONTRACTOR'S LICENSE APPLICATION",
+      "url": "https://www.dpor.virginia.gov/sites/default/files/boards/Contractors/A501-2703LIC.pdf"
+    },
+    {
+      "description": "The order shall provide that the order becomes effective seven (7) days following service of the order and movant's affidavit upon the adverse party unless ...",
+      "position": 4,
+      "source_type": "web",
+      "title": "403.160 Temporary orders -- Maintenance, child support, ...",
+      "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=52814"
+    },
+    {
+      "description": "Complete Steps 1 through 4. 3. Submit this permit application and payment to the Indiana State Excise Police (ISEP) district where the temporary event will be.",
+      "position": 5,
+      "source_type": "web",
+      "title": "APPLICATION FOR TEMPORARY EMPLOYEE PERMIT",
+      "url": "https://forms.in.gov/Download.aspx?id=11509"
+    },
+    {
+      "description": "(D)AAstates that the applicant is entitled to letters of temporary administration and is not disqualified by law from serving as a temporary administrator; and.",
+      "position": 6,
+      "source_type": "web",
+      "title": "ESTATES CODE CHAPTER 452. TEMPORARY ...",
+      "url": "https://statutes.capitol.texas.gov/Docs/ES/pdf/ES.452.pdf"
+    },
+    {
+      "description": "TEMPORARY ORDERS You can ONLY use these forms if: 1) A Petition for separation, dissolution, annulment, or custody and parenting time has already been filed",
+      "position": 7,
+      "source_type": "web",
+      "title": "Pre-Judgment Temporary Orders Packet",
+      "url": "https://www.courts.oregon.gov/forms/Documents/Temp-Univ-PACKET-2020-01.pdf"
+    },
+    {
+      "description": "The court needs the information below to order a temporary parenting plan. You may attach pages to this form if you need more space.",
+      "position": 8,
+      "source_type": "web",
+      "title": "Information for Temporary Parenting Plan",
+      "url": "https://www.courts.wa.gov/forms/documents/FL%20All%20Family%20139%20Info%20for%20Temp%20PP.pdf"
+    },
+    {
+      "description": "A chamber of commerce or similar trade organization may hold up to 20 temporary alcohol beverage licenses for purposes of organizing a wine or beer walk.",
+      "position": 9,
+      "source_type": "web",
+      "title": "2025 Form AB-220 Temporary Alcohol Beverage License and ...",
+      "url": "https://www.revenue.wi.gov/DORForms/ab-220f.pdf"
+    },
+    {
+      "description": "The court may award temporary custody under the standards of KRS 403.270 after a hearing, or, if there is no objection, solely on the basis of the affidavits.",
+      "position": 10,
+      "source_type": "web",
+      "title": "403.280 Temporary custody orders.",
+      "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=51200"
+    }
+  ],
+  "limit": 10,
+  "provider": "firecrawl",
+  "provider_job_id": "01a0f9b3-c25f-736b-9cd6-718e4e06c7fa",
+  "query": "temporary generation RFP temporary power procurement",
+  "raw_response": {
+    "creditsUsed": 2,
+    "data": {
+      "news": [],
+      "web": [
+        {
+          "category": "pdf",
+          "description": "This document contains temporary regulations regarding general requirements for Trump accounts, the establishment of an initial Trump account ( ...",
+          "position": 1,
+          "title": "[TD 10056] RIN 1545-BS27 Trump Accounts AGENCY",
+          "url": "https://public-inspection.federalregister.gov/2026-20026.pdf"
+        },
+        {
+          "description": "A contract of sale or conveyance must be included with the application. APPLICATION FOR A NEW BUSINESS (the applicant is not purchasing the existing business).",
+          "position": 2,
+          "title": "APPLICATION FOR TEMPORARY RETAIL (ST) PERMIT",
+          "url": "https://sla.ny.gov/temporary-operating-permit-application-retailers-0"
+        },
+        {
+          "category": "pdf",
+          "description": "A temporary license is only valid for 45 days and cannot be renewed, reinstated or reapplied for. This application is for contractors with a current out of ...",
+          "position": 3,
+          "title": "TEMPORARY CONTRACTOR'S LICENSE APPLICATION",
+          "url": "https://www.dpor.virginia.gov/sites/default/files/boards/Contractors/A501-2703LIC.pdf"
+        },
+        {
+          "description": "The order shall provide that the order becomes effective seven (7) days following service of the order and movant's affidavit upon the adverse party unless ...",
+          "position": 4,
+          "title": "403.160 Temporary orders -- Maintenance, child support, ...",
+          "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=52814"
+        },
+        {
+          "description": "Complete Steps 1 through 4. 3. Submit this permit application and payment to the Indiana State Excise Police (ISEP) district where the temporary event will be.",
+          "position": 5,
+          "title": "APPLICATION FOR TEMPORARY EMPLOYEE PERMIT",
+          "url": "https://forms.in.gov/Download.aspx?id=11509"
+        },
+        {
+          "category": "pdf",
+          "description": "(D)AAstates that the applicant is entitled to letters of temporary administration and is not disqualified by law from serving as a temporary administrator; and.",
+          "position": 6,
+          "title": "ESTATES CODE CHAPTER 452. TEMPORARY ...",
+          "url": "https://statutes.capitol.texas.gov/Docs/ES/pdf/ES.452.pdf"
+        },
+        {
+          "category": "pdf",
+          "description": "TEMPORARY ORDERS You can ONLY use these forms if: 1) A Petition for separation, dissolution, annulment, or custody and parenting time has already been filed",
+          "position": 7,
+          "title": "Pre-Judgment Temporary Orders Packet",
+          "url": "https://www.courts.oregon.gov/forms/Documents/Temp-Univ-PACKET-2020-01.pdf"
+        },
+        {
+          "category": "pdf",
+          "description": "The court needs the information below to order a temporary parenting plan. You may attach pages to this form if you need more space.",
+          "position": 8,
+          "title": "Information for Temporary Parenting Plan",
+          "url": "https://www.courts.wa.gov/forms/documents/FL%20All%20Family%20139%20Info%20for%20Temp%20PP.pdf"
+        },
+        {
+          "category": "pdf",
+          "description": "A chamber of commerce or similar trade organization may hold up to 20 temporary alcohol beverage licenses for purposes of organizing a wine or beer walk.",
+          "position": 9,
+          "title": "2025 Form AB-220 Temporary Alcohol Beverage License and ...",
+          "url": "https://www.revenue.wi.gov/DORForms/ab-220f.pdf"
+        },
+        {
+          "description": "The court may award temporary custody under the standards of KRS 403.270 after a hearing, or, if there is no objection, solely on the basis of the affidavits.",
+          "position": 10,
+          "title": "403.280 Temporary custody orders.",
+          "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=51200"
+        }
+      ]
+    },
+    "id": "01a0f9b3-c25f-736b-9cd6-718e4e06c7fa",
+    "success": true
+  },
+  "requested_query": "temporary generation RFP temporary power procurement",
+  "retrieved_at": "2026-10-01T23:01:49.970958+00:00",
+  "schema_version": "trailforge-firecrawl-search-v1",
+  "search_id": "temporary-generation-rfp-1",
+  "sources": [
+    "web",
+    "news"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "categories": [
+    "pdf"
+  ],
+  "domain": "nyserda.ny.gov",
+  "hits": [
+    {
+      "description": "Renewable Energy System – As defined in the Climate Act, and for purposes of this RFP, a system that generates electricity through use of the ...",
+      "position": 1,
+      "source_type": "web",
+      "title": "RESRFP26-1 Request for Proposals - NYSERDA Portal",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000026VmL"
+    },
+    {
+      "description": "Renewable Energy System – As defined in the Climate Act, and for purposes of this RFP, a system that generates electricity through use of the ...",
+      "position": 2,
+      "source_type": "web",
+      "title": "Update to Renewable Energy Standard Purchase of New York ...",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000016tdx"
+    },
+    {
+      "description": "for Proposals (RFP), recommended to procure 3,000 MW of bulk energy storage projects with the creation of a new Index Storage Credit (ISC) ...",
+      "position": 3,
+      "source_type": "web",
+      "title": "Update to Bulk Energy Storage Program Purchase of Index ...",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr000000w4cj"
+    },
+    {
+      "description": "Qualified Proposers will receive a Notice of Qualification and will be provided with detailed instructions for submitting a Step Three Bid ...",
+      "position": 4,
+      "source_type": "web",
+      "title": "1 Renewable Energy Standard Purchase of New York Tier 1 ...",
+      "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000Eltd2EAB"
+    },
+    {
+      "description": "The Order authorizes NYSERDA, as central procurement administrator, to offer long-term contracts to generators for the purchase of Tier 4- ...",
+      "position": 5,
+      "source_type": "web",
+      "title": "- i - Purchase of New York Tier 4 Eligible Renewable Energy ...",
+      "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000RfWV4EAN"
+    },
+    {
+      "description": "Upon completion of the selection process under this RFP, NYSERDA will transfer the membership interests in the project company that holds the ...",
+      "position": 6,
+      "source_type": "web",
+      "title": "Build-Ready Project Auction Request for Proposals (RFP) No ...",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0l8z000000t5DcAAI"
+    },
+    {
+      "description": "Bid Facilities selected for an award under this RFP will not be subject to subsequent changes in RES eligibility rules; however, if the Bid ...",
+      "position": 7,
+      "source_type": "web",
+      "title": "RESRFP18-1 Renewable Energy Standard Purchase of ...",
+      "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000AjigDEAR"
+    },
+    {
+      "description": "Bid Proposals that demonstrate progress exceeding the minimum Viability Threshold Requirements will be eligible to receive points under the 10% ...",
+      "position": 8,
+      "source_type": "web",
+      "title": "Purchase of New York Tier 1 Eligible - NYSERDA Portal",
+      "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000NH5mGEAT"
+    },
+    {
+      "description": "The Step Two Bid Proposal due date has been extended from February 9, 2023 to April 12,. 2023. The Bid Fee Submission deadline has also been ...",
+      "position": 9,
+      "source_type": "web",
+      "title": "Update to Renewable Energy Standard Purchase of New York ...",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0l8z000000iyL6"
+    },
+    {
+      "description": "The generation associated with a single Bid Facility may not be divided between both solicitations. 2. A Bid Facility that has been deemed ...",
+      "position": 10,
+      "source_type": "web",
+      "title": "1 Renewable Energy Standard Purchase of New York Tier 1 ...",
+      "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lt0000000LYQW"
+    }
+  ],
+  "limit": 10,
+  "provider": "firecrawl",
+  "provider_job_id": "01a0f9ab-ea28-724d-90c0-3531e730a41a",
+  "query": "site:nyserda.ny.gov temporary generation RFP temporary power procurement",
+  "raw_response": {
+    "creditsUsed": 4,
+    "data": {
+      "news": [
+        {
+          "position": 1,
+          "title": "[PDF] RESRFP26-1 Request for Proposals - NYSERDA Portal - NY.Gov",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000026VmL"
+        },
+        {
+          "position": 2,
+          "title": "[PDF] Update to Bulk Energy Storage Program ... - NYSERDA Portal",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr000000w4cj"
+        },
+        {
+          "position": 3,
+          "title": "[PDF] 1 Renewable Energy Standard Purchase of New York Tier 1 Eligible ...",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000Eltd2EAB"
+        },
+        {
+          "position": 4,
+          "title": "[PDF] Build-Ready Project Auction Request for Proposals (RFP) No ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0l8z000000t5DcAAI"
+        },
+        {
+          "position": 5,
+          "title": "[PDF] RESRFP18-1 Renewable Energy Standard Purchase of Renewable ...",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000AjigDEAR"
+        },
+        {
+          "position": 6,
+          "title": "[PDF] Purchase of New York Tier 1 Eligible - NYSERDA Portal - NY.Gov",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000NH5mGEAT"
+        },
+        {
+          "position": 7,
+          "title": "[PDF] Introduction to the Draft ISCRFP25-1, Comment Submission ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr000000h081"
+        },
+        {
+          "position": 8,
+          "title": "[PDF] resrfp26-1 – agreement no. xxxxxx - NYSERDA Portal",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000026W45"
+        },
+        {
+          "position": 9,
+          "title": "[PDF] Update to Renewable Energy Standard Purchase of New York Tier ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000016tdx"
+        },
+        {
+          "position": 10,
+          "title": "[PDF] RetrofitNY High-Performance Retrofit Solutions Design",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lt0000000UdtyAAC"
+        }
+      ],
+      "web": [
+        {
+          "description": "Renewable Energy System – As defined in the Climate Act, and for purposes of this RFP, a system that generates electricity through use of the ...",
+          "position": 1,
+          "title": "RESRFP26-1 Request for Proposals - NYSERDA Portal",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000026VmL"
+        },
+        {
+          "description": "Renewable Energy System – As defined in the Climate Act, and for purposes of this RFP, a system that generates electricity through use of the ...",
+          "position": 2,
+          "title": "Update to Renewable Energy Standard Purchase of New York ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr0000016tdx"
+        },
+        {
+          "description": "for Proposals (RFP), recommended to procure 3,000 MW of bulk energy storage projects with the creation of a new Index Storage Credit (ISC) ...",
+          "position": 3,
+          "title": "Update to Bulk Energy Storage Program Purchase of Index ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lcr000000w4cj"
+        },
+        {
+          "description": "Qualified Proposers will receive a Notice of Qualification and will be provided with detailed instructions for submitting a Step Three Bid ...",
+          "position": 4,
+          "title": "1 Renewable Energy Standard Purchase of New York Tier 1 ...",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000Eltd2EAB"
+        },
+        {
+          "description": "The Order authorizes NYSERDA, as central procurement administrator, to offer long-term contracts to generators for the purchase of Tier 4- ...",
+          "position": 5,
+          "title": "- i - Purchase of New York Tier 4 Eligible Renewable Energy ...",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000RfWV4EAN"
+        },
+        {
+          "description": "Upon completion of the selection process under this RFP, NYSERDA will transfer the membership interests in the project company that holds the ...",
+          "position": 6,
+          "title": "Build-Ready Project Auction Request for Proposals (RFP) No ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0l8z000000t5DcAAI"
+        },
+        {
+          "description": "Bid Facilities selected for an award under this RFP will not be subject to subsequent changes in RES eligibility rules; however, if the Bid ...",
+          "position": 7,
+          "title": "RESRFP18-1 Renewable Energy Standard Purchase of ...",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000AjigDEAR"
+        },
+        {
+          "description": "Bid Proposals that demonstrate progress exceeding the minimum Viability Threshold Requirements will be eligible to receive points under the 10% ...",
+          "position": 8,
+          "title": "Purchase of New York Tier 1 Eligible - NYSERDA Portal",
+          "url": "https://portal.nyserda.ny.gov/servlet/servlet.FileDownload?file=00Pt000000NH5mGEAT"
+        },
+        {
+          "description": "The Step Two Bid Proposal due date has been extended from February 9, 2023 to April 12,. 2023. The Bid Fee Submission deadline has also been ...",
+          "position": 9,
+          "title": "Update to Renewable Energy Standard Purchase of New York ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0l8z000000iyL6"
+        },
+        {
+          "description": "The generation associated with a single Bid Facility may not be divided between both solicitations. 2. A Bid Facility that has been deemed ...",
+          "position": 10,
+          "title": "1 Renewable Energy Standard Purchase of New York Tier 1 ...",
+          "url": "https://portal.nyserda.ny.gov/CORE_Solicitation_Document_Page?documentId=a0lt0000000LYQW"
+        }
+      ]
+    },
+    "id": "01a0f9ab-ea28-724d-90c0-3531e730a41a",
+    "success": true
+  },
+  "requested_query": "temporary generation RFP temporary power procurement",
+  "retrieved_at": "2026-10-01T22:53:13.518737+00:00",
+  "schema_version": "trailforge-firecrawl-search-v1",
+  "search_id": "temporary-generation-rfp-2",
+  "sources": [
+    "web",
+    "news"
+  ]
+}

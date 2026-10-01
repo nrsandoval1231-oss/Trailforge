@@ -1,0 +1,17 @@
+==> test suite
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+.............................................s.......................... [ 68%]
+........................................................................ [ 91%]
+..........................                                               [100%]
+313 passed, 1 skipped in 42.11s
+==> compile source
+==> ruff
+All checks passed!
+==> validate bundle gt-003-morgan-hill.json
+{"bundle_id": "gt-003-morgan-hill-2027", "fixtures": 1, "holdout_available": false, "mode": "validate-bundle", "status": "PASS"}
+==> validate bundle gt-007-pleasanton.json
+{"bundle_id": "gt-007-pleasanton-emergency-generator", "fixtures": 1, "holdout_available": false, "mode": "validate-bundle", "status": "PASS"}
+==> validate bundle gt-008-mobile.json
+{"bundle_id": "gt-008-mobile-emergency-generator", "fixtures": 1, "holdout_available": false, "mode": "validate-bundle", "status": "PASS"}
+Validation passed.

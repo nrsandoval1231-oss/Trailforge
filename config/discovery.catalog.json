@@ -1,0 +1,18 @@
+{
+  "schema_version": "trailforge-discovery-catalog-v1",
+  "queries": [
+    {"id": "temporary-generation-rfp", "query": "temporary generation RFP temporary power procurement", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "utility-constraints", "query": "utility power constraints grid delay large load project", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "data-center-projects", "query": "data center project power utility substation construction", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "oil-gas-projects", "query": "oil gas project construction temporary power procurement", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "sw-disposal-projects", "query": "saltwater disposal SWD well basin project construction utility power", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "compressor-stations", "query": "natural gas compressor station pipeline project construction power", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "pipeline-projects", "query": "gas pipeline project permitting construction energy infrastructure", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "industrial-expansions", "query": "refinery petrochemical manufacturing expansion construction power requirements", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "public-procurement", "query": "temporary power generation solicitation RFP procurement", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "early-project-signals", "query": "planned project announced permitting construction power requirements", "domains": [], "sources": ["web", "news"], "limit": 10},
+    {"id": "temporary-generation-official", "query": "temporary generation RFP temporary power procurement", "domains": ["psegliny.com"], "sources": ["web"], "categories": ["pdf"], "limit": 10},
+    {"id": "temporary-generation-pdf", "query": "temporary generation RFP temporary power procurement PDF", "domains": [], "sources": ["web"], "categories": ["pdf"], "limit": 10},
+    {"id": "data-center-utility-official", "query": "data center project utility power construction", "domains": ["dominionenergy.com"], "sources": ["web"], "limit": 10}
+  ]
+}

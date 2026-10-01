@@ -1,0 +1,39 @@
+{
+  "task_id": "FC-050",
+  "direction": "CONTINUE",
+  "slice_status": "ACCEPTED",
+  "product_complete": false,
+  "accepted_tree": "fd86d5e7fb721537bbfe8517bef72156addcbba5",
+  "acceptance_evidence": "REVIEW-02.json",
+  "next_node": "HC-001",
+  "next_scope": "Small real historical cohort through existing trace/replay, dated availability and obvious milestone comparison; expand toward20-50 after proof",
+  "recorded_utc": "2026-10-01T23:32:56.113441+00:00",
+  "lane": "single Luna builder; independent Sol review",
+  "builder_model": "gpt-6-luna low",
+  "reviewer_model": "gpt-6-sol medium",
+  "packet_start_utc": "2026-10-01T22:42:11.4542355Z",
+  "task_start_utc": "UNKNOWN",
+  "planning_duration": "UNKNOWN",
+  "build_duration": "UNKNOWN",
+  "final_validation_test_seconds": 41.01,
+  "final_validation_total_duration": "UNKNOWN",
+  "audit_duration": "UNKNOWN",
+  "formal_review_repair_cycles": 1,
+  "local_repair_count": "see LIVE-DEVELOPMENT.md; exact count UNKNOWN",
+  "tokens": "UNKNOWN",
+  "loaded_config_identity": "UNKNOWN",
+  "elapsed_to_accepted": "UNKNOWN: task start not measured",
+  "lesson": {
+    "rule": "Validate staged generated artifacts and conflict schedule facts before treating deduped procurement as active",
+    "attribution": "independent review detected stale deadline and whitespace missed by unstaged check",
+    "evidence": [
+      "REVIEW.json",
+      "REVIEW-02.json",
+      "FINAL-VALIDATION-REPAIR-01.txt"
+    ],
+    "metric": "blocking review findings 3 -> 0 for this slice only",
+    "reversibility": "local policy; no global memory change",
+    "promotion": "local packet only"
+  },
+  "coverage_boundary": "Accepted tree covers implementation, data, docs and tests; added REVIEW-02 and ACCEPTANCE receipt are audit bookkeeping, not new product bytes."
+}
