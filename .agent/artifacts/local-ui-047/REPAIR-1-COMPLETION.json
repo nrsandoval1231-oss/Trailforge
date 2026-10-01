@@ -1,0 +1,56 @@
+{
+  "node_id": "LOCAL-UI-047",
+  "repair": 1,
+  "role": "implementation_builder_not_auditor",
+  "status": "REPAIR_HANDOFF_UNACCEPTED",
+  "branch": "codex/trailforge-local-ui",
+  "base_sha": "3cedc8711ceec0ac411f04911fa24186a0d6ceb1",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning": "medium",
+  "actual_model": "UNKNOWN",
+  "config_identity": "UNKNOWN",
+  "first_recorded_utc": "2026-10-01T18:17:23Z",
+  "implementation_validation_finished_utc": "2026-10-01T18:22:32Z",
+  "timing_note": "First clock sample was after packet inspection. Exact turn start and separate phase durations were not instrumented.",
+  "planning_seconds": null,
+  "build_seconds": null,
+  "final_focused_validation_wall_seconds": 31.8966604,
+  "repeated_transport_regressions_wall_seconds": 11.826858,
+  "timings_overlap": true,
+  "audit_seconds": null,
+  "elapsed_to_accepted_seconds": null,
+  "tokens": null,
+  "diagnosis": "Header-only rejection closes the Windows socket before http.client's separately sent body arrives. A controlled post-close sender reproduced ConnectionAbortedError WinError10053 30/30 times. Four new delayed-body regression cases all failed on the unmodified server at getresponse with WinError10053, before implementation repair.",
+  "change": "Override WorkbenchServer.shutdown_request: half-close output, discard raw trailing socket bytes up to 5120 bytes and an absolute 0.25-second monotonic deadline, then always close. No framing parsing, request redispatch, authentication/schema change, assertion relaxation or client retry.",
+  "candidate_sha256": {
+    "src/athena_procurement_arena/local_ui.py": "FC30A93D3E08BE16F2FDDC1BA87257331968DD95F5C3B73C6167235D58A2CB2C",
+    "tests/procurement_arena/test_local_ui.py": "93B2C0531CA67C6505C139873E6A97C0CA102C31956D62E84507671ABE45B1AB",
+    "docs/LOCAL_UI.md": "9B6F56D2073876E6117B451BDC8B8882DDA829B2FC467B084EDBD7B4D3FD5543"
+  },
+  "preserved_prior_artifact_sha256": {
+    ".agent/artifacts/local-ui-047/COMPLETION.json": "8A1461BE108F322016FA90A3B7556DF448204479130BC93B45E47ACAB3325652",
+    ".agent/artifacts/local-ui-047/BUILDER-HANDOFF.md": "1FBC50F34C838DAD577A2392062FBF23B28D00CB242BD4171F7ED22E359BD903",
+    ".agent/artifacts/local-ui-047/CANDIDATE-1-VALIDATION.md": "55BD4ED689820FCC7508226F1A91F15EE9BF4DB1AECDEE6EBF54DD4203E84976"
+  },
+  "checks": [
+    {"phase": "before repair", "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_local_ui.py -k request_guards", "exit_code": 0, "result": "12 passed, 39 deselected in 6.30s; does not invalidate controller failure"},
+    {"phase": "before repair with added regression tests", "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_local_ui.py -k rejection_delayed_body_transport", "exit_code": 1, "result": "4 failed, 51 deselected in 2.47s; all ConnectionAbortedError WinError10053 at getresponse"},
+    {"phase": "after repair", "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_local_ui.py -k 'rejection_delayed_body_transport or transport_drain or request_guards'", "exit_code": 0, "result": "20 passed, 39 deselected in 9.39s"},
+    {"phase": "final focused", "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_local_ui.py", "exit_code": 0, "result": "58 passed, 1 skipped in 31.10s", "start_utc": "2026-10-01T18:21:57.4469981Z", "finish_utc": "2026-10-01T18:22:29.3421361Z"},
+    {"phase": "fixed-count repeated transport regression, not retries", "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_local_ui.py -k 'rejection_delayed_body_transport or transport_drain'", "invocations": 3, "exit_codes": [0, 0, 0], "results": ["8 passed, 51 deselected in 3.15s", "8 passed, 51 deselected in 3.17s", "8 passed, 51 deselected in 3.21s"], "delayed_requests_checked": 120},
+    {"command": "uv run --python 3.11 --with pytest --with ruff ruff check src/athena_procurement_arena/local_ui.py tests/procurement_arena/test_local_ui.py", "exit_code": 0, "result": "All checks passed!"},
+    {"command": "git diff --exit-code -- src/athena_procurement_arena/runner.py src/athena_procurement_arena/cli.py src/athena_procurement_arena/fixtures.py src/athena_procurement_arena/policies.py src/athena_procurement_arena/world.py scenarios/fixtures", "exit_code": 0}
+  ],
+  "diagnostic_attempts": [
+    "First ad-hoc runpy probe lacked pytest and exited1 with ModuleNotFoundError before exercising transport; rerun with --with pytest.",
+    "Two probes placing the body before close each observed 30 HTTP400 responses.",
+    "Probe placing body after completed server close observed 30 ConnectionAbortedError10053 outcomes; diagnostic errors were counted as failures, never passes."
+  ],
+  "remaining": [
+    "Controller reruns full gate, browser proof, installed-wheel proof as needed and independent review on repaired hashes.",
+    "Original source/wheel lifecycle results belong to candidate1, not acceptance of this changed candidate.",
+    "Existing live symlink test remains skipped for unavailable Windows privilege; no new skip introduced.",
+    "Late or oversized hostile tails beyond cleanup limits may still lose response on disconnect; no unbounded drain or framing acceptance.",
+    "No self-acceptance, delegation, commit, push, merge or deployment."
+  ]
+}

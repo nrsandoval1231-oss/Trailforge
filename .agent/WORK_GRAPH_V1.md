@@ -1,5 +1,9 @@
 # TrailForge V1 audit frontier — 2026-10-01
 
+## Latest owner-authorized frontier
+
+S3A and South Valley research preparation merged through PR #4 at `3cedc8711ceec0ac411f04911fa24186a0d6ceb1`; post-merge CI36897460144 passed. LOCAL-UI-047 is VALIDATED / AWAITING INDEPENDENT REVIEW, depends on accepted S3A, and is a separate additive extension authorized by the owner. Packet: [local-ui-047.md](tasks/local-ui-047.md); governing scope/Tribunal/finish contract: [LOCAL_UI_SCOPE.md](../docs/LOCAL_UI_SCOPE.md). Astra built by explicit owner override. One transport repair, controller297-pass/1skip full gate, source+wheel lifecycle and browser proof completed; independent Sol review next. S3B remains pending source/availability attestation; UI cannot admit it. Older local-only statements below are retained checkpoint history, superseded by this release record.
+
 Authority: attached owner audit brief; preserve Build Packet #0 research/evidence boundaries. This is a bounded usable CLI milestone, not replacement or certification of the full packet.
 
 | Node | Dependency | State | Result |

@@ -1,0 +1,25 @@
+# LOCAL-UI-047 independent exact-candidate review
+
+Verdict: **PASS** for the optional local UI extension only. This is not acceptance of full Slice 3, V1, Build Packet #0, source admission, prediction quality, or any release.
+
+Review interval: 2026-10-01T18:35:35Z–2026-10-01T18:37:54Z. Reviewer role: Sol, independent of the builder; exact model and loaded configuration identity UNKNOWN. No delegation. No product, runtime, retained-run, or repository-state changes were made by this review before writing these two review artifacts.
+
+## Candidate identity and scope
+
+- Repository: `C:/Users/nrsan/Nucleus/02_Projects/Trailforge`; branch `codex/trailforge-local-ui`; HEAD/base `3cedc8711ceec0ac411f04911fa24186a0d6ceb1`; uncommitted candidate.
+- `CANDIDATE.json` SHA-256: `11043CF0A52E66718FF65004327162F748FE4576035F69EBF32E3300BAA174C3`. All 17 listed file SHA-256 values matched current bytes, including source, assets, tests, scope/docs, packet/repair packet, controller probe, and final validation.
+- Reviewed the tracked diff and relevant untracked source, tests, assets, scope, packet, validation, checklist, and documentation. Did not read builder completion, handoff, or repair reasoning. The tracked diff is additive configuration/docs/state; the engine, policy, fixtures, and CLI are unchanged in the working-tree diff. `git diff --check` exited 0.
+- The owner-authorized no-UI exception and bounded finish contract are in `docs/LOCAL_UI_SCOPE.md:3-21`. The parent research-only boundary remains open per `docs/FINISH_READINESS.md:54` and `docs/LOCAL_UI_SCOPE.md:21`.
+
+## Findings
+
+No acceptance-blocking finding in this bounded candidate.
+
+- Loopback and browser-request boundary: `local_ui.py:155-159` binds `127.0.0.1`; `local_ui.py:211-217` requires the exact Host and rejects foreign/null Origin; `local_ui.py:247-273` requires a constant-time token check, exact JSON content type, bounded Content-Length, no Transfer-Encoding, and a single expected string field. The startup token is delivered under the guarded session endpoint. GET dispatch at `local_ui.py:219-245` only serves allowlisted assets or inspects retained runs. Tests cover duplicate headers, invalid framing, traversal, and mutation refusal (`test_local_ui.py:116-163,228-251,296-376`). The repaired close path is bounded to 5 KiB/250 ms (`local_ui.py:161-183`), without accepting rejected framing. The first-candidate Windows transport failure remains documented in `CANDIDATE-1-VALIDATION.md`.
+- Filesystem and engine boundary: `local_ui.py:34-44,98-110` rejects linked/reparse paths and constrains generated UUID run IDs to the configured root; root access is locked (`local_ui.py:76-93,223,274`). `local_ui.py:112-149,279-288` delegates creation, verification, and replay to the existing runner. Inspection cannot execute the policy; the test disables world/policy execution while listing and inspecting (`test_local_ui.py:65-99`). Corrupt/partial runs remain explicit failures (`test_local_ui.py:101-113`). This is a trusted same-user local boundary, as documented in `docs/LOCAL_UI.md:56-77`.
+- Evidence and presentation: the UI labels fixture status as a stored claim (`app.js:38-45`), keeps UNSEALED/UNSCORED visible (`index.html:16-20`), and separates integrity from explicit replay (`app.js:66-108`). It renders retained content via text nodes/textContent and JSON text in `pre`, without HTML insertion (`app.js:4-16,110-129`). GT-003 is identified as a maintenance negative mechanics case (`app.js:47-53`); only that fixture ID is offered (`local_ui.py:64-75`). The decision strip uses retained timestamps and visible evidence (`app.js:86-101`). Runner replay checks source content, scenario/result hashes, ledger, and input binding (`runner.py:413-426`); the UI does not turn integrity PASS into replay PASS.
+- Packaging and workflow: `pyproject.toml:15-19` declares the optional entry point and bundled assets. The documented Windows launch/restart/wheel paths are in `docs/LOCAL_UI.md:3-54`. Controller `FINAL-VALIDATION.md` reports the exact-candidate full gate at 297 passed/1 Windows-privilege skip, source and isolated-wheel six-group lifecycle probes, and actual browser save/inspect/replay/restart/corruption proof. This review inspected those records and the probe source; it did not rerun the full gate, alter retained runs, or touch the controller-owned port 8765 session. The skipped live symlink test is bounded by mocked reparse/link tests and path checks, not represented as a pass.
+
+## Limits and direction
+
+Acceptance covers this frozen local candidate only. Hashes are local integrity evidence, not signatures. Browser proof and the full gate are controller-reported evidence, while this review independently checked the candidate bytes, code paths, tests, and claims. Later changes to any hashed file require a fresh exact-candidate review. South Valley attestation, sealed outcomes, and full parent finish-contract acceptance remain pending. Controller direction: accept LOCAL-UI-047 as a bounded local extension; continue separately on the existing S3B evidence frontier. No commit, push, merge, or deploy is authorized by this verdict.

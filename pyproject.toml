@@ -13,6 +13,10 @@ dev = ["pytest>=8", "ruff>=0.15"]
 
 [project.scripts]
 trailforge = "athena_procurement_arena.cli:main"
+trailforge-ui = "athena_procurement_arena.local_ui:main"
+
+[tool.setuptools.package-data]
+athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
