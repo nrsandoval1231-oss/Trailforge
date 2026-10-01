@@ -39,7 +39,16 @@ from .rfp_candidate_capture import (
 from .rfp_candidate_queue import build_rfp_candidate_queue, write_rfp_candidate_queue
 from .rfp_intake import screen_aura_rental_candidate
 from .robustness import adversarial_recurrence_world, counterfactual_sensitivity
-from .runner import historical_registry, load_manifest, manifest_dict, run_with_manifest, verify_replay
+from .runner import (
+    create_experiment,
+    historical_registry,
+    load_manifest,
+    manifest_dict,
+    replay_experiment,
+    run_with_manifest,
+    verify_experiment,
+    verify_replay,
+)
 from .scenario_dsl import ScenarioDsl
 from .shadow import load_shadow_record
 from .signal_ledger import SignalType
@@ -106,7 +115,7 @@ def _screen_bundle(bundle) -> dict:
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="trailforge")
-    parser.add_argument("mode", choices=("smoke", "unit", "scenario", "batch", "compare", "adversarial",
+    parser.add_argument("mode", choices=("smoke", "unit", "scenario", "inspect", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
                                           "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "build-rfp-review-queue", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
@@ -169,14 +178,51 @@ def main(argv=None) -> int:
     parser.add_argument("--verified-at", help="ISO timestamp for seal-prospective (default now)")
     parser.add_argument("--output", help="output path for seal-prospective / evaluate-cohort")
     parser.add_argument("--scenario-file", help="scenario JSON input for scenario/replay")
+    parser.add_argument("--experiment-dir", help="durable experiment directory for scenario/inspect/replay")
     parser.add_argument("--manifest", help="saved run manifest for replay")
     parser.add_argument("--seals", nargs="+", help="paths to sealed outcome JSON files for evaluate-cohort")
     parser.add_argument("--floor-accuracy", type=float, default=0.0, help="minimum cohort accuracy floor")
     parser.add_argument("--incumbent-accuracy", type=float, default=0.0, help="incumbent cohort accuracy")
     args = parser.parse_args(argv)
     baseline = BaselineA()
+    if args.mode == "inspect":
+        try:
+            if not args.experiment_dir or args.scenario_file or args.manifest or args.output:
+                raise ValueError("inspect requires only --experiment-dir")
+            manifest, artifacts = verify_experiment(args.experiment_dir)
+            result = {"status": "PASS", "mode": "inspect", "manifest": manifest,
+                      "input": artifacts["input.json"], "decisions": artifacts["decisions.json"],
+                      "evaluation": artifacts["evaluation.json"], "config": artifacts["config.json"]}
+        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            result = {"status": "FAIL", "mode": "inspect", "error": str(exc)}
+        print(json.dumps(result, sort_keys=True, indent=2, default=str))
+        return 0 if result["status"] == "PASS" else 1
+    if args.mode == "scenario" and args.experiment_dir:
+        try:
+            if not args.scenario_file or args.output or args.manifest:
+                raise ValueError("scenario --experiment-dir requires --scenario-file and excludes --output/--manifest")
+            source = Path(args.scenario_file)
+            manifest = create_experiment(source.read_text(encoding="utf-8"), str(source.resolve()),
+                                         args.experiment_dir, baseline, baseline.policy_id)
+            result = {"status": "PASS", "mode": "scenario", "manifest": manifest,
+                      "experiment_dir": args.experiment_dir}
+        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            result = {"status": "FAIL", "mode": "scenario", "error": str(exc)}
+        print(json.dumps(result, sort_keys=True, default=str))
+        return 0 if result["status"] == "PASS" else 1
+    if args.mode == "replay" and args.experiment_dir:
+        try:
+            if args.scenario_file or args.manifest or args.output:
+                raise ValueError("experiment replay accepts only --experiment-dir")
+            result = replay_experiment(args.experiment_dir, baseline) | {"mode": "replay"}
+        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            result = {"status": "FAIL", "mode": "replay", "error": str(exc)}
+        print(json.dumps(result, sort_keys=True, default=str))
+        return 0 if result["status"] == "PASS" else 1
+    if args.mode in {"scenario", "replay"} and args.experiment_dir:
+        parser.error("incompatible experiment flags")
     scenario_modes = {"scenario", "replay"}
-    if args.mode not in scenario_modes and (args.scenario_file or args.manifest):
+    if args.mode not in scenario_modes and (args.scenario_file or args.manifest or args.experiment_dir):
         parser.error("--scenario-file and --manifest are only valid for scenario/replay")
     if args.mode == "scenario" and args.manifest:
         parser.error("scenario mode does not accept --manifest")

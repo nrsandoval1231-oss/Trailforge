@@ -44,6 +44,29 @@ uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file
 uv run --python 3.11 python -m athena_procurement_arena replay --scenario-file $scenarioFile --manifest $manifestFile
 ```
 
+For a durable experiment directory, use `--experiment-dir` instead of the
+legacy `--output` manifest path. The directory stores the original scenario
+text, decision ledger and decision-time snapshots, separate unsealed evaluation,
+configuration/source identity, and a hash-bound manifest. Inspect verifies the
+saved artifacts and reads them without rerunning the policy; replay verifies
+those hashes and then reruns the deterministic policy against the retained
+input:
+
+```powershell
+$experimentDir = Join-Path $env:TEMP 'trailforge-gt003-experiment'
+uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena inspect --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena replay --experiment-dir $experimentDir
+```
+
+`inspect` prints indented JSON so the ordered decision snapshots and separate
+evaluation can be read directly in a terminal or redirected to a file.
+
+Experiment creation refuses an existing directory. Artifact hashes detect
+accidental or isolated changes; they are integrity checks, not signatures
+against deliberate coordinated rewriting. Ordinary JSON scenario truth remains
+unsealed, so outcome metrics are unavailable and unscored.
+
 This unsealed source-backed input demonstrates mechanics only; it does not
 establish historical accuracy or scoreable evidence. The former seed-only
 pseudo-replay has been intentionally removed. Use `smoke` for an explicit

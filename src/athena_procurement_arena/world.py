@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, fields, is_dataclass, replace
+from types import MappingProxyType
 from typing import Any
 
 from athena_arena.contracts import canonical_hash
@@ -12,9 +13,21 @@ from .foundation import (
     FrozenDecisionLedger,
     InvariantViolation,
     Scenario,
+    _deep_freeze,
     validate_recommended_action,
     validate_scenario,
 )
+
+
+def _freeze_policy_input(value: Any) -> Any:
+    if is_dataclass(value):
+        return MappingProxyType({item.name: _freeze_policy_input(getattr(value, item.name))
+                                 for item in fields(value)})
+    if isinstance(value, dict):
+        return MappingProxyType({key: _freeze_policy_input(item) for key, item in value.items()})
+    if isinstance(value, (tuple, list)):
+        return tuple(_freeze_policy_input(item) for item in value)
+    return _deep_freeze(value)
 
 PolicyCallback = Callable[[Any], tuple[dict[str, Any], str]]
 
@@ -30,6 +43,7 @@ class TemporalWorld:
     def __init__(self, scenario: Scenario, policy_id: str, policy: PolicyCallback) -> None:
         self.scenario, self.policy_id, self.policy = scenario, policy_id, policy
         self.ledger = FrozenDecisionLedger()
+        self.decision_snapshots: list[dict[str, Any]] = []
         self._cursor = -1
         self._scenario_hash = validate_scenario(scenario)
 
@@ -56,10 +70,14 @@ class TemporalWorld:
         state = {"scenario_id": self.scenario.scenario_id, "time": now,
                  "visible_evidence_ids": visible, "visible_evidence": visible_items,
                  "seed": self.scenario.seed}
+        snapshot = _freeze_policy_input(state)
         forecast, action = self.policy(state)
         validate_recommended_action(action)
         decision = self.ledger.append(FrozenDecision(self.scenario.scenario_id, now,
             self.policy_id, visible, forecast, action))
+        self.decision_snapshots.append({"decision_time": now, "policy_id": self.policy_id,
+                                        "policy_input": snapshot, "policy_output": decision.forecast,
+                                        "action": decision.action, "decision_hash": decision.record_hash})
         self._cursor = next_cursor
         return WorldObservation(self.scenario.scenario_id, now, visible, decision.record_hash)
 

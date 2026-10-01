@@ -1,0 +1,86 @@
+{
+  "packet": "v1-durable-experiment-044-recovery",
+  "role": "Terra specialist",
+  "status": "HANDOFF_FOR_INDEPENDENT_REVIEW",
+  "base_sha": "15247421e00303e36436961a91096efa55194ade",
+  "branch": "codex/trailforge-v1-audit-slice1",
+  "utc_started_at": "2026-10-01T14:50:17.3156766Z",
+  "utc_finished_at": "2026-10-01T14:56:19.4686074Z",
+  "lane": "bounded integration recovery",
+  "repair_count": 1,
+  "model": null,
+  "config_identity": null,
+  "measured_tokens": null,
+  "elapsed_to_accepted": null,
+  "allowed_files_changed": [
+    "src/athena_procurement_arena/runner.py",
+    "tests/procurement_arena/test_experiment.py"
+  ],
+  "implementation_sha256": {
+    "README.md": "D7E3C95A2D2223B234797551016C104D37D71FDAB6A3296583C02351E4F6E9DA",
+    "src/athena_procurement_arena/cli.py": "A07D0BAB9A9D4B20ECD2715870EBDE579B1271FA6E55384E039A813E276B4914",
+    "src/athena_procurement_arena/runner.py": "BC1D179376610888D4DF4D860CF40E5C5A6A6F84FA861C39A43A9AEB19C457C7",
+    "src/athena_procurement_arena/world.py": "415349B228998C6A46D2A75332A3D35438B7125676A81102AC85BF1193C35036",
+    "tests/procurement_arena/test_cli.py": "4BD1A61961C5C19EB8ACA4224959611CB59CCD33B0804CD0ADF87C3EF970D2EF",
+    "tests/procurement_arena/test_experiment.py": "D25FD671C10CE928278EA604B41D3C1D03B33F12E171D523BC6EA7EFFF345223"
+  },
+  "failed_commands": [
+    {
+      "command": "uv run --python 3.11 python .agent/artifacts/v1-durable-experiment-044/ordering_probe.py",
+      "exit_code": 1,
+      "result": "Reproduced ValueError: decision policy_input evidence snapshot does not match ledger."
+    },
+    {
+      "command": "uv run --python 3.11 pytest -q tests/procurement_arena/test_experiment.py",
+      "exit_code": 1,
+      "result": "The project environment did not include pytest."
+    },
+    {
+      "command": "uv run --python 3.11 python -m pytest -q tests/procurement_arena/test_experiment.py",
+      "exit_code": 1,
+      "result": "No module named pytest."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": null,
+      "result": "Terminal status UNKNOWN after the execution channel ended during the test-suite progress output; no repository Python process remained."
+    }
+  ],
+  "passed_commands": [
+    {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_experiment.py",
+      "exit_code": 0,
+      "result": "27 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/runner.py tests/procurement_arena/test_experiment.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run --python 3.11 python .agent/artifacts/v1-durable-experiment-044/ordering_probe.py",
+      "exit_code": 0,
+      "result": "PASS: unsorted valid evidence retains its actual snapshot order"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "217 passed; compile, Ruff, and three fixture validations passed (preceded the final one-line source-anchor correction)."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "No whitespace errors"
+    }
+  ],
+  "implementation_notes": [
+    "Verifier now binds the ordered ledger timeline to the saved scenario before snapshot verification.",
+    "Snapshot evidence objects must be unique and match ledger IDs as a set, while their persisted sequence must match scenario evidence order.",
+    "Git attribution requires ownership checks for both package paths; absent ownership remains null rather than attributed."
+  ],
+  "limitations": [
+    "The final-candidate complete validation gate is UNKNOWN because its terminal result was not returned after the one-line source-anchor correction; it requires controller revalidation.",
+    "No independent review, fresh-process acceptance, or wheel acceptance was performed by this specialist.",
+    "No commit, state/graph change, external action, or architecture expansion was performed."
+  ]
+}

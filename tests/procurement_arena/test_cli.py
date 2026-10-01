@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 import sys
 from datetime import UTC, datetime
@@ -37,6 +38,25 @@ def test_cli_scenario_manifest_replays_in_separate_process(tmp_path):
                                capture_output=True, text=True)
     assert overwrite.returncode != 0
     assert manifest_path.read_bytes() == original
+
+
+def test_cli_durable_experiment_save_inspect_replay_and_no_overwrite(tmp_path, capsys):
+    scenario_path = tmp_path / "scenario.json"
+    scenario_path.write_text(ScenarioDsl.dumps(synthetic_scenario(5)), encoding="utf-8")
+    experiment = tmp_path / "saved-experiment"
+    assert main(["scenario", "--scenario-file", str(scenario_path), "--experiment-dir", str(experiment)]) == 0
+    capsys.readouterr()
+    assert main(["inspect", "--experiment-dir", str(experiment)]) == 0
+    rendered = capsys.readouterr().out
+    assert re.search(r'\n  "decisions": \{', rendered)
+    inspected = json.loads(rendered)
+    assert inspected["evaluation"]["status"] == "UNSEALED"
+    assert main(["replay", "--experiment-dir", str(experiment)]) == 0
+    assert json.loads(capsys.readouterr().out)["checks"]["result_hash"] is True
+    before = {item.name: item.read_bytes() for item in experiment.iterdir()}
+    assert main(["scenario", "--scenario-file", str(scenario_path), "--experiment-dir", str(experiment)]) == 1
+    capsys.readouterr()
+    assert before == {item.name: item.read_bytes() for item in experiment.iterdir()}
 
 
 def test_cli_scenario_and_replay_fail_closed_on_inputs(tmp_path, capsys):

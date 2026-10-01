@@ -1,0 +1,14 @@
+# Slice 2 repair 1 — exact candidate review findings
+
+Direction: CORRECT. Parent packet v1-durable-experiment-044.md and its owner brief remain governing. Base 15247421e00303e36436961a91096efa55194ade, same branch/worktree. Preserve REVIEW-1.md and prior completion/evidence unchanged. Do not commit, change graph/state, push, merge, deploy, or begin Slice 3.
+
+Read REVIEW-1.md fully. Repair its six findings only in the parent allowed implementation files and focused tests. One Luna low; one bounded repair followed by exact-candidate Sol review.
+
+- Enforce BASELINE_A supported version and empty parameters before save/replay. Validate required types, source identity shape, input content and parsed scenario identity/hash, config identity and seed, ledger/snapshot identity and time bindings before inspect PASS. Parsing retained input for verification is permitted; executing world/policy or regenerating explanations during inspect is not. Fail clearly on malformed nested values, including non-string input_text. Unsupported config must fail even when its integrity hashes are consistent.
+- Identify actual loaded source: correct athena-trailforge distribution, verify metadata corresponds to loaded source (editable source or installed file). Git attribution only for repository-owned loaded source, not unrelated ancestor repository containing a venv. Honest UNKNOWN/null otherwise. Keep normalized content digest wheel-portable.
+- Reject unsafe experiment/manifest symlink paths before resolution, including relevant linked parent paths; preserve normal Windows paths. Add portable mocked path checks if Windows cannot create symlinks, with limitation explicit.
+- Persist declared truth and later evidence in the separate evaluation artifact as UNSEALED/unverified. No outcome scoring. Cross-check evaluation semantics and its retained values against saved input. Do not expose later evidence or annotations to earlier decisions.
+- Replace vacuous test with real persisted future review annotation and mutation-detachment assertions. Add inspect test disabling world/policy execution, malformed/config cross-binding failures, dirty and unrelated cwd/source attribution. Preserve prior tests and real subprocess acceptance compatibility.
+- Pretty-print inspect JSON (ordered decision arrays retained) with concise README explanation. No new command surface needed.
+
+Avoid general frameworks or unrelated legacy rewrites. Run focused checks while iterating, then freeze six implementation/docs/test files and run full scripts/validate.py gate once plus diff check. Preserve failed attempts in handoff. Write REPAIR-1-COMPLETION.json and CLI final handoff with exact hashes, commands/exits, UTC start/finish, model/config and unknown metrics marked null. Do not overwrite original COMPLETION.json. Reviewer may not receive builder reasoning.

@@ -1,0 +1,76 @@
+{
+  "task": "v1-durable-experiment-044-repair2",
+  "direction": "CORRECT",
+  "status": "IMPLEMENTED_PENDING_INDEPENDENT_REVIEW",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-v1-audit-slice1",
+  "base_sha": "15247421e00303e36436961a91096efa55194ade",
+  "head_sha": "15247421e00303e36436961a91096efa55194ade",
+  "utc_start": "2026-10-01T14:43:24.7103887Z",
+  "utc_finish": "2026-10-01T14:48:11.1648677Z",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "config_identity": null,
+  "durations_seconds": {
+    "planning": null,
+    "build": null,
+    "validation": null,
+    "independent_audit": null,
+    "elapsed_to_accepted": null
+  },
+  "tokens": null,
+  "repair_attempts": 1,
+  "six_file_sha256": {
+    "README.md": "D7E3C95A2D2223B234797551016C104D37D71FDAB6A3296583C02351E4F6E9DA",
+    "src/athena_procurement_arena/cli.py": "A07D0BAB9A9D4B20ECD2715870EBDE579B1271FA6E55384E039A813E276B4914",
+    "src/athena_procurement_arena/runner.py": "BCDEE754B9B6D4EA3E038F4CD1038FFD1F20E6B8006EC1CD7D59BF891B836F59",
+    "src/athena_procurement_arena/world.py": "415349B228998C6A46D2A75332A3D35438B7125676A81102AC85BF1193C35036",
+    "tests/procurement_arena/test_cli.py": "4BD1A61961C5C19EB8ACA4224959611CB59CCD33B0804CD0ADF87C3EF970D2EF",
+    "tests/procurement_arena/test_experiment.py": "06EC1C779EF7F812EB00A804D1A88DB41E78EF38DF7D4F0F755D99954F5BD01D"
+  },
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python -m pytest tests/procurement_arena/test_experiment.py tests/procurement_arena/test_cli.py -q",
+      "exit_code": 1,
+      "result": "Initial focused attempt: 6 failed due to test harness class-scope binding, distribution-version expectation, and Windows editable file URL handling. These issues were corrected."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python -m pytest tests/procurement_arena/test_experiment.py tests/procurement_arena/test_cli.py -q",
+      "exit_code": 0,
+      "result": "43 passed."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 1,
+      "result": "214 tests and compilation passed; Ruff identified test import/style issues. After correction the frozen final run passed."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "Frozen candidate: 214 tests passed, compilation and Ruff passed, GT-003/GT-007/GT-008 bundle validation passed."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "Passed; Git emitted line-ending normalization warnings only."
+    }
+  ],
+  "findings_repaired": [
+    "Reject unsupported policy ID/version/parameters before target directory creation or policy execution; reject mismatched replay policy before rerun.",
+    "Bind policy_input object, time, scenario ID, seed, ledger-visible IDs, serialized evidence snapshot, retained scenario availability, policy identity, and ordered decision timeline during inspect verification.",
+    "Use whole-repository Git porcelain status when loaded package ownership is tracked; do not attribute unrelated untracked package sources to an ancestor repository.",
+    "Resolve distribution version only when distribution file metadata locates the loaded module or editable direct_url metadata resolves to the loaded src package; otherwise report null.",
+    "Add persisted early-visible evidence with action_support reviewed on day two, assert absent from day-one snapshot and present on day two, and assert inspection succeeds with TemporalWorld and BaselineA execution disabled."
+  ],
+  "limitations": [
+    "Independent review of this exact candidate remains pending.",
+    "Package build and isolated rebuilt-wheel verification were not required by this repair packet and were not run.",
+    "Unknown durations, token counts, and configuration identity are recorded as null."
+  ],
+  "preserved_artifacts": [
+    ".agent/artifacts/v1-durable-experiment-044/REVIEW-2.md",
+    ".agent/artifacts/v1-durable-experiment-044/REPAIR-1-COMPLETION.json",
+    ".agent/artifacts/v1-durable-experiment-044/COMPLETION.json"
+  ],
+  "controller_handoff": "Review the exact six-file candidate independently and rerun controller-owned final gates. Builder did not change graph/state, prior artifacts, commit, or begin Slice 3."
+}
