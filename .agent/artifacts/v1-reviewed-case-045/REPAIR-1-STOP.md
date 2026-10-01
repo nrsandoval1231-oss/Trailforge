@@ -1,0 +1,5 @@
+# Repair 1 stopped — no acceptance
+
+Luna low session 01a0f82b-8214-7601-8256-8b40ea1ac1c6 started 2026-10-01T15:53:16.054570Z. Controller stopped session with Ctrl-C, terminal exit 1, by observed 2026-10-01T15:58:12.4969105Z. Exact stop timestamp and aggregate tokens UNKNOWN. Repeated focused failures parsed a pretty-printed JSON closing brace after combining setup and operation output; split/rsplit variations did not address capture isolation. Ruff success did not imply pytest success in a chained shell command.
+
+Post-stop files inspected. No active worker remained; no commit/release/external action or protected fixture mutation. Current README also incorrectly assigned bundle JSON to a plain scenario input; retained loader still missed AttributeError normalization. Existing working edits retained, not discarded. Controller issued concrete materially different repair 2: isolate stdout per command, normalize at loader boundary, remove redundant broken documentation block, verify both saved operations and exact retained scenario binding. No state promotion or accepted candidate claim.

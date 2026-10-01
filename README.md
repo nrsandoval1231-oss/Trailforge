@@ -29,20 +29,28 @@ Run the required domain and invariant suite through the CLI with:
 
 `uv run --python 3.11 --with pytest python -m athena_procurement_arena unit`
 
-Run the local scenario/replay mechanics using the scenario nested in the
-source-backed GT-003 bundle. The scenario command saves a new manifest and
-refuses to overwrite an existing file; replay reads that saved file in a
-separate process:
+Run the local scenario/replay mechanics directly from the retained GT-003
+fixture bundle. Start in the project directory (or replace this path with the
+checkout root on your machine); the experiment directory must be new:
 
 ```powershell
-$bundle = Get-Content -Raw scenarios/fixtures/verified/gt-003-morgan-hill.json | ConvertFrom-Json
-$scenarioFile = Join-Path $env:TEMP 'trailforge-gt003-scenario.json'
-$manifestFile = Join-Path $env:TEMP 'trailforge-gt003-manifest.json'
-$json = $bundle.fixtures[0].scenario | ConvertTo-Json -Depth 100
-[System.IO.File]::WriteAllText($scenarioFile, $json, [System.Text.UTF8Encoding]::new($false))
-uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --output $manifestFile
-uv run --python 3.11 python -m athena_procurement_arena replay --scenario-file $scenarioFile --manifest $manifestFile
+Set-Location 'C:\Users\nrsan\Nucleus\02_Projects\Trailforge'
+$experimentDir = Join-Path $env:TEMP ('trailforge-gt003-' + [guid]::NewGuid().ToString('N'))
+uv run --python 3.11 python -m athena_procurement_arena scenario --bundle scenarios/fixtures/verified/gt-003-morgan-hill.json --fixture-id GT-003 --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena inspect --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena replay --experiment-dir $experimentDir
 ```
+
+The retained bundle and its selected fixture/reviewer/source context are saved
+with the experiment, so later inspect and replay do not need the original
+bundle path. Bundle structure validation does not authenticate reviewer claims
+or historical source capture, and a saved `source_sha256` does not mean that raw
+source bytes were retained. `--fixture-id` selects exactly one fixture; unknown
+IDs and mixed bundle/scenario inputs fail. The evaluation remains unsealed and
+unscored even when the fixture carries a stored status claim.
+
+Older plain scenario JSON remains supported through `--scenario-file` with
+`--experiment-dir`, and legacy manifest workflows remain available.
 
 For a durable experiment directory, use `--experiment-dir` instead of the
 legacy `--output` manifest path. The directory stores the original scenario
@@ -51,13 +59,6 @@ configuration/source identity, and a hash-bound manifest. Inspect verifies the
 saved artifacts and reads them without rerunning the policy; replay verifies
 those hashes and then reruns the deterministic policy against the retained
 input:
-
-```powershell
-$experimentDir = Join-Path $env:TEMP 'trailforge-gt003-experiment'
-uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --experiment-dir $experimentDir
-uv run --python 3.11 python -m athena_procurement_arena inspect --experiment-dir $experimentDir
-uv run --python 3.11 python -m athena_procurement_arena replay --experiment-dir $experimentDir
-```
 
 `inspect` prints indented JSON so the ordered decision snapshots and separate
 evaluation can be read directly in a terminal or redirected to a file.

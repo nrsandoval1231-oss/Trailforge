@@ -1,0 +1,59 @@
+{
+  "packet": ".agent/tasks/v1-reviewed-case-045-repair2.md",
+  "review": ".agent/artifacts/v1-reviewed-case-045/REVIEW-1.md",
+  "base_sha": "096c65345eeeba18de051cbdf73d73cab0068f33",
+  "repair_count": 2,
+  "status": "IMPLEMENTED_AWAITING_CONTROLLER_AND_INDEPENDENT_REVIEW",
+  "self_approval": false,
+  "utc_start": "2026-10-01T15:56:00Z",
+  "utc_finish": "2026-10-01T16:01:33Z",
+  "model": "gpt-6-luna",
+  "model_config_identity": "UNKNOWN (local runtime configuration diagnostics unavailable)",
+  "token_measurements": "UNKNOWN",
+  "duration_measurements": {
+    "total_observed_minutes": 5.6,
+    "planning_minutes": "UNKNOWN",
+    "build_minutes": "UNKNOWN",
+    "validation_minutes": "UNKNOWN",
+    "audit_minutes": "UNKNOWN",
+    "elapsed_to_independent_acceptance": "UNKNOWN"
+  },
+  "changed_files": [
+    "README.md",
+    "src/athena_procurement_arena/cli.py",
+    "src/athena_procurement_arena/runner.py",
+    "tests/procurement_arena/test_fixture_experiment.py"
+  ],
+  "unchanged_allowed_file": "docs/SLICE3_CASE_READINESS.md",
+  "changes": [
+    "Narrow retained fixture bundle parsing now converts AttributeError into the existing malformed-bundle ValueError.",
+    "Explicit-null and retained malformed bundle tests discard successful setup stdout and parse each operation's complete JSON output; malformed retained context is checked for both inspect and replay with experiment byte snapshots.",
+    "Wrong selected-scenario binding test coherently changes only retained bundle scenario seed and bundle hash, asserts the specific binding failure, and confirms no mutation.",
+    "README removes the redundant plain-scenario example that passed a bundle path as scenario JSON, preserving the direct bundle workflow and plain-scenario support prose."
+  ],
+  "validation": [
+    {
+      "command": "README direct workflow: scenario --bundle ... --fixture-id GT-003 --experiment-dir <new temp dir>; inspect --experiment-dir; replay --experiment-dir",
+      "exit_code": 0,
+      "result": "All three commands returned PASS; replay checks input_binding, ledger, result_hash, scenario_hash, and source_content all true."
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_fixture_experiment.py",
+      "exit_code": 0,
+      "result": "16 passed in 5.47s"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/cli.py src/athena_procurement_arena/runner.py tests/procurement_arena/test_fixture_experiment.py",
+      "exit_code": 0,
+      "result": "All checks passed!"
+    }
+  ],
+  "frozen_sha256": {
+    "README.md": "c76899066dc189396eb565e4198ee4d61cc959772b7a64a8536aa78164405e22",
+    "docs/SLICE3_CASE_READINESS.md": "6a36757634c284f3fe3bb263650d22e6e5112e5627296f33f1d417e7fd00816d",
+    "src/athena_procurement_arena/cli.py": "46be6c89e2bb368b9fd2ce351a03559ef445283deb09a2e19531bb82e8bc4181",
+    "src/athena_procurement_arena/runner.py": "5013e28111c971221dd454f7af173aa5f071c6f1bf7281b512c6596afa1098eb",
+    "tests/procurement_arena/test_fixture_experiment.py": "a94727890db2feaa1b95a839a8a503c2239b183e4bf25d6482c329ecd3ea2ac0"
+  },
+  "known_scope_limit": "Full repository gate and independent review remain for controller; no self-approval."
+}

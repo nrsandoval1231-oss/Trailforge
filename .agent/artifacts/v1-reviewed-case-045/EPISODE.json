@@ -1,0 +1,39 @@
+{
+  "task_id": "v1-reviewed-case-045",
+  "started_utc": "2026-10-01T15:34:35.366161Z",
+  "finished_utc": "2026-10-01T16:06:05.060268Z",
+  "time_boundary": "Observed first builder startup through final independent review terminal; excludes preceding release and planning",
+  "lane": "focused, one mutable Luna followed by independent Sol",
+  "model": "gpt-6-luna low builder; gpt-6-sol medium independent reviewer",
+  "config_identity": "codex exec --ignore-user-config, explicit -m and model_reasoning_effort, approval never, danger-full-access, ephemeral; startup headers confirm worker model/effort, global config UNKNOWN",
+  "planning_seconds": null,
+  "build_seconds": null,
+  "validation_seconds": null,
+  "audit_seconds": 484.19,
+  "elapsed_to_accepted_seconds": 1889.69,
+  "repair_count": 2,
+  "scope_risk_match": null,
+  "audit_findings_count": 4,
+  "regressions_found": 4,
+  "tokens": {"input_measured": null, "output_measured": null, "input_unknown": true, "output_unknown": true},
+  "attempts": [
+    {"kind":"build", "session":"01a0f81a-6861-7350-8baa-bc5819f56118", "start":"2026-10-01T15:34:35.366161Z", "finish":"2026-10-01T15:46:44.083018Z", "reported_aggregate_tokens":137285, "result":"229-test gate passed; independent FIX followed"},
+    {"kind":"review1", "session":"01a0f825-8c16-7e80-8ac9-aaa57f1d1750", "start":"2026-10-01T15:46:45.400846Z", "finish":"2026-10-01T15:52:57.795212Z", "reported_aggregate_tokens":11206, "result":"FIX", "evidence":"REVIEW-1.md"},
+    {"kind":"repair1", "session":"01a0f82b-8214-7601-8256-8b40ea1ac1c6", "start":"2026-10-01T15:53:16.054570Z", "finish":null, "known_stopped_by":"2026-10-01T15:58:12.4969105Z", "reported_aggregate_tokens":null, "result":"Stopped repeated JSON stdout parsing failures, exit 1", "evidence":"REPAIR-1-STOP.md"},
+    {"kind":"repair2", "session":"01a0f830-e2a2-74e2-9e19-e6275c40436a", "start":"2026-10-01T15:59:08.453311Z", "finish":"2026-10-01T16:02:11.679830Z", "reported_aggregate_tokens":66856, "result":"Focused16 PASS; controller239 tests plus runtime and wheel PASS"},
+    {"kind":"review2", "session":"01a0f835-894e-73f0-8ad7-926d9196ffe8", "start":"2026-10-01T16:04:13.264949Z", "finish":"2026-10-01T16:06:05.060268Z", "reported_aggregate_tokens":56110, "result":"PASS Slice3A only", "evidence":"REVIEW-2.md"}
+  ],
+  "acceptance": {"status":"PASS_S3A_ONLY", "accepted_at_utc":"2026-10-01T16:06:05.060268Z", "independent_review":"REVIEW.json"},
+  "learning_loop": {
+    "state":"Prior slices merged; plain JSON extraction made user workflow awkward",
+    "decision":"Add thin fixture adapter, keep real chronology review separate",
+    "action":"Retain bundle provenance, enforce binding, simplify quickstart; independent review then bounded repairs",
+    "outcome":"239-test and runtime/wheel PASS; independent exact-candidate PASS; no evidence promotion",
+    "attribution":"Review exposed four missing acceptance cases. Repair1 test harness combined compact setup JSON with pretty operation JSON and split lines incorrectly; repair2 isolated capture before decoding complete payloads.",
+    "candidate_lesson":"For multi-call CLI tests, clear setup capture and parse each command's whole JSON output; explicitly test null optional context and malformed nested source input.",
+    "metric":"Focused fixture suite: repair1 had at least three observed failures; repair2 16/16 PASS; final total239 PASS",
+    "promotion":"Not promoted to global policy; bounded evidence retained for future matched validation",
+    "reversibility":"New test module and adapter are isolated; preserve existing plain scenario support and prior evidence"
+  },
+  "notes":"Builder handoff timing claims contradicted observed startup are preserved but rejected; controller observed times above govern. Audit duration sums observed worker intervals, not model inference time. No matched speedup or cost claim. Split and interrupted-worker tokens UNKNOWN. Source fixtures unchanged, S3B pending, no Slice3 release or deployment."
+}

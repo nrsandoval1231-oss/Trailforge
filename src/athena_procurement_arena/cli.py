@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
@@ -9,7 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from .campaign import run_campaign, run_regression_campaign, synthetic_scenario
-from .fixtures import current_target_fixtures, load_bundle
+from .fixtures import current_target_fixtures, load_bundle, load_bundle_mapping
 from .identity_review import load_identity_reviews, resolve_traces, write_resolved_traces
 from .policies import BaselineA, keyword_rfp
 from .prospective_seal import (
@@ -119,7 +120,7 @@ def main(argv=None) -> int:
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
                                           "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "build-rfp-review-queue", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
-    parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist mode")
+    parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist or scenario fixture selection")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
     parser.add_argument("--captured-by", help="operator identity for capture-public")
@@ -146,7 +147,7 @@ def main(argv=None) -> int:
     parser.add_argument("--solicitation-number", help="source-backed solicitation identifier")
     parser.add_argument("--closes-at", help="timezone-aware source closing timestamp")
     parser.add_argument("--opportunity-status", help="explicit lifecycle for accept-rfp-candidate")
-    parser.add_argument("--fixture-id", help="verified fixture identifier for accept-rfp-candidate")
+    parser.add_argument("--fixture-id", help="fixture identifier for scenario bundle selection or RFP candidate acceptance")
     parser.add_argument("--verification-notes", help="review notes for accept-rfp-candidate")
     parser.add_argument("--traces", nargs="+", help="trace JSON files for backtest-traces")
     parser.add_argument("--target-type", choices=[item.value for item in SignalType])
@@ -187,32 +188,57 @@ def main(argv=None) -> int:
     baseline = BaselineA()
     if args.mode == "inspect":
         try:
-            if not args.experiment_dir or args.scenario_file or args.manifest or args.output:
+            if not args.experiment_dir or args.scenario_file or args.manifest or args.output or args.bundle or args.fixture_id:
                 raise ValueError("inspect requires only --experiment-dir")
             manifest, artifacts = verify_experiment(args.experiment_dir)
             result = {"status": "PASS", "mode": "inspect", "manifest": manifest,
                       "input": artifacts["input.json"], "decisions": artifacts["decisions.json"],
                       "evaluation": artifacts["evaluation.json"], "config": artifacts["config.json"]}
-        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+        except (OSError, ValueError, TypeError, KeyError, AttributeError, json.JSONDecodeError) as exc:
             result = {"status": "FAIL", "mode": "inspect", "error": str(exc)}
         print(json.dumps(result, sort_keys=True, indent=2, default=str))
         return 0 if result["status"] == "PASS" else 1
     if args.mode == "scenario" and args.experiment_dir:
         try:
-            if not args.scenario_file or args.output or args.manifest:
-                raise ValueError("scenario --experiment-dir requires --scenario-file and excludes --output/--manifest")
-            source = Path(args.scenario_file)
-            manifest = create_experiment(source.read_text(encoding="utf-8"), str(source.resolve()),
-                                         args.experiment_dir, baseline, baseline.policy_id)
+            if bool(args.scenario_file) == bool(args.bundle) or args.output or args.manifest:
+                raise ValueError("scenario --experiment-dir requires exactly one of --scenario-file/--bundle and excludes --output/--manifest")
+            if args.bundle:
+                if not args.fixture_id:
+                    raise ValueError("scenario --bundle requires --fixture-id")
+                source = Path(args.bundle)
+                bundle_text = source.read_text(encoding="utf-8")
+                raw_bundle = json.loads(bundle_text)
+                if not isinstance(raw_bundle, dict):
+                    raise ValueError("fixture bundle must be a JSON object")
+                bundle = load_bundle_mapping(raw_bundle)
+                if not bundle.fixtures:
+                    raise ValueError("fixture bundle must contain at least one fixture")
+                selected = [item for item in bundle.fixtures if item.fixture_id == args.fixture_id]
+                if len(selected) != 1:
+                    raise ValueError(f"fixture ID missing or ambiguous: {args.fixture_id}")
+                scenario_text = json.dumps(selected[0].as_dict()["scenario"], sort_keys=True, indent=2) + "\n"
+                context = {"input_kind": "fixture_bundle", "fixture_id": args.fixture_id,
+                           "bundle_id": bundle.bundle_id, "bundle_version": bundle.version,
+                           "bundle_source_path": str(source.resolve()), "bundle_text": bundle_text,
+                           "bundle_sha256": hashlib.sha256(bundle_text.encode()).hexdigest(),
+                           "fixture": selected[0].as_dict()}
+                manifest = create_experiment(scenario_text, str(source.resolve()), args.experiment_dir,
+                                             baseline, baseline.policy_id, fixture_context=context)
+            else:
+                if args.fixture_id:
+                    raise ValueError("--fixture-id requires --bundle")
+                source = Path(args.scenario_file)
+                manifest = create_experiment(source.read_text(encoding="utf-8"), str(source.resolve()),
+                                             args.experiment_dir, baseline, baseline.policy_id)
             result = {"status": "PASS", "mode": "scenario", "manifest": manifest,
                       "experiment_dir": args.experiment_dir}
-        except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+        except (OSError, ValueError, TypeError, KeyError, AttributeError, json.JSONDecodeError) as exc:
             result = {"status": "FAIL", "mode": "scenario", "error": str(exc)}
         print(json.dumps(result, sort_keys=True, default=str))
         return 0 if result["status"] == "PASS" else 1
     if args.mode == "replay" and args.experiment_dir:
         try:
-            if args.scenario_file or args.manifest or args.output:
+            if args.scenario_file or args.manifest or args.output or args.bundle or args.fixture_id:
                 raise ValueError("experiment replay accepts only --experiment-dir")
             result = replay_experiment(args.experiment_dir, baseline) | {"mode": "replay"}
         except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
@@ -223,9 +249,11 @@ def main(argv=None) -> int:
         parser.error("incompatible experiment flags")
     scenario_modes = {"scenario", "replay"}
     if args.mode not in scenario_modes and (args.scenario_file or args.manifest or args.experiment_dir):
-        parser.error("--scenario-file and --manifest are only valid for scenario/replay")
+        parser.error("--scenario-file, --manifest and --experiment-dir are only valid for scenario/replay")
     if args.mode == "scenario" and args.manifest:
         parser.error("scenario mode does not accept --manifest")
+    if args.mode in {"scenario", "replay"} and (args.bundle or args.fixture_id):
+        parser.error("--bundle and --fixture-id require scenario --experiment-dir")
     if args.mode == "replay" and args.output:
         parser.error("replay does not support --output")
     if args.mode == "scenario":

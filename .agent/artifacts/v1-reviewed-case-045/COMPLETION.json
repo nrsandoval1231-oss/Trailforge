@@ -1,0 +1,84 @@
+{
+  "task": "v1-reviewed-case-045",
+  "candidate": {
+    "base_sha": "096c65345eeeba18de051cbdf73d73cab0068f33",
+    "branch": "codex/trailforge-v1-slice3",
+    "scope": "bounded direct fixture bundle adapter; GT-003 mechanics case only",
+    "utc_start": "2026-10-01T15:41:07Z",
+    "utc_finish": "2026-10-01T15:45:56Z",
+    "model": null,
+    "config_identity": null,
+    "planning_seconds": null,
+    "build_seconds": null,
+    "validation_seconds": null,
+    "audit_seconds": null,
+    "tokens": null,
+    "repair_count": null
+  },
+  "sha256": {
+    ".agent/tasks/v1-reviewed-case-045.md": "4175FB718724D14AE5924443908964FE96D5AE7268CC741B45EA8E8B406BC63E",
+    "scenarios/fixtures/verified/gt-003-morgan-hill.json": "336035B33721B631BE0EC13BDC2EE5D536165C06353D4EA49BB625549A3C1E83",
+    "src/athena_procurement_arena/cli.py": "FFE19DA8E1E3F0E438BE0FB798E0DF384B6918F3305C8DE43883D8EEA1337744",
+    "src/athena_procurement_arena/runner.py": "7D72D17CEE4FBDFC679D2A63FB13AE9215B7366F65ED7B74C4EF7A86837D5DA2",
+    "tests/procurement_arena/test_fixture_experiment.py": "C932506B15FDA3B0427B092147BD4020A2157F33BC3667F59B15D0476568B737",
+    "README.md": "491651F33BE829E63F0C596935533629A653E125E03C51592B1817DBB3C6AB40",
+    "docs/SLICE3_CASE_READINESS.md": "6A36757634C284F3FE3BB263650D22E6E5112E5627296F33F1D417E7FD00816D"
+  },
+  "commands": [
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python -m pytest -q tests/procurement_arena/test_fixture_experiment.py",
+      "exit": 0,
+      "result": "6 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/cli.py src/athena_procurement_arena/runner.py tests/procurement_arena/test_fixture_experiment.py tests/procurement_arena/test_experiment.py",
+      "exit": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "result": "No whitespace errors; Git emitted CRLF normalization warnings"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit": 0,
+      "result": "229 passed; compile, Ruff, and GT-003/GT-007/GT-008 bundle validation passed"
+    },
+    {
+      "command": "uv build --python 3.11",
+      "exit": 0,
+      "result": "sdist and wheel built"
+    },
+    {
+      "command": "uv run --python 3.11 python -m athena_procurement_arena scenario --bundle <temporary copy of GT-003 bundle> --fixture-id GT-003 --experiment-dir <new temporary directory>",
+      "exit": 0,
+      "result": "PASS; original bundle then removed"
+    },
+    {
+      "command": "uv run --python 3.11 python -m athena_procurement_arena inspect --experiment-dir <saved temporary experiment>",
+      "exit": 0,
+      "result": "PASS after original bundle removal"
+    },
+    {
+      "command": "uv run --python 3.11 python -m athena_procurement_arena replay --experiment-dir <saved temporary experiment>",
+      "exit": 0,
+      "result": "PASS after original bundle removal; ledger, input, source, result, and scenario checks true"
+    }
+  ],
+  "outcome": {
+    "status": "IMPLEMENTED_VALIDATED_AWAITING_INDEPENDENT_REVIEW",
+    "fixture_preserved": true,
+    "evaluation": "UNSEALED_UNSCORED",
+    "slice3b_claims": false,
+    "full_v1_completion_claim": false,
+    "self_approval": false,
+    "commit_push_merge": false,
+    "limitations": [
+      "Bundle schema validation does not authenticate reviewer assertions or historical source capture.",
+      "A retained source_sha256 does not prove raw source bytes are present.",
+      "GT-003 is a maintenance/out-of-scope mechanics negative case; the reviewed temporary-power chronology remains pending separate Slice 3B evidence review.",
+      "No independent review has been recorded for this candidate."
+    ]
+  }
+}
