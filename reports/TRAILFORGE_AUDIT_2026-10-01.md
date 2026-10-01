@@ -179,3 +179,22 @@ Controller validation on the frozen final code:
 Remaining failures: cancellation sensitivity, full durable decision/evaluation output, complete source identity, real sealed-outcome evidence, incomplete public-URL checks, and remote CI/divergence remain as listed above. No Slice 1 gate remains failed. No claim of full V1 acceptance, full Build Packet #0 acceptance, forecast quality, remote acceptance or deployment is made.
 
 **Exact next slice: Slice 2 — retain decisions and explain the result. It has not started.**
+
+
+---
+
+## 13. Owner Product Reset — 2026-10-01
+
+This audit's earlier frozen-V1 roadmap is superseded as the active product roadmap by the owner direction captured in `docs/PRD_ALIGNMENT.md` and `.agent/CURRENT_STATE.md`.
+
+The existing engine should be preserved, but the next objective is no longer completion of every historical V1 packet. The active objective is to prove **early-project lead-time advantage** on approximately 20-50 real historical power projects.
+
+The target commercial sequence is:
+
+`EARLY SIGNAL -> PROJECT -> POWER-GAP HYPOTHESIS -> DIRECT BUYING CHAIN -> CUSTOMER CONTACT -> VERIFIED REQUIREMENT -> FUEL STRATEGY`
+
+TrailForge is the historical proving ground. Validated signal families should later feed GridLens as the live discovery surface. Fuel providers are downstream solution partners rather than the primary project-discovery channel.
+
+The next implementation node is `HC-001`: use the existing trace, temporal replay, experiment persistence and evaluation primitives to run a historical cohort and report first valid surface date, downstream comparison milestone, lead-time advantage, buyer-path availability, coverage and action burden.
+
+Historical findings in Sections 1-12 remain retained as an audit of the repository at that earlier baseline; this appendix changes product priority rather than rewriting those facts.
