@@ -1,13 +1,11 @@
-# Policy contract
+# Signal Policy Contract
 
-`PolicyContract` defines `observe`, `resolveEntities`, `updateTrail`,
-`detectPatterns`, `forecastProcurement`, `forecastPowerNeed`, `chooseResearch`,
-and `recommendAction`. `PolicyContract.run` composes those methods into a
-forecast/action pair. `TemporalWorld` invokes whatever callable it is given
-and expects that pair.
+A TrailForge policy consumes only evidence visible at the current historical decision time and returns a deterministic decision about whether the project warrants human commercial investigation.
 
-Only `BaselineA` implements `PolicyContract`. It is a deterministic incumbent,
-not a production algorithm. The keyword, static-score, latest-event,
-buyer-frequency, and seeded-random controls are plain callables that return
-the same forecast/action tuple. They are comparison baselines and do not
-implement the eight contract methods.
+A policy must never access future evidence; preserve UNKNOWN; reproduce identical output for identical inputs/config; retain evidence basis; distinguish project discovery from proof of temporary-power need; never substitute facility nameplate MW for temporary-power requirement; and never treat fuel-provider association as proof of opportunity.
+
+A surfaced project is a **research alert**, not a verified rental lead.
+
+Where supported, output project ID, decision, decision time, signal family, evidence basis, power-gap hypothesis, buyer-path evidence, missing facts, and next verification action.
+
+Commercial ordering is project/direct-buyer discovery first; fuel/provider selection follows verification of the power requirement.
