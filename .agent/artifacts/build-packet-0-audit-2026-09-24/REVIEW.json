@@ -1,0 +1,34 @@
+{
+  "schema_version": "trailforge-build-packet-audit-v1",
+  "audited_commit": "b73dd45330b4628f1ba3c2680e99176db10a3400",
+  "controlling_packet_sha256": "7abb4c4aeb6ab049ea1f2f8888f76bc4f9e96daa3217797b07706bf7858236d8",
+  "recorded_at_utc": "2026-09-24T22:34:52Z",
+  "report_base_commit": "b73dd45330b4628f1ba3c2680e99176db10a3400",
+  "report_file_git_blob": "8515bac96ca9798551a43059d1af824be9152df5",
+  "readiness_file_git_blob": "2a6fc6085ea9176a68cd6cb5442f9a403519ab40",
+  "scope": "Build Packet #0 definition of done and first execution campaign",
+  "independent_raw_verdict": "CORRECT",
+  "review_status": "FIX",
+  "controller_direction": "CORRECT",
+  "completion_candidate": false,
+  "evidence_report": "docs/BUILD_PACKET_0_AUDIT.md",
+  "local_gate": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "tests_passed": 124,
+    "bundle_holdout_available": false
+  },
+  "remote_ci": {
+    "run_id": 36067565548,
+    "job_steps": 0,
+    "status": "BLOCKED_ACCOUNT_BILLING"
+  },
+  "material_findings": [
+    "nested frozen forecasts remain mutable",
+    "hard invariant failures do not consistently invalidate runs",
+    "counterfactual checks accept replay-hash changes without policy behavior changes",
+    "power profile omits known need-level dependable supply",
+    "negative knowledge has no durable persistence",
+    "sealed real-world holdout and governed promotion evidence remain absent"
+  ]
+}

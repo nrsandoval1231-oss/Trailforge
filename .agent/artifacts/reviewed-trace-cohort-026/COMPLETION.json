@@ -1,0 +1,21 @@
+{
+  "task_id": "reviewed-trace-cohort-026",
+  "status": "PASS",
+  "objective": "Assemble multiple reviewed project traces into a deterministic, hash-bound manifest reusable by later backtests.",
+  "changed_files": [
+    "src/athena_procurement_arena/trace_cohort.py",
+    "src/athena_procurement_arena/__init__.py",
+    "src/athena_procurement_arena/cli.py",
+    "tests/procurement_arena/test_trace_cohort.py",
+    "docs/PROJECT_SIGNAL_TRACING.md",
+    "README.md",
+    ".agent/tasks/reviewed-trace-cohort-026.md"
+  ],
+  "validation": [
+    {"command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py", "exit_code": 0, "evidence": "106 passed; compile passed; Ruff passed; 3 verified bundles passed"},
+    {"command": "build-trace-cohort CLI smoke test", "exit_code": 0, "evidence": "2 projects; cohort hash 5aa285ec2a065a191f05dc5b8b33a0d12fe4ca012428ebd300cb4638bee7d0e9"},
+    {"command": "git diff --check", "exit_code": 0, "evidence": "no whitespace errors"}
+  ],
+  "boundaries": ["reviewed traces only", "unique project IDs required", "member hashes re-verified", "no outcome inference", "no negative labels", "no automatic identity resolution", "no Athena optimization", "no outreach", "no promotion authority"],
+  "next_packet": "run multi-project lead-time backtest from a reviewed cohort"
+}

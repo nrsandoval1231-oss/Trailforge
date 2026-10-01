@@ -1,8 +1,12 @@
 from datetime import UTC, datetime, timedelta
 
+import pytest
+
 from athena_procurement_arena import (
+    ActionSupportAttestation,
     EvidenceEvent,
     GroundTruth,
+    InvariantViolation,
     Scenario,
     ScenarioDsl,
     TemporalWorld,
@@ -27,12 +31,101 @@ def test_world_reveals_only_available_evidence_and_freezes_each_step():
     assert observations[1].visible_evidence_ids == ("early", "late")
     assert len(world.ledger.records) == 2 and world.ledger.verify()
 
+@pytest.mark.parametrize("action", ["ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"])
+def test_world_rejects_unapproved_consequential_actions_without_recording(action):
+    world = TemporalWorld(scenario(), "test", lambda state: ({}, action))
+    with pytest.raises(InvariantViolation, match="I-10"):
+        world.step()
+    assert world.ledger.records == ()
+    assert world._cursor == -1
+
+
+@pytest.mark.parametrize("permission_scope", ["TENANT", "UNKNOWN", "", None])
+def test_world_rejects_ungranted_scope_before_policy_or_ledger(permission_scope):
+    base = scenario()
+    restricted = EvidenceEvent("restricted", "s", T0, T0, T0, T0,
+                               tenant_id="default", permission_scope=permission_scope)
+    source = Scenario("restricted-world", "1", 99, base.timeline, (restricted,),
+                      GroundTruth("p", "OPEN"), tenant_id="default")
+    calls = []
+
+    def should_not_run(state):
+        calls.append(state)
+        return ({}, "WATCH")
+
+    with pytest.raises(InvariantViolation, match="I-08"):
+        TemporalWorld(source, "test", should_not_run)
+    assert calls == []
+
+
+def test_world_revalidates_permission_scope_before_each_policy_call():
+    calls = []
+    world = TemporalWorld(scenario(), "test", lambda state: (calls.append(state) or {}, "WATCH"))
+    base = scenario()
+    restricted = EvidenceEvent("restricted", "s", T0, T0, T0, T0,
+                               tenant_id="default", permission_scope="TENANT")
+    world.scenario = Scenario("restricted-world", "1", 99, base.timeline, (restricted,),
+                              GroundTruth("p", "OPEN"), tenant_id="default")
+
+    with pytest.raises(InvariantViolation, match="I-08"):
+        world.step()
+    assert calls == []
+    assert world.ledger.records == ()
+    assert world._cursor == -1
+
+
+def test_world_rejects_public_scenario_replacement_before_policy_or_ledger():
+    calls = []
+    world = TemporalWorld(scenario(), "test", lambda state: (calls.append(state) or {}, "WATCH"))
+    replacement = Scenario("replacement", "1", 99, scenario().timeline, scenario().evidence,
+                           GroundTruth("p", "OPEN"))
+    world.scenario = replacement
+
+    with pytest.raises(InvariantViolation, match="scenario hash changed after construction"):
+        world.step()
+    assert calls == []
+    assert world.ledger.records == ()
+    assert world._cursor == -1
+
+
 def test_same_seed_and_inputs_replay_identically():
     first, second = TemporalWorld(scenario(), "BASELINE_A", policy), TemporalWorld(scenario(), "BASELINE_A", policy)
     first.run()
     second.run()
     assert first.scenario_hash == second.scenario_hash
     assert first.replay_hash() == second.replay_hash()
+
+
+def test_future_review_attestation_is_hidden_until_review_time_without_mutating_scenario():
+    review_at = T0 + timedelta(days=1)
+    attestation = ActionSupportAttestation("episode-1", "PREPARE", "reviewer", review_at,
+                                          "line 1", "Specific supported basis")
+    event = EvidenceEvent("reviewed", "source", T0, T0, T0, T0,
+                          source_spans=("line 1",), action_support=attestation)
+    source = Scenario("reviewed-world", "1", 7, (T0, review_at), (event,),
+                      GroundTruth("episode-1", "OPEN"))
+    snapshots = []
+
+    def inspect(state):
+        visible_event, = state["visible_evidence"]
+        snapshots.append(visible_event.action_support)
+        return ({}, "WATCH")
+
+    first = TemporalWorld(source, "inspect", inspect)
+    first.run()
+    original_hash = validate_scenario(source)
+    assert snapshots == [None, attestation]
+    assert source.evidence[0].action_support == attestation
+    assert first.scenario_hash == original_hash
+
+    repeated_snapshots = []
+    second = TemporalWorld(source, "inspect", lambda state: (
+        repeated_snapshots.append(state["visible_evidence"][0].action_support) or {}, "WATCH"
+    ))
+    second.run()
+    assert repeated_snapshots == snapshots
+    assert second.scenario_hash == original_hash
+    assert second.replay_hash() == first.replay_hash()
 
 def test_dsl_loads_versioned_json():
     text = '{"schema_version":"procurement-arena-scenario-v1","scenario_id":"s","version":"1","seed":1,"timeline":["2026-01-01T00:00:00+00:00"],"evidence":[],"truth":{"procurement_episode_id":"p","outcome":"OPEN"}}'
@@ -52,7 +145,19 @@ def test_checked_in_fixture_is_versioned_and_valid():
 def test_provenance_fields_round_trip_without_losing_contradictions():
     item = EvidenceEvent("prov", "source", T0, T0, T0, T0, authority="PUBLIC_AUTHORITY",
                          source_spans=("line 1",), entity_candidates=("project-1",),
-                         permission_scope="TENANT", contradictions=("e2",))
+                         permission_scope="PUBLIC", contradictions=("e2",))
     source = Scenario("prov", "1", 1, (T0,), (item,), GroundTruth("p", "OPEN"), tenant_id="default")
     loaded = ScenarioDsl.loads(ScenarioDsl.dumps(source))
     assert loaded.evidence[0].source_spans == ("line 1",) and loaded.evidence[0].contradictions == ("e2",)
+
+
+def test_action_support_attestation_round_trips_with_stable_scenario_hash():
+    attestation = ActionSupportAttestation("episode-1", "PREPARE", "reviewer", T0,
+                                          "line 1", "Specific supported basis")
+    item = EvidenceEvent("reviewed", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                         action_support=attestation)
+    original = Scenario("reviewed", "1", 1, (T0,), (item,), GroundTruth("episode-1", "OPEN"))
+    serialized = ScenarioDsl.dumps(original)
+    loaded = ScenarioDsl.loads(serialized)
+    assert loaded.evidence[0].action_support == attestation
+    assert validate_scenario(loaded) == validate_scenario(original)

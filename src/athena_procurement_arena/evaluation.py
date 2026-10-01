@@ -1,10 +1,29 @@
 """Component metrics for deterministic policy replay."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from collections.abc import Mapping
+from dataclasses import dataclass, fields
 from typing import Any
 
-from .foundation import FrozenDecision, Scenario
+from athena_arena.contracts import canonical_hash
+
+from .foundation import FrozenDecision, Scenario, validate_scenario
+
+
+def _verify_decisions(decisions: tuple[FrozenDecision, ...]) -> bool | None:
+    """Verify supplied decision hashes; missing decisions have no basis."""
+    if not decisions:
+        return None
+    previous = ""
+    for decision in decisions:
+        if decision.previous_hash != previous:
+            return False
+        payload = {item.name: getattr(decision, item.name) for item in fields(decision)
+                   if item.name != "record_hash"}
+        if decision.record_hash != canonical_hash(payload):
+            return False
+        previous = decision.record_hash
+    return True
 
 
 def evaluate_power_profile(profile: tuple[dict[str, Any], ...], expected_peak_gap_mw: float | None) -> dict[str, Any]:
@@ -13,6 +32,8 @@ def evaluate_power_profile(profile: tuple[dict[str, Any], ...], expected_peak_ga
         return {"status": "UNAVAILABLE", "peak_gap_error_mw": None}
     known = [item["gap_mw"] for item in profile if item.get("gap_mw") is not None]
     if not known:
+        return {"status": "UNKNOWN", "peak_gap_error_mw": None}
+    if any(item.get("gap_mw") is None for item in profile):
         return {"status": "UNKNOWN", "peak_gap_error_mw": None}
     actual = max(known)
     return {"status": "PASS", "peak_gap_mw": actual,
@@ -45,7 +66,7 @@ class EvaluationResult:
     power: dict[str, float | int | None]
     action: dict[str, float | int | None]
     efficiency: dict[str, float | int | None]
-    invariant_status: str = "PASS"
+    invariant_status: str = "UNKNOWN"
 
     def as_dict(self) -> dict[str, Any]:
         return {"discovery": self.discovery, "trail": self.trail, "procurement": self.procurement,
@@ -55,18 +76,79 @@ class EvaluationResult:
 
 def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -> EvaluationResult:
     """Evaluate independently observable dimensions; unavailable truth stays unavailable."""
+    verified = _verify_decisions(decisions)
+    if verified is None:
+        invariant_status = "UNKNOWN"
+    elif not verified or any(item.action in {"ENGAGE", "READY_FOR_AUTHORIZED_SUBMISSION"}
+                             for item in decisions):
+        invariant_status = "FAIL"
+    else:
+        invariant_status = "PASS"
     visible = set().union(*(set(item.visible_evidence_ids) for item in decisions)) if decisions else set()
     expected = scenario.truth.procurement_episode_id
-    recognized = any(expected in item.visible_evidence_ids for item in decisions)
-    precision = 1.0 if recognized and visible else (0.0 if visible else None)
+    claims: list[tuple[FrozenDecision, str, tuple[str, ...]]] = []
+    for decision in decisions:
+        claim = decision.forecast.get("discovery")
+        if not isinstance(claim, Mapping):
+            continue
+        episode_id = claim.get("episode_id")
+        basis = claim.get("basis_evidence_ids")
+        if (isinstance(episode_id, str) and episode_id.strip() and isinstance(basis, (tuple, list))
+                and basis and all(isinstance(item, str) and item.strip() for item in basis)
+                and set(basis).issubset(decision.visible_evidence_ids)):
+            claims.append((decision, episode_id, tuple(basis)))
+    # Count each claimed episode once so repeating a claim cannot improve precision.
+    claimed_episode_ids = {episode_id for _, episode_id, _ in claims}
+    recognized = expected in claimed_episode_ids
+    precision = (int(expected in claimed_episode_ids) / len(claimed_episode_ids)
+                 if claimed_episode_ids else None)
     recall = 1.0 if recognized else 0.0
     predicted_states = [item.forecast.get("procurement", {}).get("state") for item in decisions]
     next_event_known = scenario.truth.outcome in predicted_states
     actionable = sum(item.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for item in decisions)
+    # Unattested visibility and action alone cannot justify useful-lead credit.
     useful_lead = None
-    if scenario.truth.solicitation_at and recognized:
-        first = next(item.simulation_time for item in decisions if expected in item.visible_evidence_ids)
-        useful_lead = max(0.0, (scenario.truth.solicitation_at - first).total_seconds())
+    # Useful lead requires a fully validated scenario and hash-valid records on
+    # this scenario, with the attested evidence actually visible at the decision.
+    try:
+        validate_scenario(scenario)
+        scenario_valid = True
+    except (TypeError, ValueError):
+        scenario_valid = False
+    if verified is True and scenario_valid and scenario.truth.solicitation_at is not None:
+        evidence_by_id = {item.evidence_id: item for item in scenario.evidence}
+        qualifying: list[FrozenDecision] = []
+        for decision, episode_id, basis in claims:
+            if decision.scenario_id != scenario.scenario_id:
+                continue
+            if episode_id != expected:
+                continue
+            if decision.simulation_time >= scenario.truth.solicitation_at:
+                continue
+            basis_events = [evidence_by_id.get(evidence_id) for evidence_id in basis]
+            # A mixed or incomplete basis cannot borrow one attested member to
+            # qualify the whole discovery claim for lead credit.
+            if any(event is None or not event.visible_at(decision.simulation_time)
+                   for event in basis_events):
+                continue
+            for evidence_id in basis:
+                event = evidence_by_id[evidence_id]
+                attestation = event.action_support if event is not None else None
+                if (event is None or attestation is None or event.is_prediction or event.contradictions
+                        or evidence_id not in decision.visible_evidence_ids
+                        or not event.visible_at(decision.simulation_time)
+                        or attestation.reviewed_at > decision.simulation_time
+                        or attestation.procurement_episode_id != expected
+                        or attestation.action != decision.action):
+                    continue
+                if decision.action in {"PREPARE", "BID_REVIEW"}:
+                    qualifying.append(decision)
+                    break
+        if qualifying:
+            first = min(qualifying, key=lambda item: item.simulation_time)
+            useful_lead = useful_lead_time_seconds(
+                scenario.truth.solicitation_at, first.simulation_time, actionable=True
+            )
     return EvaluationResult(
         discovery={"precision": precision, "recall": recall, "visible_evidence": len(visible)},
         trail={"episode_resolved": int(recognized), "entity_linkage": None},
@@ -74,4 +156,5 @@ def evaluate_replay(scenario: Scenario, decisions: tuple[FrozenDecision, ...]) -
         power={"numeric_error_mw": None, "status": "UNAVAILABLE"},
         action={"actionable_steps": actionable, "attention_burden": len(decisions)},
         efficiency={"decision_count": len(decisions)},
+        invariant_status=invariant_status,
     )

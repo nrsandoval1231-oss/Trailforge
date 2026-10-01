@@ -1,0 +1,8 @@
+{
+  "candidate": "be284722d38b2c4d4b4aa00e295c490e85ce4580",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "finding": "A need-specific baseline supply can be credited against another scope without allocation evidence.",
+  "evidence": "Read-only probe: construction load 1/baseline 10 and operational load 10/baseline 0 each have gaps 0 and 10, but combined profile reports gap 1.",
+  "direction": "Cap each baseline claim at its own active need load before the conservative global combination, or retain UNKNOWN where allocation is unsupported; add a surplus-baseline multiple-scope regression. Phased timing, UNKNOWN evaluation, and I-12 otherwise align."
+}

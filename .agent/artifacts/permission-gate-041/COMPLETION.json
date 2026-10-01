@@ -1,0 +1,49 @@
+{
+  "task_id": "permission-gate-041",
+  "status": "BUILDER_IMPLEMENTED_AWAITING_REVIEW",
+  "objective": "Reject evidence replay unless its permission scope has the explicit PUBLIC grant.",
+  "base": {
+    "branch": "codex/permission-gate-041",
+    "sha": "da1138b321ce8d54043f810027c15d3047e64e1b"
+  },
+  "implementation": [
+    "validate_scenario rejects every permission_scope except the exact string PUBLIC with an I-08 invariant error, before tenant matching and before TemporalWorld can call policy.",
+    "TemporalWorld.step revalidates the current scenario before policy execution, covering post-construction replacement of the public scenario attribute.",
+    "Added coverage for TENANT, unknown, blank, null, and malformed scope labels; matching tenant identity alone remains unauthorized, including after scenario replacement.",
+    "Changed provenance round-trip coverage to use runnable PUBLIC evidence and documented the current public-only replay boundary."
+  ],
+  "changed_files": [
+    "src/athena_procurement_arena/foundation.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_foundation.py",
+    "tests/procurement_arena/test_world.py",
+    "docs/SCENARIO_DSL.md",
+    "docs/ARENA_ARCHITECTURE.md",
+    ".agent/artifacts/permission-gate-041/COMPLETION.json"
+  ],
+  "validation": {
+    "focused": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_foundation.py tests/procurement_arena/test_world.py",
+      "exit_code": 0,
+      "result": "37 passed"
+    },
+    "full_local_gate": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "174 passed; source compilation, Ruff, and three verified bundle checks passed; all bundles reported holdout_available false."
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  },
+  "boundaries": [
+    "No tenant grants or other non-public permissions were invented.",
+    "No policy/evaluator/tournament/governance, fixtures, mutations, retained campaigns, outcomes/holdouts, canonical packet, CI, or execution authority changed.",
+    "No network/GitHub validation, commit, merge, push, or deploy was performed."
+  ],
+  "unknowns": [
+    "Independent controller validation and Astra audit are pending.",
+    "Real-world outcome and holdout evidence remain UNKNOWN and outside this packet."
+  ]
+}

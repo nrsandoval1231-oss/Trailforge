@@ -6,7 +6,7 @@ submission, or execution authority.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass, field, fields, replace
+from dataclasses import dataclass, field, fields, is_dataclass, replace
 from datetime import datetime
 from enum import StrEnum
 from itertools import pairwise
@@ -22,6 +22,19 @@ class AvailabilityError(ValueError):
 
 class InvariantViolation(ValueError):
     """A hard Arena invariant was violated."""
+
+
+def _deep_freeze(value: Any) -> Any:
+    """Detach nested containers and expose immutable equivalents."""
+    if is_dataclass(value):
+        raise InvariantViolation("forecast dataclass values are unsupported")
+    if isinstance(value, Mapping):
+        return MappingProxyType({key: _deep_freeze(item) for key, item in value.items()})
+    if isinstance(value, (list, tuple)):
+        return tuple(_deep_freeze(item) for item in value)
+    if isinstance(value, (set, frozenset)):
+        return frozenset(_deep_freeze(item) for item in value)
+    return value
 
 
 class ClaimBasis(StrEnum):
@@ -50,6 +63,33 @@ class PowerScope(StrEnum):
     OTHER = "OTHER"
 
 
+@dataclass(frozen=True)
+class ActionSupportAttestation:
+    """Reviewer attestation that one exact evidence span supports an action."""
+
+    procurement_episode_id: str
+    action: str
+    reviewer: str
+    reviewed_at: datetime
+    source_span: str
+    rationale: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.reviewed_at, datetime):
+            raise ValueError("reviewed_at must be a datetime")
+        _aware(self.reviewed_at, "reviewed_at")
+        if any(not isinstance(value, str) for value in (
+            self.procurement_episode_id, self.action, self.reviewer, self.source_span, self.rationale
+        )):
+            raise ValueError("attestation fields must be strings")
+        if not self.procurement_episode_id.strip():
+            raise ValueError("attestation procurement_episode_id is required")
+        if self.action not in {"PREPARE", "BID_REVIEW"}:
+            raise ValueError("attestation action must be PREPARE or BID_REVIEW")
+        if not self.reviewer.strip() or not self.source_span.strip() or not self.rationale.strip():
+            raise ValueError("attestation reviewer, source_span, and rationale are required")
+
+
 def _aware(value: datetime, name: str) -> None:
     if value.tzinfo is None or value.utcoffset() is None:
         raise ValueError(f"{name} must be timezone-aware")
@@ -74,6 +114,7 @@ class EvidenceEvent:
     entity_candidates: tuple[str, ...] = ()
     permission_scope: str = "PUBLIC"
     contradictions: tuple[str, ...] = ()
+    action_support: ActionSupportAttestation | None = None
 
     def __post_init__(self) -> None:
         for name in ("event_date", "document_date", "verified_available_at", "observed_at"):
@@ -81,6 +122,19 @@ class EvidenceEvent:
         if not self.evidence_id or not self.source_id:
             raise ValueError("evidence_id and source_id are required")
         object.__setattr__(self, "claims", MappingProxyType(dict(self.claims)))
+        if self.action_support is not None:
+            if self.is_prediction:
+                raise InvariantViolation("prediction evidence cannot carry action support")
+            if self.contradictions:
+                raise InvariantViolation("contradictory evidence cannot carry action support")
+            if not isinstance(self.action_support, ActionSupportAttestation):
+                raise ValueError("action_support must be an ActionSupportAttestation")
+            if self.action_support.source_span not in self.source_spans:
+                raise ValueError("attested source_span must exactly match an event source span")
+            if self.action_support.reviewed_at < max(
+                self.event_date, self.document_date, self.verified_available_at, self.observed_at
+            ):
+                raise ValueError("attestation review cannot precede evidence chronology")
 
     def visible_at(self, simulation_time: datetime) -> bool:
         _aware(simulation_time, "simulation_time")
@@ -121,12 +175,17 @@ class Supply:
 
 
 def calculate_power_gap(need: PowerNeed, supplies: tuple[Supply, ...] = ()) -> dict[str, Any]:
-    """Calculate a conservative gap; unknown supply remains explicitly unknown."""
-    relevant = [s for s in supplies if s.start < need.end and need.start < s.end]
-    if need.dependable_supply_mw is None or any(s.dependable_mw is None for s in relevant):
+    """Calculate a conservative gap; supply claims are non-additive.
+
+    A need's baseline and overlapping external claims may describe the same
+    capacity, so credit only the largest claim. The same rule applies across
+    simultaneously active needs: aggregate load, but credit globally shared
+    supply at most once until independent allocation is evidenced.
+    """
+    profile = calculate_power_profile((need,), supplies)
+    if any(item["gap_mw"] is None for item in profile):
         return {"status": "UNKNOWN", "peak_gap_mw": None, "need_id": need.need_id}
-    supply = max((s.dependable_mw for s in relevant), default=need.dependable_supply_mw)
-    gap = max(0.0, need.required_mw - supply)
+    gap = max((item["gap_mw"] for item in profile), default=0.0)
     return {"status": "GAP" if gap else "NO_GAP", "peak_gap_mw": gap, "need_id": need.need_id}
 
 
@@ -139,7 +198,15 @@ def validate_power_scopes(needs: tuple[PowerNeed, ...]) -> None:
 
 
 def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply, ...] = ()) -> tuple[dict[str, Any], ...]:
-    """Return piecewise G(t) segments across phased/partial/unknown supply."""
+    """Return piecewise G(t), crediting non-additive supply claims once.
+
+    Active needs' loads are summed. Each baseline claim is capped at its own
+    need's load before baseline and active external claims are combined; this
+    prevents surplus from one scope transferring to another without allocation
+    evidence. Claims are otherwise not assumed independent, so only the
+    largest is credited once. Any active unknown claim keeps the interval
+    UNKNOWN.
+    """
     validate_power_scopes(needs)
     boundaries = sorted({point for item in needs for point in (item.start, item.end)} |
                         {point for item in supplies for point in (item.start, item.end)})
@@ -150,9 +217,12 @@ def calculate_power_profile(needs: tuple[PowerNeed, ...], supplies: tuple[Supply
             continue
         active_supply = [item for item in supplies if item.start < end and start < item.end]
         required = sum(item.required_mw for item in active_needs)
-        unknown = any(item.dependable_supply_mw is None for item in active_needs) or any(
-            item.dependable_mw is None for item in active_supply)
-        dependable = None if unknown else sum(item.dependable_mw for item in active_supply)
+        supply_claims = [min(item.required_mw, item.dependable_supply_mw)
+                         if item.dependable_supply_mw is not None else None
+                         for item in active_needs]
+        supply_claims.extend(item.dependable_mw for item in active_supply)
+        unknown = any(claim is None for claim in supply_claims)
+        dependable = None if unknown else max(supply_claims, default=0.0)
         gap = None if dependable is None else max(0.0, required - dependable)
         segments.append({"start": start, "end": end, "required_mw": required,
                          "duration_seconds": (end - start).total_seconds(),
@@ -193,6 +263,9 @@ def validate_scenario(scenario: Scenario) -> str:
         raise InvariantViolation("duplicate evidence id")
     if any(item.is_prediction for item in scenario.evidence):
         raise InvariantViolation("I-02 prediction-as-evidence")
+    if any(not isinstance(item.permission_scope, str) or item.permission_scope != "PUBLIC"
+           for item in scenario.evidence):
+        raise InvariantViolation("I-08 evidence permission scope is not explicitly granted")
     if any(item.tenant_id != scenario.tenant_id for item in scenario.evidence):
         raise InvariantViolation("I-07 cross-tenant evidence leakage")
     if scenario.truth.solicitation_at is not None:
@@ -243,7 +316,7 @@ class FrozenDecision:
 
     def __post_init__(self) -> None:
         _aware(self.simulation_time, "simulation_time")
-        object.__setattr__(self, "forecast", MappingProxyType(dict(self.forecast)))
+        object.__setattr__(self, "forecast", _deep_freeze(self.forecast))
 
 
 class FrozenDecisionLedger:

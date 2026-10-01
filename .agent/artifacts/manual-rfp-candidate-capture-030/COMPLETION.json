@@ -1,0 +1,15 @@
+{
+  "task_id": "manual-rfp-candidate-capture-030",
+  "status": "PASS",
+  "objective": "Rebuild manual RFP candidate capture as a local hash-bound candidate and explicit review workflow.",
+  "changed_files": ["src/athena_procurement_arena/rfp_candidate_capture.py", "src/athena_procurement_arena/cli.py", "src/athena_procurement_arena/__init__.py", "tests/procurement_arena/test_rfp_candidate_capture.py", "README.md", ".agent/tasks/manual-rfp-candidate-capture-030.md", ".agent/DECISIONS.md"],
+  "validation": [
+    {"command": "focused candidate tests", "exit_code": 0, "evidence": "4 passed"},
+    {"command": "capture-rfp-candidate and accept-rfp-candidate CLI smoke", "exit_code": 0, "evidence": "synthetic candidate hash f1092dca; accepted OPEN fixture screened QUALIFIED at 750 kW and shortlisted"},
+    {"command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py", "exit_code": 0, "evidence": "118 passed; compile passed; Ruff passed; 3 verified bundles passed"},
+    {"command": "git diff --check", "exit_code": 0, "evidence": "no whitespace errors"}
+  ],
+  "repair": "Independent review found whitespace-only reviewed_by acceptance. The acceptance boundary now requires reviewed_by.strip(), with regression coverage and a fresh independent PASS.",
+  "boundaries": ["local source excerpt only", "candidate JSON excludes raw excerpt", "exact quote and source SHA rechecked at acceptance", "named nonblank reviewer and notes required", "explicit non-UNKNOWN lifecycle required", "existing fixture screen remains the only shortlist gate", "no network, automatic discovery, outreach, submission, pricing, Athena update, or promotion"],
+  "next_packet": "populate a reviewed local candidate queue from separately verified public sources; do not automate acquisition or acceptance"
+}

@@ -1,0 +1,77 @@
+{
+  "packet": "arena-invariant-repair-033",
+  "status": "IMPLEMENTED_PENDING_CONTROLLER_REVIEW",
+  "base_sha": "24c7990149190fdb9632c5f3401f0773fc1e9b38",
+  "reviewed_candidate_repaired": "dfbb10f203578f93e00155d8f771baa9fc195677",
+  "branch": "codex/arena-invariant-repair-033",
+  "changed_files": [
+    "src/athena_procurement_arena/campaign.py",
+    "src/athena_procurement_arena/cli.py",
+    "src/athena_procurement_arena/evaluation.py",
+    "src/athena_procurement_arena/foundation.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_campaign.py",
+    "tests/procurement_arena/test_cli.py",
+    "tests/procurement_arena/test_evaluation.py",
+    "tests/procurement_arena/test_foundation.py",
+    "tests/procurement_arena/test_world.py",
+    ".agent/artifacts/arena-invariant-repair-033/COMPLETION.md",
+    ".agent/artifacts/arena-invariant-repair-033/COMPLETION.json"
+  ],
+  "review_repair": {
+    "review_file": ".agent/artifacts/arena-invariant-repair-033/REVIEW-1.json",
+    "raw_verdict": "CORRECT",
+    "finding": "Nested mutable dataclass values were retained by reference inside frozen forecasts.",
+    "repair": "Reject dataclass instances recursively during forecast freezing.",
+    "review_file_preserved": true
+  },
+  "validation": {
+    "focused": {
+      "command": "uv run --python 3.11 --with pytest python -m pytest -q tests/procurement_arena/test_foundation.py",
+      "exit_code": 0,
+      "tests_passed": 11
+    },
+    "full_local": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "tests_passed": 133,
+      "compile": "PASS",
+      "ruff": "PASS",
+      "bundle_checks": [
+        {"fixture": "GT-003", "status": "PASS", "holdout_available": false},
+        {"fixture": "GT-007", "status": "PASS", "holdout_available": false},
+        {"fixture": "GT-008", "status": "PASS", "holdout_available": false}
+      ],
+      "note": "Final artifact-inclusive run; earlier Ruff import-order finding was corrected."
+    },
+    "git_diff_check": {"command": "git diff --check", "exit_code": 0}
+  },
+  "repair_count": 3,
+  "repairs": [
+    {"attempt": 1, "issue": "Initial implementation Ruff import-order findings", "outcome": "Imports corrected; full local validation passed."},
+    {"attempt": 2, "issue": "Evaluator could report PASS for verified unauthorized action", "outcome": "Evaluator fails closed for ENGAGE and READY_FOR_AUTHORIZED_SUBMISSION; tests and gate passed."},
+    {"attempt": 3, "issue": "Astra found nested mutable dataclass retained in forecast", "outcome": "Dataclass values now rejected recursively; 11 focused foundation tests and 133-test full local gate passed."}
+  ],
+  "authority": {
+    "scope": "Research-only deterministic Arena mechanics",
+    "real_world_forecast_accuracy": "UNKNOWN",
+    "commercial_approval": "ABSENT",
+    "policy_promotion": "NOT PERFORMED",
+    "network_or_github_validation": "NOT PERFORMED",
+    "commit_push_merge_deploy": "NOT PERFORMED"
+  },
+  "independent_review": "PENDING_REVIEW_OF_REPAIRED_CANDIDATE",
+  "metrics": {
+    "utc_start": "UNKNOWN",
+    "utc_finish": "UNKNOWN",
+    "planning_duration": "UNKNOWN",
+    "build_duration": "UNKNOWN",
+    "validation_duration": "UNKNOWN",
+    "audit_duration": "UNKNOWN",
+    "elapsed_to_accepted": "UNKNOWN",
+    "model": "UNKNOWN",
+    "config_identity": "UNKNOWN",
+    "measured_tokens": "UNKNOWN",
+    "token_usage": "UNKNOWN"
+  }
+}

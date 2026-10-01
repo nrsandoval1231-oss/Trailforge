@@ -1,0 +1,61 @@
+{
+  "task_id": "episode-action-basis-039",
+  "status": "BUILDER_IMPLEMENTED_AWAITING_REVIEW",
+  "objective": "Add optional reviewer-attested episode/action support and fail-closed replay lead evaluation.",
+  "base": {
+    "branch": "codex/episode-action-basis-039",
+    "sha": "b597373762bcafcba4cb400841f2a11e552d9fc6"
+  },
+  "implementation": [
+    "Added immutable ActionSupportAttestation with exact episode, PREPARE/BID_REVIEW action, named reviewer, aware review time, exact source span, and nonblank rationale.",
+    "EvidenceEvent rejects attestation on prediction or contradictory evidence, missing exact spans, and review times before evidence chronology.",
+    "Scenario DSL and schema preserve optional attestations; round-trip retains the stable scenario hash.",
+    "Useful lead requires a hash-valid decision on the same valid scenario, explicit correct episode claim citing the attested event, actual visibility at decision time, review completed by decision time, matching actionable recommendation, and decision before solicitation; earliest qualifying decision wins.",
+    "Added synthetic positive and negative mechanics tests and documented the reviewer trust boundary. No real-world annotations or fixture edits were made."
+  ],
+  "changed_files": [
+    "src/athena_procurement_arena/foundation.py",
+    "src/athena_procurement_arena/scenario_dsl.py",
+    "src/athena_procurement_arena/evaluation.py",
+    "src/athena_procurement_arena/__init__.py",
+    "schemas/procurement-arena-scenario-v1.schema.json",
+    "tests/procurement_arena/test_foundation.py",
+    "tests/procurement_arena/test_evaluation.py",
+    "tests/procurement_arena/test_world.py",
+    "docs/EVALUATION.md",
+    ".agent/artifacts/episode-action-basis-039/COMPLETION.json"
+  ],
+  "validation": {
+    "focused": {
+      "command": "uv run --python 3.11 --with pytest --with ruff pytest -q tests/procurement_arena/test_foundation.py tests/procurement_arena/test_evaluation.py tests/procurement_arena/test_world.py",
+      "exit_code": 0,
+      "result": "36 passed"
+    },
+    "schema_json": {
+      "command": "Get-Content schemas\\procurement-arena-scenario-v1.schema.json -Raw | ConvertFrom-Json | Out-Null",
+      "exit_code": 0,
+      "result": "schema JSON valid"
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    "full_local_gate": {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "builder_exit_code": 0,
+      "controller_exit_code": 0,
+      "result": "162 passed; compilation, Ruff, and three verified bundle checks passed; all bundles reported holdout_available false"
+    }
+  },
+  "boundaries": [
+    "Synthetic mechanics only; no real-world accuracy or holdout claim.",
+    "No policies, fixtures, canonical packet, campaign report, CI, protected evidence, promotion gates, or execution authority changed.",
+    "No network/GitHub validation, commit, merge, push, deploy, or real-world fixture edits."
+  ],
+  "unknowns": [
+    "Independent controller validation and Astra audit are pending.",
+    "Reviewer attestations remain trusted annotations; their objective sufficiency is not independently proven.",
+    "Real-world outcomes, holdout evidence, and predictive accuracy remain UNKNOWN.",
+    "UTC implementation start, build duration, model token usage, and config identity were not captured."
+  ]
+}

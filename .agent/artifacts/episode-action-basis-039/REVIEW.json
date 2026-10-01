@@ -1,0 +1,18 @@
+{
+  "packet": "episode-action-basis-039",
+  "exact_candidate": "33131a06970e035cbc4cad4a1da80eb1fdd6d84d",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "bounded reviewer-attested episode/action evidence and fail-closed useful-lead mechanics",
+  "independent_review": "Mixed invalid discovery bases no longer earn lead. Policy-facing evidence withholds a future-reviewed action attestation until review time without mutating the scenario. Typed annotation, source span, episode, action, decision hash, chronology, and actual visibility checks remain in force.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "163 tests passed; compilation, Ruff, and three verified bundle checks passed; each bundle reported holdout_available false"
+  },
+  "prior_rejection": "REVIEW-1.json: 4f1639fc64d8cc8e9f86b7953a2626e86a887ab0, CORRECT",
+  "controller_direction": "CONTINUE",
+  "full_build_packet_0_accepted": false,
+  "real_world_action_sufficiency": "UNKNOWN",
+  "real_world_accuracy": "UNKNOWN"
+}

@@ -1,0 +1,18 @@
+{
+  "packet": "policy-dependent-evaluation-038",
+  "exact_candidate": "03b0d7f37002cbfde4352a48b9b4bfa4981192ce",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "bounded policy-dependent discovery mechanics and fail-closed useful lead",
+  "independent_review": "Explicit claims with visible references replace visibility-only discovery credit; unique claimed episode IDs prevent repeat inflation; IGNORE receives no discovery credit. Replay useful lead remains unavailable because current evidence does not establish episode linkage or customer-action sufficiency.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "158 tests passed; compilation, Ruff, and three verified fixture bundle checks passed; each bundle reported holdout_available false"
+  },
+  "prior_rejection": "REVIEW-1.json: 57c14508cf688f792b758b43825e02e7a1aee795, CORRECT",
+  "full_packet_0_accepted": false,
+  "discovery_semantic_support": "UNKNOWN",
+  "useful_lead_time": "UNAVAILABLE",
+  "real_world_accuracy": "UNKNOWN"
+}

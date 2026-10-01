@@ -1,0 +1,25 @@
+{
+  "task_id": "v1-cli-replay-043",
+  "verdict": "PASS",
+  "reviewer_model": "gpt-6-sol",
+  "reviewer_reasoning": "medium",
+  "raw_review": "REVIEW-2.md",
+  "previous_verdict": "FIX",
+  "previous_review": "REVIEW-1.md",
+  "base_sha": "c216b5efbc1daeae5e62f28276f5d35f3d7b04c9",
+  "candidate_kind": "uncommitted four-file candidate identified by SHA-256",
+  "files_sha256": {
+    ".gitignore": "5A78842C709794AC8D7993954676852BCD68BFF994E293C2126AD0ADB2876719",
+    "README.md": "419D80CAFE50F2E3B5FB2EAB344F475DB490A75F04967BCFE2D932CE0FDB0E9F",
+    "src/athena_procurement_arena/cli.py": "690EBE2EEC17C1B8331F5D4DDBA1177BC13ABF64C466DF544FF31B242D6CAADE",
+    "tests/procurement_arena/test_cli.py": "90EC976A172CBE32AECDF25AFF2B89AA46FDED5F7772B7B5111ECEEDADD24D8F"
+  },
+  "controller_gate": {"exit_code": 0, "tests_passed": 189, "compile": "PASS", "ruff": "PASS", "fixture_bundles": 3, "diff_check": "PASS"},
+  "runtime": {"case": "GT-003, unsealed mechanics only", "observations": 3, "final_state": "OUT_OF_SCOPE", "separate_process_replay": "PASS", "isolated_wheel_replay": "PASS", "manifest_hash": "a42ea11d1e5ca15bf1e59546fdfbaf926ab9fa9d4bec8c4474814994e29fa310"},
+  "scope": "Slice 1 only; report/graph/later bookkeeping are not added to reviewed code scope",
+  "full_v1_accepted": false,
+  "full_build_packet_0_accepted": false,
+  "remote_accepted": false,
+  "deployed": false,
+  "next_slice": "V1-S2; not started and not authorized in this request"
+}

@@ -1,0 +1,63 @@
+{
+  "node": "V1-S2 / v1-durable-experiment-044",
+  "status": "IMPLEMENTED_PENDING_INDEPENDENT_REVIEW",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-v1-audit-slice1",
+  "base_sha": "15247421e00303e36436961a91096efa55194ade",
+  "head_sha": "15247421e00303e36436961a91096efa55194ade",
+  "utc_start": null,
+  "utc_finish": "2026-10-01T14:24:21.9962171Z",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "config_identity": null,
+  "durations_seconds": {
+    "planning": null,
+    "build": null,
+    "validation": null,
+    "independent_audit": null,
+    "elapsed_to_accepted": null
+  },
+  "tokens": null,
+  "repair_attempts": 2,
+  "changed_files": [
+    "README.md",
+    "src/athena_procurement_arena/cli.py",
+    "src/athena_procurement_arena/runner.py",
+    "src/athena_procurement_arena/world.py",
+    "tests/procurement_arena/test_cli.py",
+    "tests/procurement_arena/test_experiment.py"
+  ],
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "197 tests passed; source compilation passed; Ruff passed; GT-003, GT-007 and GT-008 bundle validations passed"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "passed"
+    }
+  ],
+  "implemented_claims": [
+    "TemporalWorld captures detached immutable policy inputs before invocation and frozen output/action/hash after invocation; future evidence and post-review annotations retain existing temporal filtering.",
+    "scenario --experiment-dir creates input.json, decisions.json, evaluation.json, config.json and manifest.json with exclusive experiment/artifact creation and manifest written last.",
+    "inspect --experiment-dir verifies persisted bytes, schema, manifest hash, ledger chain and input/result/snapshot bindings, then returns persisted artifacts without policy execution.",
+    "replay --experiment-dir verifies persisted artifacts before deterministic execution from retained input and checks implementation content identity.",
+    "Ordinary JSON outcomes remain UNSEALED, UNSCORED and outcome metrics UNAVAILABLE.",
+    "Legacy scenario --output and replay --scenario-file/--manifest paths remain covered by the existing malformed-manifest tests."
+  ],
+  "not_claimed": [
+    "Independent review acceptance",
+    "Fresh-process inspect/replay, package build, rebuilt-wheel isolation, or manual GT-003 save/inspect/tamper exercise beyond the CLI test",
+    "Protection against deliberate coordinated rewriting; hashes are not signatures",
+    "Completion of Slice 2 or Trailforge V1 acceptance"
+  ],
+  "limitations": [
+    "Controller must rerun required candidate-specific GT-003 and wheel checks and obtain independent Sol review.",
+    "Git worktree was already dirty in controller-owned .agent/WORK_GRAPH_V1.md; this builder did not modify graph/state/review records.",
+    "No independent review verdict was requested or performed by the builder."
+  ],
+  "independent_review": null,
+  "controller_handoff": "Review the exact current candidate. Controller-owned graph/state and review records remain untouched."
+}

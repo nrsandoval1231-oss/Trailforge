@@ -1,8 +1,10 @@
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 
 import pytest
 
 from athena_procurement_arena import (
+    ActionSupportAttestation,
     EvidenceEvent,
     FrozenDecision,
     FrozenDecisionLedger,
@@ -40,9 +42,47 @@ def test_temporal_cutoff_and_exact_replay_hash():
     assert validate_scenario(s) == validate_scenario(s)
 
 
+def test_action_support_attestation_requires_exact_supported_evidence_and_chronology():
+    attestation = ActionSupportAttestation("p1", "PREPARE", "reviewer", T0, "line 1", "Supports planning")
+    valid = EvidenceEvent("e1", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                         action_support=attestation)
+    assert valid.action_support == attestation
+    with pytest.raises(ValueError, match="source_span"):
+        EvidenceEvent("e2", "source", T0, T0, T0, T0, source_spans=("line 2",),
+                      action_support=attestation)
+    with pytest.raises(ValueError, match="chronology"):
+        EvidenceEvent("e3", "source", T0, T0, T0, T0,
+                      source_spans=("line 1",), action_support=ActionSupportAttestation(
+                          "p1", "PREPARE", "reviewer", T0 - timedelta(seconds=1), "line 1", "Supports planning"))
+    with pytest.raises(ValueError, match="PREPARE or BID_REVIEW"):
+        ActionSupportAttestation("p1", "WATCH", "reviewer", T0, "line 1", "Supports planning")
+    with pytest.raises(InvariantViolation, match="prediction"):
+        EvidenceEvent("e4", "source", T0, T0, T0, T0, is_prediction=True,
+                      source_spans=("line 1",), action_support=attestation)
+    with pytest.raises(InvariantViolation, match="contradictory"):
+        EvidenceEvent("e5", "source", T0, T0, T0, T0, source_spans=("line 1",),
+                      contradictions=("other",), action_support=attestation)
+
+
 def test_prediction_as_evidence_is_invalid():
     with pytest.raises(InvariantViolation, match="prediction"):
         validate_scenario(scenario((evidence("p", T0), evidence("pred", T0, prediction=True))))
+
+
+@pytest.mark.parametrize("permission_scope", ["TENANT", "", "UNKNOWN", None, "PUBLIC "])
+def test_only_exact_public_permission_scope_is_granted(permission_scope):
+    item = EvidenceEvent("scoped", "source", T0, T0, T0, T0,
+                         permission_scope=permission_scope)
+    scoped_scenario = Scenario("scoped", "1", 1, (T0,), (item,),
+                               GroundTruth("p", "OPEN"), tenant_id="default")
+    with pytest.raises(InvariantViolation, match="I-08"):
+        validate_scenario(scoped_scenario)
+
+
+def test_public_permission_scope_is_accepted():
+    item = EvidenceEvent("public", "source", T0, T0, T0, T0,
+                         permission_scope="PUBLIC")
+    assert validate_scenario(scenario((item,)))
 
 
 def test_unknown_supply_is_not_zero_and_partial_supply_is_gap():
@@ -69,6 +109,32 @@ def test_evidence_and_decision_snapshots_are_detached():
     decision = FrozenDecision("s", T0, "p", (), {"nested": "value"}, "WATCH")
     with pytest.raises(TypeError):
         decision.forecast["nested"] = "changed"
+
+def test_nested_forecast_is_detached_deeply_and_remains_hash_valid():
+    source = {"nested": {"items": [1, {"value": "before"}], "tags": {"a", "b"}}}
+    ledger = FrozenDecisionLedger()
+    record = ledger.append(FrozenDecision("s", T0, "p", (), source, "WATCH"))
+    source["nested"]["items"][1]["value"] = "after"
+    source["nested"]["items"].append(3)
+    source["nested"]["tags"].add("c")
+    assert record.forecast["nested"]["items"][1]["value"] == "before"
+    assert record.forecast["nested"]["items"] == (1, {"value": "before"})
+    assert record.forecast["nested"]["tags"] == frozenset({"a", "b"})
+    with pytest.raises(TypeError):
+        record.forecast["nested"]["items"][1]["value"] = "mutated"
+    with pytest.raises(AttributeError):
+        record.forecast["nested"]["items"].append(4)
+    assert ledger.verify()
+
+def test_nested_mutable_dataclass_forecast_is_rejected():
+    @dataclass
+    class MutableForecast:
+        items: list[str]
+
+    caller_value = MutableForecast(["before"])
+    with pytest.raises(InvariantViolation, match="dataclass values are unsupported"):
+        FrozenDecision("s", T0, "p", (), {"nested": [{"payload": caller_value}]}, "WATCH")
+    caller_value.items.append("after")
 
 def test_tenant_and_commercial_action_invariants_are_fail_closed():
     foreign = EvidenceEvent("foreign", "s", T0, T0, T0, T0, tenant_id="other")
@@ -101,3 +167,49 @@ def test_power_profile_handles_phased_supply_and_unknown_segments():
     profile = calculate_power_profile((need,), (known, unknown, full))
     assert profile[0]["gap_mw"] == 6 and profile[0]["status"] == "GAP" and profile[0]["duration_seconds"] == 3600
     assert profile[1]["status"] == "UNKNOWN" and profile[2]["status"] == "NO_GAP"
+    assert calculate_power_gap(need, (known, full))["peak_gap_mw"] == max(
+        item["gap_mw"] for item in calculate_power_profile((need,), (known, full))) == 10
+    assert calculate_power_gap(need, (known, unknown, full))["status"] == "UNKNOWN"
+
+
+def test_power_profile_credits_known_baseline_once_and_matches_primitive():
+    need = PowerNeed("n", PowerScope.CONSTRUCTION, T0, T0 + timedelta(hours=1), 10, 4)
+    segment, = calculate_power_profile((need,))
+    assert segment["dependable_supply_mw"] == 4
+    assert segment["gap_mw"] == calculate_power_gap(need)["peak_gap_mw"] == 6
+    # Baseline and external claims are not presumed independent.
+    overlapping_claim = Supply(T0, T0 + timedelta(hours=1), 3)
+    segment, = calculate_power_profile((need,), (overlapping_claim,))
+    assert segment["dependable_supply_mw"] == 4
+
+
+def test_power_profile_sums_active_loads_but_credits_shared_supply_once():
+    end = T0 + timedelta(hours=1)
+    first = PowerNeed("a", PowerScope.CONSTRUCTION, T0, end, 10, 4)
+    second = PowerNeed("b", PowerScope.OPERATIONAL, T0, end, 5, 3)
+    shared = Supply(T0, end, 6)
+    segment, = calculate_power_profile((first, second), (shared,))
+    assert segment["required_mw"] == 15
+    assert segment["dependable_supply_mw"] == 6
+    assert segment["gap_mw"] == 9
+
+
+def test_surplus_baseline_cannot_transfer_between_overlapping_scopes():
+    end = T0 + timedelta(hours=1)
+    construction = PowerNeed("construction", PowerScope.CONSTRUCTION, T0, end, 1, 10)
+    operational = PowerNeed("operational", PowerScope.OPERATIONAL, T0, end, 10, 0)
+    assert calculate_power_gap(construction)["peak_gap_mw"] == 0
+    assert calculate_power_gap(operational)["peak_gap_mw"] == 10
+    segment, = calculate_power_profile((construction, operational))
+    assert segment["required_mw"] == 11
+    assert segment["dependable_supply_mw"] == 1
+    assert segment["gap_mw"] == 10
+
+
+def test_unknown_baseline_and_unknown_active_supply_remain_unknown():
+    end = T0 + timedelta(hours=1)
+    unknown_baseline = PowerNeed("n", PowerScope.CONSTRUCTION, T0, end, 10, None)
+    assert calculate_power_profile((unknown_baseline,))[0]["status"] == "UNKNOWN"
+    known_baseline = PowerNeed("k", PowerScope.CONSTRUCTION, T0, end, 10, 4)
+    unknown = Supply(T0, end, None)
+    assert calculate_power_profile((known_baseline,), (unknown,))[0]["status"] == "UNKNOWN"

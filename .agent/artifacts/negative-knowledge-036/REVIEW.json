@@ -1,0 +1,22 @@
+{
+  "packet": "negative-knowledge-036 and revised negative-knowledge-context-036b",
+  "exact_candidate": "711b5b8f1fac545b848e20783d531cde91934969",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "bounded local persistence and exact-context rejected-idea reuse",
+  "independent_review": "Versioned hash-checked snapshots detach and restore rejected lessons; typed canonical full-content digests distinguish bool from int. A loaded store can skip the same idea before candidate evaluation and tournament when seed, registry, policy/config, and complete local Arena source match. Changed or unreadable context conflicts visibly.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "156 tests passed; compilation, Ruff, and three verified fixture bundle checks passed; each bundle reported holdout_available false"
+  },
+  "prior_rejections": [
+    "REVIEW-1.json: f40c66e97d5a125ac821108bdfa0bdf5f06aabf9, CORRECT",
+    "REVIEW-2.json: 800285e40364209a852cbda15db969547c90b8a0, CORRECT",
+    "REVIEW-3.json: c9a5fd7d99130aad37eab82c3a56c5dd125f12cd, CORRECT"
+  ],
+  "full_packet_0_accepted": false,
+  "real_world_accuracy": "UNKNOWN",
+  "authenticated_rejection_authority": "UNKNOWN",
+  "holdout_available": false
+}

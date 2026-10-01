@@ -1,0 +1,16 @@
+{
+  "task": "current-target-shortlist-012",
+  "status": "COMPLETE",
+  "implementation": "current_target_fixtures",
+  "gates": [
+    "source-verified fixture",
+    "OPEN, ACTIVE, or SOURCES_SOUGHT lifecycle",
+    "IN_SCOPE_PRIME_POWER_300KW_PLUS target classification"
+  ],
+  "behavior": "Returns VerifiedFixture records with provenance intact; excludes historical, unknown, maintenance-only, emergency-backup-only, below-300-kW, and non-prime records.",
+  "validation": {
+    "pytest": "60 passed",
+    "ruff": "passed",
+    "diff_check": "passed"
+  }
+}

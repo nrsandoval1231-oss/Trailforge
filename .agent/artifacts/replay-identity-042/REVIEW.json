@@ -1,0 +1,19 @@
+{
+  "packet": "replay-identity-042",
+  "exact_candidate": "788117148d170b1780a2bcdafaaec8cc29747648",
+  "raw_verdict": "ACCEPT",
+  "harness_result": "PASS",
+  "scope": "persisted manifest hash and local source-commit checks plus world scenario-hash binding",
+  "independent_review": "Stored manifest digests are required and checked after canonical reconstruction; source-commit mismatch or unavailable Git fails replay verification. Each world step validates its current scenario and compares its hash with construction before policy, cursor or ledger effects. I-08 rejection retains precedence.",
+  "controller_validation": {
+    "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "exit_code": 0,
+    "result": "182 tests passed; compilation, Ruff, and three verified bundle checks passed; each bundle reported holdout_available false"
+  },
+  "controller_direction": "CONTINUE",
+  "full_build_packet_0_accepted": false,
+  "manifest_reproducibility_complete": false,
+  "uncommitted_tree_binding": "UNKNOWN",
+  "policy_config_equivalence": "UNKNOWN",
+  "real_world_accuracy": "UNKNOWN"
+}

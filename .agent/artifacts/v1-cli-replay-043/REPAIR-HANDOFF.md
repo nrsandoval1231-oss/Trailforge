@@ -1,0 +1,4 @@
+Changed [cli.py](C:/Users/nrsan/Nucleus/02_Projects/Trailforge/src/athena_procurement_arena/cli.py) and [test_cli.py](C:/Users/nrsan/Nucleus/02_Projects/Trailforge/tests/procurement_arena/test_cli.py). Replay now catches the non-object manifest `AttributeError` at the CLI boundary. Parameterized regression cases cover `null`, string, number, and list JSON, checking for machine-readable `FAIL` and exit code 1.
+
+- Focused CLI tests: `uv run --python 3.11 --with pytest --with ruff python -m pytest tests/procurement_arena/test_cli.py -q` — **18 passed**
+- Ruff: `uv run --python 3.11 --with pytest --with ruff ruff check src/athena_procurement_arena/cli.py tests/procurement_arena/test_cli.py` — **All checks passed**

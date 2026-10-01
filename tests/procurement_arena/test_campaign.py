@@ -26,9 +26,20 @@ def test_all_family_templates_execute_for_both_policies():
                for policy in result["policies"].values())
 
 def test_regression_campaign_reports_separate_metrics():
-    result = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}, seed=30)
+    def evidence_supported_policy(state):
+        visible = tuple(state["visible_evidence_ids"])
+        if not visible:
+            return {}, "IGNORE"
+        return {"discovery": {"episode_id": visible[0], "basis_evidence_ids": [visible[0]]}}, "PREPARE"
+
+    result = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA(),
+                                      "SUPPORTED": evidence_supported_policy}, seed=30)
     baseline = result["policies"]["BASELINE_A"]
-    assert baseline["runs"] == 40 and baseline["discovery_recall"] == 1.0
+    supported = result["policies"]["SUPPORTED"]
+    assert baseline["runs"] == 40 and baseline["discovery_recall"] == 0.0
+    assert baseline["discovery_precision"] is None
+    assert supported["discovery_recall"] == 1.0 and supported["discovery_precision"] == 1.0
+    assert supported["actionable_steps"] == 40
     assert baseline["power_evaluated_runs"] == 0
 
 
@@ -56,6 +67,40 @@ def test_regression_campaign_counts_ledger_invariant_failures(monkeypatch):
     monkeypatch.setattr(campaign_module, "TemporalWorld", FailingVerificationWorld)
     result = run_regression_campaign({"BASELINE_A": BaselineA()}, seed=30)
     assert result["policies"]["BASELINE_A"]["invariant_failures"] == 40
+    assert result["status"] == "FAIL"
+
+
+def test_all_campaign_modes_fail_when_ledger_verification_fails(monkeypatch):
+    real_world = campaign_module.TemporalWorld
+
+    class FailingLedger:
+        def __init__(self, ledger):
+            self.records = ledger.records
+
+        def verify(self):
+            return False
+
+    class FailingWorld:
+        def __init__(self, *args, **kwargs):
+            self._world = real_world(*args, **kwargs)
+
+        def run(self):
+            return self._world.run()
+
+        @property
+        def ledger(self):
+            return FailingLedger(self._world.ledger)
+
+    monkeypatch.setattr(campaign_module, "TemporalWorld", FailingWorld)
+    policies = {"BASELINE_A": BaselineA()}
+    batch = run_campaign(1, policies)
+    family = run_family_campaign(policies)
+    regression = run_regression_campaign(policies)
+    mutation = run_mutation_campaign(synthetic_scenario(1), 1, policies)
+    assert batch["status"] == "FAIL" and batch["policies"]["BASELINE_A"]["invariant_failures"] == 1
+    assert family["status"] == "FAIL" and family["policies"]["BASELINE_A"]["invariant_failures"] == 40
+    assert regression["status"] == "FAIL" and regression["policies"]["BASELINE_A"]["invariant_failures"] == 40
+    assert mutation["status"] == "FAIL" and mutation["policies"]["BASELINE_A"]["invariant_failures"] == 1
 
 
 def test_one_thousand_mutation_variants_replay_without_invariant_failures():

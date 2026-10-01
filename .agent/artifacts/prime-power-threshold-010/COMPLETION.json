@@ -1,0 +1,27 @@
+{
+  "task_id": "prime-power-threshold-010",
+  "status": "COMPLETE",
+  "objective": "Restrict target qualification to prime/temporary operating power opportunities of at least 300 kW and exclude emergency-backup-only work.",
+  "implementation": [
+    "Added classify_target() with explicit qualification and exclusion states.",
+    "Applied target gating to every built-in policy and Athena weighted-threshold candidates.",
+    "Added prime/300 kW target claims to in-scope synthetic family templates.",
+    "Normalized underscore and text-form claims such as emergency_backup."
+  ],
+  "validation": {
+    "pytest": "58 passed",
+    "ruff": "All checks passed",
+    "qualified_case": "300 kW prime temporary power eligible",
+    "below_threshold_case": "ignored",
+    "emergency_backup_case": "ignored",
+    "invariant_failures": 0
+  },
+  "research_match": {
+    "notice_id": "127EAU26Q0062",
+    "project": "Rental of Prime Generator, San Bernardino National Forest Supervisor's Office",
+    "requirement": "one 300 kW prime-rated generator for continuous temporary power",
+    "status": "INACTIVE_HISTORICAL",
+    "source": "https://sam.gov/opp/58bed3277f3a42239a64ee022cdf6d8e/view"
+  },
+  "boundary": "Emergency response and incidental maintenance in a prime-power contract do not change the target; emergency-backup-only work remains excluded."
+}

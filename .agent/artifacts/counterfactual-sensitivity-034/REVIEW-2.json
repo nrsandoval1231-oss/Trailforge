@@ -1,0 +1,8 @@
+{
+  "candidate": "dac2ed431fc9ae1332ad82a90b8a07f06aedad4c",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "finding": "Stable duplicate and unknown-supply cases accept a new numeric confidence when previous confidence is missing or unknown.",
+  "evidence": "Read-only diagnostic: unchanged UNKNOWN procurement, UNKNOWN power and IGNORE action, confidence None to 0.9; both stability cases reported passed=true and confidence_increased=false.",
+  "direction": "Treat newly asserted numeric certainty after missing/UNKNOWN confidence as inflation or fail closed as UNKNOWN; add a direct regression. Prior confidence-only required-change defect is fixed; extension helper remains synthetic and did not alter retained fixtures."
+}

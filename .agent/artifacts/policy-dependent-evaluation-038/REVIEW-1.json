@@ -1,0 +1,11 @@
+{
+  "candidate": "57c14508cf688f792b758b43825e02e7a1aee795",
+  "verdict": "CORRECT",
+  "reviewer": "independent Astra",
+  "findings": [
+    "Repeated claims for the same episode are each counted in precision, allowing a policy to inflate precision by repeating a correct claim over unchanged evidence.",
+    "A visible but unrelated evidence ID (for example weather) can be cited with PREPARE and a correct episode ID to earn useful lead time, even though it does not establish an actionable customer basis."
+  ],
+  "evidence": "Read-only TemporalWorld probe: one wrong and one correct claim yielded precision 0.5, recall 1.0 and 428400 seconds useful lead with only unrelated weather evidence; repeating the correct claim raised precision to 0.9.",
+  "direction": "Deduplicate discovery by claimed episode identity and require deterministic evidence sufficiency/linkage for useful lead. If current scenario schema cannot establish sufficiency, abstain from useful-lead credit and document UNKNOWN. Test unrelated visible basis and repeated correct claims."
+}

@@ -12,6 +12,7 @@ from .fixtures import (
     split_fixture_ids,
 )
 from .foundation import (
+    ActionSupportAttestation,
     AvailabilityError,
     EvidenceEvent,
     FrozenDecision,
@@ -118,6 +119,7 @@ from .trace_cohort import TraceCohortManifest, build_trace_cohort, load_trace_co
 from .world import TemporalWorld, WorldObservation
 
 __all__ = [
+    "ActionSupportAttestation",
     "AuraRfpScreen",
     "AuraRfpScreenStatus",
     "AvailabilityError",

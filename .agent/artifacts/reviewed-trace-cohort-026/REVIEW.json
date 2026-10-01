@@ -1,0 +1,7 @@
+{
+  "task_id": "reviewed-trace-cohort-026",
+  "verdict": "PASS",
+  "scope_check": "The cohort is a hash-bound research manifest and does not create outcomes, labels, or execution authority.",
+  "evidence_check": "Round-trip, duplicate-project, tampered-member, full-gate, and CLI smoke checks passed.",
+  "remaining_risk": "The manifest references local trace files; portability and predictive value require a separately governed evidence packaging and outcome cohort."
+}

@@ -1,7 +1,8 @@
 # Trailforge architecture
 
-The execution path is `Scenario DSL -> TemporalWorld -> policy callable ->
-FrozenDecisionLedger -> Evaluator -> Governance/Tournament`.
+The smallest working path is `Scenario DSL -> TemporalWorld -> policy callable ->
+FrozenDecisionLedger -> Evaluator`. Add tournament comparison only when a concrete
+experiment needs to compare candidate policies.
 
 The world reveals evidence only at its verified availability time. A policy
 receives visible evidence and returns a deterministic forecast/action pair.

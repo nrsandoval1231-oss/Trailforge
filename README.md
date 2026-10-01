@@ -6,17 +6,19 @@ reviewer-bound public capture, but has no autonomous discovery, production
 scraper, customer outreach, bid autofill, submission, broker, or execution
 authority.
 
+## Build approach
+
+Start with one small, reproducible scenario-to-outcome path. Build it, run it, observe the result, fix what fails, and ship. Add tournament or review machinery only when an explicit comparison needs it. Temporal evidence, deterministic evaluation, and the research-only boundary remain core requirements.
+
 ## Check
 `uv run --python 3.11 --with pytest --with ruff python -m pytest -q`
 
 The complete local gate is available on Windows with
 `powershell -ExecutionPolicy Bypass -File scripts\validate.ps1`; it runs the
 test suite, source compilation, and Ruff. GitHub Actions is configured for the
-same checks. The latest `main` run
-([run 36068552414](https://github.com/nrsandoval1231-oss/Trailforge/actions/runs/36068552414),
-commit `24c7990149190fdb9632c5f3401f0773fc1e9b38`) was blocked before steps
-started by a GitHub account payment or spending-limit annotation; remote
-validation is pending resolution of that external issue. See [finish readiness](docs/FINISH_READINESS.md)
+same checks. The last inspected run at an older commit was blocked before
+steps started by a GitHub account payment or spending-limit annotation. The
+current candidate is validated locally only. See [finish readiness](docs/FINISH_READINESS.md)
 for the current evidence and acceptance boundaries.
 
 Run a comparison with:
@@ -26,6 +28,49 @@ Run a comparison with:
 Run the required domain and invariant suite through the CLI with:
 
 `uv run --python 3.11 --with pytest python -m athena_procurement_arena unit`
+
+Run the local scenario/replay mechanics using the scenario nested in the
+source-backed GT-003 bundle. The scenario command saves a new manifest and
+refuses to overwrite an existing file; replay reads that saved file in a
+separate process:
+
+```powershell
+$bundle = Get-Content -Raw scenarios/fixtures/verified/gt-003-morgan-hill.json | ConvertFrom-Json
+$scenarioFile = Join-Path $env:TEMP 'trailforge-gt003-scenario.json'
+$manifestFile = Join-Path $env:TEMP 'trailforge-gt003-manifest.json'
+$json = $bundle.fixtures[0].scenario | ConvertTo-Json -Depth 100
+[System.IO.File]::WriteAllText($scenarioFile, $json, [System.Text.UTF8Encoding]::new($false))
+uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --output $manifestFile
+uv run --python 3.11 python -m athena_procurement_arena replay --scenario-file $scenarioFile --manifest $manifestFile
+```
+
+For a durable experiment directory, use `--experiment-dir` instead of the
+legacy `--output` manifest path. The directory stores the original scenario
+text, decision ledger and decision-time snapshots, separate unsealed evaluation,
+configuration/source identity, and a hash-bound manifest. Inspect verifies the
+saved artifacts and reads them without rerunning the policy; replay verifies
+those hashes and then reruns the deterministic policy against the retained
+input:
+
+```powershell
+$experimentDir = Join-Path $env:TEMP 'trailforge-gt003-experiment'
+uv run --python 3.11 python -m athena_procurement_arena scenario --scenario-file $scenarioFile --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena inspect --experiment-dir $experimentDir
+uv run --python 3.11 python -m athena_procurement_arena replay --experiment-dir $experimentDir
+```
+
+`inspect` prints indented JSON so the ordered decision snapshots and separate
+evaluation can be read directly in a terminal or redirected to a file.
+
+Experiment creation refuses an existing directory. Artifact hashes detect
+accidental or isolated changes; they are integrity checks, not signatures
+against deliberate coordinated rewriting. Ordinary JSON scenario truth remains
+unsealed, so outcome metrics are unavailable and unscored.
+
+This unsealed source-backed input demonstrates mechanics only; it does not
+establish historical accuracy or scoreable evidence. The former seed-only
+pseudo-replay has been intentionally removed. Use `smoke` for an explicit
+synthetic mechanics run.
 
 The built-in historical replay registry is `UNVERIFIED`. Checked-in
 source-backed GT-003, GT-007, and GT-008 bundles are `VERIFIED`, but none is

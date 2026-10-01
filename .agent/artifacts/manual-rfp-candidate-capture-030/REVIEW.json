@@ -1,0 +1,9 @@
+{
+  "task_id": "manual-rfp-candidate-capture-030",
+  "verdict": "PASS",
+  "reviewer": "Astra independent audit",
+  "scope": "current uncommitted diff and repair-only re-audit",
+  "initial_finding": "Whitespace-only reviewed_by could bypass the named-review requirement.",
+  "repair_verified": "Acceptance requires reviewed_by.strip(); regression coverage added; CLI has no alternate bypass.",
+  "confirmed": ["candidate serialization excludes raw excerpt", "acceptance rechecks exact quote and source hash", "candidate JSON cannot load as a fixture bundle", "blank notes and UNKNOWN lifecycle fail", "no network, automation, or outreach was added"]
+}

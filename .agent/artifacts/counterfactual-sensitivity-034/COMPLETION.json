@@ -1,0 +1,49 @@
+{
+  "packet": "counterfactual-sensitivity-034",
+  "status": "REPAIR_READY_FOR_REVIEW",
+  "base_commit": "dac2ed431fc9ae1332ad82a90b8a07f06aedad4c",
+  "candidate": "uncommitted working tree on codex/counterfactual-sensitivity-034; no commit created",
+  "repair_summary": "Addressed Astra REVIEW-2 CORRECT finding. Stability checks now treat newly asserted numeric confidence after missing/unknown confidence as inflation and fail closed.",
+  "implementation": [
+    "Substantive policy response compares procurement state, power status/gap, and action independently of confidence.",
+    "Required-change cases require substantive response. Stability cases require no substantive response and no confidence increase.",
+    "Numeric confidence after absent or nonnumeric prior confidence is an increase; numeric-to-numeric confidence is an increase only when the new value is higher.",
+    "Replay hashes remain provenance. The extension helper uses extension=True as a synthetic recognized signal and does not alter fixture truth."
+  ],
+  "baseline_a_synthetic_seed_9": {
+    "passed": ["contract_extension", "duplicate_procurement", "unknown_supply", "private_procurement"],
+    "failed": ["cancellation"],
+    "note": "Cancellation remains an observed sensitivity failure; policy and fixtures were not changed to force a pass."
+  },
+  "changed_files": [
+    "src/athena_procurement_arena/robustness.py",
+    "tests/procurement_arena/test_robustness.py",
+    ".agent/artifacts/counterfactual-sensitivity-034/COMPLETION.json"
+  ],
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest -q tests/procurement_arena/test_robustness.py tests/procurement_arena/test_athena_optimizer.py",
+      "exit_code": 0,
+      "result": "10 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/robustness.py tests/procurement_arena/test_robustness.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+      "exit_code": 0,
+      "result": "137 tests passed; source compilation passed; Ruff passed; all three verified fixture bundles passed"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "Passed; Git emitted LF-to-CRLF normalization warnings for modified source/test files"
+    }
+  ],
+  "unknowns": [
+    "GitHub CI/network validation was not run per instruction.",
+    "Candidate remains uncommitted for fresh independent review."
+  ]
+}

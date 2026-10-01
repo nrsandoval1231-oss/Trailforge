@@ -1,0 +1,12 @@
+{
+  "audited_commit": "dfbb10f203578f93e00155d8f771baa9fc195677",
+  "packet": "arena-invariant-repair-033",
+  "independent_raw_verdict": "CORRECT",
+  "review_status": "FIX",
+  "controller_direction": "CORRECT",
+  "completion_candidate": false,
+  "recorded_at_utc": "2026-09-24T23:08:20Z",
+  "finding": "A mutable dataclass nested in a forecast is retained by reference; later caller mutation changes the frozen record and invalidates the ledger hash.",
+  "required_repair": "Reject unsupported mutable forecast values before append or recursively detach and freeze all canonical value types, including dataclasses.",
+  "validation_boundary": "Local gate passed before this review; no remote validation used. The verdict applies only to the exact audited commit."
+}

@@ -1,0 +1,10 @@
+{
+  "audited_commit": "18345f2128a1d98b870a024ba06f349208118178",
+  "scope": "Packet 033 acceptance-record documentation fidelity only",
+  "independent_raw_verdict": "CORRECT",
+  "review_status": "FIX",
+  "recorded_at_utc": "2026-09-24T23:18:00Z",
+  "finding": "EPISODE.md named the audit-report commit 24c7990 as the candidate audited by the 20-item Build Packet #0 audit; the actual audited candidate was b73dd45.",
+  "repair": "EPISODE.md now distinguishes the audited candidate b73dd45 from the later report-record and packet-base commit 24c7990.",
+  "code_acceptance_boundary": "Astra ACCEPT of packet 033 code commit 4dc86a5 is unchanged; full Build Packet #0 remains open."
+}

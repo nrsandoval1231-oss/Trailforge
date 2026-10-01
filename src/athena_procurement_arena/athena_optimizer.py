@@ -1,12 +1,18 @@
 """Deterministic Athena adapter for bounded policy optimization."""
 from __future__ import annotations
 
+import hashlib
+import inspect
+import json
+import marshal
+import os
 from collections.abc import Callable, Mapping
+from pathlib import Path
 from typing import Any
 
 from .campaign import synthetic_scenario
 from .evaluation import evaluate_replay
-from .governance import AthenaInput, CandidateLesson, CandidatePolicy
+from .governance import AthenaInput, CandidateLesson, CandidatePolicy, NegativeKnowledge
 from .policies import (
     BaselineA,
     buyer_frequency,
@@ -21,6 +27,90 @@ from .tournament import tournament_pipeline
 from .world import TemporalWorld
 
 Policy = Callable[[Mapping[str, Any]], tuple[dict[str, Any], str]]
+
+def _policy_fingerprint(policy: Policy) -> str | None:
+    """Bind a preflight idea to its implementation module and captured config."""
+    code = getattr(policy, "__code__", None)
+    source_path = inspect.getsourcefile(policy)
+    if code is None or source_path is None:
+        return None
+    try:
+        closure = [cell.cell_contents for cell in (getattr(policy, "__closure__", None) or ())]
+        captures = json.dumps(
+            {"defaults": getattr(policy, "__defaults__", None), "closure": closure},
+            sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+        module_digest = hashlib.sha256(Path(source_path).read_bytes()).digest()
+        code_digest = marshal.dumps((code.co_code, code.co_consts, code.co_names, code.co_varnames))
+    except (OSError, TypeError, ValueError, AttributeError):
+        return None
+    return hashlib.sha256(module_digest + code_digest + captures).hexdigest()
+
+
+def _default_arena_source_roots() -> dict[str, Path]:
+    source_root = Path(__file__).resolve().parent.parent
+    return {
+        "athena_procurement_arena": source_root / "athena_procurement_arena",
+        "athena_arena": source_root / "athena_arena",
+    }
+
+
+def _arena_source_inventory(package_roots: Mapping[str, Path] | None = None) -> list[dict[str, str]] | None:
+    """Hash every Python source file in both local Arena packages."""
+    roots = package_roots if package_roots is not None else _default_arena_source_roots()
+    if set(roots) != {"athena_procurement_arena", "athena_arena"}:
+        return None
+    inventory: list[dict[str, str]] = []
+    for package in sorted(roots):
+        root = Path(roots[package])
+        try:
+            if not root.is_dir() or (package == "athena_procurement_arena" and not (root / "__init__.py").is_file()):
+                return None
+            def raise_walk_error(error: OSError) -> None:
+                raise error
+
+            found_source = False
+            for current, directories, filenames in os.walk(root, onerror=raise_walk_error, followlinks=False):
+                current_path = Path(current)
+                directories.sort()
+                filenames.sort()
+                if any((current_path / name).is_symlink() for name in directories + filenames):
+                    return None
+                for filename in filenames:
+                    source_file = current_path / filename
+                    if source_file.suffix != ".py":
+                        continue
+                    if not source_file.resolve().is_relative_to(root.resolve()):
+                        return None
+                    found_source = True
+                    inventory.append({
+                        "package": package,
+                        "path": source_file.relative_to(root).as_posix(),
+                        "sha256": hashlib.sha256(source_file.read_bytes()).hexdigest(),
+                    })
+            if not found_source:
+                return None
+        except (OSError, RuntimeError, ValueError):
+            return None
+    return inventory
+
+
+def _evaluation_context_fingerprint(seed: int, *, package_roots: Mapping[str, Path] | None = None) -> str | None:
+    """Bind reuse to seed/registry and the complete local Arena source surface."""
+    inventory = _arena_source_inventory(package_roots)
+    if inventory is None:
+        return None
+    context = {
+        "seed": seed,
+        "scenario_families": list(SCENARIO_FAMILIES),
+        "source_inventory": inventory,
+    }
+    try:
+        serialized = json.dumps(context, sort_keys=True, separators=(",", ":"),
+                                 ensure_ascii=False, allow_nan=False)
+    except (TypeError, ValueError):
+        return None
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def weighted_threshold_policy(threshold: int) -> Policy:
@@ -79,11 +169,12 @@ def _robustness_pass(policy_id: str, policy: Policy, seed: int) -> tuple[bool, b
         for record in adversarial.ledger.records
     )
     cases = counterfactual_suite(synthetic_scenario(seed), policy_id, policy)
-    counterfactual_pass = all(case["changed"] for case in cases)
+    counterfactual_pass = all(case["passed"] for case in cases)
     return adversarial_pass, counterfactual_pass
 
 
-def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, fixture_bundle: Any = None) -> dict[str, Any]:
+def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, fixture_bundle: Any = None,
+                            negative_knowledge: NegativeKnowledge | None = None) -> dict[str, Any]:
     """Run Athena's candidate loop; promotion remains human/holdout gated."""
     incumbent_id = "BASELINE_A"
     incumbent: Policy = BaselineA()
@@ -95,17 +186,43 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
         **{f"WEIGHTED_T{threshold}": weighted_threshold_policy(threshold) for threshold in (2, 4, 6)},
     }
     incumbent_metrics = evaluate_policy(incumbent_id, incumbent, seed=seed)
+    evaluation_context = _evaluation_context_fingerprint(seed)
     results: dict[str, Any] = {}
     for candidate_id, policy in candidates.items():
+        lesson_id = f"lesson-{candidate_id.lower()}"
+        hypothesis = f"Evaluate whether {candidate_id} improves evidence efficiency over {incumbent_id}."
+        policy_fingerprint = _policy_fingerprint(policy)
+        proposed_change = {
+            "candidate_policy": candidate_id,
+            "policy_fingerprint": policy_fingerprint,
+            "evaluation_context_fingerprint": evaluation_context,
+        }
+        if negative_knowledge is not None:
+            if (policy_fingerprint is None or evaluation_context is None) and negative_knowledge.contains(lesson_id):
+                disposition = "CONFLICT"
+            else:
+                disposition = negative_knowledge.classify_idea(
+                    lesson_id, hypothesis, SCENARIO_FAMILIES, incumbent_id, proposed_change,
+                )
+            if disposition != "NEW":
+                stored_lesson = next(item for item in negative_knowledge.lessons if item.lesson_id == lesson_id)
+                reason = "REJECTED_IDEA" if disposition == "REJECTED" else "REJECTED_IDENTITY_CONFLICT"
+                results[candidate_id] = {
+                    "status": "SKIPPED" if disposition == "REJECTED" else "CONFLICT",
+                    "skip_reason": reason,
+                    "lesson": stored_lesson.__dict__,
+                    "lesson_digest": negative_knowledge.lesson_digest(lesson_id),
+                }
+                continue
         metrics = evaluate_policy(candidate_id, policy, seed=seed)
         adversarial_pass, counterfactual_pass = _robustness_pass(candidate_id, policy, seed)
         lesson = CandidateLesson(
-            lesson_id=f"lesson-{candidate_id.lower()}",
-            hypothesis=f"Evaluate whether {candidate_id} improves evidence efficiency over {incumbent_id}.",
+            lesson_id=lesson_id,
+            hypothesis=hypothesis,
             supporting_cohort=SCENARIO_FAMILIES,
             counterexamples=tuple(family for family in SCENARIO_FAMILIES if metrics["recall"] < incumbent_metrics["recall"]),
             affected_policy=incumbent_id,
-            proposed_change={"candidate_policy": candidate_id},
+            proposed_change=proposed_change,
             expected_effect={"recall": metrics["recall"], "precision": metrics["precision"]},
         )
         candidate = CandidatePolicy(candidate_id, lesson.lesson_id, "1", {"policy_id": candidate_id})
@@ -136,12 +253,17 @@ def run_athena_optimization(*, seed: int = 1, holdout_available: bool = False, f
             from .fixtures import score_fixture_bundle
             results[candidate_id]["verified_holdout"] = score_fixture_bundle(
                 candidate_id, policy, fixture_bundle, subset="holdout")
+    conflicts = {key: item["skip_reason"] for key, item in results.items() if item.get("status") == "CONFLICT"}
     return {
-        "status": "PASS",
+        "status": "CONFLICT" if conflicts else "PASS",
         "seed": seed,
         "incumbent": {"policy_id": incumbent_id, "metrics": incumbent_metrics},
         "holdout_available": holdout_available,
         "search_space": {"weighted_thresholds": [2, 4, 6]},
         "candidates": results,
-        "promotion_count": sum(item["gates"]["outcome"] == "PROMOTE" for item in results.values()),
+        "skipped_candidates": {
+            key: item["skip_reason"] for key, item in results.items() if item.get("status") == "SKIPPED"
+        },
+        "conflicts": conflicts,
+        "promotion_count": sum(item.get("gates", {}).get("outcome") == "PROMOTE" for item in results.values()),
     }

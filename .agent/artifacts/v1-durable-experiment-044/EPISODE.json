@@ -1,0 +1,101 @@
+{
+  "task_id": "v1-durable-experiment-044",
+  "started_utc": "2026-10-01T14:11:59.370327Z",
+  "start_scope": "first Slice 2 builder dispatch; excludes earlier planning and Phase 0",
+  "finished_utc": "2026-10-01T15:14:55.7402276Z",
+  "lane": "full; one mutable builder at a time",
+  "model": "gpt-6-luna low builders; gpt-6-sol medium review; gpt-5.6-terra medium bounded recovery",
+  "config_identity": "codex exec --ignore-user-config, explicit model and reasoning, approval never, danger-full-access, ephemeral; startup reports verified; optional MCP startup warnings did not prevent work",
+  "planning_seconds": null,
+  "build_seconds": null,
+  "validation_seconds": null,
+  "audit_seconds": null,
+  "elapsed_to_accepted_seconds": 3776.37,
+  "repair_count": 4,
+  "luna_repair_count": 3,
+  "specialist_recovery_count": 1,
+  "scope_risk_match": null,
+  "audit_findings_count": null,
+  "regressions_found": 1,
+  "tokens": {
+    "input_measured": null,
+    "output_measured": null,
+    "input_unknown": true,
+    "output_unknown": true
+  },
+  "attempts": [
+    {
+      "role": "Luna initial",
+      "session": "01a0f7ce-c907-7551-bd93-12b28950b414",
+      "aggregate_tokens_reported": 158809,
+      "result": "197-test gate PASS; REVIEW-1 FIX"
+    },
+    {
+      "role": "Sol review 1",
+      "session": "01a0f7dc-b938-7a90-ba26-f0ecbb92af8b",
+      "aggregate_tokens_reported": null,
+      "result": "FIX; six bounded findings"
+    },
+    {
+      "role": "Luna repair 1",
+      "session": "01a0f7e1-7b78-7610-8867-e56fd04a1095",
+      "aggregate_tokens_reported": 89398,
+      "result": "203-test gate PASS; REVIEW-2 FIX; incorrect builder start time corrected in CANDIDATE-2-VALIDATION.md"
+    },
+    {
+      "role": "Sol review 2",
+      "session": "01a0f7e7-ac13-7c83-9592-c788f1fc9d39",
+      "aggregate_tokens_reported": 107004,
+      "result": "FIX; three remaining findings"
+    },
+    {
+      "role": "Luna repair 2",
+      "session": "01a0f7eb-6fea-7d81-a90c-dc4d2e557825",
+      "aggregate_tokens_reported": 94275,
+      "result": "214-test gate reported PASS; controller valid unsorted evidence probe FAIL; not accepted"
+    },
+    {
+      "role": "Terra bounded recovery",
+      "session": "01a0f7f1-8f3c-7020-85fc-1eac8f57c4bd",
+      "aggregate_tokens_reported": 91370,
+      "result": "Reproduced ordering failure; fixed identity-aware verification and ordered timeline; final worker terminal status UNKNOWN resolved by controller final gate"
+    },
+    {
+      "role": "Sol final review",
+      "session": "01a0f7f9-342e-7671-93b5-7736588d8b26",
+      "aggregate_tokens_reported": 19826,
+      "result": "FIX; redundant saved summaries not bound to verified records"
+    },
+    {
+      "role": "Luna summary-binding follow-up",
+      "session": "01a0f800-2ab2-74e1-be27-eb2b0a2b6b3d",
+      "aggregate_tokens_reported": 51428,
+      "result": "223-test gate PASS; distinct new summary-binding finding repaired"
+    },
+    {
+      "role": "Sol acceptance review",
+      "session": "01a0f804-ea1e-7c71-9e6a-f8758b200b36",
+      "aggregate_tokens_reported": 54475,
+      "result": "PASS; exact six file hashes; independent 52 focused tests PASS"
+    }
+  ],
+  "acceptance": {
+    "status": "PASS_SLICE_2_ONLY",
+    "accepted_at_utc": "2026-10-01T15:14:55.7402276Z",
+    "independent_review": "REVIEW-ACCEPTANCE.md"
+  },
+  "learning": {
+    "state": "Durable save/inspect/replay implemented but two reviews found incomplete bindings; a stronger verifier introduced a valid-input rejection.",
+    "decision": "Return to owner durable-history requirement and existing world ordering contract; route one bounded specialist recovery after two Luna repairs.",
+    "action": "Retain actual evidence order, compare identity sets to sorted ledger IDs, bind complete timeline, add behavioral regressions and controller probes.",
+    "outcome": "223-test full controller gate, GT-003 restart/tamper/determinism, no-execution inspect, unsorted evidence and wheel replay PASS; independent Sol PASS",
+    "deterministic_evaluation": "FINAL-VALIDATION.md and retained acceptance/ordering/no-execution probes",
+    "attribution": "Verifier conflated sorted identifiers with actual input sequence; acceptance only on one real case did not expose it.",
+    "candidate_lesson": "Before freezing a persisted-state verifier, include a valid noncanonical-order input and test the public inspection interface with execution disabled.",
+    "metric": "valid-input false rejection count; desired direction decrease",
+    "validation": "ordering probe failed before recovery and passed after; only one incident, not matched general efficiency evidence",
+    "promotion": "CANDIDATE_ONLY; no global memory or policy change",
+    "reversibility": "Local packet/probe guidance only; retained failures and prior candidates remain available"
+  },
+  "notes": "No speedup claimed. Aggregate worker-reported tokens are not input/output splits and are not inferred from log size. No full V1, forecast, remote, merge or deployment acceptance."
+}

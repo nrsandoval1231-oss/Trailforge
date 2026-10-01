@@ -1,0 +1,18 @@
+{
+  "task_id": "scope-labeled-corpus-008",
+  "status": "COMPLETE",
+  "objective": "Label the scenario-family corpus with commercial scope.",
+  "implementation": [
+    "Added family_scope() with MAINTENANCE_ONLY, TEMPORARY_POWER_OR_INSTALLATION, and UNKNOWN labels.",
+    "Added explicit scope claims to family evidence so labels pass through temporal replay.",
+    "Marked service_on_time as maintenance-only and representative installation/temporary-power families in scope."
+  ],
+  "validation": {
+    "pytest": "56 passed",
+    "ruff": "All checks passed",
+    "family_templates": "40 validated",
+    "maintenance_only_family": "ignored",
+    "temporary_power_family": "eligible"
+  },
+  "boundary": "These labels are synthetic mechanics controls and do not establish real-world procurement accuracy."
+}

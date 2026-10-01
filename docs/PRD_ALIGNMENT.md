@@ -14,7 +14,7 @@ no-autofill, no-submission, and no-runtime-authority boundaries remain binding.
 ## Current assessment
 
 The repository contains implementation and tests for the packet's DSL, temporal
-world and evidence gates, shared policy contract and controls, frozen ledger,
+world and evidence gates, `BASELINE_A` contract and standalone controls, frozen ledger,
 separate evaluation dimensions, invariant checks, seeded mutations, power-scope
 accounting, adversarial/counterfactual cases, Athena candidate artifacts,
 tournament gates, negative knowledge, fixture registry, manifests, and local
@@ -25,8 +25,10 @@ benchmark. The 1,000-variant mutation check is in
 campaign claims,
 not an independent acceptance verdict for the current candidate.
 
-See [Finish readiness](FINISH_READINESS.md) for the requirement evidence map,
-the fresh acceptance audit needed, the GitHub CI blocker, and the missing
+See [Finish readiness](FINISH_READINESS.md) and the
+[independent 20-item re-audit](BUILD_PACKET_0_REAUDIT.md) for the current
+requirement evidence map, the local acceptance gaps, the historical GitHub
+CI blocker, and the missing
 real-world holdout evidence. The campaign report's `66 passed` is its historical
 snapshot, not the current test count.
 

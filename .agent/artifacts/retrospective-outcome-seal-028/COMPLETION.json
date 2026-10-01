@@ -1,0 +1,21 @@
+{
+  "task_id": "retrospective-outcome-seal-028",
+  "status": "PASS",
+  "objective": "Create explicit, evidence-bound retrospective outcome seals and a cohort container for later evaluation.",
+  "changed_files": [
+    "src/athena_procurement_arena/retrospective_seal.py",
+    "src/athena_procurement_arena/__init__.py",
+    "src/athena_procurement_arena/cli.py",
+    "tests/procurement_arena/test_retrospective_seal.py",
+    "docs/PROJECT_SIGNAL_TRACING.md",
+    "README.md",
+    ".agent/tasks/retrospective-outcome-seal-028.md"
+  ],
+  "validation": [
+    {"command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py", "exit_code": 0, "evidence": "110 passed; compile passed; Ruff passed; 3 verified bundles passed"},
+    {"command": "seal-trace-outcome and build-outcome-cohort CLI smoke test", "exit_code": 0, "evidence": "observed_count 1; not_observed_count 0; inconclusive_count 0; seal_hash 7b078a181e6e0f3e800a0bdd1d7c86995ca3f880364796be15804876bd852e69; outcome cohort hash 390158bc4d80b9049bd7097a3d66e9dc5582738729aa1fa4b3a7c9a45b4c547e"},
+    {"command": "git diff --check", "exit_code": 0, "evidence": "no whitespace errors"}
+  ],
+  "boundaries": ["explicit reviewer statement", "exact evidence quote", "trace-hash bound", "target ID required only for observed state", "no inferred outcomes", "no automatic negative labels", "no Athena update", "no promotion authority"],
+  "next_packet": "evaluate sealed outcome cohort against cohort-bound lead-time report"
+}

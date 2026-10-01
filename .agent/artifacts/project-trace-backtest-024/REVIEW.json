@@ -1,0 +1,7 @@
+{
+  "task_id": "project-trace-backtest-024",
+  "verdict": "PASS",
+  "scope_check": "The backtest measures only observed early-to-target pairs in reviewer-bound traces and does not create negative labels.",
+  "evidence_check": "Focused tests, full validation, and the CLI smoke test passed with a stable hash-bound report.",
+  "remaining_risk": "Lead-time usefulness is not yet a predictive-accuracy claim; identity quality and sealed negative/outcome cohorts remain required before Athena learning."
+}
