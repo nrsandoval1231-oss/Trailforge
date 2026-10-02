@@ -24,12 +24,22 @@
     "reversibility": "Change can be reverted as a focused Git diff without altering retained captures."
   },
   "independent_verdict": "PASS",
-  "candidate_sha256": "790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6",
+  "candidate_sha256": "afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1",
   "graph_transition": {
     "HC-A": "IMPLEMENTATION_ACCEPTED",
     "HC-A-HISTORY": "READY"
   },
   "next_direction": "CONTINUE",
   "parent_finish_contract": "NOT_SATISFIED",
-  "authority": "Commit/push/one PR authorized by brief; no merge, deployment, outreach or policy promotion."
+  "authority": "Commit/push/one PR authorized by brief; no merge, deployment, outreach or policy promotion.",
+  "packaging_recovery": {
+    "failure": "Git automatic newline conversion changed retained hash-bound evidence after checkout.",
+    "repair": "Scoped -text attributes and index renormalization; original working corpus/source bytes unchanged.",
+    "evaluation": "213 indexed files byte-identical in fresh Windows checkout; eight cases/eight bundles verify; full gate passes; Sol delta PASS.",
+    "evidence": [
+      "CONTROLLER_PORTABILITY.json",
+      "REVIEW-portability.json",
+      "controller-packaging-validation.log"
+    ]
+  }
 }

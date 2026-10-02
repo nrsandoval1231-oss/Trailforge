@@ -22,7 +22,9 @@ controller owns real corpus, this graph, status, verification and PR integration
 One builder; no independent READY implementation node warrants parallel builders.
 Sol reviews the frozen integrated candidate before commit/push/PR. No merge.
 
-Independent Sol PASS: source candidate `790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6`.
-See `artifacts/pre-rfp-slice-a/REVIEW.json`. Graph transition records acceptance
+Independent Sol PASS: source candidate `afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1`.
+See `artifacts/pre-rfp-slice-a/REVIEW-portability.json`. Graph transition records acceptance
 only for the frozen source files; this bookkeeping is outside source audit scope.
 Next direction CONTINUE. Full product finish contract remains unmet.
+
+Portability delta independently accepted; original review retained. Fresh Windows checkout: 213 retained files byte-identical, eight cases and eight bundles verified.

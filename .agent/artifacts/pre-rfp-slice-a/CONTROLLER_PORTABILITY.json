@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "utc": "2026-10-02T14:56:38.195525+00:00",
+  "files_compared": 213,
+  "byte_mismatches": 0,
+  "fresh_checkout_cases_passed": 8,
+  "fresh_checkout_experiments_passed": 8,
+  "core_autocrlf": true,
+  "previous_broad_probe_mismatches": 43,
+  "repair": "Scoped -text attributes and index renormalization preserve original retained bytes."
+}

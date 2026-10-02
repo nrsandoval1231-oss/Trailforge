@@ -1,0 +1,69 @@
+{
+  "schema_version": "trailforge-portability-handoff-v2",
+  "status": "READY_FOR_CONTROLLER_RECHECK_AND_SOL_DELTA_REVIEW",
+  "repository": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge",
+  "branch": "codex/trailforge-pre-rfp-lab",
+  "head_sha": "727c7e7e718096565fe938c7306ecae3776224da",
+  "source_candidate_sha": "790cb prefix cited by controller; expanded candidate remains controller-owned",
+  "scope": "Scoped Git attributes and index renormalization only. No case, capture, experiment, or source working-tree bytes were edited.",
+  "changed_file": ".gitattributes",
+  "changed_file_sha256": "61b2cadd31c6c04954e0ee12fe175ce54c22b0d2d55189ce375f6fae50b297e4",
+  "git_attributes": {
+    "rules": [
+      ".agent/artifacts/pre-rfp-slice-a/** -text whitespace=cr-at-eol",
+      "research/pre-rfp-corpus/** -text whitespace=cr-at-eol"
+    ],
+    "text": "unset",
+    "whitespace": "cr-at-eol"
+  },
+  "index_repair": {
+    "command": "git add --renormalize -- .agent/artifacts/pre-rfp-slice-a research/pre-rfp-corpus",
+    "indexed_files_checked": 211,
+    "worktree_vs_staged_byte_mismatches": 0,
+    "old_HEAD_vs_new_index_LF_normalized_mismatches": 0,
+    "diff_cached_check_exit_code": 0,
+    "note": "Staged blob line-ending bytes now match original retained worktree bytes; prior HEAD/new index contents are identical after CRLF-to-LF normalization."
+  },
+  "checkout_probe": {
+    "command": "git -c core.autocrlf=true checkout-index --force --prefix=<fresh-temp-prefix> -- <211 indexed evidence and corpus files>",
+    "core_autocrlf": true,
+    "fresh_prefix": "C:\\Users\\nrsan\\AppData\\Local\\Temp\\trailforge-evidence-v2-auepygk_",
+    "files_compared": 211,
+    "source_vs_checkout_byte_matches": 211,
+    "mismatches": 0,
+    "known_regression_file": ".agent/artifacts/pre-rfp-slice-a/final-run-v3/experiments/PRF-001/input.json",
+    "retained_sha256": "2fef7a4ead067d58620af7f3bea8f7399025ed79c5ac4b6e98caa7fcc8c8cfc1",
+    "fresh_checkout_sha256": "2fef7a4ead067d58620af7f3bea8f7399025ed79c5ac4b6e98caa7fcc8c8cfc1"
+  },
+  "runtime_verification": {
+    "load_case_from_fresh_checkout": {
+      "passed": 8,
+      "failed": 0
+    },
+    "verify_experiment_from_fresh_checkout": {
+      "passed": 8,
+      "failed": 0,
+      "manifest_hashes": {
+        "PRF-001": "1e841e05c4811c67cedea06d1d038e031afcc7fd93a1f03ad7fefc2b0e02ed17",
+        "PRF-002": "14432f7134079432aa51de2f6bc839cb02079d4bd417e917c5402c596972ab93",
+        "PRF-003": "430388b9580bab90db7ae74a5a3079df6dcd2df1af3fc5b8e532f2bd8ae6139f",
+        "PRF-004": "63ba649290985e22e7da7f3d9a1a0f9fe5dd648396cd87aae3f013b8f9c24f22",
+        "PRF-005": "36a08d3e46f22084f1137b7afe0eb34852d82263cd4aeafd509a968910786c3a",
+        "PRF-006": "b7640d0e5b7d6cdfdf907625181188ef6de01e1f40c66066a2c751bc8001c81d",
+        "PRF-007": "d5e32c8f8c09685faa6e1ee3e7667f9ff6b2dcb82cea9da959cb0e72db0c5cc7",
+        "PRF-008": "e621d7111a299320029f3acda741bdba8ea68e9f1027601d0d596942255929e3"
+      }
+    }
+  },
+  "validation": {
+    "scope": "attribute-only packaging repair",
+    "full_suite_rerun": false,
+    "reason": "Controller reports unchanged-source mandatory gate exit 0; direct fresh checkout byte comparison, all 8 load_case calls, and all 8 verify_experiment calls passed.",
+    "commit_or_push": false
+  },
+  "preserved_artifact": {
+    "path": ".agent/artifacts/pre-rfp-slice-a/PORTABILITY_HANDOFF.json",
+    "overwritten": false
+  },
+  "next_direction": "CONTINUE: controller updates expanded candidate storage hashes and requests Sol delta review before push."
+}

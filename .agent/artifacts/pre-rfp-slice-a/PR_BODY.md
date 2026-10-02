@@ -38,8 +38,12 @@ retained Firecrawl markdown is not an original PDF binary or historical archive.
   identical per-case input, experiment and decision hashes. Output directory is
   the only per-case result normalization; aggregate JSON hashes bind that directory.
 - Exact candidate and controller evidence:
-  `.agent/artifacts/pre-rfp-slice-a/CANDIDATE.json` and `CONTROLLER_VALIDATION.json`.
+  `.agent/artifacts/pre-rfp-slice-a/CANDIDATE-portability.json`, `CONTROLLER_VALIDATION.json`, and `CONTROLLER_PORTABILITY.json`.
 - Independent review verdict: `.agent/artifacts/pre-rfp-slice-a/REVIEW.json`.
+
+- Packaging gate repeated successfully. Scoped Git attributes preserve hash-bound
+  evidence on Windows: 213 indexed files byte-identical after fresh checkout,
+  all eight cases loaded and all eight experiment bundles verified.
 
 ## Boundaries and next slice
 

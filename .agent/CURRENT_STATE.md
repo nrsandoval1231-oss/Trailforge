@@ -26,7 +26,7 @@ prediction success. No sealed holdout, Jev or Athena candidate evaluation.
 
 Current direction: CONTINUE to HC-A-HISTORY after bounded HC-A implementation
 acceptance. Sol PASS binds source candidate
-`790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6`.
+`afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1`.
 Controller gates: 318 passed, 1 existing Windows symlink-privilege skip; compile,
 Ruff, three fixture bundles and two offline real-corpus runs PASS.
 Exact final gates, frozen file identities and independent verdict live in
@@ -38,3 +38,5 @@ Next implementation frontier after acceptance: recover verified historical
 precursors and expand source-backed acquisition/classification. Exposed cases
 cannot be renamed as an untouched holdout. No merge, outreach or deployment
 is authorized. The current brief does authorize one focused commit/push/PR.
+
+Portability delta independently accepted; original review retained. Fresh Windows checkout: 213 retained files byte-identical, eight cases and eight bundles verified.
