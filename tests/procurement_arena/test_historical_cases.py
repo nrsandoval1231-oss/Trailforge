@@ -142,6 +142,40 @@ def test_case_import_rejects_backdated_availability_without_earlier_version_capt
         load_case(case_path)
 
 
+@pytest.mark.parametrize("field", ["event_date", "document_date", "verified_available_at", "observed_at"])
+@pytest.mark.parametrize("bad_value", ["not-a-date", "2026-10-02T13:54:25"])
+def test_non_replay_source_dates_are_validated_even_when_other_dates_are_unknown(tmp_path, field, bad_value):
+    case_path, raw = _case_bundle(tmp_path)
+    historical = raw["evidence_sources"][0]
+    historical[field] = bad_value
+    case_path.write_text(json.dumps(raw), encoding="utf-8")
+    with pytest.raises(ValueError):
+        load_case(case_path)
+
+
+@pytest.mark.parametrize("field", ["event_date", "document_date", "verified_available_at", "observed_at"])
+def test_one_valid_non_replay_source_date_with_other_dates_unknown_is_allowed(tmp_path, field):
+    case_path, raw = _case_bundle(tmp_path)
+    historical = raw["evidence_sources"][0]
+    historical[field] = "2026-10-02T13:54:25.267650+00:00"
+    case_path.write_text(json.dumps(raw), encoding="utf-8")
+    case, scenario = load_case(case_path)
+    assert getattr(case.evidence_sources[0], field) == historical[field]
+    assert len(scenario.evidence) == 1
+
+
+def test_all_valid_non_replay_source_dates_are_allowed(tmp_path):
+    case_path, raw = _case_bundle(tmp_path)
+    historical = raw["evidence_sources"][0]
+    for field in ("event_date", "document_date", "verified_available_at", "observed_at"):
+        historical[field] = "2026-10-02T13:54:25.267650+00:00"
+    case_path.write_text(json.dumps(raw), encoding="utf-8")
+    case, scenario = load_case(case_path)
+    assert all(getattr(case.evidence_sources[0], field) != "UNKNOWN" for field in
+               ("event_date", "document_date", "verified_available_at", "observed_at"))
+    assert len(scenario.evidence) == 1
+
+
 @pytest.mark.parametrize("identity_field", ["scenario_id", "truth", "lineage_family"])
 def test_case_import_rejects_scenario_identity_mismatch(tmp_path, identity_field):
     from dataclasses import replace
@@ -182,7 +216,7 @@ def test_family_cannot_split_across_cohort_groups(tmp_path):
     second_scenario_path.write_text(second_scenario, encoding="utf-8")
     one, _ = load_case(first)
     two, _ = load_case(second)
-    with pytest.raises(ValueError, match="family split"):
+    with pytest.raises(ValueError, match="project identity split|procurement family split"):
         validate_family_splits((one, two))
 
 
@@ -202,8 +236,60 @@ def test_identical_capture_cannot_cross_splits_under_different_family_ids(tmp_pa
     scenario_path.write_text(ScenarioDsl.dumps(scenario), encoding="utf-8")
     one, _ = load_case(first)
     two, _ = load_case(second)
-    with pytest.raises(ValueError, match="capture hash split|content hash split"):
+    with pytest.raises(ValueError, match="project identity split|capture hash split|content hash split"):
         validate_family_splits((one, two))
+
+
+def test_known_project_stays_in_one_split_across_families_and_captures(tmp_path):
+    from dataclasses import replace
+
+    path, _ = _case_bundle(tmp_path)
+    case, _ = load_case(path)
+    refs = tuple(replace(ref, capture_hash=f"different-{i}", content_sha256=f"content-{i}")
+                 for i, ref in enumerate(case.evidence_sources))
+    second = replace(case, case_id="case-2", procurement_family_id="family-2",
+                     holdout_group=case.holdout_group, evidence_sources=refs)
+    validate_family_splits((case, second))
+
+
+def test_known_project_cannot_cross_splits_across_families_and_captures(tmp_path):
+    from dataclasses import replace
+
+    path, _ = _case_bundle(tmp_path)
+    case, _ = load_case(path)
+    refs = tuple(replace(ref, capture_hash=f"different-{i}", content_sha256=f"content-{i}")
+                 for i, ref in enumerate(case.evidence_sources))
+    second = replace(case, case_id="case-2", procurement_family_id="family-2",
+                     holdout_group="HOLDOUT", evidence_sources=refs)
+    with pytest.raises(ValueError, match="project identity split"):
+        validate_family_splits((case, second))
+
+
+def test_different_projects_may_use_different_splits(tmp_path):
+    from dataclasses import replace
+
+    path, _ = _case_bundle(tmp_path)
+    case, _ = load_case(path)
+    refs = tuple(replace(ref, capture_hash=f"different-{i}", content_sha256=f"content-{i}")
+                 for i, ref in enumerate(case.evidence_sources))
+    second = replace(case, case_id="case-2", procurement_family_id="family-2",
+                     project_identity="Another Project", holdout_group="HOLDOUT", evidence_sources=refs)
+    validate_family_splits((case, second))
+
+
+def test_unknown_project_identity_is_not_matched_as_real_identity(tmp_path):
+    from dataclasses import replace
+
+    path, _ = _case_bundle(tmp_path)
+    case, _ = load_case(path)
+    refs_one = tuple(replace(ref, capture_hash=f"one-{i}", content_sha256=f"one-content-{i}")
+                     for i, ref in enumerate(case.evidence_sources))
+    refs_two = tuple(replace(ref, capture_hash=f"two-{i}", content_sha256=f"two-content-{i}")
+                     for i, ref in enumerate(case.evidence_sources))
+    one = replace(case, project_identity="UNKNOWN", procurement_family_id="family-1", evidence_sources=refs_one)
+    two = replace(case, case_id="case-2", project_identity=" unknown ", procurement_family_id="family-2",
+                  holdout_group="HOLDOUT", evidence_sources=refs_two)
+    validate_family_splits((one, two))
 
 
 def test_replay_is_offline_and_never_awards_discovery_credit(tmp_path):

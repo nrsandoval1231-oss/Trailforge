@@ -8,3 +8,6 @@ build/
 dist/
 uv.lock
 .trailforge-experiments/
+.trailforge-runs/
+local-output/
+workspace-output/

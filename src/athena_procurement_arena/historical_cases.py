@@ -162,6 +162,10 @@ def _fully_dated(ref: EvidenceSourceRef) -> bool:
 
 
 def _verify_source_ref(root: Path, ref: EvidenceSourceRef, events: dict[str, Any]) -> None:
+    # Validate every supplied timestamp before the non-replay/partial-evidence
+    # branch below. UNKNOWN remains explicit and is never inferred from capture data.
+    for field_name in ("event_date", "document_date", "verified_available_at", "observed_at"):
+        _timestamp(getattr(ref, field_name), f"{field_name} ({ref.evidence_id})")
     capture_path = (root / ref.capture_path).resolve(strict=True)
     corpus_root = root.parent.parent.resolve()
     if not capture_path.is_relative_to(corpus_root):
@@ -235,16 +239,19 @@ def _verify_buyer_path(case: HistoricalCase) -> None:
 
 
 def validate_family_splits(cases: tuple[HistoricalCase, ...] | list[HistoricalCase]) -> None:
-    """Reject a project/procurement family assigned to more than one split."""
+    """Keep known project and procurement identities within one cohort split."""
     by_family: dict[str, set[str]] = {}
+    by_project: dict[str, set[str]] = {}
     by_capture: dict[str, set[str]] = {}
     by_content: dict[str, set[str]] = {}
     for case in cases:
         by_family.setdefault(case.procurement_family_id, set()).add(case.holdout_group)
+        if case.project_identity.strip().upper() != UNKNOWN:
+            by_project.setdefault(case.project_identity.strip(), set()).add(case.holdout_group)
         for ref in case.evidence_sources:
             by_capture.setdefault(ref.capture_hash, set()).add(case.holdout_group)
             by_content.setdefault(ref.content_sha256, set()).add(case.holdout_group)
-    for label, groups in (("procurement family", by_family), ("capture hash", by_capture),
+    for label, groups in (("project identity", by_project), ("procurement family", by_family), ("capture hash", by_capture),
                           ("content hash", by_content)):
         split = next((identity for identity, splits in groups.items() if len(splits) > 1), None)
         if split:
