@@ -1,0 +1,38 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "procurement_episode_id": "montauk-2021-2024",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "Long Island Power Authority",
+          "facility_type": "UTILITY",
+          "generation_need_supported": true,
+          "need_reason": "Transmission circuit connection and upgrades plus seasonal load support; includes contingency use.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "TEMPORARY_RELIABILITY",
+          "project_specific": true,
+          "purchase_type": "UNKNOWN"
+        },
+        "evidence_id": "PRF-002-montauk-capture-observation",
+        "observed_at": "2026-10-02T13:54:02.338634+00:00",
+        "source_id": "montauk-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:02.338634+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

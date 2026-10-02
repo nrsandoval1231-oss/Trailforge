@@ -1,0 +1,50 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "procurement_episode_id": "ieso-fast-acting-2026",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 3,
+    "visible_evidence_count": 2
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "IESO Nova Scotia",
+          "facility_type": "UTILITY",
+          "generation_need_supported": true,
+          "need_reason": "Fast-acting natural gas capacity to support system reliability and transition from coal.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "OPERATIONAL_GENERATION",
+          "project_specific": true,
+          "purchase_type": "LONG_TERM_POWER"
+        },
+        "evidence_id": "PRF-006-ieso-capture-observation",
+        "observed_at": "2026-10-02T13:54:47.615933+00:00",
+        "source_id": "ieso-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:47.615933+00:00"
+      },
+      {
+        "claims": {
+          "amendment": "deadline extension",
+          "buyer_organization": "IESO Nova Scotia",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "proposal_deadline": "2027-01-21T15:00:00-04:00"
+        },
+        "evidence_id": "PRF-006-ieso-addendum-capture-observation",
+        "observed_at": "2026-10-02T13:56:36.223143+00:00",
+        "source_id": "ieso-addendum-20261002-v1",
+        "verified_available_at": "2026-10-02T13:56:36.223143+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

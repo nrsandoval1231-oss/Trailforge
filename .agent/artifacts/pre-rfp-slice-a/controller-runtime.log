@@ -1,0 +1,42 @@
+{"case_count": 8, "cohort_hash": "eb1efbbaf4bd18cb92c1ebe5efa8e1089bbff2890c4e8fd1409c3ee935fc1226", "mode": "BACKTRACE", "output": "C:\\Users\\nrsan\\AppData\\Local\\Temp\\trailforge-offline-proof-vus1bfal\\cohort-1.json", "status": "PASS"}
+{"case_count": 8, "cohort_hash": "c963d5a0d442cce08275ff14c4d45874936490760b42f8bcd7ded736a25d0494", "mode": "BACKTRACE", "output": "C:\\Users\\nrsan\\AppData\\Local\\Temp\\trailforge-offline-proof-vus1bfal\\cohort-2.json", "status": "PASS"}
+{
+  "status": "PASS",
+  "network_blocked": true,
+  "repeat_runs": 2,
+  "cases": [
+    {
+      "case_id": "PRF-001",
+      "pre_rfp_decision_hash": "6a24c793c4c7bc89c031433f074c2d453b14f952570ba2dc82cfd137338de81e"
+    },
+    {
+      "case_id": "PRF-002",
+      "pre_rfp_decision_hash": "a31c8621dc1de13eb7acb2a7977e248ea620b9e40b9c3e8c245817b05b9075cb"
+    },
+    {
+      "case_id": "PRF-003",
+      "pre_rfp_decision_hash": "26c2a77ef4bf92c87459dac8c38ff3daa07f59a3be8959b6a341d7c9aa79341b"
+    },
+    {
+      "case_id": "PRF-004",
+      "pre_rfp_decision_hash": "e49489de8771e96d68a687302b2a58146e9e210087882db14e3a599b7b42fc04"
+    },
+    {
+      "case_id": "PRF-005",
+      "pre_rfp_decision_hash": "35c717b80c89f1b7ab248b2f8b1942f9b6dc6ab13a0436efc7a78808c25a5610"
+    },
+    {
+      "case_id": "PRF-006",
+      "pre_rfp_decision_hash": "2a1cbdad99546013fffdee9ee9b8054b73582389c173cc817e87183d9c6ac63b"
+    },
+    {
+      "case_id": "PRF-007",
+      "pre_rfp_decision_hash": "d0279baae1ba3830ddd73fe620ca271ee98244327737027cde7e1e3bde0ca790"
+    },
+    {
+      "case_id": "PRF-008",
+      "pre_rfp_decision_hash": "94175292e4541560bd5e70c232e1d89d30bc911489a1e40e399edb7207d7c722"
+    }
+  ],
+  "normalization": "Only output experiment_dir differs between separate runs; cohort hashes bind that path."
+}

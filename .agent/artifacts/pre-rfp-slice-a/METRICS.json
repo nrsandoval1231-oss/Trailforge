@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-10-02T14:37:10.690312+00:00",
+  "task_start_utc": "UNKNOWN_NOT_RECORDED",
+  "independent_acceptance_utc": "2026-10-02T14:34:37Z",
+  "planning_seconds": "UNKNOWN",
+  "build_seconds": "UNKNOWN",
+  "validation_seconds": "UNKNOWN_TOTAL; individual test durations retained in raw logs",
+  "audit_seconds": "UNKNOWN",
+  "repair_count": 1,
+  "repair_count_basis": "One controller-dispatched bounded repair after initial builder handoff; normal pre-handoff fixture fixes retained in initial completion.",
+  "lane": "single Luna builder; controller source acquisition; serial Sol review",
+  "builder_route": "named luna / gpt-6-luna / low per tool role",
+  "reviewer_model": "gpt-6-sol",
+  "controller_model_config_identity": "UNKNOWN",
+  "measured_tokens": "UNKNOWN_NOT_EXPOSED",
+  "elapsed_to_accepted_seconds": "UNKNOWN_START_NOT_RECORDED",
+  "speedup_claim": false,
+  "candidate_sha256": "790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6"
+}

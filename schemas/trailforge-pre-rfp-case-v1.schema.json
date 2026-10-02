@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "trailforge-pre-rfp-case-v1.schema.json",
+  "title": "TrailForge pre-RFP historical case",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version", "case_id", "procurement_family_id", "project_identity",
+    "facility_type", "power_activity", "purchase_type", "outcome",
+    "known_buying_event", "buying_event_date", "conventional_milestone",
+    "conventional_milestone_at", "scenario_path", "evidence_sources"
+  ],
+  "properties": {
+    "schema_version": {"const": "trailforge-pre-rfp-case-v1"},
+    "case_id": {"type": "string", "minLength": 1},
+    "procurement_family_id": {"type": "string", "minLength": 1},
+    "project_identity": {"type": "string", "minLength": 1},
+    "location": {"type": "string"},
+    "facility_type": {"type": "string", "minLength": 1},
+    "power_activity": {"type": "string", "minLength": 1},
+    "purchase_type": {"type": "string", "minLength": 1},
+    "commercial_fit": {"type": "object"},
+    "outcome": {"type": "string", "minLength": 1},
+    "known_buying_event": {"type": "string", "minLength": 1},
+    "buying_event_date": {"type": "string", "minLength": 1, "description": "Timezone-aware ISO timestamp or UNKNOWN"},
+    "conventional_milestone": {"type": "string", "minLength": 1},
+    "conventional_milestone_at": {"type": "string", "minLength": 1, "description": "Timezone-aware ISO timestamp or UNKNOWN"},
+    "conventional_milestone_evidence_id": {"type": ["string", "null"]},
+    "scenario_path": {"type": "string", "minLength": 1},
+    "holdout_group": {"type": "string"},
+    "buyer_path": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["organization", "role", "quality", "evidence_id"],
+        "properties": {
+          "organization": {"type": "string"},
+          "role": {"type": "string"},
+          "quality": {"type": "string", "enum": ["UNKNOWN", "ORGANIZATION_IDENTIFIED", "RESPONSIBLE_ROLE_IDENTIFIED", "PROJECT_RESPONSIBILITY_SUPPORTED", "BUYING_RESPONSIBILITY_SUPPORTED"]},
+          "evidence_id": {"type": "string"}
+        }
+      }
+    },
+    "evidence_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "capture_path", "capture_id", "capture_hash", "content_sha256", "source_url", "source_quote", "reviewed_claims", "event_date", "document_date", "verified_available_at", "observed_at"],
+        "properties": {
+          "evidence_id": {"type": "string", "minLength": 1},
+          "capture_path": {"type": "string", "minLength": 1},
+          "capture_id": {"type": "string", "minLength": 1},
+          "capture_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "source_url": {"type": "string", "format": "uri"},
+          "source_quote": {"type": "string", "minLength": 1},
+          "reviewed_claims": {"type": "object"},
+          "event_date": {"type": "string", "minLength": 1},
+          "document_date": {"type": "string", "minLength": 1},
+          "verified_available_at": {"type": "string", "minLength": 1},
+          "observed_at": {"type": "string", "minLength": 1},
+          "replay_included": {"type": "boolean"},
+          "observation_kind": {"type": "string"},
+          "availability_basis": {"type": "string"}
+        }
+      }
+    },
+    "discovery_receipt": {"type": ["string", "null"]},
+    "name_blind_discovery_evidence": {"type": "boolean"}
+  }
+}

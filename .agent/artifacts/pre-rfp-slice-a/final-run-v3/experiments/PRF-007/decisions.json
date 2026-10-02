@@ -1,0 +1,193 @@
+{
+  "decision_snapshots": [
+    {
+      "action": "IGNORE",
+      "decision_hash": "83ff5dc537d1a1a36255e7e79dcdead1f3ccb39f5fbe362264016c186f7d7d5f",
+      "decision_time": "2026-10-02T13:54:48.731076+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "PRF-007",
+        "seed": 1006,
+        "time": "2026-10-02T13:54:48.731076+00:00",
+        "visible_evidence": [],
+        "visible_evidence_ids": []
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 0,
+          "hits": [],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": ""
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.0,
+          "state": "UNKNOWN",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 0,
+          "priority": "LOW"
+        }
+      }
+    },
+    {
+      "action": "IGNORE",
+      "decision_hash": "71da29849cf1e1edadc884df2a33b25747e3befd45c344db9ed22b887b545432",
+      "decision_time": "2026-10-02T13:54:49.731076+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "PRF-007",
+        "seed": 1006,
+        "time": "2026-10-02T13:54:49.731076+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "PUBLIC_SOURCE_REVIEW",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "awarded": true,
+              "buyer_organization": "Enel Green Power",
+              "facility_type": "UTILITY",
+              "generation_need_supported": true,
+              "need_reason": "Wind turbine commissioning under a PPA schedule used off-grid grid emulation; supplier already delivered.",
+              "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+              "power_activity": "COMMISSIONING",
+              "project_specific": true,
+              "purchase_type": "TEMPORARY_POWER_SERVICE"
+            },
+            "contradictions": [],
+            "document_date": "2026-10-02T13:54:49.731076+00:00",
+            "entity_candidates": [
+              "Enel Green Power"
+            ],
+            "event_date": "2026-10-02T13:54:49.731076+00:00",
+            "evidence_id": "PRF-007-azure-sky-capture-observation",
+            "is_prediction": false,
+            "lineage_family": "azure-sky-commissioning",
+            "observed_at": "2026-10-02T13:54:49.731076+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "azure-sky-20261002-v1",
+            "source_spans": [
+              "**Client:** Enel Green Power\n\n**Location:** Throckmorton, Texas\n\n**Sectors:** Utilities\n\nThe Challenge\n\n## Mitigating project risks while incorporating BESS\n\nEnel Green Power (Enel GP), an Italian multinational renewable energy corporation, was building its first wind farm + battery storage project, consisting of 79 wind turbines at their Azure Sky Wind Farm in Throckmorton, Texas. The project needed to be completed within a few months to meet a power purchase agreement (PPA) to supply power to end customers. Timely connection is imperative in order to avoid a number of critical risks, including reputational risk to the company, default on contractual and legal commitments, and construction risks.\n\nIn pursuit of its goals to reach Net Zero emissions from its power mix by 2050, Enel was committed to finding the greenest way to connect their wind turbines quickly, efficiently, and effectively. As part of their company-wide Net Zero goals, Enel also prioritized sustainability as they selected a provider for timely grid emulation and commissioning services.\n\n78Wind turbines commissioned\n\n4.5MWGrid emulation package as base case\n\n![powering sustainable events at the sail GP British Grand Prix in Plymouth UK., 2021](https://bynder.aggreko.com/transform/af1a4a80-159c-4646-9fb6-24cf2ca218d5/IR2_5785-JPG?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)\n\nThe Solution\n\n## As a world leader in the energy transition, Enel has centered sustainability as a key aspect of its commissioning projects\n\nEnel has a longstanding relationship with Aggreko, and for the Azure Wind Project, Enel challenged Aggreko to lower emissions while still providing its superior customer service, reliability, efficiency, and engineering expertise. Aggreko rose to the challenge, producing a fully customized commissioning solution with advanced control technology and batteries that would lower emissions. A project like this would normally require three combustion generators. However, to help meet Enel\u2019s low carbon goals, Aggreko offered an alternative solution.\n\nAggreko provided off-grid contingency power and a 4.5 MW [hybrid power](https://www.aggreko.com/en-sa/solutions/hybrid-power-generation)\u00a0grid emulation package, including two [diesel generators](https://www.aggreko.com/en-sa/products/generators/diesel) and one battery, integrated as a 3 MW + 1 MW BESS hybrid solution. Aggreko also implemented advanced load control systems which, combined with energy storage, reduced the system\u2019s emissions by over 67%. By integrating [energy storage](https://www.aggreko.com/en-sa/solutions/microgrids-and-energy-storage), Aggreko was able to provide the same grid emulation offering with one fewer generator, significantly reducing overall fuel consumption, emissions, and maintenance, while meeting all deadlines and commercial operations dates (COD).\n\nAggreko\u2019s Hybrid Grid Emulation system was a tremendous value-add to Azure Sky Wind Farm. The system made our process more efficient and more resilient during the energization and commissioning process. We were able to substantially reduce fuel consumption and emissions and look forward to integrating this system into future renewable project needs for Enel Green Power in the U.S.\n\nRichard Lovenduski , Senior Commissioning Start-Up Manager, Engineering and Construction, Enel Green Power\n\nThe Impact\n\n## Aggreko\u2019s hybrid approach reduced fuel consumption and cut greenhouse gas emissions by 67%, and resulted in significant cost savings\n\nWith Aggreko\u2019s support, Enel successfully tested and commissioned the Azure Sky Wind Farm, meeting end user needs while helping Enel get closer to its ESG target. The system is projected to generate around 1.3 TWh of renewable energy each year, avoiding more than 842,000 tons of CO2 emissions a year. This pilot program proves what is possible when clean, innovative hybrid solutions are applied to commissioning projects. Aggreko is proud to collaborate to provide renewable energy services to bring projects online cleaner and faster than ever.\n\n![2017-02-scotland-installations-operations-technicians-windmill-farm.jpg](https://bynder.aggreko.com/transform/8575b5cb-4b6c-485e-8e16-fbb6b46addc8/2017-02-scotland-installations-operations-technicians-windmill-farm-jpg?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)"
+            ],
+            "source_version": "f9151c2b148b98c3173cd5a671183122b800b1bad9b25b46046a96d215805c49",
+            "tenant_id": "public",
+            "verified_available_at": "2026-10-02T13:54:49.731076+00:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "PRF-007-azure-sky-capture-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'awarded': true, 'buyer_organization': 'enel green power', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'wind turbine commissioning under a ppa schedule used off-grid grid emulation; supplier already delivered.', 'observation_kind': 'current_source_observation', 'power_activity': 'commissioning', 'project_specific': true, 'purchase_type': 'temporary_power_service'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.2,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    }
+  ],
+  "ledger_hash": "8ada5a02a7bb8156d6edff1ce5064988bb6beacd793d5612a33dadbd55c9d371",
+  "ledger_verified": true,
+  "records": [
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 0,
+          "hits": [],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": ""
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.0,
+          "state": "UNKNOWN",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 0,
+          "priority": "LOW"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "",
+      "record_hash": "83ff5dc537d1a1a36255e7e79dcdead1f3ccb39f5fbe362264016c186f7d7d5f",
+      "scenario_id": "PRF-007",
+      "simulation_time": "2026-10-02T13:54:48.731076+00:00",
+      "visible_evidence_ids": []
+    },
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'awarded': true, 'buyer_organization': 'enel green power', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'wind turbine commissioning under a ppa schedule used off-grid grid emulation; supplier already delivered.', 'observation_kind': 'current_source_observation', 'power_activity': 'commissioning', 'project_specific': true, 'purchase_type': 'temporary_power_service'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.2,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "83ff5dc537d1a1a36255e7e79dcdead1f3ccb39f5fbe362264016c186f7d7d5f",
+      "record_hash": "71da29849cf1e1edadc884df2a33b25747e3befd45c344db9ed22b887b545432",
+      "scenario_id": "PRF-007",
+      "simulation_time": "2026-10-02T13:54:49.731076+00:00",
+      "visible_evidence_ids": [
+        "PRF-007-azure-sky-capture-observation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "procurement_episode_id": "prometheus-conduit-texas",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "Prometheus Hyperscale",
+          "facility_type": "DATA_CENTER",
+          "generation_need_supported": true,
+          "need_reason": "Hybrid bridge and backup generation for two initial data-center projects; named solution partner already announced.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "BRIDGE",
+          "project_specific": false,
+          "purchase_type": "LONG_TERM_POWER"
+        },
+        "evidence_id": "PRF-003-prometheus-capture-observation",
+        "observed_at": "2026-10-02T13:54:02.567049+00:00",
+        "source_id": "prometheus-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:02.567049+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

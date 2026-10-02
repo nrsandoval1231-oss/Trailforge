@@ -1,0 +1,39 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "procurement_episode_id": "azure-sky-commissioning",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "awarded": true,
+          "buyer_organization": "Enel Green Power",
+          "facility_type": "UTILITY",
+          "generation_need_supported": true,
+          "need_reason": "Wind turbine commissioning under a PPA schedule used off-grid grid emulation; supplier already delivered.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "COMMISSIONING",
+          "project_specific": true,
+          "purchase_type": "TEMPORARY_POWER_SERVICE"
+        },
+        "evidence_id": "PRF-007-azure-sky-capture-observation",
+        "observed_at": "2026-10-02T13:54:49.731076+00:00",
+        "source_id": "azure-sky-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:49.731076+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

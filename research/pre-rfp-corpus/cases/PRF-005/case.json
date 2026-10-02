@@ -1,0 +1,101 @@
+{
+  "schema_version": "trailforge-pre-rfp-case-v1",
+  "case_id": "PRF-005",
+  "procurement_family_id": "sunbridge-permian",
+  "project_identity": "Sunbridge CNG plant onsite generation, Tarzan",
+  "facility_type": "OIL_GAS",
+  "location": "Tarzan, Texas",
+  "power_activity": "OPERATIONAL_GENERATION",
+  "purchase_type": "LONG_TERM_POWER",
+  "commercial_fit": {
+    "generation_mw": 5,
+    "duty_cycle": "24/7 baseload",
+    "term": "long-term services agreement",
+    "commissioned_date": "UNKNOWN",
+    "remaining_scope": "UNKNOWN"
+  },
+  "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+  "known_buying_event": "Fixed CNG plant uses 5 MW baseload generation while utility supply is delayed; Conduit already built and operates it.",
+  "buying_event_date": "UNKNOWN",
+  "reported_buying_event_date": "2024-04-02",
+  "conventional_milestone": "Announcement of operating CNG plant generation",
+  "conventional_milestone_at": "UNKNOWN",
+  "scenario_path": "scenario.json",
+  "holdout_group": "DEVELOPMENT",
+  "buyer_path": [
+    {
+      "organization": "Sunbridge Energy Services",
+      "role": "OWNER_OR_PROCUREMENT_ORGANIZATION",
+      "quality": "ORGANIZATION_IDENTIFIED",
+      "evidence_id": "PRF-005-sunbridge-capture-observation"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "capture_path": "../../captures/sunbridge-v1.json",
+      "capture_id": "sunbridge-20261002-v1",
+      "capture_hash": "c2155b96476be36e4b763c6d5f32154e0bac6686a803f130eeb7b5a458a758a7",
+      "content_sha256": "4d92cf89e22e66be0f4a6dbf94d0dba735594068eb0e1b809327bb59c1ba6ae6",
+      "source_url": "https://conduitpower.com/conduit-sunbridge-gas-facility-permian",
+      "source_quote": "HOUSTON--( [BUSINESS WIRE](https://www.businesswire.com/news/home/20240402741101/en/Conduit-Power-and-Sunbridge-Energy-Services-Announce-Commercial-Operations-of-Natural-Gas-Power-Generation-Facility-at-Sunbridge%E2%80%99s-Compressed-Natural-Gas-Plant-in-the-Permian-Basin))-- [Conduit Power, LLC](https://conduitpower.co/) (\u201cConduit\u201d), a portfolio company of Grey Rock Investment Partners (\u201cGrey Rock\u201d), is pleased to announce it has successfully delivered a utility enablement project for Sunbridge Energy Services, LLC (\u201cSunbridge\u201d) at a plant site in the Permian Basin. Conduit is a turnkey provider of resilient, standalone baseload power generation systems for commercial and industrial users.\n\n\u201cConduit is thrilled to deliver a highly reliable, cost-effective power solution that is presently generating continuous, clean baseload power so that Sunbridge can provide CNG and service its customers 24/7, today\u2014not two years in the future on the utility\u2019s timeline.\u201d\n\nThe 5 MW natural gas-powered electricity generation facility was engineered, procured, and constructed by Conduit, and will be managed, optimized, and operated by Conduit over a long-term services agreement with Sunbridge. The power generation facility has been operating for five months, providing reliable baseload power 24/7 to Sunbridge Energy\u2019s 50 million cubic feet per day (50 MMcf/d) compressed natural gas (CNG) plant, which supplies CNG as a clean fuel alternative to oil and gas producers in the Permian Basin.\n\nSunbridge compresses and delivers the CNG in specialized trailers to oil and gas companies who are switching to dual-fuel engines to run the heavy equipment required for drilling, completion, and midstream operations in the Permian Basin. Conduit\u2019s natural gas-fueled baseload power generation solution\u2014and the services that support its continuous operation\u2014directly contribute to the high performance and uptime of the Sunbridge CNG plant.\n\nFrom Conduit Managing Director Mathew Whitaker: \u201cConduit is thrilled to deliver a highly reliable, cost-effective power solution that is presently generating continuous, clean baseload power so that Sunbridge can provide CNG and service its customers 24/7, today\u2014not two years in the future on the utility\u2019s timeline.\u201d\n\n\u201cWorking with Conduit and its team of experts has been a refreshing collaboration,\u201d said Sunbridge Chief Financial Officer Larry Lawyer. \u201cThe team\u2019s efficiency and knowledge in every aspect of the project design and implementation has allowed us to fast track our goals and deliver CNG to Permian operators ahead of schedule.\u201d\n\nConduit\u2019s power generation solutions for the energy and industrial sectors include:\n\n- Build, Own & Operate Power Infrastructure under long-term power purchase agreement,\n\n- Engineering, Procurement, and Construction (\u201cEPC\u201d) for its projects,\n\n- Operations and Maintenance of equipment for its operations,\n\n- Market Operations for power sales,\n\n- Asset Financing,\n\n- Short-term Power Supply as bridge power for delays in utility infrastructure.",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-005-sunbridge-capture-observation",
+      "reviewed_claims": {
+        "project_specific": true,
+        "generation_need_supported": true,
+        "need_reason": "Fixed CNG plant uses 5 MW baseload generation while utility supply is delayed; Conduit already built and operates it.",
+        "buyer_organization": "Sunbridge Energy Services",
+        "facility_type": "OIL_GAS",
+        "power_activity": "OPERATIONAL_GENERATION",
+        "purchase_type": "LONG_TERM_POWER",
+        "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+        "awarded": true
+      },
+      "event_date": "2026-10-02T13:54:47.453715+00:00",
+      "document_date": "2026-10-02T13:54:47.453715+00:00",
+      "verified_available_at": "2026-10-02T13:54:47.453715+00:00",
+      "observed_at": "2026-10-02T13:54:47.453715+00:00",
+      "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+      "availability_basis": "CAPTURE_TIME_ONLY",
+      "date_semantics": "Dates describe this capture observation record, not original project event or historical publication."
+    },
+    {
+      "capture_path": "../../captures/sunbridge-v1.json",
+      "capture_id": "sunbridge-20261002-v1",
+      "capture_hash": "c2155b96476be36e4b763c6d5f32154e0bac6686a803f130eeb7b5a458a758a7",
+      "content_sha256": "4d92cf89e22e66be0f4a6dbf94d0dba735594068eb0e1b809327bb59c1ba6ae6",
+      "source_url": "https://conduitpower.com/conduit-sunbridge-gas-facility-permian",
+      "source_quote": "HOUSTON--( [BUSINESS WIRE](https://www.businesswire.com/news/home/20240402741101/en/Conduit-Power-and-Sunbridge-Energy-Services-Announce-Commercial-Operations-of-Natural-Gas-Power-Generation-Facility-at-Sunbridge%E2%80%99s-Compressed-Natural-Gas-Plant-in-the-Permian-Basin))-- [Conduit Power, LLC](https://conduitpower.co/) (\u201cConduit\u201d), a portfolio company of Grey Rock Investment Partners (\u201cGrey Rock\u201d), is pleased to announce it has successfully delivered a utility enablement project for Sunbridge Energy Services, LLC (\u201cSunbridge\u201d) at a plant site in the Permian Basin. Conduit is a turnkey provider of resilient, standalone baseload power generation systems for commercial and industrial users.\n\n\u201cConduit is thrilled to deliver a highly reliable, cost-effective power solution that is presently generating continuous, clean baseload power so that Sunbridge can provide CNG and service its customers 24/7, today\u2014not two years in the future on the utility\u2019s timeline.\u201d\n\nThe 5 MW natural gas-powered electricity generation facility was engineered, procured, and constructed by Conduit, and will be managed, optimized, and operated by Conduit over a long-term services agreement with Sunbridge. The power generation facility has been operating for five months, providing reliable baseload power 24/7 to Sunbridge Energy\u2019s 50 million cubic feet per day (50 MMcf/d) compressed natural gas (CNG) plant, which supplies CNG as a clean fuel alternative to oil and gas producers in the Permian Basin.\n\nSunbridge compresses and delivers the CNG in specialized trailers to oil and gas companies who are switching to dual-fuel engines to run the heavy equipment required for drilling, completion, and midstream operations in the Permian Basin. Conduit\u2019s natural gas-fueled baseload power generation solution\u2014and the services that support its continuous operation\u2014directly contribute to the high performance and uptime of the Sunbridge CNG plant.\n\nFrom Conduit Managing Director Mathew Whitaker: \u201cConduit is thrilled to deliver a highly reliable, cost-effective power solution that is presently generating continuous, clean baseload power so that Sunbridge can provide CNG and service its customers 24/7, today\u2014not two years in the future on the utility\u2019s timeline.\u201d\n\n\u201cWorking with Conduit and its team of experts has been a refreshing collaboration,\u201d said Sunbridge Chief Financial Officer Larry Lawyer. \u201cThe team\u2019s efficiency and knowledge in every aspect of the project design and implementation has allowed us to fast track our goals and deliver CNG to Permian operators ahead of schedule.\u201d\n\nConduit\u2019s power generation solutions for the energy and industrial sectors include:\n\n- Build, Own & Operate Power Infrastructure under long-term power purchase agreement,\n\n- Engineering, Procurement, and Construction (\u201cEPC\u201d) for its projects,\n\n- Operations and Maintenance of equipment for its operations,\n\n- Market Operations for power sales,\n\n- Asset Financing,\n\n- Short-term Power Supply as bridge power for delays in utility infrastructure.",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-005-sunbridge-historical-unresolved",
+      "reviewed_claims": {},
+      "event_date": "UNKNOWN",
+      "document_date": "UNKNOWN",
+      "verified_available_at": "UNKNOWN",
+      "observed_at": "2026-10-02T13:54:47.453715+00:00",
+      "reported_event_date": "2024-04-02",
+      "reported_document_date": "2024-04-02",
+      "availability_basis": "HISTORICAL_VERSION_UNVERIFIED",
+      "date_semantics": "Reported calendar date lacks a verified historical content-version availability boundary; excluded from strict replay."
+    }
+  ],
+  "procurement_status": "OPERATING_SUPPLIER_COMMITTED",
+  "deadline": "UNKNOWN",
+  "case_provenance": {
+    "kind": "REAL_PUBLIC_SOURCE",
+    "acquisition_mode": "BACKTRACE",
+    "historical_availability": "UNKNOWN",
+    "discovery_credit": false,
+    "source_note": "Current primary-source capture; supplier case studies are attributed claims, not independent performance audits."
+  },
+  "negative_evidence": [
+    "Named provider / delivered package; no uncommitted package established."
+  ],
+  "notes": [
+    "Historical availability remains UNKNOWN. Capture observations permit current-state replay only; no pre-RFP or prospective detection credit.",
+    "All documents and amendments remain in one procurement family. DEVELOPMENT is exposed; not a holdout."
+  ],
+  "reported_conventional_milestone_date": "2024-04-02"
+}

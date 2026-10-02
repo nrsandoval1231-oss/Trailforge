@@ -238,3 +238,35 @@ class BaselineA(PolicyContract):
         if research["budget"]:
             return "RESEARCH"
         return "IGNORE"
+
+
+class PreRfpBaselineV1:
+    """Minimal source-backed precursor baseline; consumes only visible typed claims."""
+
+    policy_id = "PRE_RFP_BASELINE_V1"
+    version = "1.0"
+
+    @staticmethod
+    def _known_text(value: Any) -> bool:
+        return isinstance(value, str) and bool(value.strip()) and value.strip().casefold() != "unknown"
+
+    def __call__(self, state: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
+        evidence = tuple(state.get("visible_evidence", ()))
+        claims_by_id = tuple((_get(item, "evidence_id"), _get(item, "claims", {})) for item in evidence)
+        suppressors = {"generation_not_in_scope", "awarded", "supply_resolved"}
+        suppressed = tuple(evidence_id for evidence_id, claims in claims_by_id
+                           if any(claims.get(key) is True for key in suppressors))
+        if suppressed:
+            return {"decision": "SUPPRESS", "basis_evidence_ids": list(suppressed)}, "IGNORE"
+        qualifying = tuple(
+            evidence_id for evidence_id, claims in claims_by_id
+            if claims.get("project_specific") is True
+            and claims.get("generation_need_supported") is True
+            and self._known_text(claims.get("need_reason"))
+            and self._known_text(claims.get("buyer_organization"))
+        )
+        if qualifying:
+            return {"decision": "INVESTIGATE", "basis_evidence_ids": list(qualifying),
+                    "power_need_mw": None, "power_need_status": "UNKNOWN"}, "RESEARCH"
+        return {"decision": "WATCH", "basis_evidence_ids": [],
+                "power_need_mw": None, "power_need_status": "UNKNOWN"}, "IGNORE"
