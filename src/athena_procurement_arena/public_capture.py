@@ -1,9 +1,11 @@
 """Explicit public URL capture boundary; captured text is not verified truth."""
 from __future__ import annotations
 
+import ipaddress
 import json
 import re
 import shutil
+import socket
 import subprocess
 import tempfile
 from dataclasses import dataclass
@@ -17,12 +19,26 @@ from athena_arena.contracts import canonical_hash
 
 def _public_url(value: str) -> str:
     parsed = urlparse(value)
-    host = (parsed.hostname or "").lower()
-    blocked = host in {"localhost", "127.0.0.1", "::1"} or host.endswith(".local")
-    if parsed.scheme not in {"http", "https"} or not host or blocked:
+    host = (parsed.hostname or "").lower().rstrip(".")
+    if parsed.scheme not in {"http", "https"} or not host or parsed.username or parsed.password:
         raise ValueError("public capture requires a non-local HTTP(S) URL")
-    if host.startswith(("10.", "192.168.", "169.254.")) or host.startswith("172.16."):
-        raise ValueError("public capture rejects private network targets")
+    # Host percent-encoding is ambiguous to downstream clients.  Do not allow it
+    # to conceal an address that this boundary would otherwise reject.
+    if "%" in host:
+        raise ValueError("public capture rejects encoded host targets")
+    if host == "localhost" or host.endswith((".localhost", ".local")):
+        raise ValueError("public capture rejects local network targets")
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        # inet_aton recognizes legacy IPv4 spellings such as 127.1,
+        # 0177.0.0.1, and 2130706433 without doing a DNS lookup.
+        try:
+            address = ipaddress.ip_address(socket.inet_aton(host))
+        except (OSError, ValueError):
+            address = None
+    if address is not None and not address.is_global:
+        raise ValueError("public capture rejects private or non-public IP targets")
     return value
 
 
