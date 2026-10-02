@@ -23,3 +23,19 @@ At first surface, record whether public evidence could identify a plausible end 
 ## Cohort
 
 Next target: approximately 20-50 real projects. Expose both hits and misses so signal families can be judged by lead time and action burden.
+
+
+## Procurement and buying-event tracing
+
+Historical RFPs, RFQs, awards, cancellations, rebids, and other verified buying events are downstream anchors for reconstructing precursor evidence. A trace should move backward from the buying event to the physical project or operating need, then identify what could actually have been known earlier.
+
+Keep two tests separate:
+
+1. **Backtrace:** given the known project/procurement, could earlier evidence have justified investigation?
+2. **Discovery:** without supplying the future project or RFP name, would configured source feeds and general policies have surfaced that evidence?
+
+Only the second earns independent discovery credit.
+
+Relevant traces should distinguish power activity, facility/industry context, what is actually being purchased, and commercial/technical fit. Generator keywords alone are insufficient. Parent-project contracts may contain embedded electrical or temporary-generation packages; preserve the distinction between a generation requirement and an actually open generation package.
+
+Sequence hypotheses, source combinations, and buyer-path rules are candidates for Athena evaluation. They do not become production policy until they pass sealed-holdout and regression checks described in the canonical [Pre-RFP Discovery Strategy](PRE_RFP_DISCOVERY_STRATEGY.md).
