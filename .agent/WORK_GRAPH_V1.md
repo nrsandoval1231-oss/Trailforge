@@ -4,8 +4,8 @@ The merged early-project reset remains authoritative. The owner subsequently aut
 
 | Node | Dependencies | State | Acceptance |
 | --- | --- | --- | --- |
-| FC-050 A/B | RESET | VALIDATION / RE-REVIEW | Firecrawl search -> retained captures -> cited opportunity -> dedup -> strict fit -> inspectable local workspace; real early project plus active solicitation with original document/deadline/next action |
-| HC-001 | FC-050 | NEXT | Small real historical cohort through existing trace/replay, first policy surface and supported lead-time results |
+| FC-050 A/B | RESET | ACCEPTED (PR7 OPEN) | Firecrawl search -> retained captures -> cited opportunity -> dedup -> strict fit -> inspectable local workspace; real early project plus active solicitation with original document/deadline/next action |
+| HC-001 | FC-050 | PILOT VALIDATION / REVIEW | Small real historical cohort through existing trace/replay, first policy surface and supported lead-time results |
 | HC-002/003 | HC-001 | PENDING | Expand toward 20–50 projects; compare lead time, coverage, misses, action burden and buyer path |
 | SIGNAL-001 | HC-003 | PENDING | Repeated historical support for signal rules; no claim from one live example |
 | LIVE-001 | SIGNAL-001 | PENDING | Ranked human-review queue using tested rules |

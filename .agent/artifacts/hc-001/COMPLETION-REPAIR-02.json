@@ -1,0 +1,50 @@
+{
+  "schema_version": "trailforge-builder-repair-completion-v1",
+  "packet": "HC-001 formal Sol finding: capture-time bounds",
+  "status": "REPAIR_IMPLEMENTED_AND_FOCUSED_CHECKS_PASS; PARENT_REPLAY_AND_FRESH_REVIEW_PENDING",
+  "review_source": ".agent/artifacts/hc-001/REVIEW.json",
+  "changed_files": [
+    "src/athena_procurement_arena/historical_cohort.py",
+    "tests/procurement_arena/test_historical_cohort.py",
+    ".agent/artifacts/hc-001/COMPLETION-REPAIR-02.json"
+  ],
+  "candidate": {
+    "base_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "head_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "worktree": "C:/Users/nrsan/.codex/worktrees/trailforge-firecrawl/Trailforge",
+    "owned_file_sha256": {
+      "src/athena_procurement_arena/historical_cohort.py": "4A8BDDC0677E7CDA65A9727F590F3978409FB4A60235175F7D89019764916997",
+      "tests/procurement_arena/test_historical_cohort.py": "5DEFBC2C269E628D6F3399084ACCFEA6C3EC1B7FB029BD87C40FD18154AB8941"
+    }
+  },
+  "repair": {
+    "finding": "Reject historical availability later than the original source capture, availability witness capture, or current run cutoff.",
+    "implementation": "For strict availability evidence, reject future-dated source or witness captures and reject available_at later than either cited capture. The run cutoff is validation-only and is not serialized. Equality with a cited capture timestamp remains valid.",
+    "regressions": [
+      "future archive timestamp and capture rejected",
+      "future official publication timestamp rejected",
+      "future buyer availability timestamp rejected",
+      "availability equal to witness capture time accepted"
+    ]
+  },
+  "validation": [
+    {"command": "uv run --frozen --extra dev python -m pytest tests/procurement_arena/test_historical_cohort.py -q", "exit_code": 0, "result": "11 passed"},
+    {"command": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py", "exit_code": 0, "result": "All checks passed"},
+    {"command": "git diff --check", "exit_code": 0, "result": "passed (CRLF normalization warnings only)"}
+  ],
+  "protected_evidence": "Prior COMPLETION.json, COMPLETION-REPAIR.json, REVIEW.json, REVIEW.md, and generated cohort outputs were not edited.",
+  "follow_up": "Parent to regenerate unchanged real-input output in a new directory, compare retained output hashes, run final gates, and request fresh exact-candidate review.",
+  "authority": "No commit, push, merge, deployment, contact, submission, or external communication performed.",
+  "timing_utc": {
+    "started_at": "UNKNOWN; start timestamp was not captured",
+    "finished_at": "2026-10-02T01:05:02Z",
+    "planning_seconds": "UNKNOWN",
+    "build_seconds": "UNKNOWN",
+    "validation_seconds": "UNKNOWN",
+    "audit_seconds": "UNKNOWN"
+  },
+  "execution_identity": {"model": "UNKNOWN", "config_identity": "UNKNOWN", "tokens": "UNKNOWN"},
+  "repair_count": 1,
+  "completion_claim": "Repair handoff only; acceptance and HC-001 completion remain pending."
+}

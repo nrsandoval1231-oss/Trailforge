@@ -1,0 +1,9 @@
+# HC-001 independent pilot re-review — PASS
+
+Candidate: staged tree `804ce2cff710c6a7417587da2710682b3096eed4`, branch `codex/trailforge-firecrawl-vertical-slice`, base `c802a18f838c21e92dc78a354a977d2c3cf9149c`. This accepts the bounded five-project pilot and adapter, not the historical measurement or product finish objective.
+
+The prior `REVIEW.md` finding is resolved in the staged adapter. `_availability` now rejects source or availability-witness captures dated after the run and rejects an `available_at` later than either cited capture. Buyer-path evidence calls the same guarded function. Focused tests exercise future archive, future official timestamp, future buyer timestamp, and equality at the capture boundary. I inspected the staged diff and independently ran `git diff --cached --check`; it passed.
+
+The controller's `FINAL-VALIDATION-REPAIR.txt` reports 327 tests passed, one skipped, compilation, Ruff, and all three bundle checks passing. `RUNTIME-PROOF-REPAIR.json` records byte-identical output for the canonical trace and both report files from the repaired adapter. A tree comparison confirms the retained cohort input and result files did not change between the prior and repaired candidates. I did not rerun the full suite.
+
+The report remains appropriately narrow: five purposive real cases, ten cited signals, one xAI announcement with archive-backed availability by January 29, 2025, no historically supported comparison target, and zero strict lead-time pairs. Source and issue dates are diagnostic only. The xAI power-use report predates the recovered announcement archive; no validated early win follows. Buyer organizations remain distinct from temporally supported buyer paths, and project-specific temporary-rental need is not inferred from backup or portfolio evidence. The next work is recovery of historical availability for both ends of project timelines before any lead-time or predictive-quality claim.

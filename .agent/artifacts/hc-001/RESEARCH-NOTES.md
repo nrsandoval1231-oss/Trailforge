@@ -1,0 +1,7 @@
+# HC-001 source acquisition notes
+
+Five purposive cases selected from existing research and focused discovery: Crusoe Abilene, xAI Memphis Colossus1, Azure Sky Wind, Montauk2021transmission support, East Hampton2018expansion. Captured with the FC050 adapter using Firecrawl max-age-zero; public pages only. No historical available_at is inferred from acquisition time.
+
+Rejected shortcuts retained: GE29turbine order cannot be assigned to Abilene; Prometheus announcement covers multiple unnamed Texas sites and is not a distinct project trace; Azure supplier case is undated; current PSEG page contains2019posted date but no verified2019archive. xAI chamber page shows June6publication plus June5event dateline; neither is the recovered archive timestamp. Reuters2024power report is earlier than2025archive availability. Later SELC timeline is retrospective and does not establish2024availability. Archive CDX queries found no matching early snapshot for Crusoe, Montauk and Reuters under exact queried URL filters; this is limited search, not evidence archives do not exist. xAI first returned archive20250129032510 contained exact announcement content and was separately captured.
+
+Failures retained: one local output inspection hit Windows cp1252 encoding; changed only stdout to UTF-8. Reads of archive output files before asynchronous completion found missing paths, then completed outputs were read; no source captures overwritten. No permissions or access controls bypassed. No paid purchases, contact or bid actions.

@@ -1,0 +1,30 @@
+{
+  "task_id": "HC-001",
+  "accepted_tree": "804ce2cff710c6a7417587da2710682b3096eed4",
+  "review": "REVIEW-02.json",
+  "pilot_accepted": true,
+  "historical_measurement_complete": false,
+  "product_complete": false,
+  "direction": "CONTINUE",
+  "next": "Recover historical availability for both ends of three project timelines before cohort expansion or signal promotion",
+  "gate": "327 passed, 1 skipped; compile, Ruff, three fixture validations and staged diff check PASS",
+  "runtime": "Three retained output files byte-identical after repair; five cases, one eligible trace, zero supported targets or strict pairs",
+  "timing": {
+    "packet_started_utc": "2026-10-01T23:47:49.321091Z",
+    "accepted_utc": "2026-10-02T01:10:30.7356720Z",
+    "test_seconds": 40.72,
+    "planning_seconds": "UNKNOWN",
+    "build_seconds": "UNKNOWN",
+    "audit_seconds": "UNKNOWN",
+    "elapsed_to_accepted": "UNKNOWN; interrupted work interval"
+  },
+  "execution": {
+    "lane": "one Luna builder, Sol independent review",
+    "builder_model": "gpt-6-luna",
+    "reviewer_model": "gpt-6-sol",
+    "config_identity": "UNKNOWN",
+    "tokens": "UNKNOWN",
+    "formal_review_repair_count": 1
+  },
+  "coverage": "Accepted tree binds product/code/data/docs. Subsequent changes are review and acceptance receipts only. Prior failed review retained."
+}

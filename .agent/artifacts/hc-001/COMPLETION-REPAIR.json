@@ -1,0 +1,52 @@
+{
+  "schema_version": "trailforge-builder-repair-completion-v1",
+  "packet": "HC-001 bounded integration repair",
+  "status": "FROZEN_FOR_PARENT_AUTHORITATIVE_RUN_AND_INDEPENDENT_REVIEW",
+  "candidate": {
+    "base_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "head_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "worktree": "C:/Users/nrsan/.codex/worktrees/trailforge-firecrawl/Trailforge",
+    "owned_file_sha256": {
+      "src/athena_procurement_arena/historical_cohort.py": "6CE126583495820DFEA6CB7ACC854E20362F176E2557C2C82E3C21E13F4D5615",
+      "tests/procurement_arena/test_historical_cohort.py": "3CB03350F9F0EE9FEAD0D3400696DD0F8863E8FEA903FA906DF10D34E0289226",
+      "scripts/run_hc001.py": "A467A42340C176CE3161A681053C85FB1E3CDBCA7BF9373AD11EF0694ABCA70F",
+      "docs/HISTORICAL_COHORT.md": "600BC876F2E9B60F5E90AF690B41322629F98B290749CCB1ADDFA173C7195CED"
+    }
+  },
+  "changed_files": [
+    "src/athena_procurement_arena/historical_cohort.py",
+    "tests/procurement_arena/test_historical_cohort.py",
+    "scripts/run_hc001.py",
+    "docs/HISTORICAL_COHORT.md",
+    ".agent/artifacts/hc-001/COMPLETION-REPAIR.json"
+  ],
+  "validation": [
+    {"command": "uv run --frozen --extra dev python -m pytest tests/procurement_arena/test_historical_cohort.py -q", "exit_code": 0, "result": "9 passed"},
+    {"command": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py scripts/run_hc001.py", "exit_code": 0, "result": "All checks passed"},
+    {"command": "git diff --check", "exit_code": 0, "result": "passed"}
+  ],
+  "real_input_execution": {
+    "input": "research/hc-001/cohort-input.json",
+    "input_sha256_at_run": "d00bdbb8f7c7d054c49d2751be3d6ad9903a1fa8c1e38c61a153750c4fb44b83",
+    "current_input_sha256_after_parent_cosmetic_normalization": "85A4B080878C6425571A613632C3EB712D8B607F8221F11587A28946995A3CD5",
+    "command": "uv run --frozen --extra dev python scripts/run_hc001.py research/hc-001/cohort-input.json .firecrawl/hc-builder-freeze-a",
+    "result": "5 cases retained; 1 eligible trace (archived xAI announcement); 0 replay target cases; 1 unresolved target; all strict lead times UNKNOWN",
+    "reproducibility": "A second clean output directory produced identical SHA-256 for all three files: report.json, report.md, and the canonical trace.",
+    "scope_note": "This execution used the exact pre-normalization input hash above. Parent requested that the authoritative run use its normalized current input."
+  },
+  "contract": "docs/HISTORICAL_COHORT.md",
+  "review_status": "Independent semantic review pending; no human approval asserted.",
+  "authority": "No commit, push, merge, deployment, external communication, contact, or submission performed.",
+  "timing_utc": {
+    "started_at": "UNKNOWN; resumed-turn start timestamp was not captured",
+    "finished_at": "2026-10-02T00:53:35Z",
+    "planning_seconds": "UNKNOWN",
+    "build_seconds": "UNKNOWN",
+    "validation_seconds": "UNKNOWN",
+    "audit_seconds": "UNKNOWN"
+  },
+  "execution_identity": {"model": "UNKNOWN", "config_identity": "UNKNOWN", "tokens": "UNKNOWN"},
+  "repair_count": 1,
+  "completion_claim": "Builder handoff only; not HC-001 acceptance or finish-contract completion."
+}

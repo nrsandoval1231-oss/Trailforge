@@ -18,7 +18,7 @@ See [Firecrawl workspace commands](docs/FIRECRAWL_WORKSPACE.md) and [real-source
 
 The existing temporal engine, frozen ledger, experiment persistence, provenance and workbench remain unchanged. Run `uv run --python 3.11 trailforge-ui` for the experiment workbench.
 
-Primary research metric: **lead-time advantage**, measured only from source-backed temporal evidence. Live project discovery does not prove historical predictive quality. The next experiment is HC-001: a small real historical cohort using existing trace/replay mechanics, then expansion toward 20–50 projects.
+Primary research metric: **lead-time advantage**, measured only from source-backed temporal evidence. Live project discovery does not prove historical predictive quality. The [HC-001 five-project pilot](research/hc-001/README.md) separates source-date intervals from verified historical availability and reuses existing trace/backtest mechanics. See [offline cohort commands](docs/HISTORICAL_COHORT.md). Supported early-to-target pairs are still missing; next recover both temporal boundaries before expanding toward 20–50 projects.
 
 Run the full gate: `uv run --python 3.11 --with pytest --with ruff python scripts/validate.py`.
 

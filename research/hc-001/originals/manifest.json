@@ -1,0 +1,18 @@
+[
+  {
+    "path": "montauk-2021.pdf",
+    "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+    "sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+    "size_bytes": 214827,
+    "capture_file": "../captures/montauk-power.capture.json",
+    "historical_availability": "UNKNOWN"
+  },
+  {
+    "path": "east-hampton-2018.pdf",
+    "source_url": "https://www.lipower.org/wp-content/uploads/2018/06/East-Hampton-Temporary-Generation-Facility-Expansion-May-17-2018.pdf",
+    "sha256": "bd670314d972905204ee067209cd2510adc5b527afd1c78219128d3c3bd27dea",
+    "size_bytes": 69620,
+    "capture_file": "../captures/east-hampton-power.capture.json",
+    "historical_availability": "UNKNOWN"
+  }
+]

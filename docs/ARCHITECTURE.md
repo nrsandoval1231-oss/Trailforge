@@ -14,7 +14,7 @@ The workspace is local, with early projects, active RFPs, response preparation a
 
 `Project Timeline -> TemporalWorld -> Signal Policy -> FrozenDecisionLedger -> Lead-Time Evaluator -> Experiment Store/Replay`
 
-Live captures do not become verified historical fixtures automatically. HC-001 will use the existing trace/cohort/backtest infrastructure after this acquisition slice. The laboratory tests whether a policy could surface a project earlier using only evidence available then.
+Live captures do not become verified historical fixtures automatically. HC-001 now has a thin offline adapter that validates cited captures, separates diagnostic source dates from supported availability, creates eligible ProjectTrace records, and calls the existing backtester. Five real cases remain inspectable even where no eligible trace exists. It neither changes the engine nor seals outcomes. The laboratory tests whether a policy could surface a project earlier using only evidence available then.
 
 ## Commercial boundary
 

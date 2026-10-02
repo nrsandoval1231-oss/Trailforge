@@ -1,0 +1,46 @@
+{
+  "schema_version": "trailforge-builder-completion-v1",
+  "packet": "HC-001",
+  "candidate": {
+    "base_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "head_sha": "c802a18f838c21e92dc78a354a977d2c3cf9149c",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "worktree": "C:/Users/nrsan/.codex/worktrees/trailforge-firecrawl/Trailforge"
+  },
+  "status": "IMPLEMENTATION_SLICE_READY_FOR_PARENT_INTEGRATION",
+  "changed_files": [
+    "src/athena_procurement_arena/historical_cohort.py",
+    "tests/procurement_arena/test_historical_cohort.py",
+    "scripts/run_hc001.py",
+    "docs/HISTORICAL_COHORT.md",
+    ".agent/artifacts/hc-001/COMPLETION.json"
+  ],
+  "commands": [
+    {"command": "uv run --frozen --extra dev python -m pytest tests/procurement_arena/test_historical_cohort.py -q", "exit_code": 0, "result": "6 passed"},
+    {"command": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py scripts/run_hc001.py", "exit_code": 0, "result": "All checks passed"},
+    {"command": "git diff --check", "exit_code": 0, "result": "passed"}
+  ],
+  "input_contract": "docs/HISTORICAL_COHORT.md",
+  "integration": {
+    "research_input_available": false,
+    "real_cohort_execution": "NOT_RUN; parent research JSON input had not yet been created",
+    "full_repository_gate": "NOT_RUN; parent integration gate",
+    "independent_review": "PENDING",
+    "note": "This artifact reports builder implementation and focused validation only. It does not certify HC-001 acceptance or completion."
+  },
+  "authority": "No commit, push, merge, deployment, external communication, contact, or submission performed.",
+  "timing_utc": {
+    "started_at": "UNKNOWN; start timestamp was not captured",
+    "finished_at": "2026-10-01T23:55:17Z",
+    "planning_seconds": "UNKNOWN",
+    "build_seconds": "UNKNOWN",
+    "validation_seconds": "UNKNOWN",
+    "audit_seconds": "UNKNOWN"
+  },
+  "execution_identity": {
+    "model": "UNKNOWN",
+    "config_identity": "UNKNOWN",
+    "tokens": "UNKNOWN"
+  },
+  "repair_count": 2
+}

@@ -1,16 +1,15 @@
-# TrailForge current state — 2026-10-01
+# TrailForge current state — HC-001 pilot
 
-## Owner direction
-TrailForge now has two connected operating lanes: early-project discovery before a temporary-power RFP, and active solicitation capture/qualification/response preparation. The merged early-project reset is retained. The latest owner build order makes public acquisition and two real operator outputs the immediate milestone.
+FC-050 is accepted at commit c802a18f838c21e92dc78a354a977d2c3cf9149c; [PR7](https://github.com/nrsandoval1231-oss/Trailforge/pull/7) is open, not merged. Local and GitHub gates passed. Acceptance scope and evidence: [FC-050 receipt](artifacts/firecrawl-050/ACCEPTANCE.json).
 
-## Candidate
-Base `fd772eb2475b24e65ab2221aeeaf8cfe6f1d14e3`; branch `codex/trailforge-firecrawl-vertical-slice`. The original dirty checkout is preserved. One Luna implements [FC-050](tasks/firecrawl-050.md); parent checks real sources. [Work graph](WORK_GRAPH_V1.md).
+## Active work
+HC-001 is the single READY continuation in the same isolated branch/worktree. [Packet](tasks/hc-001.md) uses a thin adapter over existing signal/trace/backtest mechanics and five real projects. One Luna owns adapter/tests; controller owns captures/cohort and integration; Sol reviews the frozen candidate. No repeat Tribunal or new framework.
 
-## Boundaries
-Existing engine, fixture/replay provenance and experiment workbench remain intact. Firecrawl acquires; TrailForge classifies and qualifies. UNKNOWN stays UNKNOWN. No autonomous contact/submission, merge, deployment, GridLens promotion or claimed historical predictive quality.
+## Evidence boundary
+Source publication dates, event dates, retrieval dates and archive-supported availability are separate. A printed date is not historical availability. A matched chronology is not proof of temporary rental fit or successful buyer access. The sample is purposive, not representative. Unsupported cases remain UNKNOWN; missing evidence is not a false positive/negative. Existing captures, fixtures and deterministic engine remain unchanged. No outreach/submission/merge/deployment/GridLens promotion.
 
-## Candidate validation
-Real early project and active solicitation are implemented with immutable documents, cited requirements, deduplication, deadline state, fit reasons, next actions and local workspace. The initial independent review returned FIX; its three findings are repaired. Final gate and re-review receipts govern acceptance, not this status note. A completed slice does not complete the historical-cohort objective.
+## Pilot runtime evidence
+Five source-backed cases, ten signals and one archive-supported trace; zero supported target cases and zero measured pairs. Reproduction in two new directories produced byte-identical JSON, Markdown and trace files. See [runtime proof](artifacts/hc-001/RUNTIME-PROOF.json) and [report](../research/hc-001/README.md). Final gate and independent review receipts govern acceptance.
 
-## Next
-Finish FC-050 then HC-001 using existing trace/replay. Preserve unavailable attachments, unverified amendments, missing customer requirements and missing historical availability as explicit gaps.
+## Finish and next
+Pilot acceptance requires five inspectable source-backed cases, fixed-policy replay of eligible evidence, explicit unsupported denominator, reproducible report, deterministic gates and exact-candidate review. HC-001's broader lead-time proof remains incomplete unless supported pairs exist. Next is targeted historical availability recovery and cohort expansion toward20–50, not live ranking based on publication-only intervals.

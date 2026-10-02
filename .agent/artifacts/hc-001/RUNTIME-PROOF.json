@@ -1,0 +1,13 @@
+{
+  "input_sha256": "85a4b080878c6425571a613632c3eb712d8b607f8221f11587a28946995a3cd5",
+  "result": "PASS",
+  "projects": 5,
+  "eligible_traces": 1,
+  "strict_pairs": 0,
+  "reproduced_files": {
+    "f1b07b5f19145fdf.trace.json": "a957f2a847d53e7998e297b42372e6c9d757f7b1dc04a65e832e9e7ef8d8cc9c",
+    "report.json": "b1b22648b1ec40b79ad6f09f42119c2535108571efbffa5f77144f704045c754",
+    "report.md": "7a3616819d3f965e6ca5d0b4bbb100e25a40348a5ff5add17f3c102edfde6cd7"
+  },
+  "limitations": "Source-date intervals are diagnostic; historical targets unsupported; no measured positive lead time."
+}

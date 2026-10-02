@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "input_sha256": "85a4b080878c6425571a613632c3eb712d8b607f8221f11587a28946995a3cd5",
+  "result": "Repaired adapter output is byte-identical to all retained canonical pilot results",
+  "files": [
+    "f1b07b5f19145fdf.trace.json",
+    "report.json",
+    "report.md"
+  ],
+  "projects": 5,
+  "eligible_traces": 1,
+  "supported_targets": 0,
+  "strict_pairs": 0
+}
