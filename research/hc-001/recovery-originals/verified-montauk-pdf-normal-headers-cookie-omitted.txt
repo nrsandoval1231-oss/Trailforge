@@ -1,0 +1,41 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 02 Oct 2026 01:25:44 GMT
+Content-Type: application/pdf
+Content-Length: 214827
+Connection: keep-alive
+x-archive-orig-server: nginx
+x-archive-orig-date: Fri, 07 May 2021 16:48:02 GMT
+x-archive-orig-content-length: 214827
+x-archive-orig-connection: keep-alive
+x-archive-orig-keep-alive: timeout=20
+x-archive-orig-last-modified: Mon, 15 Mar 2021 22:21:39 GMT
+x-archive-orig-etag: "604fddf3-3472b"
+x-archive-orig-cache-control: public, max-age=31536000
+x-archive-orig-vary: Accept-Encoding
+x-archive-orig-access-control-allow-origin: *
+x-archive-orig-accept-ranges: bytes
+cache-control: max-age=1800
+x-archive-guessed-content-type: application/pdf
+accept-ranges: bytes
+x-archive-orig-content-type: application/pdf
+memento-datetime: Fri, 07 May 2021 16:48:02 GMT
+link: <https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel="original", <https://web.archive.org/web/timemap/link/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel="timemap"; type="application/link-format", <https://web.archive.org/web/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel="timegate"
+content-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org
+x-archive-src: CC-MAIN-2021-21-1620243988796.88-0016/CC-MAIN-20210507150814-20210507180814-00326.warc.gz
+server-timing: captures_list;dur=0.412612, exclusion.robots;dur=0.042820, exclusion.robots.policy;dur=0.033664, esindex;dur=0.007190, cdx.remote;dur=10.332808, LoadShardBlock;dur=251.731089, PetaboxLoader3.datanode;dur=64.486588, PetaboxLoader3.resolve;dur=215.880824, load_resource;dur=59.422503
+x-app-server: wwwb-app206-dc6
+x-ts: 200
+x-tr: 340
+server-timing: TR;dur=0,Tw;dur=0,Tc;dur=1
+cache-control: private
+X-RL: 0
+X-NA: 0
+X-Page-Cache: BYPASS
+Server-Timing: BYPASS
+X-NID: FRONTIER-FRTR
+Referrer-Policy: no-referrer-when-downgrade
+Permissions-Policy: interest-cohort=()
+X-sd: 0
+X-location: _pdf
+

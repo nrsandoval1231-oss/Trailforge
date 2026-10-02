@@ -1,0 +1,13 @@
+# Preserve byte identity for the new HC-001 evidence package on checkout.
+research/hc-001/cohort-input-recovery-v1.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/recovery-captures/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/recovery-originals/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/recovery-parent/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/recovery-searches/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/results-recovery-v1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+research/hc-001/results-recovery-v2/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# These verbatim source/archive bodies can contain source whitespace or blank lines.
+research/hc-001/recovery-originals/*.html -diff
+research/hc-001/recovery-searches/builder/cdx-*.txt -diff
+research/hc-001/recovery-originals/*-headers-cookie-omitted.txt -diff

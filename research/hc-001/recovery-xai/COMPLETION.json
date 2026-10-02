@@ -1,0 +1,51 @@
+{
+  "task": "HC-001 xAI availability recovery",
+  "status": "PARTIAL_EVIDENCE_WITH_TARGET_UNKNOWN",
+  "candidate": {
+    "repo": "C:/Users/nrsan/.codex/worktrees/trailforge-firecrawl/Trailforge",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "base_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+    "changed_files": [
+      ".firecrawl/hc-recovery-xai/cdx-chamber-exact.json",
+      ".firecrawl/hc-recovery-xai/cdx-chamber-xai-wildcard.json",
+      ".firecrawl/hc-recovery-xai/cdx-city-bulletin.json",
+      ".firecrawl/hc-recovery-xai/city-bulletin-june7.json",
+      ".firecrawl/hc-recovery-xai/city-bulletin-june8-archive.json",
+      ".firecrawl/hc-recovery-xai/search-chamber-official.json",
+      ".firecrawl/hc-recovery-xai/search-memphis-official.json",
+      ".firecrawl/hc-recovery-xai/search-official-power.json",
+      ".firecrawl/hc-recovery-xai/search-official-records.json",
+      "research/hc-001/recovery-xai/findings.md",
+      "research/hc-001/recovery-xai/COMPLETION.json"
+    ]
+  },
+  "evidence": {
+    "early_alternate_source_url": "https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+    "publisher_sent_time": "2024-06-07T22:10:00Z",
+    "archive_capture_time": "2024-06-08T21:56:14Z",
+    "archive_snapshot_url": "https://web.archive.org/web/20240608215614id_/https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+    "archive_cdx_record": ["20240608215614", "https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2", "200", "text/html", "6YWUY7M5WZQ6UPCMS65QVG5ACEJDM66I"],
+    "archive_raw_html_sha256": "c069202d194e8faefa8972707848350d35eb349ca450ff22e55bd3423893d4d5",
+    "archive_response_sha256": "D465030DAE216951FE5A1BCABBCD7F50CDE615619A3B63BCF887DBAEB2B24CAD",
+    "chamber_selected_url": "https://memphischamber.com/blog/press-release/velocity-meets-potency-xai-announces-memphis-as-new-home/",
+    "chamber_cdx_earliest_returned_capture": "2025-01-29T03:25:10Z",
+    "target_url": "https://www.reuters.com/business/environment/musks-xai-operating-gas-turbines-without-permits-data-center-environmental-group-2024-08-28/",
+    "target_availability": "UNKNOWN",
+    "target_handling": "No Wayback query; parent-provided current metadata is noarchive. Targeted public official-domain searches did not surface a contemporaneous power-use/permit record."
+  },
+  "result": "The City bulletin is an alternate official early announcement source captured by the Wayback Machine on June 8, 2024. It does not backdate the Chamber permalink and does not prove target availability. No xAI validated temporal pair or lead time is established.",
+  "validation": {
+    "deterministic_replay": "NOT_RUN_RESEARCH_ONLY",
+    "tests": "NOT_RUN_RESEARCH_ONLY",
+    "independent_review": "PARENT_REVIEW_REQUIRED"
+  },
+  "attempts": "See research/hc-001/recovery-xai/findings.md; exact Chamber CDX returned no pre-2025 records; wildcard CDX was HTTP 400; two targeted official power-record searches did not surface a contemporaneous government record.",
+  "timing": {
+    "started_at_utc": null,
+    "finished_at_utc": "2026-10-02T01:26:36.8182106Z",
+    "elapsed": "UNKNOWN_NOT_INSTRUMENTED"
+  },
+  "model": "UNKNOWN",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN"
+}

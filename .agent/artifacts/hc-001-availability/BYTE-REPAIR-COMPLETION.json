@@ -1,0 +1,30 @@
+{
+  "task": "HC-001 evidence-byte integration repair",
+  "status": "complete",
+  "files_changed": [
+    ".gitattributes",
+    ".agent/artifacts/hc-001-availability/BYTE-REPAIR-COMPLETION.json"
+  ],
+  "attributes": {
+    "text_disabled_for": [
+      "research/hc-001/cohort-input-recovery-v1.json",
+      "research/hc-001/recovery-captures/**",
+      "research/hc-001/recovery-originals/**",
+      "research/hc-001/recovery-parent/**",
+      "research/hc-001/recovery-searches/**",
+      "research/hc-001/results-recovery-v1/**"
+    ],
+    "diff_disabled_only_for": [
+      "research/hc-001/recovery-originals/*.html",
+      "research/hc-001/recovery-searches/builder/cdx-*.txt"
+    ],
+    "rationale": "These attributes preserve exact evidence bytes across checkout. Git treats only archived HTML bodies and raw CDX text responses as binary for diff whitespace checks. Notes and handoff Markdown remain text; source, test, and documentation paths have no overrides."
+  },
+  "verification": {
+    "command": "git check-attr text diff -- <protected evidence paths> <source/test/documentation paths>",
+    "result": "Protected new evidence paths report text: unset; raw archived HTML and selected raw CDX .txt paths also report diff: unset. Source, tests, README, and docs report text: unspecified and diff: unspecified.",
+    "staging": "No files were staged or re-added.",
+    "tests_and_full_gate": "Not run by this packaging repair; parent owns index hash checks, staged diff check, and final gate. The task packet reports the prior full gate as 330 passed and 1 skipped."
+  },
+  "external_actions": "No commit or push."
+}

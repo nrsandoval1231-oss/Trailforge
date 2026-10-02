@@ -1,0 +1,6 @@
+{
+  "started_at_utc": "2026-10-02T02:03:28.1470915Z",
+  "exit_code": 0,
+  "command": "uv run --frozen --extra dev python scripts/validate.py",
+  "finished_at_utc": "2026-10-02T02:04:10.4222400Z"
+}

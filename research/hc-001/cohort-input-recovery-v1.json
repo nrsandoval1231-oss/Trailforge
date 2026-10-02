@@ -1,0 +1,306 @@
+{
+  "schema_version": "trailforge-historical-cohort-input-v1",
+  "cohort_id": "hc001-five-project-availability-recovery-v1-2026-10-02",
+  "policy": {
+    "target_signal_type": "POWER_REQUIREMENT",
+    "early_signal_types": [
+      "PROJECT_ANNOUNCED",
+      "PERMIT_FILED",
+      "PERMIT_APPROVED",
+      "CONSTRUCTION_STARTED"
+    ],
+    "selection_basis": "Fixed broad early-project policy selected before interval calculation. Five purposive cases from retained prior research and initial targeted Firecrawl search: two data centers, one wind commissioning project and two utility temporary-power packages. Includes same-document and undated controls; not representative, not a negative cohort, no tuning or signal promotion."
+  },
+  "projects": [
+    {
+      "project_id": "crusoe-abilene-lancium-campus",
+      "identity_status": "RESOLVED",
+      "identity_basis": "Legacy official Lancium release URLs identify the same Abilene Lancium campus as the prior canonical releases. July initial 200 MW phase is explicitly planned to expand across 1.2 GW; March announcement is the later campus expansion. Phase distinction retained; no project-level load or rental requirement inferred from campus capacity.",
+      "signals": [
+        {
+          "signal_id": "crusoe-announced",
+          "signal_type": "PROJECT_ANNOUNCED",
+          "title": "crusoe announced",
+          "source_url": "https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+          "source_capture_path": "recovery-captures/crusoe-legacy-announcement-live.capture.json",
+          "excerpt": "This is the first phase of Crusoe’s data center development which will expand to enable AI workloads at scale across 1.2 GW of power capacity at the Lancium Clean Campus.",
+          "source_sha256": "8541a06d2fe24c250581afc9fbbcaa9765dd7439284eb4d26211c9fb737d259c",
+          "published_at": "2024-07-18",
+          "published_date_precision": "day",
+          "published_date_excerpt": "July 18, 2024",
+          "available_at": "2024-07-18T15:55:07Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "recovery-captures/crusoe-early-archive.capture.json",
+          "availability_excerpt": "This is the first phase of Crusoe’s data center development which will expand to enable AI workloads at scale across 1.2 GW of power capacity at the Lancium Clean Campus.",
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY",
+          "availability_capture_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+          "availability_time_excerpt": "20240718155507"
+        },
+        {
+          "signal_id": "crusoe-backup-power",
+          "signal_type": "POWER_REQUIREMENT",
+          "title": "crusoe backup power",
+          "source_url": "https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+          "source_capture_path": "recovery-captures/crusoe-legacy-target-live.capture.json",
+          "excerpt": "The data center will also feature natural gas turbines to power its back-up power supply.",
+          "source_sha256": "00c44e584d76dab73fdb9ac520663624ee4de76d064dfebb1aa7b5a196047cf0",
+          "published_at": "2025-03-18",
+          "published_date_precision": "day",
+          "published_date_excerpt": "March 18, 2025",
+          "available_at": "2025-03-22T19:50:15Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "recovery-captures/crusoe-target-archive.capture.json",
+          "availability_excerpt": "The data center will also feature natural gas turbines to power its back-up power supply.",
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY",
+          "availability_capture_url": "https://web.archive.org/web/20250322195015/https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+          "availability_time_excerpt": "20250322195015"
+        }
+      ],
+      "conventional_milestone_signal_id": "crusoe-backup-power",
+      "buyer_path": {
+        "organization": "Crusoe",
+        "status": "ORGANIZATION_IDENTIFIED_AUTHORITY_UNKNOWN",
+        "evidence_capture_path": "recovery-captures/crusoe-legacy-announcement-live.capture.json",
+        "source_url": "https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+        "excerpt": "This is the first phase of Crusoe’s data center development which will expand to enable AI workloads at scale across 1.2 GW of power capacity at the Lancium Clean Campus.",
+        "available_at": "2024-07-18T15:55:07Z",
+        "availability_basis": "ARCHIVED_CONTENT",
+        "availability_capture_path": "recovery-captures/crusoe-early-archive.capture.json",
+        "availability_capture_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+        "availability_excerpt": "This is the first phase of Crusoe’s data center development which will expand to enable AI workloads at scale across 1.2 GW of power capacity at the Lancium Clean Campus.",
+        "availability_time_excerpt": "20240718155507"
+      },
+      "notes": "Recovered legacy URLs overcome modern-permalink archive gaps. July18 2024 project content and March22 2025 campus-specific backup-gas text are archive observations. Their difference is a replay observation interval only, not market lead-time advantage. March18 publication date remains diagnostic. Backup generation is not verified temporary rental demand. Buyer organization named at recovered early observation; authority/contact/requirement UNKNOWN."
+    },
+    {
+      "project_id": "azure-sky-wind-throckmorton",
+      "identity_status": "RESOLVED",
+      "identity_basis": "Enel and Aggreko both name Azure Sky wind in Throckmorton, Texas. Do not merge Azure Sky solar project.",
+      "signals": [
+        {
+          "signal_id": "azure-construction",
+          "signal_type": "CONSTRUCTION_STARTED",
+          "title": "azure construction",
+          "source_url": "https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0",
+          "source_capture_path": "captures/azure-announcement.capture.json",
+          "excerpt": "**Rome - Boston, March 3rd, 2021** – Enel, through its US renewable subsidiary Enel Green Power North America, has started construction of Azure Sky wind + storage, its first large-scale hybrid project globally to integrate wind and battery storage at one site. Through a 100 MW virtual power purchase agreement (VPPA), Enel will sell to Kellogg Company a 360 GWh portion of the electricity delivered to the grid annually from the Azure Sky wind project, which is equal to 50% of the volume of electricity used across Kellogg’s North American manufacturing facilities. Located in Throckmorton County, Texas, the 350 MW wind farm paired with approximately 137 MW of battery storage will be Enel’s third hybrid project in the US that integrates a renewable energy plant with utility-scale battery storage.",
+          "source_sha256": "a71b726614cb9c405f042644a8c7f399641bd377f1b95717ecbcc9d2b2e58a6d",
+          "published_at": "2021-03-03",
+          "published_date_precision": "day",
+          "published_date_excerpt": "March 03, 2021",
+          "available_at": null,
+          "availability_basis": null,
+          "availability_capture_path": null,
+          "availability_excerpt": null,
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY"
+        },
+        {
+          "signal_id": "azure-commissioning",
+          "signal_type": "POWER_REQUIREMENT",
+          "title": "azure commissioning",
+          "source_url": "https://www.aggreko.com/en-us/case-studies/utilities/hybrid-grid-emulation-system-reduces-emissions-during-wind-turbine-commissioning",
+          "source_capture_path": "captures/azure-power.capture.json",
+          "excerpt": "Aggreko provided off-grid contingency power and a 4.5 MW hybrid grid emulation package, including two generators and one battery, integrated as a 2 x 1.5 MW generators + 1 x 1 BESS hybrid solution. Aggreko also implemented advanced load control systems which, combined with energy storage, reduced the system’s emissions by over 67%. By integrating energy storage, Aggreko was able to provide the same grid emulation offering with one fewer generator, significantly reducing overall fuel consumption, emissions, and maintenance, while meeting all deadlines and commercial operations dates (COD).",
+          "source_sha256": "8517ec8a4e951d437ff045577be9ae53b124d574605155034452ab38b7b62be7",
+          "published_at": null,
+          "published_date_precision": null,
+          "published_date_excerpt": null,
+          "available_at": null,
+          "availability_basis": null,
+          "availability_capture_path": null,
+          "availability_excerpt": null,
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY"
+        }
+      ],
+      "conventional_milestone_signal_id": "azure-commissioning",
+      "buyer_path": {
+        "organization": "Enel Green Power North America",
+        "status": "ORGANIZATION_IDENTIFIED_AUTHORITY_UNKNOWN",
+        "available_at": null,
+        "evidence_capture_path": "captures/azure-announcement.capture.json",
+        "excerpt": "**Rome - Boston, March 3rd, 2021** – Enel, through its US renewable subsidiary Enel Green Power North America, has started construction of Azure Sky wind + storage, its first large-scale hybrid project globally to integrate wind and battery storage at one site. Through a 100 MW virtual power purchase agreement (VPPA), Enel will sell to Kellogg Company a 360 GWh portion of the electricity delivered to the grid annually from the Azure Sky wind project, which is equal to 50% of the volume of electricity used across Kellogg’s North American manufacturing facilities. Located in Throckmorton County, Texas, the 350 MW wind farm paired with approximately 137 MW of battery storage will be Enel’s third hybrid project in the US that integrates a renewable energy plant with utility-scale battery storage."
+      },
+      "notes": "Commissioning case is undated. Supplier-reported 4/4.5MW language is not reconciled; no target date or lead time invented."
+    },
+    {
+      "project_id": "montauk-transmission-upgrades-2021",
+      "identity_status": "RESOLVED",
+      "identity_basis": "PSEG Montauk utility page links Navy Road substation; LIPA March 2021 temporary generation supports Navy Road connections/transmission upgrades. Link is related package in same works, not merging distinct generator eras.",
+      "signals": [
+        {
+          "signal_id": "montauk-upgrade-announced",
+          "signal_type": "PROJECT_ANNOUNCED",
+          "title": "montauk upgrade announced",
+          "source_url": "https://www.psegliny.com/reliability/newmontauk",
+          "source_capture_path": "captures/montauk-utility.capture.json",
+          "excerpt": "- Underground distribution and transmission lines will be reconfigured in the vicinity to serve the new substation.",
+          "source_sha256": "c8e6ae7c33f466b4f47c31b30ce02d7e46e84a43938d95d038295ca7184a9042",
+          "published_at": "2019-12-20",
+          "published_date_precision": "day",
+          "published_date_excerpt": "**Posted Date:** December 20, 2019",
+          "available_at": "2021-10-18T05:26:13Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "recovery-captures/montauk-early-archive.capture.json",
+          "availability_excerpt": "- Underground distribution and transmission lines will be reconfigured in the vicinity to serve the new substation.",
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY",
+          "availability_capture_url": "https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk",
+          "availability_time_excerpt": "20211018052613"
+        },
+        {
+          "signal_id": "montauk-temporary-power",
+          "signal_type": "POWER_REQUIREMENT",
+          "title": "montauk temporary power",
+          "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+          "source_capture_path": "captures/montauk-power.capture.json",
+          "excerpt": "The Proposed Action will provide a maximum of 6 MW of additional power generation ",
+          "source_sha256": "5cc9e58b8b9b2d5becd34e5a00f032e5f3e448cabb6c6fbed2bfdb91f7f58015",
+          "published_at": "2021-03-11",
+          "published_date_precision": "day",
+          "published_date_excerpt": "Date: March 11, 2021",
+          "available_at": "2021-05-07T16:48:02Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "recovery-captures/montauk-pdf-archive-witness.capture.json",
+          "availability_excerpt": "The Proposed Action will provide a maximum of 6 MW of additional power generation ",
+          "published_date_basis": "DOCUMENT_ISSUE_DATE_NOT_WEB_PUBLICATION",
+          "availability_capture_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+          "availability_time_excerpt": "20210507164802"
+        }
+      ],
+      "conventional_milestone_signal_id": "montauk-temporary-power",
+      "buyer_path": {
+        "organization": "PSEG Long Island / LIPA",
+        "status": "ORGANIZATION_IDENTIFIED_AUTHORITY_UNKNOWN",
+        "available_at": null,
+        "evidence_capture_path": "captures/montauk-utility.capture.json",
+        "excerpt": "At PSEG Long Island, it is our mission to provide safe, reliable and resilient energy for all the communities we serve."
+      },
+      "notes": "Recovered project-page observation Oct18 2021 postdates May7 2021 archived temporary-power PDF. This is a late-observation control, not proof of a missed forecast or absent earlier signal. PDF witness transparently combines actual returned URL/Memento header with byte-identical original PDF and retained Firecrawl text; no historical date is inferred from document issue date. Earlier 2017/2020 uses remain separate."
+    },
+    {
+      "project_id": "east-hampton-tempgen-expansion-2018",
+      "identity_status": "RESOLVED",
+      "identity_basis": "One LIPA determination names East Hampton 2018 expansion from 12 to 17 MW; no merge with Montauk or original 2017 scope.",
+      "signals": [
+        {
+          "signal_id": "east-hampton-expansion-approval",
+          "signal_type": "PERMIT_APPROVED",
+          "title": "east hampton expansion approval",
+          "source_url": "https://www.lipower.org/wp-content/uploads/2018/06/East-Hampton-Temporary-Generation-Facility-Expansion-May-17-2018.pdf",
+          "source_capture_path": "captures/east-hampton-power.capture.json",
+          "excerpt": "The Long Island Power Authority (“Authority”) has determined, based on information provided by PSEG Long Island (\"PSEG LI”) and the Environmental Assessment and supporting documents (“EA”) prepared by H2M architects + engineers and a supporting document prepared by Cerami and Associates, that the Proposed Action described below will not have a significant adverse impact on the environment and a Draft Environmental Impact Statement will not be prepared.",
+          "source_sha256": "8b0cffd0eb63e6ad97b26c2caba3bbaecdd5910eb301fd833ffebe368f9c5dff",
+          "published_at": "2018-05-17",
+          "published_date_precision": "day",
+          "published_date_excerpt": "## Date: May 17, 2018",
+          "available_at": null,
+          "availability_basis": null,
+          "availability_capture_path": null,
+          "availability_excerpt": null,
+          "published_date_basis": "DOCUMENT_ISSUE_DATE_NOT_WEB_PUBLICATION"
+        },
+        {
+          "signal_id": "east-hampton-power",
+          "signal_type": "POWER_REQUIREMENT",
+          "title": "east hampton power",
+          "source_url": "https://www.lipower.org/wp-content/uploads/2018/06/East-Hampton-Temporary-Generation-Facility-Expansion-May-17-2018.pdf",
+          "source_capture_path": "captures/east-hampton-power.capture.json",
+          "excerpt": "0.69-acre portion of the 1.75 acres LIPA leases from National Grid, which is a portion of a 17.70-acre parcel located off of Cove Hollow Road, north of its intersection with Buell Lane Extension (the “East Hampton Substation” or “Site”). PSEG Long Island (PSEG LI), as Agent for Long Island Power Authority (“LIPA”), is now proposing to increase the capacity of the temporary generation from 12 MW to 17 MW for May through September of 2018 and 2019 (“Proposed Action.”). The Site is currently operated as an electrical substation. A diesel-fueled peaker power plant operated by National Grid (National Grid Generation Facility) is located immediately to the west of the Site. The Proposed Action will operate only as needed during peak periods between May and September in 2018 and 2019, based on demand. The Proposed Action includes the potential use of four additional generation units (for a total of 16 generation units, including the 12 generation units sited in 2017) and three additional transformers. The additional generation units will be installed on the same type of containment berm as used for the generation units for the 12 MW facility (“2017 Facility”). The generation units will remain in place throughout 2019, but will be operated only during the May – September season, as needed. This EA is being conducted to assess the incremental and cumulative potential impacts of the Proposed Action to the previously evaluated and approved 2017 Facility pursuant to SEQRA.",
+          "source_sha256": "8b0cffd0eb63e6ad97b26c2caba3bbaecdd5910eb301fd833ffebe368f9c5dff",
+          "published_at": "2018-05-17",
+          "published_date_precision": "day",
+          "published_date_excerpt": "## Date: May 17, 2018",
+          "available_at": null,
+          "availability_basis": null,
+          "availability_capture_path": null,
+          "availability_excerpt": null,
+          "published_date_basis": "DOCUMENT_ISSUE_DATE_NOT_WEB_PUBLICATION"
+        }
+      ],
+      "conventional_milestone_signal_id": "east-hampton-power",
+      "buyer_path": {
+        "organization": "LIPA / PSEG Long Island",
+        "status": "ORGANIZATION_IDENTIFIED_AUTHORITY_UNKNOWN",
+        "available_at": null,
+        "evidence_capture_path": "captures/east-hampton-power.capture.json",
+        "excerpt": "The Long Island Power Authority (“Authority”) has determined, based on information provided by PSEG Long Island (\"PSEG LI”) and the Environmental Assessment and supporting documents (“EA”) prepared by H2M architects + engineers and a supporting document prepared by Cerami and Associates, that the Proposed Action described below will not have a significant adverse impact on the environment and a Draft Environmental Impact Statement will not be prepared."
+      },
+      "notes": "Same document reveals approval and explicit power requirement: no publication-date advance in captured set. Earlier 2017 event is retrospective and not imported as an early 2018 signal."
+    },
+    {
+      "project_id": "xai-memphis-colossus1",
+      "identity_status": "RESOLVED",
+      "identity_basis": "Chamber names initial Memphis former-manufacturing supercomputer; Reuters August2024 names same initial Memphis xAI facility. Excludes later Colossus 2 / Mississippi projects. Distinct official City bulletin names the same initial Memphis Gigafactory of Compute and xAI partnership; it does not backdate the Chamber URL.",
+      "signals": [
+        {
+          "signal_id": "xai-announcement",
+          "signal_type": "PROJECT_ANNOUNCED",
+          "title": "xai announcement",
+          "source_url": "https://memphischamber.com/blog/press-release/velocity-meets-potency-xai-announces-memphis-as-new-home/",
+          "source_capture_path": "captures/xai-announcement.capture.json",
+          "excerpt": "This project is pending approval by the Memphis Shelby County Economic Development Growth Engine (EDGE), Tennessee Valley Authority, and governing authorities.",
+          "source_sha256": "30844ba17c2c7d62e0130e3865ce91086e0e74d38cb00a7e5bab18118c262926",
+          "published_at": "2024-06-06",
+          "published_date_precision": "day",
+          "published_date_excerpt": "June 6, 2024",
+          "available_at": "2025-01-29T03:25:10Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "captures/xai-announcement-archive.capture.json",
+          "availability_excerpt": "This project is pending approval by the Memphis Shelby County Economic Development Growth Engine (EDGE), Tennessee Valley Authority, and governing authorities.",
+          "availability_time_excerpt": "20250129032510",
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY"
+        },
+        {
+          "signal_id": "xai-power-obvious",
+          "signal_type": "POWER_REQUIREMENT",
+          "title": "xai power obvious",
+          "source_url": "https://www.reuters.com/business/environment/musks-xai-operating-gas-turbines-without-permits-data-center-environmental-group-2024-08-28/",
+          "source_capture_path": "captures/xai-2024-power.capture.json",
+          "excerpt": "Aug 28 (Reuters) - Elon Musk's AI startup, xAI, is facing criticism from environmental and health advocates for allegedly contributing to pollution in Memphis, Tennessee, by using natural gas-burning turbines at its data center without obtaining necessary permits.",
+          "source_sha256": "5e4b8bb3d29ca97e90148c482e45b0703e7df5bf4397deb0f328878cc9535b0d",
+          "published_at": "2024-08-28",
+          "published_date_precision": "day",
+          "published_date_excerpt": "[Skip to main content](https://www.reuters.com/business/environment/musks-xai-operating-gas-turbines-without-permits-data-center-environmental-group-2024-08-28/#main-content)\n\n[Exclusive news, data and analytics for financial market professionalsLearn more aboutRefinitiv](https://www.reuters.com/differentiator/)\n\n![Illustration shows xAI logo](https://www.reuters.com/resizer/v2/HZAA27WWRBMDLPQQYSP5J5DRKE.jpg?auth=4fc232352bd6eea627c79655b7cbcadadb491b9c29687e258d1d3e7d2479f5bd&width=1920&quality=80)\n\nxAI logo is seen near computer motherboard in this illustration taken January 8, 2024. REUTERS/Dado Ruvic/Illustration [Purchase Licensing Rights, opens new tab](https://www.reutersconnect.com/item/illustration-shows-xai-logo/dGFnOnJldXRlcnMuY29tLDIwMjQ6bmV3c21sX1JDMlhENUE5OEdOUg%3D%3D/?utm_medium=rcom-article-media&utm_campaign=rcom-rcp-lead)\n\n- Companies\n\n- [Alphabet Inc](https://www.reuters.com/company/alphabet-inc/)\n\n\n\nFollow\n\n\nAug 28 (Reuters) - Elon Musk's AI startup, xAI, is facing criticism from environmental and health advocates for allegedly contributing to pollution in Memphis, Tennessee, by using natural gas-burning turbines at its data center without obtaining necessary permits.\n\n",
+          "available_at": null,
+          "availability_basis": null,
+          "availability_capture_path": null,
+          "availability_excerpt": null,
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY"
+        },
+        {
+          "signal_id": "xai-city-announcement",
+          "signal_type": "PROJECT_ANNOUNCED",
+          "title": "City of Memphis announces xAI supercomputer partnership",
+          "published_at": "2024-06-07",
+          "published_date_precision": "day",
+          "published_date_excerpt": "Memphis sent this bulletin at 06/07/2024 05:10 PM CDT",
+          "published_date_basis": "DISPLAYED_SOURCE_DATE_NOT_VERIFIED_AVAILABILITY",
+          "source_url": "https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+          "source_capture_path": "recovery-captures/xai-city-bulletin-live.capture.json",
+          "source_sha256": "c86b959007ae92a131bff6725185a7cc1c9dde9e4b3cfe7b0088fc3ad40d9606",
+          "excerpt": "We announced that **our city will be the home of the world’s largest supercomputer**, or as Elon Musk likes to call it, the Gigafactory of Compute.",
+          "available_at": "2024-06-08T21:56:14Z",
+          "availability_basis": "ARCHIVED_CONTENT",
+          "availability_capture_path": "recovery-captures/xai-city-bulletin-archive.capture.json",
+          "availability_capture_url": "https://web.archive.org/web/20240608215614/https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+          "availability_excerpt": "We announced that **our city will be the home of the world’s largest supercomputer**, or as Elon Musk likes to call it, the Gigafactory of Compute.",
+          "availability_time_excerpt": "20240608215614"
+        }
+      ],
+      "conventional_milestone_signal_id": "xai-power-obvious",
+      "buyer_path": {
+        "organization": "xAI",
+        "status": "ORGANIZATION_IDENTIFIED_AUTHORITY_UNKNOWN",
+        "source_url": "https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+        "evidence_capture_path": "recovery-captures/xai-city-bulletin-live.capture.json",
+        "excerpt": "I am confident that the partnership between the city of Memphis and xAI will produce great things.",
+        "available_at": "2024-06-08T21:56:14Z",
+        "availability_basis": "ARCHIVED_CONTENT",
+        "availability_capture_path": "recovery-captures/xai-city-bulletin-archive.capture.json",
+        "availability_capture_url": "https://web.archive.org/web/20240608215614/https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+        "availability_excerpt": "I am confident that the partnership between the city of Memphis and xAI will produce great things.",
+        "availability_time_excerpt": "20240608215614"
+      },
+      "notes": "Additional official City bulletin is archived June8 2024; original Chamber announcement and Jan2025 archive are retained separately. Reuters target historical availability stays UNKNOWN. Current publisher JSON-LD times are diagnostic, not proof that then-current text matched. No xAI observation pair, market lead time, authority or verified power gap is inferred."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-02T02:04:46.222513+00:00",
+  "files_verified": 67,
+  "index_bytes": "Every selected input, raw source, acquisition, search and both versioned results matches the working bytes",
+  "staged_diff_check_exit": 0,
+  "input_sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+  "source_tests_docs": "Use normal text and whitespace rules; byte preservation scoped to retained recovery evidence"
+}

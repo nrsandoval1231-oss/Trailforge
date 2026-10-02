@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-02T01:48:23.764908+00:00",
+  "files_checked": 61,
+  "check": "Every selected new evidence/input/result index blob is byte-identical to the validated working file; no newline conversion",
+  "staged_diff_check": "PENDING; literal preserved CRLF needs explicit cr-at-eol interpretation"
+}

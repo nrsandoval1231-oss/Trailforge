@@ -1,0 +1,22 @@
+{
+  "task": "HC-001 raw HTTP header byte handling",
+  "status": "complete",
+  "files_changed": [
+    ".gitattributes",
+    ".agent/artifacts/hc-001-availability/HEADER-BYTE-COMPLETION.json"
+  ],
+  "change": "Added exactly one diff override for research/hc-001/recovery-originals/*-headers-cookie-omitted.txt.",
+  "rationale": "These sanitized response-header evidence files intentionally preserve original empty header values and terminating blank lines. The retained bytes and manifest hashes remain unchanged; only Git diff whitespace interpretation is disabled for this exact raw header family.",
+  "preserved_rules": [
+    "All existing -text and whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol rules remain unchanged.",
+    "Existing -diff patterns for raw archived HTML and raw CDX responses remain unchanged.",
+    "No source, tests, docs, or evidence bytes were changed."
+  ],
+  "verification": {
+    "command": "git check-attr text diff whitespace -- selected recovery-originals header paths and unaffected paths",
+    "result": "Pass. All four sanitized header paths report diff: unset and retain the scoped text: unset and CR-aware whitespace value. Existing raw HTML/CDX attributes remain scoped as before. Source, tests, README/docs, and handoff Markdown report text/diff/whitespace: unspecified.",
+    "staging": "No files staged or re-added.",
+    "tests_and_full_gate": "Not run; parent owns index-byte check, staged whitespace check, and final gate."
+  },
+  "external_actions": "No commit or push."
+}

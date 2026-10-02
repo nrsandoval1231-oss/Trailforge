@@ -1,0 +1,16 @@
+{
+  "task": "HC-001 result v2 byte preservation",
+  "status": "complete",
+  "files_changed": [
+    ".gitattributes",
+    ".agent/artifacts/hc-001-availability/RESULT-V2-BYTES.json"
+  ],
+  "attribute_added": "research/hc-001/results-recovery-v2/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+  "rationale": "Preserve exact generated v2 result bytes across checkout while allowing CR at EOL and retaining the existing whitespace checks.",
+  "verification": {
+    "command": "git check-attr text whitespace diff -- research/hc-001/results-recovery-v2/report.json research/hc-001/results-recovery-v1/report.json src/athena_procurement_arena/historical_cohort.py README.md",
+    "result": "Pass. The v2 result path reports text: unset, the required CR-aware whitespace value, and diff: unspecified. The existing v1 result retains its existing attributes; source code and README remain unspecified.",
+    "staging": "No files staged.",
+    "tests": "Not run; packaging-only task."
+  }
+}

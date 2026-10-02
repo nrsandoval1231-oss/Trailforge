@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-02T02:03:16.476446+00:00",
+  "input_sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+  "output": "research/hc-001/results-recovery-v2",
+  "output_files_sha256": {
+    "83a1871e1e336f3b.trace.json": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7",
+    "ca5efa0581fd070e.trace.json": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb",
+    "f1b07b5f19145fdf.trace.json": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c",
+    "report.json": "3208427124a712b277950f13e00f93ac97c7fc9ec4838f6d07e83464494fd6e6",
+    "report.md": "71b05b681cc51cd7420efb29d030b9bd2451507b72ceff38f2189af103c675c3"
+  },
+  "reproduction": "Two fresh offline outputs byte-identical for all five files",
+  "prior_outputs": "All five rejected v1 output files retained byte-identical; superseded notice added separately",
+  "engine_compatibility": "Nested replay, three trace files, all case fields except buyer_path unchanged from v1",
+  "buyer_evidence": "Organization availability retains prior evidence status; all buyer path, procurement authority, contact and direct chain fields UNKNOWN",
+  "markdown": "11 columns in header, separator and all five case rows",
+  "market_lead_time_status": "UNKNOWN",
+  "validated_commercial_lead_time_pairs": 0
+}

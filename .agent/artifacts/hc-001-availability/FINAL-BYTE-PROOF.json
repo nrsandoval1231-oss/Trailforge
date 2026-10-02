@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-02T01:52:08.003511+00:00",
+  "new_input_sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+  "files_verified": 61,
+  "index_bytes": "All selected new evidence/input/result blobs byte-identical to validated files",
+  "staged_diff_check_exit": 0,
+  "attribute_scope": "Only recovery evidence paths preserve exact bytes/CRLF; binary diff limited to archived HTML, verbatim CDX .txt and sanitized raw HTTP headers. Source/tests/docs use unchanged defaults.",
+  "protected_existing_evidence": "No existing source captures, originals, input, generated results, trace engine, fixtures, canonical PRD or evaluation policy modified."
+}

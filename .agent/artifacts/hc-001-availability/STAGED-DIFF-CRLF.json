@@ -1,0 +1,33 @@
+{
+  "command": "git diff --cached --check",
+  "exit_code": 2,
+  "raw_log_sha256": "c2038c3596f7ebceb3c3c8f6e6996859ee935fc814f2ffae1cc546833c272219",
+  "original_local_log": ".firecrawl\\hc-recovery-staged-diff-after.txt",
+  "sample_lines": [
+    "research/hc-001/cohort-input-recovery-v1.json:1: trailing whitespace.",
+    "+{",
+    "research/hc-001/cohort-input-recovery-v1.json:2: trailing whitespace.",
+    "+  \"schema_version\": \"trailforge-historical-cohort-input-v1\",",
+    "research/hc-001/cohort-input-recovery-v1.json:3: trailing whitespace.",
+    "+  \"cohort_id\": \"hc001-five-project-availability-recovery-v1-2026-10-02\",",
+    "research/hc-001/cohort-input-recovery-v1.json:4: trailing whitespace.",
+    "+  \"policy\": {",
+    "research/hc-001/cohort-input-recovery-v1.json:5: trailing whitespace.",
+    "+    \"target_signal_type\": \"POWER_REQUIREMENT\",",
+    "research/hc-001/cohort-input-recovery-v1.json:6: trailing whitespace.",
+    "+    \"early_signal_types\": [",
+    "research/hc-001/cohort-input-recovery-v1.json:7: trailing whitespace.",
+    "+      \"PROJECT_ANNOUNCED\",",
+    "research/hc-001/cohort-input-recovery-v1.json:8: trailing whitespace.",
+    "+      \"PERMIT_FILED\",",
+    "research/hc-001/cohort-input-recovery-v1.json:9: trailing whitespace.",
+    "+      \"PERMIT_APPROVED\",",
+    "research/hc-001/cohort-input-recovery-v1.json:10: trailing whitespace.",
+    "+      \"CONSTRUCTION_STARTED\"",
+    "research/hc-001/cohort-input-recovery-v1.json:11: trailing whitespace.",
+    "+    ],",
+    "research/hc-001/cohort-input-recovery-v1.json:12: trailing whitespace.",
+    "+    \"selection_basis\": \"Fixed broad early-project policy selected before interval calculation. Five purposive cases from retained prior research and initial targeted Firecrawl search: two data centers, one wind commissioning project and two utility temporary-power packages. Includes same-document and undated controls; not representative, not a negative cohort, no tuning or signal promotion.\""
+  ],
+  "cause": "Literal CRLF preserved with -text is reported as trailing CR whitespace. Data/index bytes are equal; add scoped cr-at-eol recognition with all default whitespace checks retained."
+}

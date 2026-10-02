@@ -5,10 +5,10 @@ The merged early-project reset remains authoritative. The owner subsequently aut
 | Node | Dependencies | State | Acceptance |
 | --- | --- | --- | --- |
 | FC-050 A/B | RESET | ACCEPTED (PR7 OPEN) | Firecrawl search -> retained captures -> cited opportunity -> dedup -> strict fit -> inspectable local workspace; real early project plus active solicitation with original document/deadline/next action |
-| HC-001 | FC-050 | PILOT VALIDATION / REVIEW | Small real historical cohort through existing trace/replay, first policy surface and supported lead-time results |
+| HC-001 | FC-050 | PILOT ACCEPTED; AVAILABILITY RECOVERY (receipt governs) | Five real cases; new archive observations and replay; commercial lead-time proof remains incomplete |
 | HC-002/003 | HC-001 | PENDING | Expand toward 20–50 projects; compare lead time, coverage, misses, action burden and buyer path |
 | SIGNAL-001 | HC-003 | PENDING | Repeated historical support for signal rules; no claim from one live example |
 | LIVE-001 | SIGNAL-001 | PENDING | Ranked human-review queue using tested rules |
 | GL-HANDOFF-001 | SIGNAL-001 | PENDING | Minimal evidence-bound validated-project interface |
 
-Packet: `.agent/tasks/firecrawl-050.md`. One builder; serial validation/integration. No autonomous outreach, submission, merge or deployment. Live records are not verified historical fixtures.
+Current packets: `.agent/tasks/hc-001-availability.md` , `.agent/tasks/hc-001-observation-labels.md`, and `.agent/tasks/hc-001-buyer-label-repair.md`. Two disjoint research lanes, then one report builder; serial integration. Latest acceptance: `.agent/artifacts/hc-001-availability/ACCEPTANCE.json`. Next READY research: temporary-power cases with verified conventional procurement milestones, before 20–50 expansion. No autonomous outreach, submission, merge or deployment. Live records and archive-observation intervals are not validated commercial lead-time results.

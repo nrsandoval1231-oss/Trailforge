@@ -1,5 +1,7 @@
 # HC-001 — five-project historical evidence pilot
 
+The original pilot below is preserved. See [availability recovery v1](RECOVERY-v1.md) for the subsequent five-case input, recovered archives, observation intervals and remaining UNKNOWN market lead time.
+
 This is a source-backed convenience cohort, not proof that a signal family predicts rental opportunities. It exercises the existing trace/backtest on eligible evidence and exposes where historical availability is missing. Source-date arithmetic is deliberately separate from validated lead time.
 
 ## Fixed experiment

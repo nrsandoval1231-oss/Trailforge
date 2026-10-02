@@ -1,0 +1,9 @@
+# HC-001 evidence-byte integration repair
+
+Base 9d49bcb, same branch/worktree. Full gate passed 330 tests/1 skip; staged diff check failed on verbatim archived HTML whitespace and raw CDX trailing blank lines. Original bytes must not be trimmed. Git core.autocrlf also risks changing archive-body hashes on checkout. Failure retained verbatim as a JSON string in `.agent/artifacts/hc-001-availability/STAGED-DIFF-INITIAL.json`; original local log also retained under `.firecrawl`.
+
+One Luna owns only `.gitattributes` and `.agent/artifacts/hc-001-availability/BYTE-REPAIR-COMPLETION.json`. Other worker is done/frozen, parent owns all data and state. Do not change or restage any existing files, inputs, outputs, captures, source code, test files, docs, policy, or archived bytes. No commit/push. You are not alone; preserve others' work.
+
+Add narrowly scoped Git attributes to preserve byte identity of the new HC-001 recovery evidence and generated artifacts (`cohort-input-recovery-v1.json`, recovery-captures, recovery-originals, recovery-parent, recovery-searches, results-recovery-v1), using `-text` only. For raw HTML bodies and raw CDX .txt responses that legitimately contain source whitespace, additionally use `-diff` so Git treats those specific verbatim artifacts as binary. Do not disable whitespace checking globally or on code/docs; notes/hand-off Markdown remain text. Existing .gitattributes if any must be preserved. No broad recursive wildcard affecting other datasets.
+
+Acceptance: `git check-attr` proves only named new evidence paths protected and source/test/docs unaffected; completion explains preserved-byte rationale. Parent will re-add affected new paths, compare index blob hashes to working bytes and manifest, rerun staged diff check and final gate, then fresh independent review. One bounded packaging repair; no source-content modifications.

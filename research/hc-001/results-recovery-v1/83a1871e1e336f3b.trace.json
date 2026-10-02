@@ -1,0 +1,43 @@
+{
+  "project_id": "crusoe-abilene-lancium-campus",
+  "schema_version": "trailforge-project-trace-v1",
+  "signals": [
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2024-07-18T15:55:07+00:00",
+      "project_id": "crusoe-abilene-lancium-campus",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "7ecaf94d11afacbc386bde7dcb0cc924cb00b76cc040e50cd9fd8f7b37be9b57",
+      "signal_id": "crusoe-announced",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "source_quote": "This is the first phase of Crusoe\u2019s data center development which will expand to enable AI workloads at scale across 1.2 GW of power capacity at the Lancium Clean Campus.",
+      "source_ref": null,
+      "source_sha256": "8541a06d2fe24c250581afc9fbbcaa9765dd7439284eb4d26211c9fb737d259c",
+      "source_url": "https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+      "title": "crusoe announced",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    },
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2025-03-22T19:50:15+00:00",
+      "project_id": "crusoe-abilene-lancium-campus",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "4e8bdbf09346238d12d7df1c066bd50e32266fb125666fa3772ce712b40e8cf1",
+      "signal_id": "crusoe-backup-power",
+      "signal_type": "POWER_REQUIREMENT",
+      "source_quote": "The data center will also feature natural gas turbines to power its back-up power supply.",
+      "source_ref": null,
+      "source_sha256": "00c44e584d76dab73fdb9ac520663624ee4de76d064dfebb1aa7b5a196047cf0",
+      "source_url": "https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+      "title": "crusoe backup power",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    }
+  ],
+  "trace_hash": "45647992231a2d217098db894ba61d0f735be169003301a26ccf6f08d02d4741"
+}

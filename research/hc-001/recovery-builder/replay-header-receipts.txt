@@ -1,0 +1,37 @@
+Sanitized selected replay response headers. Set-Cookie and unrelated headers are omitted here; complete unmodified response headers remain in ignored .firecrawl/hc-recovery-builder/*-headers.txt.
+
+Crusoe announcement HTML
+Request: https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Memento-Datetime: Thu, 18 Jul 2024 15:55:07 GMT
+Body SHA-256: 2F23C81B575C947FAED242CB7D87C38B8D20BF44FDCF3E8FD2EE1123BB4D9DBE
+
+Crusoe target release
+Request: https://web.archive.org/web/20250322195015/https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Memento-Datetime: Sat, 22 Mar 2025 19:50:15 GMT
+Body SHA-256: 5A1C46002338387AF044BEE8F8CE81CF647A4144B64121FBC682AB874C768CF6
+
+Montauk PSEG early source
+Request: https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Mon, 18 Oct 2021 05:26:13 GMT
+Body SHA-256: 4C9E6E6E733FEC1B06F24F18E08B5AC84F9F22974238AB2BCF1CAE5EC8FBF283
+
+Montauk LIPA target PDF, normal replay
+Request: https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf
+HTTP/1.1 200 OK
+Content-Type: application/pdf
+Memento-Datetime: Fri, 07 May 2021 16:48:02 GMT
+Body SHA-256: 85FFE159589CE0196A7BEF719938B94D4E35DA1BF601114C6E9D13B7EC3F789A
+Body length: 214827 bytes; SHA-256 matches research/hc-001/originals/montauk-2021.pdf exactly.
+
+Montauk LIPA target PDF, id_ raw-content replay
+Request: https://web.archive.org/web/20210507164802id_/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf
+HTTP/1.1 200 OK
+Content-Type: application/pdf
+Memento-Datetime: Fri, 07 May 2021 16:48:02 GMT
+Body SHA-256: 85FFE159589CE0196A7BEF719938B94D4E35DA1BF601114C6E9D13B7EC3F789A

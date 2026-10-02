@@ -1,0 +1,14 @@
+{
+  "retrieved_at_utc": "2026-10-02T01:25:45.8951180Z",
+  "request_url": "https://web.archive.org/web/20210507164802id_/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+  "curl_exit_code": 0,
+  "curl_response": [
+    "200",
+    "https://web.archive.org/web/20210507164802id_/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+    "application/pdf"
+  ],
+  "body_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pdf-id.pdf",
+  "headers_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pdf-id-headers.txt",
+  "body_bytes": 214827,
+  "sha256": "85FFE159589CE0196A7BEF719938B94D4E35DA1BF601114C6E9D13B7EC3F789A"
+}

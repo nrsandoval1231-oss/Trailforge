@@ -1,0 +1,74 @@
+{
+  "task": "HC-001 observation interval reporting",
+  "status": "IMPLEMENTED_FOCUSED_CHECKS_PASS_REVIEW_PENDING",
+  "candidate": {
+    "base_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "head_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+    "files_owned_and_changed": [
+      "src/athena_procurement_arena/historical_cohort.py",
+      "tests/procurement_arena/test_historical_cohort.py",
+      "docs/HISTORICAL_COHORT.md",
+      ".agent/artifacts/hc-001-availability/REPORT-COMPLETION.json"
+    ],
+    "scope": "Reporting and tests only; trace_backtest, policy, inputs, captures and prior results unchanged."
+  },
+  "result": {
+    "backward_compatibility": "Existing lead_time_seconds and nested replay numeric behavior retained.",
+    "case_fields_added": [
+      "earliest_recovered_policy_observation_signal_id",
+      "earliest_recovered_policy_observation_at",
+      "observation_order",
+      "observation_interval_seconds",
+      "observation_interval_status",
+      "market_lead_time_status",
+      "market_lead_time_seconds",
+      "market_lead_time_explanation"
+    ],
+    "report_fields_added": [
+      "observation_interval_scope",
+      "market_lead_time_status",
+      "market_lead_time_seconds",
+      "market_lead_time_explanation",
+      "replay_metric_interpretation"
+    ],
+    "semantic_boundary": "Snapshot intervals describe retained observations only. Market lead time stays UNKNOWN/null; publisher timestamp co-presence is labeled publisher-asserted and does not independently verify a mutable historical page version."
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --frozen --extra dev pytest tests/procurement_arena/test_historical_cohort.py -q",
+      "exit_code": 0,
+      "result": "14 passed in 0.32s"
+    },
+    "ruff": {
+      "command": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py",
+      "exit_code": 0,
+      "result": "All checks passed!"
+    },
+    "diff_check": {
+      "command": "git diff --check -- src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py docs/HISTORICAL_COHORT.md",
+      "exit_code": 0,
+      "result": "No whitespace errors; Git reported expected LF-to-CRLF working-copy notices."
+    },
+    "full_repository_gate": "NOT_RUN_PARENT_OWNS_FINAL_GATE",
+    "real_cohort_replays": "NOT_RUN_PARENT_OWNS_INPUT_INTEGRATION"
+  },
+  "repair_history": [
+    "Initial focused run: 12 passed, 2 failed (test expected wording differed from report string; publisher-timestamp test attempted to overwrite immutable test capture). Updated assertion and gave the test its own capture file.",
+    "Second focused run: 13 passed, 1 failed because the publisher-timestamp test still referenced the original capture path. Bound it to the new timestamp-bearing capture; final focused run passed."
+  ],
+  "timing": {
+    "started_at_utc": "2026-10-02T01:32:21Z",
+    "finished_at_utc": "2026-10-02T01:40:31Z",
+    "elapsed_seconds": 490,
+    "planning_duration": "UNKNOWN_NOT_INSTRUMENTED",
+    "implementation_duration": "UNKNOWN_NOT_INSTRUMENTED",
+    "validation_duration": "Focused test reported 0.32 seconds; Ruff process wall time 0.16 seconds; total validation workflow duration UNKNOWN."
+  },
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "independent_review": "PENDING_SOL_EXACT_CANDIDATE_REVIEW",
+  "completion_boundary": "Builder handoff only; parent must run real cohort replays and repository gate, then obtain independent review."
+}

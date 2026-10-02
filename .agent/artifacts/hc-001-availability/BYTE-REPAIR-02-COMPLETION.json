@@ -1,0 +1,30 @@
+{
+  "task": "HC-001 CR-at-EOL packaging repair",
+  "status": "complete",
+  "files_changed": [
+    ".gitattributes",
+    ".agent/artifacts/hc-001-availability/BYTE-REPAIR-02-COMPLETION.json"
+  ],
+  "rationale": "The evidence must retain exact CRLF bytes. With -text, Git's staged whitespace check needs a narrow cr-at-eol rule to accept the literal CR byte at line endings while keeping the other standard whitespace checks enabled.",
+  "whitespace_attribute": "blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+  "scope": [
+    "research/hc-001/cohort-input-recovery-v1.json",
+    "research/hc-001/recovery-captures/**",
+    "research/hc-001/recovery-originals/**",
+    "research/hc-001/recovery-parent/**",
+    "research/hc-001/recovery-searches/**",
+    "research/hc-001/results-recovery-v1/**"
+  ],
+  "diff_disabled_only_for": [
+    "research/hc-001/recovery-originals/*.html",
+    "research/hc-001/recovery-searches/builder/cdx-*.txt"
+  ],
+  "verification": {
+    "command": "git check-attr whitespace text diff -- <new evidence paths> <source/test/documentation paths>",
+    "result": "Pass. Representative paths in all six scoped evidence families report the exact whitespace value and text: unset. Only raw recovery-originals HTML and builder cdx-*.txt report diff: unset. Existing cohort input, source, tests, README, docs, and prior recovery-builder handoff all report whitespace/text/diff: unspecified.",
+    "staging": "No files were staged or re-added.",
+    "tests_and_full_gate": "Not run; parent owns exact index-byte checks, staged diff check, and final gate."
+  },
+  "prior_receipt": ".agent/artifacts/hc-001-availability/BYTE-REPAIR-COMPLETION.json",
+  "external_actions": "No commit or push."
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-02T01:38:53.007277+00:00",
+  "base_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+  "new_input_sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+  "checks": [
+    "fixed signal policy unchanged",
+    "five existing project identities retained",
+    "Azure and East Hampton cases unchanged",
+    "previous source captures, originals, input and generated results unchanged against HEAD",
+    "eight new PublicCapture hash envelopes valid",
+    "four retained archive body/header hashes and Memento timestamps bind exact archive URLs",
+    "no Set-Cookie headers in retained selected receipts",
+    "compound PDF witness SHA equals original bytes and retained text-capture hash"
+  ],
+  "projects": 5,
+  "signals": 11,
+  "new_captures": 8
+}

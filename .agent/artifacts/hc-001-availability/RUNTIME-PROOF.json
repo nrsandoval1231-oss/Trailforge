@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-02T01:42:57.195539+00:00",
+  "input_sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+  "new_output_files_sha256": {
+    "83a1871e1e336f3b.trace.json": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7",
+    "ca5efa0581fd070e.trace.json": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb",
+    "f1b07b5f19145fdf.trace.json": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c",
+    "report.json": "d9bef007c2445e4b7d755f745522709047cf1fe51b2e19325afde630d8a84e25",
+    "report.md": "3fd337dfd5a7aacefcaccaa6aa40720be0328ecc1226e00fcb8764fae3092edd"
+  },
+  "reproduction": "Two new directories produced byte-identical report JSON, Markdown and all three trace files",
+  "compatibility": "Original pilot remains runnable; nested engine replay and old trace files byte-identical, only report semantics/additional fields changed",
+  "projects": 5,
+  "signals": 11,
+  "eligible_traces": 3,
+  "supported_target_observations": 2,
+  "before_target_observation_pairs": 1,
+  "market_lead_time_status": "UNKNOWN",
+  "market_lead_time_seconds": null,
+  "validated_commercial_lead_time_pairs": 0,
+  "validation_repair": "Initial parent assertion mistyped Montauk expected seconds as -14123891; recalculation from independently retained UTC endpoints gives -14128691, matching output. No code/input/output modified for this correction."
+}

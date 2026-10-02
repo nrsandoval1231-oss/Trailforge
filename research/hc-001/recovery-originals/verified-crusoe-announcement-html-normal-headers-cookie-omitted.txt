@@ -1,0 +1,39 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 02 Oct 2026 01:25:42 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+x-archive-orig-date: Thu, 18 Jul 2024 15:55:07 GMT
+x-archive-orig-server: Apache
+x-archive-orig-x-pingback: https://lancium.com/xmlrpc.php
+x-archive-orig-link: <https://lancium.com/wp-json/>; rel="https://api.w.org/", <https://lancium.com/wp-json/wp/v2/posts/3134>; rel="alternate"; type="application/json", <https://lancium.com/?p=3134>; rel=shortlink
+x-archive-orig-upgrade: h2,h2c
+x-archive-orig-connection: Upgrade, Keep-Alive
+x-archive-orig-cache-control: max-age=0
+x-archive-orig-expires: Thu, 18 Jul 2024 15:55:07 GMT
+x-archive-orig-vary: Accept-Encoding
+x-archive-orig-keep-alive: timeout=5, max=100
+x-archive-orig-transfer-encoding: chunked
+x-archive-guessed-content-type: text/html
+x-archive-guessed-charset: utf-8
+memento-datetime: Thu, 18 Jul 2024 15:55:07 GMT
+link: <https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="original", <https://web.archive.org/web/timemap/link/https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="timemap"; type="application/link-format", <https://web.archive.org/web/https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="timegate", <https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="first memento"; datetime="Thu, 18 Jul 2024 15:55:07 GMT", <https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="memento"; datetime="Thu, 18 Jul 2024 15:55:07 GMT", <https://web.archive.org/web/20240803235652/https://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="next memento"; datetime="Sat, 03 Aug 2024 23:56:52 GMT", <https://web.archive.org/web/20260116173605/http://lancium.com/press-release/crusoe-lancium-clean-campus/>; rel="last memento"; datetime="Fri, 16 Jan 2026 17:36:05 GMT"
+content-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org
+x-archive-src: archiveteam_urls_20240718155608_6b714223/urls_20240718155608_6b714223.1721172826.megawarc.warc.zst
+server-timing: captures_list;dur=0.523214, exclusion.robots;dur=0.064490, exclusion.robots.policy;dur=0.054179, esindex;dur=0.008350, cdx.remote;dur=9.101804, LoadShardBlock;dur=68.082825, PetaboxLoader3.datanode;dur=133.977884, PetaboxLoader3.resolve;dur=84.288350, load_resource;dur=161.857021, loaddict;dur=65.911902, nav;dur=0.226393
+x-app-server: wwwb-app246-dc8
+x-ts: 200
+x-tr: 296
+server-timing: TR;dur=0,Tw;dur=0,Tc;dur=0
+X-location: All
+X-AS: 5650
+X-RL: 0
+X-NA: 0
+X-Page-Cache: HIT
+Server-Timing: HIT
+X-NID: FRONTIER-FRTR
+Referrer-Policy: no-referrer-when-downgrade
+Permissions-Policy: interest-cohort=()
+X-sd: 0
+

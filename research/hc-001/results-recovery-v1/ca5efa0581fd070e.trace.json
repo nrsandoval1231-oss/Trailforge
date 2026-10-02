@@ -1,0 +1,43 @@
+{
+  "project_id": "montauk-transmission-upgrades-2021",
+  "schema_version": "trailforge-project-trace-v1",
+  "signals": [
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2021-05-07T16:48:02+00:00",
+      "project_id": "montauk-transmission-upgrades-2021",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "64274c905f6474577ba30d6bf28515472411eeb789defb81ad8a36b082dd1a68",
+      "signal_id": "montauk-temporary-power",
+      "signal_type": "POWER_REQUIREMENT",
+      "source_quote": "The Proposed Action will provide a maximum of 6 MW of additional power generation ",
+      "source_ref": null,
+      "source_sha256": "5cc9e58b8b9b2d5becd34e5a00f032e5f3e448cabb6c6fbed2bfdb91f7f58015",
+      "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "title": "montauk temporary power",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    },
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2021-10-18T05:26:13+00:00",
+      "project_id": "montauk-transmission-upgrades-2021",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "8a7c33871d9dd9d1452cf0fe091f9f37b661715b815b7ed386f5f0ca3b7bf0eb",
+      "signal_id": "montauk-upgrade-announced",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "source_quote": "- Underground distribution and transmission lines will be reconfigured in the vicinity to serve the new substation.",
+      "source_ref": null,
+      "source_sha256": "c8e6ae7c33f466b4f47c31b30ce02d7e46e84a43938d95d038295ca7184a9042",
+      "source_url": "https://www.psegliny.com/reliability/newmontauk",
+      "title": "montauk upgrade announced",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    }
+  ],
+  "trace_hash": "96c8dff97a8707c7d959411d586a44b3ca164459f6aab65bc199f762ab2c27e1"
+}

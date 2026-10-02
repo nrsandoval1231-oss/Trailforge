@@ -1,0 +1,14 @@
+{
+  "retrieved_at_utc": "2026-10-02T01:25:43.6932332Z",
+  "request_url": "https://web.archive.org/web/20250322195015/https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+  "curl_exit_code": 0,
+  "curl_response": [
+    "200",
+    "https://web.archive.org/web/20250322195015/https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+    "text/html; charset=UTF-8"
+  ],
+  "body_path": ".firecrawl\\hc-recovery-builder\\verified-crusoe-target-normal.html",
+  "headers_path": ".firecrawl\\hc-recovery-builder\\verified-crusoe-target-normal-headers.txt",
+  "body_bytes": 177261,
+  "sha256": "5A1C46002338387AF044BEE8F8CE81CF647A4144B64121FBC682AB874C768CF6"
+}

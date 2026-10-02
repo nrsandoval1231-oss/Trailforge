@@ -1,0 +1,7 @@
+{
+  "command": "git diff --cached --check",
+  "exit_code": 2,
+  "raw_log_sha256": "313cb7579b1eef1741123a20ced223c46afdc6526d010fda257e93d5f369de7b",
+  "raw_log": "research/hc-001/recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt:39: new blank line at EOF.\r\nresearch/hc-001/recovery-originals/verified-crusoe-target-normal-headers-cookie-omitted.txt:38: new blank line at EOF.\r\nresearch/hc-001/recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt:41: new blank line at EOF.\r\nresearch/hc-001/recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt:10: trailing whitespace.\r\n+x-archive-orig-server: \r\nresearch/hc-001/recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt:43: new blank line at EOF.\r\n",
+  "decision": "Return to canonical immutable-evidence requirement; prior controller scope omitted verbatim HTTP headers. Add only those four raw header files to binary diff handling, preserving bytes and every code/docs whitespace gate. Revised bounded packet hc-001-header-bytes.md."
+}

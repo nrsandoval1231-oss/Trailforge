@@ -1,0 +1,6 @@
+[["timestamp","original","statuscode","mimetype","digest"],
+["20211018052613","https://www.psegliny.com/reliability/newmontauk","200","text/html","CMAS6QNLLTNV2DADC77TU3II22YVEF4L"],
+["20220123035953","https://www.psegliny.com/reliability/newmontauk","200","text/html","OZ6IXO2ALKR2X7QB37ZLUGYLVDU4RZIQ"],
+["20220703184806","https://www.psegliny.com/reliability/newmontauk","200","text/html","UXB46HCCQWSSYHWC2OJND3L5WAXYM4T7"],
+["20221204162645","https://www.psegliny.com/reliability/newmontauk","200","text/html","WUDBUIDEBBUE3KAUASSA266QI332BLAH"]]
+

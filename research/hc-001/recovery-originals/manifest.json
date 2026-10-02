@@ -1,0 +1,53 @@
+{
+  "schema_version": "trailforge-retained-archive-bodies-v1",
+  "records": [
+    {
+      "project_id": "crusoe-abilene-lancium-campus",
+      "source_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+      "memento_datetime_utc": "2024-07-18T15:55:07Z",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "body_path": "recovery-originals/verified-crusoe-announcement-html-normal.html",
+      "body_sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe",
+      "headers_path": "recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt",
+      "headers_sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9",
+      "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged"
+    },
+    {
+      "project_id": "crusoe-abilene-lancium-campus",
+      "source_url": "https://web.archive.org/web/20250322195015/https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+      "memento_datetime_utc": "2025-03-22T19:50:15Z",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "body_path": "recovery-originals/verified-crusoe-target-normal.html",
+      "body_sha256": "5a1c46002338387af044bee8f8ce81cf647a4144b64121fbc682ab874c768cf6",
+      "headers_path": "recovery-originals/verified-crusoe-target-normal-headers-cookie-omitted.txt",
+      "headers_sha256": "8598a19950a055f56121b3d17cc1453f9be6da346a3a084db0e4deee0eeecae8",
+      "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged"
+    },
+    {
+      "project_id": "montauk-transmission-upgrades-2021",
+      "source_url": "https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk",
+      "memento_datetime_utc": "2021-10-18T05:26:13Z",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "body_path": "recovery-originals/verified-montauk-pseg-normal.html",
+      "body_sha256": "4c9e6e6e733fec1b06f24f18e08b5ac84f9f22974238ab2bcf1cae5ec8fbf283",
+      "headers_path": "recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt",
+      "headers_sha256": "04be8471825c0726810bb4f5cdb10946e63f6613639cede215b103ee916034a4",
+      "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged"
+    },
+    {
+      "project_id": "montauk-transmission-upgrades-2021",
+      "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "memento_datetime_utc": "2021-05-07T16:48:02Z",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "body_path": "originals/montauk-2021.pdf",
+      "body_sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+      "headers_path": "recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt",
+      "headers_sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4",
+      "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged"
+    }
+  ]
+}

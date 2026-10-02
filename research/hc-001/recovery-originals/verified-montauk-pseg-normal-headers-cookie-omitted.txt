@@ -1,0 +1,43 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 02 Oct 2026 01:25:43 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+x-archive-orig-cache-control: private
+x-archive-orig-x-crawler-content-encoding: gzip
+x-archive-orig-vary: Accept-Encoding
+x-archive-orig-server: 
+x-archive-orig-set-cookie: ASP.NET_SessionId=5zwtoxiu53qjyqjgkbnnrbbt; path=/; secure; HttpOnly; SameSite=Lax
+x-archive-orig-set-cookie: SC_ANALYTICS_GLOBAL_COOKIE=cc49380cbf4a40239037686ed59d4c90|False; expires=Thu, 16-Oct-2031 05:26:12 GMT; path=/; secure; HttpOnly
+x-archive-orig-set-cookie: lipublic#lang=en; path=/; secure
+x-archive-orig-x-xss-protection: 1; mode=block
+x-archive-orig-content-security-policy: frame-ancestors  *.pseg.com *.salesforce.com *.salesforceliveagent.com *.force.com *.psegliny.com; default-src https: data: 'unsafe-inline' 'unsafe-eval'
+x-archive-orig-strict-transport-security: max-age=31536000
+x-archive-orig-sn: 19
+x-archive-orig-expect-ct: enforce, max-age=43200, report-uri="https://psegliny.com"
+x-archive-orig-date: Mon, 18 Oct 2021 05:26:13 GMT
+x-archive-orig-x-crawler-content-length: 40888
+x-archive-orig-content-length: 244722
+x-archive-guessed-content-type: text/html
+x-archive-guessed-charset: utf-8
+memento-datetime: Mon, 18 Oct 2021 05:26:13 GMT
+link: <https://www.psegliny.com/reliability/newmontauk>; rel="original", <https://web.archive.org/web/timemap/link/https://www.psegliny.com/reliability/newmontauk>; rel="timemap"; type="application/link-format", <https://web.archive.org/web/https://www.psegliny.com/reliability/newmontauk>; rel="timegate", <https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk>; rel="first memento"; datetime="Mon, 18 Oct 2021 05:26:13 GMT", <https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk>; rel="memento"; datetime="Mon, 18 Oct 2021 05:26:13 GMT", <https://web.archive.org/web/20220123035953/https://www.psegliny.com/reliability/newmontauk>; rel="next memento"; datetime="Sun, 23 Jan 2022 03:59:53 GMT", <https://web.archive.org/web/20260416023936/https://www.psegliny.com/reliability/newmontauk>; rel="last memento"; datetime="Thu, 16 Apr 2026 02:39:36 GMT"
+content-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org
+x-archive-src: CC-MAIN-2021-43-1634323585196.73-0004/CC-MAIN-20211018031901-20211018061901-00092.warc.gz
+server-timing: captures_list;dur=0.379278, exclusion.robots;dur=0.045243, exclusion.robots.policy;dur=0.037676, esindex;dur=0.006379, cdx.remote;dur=26.813035, LoadShardBlock;dur=99.156180, PetaboxLoader3.datanode;dur=106.789180, load_resource;dur=66.666157, PetaboxLoader3.resolve;dur=55.105737, nav;dur=0.182151
+x-app-server: wwwb-app267-dc8
+x-ts: 200
+x-tr: 359
+server-timing: TR;dur=0,Tw;dur=0,Tc;dur=0
+X-location: All
+X-AS: 5650
+X-RL: 0
+X-NA: 0
+X-Page-Cache: HIT
+Server-Timing: HIT
+X-NID: FRONTIER-FRTR
+Referrer-Policy: no-referrer-when-downgrade
+Permissions-Policy: interest-cohort=()
+X-sd: 0
+

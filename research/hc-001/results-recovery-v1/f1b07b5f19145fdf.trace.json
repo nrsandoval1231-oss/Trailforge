@@ -1,0 +1,43 @@
+{
+  "project_id": "xai-memphis-colossus1",
+  "schema_version": "trailforge-project-trace-v1",
+  "signals": [
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2024-06-08T21:56:14+00:00",
+      "project_id": "xai-memphis-colossus1",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "67415a9c7baacd65964a97550a11efc6fa31bb6c04eb15f924fef49e309c6d13",
+      "signal_id": "xai-city-announcement",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "source_quote": "We announced that **our city will be the home of the world\u2019s largest supercomputer**, or as Elon Musk likes to call it, the Gigafactory of Compute.",
+      "source_ref": null,
+      "source_sha256": "c86b959007ae92a131bff6725185a7cc1c9dde9e4b3cfe7b0088fc3ad40d9606",
+      "source_url": "https://content.govdelivery.com/accounts/TNMEMPHIS/bulletins/3a162e2",
+      "title": "City of Memphis announces xAI supercomputer partnership",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    },
+    {
+      "claims": {
+        "historical_availability_basis": "ARCHIVED_CONTENT"
+      },
+      "evidence_class": "PUBLIC",
+      "observed_at": "2025-01-29T03:25:10+00:00",
+      "project_id": "xai-memphis-colossus1",
+      "schema_version": "trailforge-project-signal-v1",
+      "signal_hash": "a39a5d99b0e8d0bebc91bb202f17cdf1b08aa30f4068497c714054ae8357005c",
+      "signal_id": "xai-announcement",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "source_quote": "This project is pending approval by the Memphis Shelby County Economic Development Growth Engine (EDGE), Tennessee Valley Authority, and governing authorities.",
+      "source_ref": null,
+      "source_sha256": "30844ba17c2c7d62e0130e3865ce91086e0e74d38cb00a7e5bab18118c262926",
+      "source_url": "https://memphischamber.com/blog/press-release/velocity-meets-potency-xai-announces-memphis-as-new-home/",
+      "title": "xai announcement",
+      "verified_by": "agent-assisted-extraction-pending-independent-semantic-review"
+    }
+  ],
+  "trace_hash": "680432431a2ccd89fbc8a3f8fc090be377fa80dafa4f7efe997841788a5e1419"
+}

@@ -1,0 +1,73 @@
+{
+  "node": "HC-001-AVAILABILITY-RECOVERY",
+  "status": "ACCEPTED_SLICE_ONLY",
+  "base_commit": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+  "candidate_tree": "5196cc83c0484e1dbc294b932ffed1107a8fdcc6",
+  "branch": "codex/trailforge-firecrawl-vertical-slice",
+  "scope": "Versioned historical evidence recovery and honest observation/buyer labels; no commercial lead-time or whole-product completion claim",
+  "validation": {
+    "full_gate": "331 passed, 1 skipped; compile/Ruff/three verified bundles passed",
+    "command": "uv run --frozen --extra dev python scripts/validate.py",
+    "receipt": "FINAL-GATE-BUYER.json",
+    "runtime": "RUNTIME-PROOF-BUYER.json",
+    "byte_proof": "FINAL-BYTE-PROOF-BUYER.json",
+    "indexed_files_verified": 67
+  },
+  "results": {
+    "projects": 5,
+    "signals": 11,
+    "new_captures": 8,
+    "eligible_traces": 3,
+    "supported_target_observations": 2,
+    "before_target_observation_pairs": 1,
+    "validated_commercial_lead_time_pairs": 0,
+    "market_lead_time_status": "UNKNOWN",
+    "buyer_authority_contact_chain": "UNKNOWN"
+  },
+  "direction": "CONTINUE",
+  "next_slice": "Small temporary-power cohort anchored to verifiable conventional procurement milestones, with archive-supported earlier evidence and late/unresolved controls, before expansion toward 20–50",
+  "protected_boundaries": "Original evidence/input/results and trace engine unchanged; no merge, deployment, outreach, submission or GridLens promotion",
+  "episode": {
+    "state": "Original pilot had one eligible archive trace and no supported target observation",
+    "decision": "Recover official URL aliases and distinct official announcements before abandoning unresolved cases; preserve versioned inputs",
+    "action": "Two disjoint Luna research lanes, serial integration, report-label repair, deterministic validation and independent Sol review",
+    "outcome": "Three replay-eligible cases and two supported target observations; commercial lead time remains UNKNOWN",
+    "attribution": "Historical availability improved through new retained archive content, not policy tuning",
+    "candidate_lesson": "Check documented official URL aliases and independent official announcements before marking historical availability unresolved",
+    "metric": "Eligible traces 1 to 3; supported target observations 0 to 2 in the same five-case convenience cohort",
+    "lesson_status": "CANDIDATE_ONLY_NOT_SIGNAL_PROMOTION",
+    "reversibility": "Original inputs/results/captures retained; new recovery input/output version can be excluded"
+  },
+  "timing": {
+    "turn_start_utc": "UNKNOWN_NOT_INSTRUMENTED",
+    "first_recorded_packet_checkpoint_utc": "2026-10-02T01:14:16.4240402Z",
+    "planning_duration": "UNKNOWN",
+    "build_duration": "UNKNOWN_COMPONENT_TIMES_IN_BUILDER_RECEIPTS",
+    "validation_gate_started_utc": "2026-10-02T02:03:28.1470915Z",
+    "validation_gate_finished_utc": "2026-10-02T02:04:10.4222400Z",
+    "validation_gate_seconds": 42.275,
+    "audit_duration": "UNKNOWN",
+    "elapsed_to_accepted": "UNKNOWN_NO_MEASURED_TURN_START"
+  },
+  "repair_record": [
+    "Two focused report-test repairs preserved in REPORT-COMPLETION",
+    "Two byte-packaging repairs plus revised raw-header packet preserved in byte receipts",
+    "Independent buyer-label finding repaired; parent-detected Markdown column mismatch repaired once"
+  ],
+  "lanes": {
+    "builders": "Two disjoint research Luna lanes; one later report Luna lane; disjoint attribute packaging",
+    "builder_model": "gpt-6-luna low",
+    "reviewer_model": "gpt-6-sol medium",
+    "controller_model": "UNKNOWN",
+    "config_identity": "UNKNOWN",
+    "tokens": "UNKNOWN_NOT_MEASURED"
+  },
+  "publication_boundary": "Only review/acceptance receipts may be appended after this reviewed candidate; product/source/evidence diff must remain empty against candidate tree",
+  "accepted_at_utc": "2026-10-02T02:10:59.877513+00:00",
+  "independent_review": {
+    "verdict": "PASS",
+    "artifact": "REVIEW-02.json",
+    "sha256": "e4db52e2d63a32f1a81e16ef49a8c6808cfe947005d90dea729f5aa2912015a6",
+    "prior_verdict": "FIX retained in REVIEW.json"
+  }
+}

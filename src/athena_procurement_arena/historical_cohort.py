@@ -117,27 +117,49 @@ def _availability(root: Path, item: dict[str, Any], source_capture: PublicCaptur
     }
 
 
+def _availability_interpretation(proof: dict[str, Any]) -> str:
+    if proof.get("basis") == "OFFICIAL_PUBLICATION_TIMESTAMP":
+        return ("Publisher-asserted timestamp co-occurs with cited content in the retained capture; "
+                "mutable page metadata does not independently verify the historical page version.")
+    if proof.get("status") == "SUPPORTED" and proof.get("basis") == "ARCHIVED_CONTENT":
+        return "Archive confirms cited content existed by this snapshot; it does not establish first public or market availability."
+    return "Historical availability is UNKNOWN; a current capture or displayed date does not prove earlier availability."
+
+
 def _report_markdown(report: dict[str, Any]) -> str:
-    lines = ["# HC-001 historical cohort", "", f"{report['project_count']} purposive cases; descriptive only, not a representative or negative cohort.",
+    lines = ["# HC-001 historical cohort — replay observations", "",
+             f"{report['project_count']} purposive cases; descriptive only, not a representative or negative cohort.",
              f"Fixed policy selection basis: {report['policy']['selection_basis']}",
-             "Source dates are diagnostics and do not establish historical availability. Strict lead time is UNKNOWN unless both timestamps are proven.", "",
-             "| Project | Earliest source date (basis) | Earliest supported availability | Fixed-policy surface | Milestone | Strict lead | Buyer path |",
-             "|---|---|---|---|---|---|---|"]
+             "Publisher dates are diagnostic. An archive proves cited content existed by its snapshot, not that it was the first market or public observation.",
+             "**Market lead time is UNKNOWN** for this report; `market_lead_time_seconds` is null. The recovered timestamps order retained observations only.",
+             "Publisher-asserted publication timestamps establish co-presence of the timestamp and cited text in the retained capture; mutable metadata does not independently establish the then-current page version.",
+             "Nested replay lead and median values remain backward-compatible snapshot metrics. They are not validated market advantage, a forecast miss/absence finding, or a promotion metric.", "",
+             "| Project | Earliest publisher date (diagnostic) | Earliest recovered policy observation | Target observation | Order | Observation interval (seconds) | First pre-target policy surface | Legacy lead_time_seconds | Market lead time | Organization (historical availability) | Authority / contact / direct buying chain |",
+             "|---|---|---|---|---|---:|---|---:|---|---|---|"]
     for case in report["cases"]:
         first = case.get("earliest_dated_source") or {}
         surface = case.get("first_valid_policy_surface_at") or "UNKNOWN"
         milestone = case.get("conventional_milestone_available_at") or "UNKNOWN"
         lead = f"{case['lead_time_seconds']} seconds" if case.get("lead_time_seconds") is not None else "UNKNOWN"
-        buyer = case["buyer_path"].get("stated_organization") or "UNKNOWN"
-        lines.append(f"| {case['project_id']} | {first.get('value', 'UNKNOWN')} ({first.get('basis', 'UNKNOWN')}) | {case.get('earliest_available_signal_at') or 'UNKNOWN'} | {surface} | {milestone} | {lead} | {buyer} (availability {case['buyer_path']['status']}) |")
+        interval = str(case["observation_interval_seconds"]) if case["observation_interval_seconds"] is not None else "UNKNOWN"
+        policy_observation = case.get("earliest_recovered_policy_observation_at") or "UNKNOWN"
+        buyer_path = case["buyer_path"]
+        buyer = buyer_path.get("stated_organization") or "UNKNOWN"
+        organization = f"{buyer} ({buyer_path['organization_availability_status']})"
+        chain = (f"authority {buyer_path['procurement_authority_status']}; contact {buyer_path['contact_status']}; "
+                 f"direct chain {buyer_path['buying_chain_status']}")
+        lines.append(f"| {case['project_id']} | {first.get('value', 'UNKNOWN')} ({first.get('basis', 'UNKNOWN')}) | {policy_observation} | {milestone} | {case['observation_order']} | {interval} | {surface} | {lead} | UNKNOWN | {organization} | {chain} |")
     lines += ["", "## Case notes", ""]
     for case in report["cases"]:
         lines.append(f"- **{case['project_id']}** ({case['identity_status']}): {case.get('notes') or 'No case note supplied.'}")
+        lines.append(f"  Observation: {case['market_lead_time_explanation']}")
+        buyer_path = case["buyer_path"]
+        lines.append(f"  Organization availability: {buyer_path['organization_availability_status']}; buyer path: {buyer_path['status']}. {buyer_path['explanation']}")
         diagnostic = case.get("diagnostic_published_date_comparison")
         if diagnostic:
             span = diagnostic["lead_interval_seconds"]
-            lines.append(f"  Published-date interval diagnostic: {span[0]} to {span[1]} seconds ({diagnostic['status']}; timezone {diagnostic['timezone_status']}).")
-    lines += ["", "No model performance or signal-promotion claim is made. Buyer organizations may be identified in source material while historical buyer availability remains UNKNOWN.", ""]
+            lines.append(f"  Publisher-date comparison (diagnostic only): {span[0]} to {span[1]} seconds ({diagnostic['status']}; timezone {diagnostic['timezone_status']}).")
+    lines += ["", "No model performance or signal-promotion claim is made. Organization availability is reported separately; buyer-path status remains UNKNOWN without verified procurement authority, a responsible contact, and a direct buying chain.", ""]
     return "\n".join(lines)
 
 
@@ -198,6 +220,7 @@ def build_historical_report(input_path: str | Path, output_dir: str | Path) -> d
                 "published_date_basis": published_basis, "published_date_excerpt": item.get("published_date_excerpt"),
                 "available_at": availability_time.isoformat() if available else None,
                 "availability_status": "SUPPORTED" if available else "UNKNOWN", "availability_reason": availability_proof.get("reason"),
+                "availability_interpretation": _availability_interpretation(availability_proof),
                 "source_url": item["source_url"], "source_capture_path": item["source_capture_path"],
                 "source_capture_sha256": source_hash, "excerpt": item["excerpt"],
                 "availability_basis": availability_proof.get("basis"), "availability_capture_path": availability_proof.get("capture_path"),
@@ -233,6 +256,21 @@ def build_historical_report(input_path: str | Path, output_dir: str | Path) -> d
         available_sources = [row for row in signal_rows if row["availability_status"] == "SUPPORTED"]
         earliest_available = min(available_sources, key=lambda row: (row["available_at"], row["signal_id"])) if available_sources else None
         target_time = _parse_instant(milestone["available_at"], "milestone.available_at") if milestone["available_at"] else None
+        recovered_policy_observations = [row for row in early_rows if row["availability_status"] == "SUPPORTED"]
+        earliest_policy_observation = min(recovered_policy_observations,
+                                          key=lambda row: (row["available_at"], row["signal_id"])) if recovered_policy_observations else None
+        policy_observation_time = (_parse_instant(earliest_policy_observation["available_at"], "signal.available_at")
+                                   if earliest_policy_observation else None)
+        observation_interval_seconds = (int((target_time - policy_observation_time).total_seconds())
+                                         if target_time and policy_observation_time else None)
+        if observation_interval_seconds is None:
+            observation_order = "UNKNOWN"
+        elif observation_interval_seconds > 0:
+            observation_order = "BEFORE"
+        elif observation_interval_seconds == 0:
+            observation_order = "SAME_TIME"
+        else:
+            observation_order = "AFTER"
         valid_surfaces = [row for row in early_rows if row["availability_status"] == "SUPPORTED" and target_time
                           and _parse_instant(row["available_at"], "signal.available_at") < target_time]
         first_surface = min(valid_surfaces, key=lambda row: (row["available_at"], row["signal_id"])) if valid_surfaces else None
@@ -262,9 +300,21 @@ def build_historical_report(input_path: str | Path, output_dir: str | Path) -> d
                 "source_url": buyer.get("source_url", buyer_capture.source_url), "excerpt": buyer["excerpt"],
             }
             buyer_time_proven, _ = _availability(root, buyer_item, buyer_capture, buyer_hash)
-        buyer_supported = bool(identity == "RESOLVED" and buyer_time_proven and first_surface
-                               and buyer_time_proven <= _parse_instant(first_surface["available_at"], "surface.available_at")
-                               and buyer.get("organization"))
+        organization_available_at_surface = bool(
+            identity == "RESOLVED" and buyer_time_proven and first_surface
+            and buyer_time_proven <= _parse_instant(first_surface["available_at"], "surface.available_at")
+            and buyer.get("organization")
+        )
+        if observation_interval_seconds is None:
+            market_lead_explanation = ("No complete pair of recovered policy and target observations is available; market lead time remains UNKNOWN. "
+                                       "A missing snapshot is not evidence that no earlier signal existed or that a forecast missed.")
+        else:
+            market_lead_explanation = (f"The target-minus-policy observation interval is {observation_interval_seconds} seconds ({observation_order}); "
+                                       "it orders these recovered snapshots only and does not establish globally first market/public availability, so market lead time remains UNKNOWN.")
+            if observation_order in {"SAME_TIME", "AFTER"}:
+                market_lead_explanation += " A same-time or later snapshot is not a forecast miss or proof that no earlier signal existed."
+        if any(row.get("availability_basis") == "OFFICIAL_PUBLICATION_TIMESTAMP" for row in signal_rows):
+            market_lead_explanation += " Any publisher-asserted timestamp validates co-presence in the retained capture only, not independent historical page-version availability."
         cases.append({
             "project_id": project["project_id"], "identity_status": identity, "identity_basis": project.get("identity_basis"),
             "notes": project.get("notes"), "signals": signal_rows, "conventional_milestone_signal_id": milestone_id,
@@ -278,11 +328,26 @@ def build_historical_report(input_path: str | Path, output_dir: str | Path) -> d
             "first_valid_policy_surface_at": first_surface["available_at"] if first_surface else None,
             "first_valid_policy_surface_status": "SUPPORTED" if first_surface else "UNKNOWN",
             "lead_time_seconds": int((target_time - _parse_instant(first_surface["available_at"], "surface.available_at")).total_seconds()) if first_surface and target_time else None,
+            "earliest_recovered_policy_observation_signal_id": earliest_policy_observation["signal_id"] if earliest_policy_observation else None,
+            "earliest_recovered_policy_observation_at": earliest_policy_observation["available_at"] if earliest_policy_observation else None,
+            "observation_order": observation_order,
+            "observation_interval_seconds": observation_interval_seconds,
+            "observation_interval_status": "SUPPORTED" if observation_interval_seconds is not None else "UNKNOWN",
+            "market_lead_time_status": "UNKNOWN", "market_lead_time_seconds": None,
+            "market_lead_time_explanation": market_lead_explanation,
             "diagnostic_published_date_comparison": diagnostic_published_lead,
-            "buyer_path": {"status": "SUPPORTED" if buyer_supported else "UNKNOWN",
+            "buyer_path": {"status": "UNKNOWN",
+                           "organization_availability_status": "SUPPORTED" if organization_available_at_surface else "UNKNOWN",
                            "stated_organization": buyer.get("organization"), "stated_status": buyer.get("status"),
-                           "organization": buyer.get("organization") if buyer_supported else None,
-                           "available_at": buyer_time_proven.isoformat() if buyer_supported else None,
+                           "organization": buyer.get("organization") if organization_available_at_surface else None,
+                           "available_at": buyer_time_proven.isoformat() if organization_available_at_surface else None,
+                           "procurement_authority_status": "UNKNOWN", "contact_status": "UNKNOWN",
+                           "buying_chain_status": "UNKNOWN",
+                           "explanation": (
+                               "Organization availability is supported at or before the first policy surface; procurement authority, a responsible contact, and a direct buying chain are not verified."
+                               if organization_available_at_surface else
+                               "Organization availability at or before the first policy surface is UNKNOWN; procurement authority, a responsible contact, and a direct buying chain are not verified."
+                           ),
                            "evidence_capture_path": buyer.get("evidence_capture_path"), "evidence_capture_sha256": buyer_hash,
                            "excerpt": buyer.get("excerpt")},
         })
@@ -302,8 +367,12 @@ def build_historical_report(input_path: str | Path, output_dir: str | Path) -> d
         "review_status": "agent-assisted extraction; independent semantic review pending; no human approval asserted",
         "policy": {"target_signal_type": target_type, "early_signal_types": list(early_types), "selection_basis": policy["selection_basis"]},
         "project_count": len(cases), "eligible_trace_count": len(traces), "cases": cases,
+        "observation_interval_scope": "Per-case target timestamp minus earliest recovered fixed-policy signal timestamp; this is a retained-snapshot interval, not first market/public availability.",
+        "market_lead_time_status": "UNKNOWN", "market_lead_time_seconds": None,
+        "market_lead_time_explanation": "Recovered archive timestamps bound the specific retained content by each snapshot; publisher timestamps are publisher-asserted. Neither establishes the globally earliest market/public observation, so validated market lead time is UNKNOWN.",
+        "replay_metric_interpretation": "Nested replay lead_seconds and median_lead_seconds preserve existing engine behavior and describe supported observation snapshots only; they are excluded from validated market advantage, market_lead_time_seconds, and signal promotion.",
         "trace_files": trace_files, "replay": replay.as_dict() if replay else None,
-        "metrics_scope": "Descriptive convenience cohort only; no predictive quality or policy promotion claim.",
+        "metrics_scope": "Descriptive convenience cohort only; observation intervals are retained-snapshot comparisons. Market lead time remains UNKNOWN; no predictive quality or policy promotion claim.",
     }
     (output / "report.json").write_text(json.dumps(report, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     (output / "report.md").write_text(_report_markdown(report), encoding="utf-8")

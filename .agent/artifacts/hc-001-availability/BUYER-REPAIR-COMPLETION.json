@@ -1,0 +1,68 @@
+{
+  "task": "HC-001 buyer-path claim repair",
+  "status": "IMPLEMENTED_FOCUSED_CHECKS_PASS_REVIEW_PENDING",
+  "candidate": {
+    "base_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+    "reviewed_pre_repair_tree_sha": "752733dbe61b91b77a7343ab2a5d45bb2fdd1db5",
+    "branch": "codex/trailforge-firecrawl-vertical-slice",
+    "head_sha": "9d49bcbbbf4207b657c1658f2e476742251fadf3",
+    "owned_files": [
+      "src/athena_procurement_arena/historical_cohort.py",
+      "tests/procurement_arena/test_historical_cohort.py",
+      "docs/HISTORICAL_COHORT.md",
+      ".agent/artifacts/hc-001-availability/BUYER-REPAIR-COMPLETION.json"
+    ]
+  },
+  "changes": {
+    "organization_availability_status": "Retains the prior evidence rule: SUPPORTED only for a resolved organization with proven availability at or before the first valid policy surface; otherwise UNKNOWN.",
+    "buyer_path_status": "Always UNKNOWN for this input schema, which has no verified procurement-authority, responsible-contact, or direct buying-chain evidence.",
+    "new_unknown_fields": [
+      "procurement_authority_status",
+      "contact_status",
+      "buying_chain_status"
+    ],
+    "evidence_preserved": "Existing stated organization, evidence citation, organization and available_at values for time-supported cases are retained.",
+    "markdown": "Labels organization historical availability separately and displays UNKNOWN authority/contact/chain and buyer-path status.",
+    "numeric_replay_and_observation_timing": "Unchanged."
+  },
+  "regression": "An archived organization timestamp equal to a valid pre-target policy surface yields organization_availability_status SUPPORTED while buyer_path.status and authority/contact/buying_chain statuses remain UNKNOWN; untimed organization case remains UNKNOWN.",
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --frozen --extra dev pytest tests/procurement_arena/test_historical_cohort.py -q",
+      "exit_code": 0,
+      "result": "15 passed in 0.37s"
+    },
+    "ruff": {
+      "command": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py",
+      "exit_code": 0,
+      "result": "All checks passed!"
+    },
+    "source_diff_check": "PENDING_FINAL_SCOPED_DIFF_CHECK",
+    "full_repository_gate": "NOT_RUN_PARENT_OWNS_FINAL_GATE",
+    "versioned_outputs": "NOT_RUN_PARENT_OWNS_INTEGRATION"
+  },
+  "timing": {
+    "started_at_utc": "2026-10-02T01:55:54Z",
+    "finished_at_utc": "2026-10-02T01:58:50Z",
+    "elapsed_seconds": 176,
+    "planning_duration": "UNKNOWN_NOT_INSTRUMENTED",
+    "implementation_duration": "UNKNOWN_NOT_INSTRUMENTED",
+    "validation_duration": "Focused tests reported 0.37 seconds; Ruff command wall time 0.13 seconds; total validation workflow duration UNKNOWN."
+  },
+  "repair_count": 0,
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "independent_review": "PENDING_SOL_EXACT_CANDIDATE_REVIEW",
+  "follow_up_repair": {
+    "started_at_utc": "2026-10-02T02:01:56Z",
+    "finished_at_utc": "2026-10-02T02:02:26Z",
+    "elapsed_seconds": 30,
+    "repair": "Extended the Markdown table delimiter row to 11 columns and strengthened the supported-organization regression to assert matching header/separator/case-row widths and the organization/authority labels.",
+    "focused_tests": "uv run --frozen --extra dev pytest tests/procurement_arena/test_historical_cohort.py -q — exit 0, 15 passed in 0.45s",
+    "ruff": "uv run --frozen --extra dev ruff check src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py — exit 0, all checks passed",
+    "source_diff_check": "git diff --check -- src/athena_procurement_arena/historical_cohort.py tests/procurement_arena/test_historical_cohort.py docs/HISTORICAL_COHORT.md — exit 0; only expected LF-to-CRLF notices."
+  },
+  "completion_boundary": "Parent owns versioned report regeneration, final repository gate, and fresh Sol review. No inputs, prior outputs, or existing receipts changed; only this new repair completion receipt was updated."
+}
