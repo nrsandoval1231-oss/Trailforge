@@ -425,7 +425,38 @@ Predicting an unseen outcome from then-available evidence is validation.
 
 ---
 
-## 10. Sequence patterns matter more than isolated keywords
+## 10. Sealed-holdout promotion gate
+
+A normal holdout is not sufficient for production-policy promotion. TrailForge must preserve a **sealed holdout** whose membership and expected evaluation procedure are fixed before the candidate policy is tested.
+
+Minimum sealing evidence:
+
+- immutable list of holdout case/project-family IDs
+- cohort version and content hashes for the replay inputs used by those cases
+- timestamp showing the seal predates candidate-policy evaluation
+- candidate policy/version hash fixed before holdout execution
+- evaluator/version identifier
+- replay configuration and cutoff rules
+- machine-readable result artifact with per-case outcomes
+- aggregate metrics used for the promotion decision
+- retained failures, UNKNOWNs, and regressions rather than only successful examples
+- evidence that the holdout cases were not moved into development/training after seeing candidate results
+
+The sealed holdout must remain untouched during candidate lesson development. If a case is exposed, corrected in a way that changes the evaluation target, or otherwise invalidated, record that explicitly and reseal a new version rather than silently reusing the old claim of independence.
+
+Athena promotion requires:
+
+1. zero hard-invariant failures,
+2. required robustness/regression checks,
+3. sealed-holdout evidence,
+4. minimum metric floors,
+5. objective improvement over the frozen baseline under the same attention/evaluation budget.
+
+The evidence bundle for promotion must be reproducible from retained artifacts. A narrative claim that a policy "performed better" is insufficient.
+
+---
+
+## 11. Sequence patterns matter more than isolated keywords
 
 TrailForge should learn temporal combinations and project-state transitions.
 
@@ -505,7 +536,7 @@ The useful pattern is the meaning, order, timing, and relationship of evidence t
 
 ---
 
-## 11. Athena is the learning loop
+## 12. Athena is the learning loop
 
 TrailForge should implement Athena as the mechanism that improves discovery and research policy from outcomes.
 
@@ -590,7 +621,7 @@ Athena V1 improves behavior by changing validated policy/experience, not by rewr
 
 ---
 
-## 12. Athena should learn research order, not only prediction
+## 13. Athena should learn research order, not only prediction
 
 One of the highest-value learning targets is:
 
@@ -620,7 +651,7 @@ This allows TrailForge to become faster and cheaper while improving signal quali
 
 ---
 
-## 13. Source learning
+## 14. Source learning
 
 Historical cases should also teach TrailForge where valuable precursor evidence originates.
 
@@ -643,7 +674,7 @@ A high-volume source that generates noise is not inherently valuable.
 
 ---
 
-## 14. Jev, generative research, Athena, and deterministic code have separate jobs
+## 15. Jev, generative research, Athena, and deterministic code have separate jobs
 
 ### Retrieval / acquisition
 Firecrawl or source-specific connectors retrieve and preserve public evidence.
@@ -697,7 +728,7 @@ Athena does not become another crawler, another database, or an autonomous code-
 
 ---
 
-## 15. Evaluation objective
+## 16. Evaluation objective
 
 Primary metric:
 
@@ -740,7 +771,7 @@ Do not optimize raw alert count.
 
 ---
 
-## 16. Real-world feedback closes the loop
+## 17. Real-world feedback closes the loop
 
 Customer and pursuit feedback is high-value evidence.
 
@@ -766,7 +797,7 @@ User feedback must remain attributed and time-stamped. It can influence future l
 
 ---
 
-## 17. Relationship to GridLens
+## 18. Relationship to GridLens
 
 TrailForge and GridLens should not become duplicate operational systems.
 
@@ -790,7 +821,7 @@ Do not build a generalized shared framework before the two systems demonstrate a
 
 ---
 
-## 18. Immediate execution plan
+## 19. Immediate execution plan
 
 ### Phase 1 — Relevant procurement corpus
 
@@ -866,7 +897,7 @@ Historical potential lead time and actual live lead time must remain separate me
 
 ---
 
-## 19. First success criterion
+## 20. First success criterion
 
 TrailForge does **not** need to prove universal forecasting across every vertical before becoming useful.
 
@@ -880,7 +911,7 @@ A single anecdotal historical case does not satisfy this criterion.
 
 ---
 
-## 20. Non-goals
+## 21. Non-goals
 
 Do not:
 
