@@ -28,6 +28,12 @@ Run validation: `uv run --python 3.11 --with pytest --with ruff python scripts/v
 
 The workbench proves experiment mechanics. It does not yet prove commercial signal quality.
 
+## Canonical strategy
+
+The canonical product/research direction is [Pre-RFP Discovery Strategy](docs/PRE_RFP_DISCOVERY_STRATEGY.md). TrailForge uses relevant historical and current power procurements as cases, reconstructs the precursor evidence that led to each buying event, applies Athena to test and improve early-warning and research policies, and then validates those policies prospectively without future leakage.
+
+The target is not a generic RFP aggregator. TrailForge is designed to identify onsite, distributed, temporary, bridge, commissioning, prime, supplemental, and behind-the-meter generation opportunities early enough to reach the responsible customer or contractor before the package is committed.
+
 ## Next milestone
 
 Do not add another architecture or governance layer. Build a historical cohort of approximately 20-50 real power projects with known downstream milestones. Reconstruct their source-backed timelines, replay candidate signals without future leakage, record the first valid surfaced date and buyer path, and measure lead-time advantage.
