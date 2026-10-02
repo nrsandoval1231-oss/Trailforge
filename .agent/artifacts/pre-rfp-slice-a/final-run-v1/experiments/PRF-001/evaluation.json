@@ -1,0 +1,54 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "procurement_episode_id": "pseg-tempgen-2026",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 3,
+    "visible_evidence_count": 2
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "PSEG Long Island on behalf of LIPA",
+          "facility_type": "UTILITY",
+          "generation_need_supported": true,
+          "need_reason": "Maintaining reliability for Long Island customers; up to 400 MW total from multiple projects.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "TEMPORARY_RELIABILITY",
+          "project_specific": true,
+          "purchase_type": "LONG_TERM_POWER"
+        },
+        "evidence_id": "PRF-001-pseg-tempgen-capture-observation",
+        "observed_at": "2026-10-02T13:54:02.349736+00:00",
+        "source_id": "pseg-tempgen-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:02.349736+00:00"
+      },
+      {
+        "claims": {
+          "buyer_organization": "PSEG Long Island on behalf of LIPA",
+          "facility_type": "UTILITY",
+          "generation_need_supported": true,
+          "need_reason": "Maintaining reliability for Long Island customers; up to 400 MW total from multiple projects.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "TEMPORARY_RELIABILITY",
+          "project_specific": true,
+          "purchase_type": "LONG_TERM_POWER"
+        },
+        "evidence_id": "PRF-001-pseg-rfp-capture-observation",
+        "observed_at": "2026-10-02T13:56:32.582762+00:00",
+        "source_id": "pseg-rfp-20261002-v1",
+        "verified_available_at": "2026-10-02T13:56:32.582762+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

@@ -1,0 +1,345 @@
+{
+  "decision_snapshots": [
+    {
+      "action": "IGNORE",
+      "decision_hash": "c9fc22b808ee0ed2f915ae2f66c5fe3157369feeb4657efb5e3afa275dc35747",
+      "decision_time": "2026-10-02T13:54:01.349736+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "PRF-001",
+        "seed": 1000,
+        "time": "2026-10-02T13:54:01.349736+00:00",
+        "visible_evidence": [],
+        "visible_evidence_ids": []
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 0,
+          "hits": [],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": ""
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.0,
+          "state": "UNKNOWN",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 0,
+          "priority": "LOW"
+        }
+      }
+    },
+    {
+      "action": "IGNORE",
+      "decision_hash": "e2441344a90dadd9e7808dbbce567033cb71ebbea64336ee8d84a17963d787d3",
+      "decision_time": "2026-10-02T13:54:02.349736+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "PRF-001",
+        "seed": 1000,
+        "time": "2026-10-02T13:54:02.349736+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "PUBLIC_SOURCE_REVIEW",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "buyer_organization": "PSEG Long Island on behalf of LIPA",
+              "facility_type": "UTILITY",
+              "generation_need_supported": true,
+              "need_reason": "Maintaining reliability for Long Island customers; up to 400 MW total from multiple projects.",
+              "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+              "power_activity": "TEMPORARY_RELIABILITY",
+              "project_specific": true,
+              "purchase_type": "LONG_TERM_POWER"
+            },
+            "contradictions": [],
+            "document_date": "2026-10-02T13:54:02.349736+00:00",
+            "entity_candidates": [
+              "PSEG Long Island on behalf of LIPA"
+            ],
+            "event_date": "2026-10-02T13:54:02.349736+00:00",
+            "evidence_id": "PRF-001-pseg-tempgen-capture-observation",
+            "is_prediction": false,
+            "lineage_family": "pseg-tempgen-2026",
+            "observed_at": "2026-10-02T13:54:02.349736+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "pseg-tempgen-20261002-v1",
+            "source_spans": [
+              "PSEG Long Island, LLC (\u201cPSEG Long Island\u201d), on behalf of the Long Island Power Authority (\u201cLIPA\u201d) is issuing this 2026 Request for Proposals for Temporary Generation (\u201c2026 Temporary Generation RFP\u201d or \u201cRFP\u201d) for the purpose of maintaining reliability for Long Island customers. LIPA is seeking to procure up to a total of 400 MW of temporary generation from multiple Projects to be located in LIPAs service territory. Such facilities will be connected to LIPA\u2019s Transmission or Distribution System (\u201cLIPA\u2019s T&D System\u201d)."
+            ],
+            "source_version": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+            "tenant_id": "public",
+            "verified_available_at": "2026-10-02T13:54:02.349736+00:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "PRF-001-pseg-tempgen-capture-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    },
+    {
+      "action": "IGNORE",
+      "decision_hash": "7c4b49ac820fc8ec1af60443d995648db2af6d9f3fa5e79ff9034de445a6f19c",
+      "decision_time": "2026-10-02T13:56:32.582762+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "PRF-001",
+        "seed": 1000,
+        "time": "2026-10-02T13:56:32.582762+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "PUBLIC_SOURCE_REVIEW",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "buyer_organization": "PSEG Long Island on behalf of LIPA",
+              "facility_type": "UTILITY",
+              "generation_need_supported": true,
+              "need_reason": "Maintaining reliability for Long Island customers; up to 400 MW total from multiple projects.",
+              "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+              "power_activity": "TEMPORARY_RELIABILITY",
+              "project_specific": true,
+              "purchase_type": "LONG_TERM_POWER"
+            },
+            "contradictions": [],
+            "document_date": "2026-10-02T13:54:02.349736+00:00",
+            "entity_candidates": [
+              "PSEG Long Island on behalf of LIPA"
+            ],
+            "event_date": "2026-10-02T13:54:02.349736+00:00",
+            "evidence_id": "PRF-001-pseg-tempgen-capture-observation",
+            "is_prediction": false,
+            "lineage_family": "pseg-tempgen-2026",
+            "observed_at": "2026-10-02T13:54:02.349736+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "pseg-tempgen-20261002-v1",
+            "source_spans": [
+              "PSEG Long Island, LLC (\u201cPSEG Long Island\u201d), on behalf of the Long Island Power Authority (\u201cLIPA\u201d) is issuing this 2026 Request for Proposals for Temporary Generation (\u201c2026 Temporary Generation RFP\u201d or \u201cRFP\u201d) for the purpose of maintaining reliability for Long Island customers. LIPA is seeking to procure up to a total of 400 MW of temporary generation from multiple Projects to be located in LIPAs service territory. Such facilities will be connected to LIPA\u2019s Transmission or Distribution System (\u201cLIPA\u2019s T&D System\u201d)."
+            ],
+            "source_version": "655a47f14d65d7d43857319b59b7ad718aad95cd9c69b1ea7c3311bef3036a29",
+            "tenant_id": "public",
+            "verified_available_at": "2026-10-02T13:54:02.349736+00:00"
+          },
+          {
+            "action_support": null,
+            "authority": "PUBLIC_SOURCE_REVIEW",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "buyer_organization": "PSEG Long Island on behalf of LIPA",
+              "facility_type": "UTILITY",
+              "generation_need_supported": true,
+              "need_reason": "Maintaining reliability for Long Island customers; up to 400 MW total from multiple projects.",
+              "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+              "power_activity": "TEMPORARY_RELIABILITY",
+              "project_specific": true,
+              "purchase_type": "LONG_TERM_POWER"
+            },
+            "contradictions": [],
+            "document_date": "2026-10-02T13:56:32.582762+00:00",
+            "entity_candidates": [
+              "PSEG Long Island on behalf of LIPA"
+            ],
+            "event_date": "2026-10-02T13:56:32.582762+00:00",
+            "evidence_id": "PRF-001-pseg-rfp-capture-observation",
+            "is_prediction": false,
+            "lineage_family": "pseg-tempgen-2026",
+            "observed_at": "2026-10-02T13:56:32.582762+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "pseg-rfp-20261002-v1",
+            "source_spans": [
+              "### 1.0 INTRODUCTION\n\nPSEG Long Island, LLC (\u201cPSEG Long Island\u201d), on behalf of the Long Island Power Authority (\u201cLIPA\u201d), is\nissuing this 2026 Request for Proposals for Temporary Generation ( **\u201c2026 Temporary Generation RFP\u201d**\nor **\u201cRFP\u201d**) for the purpose of maintaining reliability for Long Island customers. As described in Section 1.4.1,\nLIPA is seeking to procure up to a total of 400 MW of Temporary Generation1 to be located in LIPA\u2019s Service\nTerritory. Such facilities would be connected to LIPA\u2019s Transmission or Distribution System (the \u201c **T&D**\n**System\u201d).**\n\nUnless otherwise defined in Sections 1 through 7 of this RFP, capitalized terms used in this document shall\nhave the definitions as set forth in the Glossary ( **Appendix** A).\n\n### 1.1 LIPA Overview\n\n1.1.1 LIPA is a corporate municipal instrumentality and a political subdivision of the State of New\nYork. LIPA, by and through its agent, Long Island Electric Utility Servco LLC (\u201c **Servco\u201d),** a\nsubsidiary of PSEG Long Island, provides electric service to approximately 1.2 million\ncustomers in its service area, which includes Nassau County and Suffolk County and the\nportion of Queens County known as the Rockaways in the State of New York (the \u201c **LIPA**\n**Service Territory\u201d).**\n\n1.1.2 To meet its customers\u2019 electricity requirements, LIPA has secured power supply resources,\nprimarily through various power purchase agreements with third-party generation and\ntransmission developers and has undertaken a variety of demand-side initiatives to reduce\nsystem peak demand.\n\n1.1.3 Pursuant to the Second Amended and Restated Operation Services Agreement ( **\u201cA&R**\n**OSA\u201d**) dated December 15, 2021, as amended and extended as of December 22, 2025, and\nas it may be restated, amended, modified, or supplemented from time to time, between LIPA\nand PSEG Long Island, PSEG Long Island through its operating subsidiary, Servco,\nassumed the responsibility as a LIPA service provider, to operate and manage the T&D\nSystem and other utility business functions as of January 1, 2014. On January 1, 2015,\nPSEG Long Island assumed responsibility for power supply planning and procurement.\nAdditional information about LIPA2 and PSEG Long Island3 can be found on their respective\n\n1\nFor purposes of this RFP, **Temporary Generation** shall include dispatchable equipment comprising energy storage (e.g.\nbatteries), fuel cells, or conventional generation (e.g., combustion turbines, internal combustion engines).\n\n2\nLIPA\u2019s website: [www.lipower.org](http://www.lipower.org/)\n\n3\nPSEG Long Island\u2019s website: [www.psegliny.com](http://www.psegliny.com/) websites. LIPA relies upon a service provider to manage power, fuel, and risk management\nactivities including the day-to-day interface with the NYISO (e.g., scheduling and bidding).\n\n1.1.4 PSEG Long Island and Servco (hereinafter collectively referred to as \u201c **PSEG Long Island\u201d),**\nas agent of and acting on behalf of LIPA per the A&R OSA, will administer this RFP. LIPA,\nas the principal, will be the contracting party under any contract that may result from this\nRFP. Any such contract must be approved by the LIPA Board of Trustees (\u201c **LIPA Board\u201d),**\nthe New York State (\u201cNYS\u201d) Attorney General (\u201cAG\u201d), and the NYS Office of the State\nComptroller (\u201cOSC\u201d) to become effective.\n\n### 1.2 Project Need\n\n1.2.1 Recent reliability assessments by the New York Independent System Operator **(\u201cNYISO\u201d)**\nand ongoing internal planning analyses indicate that Long Island reliability margins are\ncontinuing to narrow, primarily because of cancellations and delays of clean energy projects\nsuch as offshore wind and lithium-ion battery projects, as well as increasingly stringent\nplanning criteria promulgated by the NYISO. Further, due to narrowing capacity margins in\nneighboring regions, capacity imports face similar long-term risks. In addition, aging of\nexisting transmission and generation raises the risk of unplanned outages. Consequently,\nLIPA and PSEG Long Island are seeking Temporary Generation as a necessary near-term\nreliability measure to preserve system reliability and operational flexibility until longer-term\ntransmission and resource solutions are developed and placed into service.\n\n1.2.2 Accordingly, LIPA and PSEG Long Island are moving forward with the development and\nprocurement of Temporary Generation resources to ensure sufficient backup reliability\ncapability is available to support the T&D System under a range of operating conditions.\nTemporary Generation is intended to provide operational and planning flexibility in the event\nof, among other things, unexpected generation outages, extreme weather conditions,\ntransmission limitations, or emerging changes to resource adequacy planning requirements.\nThese resources are being advanced as a proactive reliability solution designed to maintain\nsafe and reliable service for LIPA customers while permanent solutions progress through\ndevelopment, permitting, and construction.\n\n### 1.3 Common Terms\n\n1.3.1 _Capacity Product_ \u2013 means the entire range of Capacity magnitude and duration offered by\nthe Respondent in the Proposal.\n\n1.3.2 _Contract Capacity_ \u2013 means that amount of the Capacity Product which is selected by LIPA\nfor contract negotiations.\n\n* * *\n\n1.3.3 _Disadvantaged Community_ \u2013 has the meaning set forth by the New York State Climate\nJustice Working Group pursuant to the Climate Leadership and Community Protection Act\n(CLCPA).4\n\n1.3.4 _Energy Product_ \u2013 means Energy delivered from the Project during the Month.\n\n1.3.5 _Generating Unit_ \u2013 means a system of equipment or devices that convert energy into\nelectricity or stores electricity and shall include energy storage (e.g. batteries), fuel cells, or\nconventional generation (e.g., combustion turbines, internal combustion engines). For the\npurpose of this RFP, the device must be dispatchable.\n\n1.3.6 _LIPA\u2019s Transmission and Distribution System or T&D System_ \u2013 means all equipment and\nfacilities now or hereafter comprising LIPA\u2019s system for transmission and/or distribution of\nelectricity, as modified or expanded from time to time.\n\n1.3.7 _Point of Interconnection_ \u2013 means the Project\u2019s point of interconnection with the T&D System\nas defined in the Project\u2019s Interconnection Agreement.\n\n1.3.8 _Power Purchase Agreement or Agreement_ \u2013 means the agreement setting forth the\ncommercial terms for selected Respondent\u2019s mobilization, operation, maintenance, and\nDemobilization of the Project and LIPA\u2019s purchase of Capacity and Energy from the selected\nProject(s) during the Service Term.\n\n1.3.9 _Products_ \u2013 means the Capacity Product and Energy Product jointly.\n\n1.3.10 _Project_ \u2013 means a generating plant owned and operated by a selected Respondent\nconsisting of one or more dispatchable Generating Units, which (i) is located on a single Site,\n(ii) is temporarily connected to T&D System and (ii) can provide Product(s) to the Point(s) of\nInterconnection.\n\n1.3.11 _Proposal_ \u2013 refers to a response to this RFP submitted by a Respondent.\n\n1.3.12 _Respondent_ \u2013 refers to a party submitting a Proposal and is authorized to execute a Power\nPurchase Agreement and related agreements for the proposed Project.\n\n1.3.13 _Site_ \u2013 refers to the specific physical locations at which the Temporary Generation will be\ninstalled and includes Sites being offered by LIPA pursuant to this RFP as well as Sites that\nmay be made available by Respondents. Only one Project may be installed at each Site.\n\n4\nDisadvantaged Communities Criteria - New York's Climate Leadership & Community Protection Act and\n[https://www.nyserda.ny.gov/ny/Disadvantaged-Communities](https://www.nyserda.ny.gov/ny/Disadvantaged-Communities)\n\n* * *\n\n1.3.14 _Site Control_ -means legally enforceable rights sufficient for the installation, operation,\nfueling, maintenance, and removal of temporary generation equipment on the project site for\nthe term of the temporary generation services. Site Control may be evidenced by fee\nownership, a lease, license, easement, right-of-entry agreement, use agreement, or other\nbinding documentation that grants the right to access, occupy, and use the site on a\ntemporary, non-permanent basis, including related rights for laydown areas, fuel delivery,\ninterconnection, and ingress and egress.\n\n1.3.15 _Temporary Generation_ \u2013 means one or more Generating Units that are provided by the\nRespondent at the Site and are installed on a fixed foundation or are mobile-mounted.\n\n## Description of Solicitation\n\n1.4.1 This RFP is seeking the following:\n\na) **Temporary Generation:** LIPA is seeking to secure up to 400 MW of Contract Capacity\nfrom multiple Projects for a Service Term commencing between May 1, 2028 and May\n1, 2030 to be installed at locations across the LIPA Service Territory which include (i)\nLIPA-provided Sites, and (ii) Respondent-provided Sites.\n\nb) **Service Term:** LIPA is seeking a Service Term for Temporary Generation beginning\nbetween May 1, 2028 (preferred) and May 1, 2030, for a 3-yr base term ( **\u201cBase Term\u201d**)\nplus an extended term up to October 31, 2039 (full extended term preferred), provided\nthat LIPA will have the option to terminate the agreement at any time during the extended\nterm with 12 months advance notice.\n\nc) **Pricing:** Respondent must provide capacity prices for the Base Term and for each month\nof the extended term and must provide energy prices if applicable, in the form shown in\nSection 5.3.4.\n\nd) **Capacity Product:** A minimum of 5 MW of Contract Capacity from each Project.\n\ne) **Energy Product:** In addition to the Capacity Product above, the Proposal must include\nan Energy Product, from the same Project(s), in an hourly amount up to the equivalent\nCapacity Product as scheduled by LIPA.\n\n1.4.2 Respondents may propose Projects on/at Sites for which the Respondent has established\nSite Control to be interconnected with LIPA\u2019s T&D System, in addition to Sites being made\navailable to Respondents by LIPA through this RFP. Information concerning the Sites offered\nby LIPA may be secured by Respondents pursuant to the instructions in **Appendix D: LIPA**\n**Sites Where Projects Could Be Located.**\n\n* * *\n\n1.4.3 LIPA reserves the right to select more than one Proposal to meet the objectives of this RFP.\nLIPA also reserves the right not to select any or all Proposals for an award from this RFP."
+            ],
+            "source_version": "04e5fbc462b6ff018e8d0b94198bc731db0087dac951272d20f56e6d320a97cf",
+            "tenant_id": "public",
+            "verified_available_at": "2026-10-02T13:56:32.582762+00:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "PRF-001-pseg-rfp-capture-observation",
+          "PRF-001-pseg-tempgen-capture-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 2,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'} {'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    }
+  ],
+  "ledger_hash": "9cc2cb55e83344b4d8eabf23e2b5e7e40bd7bc200c198c5b64f92f2a6d5d2bf3",
+  "ledger_verified": true,
+  "records": [
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 0,
+          "hits": [],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": ""
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.0,
+          "state": "UNKNOWN",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 0,
+          "priority": "LOW"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "",
+      "record_hash": "c9fc22b808ee0ed2f915ae2f66c5fe3157369feeb4657efb5e3afa275dc35747",
+      "scenario_id": "PRF-001",
+      "simulation_time": "2026-10-02T13:54:01.349736+00:00",
+      "visible_evidence_ids": []
+    },
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "c9fc22b808ee0ed2f915ae2f66c5fe3157369feeb4657efb5e3afa275dc35747",
+      "record_hash": "e2441344a90dadd9e7808dbbce567033cb71ebbea64336ee8d84a17963d787d3",
+      "scenario_id": "PRF-001",
+      "simulation_time": "2026-10-02T13:54:02.349736+00:00",
+      "visible_evidence_ids": [
+        "PRF-001-pseg-tempgen-capture-observation"
+      ]
+    },
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 2,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "IN_SCOPE_INSTALLATION_OR_TEMPORARY_POWER",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'} {'buyer_organization': 'pseg long island on behalf of lipa', 'facility_type': 'utility', 'generation_need_supported': true, 'need_reason': 'maintaining reliability for long island customers; up to 400 mw total from multiple projects.', 'observation_kind': 'current_source_observation', 'power_activity': 'temporary_reliability', 'project_specific': true, 'purchase_type': 'long_term_power'}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "e2441344a90dadd9e7808dbbce567033cb71ebbea64336ee8d84a17963d787d3",
+      "record_hash": "7c4b49ac820fc8ec1af60443d995648db2af6d9f3fa5e79ff9034de445a6f19c",
+      "scenario_id": "PRF-001",
+      "simulation_time": "2026-10-02T13:56:32.582762+00:00",
+      "visible_evidence_ids": [
+        "PRF-001-pseg-rfp-capture-observation",
+        "PRF-001-pseg-tempgen-capture-observation"
+      ]
+    }
+  ]
+}

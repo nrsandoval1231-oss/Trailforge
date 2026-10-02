@@ -1,0 +1,97 @@
+{
+  "schema_version": "trailforge-pre-rfp-case-v1",
+  "case_id": "PRF-008",
+  "procurement_family_id": "ieso-forecast-pricing-2026",
+  "project_identity": "IESO Forecast Fuel and Electricity Market Pricing consultancy",
+  "facility_type": "UTILITY",
+  "location": "Nova Scotia, Canada",
+  "power_activity": "UNKNOWN",
+  "purchase_type": "ENGINEERING",
+  "commercial_fit": {
+    "generation_mw": "NOT_APPLICABLE",
+    "contract_duration": "six months with optional six-month extension",
+    "award": "UNKNOWN"
+  },
+  "outcome": "GENERATION_NOT_IN_SCOPE",
+  "known_buying_event": "Forecasting consultancy for IRP inputs; purchase is forecasts, not generation equipment, fuel, or power.",
+  "buying_event_date": "UNKNOWN",
+  "reported_buying_event_date": "2026-07-07",
+  "conventional_milestone": "Forecast consultancy RFP release",
+  "conventional_milestone_at": "UNKNOWN",
+  "scenario_path": "scenario.json",
+  "holdout_group": "DEVELOPMENT",
+  "buyer_path": [
+    {
+      "organization": "IESO Nova Scotia",
+      "role": "OWNER_OR_PROCUREMENT_ORGANIZATION",
+      "quality": "ORGANIZATION_IDENTIFIED",
+      "evidence_id": "PRF-008-ieso-forecast-capture-observation"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "capture_path": "../../captures/ieso-forecast-v1.json",
+      "capture_id": "ieso-forecast-20261002-v1",
+      "capture_hash": "6ae34973a70aeffcd25b53121eea3e8a11d2789df0124ddd8e4246e6f87a56c7",
+      "content_sha256": "475894bd9321983952b18e207461a6ec35e7a89358af60c7eeabaf8c11f89bf8",
+      "source_url": "https://www.ieso-ns.ca/wp-content/uploads/2026/07/RFP-Forecast-Fuel-and-Electricity-Market-Pricing.pdf",
+      "source_quote": "#### 1.1 Invitation to Proponents\n\nThis Request for Proposals (the \u201cRFP\u201d) is an invitation by the Nova Scotia Independent Energy \nSystem Operator (\u201cIESO Nova Scotia\u201d) to prospective proponents to submit proposals for \n**Forecast Fuel and Electricity Market Pricing,** as further described in Section A of the RFP \nParticulars (Appendix D) (the \u201cDeliverables\u201d).\n\nIESO Nova Scotia is seeking proposals from qualified consultants to provide forecast fuel and \nelectricity market pricing to support the development of its Integrated Resource Plan (IRP). The \nDeliverables comprise long-term (2027 to 2055) forecasts for a range of fuel commodities, \nincluding natural gas (Henry Hub, with AGT and AECO basis), LNG (Dutch TTF), heavy fuel oil \nor Brent crude oil, No. 2 fuel oil, and low and mid sulfur Columbian coal, together with electricity \nenergy, capacity, and Renewable Energy Credit (REC) market pricing for ISO New England, in \neach case including high and low forecasts.\n\nThe Deliverables are described in detail in Section A of the RFP Particulars (Appendix D). \nProponents need not be able to provide all of the requested forecasts in order to submit a \nproposal. This RFP is organized into three parts and a set of appendices: Part 1 sets out the \ninvitation and submission instructions; Part 2 describes the evaluation, negotiation, and award \nprocess; Part 3 contains the terms and conditions governing the RFP process; and the \nappendices contain the Form of Agreement (Appendix A), Submission Form (Appendix B), Pricing \n(Appendix C), and RFP Particulars (Appendix D).",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOLICITATION",
+      "evidence_id": "PRF-008-ieso-forecast-capture-observation",
+      "reviewed_claims": {
+        "project_specific": false,
+        "generation_need_supported": false,
+        "need_reason": "Forecasting consultancy for IRP inputs; purchase is forecasts, not generation equipment, fuel, or power.",
+        "buyer_organization": "IESO Nova Scotia",
+        "facility_type": "UTILITY",
+        "power_activity": "UNKNOWN",
+        "purchase_type": "ENGINEERING",
+        "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+        "generation_not_in_scope": true
+      },
+      "event_date": "2026-10-02T13:57:48.746449+00:00",
+      "document_date": "2026-10-02T13:57:48.746449+00:00",
+      "verified_available_at": "2026-10-02T13:57:48.746449+00:00",
+      "observed_at": "2026-10-02T13:57:48.746449+00:00",
+      "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+      "availability_basis": "CAPTURE_TIME_ONLY",
+      "date_semantics": "Dates describe this capture observation record, not original project event or historical publication."
+    },
+    {
+      "capture_path": "../../captures/ieso-forecast-v1.json",
+      "capture_id": "ieso-forecast-20261002-v1",
+      "capture_hash": "6ae34973a70aeffcd25b53121eea3e8a11d2789df0124ddd8e4246e6f87a56c7",
+      "content_sha256": "475894bd9321983952b18e207461a6ec35e7a89358af60c7eeabaf8c11f89bf8",
+      "source_url": "https://www.ieso-ns.ca/wp-content/uploads/2026/07/RFP-Forecast-Fuel-and-Electricity-Market-Pricing.pdf",
+      "source_quote": "#### 1.1 Invitation to Proponents\n\nThis Request for Proposals (the \u201cRFP\u201d) is an invitation by the Nova Scotia Independent Energy \nSystem Operator (\u201cIESO Nova Scotia\u201d) to prospective proponents to submit proposals for \n**Forecast Fuel and Electricity Market Pricing,** as further described in Section A of the RFP \nParticulars (Appendix D) (the \u201cDeliverables\u201d).\n\nIESO Nova Scotia is seeking proposals from qualified consultants to provide forecast fuel and \nelectricity market pricing to support the development of its Integrated Resource Plan (IRP). The \nDeliverables comprise long-term (2027 to 2055) forecasts for a range of fuel commodities, \nincluding natural gas (Henry Hub, with AGT and AECO basis), LNG (Dutch TTF), heavy fuel oil \nor Brent crude oil, No. 2 fuel oil, and low and mid sulfur Columbian coal, together with electricity \nenergy, capacity, and Renewable Energy Credit (REC) market pricing for ISO New England, in \neach case including high and low forecasts.\n\nThe Deliverables are described in detail in Section A of the RFP Particulars (Appendix D). \nProponents need not be able to provide all of the requested forecasts in order to submit a \nproposal. This RFP is organized into three parts and a set of appendices: Part 1 sets out the \ninvitation and submission instructions; Part 2 describes the evaluation, negotiation, and award \nprocess; Part 3 contains the terms and conditions governing the RFP process; and the \nappendices contain the Form of Agreement (Appendix A), Submission Form (Appendix B), Pricing \n(Appendix C), and RFP Particulars (Appendix D).",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOLICITATION",
+      "evidence_id": "PRF-008-ieso-forecast-historical-unresolved",
+      "reviewed_claims": {},
+      "event_date": "UNKNOWN",
+      "document_date": "UNKNOWN",
+      "verified_available_at": "UNKNOWN",
+      "observed_at": "2026-10-02T13:57:48.746449+00:00",
+      "reported_event_date": "2026-07-07",
+      "reported_document_date": "2026-07-07",
+      "availability_basis": "HISTORICAL_VERSION_UNVERIFIED",
+      "date_semantics": "Reported calendar date lacks a verified historical content-version availability boundary; excluded from strict replay."
+    }
+  ],
+  "procurement_status": "CLOSED",
+  "deadline": "2026-07-22T16:00:00-03:00",
+  "case_provenance": {
+    "kind": "REAL_PUBLIC_SOURCE",
+    "acquisition_mode": "BACKTRACE",
+    "historical_availability": "UNKNOWN",
+    "discovery_credit": false,
+    "source_note": "Current primary-source capture; supplier case studies are attributed claims, not independent performance audits."
+  },
+  "negative_evidence": [],
+  "notes": [
+    "Historical availability remains UNKNOWN. Capture observations permit current-state replay only; no pre-RFP or prospective detection credit.",
+    "All documents and amendments remain in one procurement family. DEVELOPMENT is exposed; not a holdout."
+  ],
+  "reported_conventional_milestone_date": "2026-07-07"
+}

@@ -1,39 +1,42 @@
-# TrailForge Current State — 2026-10-01
+# TrailForge current state — 2026-10-02
 
-## Product reset
+Canonical strategy: [Pre-RFP Discovery Strategy](../docs/PRE_RFP_DISCOVERY_STRATEGY.md).
+Finish criterion remains an unseen/prospective, source-backed early pattern with
+tolerable action burden and an identifiable customer path. It is not yet met.
 
-The owner reset TrailForge around one commercial objective:
+Active branch: `codex/trailforge-pre-rfp-lab`, based on remote main
+`6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb`. Worktree:
+`C:/Users/nrsan/.codex/worktrees/trailforge-pre-rfp-lab/Trailforge`.
+The original customer-v1 checkout and its dirty operator work remain preserved.
 
-**Prove which early signals can identify real power projects before conventional market discovery, so the direct customer/project team can be contacted first; fuel providers are selected afterward.**
+## Current bounded result
 
-This supersedes older next-step language prioritizing completion of the generic Procurement Arena, additional governance machinery, or RFP-first discovery.
+HC-A extends existing scenario, TemporalWorld, frozen ledger and BASELINE_A
+experiment infrastructure with source-bound cases and offline cohort execution.
+A small PRE_RFP_BASELINE_V1 callback allows unknown MW and requires supported
+project, generation reason and organization evidence; it does not self-promote.
 
-## Current implementation
+[Seed corpus](../research/pre-rfp-corpus/README.md): eight exposed development
+families, eleven captures; four positive observed outcomes, one negative scope
+look-alike, three unresolved. Historical version availability remains UNKNOWN.
+Capture-observation replay is useful boundary proof, not historical or live
+prediction success. No sealed holdout, Jev or Athena candidate evaluation.
 
-Main includes the deterministic research engine and merged local experiment workbench from PR #5. Existing evidence/replay/provenance infrastructure is retained. Historical agent packets/review artifacts remain evidence of prior work and must not be rewritten to match this reset.
+## Validation and next direction
 
-## Current gap
+Current direction: CONTINUE to HC-A-HISTORY after bounded HC-A implementation
+acceptance. Sol PASS binds source candidate
+`afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1`.
+Controller gates: 318 passed, 1 existing Windows symlink-privilege skip; compile,
+Ruff, three fixture bundles and two offline real-corpus runs PASS.
+Exact final gates, frozen file identities and independent verdict live in
+[Slice A evidence](artifacts/pre-rfp-slice-a/).
+[Validation report](../docs/PRE_RFP_IMPLEMENTATION_VALIDATION_2026-10-02.md).
 
-The engine has not yet demonstrated repeatable lead-time advantage on a meaningful cohort of real power projects. Synthetic mechanics, test counts, already-obvious RFPs, and UI completion do not answer that question.
+[Graph](WORK_GRAPH_PRE_RFP.md), [packet](tasks/pre-rfp-slice-a.md).
+Next implementation frontier after acceptance: recover verified historical
+precursors and expand source-backed acquisition/classification. Exposed cases
+cannot be renamed as an untouched holdout. No merge, outreach or deployment
+is authorized. The current brief does authorize one focused commit/push/PR.
 
-## Active frontier: HISTORICAL-COHORT-001
-
-Assemble and run approximately 20-50 real historical power projects through the temporal replay engine.
-
-Per project: source-backed chronology; first valid policy surface; verified conventional downstream milestone; lead-time advantage where supported; buyer-path evidence at first surface; unresolved evidence; signal family.
-
-Cohort: lead-time distribution by signal family, coverage, action burden, unresolved cases, buyer-path availability.
-
-## Build priority
-
-1. Adapt existing trace/experiment path to cohort execution.
-2. Collect/review first historical cohort.
-3. Evaluate candidate signal families.
-4. Identify at least one repeatably useful early signal.
-5. Define minimal GridLens live integration.
-
-Do not start another architecture initiative before this experiment is runnable.
-
-`SIGNAL -> PROJECT -> POWER-GAP HYPOTHESIS -> DIRECT BUYING CHAIN -> CUSTOMER CONVERSATION -> VERIFIED REQUIREMENT -> FUEL STRATEGY`
-
-Fuel-provider-first discovery is not the product direction.
+Portability delta independently accepted; original review retained. Fresh Windows checkout: 213 retained files byte-identical, eight cases and eight bundles verified.

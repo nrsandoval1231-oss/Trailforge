@@ -1,0 +1,231 @@
+{
+  "base_sha": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+  "branch": "codex/trailforge-pre-rfp-lab",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "61b2cadd31c6c04954e0ee12fe175ce54c22b0d2d55189ce375f6fae50b297e4",
+      "git_blob": "e1a89065eec676bf812174964291dae65ac33c66"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1bd5627fbc967d3583ac76ea24705163a86ee5fe264a1401e60c7827e2c592cf",
+      "git_blob": "fb74308f66bb3b28436f1423013651612ffcb8cf"
+    },
+    {
+      "path": "docs/PRE_RFP_IMPLEMENTATION_VALIDATION_2026-10-02.md",
+      "sha256": "f41a7a68814da6ab7991c8f944e4ca2364922105c3e850857774c4a7afd99ad4",
+      "git_blob": "a7227caa1956d26d6068242e6f0a807e5d5e7369"
+    },
+    {
+      "path": "docs/PRE_RFP_SLICE_A.md",
+      "sha256": "998d9ad4f14309b92bd7123bf7cfba48943eb264a77bf9637528effbd4a8261a",
+      "git_blob": "e8d7e9146dceb2ed9e1a762dabed8a42b5c20d7f"
+    },
+    {
+      "path": "research/pre-rfp-corpus/README.md",
+      "sha256": "d32734cd58ff58f4fb8bf8ea9d977d5e3a595082bc68b5ec97cbd505c108a12c",
+      "git_blob": "44faaf850e83b9fe238a422fb9e7e180eace723d"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/azure-sky-v1.json",
+      "sha256": "3e36923ab7f672c0a0e4e1d50e9b94e63ab384993d5ea13d701ef9f24115dcf5",
+      "git_blob": "82330ba7019f9f4769708c655acd27155e76d1cd"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/ieso-addendum-v1.json",
+      "sha256": "57c5781611c34e87cb9c9f34ccc573be13d7066af9a04d860cc008e4540251f7",
+      "git_blob": "d70de265269c2a36f7db0e8633eebe40b01b33f0"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/ieso-forecast-v1.json",
+      "sha256": "064e6c696886006053e9a38e683f14da9b1a10ffe32821aac98a566ada5d228d",
+      "git_blob": "9ab0ad435e04d0a3e08555a40bcdfd3cb1e26e62"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/ieso-v1.json",
+      "sha256": "a465548634890f4c8a07edceaa3c67f9fb9dc3b85452ce1b3bff12816570ae7a",
+      "git_blob": "af496f5a5e19175b259457476d5f6565b1c6ed0e"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/montauk-v1.json",
+      "sha256": "25a3e0d41b355e87f5f0d7d10adb2073ffa4e6217c1ce6f7572cf5c607d27100",
+      "git_blob": "368548b0f35aea049db1ea1023ed535b2913f682"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/morgan-hill-rfp-v1.json",
+      "sha256": "f4b5aa1cdb23eb5652d0e42d7ce771554d0bba39201be856195068a7445f3911",
+      "git_blob": "1fad849cc95a649fc816b9a40a333c93f1944f1f"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/morgan-hill-v1.json",
+      "sha256": "c0c56c76ff8562a04eb60c4f3272ea9ce2d6d940a27e5ffe6427fe47fc8af1f0",
+      "git_blob": "b91a518ce11801d2ff0334b6b54b78928e9e66b4"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/prometheus-v1.json",
+      "sha256": "f69c9fd537e71474ab3ed17bc552c80dc51d00cb1af0dabe0d80c83b7db7b9cd",
+      "git_blob": "a47df2eec0f8d41ae4e5ef935e3ed1f78ea00e9b"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/pseg-rfp-v1.json",
+      "sha256": "9f63228f926b3b730e4eccdfb46f012c1681f919f5b12bd62ac8c0c9e4ddb675",
+      "git_blob": "d7779cc83bf63034940007b775deb8f7c925ba49"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/pseg-tempgen-v1.json",
+      "sha256": "aa6405d6bad1cd07caf432ff2703192a5d7f7315f8af8b9b1feefd93776492d9",
+      "git_blob": "ccc0ce4bfaf71a7f8a6dc6294228311d66cbce9a"
+    },
+    {
+      "path": "research/pre-rfp-corpus/captures/sunbridge-v1.json",
+      "sha256": "9a2e4de322773d4ef550843ba36a3d2f6763a5265e3f3adab4faf49d6c6cb06b",
+      "git_blob": "4beb2163cf49ec5ce798b82121ba09cc05e69cdb"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-001/case.json",
+      "sha256": "5d34676698301367bc647531dc1359bb1d27f1c15485bec8e7e206119c1f13d3",
+      "git_blob": "db3ff7a17dad67babdc51e27f0c0e2fb6857b335"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-001/scenario.json",
+      "sha256": "d2ff3cd92b4617f6307332007ef9855b6d3c599f3a0cfbff5d91ead582fbb97c",
+      "git_blob": "7af8cdcee77083b7d1688e51ea9aea3a2a70593d"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-002/case.json",
+      "sha256": "4502e7a127f85034098f65c68eed4888b1c500bf534900deb0714e30ed76b68e",
+      "git_blob": "2e12a70d5e63b35161d802ab14781078e847b184"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-002/scenario.json",
+      "sha256": "b35c31cc4151399c18db532c32d92dbc3fa5f75e4dbf97f50cb71482cd061cca",
+      "git_blob": "f1e3c502dff5e7be4d878bcb6382783a180fa8ff"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-003/case.json",
+      "sha256": "fc6d93942968fe1e7798d3b40927395f946f127db099de40c946c451c6100d7b",
+      "git_blob": "969272fcddf35fcb3c79e71f159d10095fac539d"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-003/scenario.json",
+      "sha256": "bce092ed1d78b5f4ae313e7ec8a180291094d3a1a132fca819132fcaa14d72d1",
+      "git_blob": "b5a159999e20cebf32491e1a3e68828d05649d3f"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-004/case.json",
+      "sha256": "793c748c8932c2d2878f6973dc6f5c018f7c50cbb6e85fa9870bc0dcdc2b57de",
+      "git_blob": "2bb308ffb56f1a0d34b258eeed3dc2bb73d168d6"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-004/scenario.json",
+      "sha256": "b73fcbd195f4f4db0a2ccf1c33d18492cf7d0dc73cedb7d1d791904e490e88f5",
+      "git_blob": "6d2ace87e45d7829f286456b2e6a39b9c0f70282"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-005/case.json",
+      "sha256": "8a57173ce046eb3d193b7f8cd4ce1b65264949a931390a770c21b93a8bc87279",
+      "git_blob": "97e6eb7200a10a5d532db00a87f38589dc3c38c3"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-005/scenario.json",
+      "sha256": "0e09d738a901765b8a5e1c2901120f5e97aeb44ea8f7240e8410071c39f5efbe",
+      "git_blob": "53e185fa0182c60ee341f7f30ea73e106c2f7add"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-006/case.json",
+      "sha256": "8f57ddde566ad70a3789e67133989f2dd98613ca83304ee99a795f347f5aa4e6",
+      "git_blob": "adde81518a0bfeaf3f247fcd22ce434dd907d44a"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-006/scenario.json",
+      "sha256": "42a73e66762ed95f2ef3680fa42eda6194b563e660d013d355e4fbfde425ea0c",
+      "git_blob": "ec81e047247250270793506ca0248d7020221920"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-007/case.json",
+      "sha256": "d54ffb0916603604be032a6226dd8aa0ca5c78402ddfd276af1e1927f6ca7662",
+      "git_blob": "5898180661a3d2f60e9532e05da136e7522739fc"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-007/scenario.json",
+      "sha256": "3a68af6833a999f0eb71fa9c1f3fafd9aaf67e7c5991dc0b22b967bd94590093",
+      "git_blob": "682cf6c590659c4c86ea5b94583b2962139dbb7a"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-008/case.json",
+      "sha256": "202c80d8eee09c515134c440cae2857160e5ad095269c7083a9dd02ece7cdd16",
+      "git_blob": "7e21527f0573c6e49c19041a701c030c02e46690"
+    },
+    {
+      "path": "research/pre-rfp-corpus/cases/PRF-008/scenario.json",
+      "sha256": "7c0821b92f282a8ea66399634f0165ca9771a90c8774e03b0c162594ca69b761",
+      "git_blob": "d41d111eca5f162f91c5d80cae939071f17add31"
+    },
+    {
+      "path": "research/pre-rfp-corpus/source-review.json",
+      "sha256": "02b0e7ea23e60e15066afa81c2aaaf87d4f61c80ed5937e60d37816fec66cf16",
+      "git_blob": "177388ec64286c26873188242b816904443aa767"
+    },
+    {
+      "path": "schemas/trailforge-pre-rfp-case-v1.schema.json",
+      "sha256": "1b5befec19649bc18d6168b0313fb7b7abe1561dd87b96590fedc11609476508",
+      "git_blob": "604533fce241b8fd7c671402f3d20666accf5258"
+    },
+    {
+      "path": "scripts/run_pre_rfp_cohort.py",
+      "sha256": "9b4247643abcbc85c5530b7bcfc9de19606b106a31ae352355318cc9a4562cad",
+      "git_blob": "79c56937f1975f4c570b59f14881f3dbb1b22b34"
+    },
+    {
+      "path": "src/athena_procurement_arena/historical_cases.py",
+      "sha256": "1c855a7df2e9c3ce0a00620ff6a64a6b406cca64b27a7dade1715c4c4bc8e109",
+      "git_blob": "3ac35cb6f13842b9facfaa10836634f0254be75d"
+    },
+    {
+      "path": "src/athena_procurement_arena/policies.py",
+      "sha256": "7068502e161649295e063b624b7c49dd8cb8a4019ccaae84e1b91c96692b6e9b",
+      "git_blob": "48b3a518ef3a001b33a663190af4c6f616271167"
+    },
+    {
+      "path": "tests/procurement_arena/test_historical_cases.py",
+      "sha256": "c6dea4d0446a6bfd9ab465574c60791bd61f62cd9b82ab648198f5c1b463aa5a",
+      "git_blob": "e9e0bb9de3f10cfad43b07057cb7ecb6de8b03ab"
+    }
+  ],
+  "candidate_sha256": "afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1",
+  "prior_candidate_sha256": "790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6",
+  "original_raw_files_unchanged": 37,
+  "eol_only_blob_changes": [
+    "research/pre-rfp-corpus/captures/azure-sky-v1.json",
+    "research/pre-rfp-corpus/captures/ieso-addendum-v1.json",
+    "research/pre-rfp-corpus/captures/ieso-forecast-v1.json",
+    "research/pre-rfp-corpus/captures/ieso-v1.json",
+    "research/pre-rfp-corpus/captures/montauk-v1.json",
+    "research/pre-rfp-corpus/captures/morgan-hill-rfp-v1.json",
+    "research/pre-rfp-corpus/captures/morgan-hill-v1.json",
+    "research/pre-rfp-corpus/captures/prometheus-v1.json",
+    "research/pre-rfp-corpus/captures/pseg-rfp-v1.json",
+    "research/pre-rfp-corpus/captures/pseg-tempgen-v1.json",
+    "research/pre-rfp-corpus/captures/sunbridge-v1.json",
+    "research/pre-rfp-corpus/cases/PRF-001/case.json",
+    "research/pre-rfp-corpus/cases/PRF-001/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-002/case.json",
+    "research/pre-rfp-corpus/cases/PRF-002/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-003/case.json",
+    "research/pre-rfp-corpus/cases/PRF-003/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-004/case.json",
+    "research/pre-rfp-corpus/cases/PRF-004/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-005/case.json",
+    "research/pre-rfp-corpus/cases/PRF-005/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-006/case.json",
+    "research/pre-rfp-corpus/cases/PRF-006/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-007/case.json",
+    "research/pre-rfp-corpus/cases/PRF-007/scenario.json",
+    "research/pre-rfp-corpus/cases/PRF-008/case.json",
+    "research/pre-rfp-corpus/cases/PRF-008/scenario.json",
+    "research/pre-rfp-corpus/source-review.json"
+  ],
+  "audit_scope": "All implementation, tests, schemas, public corpus and explanatory documentation changed by this slice. Agent evidence/state/graph bookkeeping excluded from source-candidate hash; it may record acceptance but cannot extend source review.",
+  "delta": "Add scoped Git attributes; corpus Git storage EOL changes only. All original raw source bytes unchanged."
+}

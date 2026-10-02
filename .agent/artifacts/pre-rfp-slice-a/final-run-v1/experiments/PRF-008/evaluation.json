@@ -1,0 +1,39 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "GENERATION_NOT_IN_SCOPE",
+      "procurement_episode_id": "ieso-forecast-pricing-2026",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "IESO Nova Scotia",
+          "facility_type": "UTILITY",
+          "generation_need_supported": false,
+          "generation_not_in_scope": true,
+          "need_reason": "Forecasting consultancy for IRP inputs; purchase is forecasts, not generation equipment, fuel, or power.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "UNKNOWN",
+          "project_specific": false,
+          "purchase_type": "ENGINEERING"
+        },
+        "evidence_id": "PRF-008-ieso-forecast-capture-observation",
+        "observed_at": "2026-10-02T13:57:48.746449+00:00",
+        "source_id": "ieso-forecast-20261002-v1",
+        "verified_available_at": "2026-10-02T13:57:48.746449+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

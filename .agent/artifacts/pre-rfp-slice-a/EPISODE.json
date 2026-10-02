@@ -1,0 +1,45 @@
+{
+  "state": "Approved pre-RFP strategy and replay engine; no reusable source-bound real-case cohort path. Original dirty operator checkout preserved.",
+  "decision": "Extend existing engine with one bounded source-bound case workflow, not another architecture.",
+  "action": "One Luna implementation lane; controller captured eleven primary sources into eight real families; repaired UNKNOWN sentinel and family identity gaps; independently revalidated frozen source candidate.",
+  "outcome": {
+    "real_cases": 8,
+    "positive": 4,
+    "negative": 1,
+    "unresolved": 3,
+    "baseline_a_surfaces": 0,
+    "pre_rfp_surfaces": 3,
+    "historical_lead_results": 0,
+    "discovery_credit": false,
+    "holdout": "NOT_RUN"
+  },
+  "deterministic_evaluation": "318 passed, 1 Windows privilege skip; compile, Ruff, three bundles; two offline runs with identical per-case decision/input/manifest hashes. See CONTROLLER_VALIDATION.json.",
+  "attribution": "Source binding and declared availability make mechanics inspectable; missing historical versions, not a successful prediction policy, explain the absence of lead-time credit.",
+  "candidate_lesson": {
+    "rule": "Test literal UNKNOWN and family-identity mismatches explicitly at import/policy boundaries before treating a green suite as acceptance.",
+    "metric": "unsupported inputs producing research surfaces",
+    "desired_direction": "decrease to zero for tested sentinel cases",
+    "evidence": "Controller-found repair, REPAIR_HANDOFF.json and test_historical_cases.py",
+    "promotion": "NOT_PROMOTED; no matched before/after performance study",
+    "reversibility": "Change can be reverted as a focused Git diff without altering retained captures."
+  },
+  "independent_verdict": "PASS",
+  "candidate_sha256": "afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1",
+  "graph_transition": {
+    "HC-A": "IMPLEMENTATION_ACCEPTED",
+    "HC-A-HISTORY": "READY"
+  },
+  "next_direction": "CONTINUE",
+  "parent_finish_contract": "NOT_SATISFIED",
+  "authority": "Commit/push/one PR authorized by brief; no merge, deployment, outreach or policy promotion.",
+  "packaging_recovery": {
+    "failure": "Git automatic newline conversion changed retained hash-bound evidence after checkout.",
+    "repair": "Scoped -text attributes and index renormalization; original working corpus/source bytes unchanged.",
+    "evaluation": "213 indexed files byte-identical in fresh Windows checkout; eight cases/eight bundles verify; full gate passes; Sol delta PASS.",
+    "evidence": [
+      "CONTROLLER_PORTABILITY.json",
+      "REVIEW-portability.json",
+      "controller-packaging-validation.log"
+    ]
+  }
+}

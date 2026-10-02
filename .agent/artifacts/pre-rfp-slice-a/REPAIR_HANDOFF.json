@@ -1,0 +1,63 @@
+{
+  "schema_version": "trailforge-repair-handoff-v1",
+  "node": "HC-001 / Pre-RFP Slice A",
+  "status": "READY_FOR_CONTROLLER_REVALIDATION_AND_SOL_REVIEW",
+  "repository": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\TrailForge",
+  "branch": "codex/trailforge-pre-rfp-lab",
+  "base_sha": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+  "candidate_commit_sha": null,
+  "preserved_initial_completion": {
+    "path": ".agent/artifacts/pre-rfp-slice-a/COMPLETION-initial.json",
+    "sha256": "489a459dfb3a16f8c4ce4605a22cdd76a1345e61f01e3be85ae17eb24bc5e74d"
+  },
+  "repair": {
+    "scope": [
+      "Treat blank and trim/case-normalized UNKNOWN need_reason/buyer_organization as insufficient to surface.",
+      "Bind loaded scenario ID to case ID, scenario truth procurement identity to procurement_family_id, and every event lineage family to procurement_family_id.",
+      "Reject cross-split reused capture and content hashes even if aliases use different family IDs."
+    ],
+    "files_changed": [
+      "src/athena_procurement_arena/policies.py",
+      "src/athena_procurement_arena/historical_cases.py",
+      "tests/procurement_arena/test_historical_cases.py"
+    ],
+    "file_sha256": {
+      "src/athena_procurement_arena/policies.py": "7068502e161649295e063b624b7c49dd8cb8a4019ccaae84e1b91c96692b6e9b",
+      "src/athena_procurement_arena/historical_cases.py": "1c855a7df2e9c3ce0a00620ff6a64a6b406cca64b27a7dade1715c4c4bc8e109",
+      "tests/procurement_arena/test_historical_cases.py": "c6dea4d0446a6bfd9ab465574c60791bd61f62cd9b82ab648198f5c1b463aa5a"
+    }
+  },
+  "validation": {
+    "focused_command": "uv run --python 3.11 --with pytest --with ruff python -m pytest tests/procurement_arena/test_historical_cases.py -q",
+    "focused_result": "21 passed",
+    "direct_suite_command": "uv run --python 3.11 --with pytest python -m pytest tests/procurement_arena -q",
+    "direct_suite_result": "318 passed, 1 skipped in 40.50s",
+    "mandatory_command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "mandatory_result": "PASS; 318 passed, 1 skipped; source compilation passed; Ruff passed; 3 historical fixture bundles validated.",
+    "mandatory_exit_code": 0
+  },
+  "fresh_real_corpus_replay": {
+    "command": "uv run --python 3.11 python scripts/run_pre_rfp_cohort.py --mode BACKTRACE --cases <all research/pre-rfp-corpus/cases/*/case.json> --experiment-root .agent/artifacts/pre-rfp-slice-a/final-run-v3/experiments --output .agent/artifacts/pre-rfp-slice-a/final-run-v3/cohort-replay.json",
+    "path": ".agent/artifacts/pre-rfp-slice-a/final-run-v3/cohort-replay.json",
+    "sha256": "61656db028888cc4c2b74da69c2f2bc8e0fc3fa751058b6e876961f1386e6165",
+    "cohort_hash": "aa3fd8ddf4d6debec86e4f3f2afada71750a751b63710baf2a215ab9447f45ff",
+    "result": {
+      "case_count": 8,
+      "positive_count": 4,
+      "negative_count": 1,
+      "unresolved_count": 3,
+      "pre_rfp_baseline_surface_count": 3,
+      "baseline_a_surface_count": 0,
+      "supported_historical_lead_count": 0,
+      "unknown_availability_count": 11,
+      "discovery_credit": false,
+      "holdout_cases": 0
+    }
+  },
+  "limits": [
+    "All 8 cases remain exposed development cases; no holdout or discovery credit is claimed.",
+    "Historical source availability and milestone dates remain UNKNOWN; capture-time observations only exercise ingestion and replay mechanics.",
+    "No commit, push, merge, deployment, or Athena lesson promotion was performed."
+  ],
+  "next_direction": "CONTINUE: controller reruns the required gates and repeatability probe, freezes exact file manifest, then dispatches Sol for independent review."
+}

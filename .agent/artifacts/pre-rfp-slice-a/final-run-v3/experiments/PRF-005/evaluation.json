@@ -1,0 +1,39 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "procurement_episode_id": "sunbridge-permian",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "awarded": true,
+          "buyer_organization": "Sunbridge Energy Services",
+          "facility_type": "OIL_GAS",
+          "generation_need_supported": true,
+          "need_reason": "Fixed CNG plant uses 5 MW baseload generation while utility supply is delayed; Conduit already built and operates it.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "OPERATIONAL_GENERATION",
+          "project_specific": true,
+          "purchase_type": "LONG_TERM_POWER"
+        },
+        "evidence_id": "PRF-005-sunbridge-capture-observation",
+        "observed_at": "2026-10-02T13:54:47.453715+00:00",
+        "source_id": "sunbridge-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:47.453715+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

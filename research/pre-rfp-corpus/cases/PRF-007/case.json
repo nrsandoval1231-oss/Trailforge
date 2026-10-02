@@ -1,0 +1,100 @@
+{
+  "schema_version": "trailforge-pre-rfp-case-v1",
+  "case_id": "PRF-007",
+  "procurement_family_id": "azure-sky-commissioning",
+  "project_identity": "Azure Sky Wind Farm commissioning package",
+  "facility_type": "UTILITY",
+  "location": "Throckmorton, Texas",
+  "power_activity": "COMMISSIONING",
+  "purchase_type": "TEMPORARY_POWER_SERVICE",
+  "commercial_fit": {
+    "package_capacity": "CONFLICT: 4.5 MW description vs 3 MW generation + 1 MW BESS",
+    "fuel": "diesel",
+    "completion_date": "UNKNOWN",
+    "remaining_scope": "UNKNOWN"
+  },
+  "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+  "known_buying_event": "Wind turbine commissioning under a PPA schedule used off-grid grid emulation; supplier already delivered.",
+  "buying_event_date": "UNKNOWN",
+  "reported_buying_event_date": "UNKNOWN",
+  "conventional_milestone": "Supplier report of completed commissioning",
+  "conventional_milestone_at": "UNKNOWN",
+  "scenario_path": "scenario.json",
+  "holdout_group": "DEVELOPMENT",
+  "buyer_path": [
+    {
+      "organization": "Enel Green Power",
+      "role": "OWNER_OR_PROCUREMENT_ORGANIZATION",
+      "quality": "ORGANIZATION_IDENTIFIED",
+      "evidence_id": "PRF-007-azure-sky-capture-observation"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "capture_path": "../../captures/azure-sky-v1.json",
+      "capture_id": "azure-sky-20261002-v1",
+      "capture_hash": "629c7e0818777db6aaa6d6902576adf0ae747f495b80d7ed8af3e353cee6c113",
+      "content_sha256": "f9151c2b148b98c3173cd5a671183122b800b1bad9b25b46046a96d215805c49",
+      "source_url": "https://www.aggreko.com/en-sa/case-studies/utilities/hybrid-grid-emulation-system-reduces-emissions-during-wind-turbine-commissioning",
+      "source_quote": "**Client:** Enel Green Power\n\n**Location:** Throckmorton, Texas\n\n**Sectors:** Utilities\n\nThe Challenge\n\n## Mitigating project risks while incorporating BESS\n\nEnel Green Power (Enel GP), an Italian multinational renewable energy corporation, was building its first wind farm + battery storage project, consisting of 79 wind turbines at their Azure Sky Wind Farm in Throckmorton, Texas. The project needed to be completed within a few months to meet a power purchase agreement (PPA) to supply power to end customers. Timely connection is imperative in order to avoid a number of critical risks, including reputational risk to the company, default on contractual and legal commitments, and construction risks.\n\nIn pursuit of its goals to reach Net Zero emissions from its power mix by 2050, Enel was committed to finding the greenest way to connect their wind turbines quickly, efficiently, and effectively. As part of their company-wide Net Zero goals, Enel also prioritized sustainability as they selected a provider for timely grid emulation and commissioning services.\n\n78Wind turbines commissioned\n\n4.5MWGrid emulation package as base case\n\n![powering sustainable events at the sail GP British Grand Prix in Plymouth UK., 2021](https://bynder.aggreko.com/transform/af1a4a80-159c-4646-9fb6-24cf2ca218d5/IR2_5785-JPG?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)\n\nThe Solution\n\n## As a world leader in the energy transition, Enel has centered sustainability as a key aspect of its commissioning projects\n\nEnel has a longstanding relationship with Aggreko, and for the Azure Wind Project, Enel challenged Aggreko to lower emissions while still providing its superior customer service, reliability, efficiency, and engineering expertise. Aggreko rose to the challenge, producing a fully customized commissioning solution with advanced control technology and batteries that would lower emissions. A project like this would normally require three combustion generators. However, to help meet Enel\u2019s low carbon goals, Aggreko offered an alternative solution.\n\nAggreko provided off-grid contingency power and a 4.5 MW [hybrid power](https://www.aggreko.com/en-sa/solutions/hybrid-power-generation)\u00a0grid emulation package, including two [diesel generators](https://www.aggreko.com/en-sa/products/generators/diesel) and one battery, integrated as a 3 MW + 1 MW BESS hybrid solution. Aggreko also implemented advanced load control systems which, combined with energy storage, reduced the system\u2019s emissions by over 67%. By integrating [energy storage](https://www.aggreko.com/en-sa/solutions/microgrids-and-energy-storage), Aggreko was able to provide the same grid emulation offering with one fewer generator, significantly reducing overall fuel consumption, emissions, and maintenance, while meeting all deadlines and commercial operations dates (COD).\n\nAggreko\u2019s Hybrid Grid Emulation system was a tremendous value-add to Azure Sky Wind Farm. The system made our process more efficient and more resilient during the energization and commissioning process. We were able to substantially reduce fuel consumption and emissions and look forward to integrating this system into future renewable project needs for Enel Green Power in the U.S.\n\nRichard Lovenduski , Senior Commissioning Start-Up Manager, Engineering and Construction, Enel Green Power\n\nThe Impact\n\n## Aggreko\u2019s hybrid approach reduced fuel consumption and cut greenhouse gas emissions by 67%, and resulted in significant cost savings\n\nWith Aggreko\u2019s support, Enel successfully tested and commissioned the Azure Sky Wind Farm, meeting end user needs while helping Enel get closer to its ESG target. The system is projected to generate around 1.3 TWh of renewable energy each year, avoiding more than 842,000 tons of CO2 emissions a year. This pilot program proves what is possible when clean, innovative hybrid solutions are applied to commissioning projects. Aggreko is proud to collaborate to provide renewable energy services to bring projects online cleaner and faster than ever.\n\n![2017-02-scotland-installations-operations-technicians-windmill-farm.jpg](https://bynder.aggreko.com/transform/8575b5cb-4b6c-485e-8e16-fbb6b46addc8/2017-02-scotland-installations-operations-technicians-windmill-farm-jpg?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-007-azure-sky-capture-observation",
+      "reviewed_claims": {
+        "project_specific": true,
+        "generation_need_supported": true,
+        "need_reason": "Wind turbine commissioning under a PPA schedule used off-grid grid emulation; supplier already delivered.",
+        "buyer_organization": "Enel Green Power",
+        "facility_type": "UTILITY",
+        "power_activity": "COMMISSIONING",
+        "purchase_type": "TEMPORARY_POWER_SERVICE",
+        "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+        "awarded": true
+      },
+      "event_date": "2026-10-02T13:54:49.731076+00:00",
+      "document_date": "2026-10-02T13:54:49.731076+00:00",
+      "verified_available_at": "2026-10-02T13:54:49.731076+00:00",
+      "observed_at": "2026-10-02T13:54:49.731076+00:00",
+      "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+      "availability_basis": "CAPTURE_TIME_ONLY",
+      "date_semantics": "Dates describe this capture observation record, not original project event or historical publication."
+    },
+    {
+      "capture_path": "../../captures/azure-sky-v1.json",
+      "capture_id": "azure-sky-20261002-v1",
+      "capture_hash": "629c7e0818777db6aaa6d6902576adf0ae747f495b80d7ed8af3e353cee6c113",
+      "content_sha256": "f9151c2b148b98c3173cd5a671183122b800b1bad9b25b46046a96d215805c49",
+      "source_url": "https://www.aggreko.com/en-sa/case-studies/utilities/hybrid-grid-emulation-system-reduces-emissions-during-wind-turbine-commissioning",
+      "source_quote": "**Client:** Enel Green Power\n\n**Location:** Throckmorton, Texas\n\n**Sectors:** Utilities\n\nThe Challenge\n\n## Mitigating project risks while incorporating BESS\n\nEnel Green Power (Enel GP), an Italian multinational renewable energy corporation, was building its first wind farm + battery storage project, consisting of 79 wind turbines at their Azure Sky Wind Farm in Throckmorton, Texas. The project needed to be completed within a few months to meet a power purchase agreement (PPA) to supply power to end customers. Timely connection is imperative in order to avoid a number of critical risks, including reputational risk to the company, default on contractual and legal commitments, and construction risks.\n\nIn pursuit of its goals to reach Net Zero emissions from its power mix by 2050, Enel was committed to finding the greenest way to connect their wind turbines quickly, efficiently, and effectively. As part of their company-wide Net Zero goals, Enel also prioritized sustainability as they selected a provider for timely grid emulation and commissioning services.\n\n78Wind turbines commissioned\n\n4.5MWGrid emulation package as base case\n\n![powering sustainable events at the sail GP British Grand Prix in Plymouth UK., 2021](https://bynder.aggreko.com/transform/af1a4a80-159c-4646-9fb6-24cf2ca218d5/IR2_5785-JPG?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)\n\nThe Solution\n\n## As a world leader in the energy transition, Enel has centered sustainability as a key aspect of its commissioning projects\n\nEnel has a longstanding relationship with Aggreko, and for the Azure Wind Project, Enel challenged Aggreko to lower emissions while still providing its superior customer service, reliability, efficiency, and engineering expertise. Aggreko rose to the challenge, producing a fully customized commissioning solution with advanced control technology and batteries that would lower emissions. A project like this would normally require three combustion generators. However, to help meet Enel\u2019s low carbon goals, Aggreko offered an alternative solution.\n\nAggreko provided off-grid contingency power and a 4.5 MW [hybrid power](https://www.aggreko.com/en-sa/solutions/hybrid-power-generation)\u00a0grid emulation package, including two [diesel generators](https://www.aggreko.com/en-sa/products/generators/diesel) and one battery, integrated as a 3 MW + 1 MW BESS hybrid solution. Aggreko also implemented advanced load control systems which, combined with energy storage, reduced the system\u2019s emissions by over 67%. By integrating [energy storage](https://www.aggreko.com/en-sa/solutions/microgrids-and-energy-storage), Aggreko was able to provide the same grid emulation offering with one fewer generator, significantly reducing overall fuel consumption, emissions, and maintenance, while meeting all deadlines and commercial operations dates (COD).\n\nAggreko\u2019s Hybrid Grid Emulation system was a tremendous value-add to Azure Sky Wind Farm. The system made our process more efficient and more resilient during the energization and commissioning process. We were able to substantially reduce fuel consumption and emissions and look forward to integrating this system into future renewable project needs for Enel Green Power in the U.S.\n\nRichard Lovenduski , Senior Commissioning Start-Up Manager, Engineering and Construction, Enel Green Power\n\nThe Impact\n\n## Aggreko\u2019s hybrid approach reduced fuel consumption and cut greenhouse gas emissions by 67%, and resulted in significant cost savings\n\nWith Aggreko\u2019s support, Enel successfully tested and commissioned the Azure Sky Wind Farm, meeting end user needs while helping Enel get closer to its ESG target. The system is projected to generate around 1.3 TWh of renewable energy each year, avoiding more than 842,000 tons of CO2 emissions a year. This pilot program proves what is possible when clean, innovative hybrid solutions are applied to commissioning projects. Aggreko is proud to collaborate to provide renewable energy services to bring projects online cleaner and faster than ever.\n\n![2017-02-scotland-installations-operations-technicians-windmill-farm.jpg](https://bynder.aggreko.com/transform/8575b5cb-4b6c-485e-8e16-fbb6b46addc8/2017-02-scotland-installations-operations-technicians-windmill-farm-jpg?io=transform%3Afit%2Cwidth%3A480%2Cheight%3A480)",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-007-azure-sky-historical-unresolved",
+      "reviewed_claims": {},
+      "event_date": "UNKNOWN",
+      "document_date": "UNKNOWN",
+      "verified_available_at": "UNKNOWN",
+      "observed_at": "2026-10-02T13:54:49.731076+00:00",
+      "reported_event_date": "UNKNOWN",
+      "reported_document_date": "UNKNOWN",
+      "availability_basis": "HISTORICAL_VERSION_UNVERIFIED",
+      "date_semantics": "Reported calendar date lacks a verified historical content-version availability boundary; excluded from strict replay."
+    }
+  ],
+  "procurement_status": "COMPLETED_SUPPLIER_CASE_STUDY",
+  "deadline": "UNKNOWN",
+  "case_provenance": {
+    "kind": "REAL_PUBLIC_SOURCE",
+    "acquisition_mode": "BACKTRACE",
+    "historical_availability": "UNKNOWN",
+    "discovery_credit": false,
+    "source_note": "Current primary-source capture; supplier case studies are attributed claims, not independent performance audits."
+  },
+  "negative_evidence": [
+    "Named provider / delivered package; no uncommitted package established."
+  ],
+  "notes": [
+    "Historical availability remains UNKNOWN. Capture observations permit current-state replay only; no pre-RFP or prospective detection credit.",
+    "All documents and amendments remain in one procurement family. DEVELOPMENT is exposed; not a holdout."
+  ],
+  "reported_conventional_milestone_date": "UNKNOWN"
+}

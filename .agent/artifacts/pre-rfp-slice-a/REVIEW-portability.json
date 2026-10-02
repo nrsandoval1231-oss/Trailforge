@@ -1,0 +1,24 @@
+{
+  "task_id": "pre-rfp-slice-a-portability-delta",
+  "reviewer_role": "Sol independent ordinary review",
+  "verdict": "PASS",
+  "candidate_sha256": "afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1",
+  "prior_candidate_sha256": "790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6",
+  "review_started_at_utc": "UNKNOWN_NOT_CAPTURED_AT_START",
+  "review_finished_at_utc": "2026-10-02T15:00:42Z",
+  "review_duration_seconds": "UNKNOWN",
+  "model": "gpt-6-sol",
+  "model_config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN_NOT_MEASURED",
+  "scope": "Portability-only delta: scoped .gitattributes plus Git index line-ending storage changes. Original Slice A REVIEW.json and its bounded verdict remain preserved.",
+  "reviewed": [
+    "The .gitattributes diff applies -text whitespace=cr-at-eol only to the retained Slice A agent evidence and pre-RFP corpus paths; source Python files are outside the rule.",
+    "All 38 CANDIDATE-portability.json raw SHA-256 values and staged blob IDs match the current files and index.",
+    "All original 37 source-file raw hashes remain unchanged; 28 changed prior corpus Git blobs are identical after CRLF-to-LF normalization, and git diff --cached --ignore-space-at-eol --exit-code over the corpus passes.",
+    "Git reports 213 indexed files within the two scoped paths; CONTROLLER_PORTABILITY.json records zero byte mismatches against worktree and fresh core.autocrlf=true checkout, plus eight loaded cases and eight verified experiment bundles.",
+    "The controller packaging gate reports 318 passed, 1 skipped, with compilation, Ruff and three fixture bundles passing; git diff --cached --check passes."
+  ],
+  "blocking_findings": [],
+  "finish_contract_satisfied": false,
+  "acceptance": "PASS accepts the exact portability candidate only. It does not establish historical lead, unseen discovery, commercial readiness, deployment, or parent-product completion."
+}

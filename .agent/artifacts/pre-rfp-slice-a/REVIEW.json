@@ -1,0 +1,31 @@
+{
+  "task_id": "pre-rfp-slice-a",
+  "reviewer_role": "Sol independent ordinary review",
+  "verdict": "PASS",
+  "candidate_sha256": "790cb80ca9fe5657efb4eb8ee43c55c5d5d0825a54dd38788dd68ef247c258d6",
+  "base_sha": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+  "branch": "codex/trailforge-pre-rfp-lab",
+  "scope": "Bounded Slice A implementation, tests, schema, eight exposed cases, eleven captures, and explanatory documents; no product completion or commercial performance claim.",
+  "review_started_at_utc": "UNKNOWN_NOT_CAPTURED_AT_START",
+  "review_finished_at_utc": "2026-10-02T14:34:37Z",
+  "review_duration_seconds": "UNKNOWN",
+  "model": "gpt-6-sol",
+  "model_config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN_NOT_MEASURED",
+  "reviewed": [
+    "Applicable harness instructions, Slice A packet, canonical strategy, evaluation and finish-readiness boundaries, and original owner brief Slice A sequence",
+    "Actual staged 37-file diff, loader, replay, baseline, schema, tests, case manifests, source-review record, and captured source quotes",
+    "All 37 recorded raw SHA-256 hashes and staged Git blob IDs matched the frozen files",
+    "Controller final validation and direct-suite evidence: 318 passed, 1 Windows symlink privilege skip; compile, Ruff and three fixture bundles passed",
+    "Controller offline real-corpus probe ran twice with network and capture disabled; per-case input, experiment manifest and decision hashes matched except run directory",
+    "Final-run-v3 result: eight distinct development families, eleven historical availability UNKNOWN entries, eleven capture-time observations, three PRE_RFP_BASELINE_V1 RESEARCH surfaces, zero BASELINE_A surfaces, zero supported historical lead results, and false discovery credit"
+  ],
+  "blocking_findings": [],
+  "nonblocking_limits": [
+    "Capture/quote/hash checks bind analyst annotations to retained bytes but do not prove semantic classifications; the cases are exposed development data.",
+    "Current capture observations establish only observation-time visibility. The three surfaces do not establish early discovery, buyer contact readiness, open generation scope, or useful historical lead time.",
+    "Outcome labels are analyst reviewed and are not used as policy input. Future strict outcome evaluation should add explicit outcome-source attribution and sealed family-level holdout governance before performance claims."
+  ],
+  "finish_contract_satisfied": false,
+  "acceptance": "PASS applies only to frozen Slice A source candidate. Historical availability recovery, broader acquisition/classification, unseen holdout and prospective commercial validation remain separate graph work."
+}

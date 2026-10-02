@@ -1,0 +1,96 @@
+{
+  "schema_version": "trailforge-builder-completion-v1",
+  "node": "HC-001 / Pre-RFP Slice A",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "repository": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\TrailForge",
+  "branch": "codex/trailforge-pre-rfp-lab",
+  "base_sha": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+  "candidate_commit_sha": null,
+  "candidate_commit_sha_note": "Uncommitted worktree; HEAD remains the assigned base SHA.",
+  "builder": {
+    "lane": "single primary builder",
+    "model": "UNKNOWN",
+    "configuration_identity": "UNKNOWN",
+    "measured_tokens": "UNKNOWN",
+    "started_at_utc": "UNKNOWN",
+    "finished_at_utc": "2026-10-02T14:15:27Z",
+    "planning_seconds": "UNKNOWN",
+    "build_seconds": "UNKNOWN",
+    "validation_seconds": "UNKNOWN",
+    "audit_seconds": "UNKNOWN",
+    "repair_count": 1,
+    "elapsed_to_independent_acceptance": "UNKNOWN"
+  },
+  "implementation": {
+    "summary": "Added source-bound historical case import, availability and procurement-family validation, exact capture-to-scenario binding, a narrow deterministic pre-RFP baseline using then-visible reviewed claims, and an offline cohort replay over the existing scenario, TemporalWorld, BaselineA experiment store, and frozen decision ledger.",
+    "files": [
+      "src/athena_procurement_arena/historical_cases.py",
+      "src/athena_procurement_arena/policies.py",
+      "tests/procurement_arena/test_historical_cases.py",
+      "scripts/run_pre_rfp_cohort.py",
+      "schemas/trailforge-pre-rfp-case-v1.schema.json",
+      "docs/PRE_RFP_SLICE_A.md",
+      "README.md",
+      ".agent/tasks/pre-rfp-slice-a.md"
+    ],
+    "file_sha256": {
+      "src/athena_procurement_arena/historical_cases.py": "fe3a8f2bf3ab477d61bc42dd2e341663eeca62c902e103ab57d85f3d6fdcf8d7",
+      "src/athena_procurement_arena/policies.py": "681d1218860a0bc5dc1fec796cef07449a1e2da674c02e230eb6738e171c2b72",
+      "tests/procurement_arena/test_historical_cases.py": "b7189f2aa93cbbde32474953d26d05c36ed31dff12479e22e794fc7dc5875d34",
+      "scripts/run_pre_rfp_cohort.py": "9b4247643abcbc85c5530b7bcfc9de19606b106a31ae352355318cc9a4562cad",
+      "schemas/trailforge-pre-rfp-case-v1.schema.json": "1b5befec19649bc18d6168b0313fb7b7abe1561dd87b96590fedc11609476508",
+      "docs/PRE_RFP_SLICE_A.md": "998d9ad4f14309b92bd7123bf7cfba48943eb264a77bf9637528effbd4a8261a",
+      "README.md": "1bd5627fbc967d3583ac76ea24705163a86ee5fe264a1401e60c7827e2c592cf",
+      ".agent/tasks/pre-rfp-slice-a.md": "33927f4fb17e64e32e91a65f3a68b8c21be6e1cd04032342b5540d19b08475ca"
+    },
+    "authority_boundaries": [
+      "Replay performs no network retrieval.",
+      "Historical source availability remains UNKNOWN unless separately supported; capture-time observations are replayable only at capture time.",
+      "BACKTRACE and DISCOVERY are explicit run modes; Slice A grants neither discovery nor historical performance credit.",
+      "BaselineA is preserved; PreRfpBaselineV1 is a separate comparator and cannot read case outcomes or metadata.",
+      "No Athena lesson promotion, holdout claim, push, merge, or deployment was performed."
+    ]
+  },
+  "corpus_replay": {
+    "command": "uv run --python 3.11 python scripts/run_pre_rfp_cohort.py --mode BACKTRACE --cases <all research/pre-rfp-corpus/cases/*/case.json> --experiment-root .agent/artifacts/pre-rfp-slice-a/final-run-v2/experiments --output .agent/artifacts/pre-rfp-slice-a/final-run-v2/cohort-replay.json",
+    "result_file": ".agent/artifacts/pre-rfp-slice-a/final-run-v2/cohort-replay.json",
+    "result_sha256": "71307147045966d2d80773dcc4f74b43affb860caa4f807940bbdc15a42b7dab",
+    "cohort_hash": "62134574f0b8f972574adb66e191e40550e5fc445e2ecd33e373891dd901ba95",
+    "case_count": 8,
+    "real_primary_source_capture_count": 11,
+    "positive_count": 4,
+    "negative_count": 1,
+    "unresolved_count": 3,
+    "pre_rfp_baseline_surface_count": 3,
+    "baseline_a_surface_count": 0,
+    "supported_historical_lead_count": 0,
+    "historical_availability_unknown_count": 11,
+    "discovery_credit": false,
+    "holdout_cases": 0,
+    "limitations": [
+      "All cases are exposed development cases assembled from known identities.",
+      "Current source captures support capture-time replay, not historical page-version availability.",
+      "All conventional milestone times are UNKNOWN in the loaded cases; no numeric lead-time result is supported.",
+      "The analyst-reviewed classifications are bound to exact captured quotes and hashes, but semantic classification remains a human review judgment."
+    ]
+  },
+  "validation": {
+    "focused_command": "uv run --python 3.11 --with pytest --with ruff python -m pytest tests/procurement_arena/test_historical_cases.py -q",
+    "focused_result": "9 passed",
+    "direct_suite_command": "uv run --python 3.11 --with pytest python -m pytest tests/procurement_arena -q",
+    "direct_suite_result": "306 passed, 1 skipped in 40.05s",
+    "mandatory_command": "uv run --python 3.11 --with pytest --with ruff python scripts/validate.py",
+    "mandatory_result": "PASS; 306 passed, 1 skipped; source compilation passed; Ruff passed; three historical fixture bundles validated.",
+    "mandatory_exit_code": 0
+  },
+  "repair_notes": [
+    "A first focused run exposed mapping-vs-dataclass access in the new policy; corrected using the existing _get helper.",
+    "Focused test fixture role was normalized to the supported uppercase role value.",
+    "Late-detection test expectation was corrected to retain exact negative seconds across the timestamp's time-of-day."
+  ],
+  "superseded_artifacts": [
+    ".agent/artifacts/pre-rfp-slice-a/cohort-replay.json",
+    ".agent/artifacts/pre-rfp-slice-a/final-run-v1/cohort-replay.json"
+  ],
+  "next_direction": "CONTINUE: controller review and integrate graph/current-state evidence, then Sol performs independent review of the exact frozen candidate."
+}

@@ -1,0 +1,50 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "procurement_episode_id": "morgan-hill-2027-51",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 3,
+    "visible_evidence_count": 2
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "buyer_organization": "City of Morgan Hill",
+          "facility_type": "INSTITUTIONAL",
+          "generation_need_supported": false,
+          "need_reason": "Routine, preventive and emergency maintenance and repairs for the city generator fleet; no quantified generation need on this page.",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "power_activity": "MAINTENANCE_ONLY",
+          "project_specific": true,
+          "purchase_type": "MAINTENANCE"
+        },
+        "evidence_id": "PRF-004-morgan-hill-capture-observation",
+        "observed_at": "2026-10-02T13:54:25.267650+00:00",
+        "source_id": "morgan-hill-20261002-v1",
+        "verified_available_at": "2026-10-02T13:54:25.267650+00:00"
+      },
+      {
+        "claims": {
+          "buyer_organization": "City of Morgan Hill",
+          "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+          "quantified_generation_need": "UNKNOWN",
+          "rental_attachment": "AS_NEEDED"
+        },
+        "evidence_id": "PRF-004-morgan-hill-rfp-capture-observation",
+        "observed_at": "2026-10-02T13:56:59.764790+00:00",
+        "source_id": "morgan-hill-rfp-20261002-v1",
+        "verified_available_at": "2026-10-02T13:56:59.764790+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

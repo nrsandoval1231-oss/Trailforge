@@ -1,0 +1,19 @@
+{
+  "artifacts": {
+    "config.json": "bb682ab413e8097248514caacd67ed5d4b5104303bb571e24a0eb5ec4f6009f4",
+    "decisions.json": "7631992fd26132f670729c55343307b9324685fb3a75649821bea26bff3bda0c",
+    "evaluation.json": "85619bb53155b5b47a65d291125954abc4f90956684057dcd5a780aa26bb1db5",
+    "input.json": "1afbaa740e9b972648819687178a2767306149e5f52f5d32bdfb0ffd85b58bb9"
+  },
+  "ledger_hash": "7710bdc15c7da8218b480ed48f77aa0a041c153205a8e4a17221d3cecdf2a324",
+  "manifest_hash": "01b151b389723403244a0aeb9e0ac1753675a7178336d8d6f48323ee928c390d",
+  "result_hash": "18c4ab32e38284fb322ea1d4f09e564cb9f7b60519bae8e369b6c5d05390199f",
+  "scenario_hash": "1126abde09006e9a1c48634a12a7aa99f57ff75d73d23a04464dab2fcd986a4f",
+  "schema": "trailforge-experiment-v1",
+  "source_identity": {
+    "git_commit": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+    "git_dirty": true,
+    "package_version": "0.1.0",
+    "source_content_sha256": "0249f39235f627c1ecfd66a8d79e41b60b4a2c00eaf9fded44185b05e63b46dd"
+  }
+}

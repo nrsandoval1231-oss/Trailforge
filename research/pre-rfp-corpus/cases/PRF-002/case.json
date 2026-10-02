@@ -1,0 +1,97 @@
+{
+  "schema_version": "trailforge-pre-rfp-case-v1",
+  "case_id": "PRF-002",
+  "procurement_family_id": "montauk-2021-2024",
+  "project_identity": "Montauk Temporary Generation Facility 2021-2024",
+  "facility_type": "UTILITY",
+  "location": "Montauk, New York",
+  "power_activity": "TEMPORARY_RELIABILITY",
+  "purchase_type": "UNKNOWN",
+  "commercial_fit": {
+    "generation_mw_max": 6,
+    "duty_cycle": "as-needed; includes contingency use",
+    "planned_removal": "Fall 2024",
+    "actual_removal": "UNKNOWN"
+  },
+  "outcome": "NO_OUTCOME_OBSERVED",
+  "known_buying_event": "UNKNOWN",
+  "buying_event_date": "UNKNOWN",
+  "reported_buying_event_date": "2021-03-11",
+  "conventional_milestone": "Environmental determination for proposed temporary generation",
+  "conventional_milestone_at": "UNKNOWN",
+  "scenario_path": "scenario.json",
+  "holdout_group": "DEVELOPMENT",
+  "buyer_path": [
+    {
+      "organization": "Long Island Power Authority",
+      "role": "OWNER_OR_PROCUREMENT_ORGANIZATION",
+      "quality": "ORGANIZATION_IDENTIFIED",
+      "evidence_id": "PRF-002-montauk-capture-observation"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "capture_path": "../../captures/montauk-v1.json",
+      "capture_id": "montauk-20261002-v1",
+      "capture_hash": "bb871a0db276ec578f242dbb5375c66dd8f5b575f3bdd471b31c8e3b6bb93a5d",
+      "content_sha256": "b1cce8c98c604b893239aadd61feb04074ef2594dc464a99460749a7599c1210",
+      "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "source_quote": "The Proposed Action consists of the installation and as-needed use as described below of a\nmaximum of six modular compressed natural gas (CNG) fired generators capable of producing\na total combined output of six megawatts of power, and associated transformers, switch gear\nequipment, and controls. For the peak periods in the summers of 2017 \u2013 2019, six substantially\nsimilar generators (the \u201c2017 \u2013 2019 Facility\u201d) were installed at the site of the Proposed\nAction, the Montauk Substation (the \u201cSite\u201d), and three generators were installed at the Site\nduring for the 2020 summer season. The Proposed Action provides for the location and\navailability of up to six generators, which is the same output as the 2017 \u2013 2019 Facility.\n\nThe Proposed Action will provide a maximum of 6 MW of additional power generation\ncapability to be utilized as needed for the following three purposes: 1) to support the normal\nelectrical load while the existing transmission circuits are being connected to the Navy Road\nsubstation from March 2021 to May 2021; 2) to support the load on the transmission circuits as\nthey are being upgraded from 23kV to 33kV between 2021 and 2024, and; 3) to meet the\nseasonal electrical demands of the community of Montauk during peak periods starting in May\n2021 and ending in September 2024, when certain upgrades to the transmission system are\nanticipated to be complete. Upon completion of the circuit upgrades, no need for generation has been identified. The Montauk Substation is scheduled to be completely bypassed and no longer\nin use by November 2024.\n\nTo support the upgrade of circuits and connection to the Navy Road substation from March to\nMay 2021, it is anticipated that the temporary generator units will need to run up to 200 hours.\nDuring the summer months (May \u2013 September) of 2021, 2022, 2023, and 2024 the units will be\nrun in the event that a transmission line is out of service (i.e., contingency event) or during the\nupgrades of transmission circuits from 23kV to 33kV. It is expected that for most of the\nsummer season none of the units will be operating. The worst-case scenario contingency event\u00b9\nis expected to result in the Proposed Action facility operating during a ten-day repair period for\nan estimated eight hours per day, i.e. a total of 80 hours. The frequency or likelihood of the\nworst-case scenario or other less impactful contingency events requiring the Proposed Facility\nto operate cannot be meaningfully quantified; however, it can be stated that these events have a\nlow likelihood.\n\nWithout the availability of the generation units requested in the Proposed Action, the Montauk\narea would be at risk for limited blackout events during the connection of circuits to the Navy\nRoad substation and during the summer peak demand season.\n\nPSEG Long Island obtained a New York State Department of Environmental Conservation\n(NYSDEC) Air Facility Registration Certificate for the operation of the 6 MW of temporary\ngeneration units for the 2017-2019 Facility, and for up to 6 MW of temporary generation for\nthe 2020 Facility, although only units supporting 3 MW were installed. During the Proposed\nAction, the generators will operate under a NYSDEC Air Facility Registration Certificate for 6\nMW of temporary generation units, which was issued for the Proposed Action by the NYSDEC\non January 29, 2020.\n\nThe Proposed Action layout is illustrated in the attached Site Plan (see Figure 1.1). The\nProposed Action scope includes:\n\n\u2022 Installation of six modular gas generators. These will be contained in pre-fabricated\ndouble stacked steel shipping containers approximately 20 feet long, 8 feet wide and 17\nfeet high. These will be installed on secondary spill containment pads;\n\n\u2022 Staging two CNG tanker trucks to supply fuel to the generators. CNG tanker trucks will\nmake deliveries to the Project Area throughout the Proposed Action Period as needed to\nensure adequate fuel supply. Two tanker truck deliveries to the Site would be required\nfor each day in which all generation units operate for as much as a 10-hour period. No\ntanker truck trips will occur when the generators are not operating unless refueling is\nneeded as a result of recent operation.\n\n\u2022 Trained personnel will staff the Site during operational periods and will include an\noperating engineer to monitor and operate equipment and one or more fuel handling\n\n1\nThe worst-case scenario is a system contingency event that requires a ten-day repair of an out-of-service transmission line during a heat wave.\n\n* * *\n\npersonnel to implement and monitor fueling operations. Routine maintenance will be\nconducted during normal work hours, and only emergency repair work will be\nconducted at night if needed.\n\n\u2022 A 13-foot high noise attenuation barrier will be re-installed and maintained around the\nperimeter of the temporary generator units to attenuate noise. The barrier will be\nconstructed using Echo Barrier panels and/or Sound Seal noise barrier material or\nequivalent.\n\n\u2022 Fire suppression related equipment for the CNG trailers includes smoke and fire alarms\nthat trigger breakers, which ultimately shut down the units and associated gas flow. In\ncase of a fire, there is also a gas venting system that is used to vent the contents of each\ntanker.\n\nThe generating units will remain at the Site until they are removed in the Fall of 2024.",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-002-montauk-capture-observation",
+      "reviewed_claims": {
+        "project_specific": true,
+        "generation_need_supported": true,
+        "need_reason": "Transmission circuit connection and upgrades plus seasonal load support; includes contingency use.",
+        "buyer_organization": "Long Island Power Authority",
+        "facility_type": "UTILITY",
+        "power_activity": "TEMPORARY_RELIABILITY",
+        "purchase_type": "UNKNOWN",
+        "observation_kind": "CURRENT_SOURCE_OBSERVATION"
+      },
+      "event_date": "2026-10-02T13:54:02.338634+00:00",
+      "document_date": "2026-10-02T13:54:02.338634+00:00",
+      "verified_available_at": "2026-10-02T13:54:02.338634+00:00",
+      "observed_at": "2026-10-02T13:54:02.338634+00:00",
+      "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+      "availability_basis": "CAPTURE_TIME_ONLY",
+      "date_semantics": "Dates describe this capture observation record, not original project event or historical publication."
+    },
+    {
+      "capture_path": "../../captures/montauk-v1.json",
+      "capture_id": "montauk-20261002-v1",
+      "capture_hash": "bb871a0db276ec578f242dbb5375c66dd8f5b575f3bdd471b31c8e3b6bb93a5d",
+      "content_sha256": "b1cce8c98c604b893239aadd61feb04074ef2594dc464a99460749a7599c1210",
+      "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "source_quote": "The Proposed Action consists of the installation and as-needed use as described below of a\nmaximum of six modular compressed natural gas (CNG) fired generators capable of producing\na total combined output of six megawatts of power, and associated transformers, switch gear\nequipment, and controls. For the peak periods in the summers of 2017 \u2013 2019, six substantially\nsimilar generators (the \u201c2017 \u2013 2019 Facility\u201d) were installed at the site of the Proposed\nAction, the Montauk Substation (the \u201cSite\u201d), and three generators were installed at the Site\nduring for the 2020 summer season. The Proposed Action provides for the location and\navailability of up to six generators, which is the same output as the 2017 \u2013 2019 Facility.\n\nThe Proposed Action will provide a maximum of 6 MW of additional power generation\ncapability to be utilized as needed for the following three purposes: 1) to support the normal\nelectrical load while the existing transmission circuits are being connected to the Navy Road\nsubstation from March 2021 to May 2021; 2) to support the load on the transmission circuits as\nthey are being upgraded from 23kV to 33kV between 2021 and 2024, and; 3) to meet the\nseasonal electrical demands of the community of Montauk during peak periods starting in May\n2021 and ending in September 2024, when certain upgrades to the transmission system are\nanticipated to be complete. Upon completion of the circuit upgrades, no need for generation has been identified. The Montauk Substation is scheduled to be completely bypassed and no longer\nin use by November 2024.\n\nTo support the upgrade of circuits and connection to the Navy Road substation from March to\nMay 2021, it is anticipated that the temporary generator units will need to run up to 200 hours.\nDuring the summer months (May \u2013 September) of 2021, 2022, 2023, and 2024 the units will be\nrun in the event that a transmission line is out of service (i.e., contingency event) or during the\nupgrades of transmission circuits from 23kV to 33kV. It is expected that for most of the\nsummer season none of the units will be operating. The worst-case scenario contingency event\u00b9\nis expected to result in the Proposed Action facility operating during a ten-day repair period for\nan estimated eight hours per day, i.e. a total of 80 hours. The frequency or likelihood of the\nworst-case scenario or other less impactful contingency events requiring the Proposed Facility\nto operate cannot be meaningfully quantified; however, it can be stated that these events have a\nlow likelihood.\n\nWithout the availability of the generation units requested in the Proposed Action, the Montauk\narea would be at risk for limited blackout events during the connection of circuits to the Navy\nRoad substation and during the summer peak demand season.\n\nPSEG Long Island obtained a New York State Department of Environmental Conservation\n(NYSDEC) Air Facility Registration Certificate for the operation of the 6 MW of temporary\ngeneration units for the 2017-2019 Facility, and for up to 6 MW of temporary generation for\nthe 2020 Facility, although only units supporting 3 MW were installed. During the Proposed\nAction, the generators will operate under a NYSDEC Air Facility Registration Certificate for 6\nMW of temporary generation units, which was issued for the Proposed Action by the NYSDEC\non January 29, 2020.\n\nThe Proposed Action layout is illustrated in the attached Site Plan (see Figure 1.1). The\nProposed Action scope includes:\n\n\u2022 Installation of six modular gas generators. These will be contained in pre-fabricated\ndouble stacked steel shipping containers approximately 20 feet long, 8 feet wide and 17\nfeet high. These will be installed on secondary spill containment pads;\n\n\u2022 Staging two CNG tanker trucks to supply fuel to the generators. CNG tanker trucks will\nmake deliveries to the Project Area throughout the Proposed Action Period as needed to\nensure adequate fuel supply. Two tanker truck deliveries to the Site would be required\nfor each day in which all generation units operate for as much as a 10-hour period. No\ntanker truck trips will occur when the generators are not operating unless refueling is\nneeded as a result of recent operation.\n\n\u2022 Trained personnel will staff the Site during operational periods and will include an\noperating engineer to monitor and operate equipment and one or more fuel handling\n\n1\nThe worst-case scenario is a system contingency event that requires a ten-day repair of an out-of-service transmission line during a heat wave.\n\n* * *\n\npersonnel to implement and monitor fueling operations. Routine maintenance will be\nconducted during normal work hours, and only emergency repair work will be\nconducted at night if needed.\n\n\u2022 A 13-foot high noise attenuation barrier will be re-installed and maintained around the\nperimeter of the temporary generator units to attenuate noise. The barrier will be\nconstructed using Echo Barrier panels and/or Sound Seal noise barrier material or\nequivalent.\n\n\u2022 Fire suppression related equipment for the CNG trailers includes smoke and fire alarms\nthat trigger breakers, which ultimately shut down the units and associated gas flow. In\ncase of a fire, there is also a gas venting system that is used to vent the contents of each\ntanker.\n\nThe generating units will remain at the Site until they are removed in the Fall of 2024.",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-002-montauk-historical-unresolved",
+      "reviewed_claims": {},
+      "event_date": "UNKNOWN",
+      "document_date": "UNKNOWN",
+      "verified_available_at": "UNKNOWN",
+      "observed_at": "2026-10-02T13:54:02.338634+00:00",
+      "reported_event_date": "2021-03-11",
+      "reported_document_date": "2021-03-11",
+      "availability_basis": "HISTORICAL_VERSION_UNVERIFIED",
+      "date_semantics": "Reported calendar date lacks a verified historical content-version availability boundary; excluded from strict replay."
+    }
+  ],
+  "procurement_status": "HISTORICAL_PLANNING",
+  "deadline": "UNKNOWN",
+  "case_provenance": {
+    "kind": "REAL_PUBLIC_SOURCE",
+    "acquisition_mode": "BACKTRACE",
+    "historical_availability": "UNKNOWN",
+    "discovery_credit": false,
+    "source_note": "Current primary-source capture; supplier case studies are attributed claims, not independent performance audits."
+  },
+  "negative_evidence": [],
+  "notes": [
+    "Historical availability remains UNKNOWN. Capture observations permit current-state replay only; no pre-RFP or prospective detection credit.",
+    "All documents and amendments remain in one procurement family. DEVELOPMENT is exposed; not a holdout."
+  ],
+  "reported_conventional_milestone_date": "2021-03-11"
+}

@@ -1,0 +1,14 @@
+{
+  "policy_id": "BASELINE_A",
+  "policy_parameters": {},
+  "policy_version": "1.0",
+  "scenario_id": "PRF-007",
+  "scenario_version": "1",
+  "seed": 1006,
+  "source_identity": {
+    "git_commit": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+    "git_dirty": true,
+    "package_version": "0.1.0",
+    "source_content_sha256": "630f189668214ef5ae079a4ae556bd8089b3c80983882aa7439a1726b7f14894"
+  }
+}

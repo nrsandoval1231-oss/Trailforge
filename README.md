@@ -28,6 +28,8 @@ Run validation: `uv run --python 3.11 --with pytest --with ruff python scripts/v
 
 The workbench proves experiment mechanics. It does not yet prove commercial signal quality.
 
+The first real-source case import and baseline replay workflow is documented in [Pre-RFP Slice A](docs/PRE_RFP_SLICE_A.md). It preserves historical availability as UNKNOWN when a captured current page cannot establish an earlier public version.
+
 ## Canonical strategy
 
 The canonical product/research direction is [Pre-RFP Discovery Strategy](docs/PRE_RFP_DISCOVERY_STRATEGY.md). TrailForge uses relevant historical and current power procurements as cases, reconstructs the precursor evidence that led to each buying event, applies Athena to test and improve early-warning and research policies, and then validates those policies prospectively without future leakage.

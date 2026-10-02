@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-02T14:37:10.690312+00:00",
+  "task_start_utc": "UNKNOWN_NOT_RECORDED",
+  "independent_acceptance_utc": "2026-10-02T14:34:37Z",
+  "planning_seconds": "UNKNOWN",
+  "build_seconds": "UNKNOWN",
+  "validation_seconds": "UNKNOWN_TOTAL; individual test durations retained in raw logs",
+  "audit_seconds": "UNKNOWN",
+  "repair_count": 2,
+  "repair_count_basis": "Two controller-dispatched repairs: UNKNOWN/family identity; Windows evidence byte preservation (narrow then expanded proof).",
+  "lane": "single Luna builder; controller source acquisition; serial Sol review",
+  "builder_route": "named luna / gpt-6-luna / low per tool role",
+  "reviewer_model": "gpt-6-sol",
+  "controller_model_config_identity": "UNKNOWN",
+  "measured_tokens": "UNKNOWN_NOT_EXPOSED",
+  "elapsed_to_accepted_seconds": "UNKNOWN_START_NOT_RECORDED",
+  "speedup_claim": false,
+  "candidate_sha256": "afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1",
+  "portability_review": "REVIEW-portability.json"
+}

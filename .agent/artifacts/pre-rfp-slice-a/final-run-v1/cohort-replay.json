@@ -1,0 +1,676 @@
+{
+  "baseline_a_surface_count": 0,
+  "case_count": 8,
+  "cohort_hash": "185b65bae79fc7eb3719af01e2ae2926a5d1c55d43954355989ef65ead3d82ca",
+  "discovery_credit": false,
+  "discovery_credit_reason": "SLICE_A_REQUIRES_PROSPECTIVE_PRECOMMITTED_NAME_BLIND_VALIDATION",
+  "mode": "BACKTRACE",
+  "negative_count": 1,
+  "positive_count": 4,
+  "pre_rfp_baseline_surface_count": 3,
+  "results": [
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [
+        {
+          "evidence_id": "PRF-001-pseg-tempgen-capture-observation",
+          "organization": "PSEG Long Island on behalf of LIPA",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "buyer_path_at_first_surface_status": "SUPPORTED",
+      "case_hash": "0f13807ecf96f766e13f649ab9dfa7d396336f7ae781ec9e9c0c31edd3f4414b",
+      "case_id": "PRF-001",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 3,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-001",
+      "experiment_manifest_hash": "b998bb84fb9cb758a00248f6d82ac3db86af358700550364ef6227707347766e",
+      "facility_type": "UTILITY",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "TEMPORARY_RELIABILITY",
+      "pre_rfp_decision_count": 3,
+      "pre_rfp_decision_hash": "6a24c793c4c7bc89c031433f074c2d453b14f952570ba2dc82cfd137338de81e",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "dfb831fa85e6f6666e1fa399e396a2bbd72d81856bcea4851ee4ea1b879c4009",
+          "simulation_time": "2026-10-02T13:54:01.349736+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-001-pseg-tempgen-capture-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "209aafee974219466d66bbba2db9a8a681e49715b8d918ee0810712118db02d8",
+          "simulation_time": "2026-10-02T13:54:02.349736+00:00",
+          "visible_evidence_ids": [
+            "PRF-001-pseg-tempgen-capture-observation"
+          ]
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-001-pseg-tempgen-capture-observation",
+              "PRF-001-pseg-rfp-capture-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "08da8ca9de1efdbbff71a7982746797d6d65128ad2b0eae723b99b76b5dd2c8c",
+          "simulation_time": "2026-10-02T13:56:32.582762+00:00",
+          "visible_evidence_ids": [
+            "PRF-001-pseg-rfp-capture-observation",
+            "PRF-001-pseg-tempgen-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": "RESEARCH",
+      "pre_rfp_first_surface_at": "2026-10-02T13:54:02.349736+00:00",
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "pseg-tempgen-2026",
+      "purchase_type": "LONG_TERM_POWER",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-001-pseg-tempgen-capture-observation",
+          "organization": "PSEG Long Island on behalf of LIPA",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "813aafaa330e9cf1b1b8648436bc7b1bb2f7a0d6d998316979dd0f30b0387815",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 2
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [
+        {
+          "evidence_id": "PRF-002-montauk-capture-observation",
+          "organization": "Long Island Power Authority",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "buyer_path_at_first_surface_status": "SUPPORTED",
+      "case_hash": "e2a5f3def95c0244c047ec9c138116b1782b1faf4f95a1833f7800a8a335ba0e",
+      "case_id": "PRF-002",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-002",
+      "experiment_manifest_hash": "01b151b389723403244a0aeb9e0ac1753675a7178336d8d6f48323ee928c390d",
+      "facility_type": "UTILITY",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "TEMPORARY_RELIABILITY",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "a31c8621dc1de13eb7acb2a7977e248ea620b9e40b9c3e8c245817b05b9075cb",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "15544f39af8eeb533bcaaaea12e1bdc7391aac4e78f42560c2198d631cdb6e53",
+          "simulation_time": "2026-10-02T13:54:01.338634+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-002-montauk-capture-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "11996e5ce9e2961e1937466b7c2eaace1555bec6db4b29246a23c9553855712d",
+          "simulation_time": "2026-10-02T13:54:02.338634+00:00",
+          "visible_evidence_ids": [
+            "PRF-002-montauk-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": "RESEARCH",
+      "pre_rfp_first_surface_at": "2026-10-02T13:54:02.338634+00:00",
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "montauk-2021-2024",
+      "purchase_type": "UNKNOWN",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-002-montauk-capture-observation",
+          "organization": "Long Island Power Authority",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "1126abde09006e9a1c48634a12a7aa99f57ff75d73d23a04464dab2fcd986a4f",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "675089342678931f966a380b975ae66fa3852c165eb6d98cf8b525300519d183",
+      "case_id": "PRF-003",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-003",
+      "experiment_manifest_hash": "1940fcc178bbc18337cecb1c971de6e7f220fca7f3abe74c711c4831d314c8f1",
+      "facility_type": "DATA_CENTER",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "BRIDGE",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "26c2a77ef4bf92c87459dac8c38ff3daa07f59a3be8959b6a341d7c9aa79341b",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "067c4321396d7040d714f9b1d65545051691638fae6251b5baf00a6609538444",
+          "simulation_time": "2026-10-02T13:54:01.567049+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "e8264490ed8d5dff7d616c47e9a412c063325b5ae032a1b39c3e2364bb55648e",
+          "simulation_time": "2026-10-02T13:54:02.567049+00:00",
+          "visible_evidence_ids": [
+            "PRF-003-prometheus-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "prometheus-conduit-texas",
+      "purchase_type": "LONG_TERM_POWER",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-003-prometheus-capture-observation",
+          "organization": "Prometheus Hyperscale",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "3fe42bc566dbb531bbba5276d522aee9f4449a90bf9d4bf0c0404d6cf1e44a7d",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "a76c1aa1c0cb7871f3d345224c58245b430a80ef6fcd696125b2e2b6ae26a559",
+      "case_id": "PRF-004",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 3,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-004",
+      "experiment_manifest_hash": "9ecf2c0eaa70c20a4fdd4895f83d9889e24e5a5d3864b51eee7cfd663b0b021b",
+      "facility_type": "INSTITUTIONAL",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "MAINTENANCE_ONLY",
+      "pre_rfp_decision_count": 3,
+      "pre_rfp_decision_hash": "e49489de8771e96d68a687302b2a58146e9e210087882db14e3a599b7b42fc04",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "2fd4ddb290008e04e8bfcb3ba9272658ea15f9745a3f98e1a1d088b5c3e08b7c",
+          "simulation_time": "2026-10-02T13:54:24.267650+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "1dbb8895b8e2b873d614da9aa2db2c43fd8b9acf1203ae38de09948375216693",
+          "simulation_time": "2026-10-02T13:54:25.267650+00:00",
+          "visible_evidence_ids": [
+            "PRF-004-morgan-hill-capture-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "50b4f52bb1f49712e36af0217d9a16a4923519eadb4fbbeae1c4f3638678bcac",
+          "simulation_time": "2026-10-02T13:56:59.764790+00:00",
+          "visible_evidence_ids": [
+            "PRF-004-morgan-hill-capture-observation",
+            "PRF-004-morgan-hill-rfp-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "morgan-hill-2027-51",
+      "purchase_type": "MAINTENANCE",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-004-morgan-hill-capture-observation",
+          "organization": "City of Morgan Hill",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "88898c217ffd849ca2b4f3217028aa729cbe786dbda46b9d378d85fddd99c4aa",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 2
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "c9cb79809061e0be96297648855ddad6ecffcf17ad3b156647b13ff4cae8c7b7",
+      "case_id": "PRF-005",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-005",
+      "experiment_manifest_hash": "342d487fa275f1404472b9a1d6dc6d40594c161cdcc2eefc8dbe9f2665abfa9b",
+      "facility_type": "OIL_GAS",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "OPERATIONAL_GENERATION",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "35c717b80c89f1b7ab248b2f8b1942f9b6dc6ab13a0436efc7a78808c25a5610",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "a301b13ac635fa5b8622e578602b986f6c726568668399011717bb13c777cc08",
+          "simulation_time": "2026-10-02T13:54:46.453715+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-005-sunbridge-capture-observation"
+            ],
+            "decision": "SUPPRESS"
+          },
+          "record_hash": "9b52c6f58980d5b1484500361ab668c6ea6e0c5f344b320f2c50b64d3b41562a",
+          "simulation_time": "2026-10-02T13:54:47.453715+00:00",
+          "visible_evidence_ids": [
+            "PRF-005-sunbridge-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "sunbridge-permian",
+      "purchase_type": "LONG_TERM_POWER",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-005-sunbridge-capture-observation",
+          "organization": "Sunbridge Energy Services",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "81a3c5ef728c3e9da42b1e3c4619086f2554db3e7ef0fd410576d1d547846f39",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [
+        {
+          "evidence_id": "PRF-006-ieso-capture-observation",
+          "organization": "IESO Nova Scotia",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "buyer_path_at_first_surface_status": "SUPPORTED",
+      "case_hash": "e51f6b0fd0c62b6eda9db95645665a6c2529caaad815ccee9361c9674b4a7f16",
+      "case_id": "PRF-006",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 3,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-006",
+      "experiment_manifest_hash": "2ff3dd8b3761eed3cffc734c67d2b3806a1dd30f2af4665bc9efa71cbe041c41",
+      "facility_type": "UTILITY",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "OPERATIONAL_GENERATION",
+      "pre_rfp_decision_count": 3,
+      "pre_rfp_decision_hash": "2a1cbdad99546013fffdee9ee9b8054b73582389c173cc817e87183d9c6ac63b",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "90baf1905f762f9a59414b43d7351decc6889d0e4e2cf804941bfad7a9d30595",
+          "simulation_time": "2026-10-02T13:54:46.615933+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-006-ieso-capture-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "8516e851de3a843f3190d7b954516f96307f40d820dae798e1f23bd99dff1bf6",
+          "simulation_time": "2026-10-02T13:54:47.615933+00:00",
+          "visible_evidence_ids": [
+            "PRF-006-ieso-capture-observation"
+          ]
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-006-ieso-capture-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "8cd85fdaacd13310623379e16b56c2c75344062d9e68dde8d3b40d1d572451cc",
+          "simulation_time": "2026-10-02T13:56:36.223143+00:00",
+          "visible_evidence_ids": [
+            "PRF-006-ieso-addendum-capture-observation",
+            "PRF-006-ieso-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": "RESEARCH",
+      "pre_rfp_first_surface_at": "2026-10-02T13:54:47.615933+00:00",
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "ieso-fast-acting-2026",
+      "purchase_type": "LONG_TERM_POWER",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-006-ieso-capture-observation",
+          "organization": "IESO Nova Scotia",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "3cdc96a59d4a200e509468f203c5c45bc55b8e9e423b5f830e80790530ff6031",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 2
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "6090baf094a9ac511b58d184b9593a3b34d0da4b95e6a3031bc683cfcdad888f",
+      "case_id": "PRF-007",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-007",
+      "experiment_manifest_hash": "ea43d82ee5ccb6166e01ed9bb07e155ba34b52b6d5a5864435ce49e82611de3c",
+      "facility_type": "UTILITY",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "policy_id": "BASELINE_A",
+      "power_activity": "COMMISSIONING",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "d0279baae1ba3830ddd73fe620ca271ee98244327737027cde7e1e3bde0ca790",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "f7f1c95b24150c66d54e7c7771106ca20d7642d909ca61a9f1959e58bc1cdf5f",
+          "simulation_time": "2026-10-02T13:54:48.731076+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-007-azure-sky-capture-observation"
+            ],
+            "decision": "SUPPRESS"
+          },
+          "record_hash": "6b1ee28718accf8717c7c62a14588cf3b3b62aace96330044c9ee5c3b9b19167",
+          "simulation_time": "2026-10-02T13:54:49.731076+00:00",
+          "visible_evidence_ids": [
+            "PRF-007-azure-sky-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "azure-sky-commissioning",
+      "purchase_type": "TEMPORARY_POWER_SERVICE",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-007-azure-sky-capture-observation",
+          "organization": "Enel Green Power",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "2ec040ae710bc0c862d130dba6ddd17cdce89e17a047beb36b5e7323df922e1a",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "cd7c500ab70dec34d55e1831da62ccbd502e9f73e506bd3b02558607a07bf1c0",
+      "case_id": "PRF-008",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\.agent\\artifacts\\pre-rfp-slice-a\\final-run-v1\\experiments\\PRF-008",
+      "experiment_manifest_hash": "15dce7c0aae7aed5e3ec90b17f2ce14726d18464650916ef792552073774c25a",
+      "facility_type": "UTILITY",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "GENERATION_NOT_IN_SCOPE",
+      "policy_id": "BASELINE_A",
+      "power_activity": "UNKNOWN",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "94175292e4541560bd5e70c232e1d89d30bc911489a1e40e399edb7207d7c722",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "c2151d8c4de413155c33e2d5b7b3f1f7a14b32f56d11d23f1751ee4d0aeb202c",
+          "simulation_time": "2026-10-02T13:57:47.746449+00:00",
+          "visible_evidence_ids": []
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [
+              "PRF-008-ieso-forecast-capture-observation"
+            ],
+            "decision": "SUPPRESS"
+          },
+          "record_hash": "cb09e18879b1d77d5788ccbeae5308e91ebcbd019ec1d3d57e5b6e51e4a8d031",
+          "simulation_time": "2026-10-02T13:57:48.746449+00:00",
+          "visible_evidence_ids": [
+            "PRF-008-ieso-forecast-capture-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "ieso-forecast-pricing-2026",
+      "purchase_type": "ENGINEERING",
+      "reviewed_buyer_path": [
+        {
+          "evidence_id": "PRF-008-ieso-forecast-capture-observation",
+          "organization": "IESO Nova Scotia",
+          "quality": "ORGANIZATION_IDENTIFIED",
+          "role": "OWNER_OR_PROCUREMENT_ORGANIZATION"
+        }
+      ],
+      "scenario_hash": "e6b38b121106f134d4a9a6eb76282efeb97541ee0bfa57837cd5f580b4bc0a65",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    }
+  ],
+  "schema_version": "trailforge-pre-rfp-cohort-replay-v1",
+  "supported_historical_lead_count": 0,
+  "unknown_availability_count": 11,
+  "unresolved_count": 3,
+  "vertical_counts": {
+    "DATA_CENTER": 1,
+    "INSTITUTIONAL": 1,
+    "OIL_GAS": 1,
+    "UTILITY": 5
+  }
+}

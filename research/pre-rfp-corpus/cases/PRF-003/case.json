@@ -1,0 +1,101 @@
+{
+  "schema_version": "trailforge-pre-rfp-case-v1",
+  "case_id": "PRF-003",
+  "procurement_family_id": "prometheus-conduit-texas",
+  "project_identity": "Prometheus-Conduit Texas bridge-power partnership (two unnamed sites kept as one unresolved family)",
+  "facility_type": "DATA_CENTER",
+  "location": "Texas; exact sites UNKNOWN",
+  "power_activity": "BRIDGE",
+  "purchase_type": "LONG_TERM_POWER",
+  "commercial_fit": {
+    "capacity_per_site_mw_max": 300,
+    "site_count": 2,
+    "individual_project_identity": "UNKNOWN",
+    "remaining_scope": "UNKNOWN",
+    "named_partner": "Conduit Power"
+  },
+  "outcome": "NO_OUTCOME_OBSERVED",
+  "known_buying_event": "UNKNOWN",
+  "buying_event_date": "UNKNOWN",
+  "reported_buying_event_date": "2025-09-03",
+  "conventional_milestone": "Public bridge-power partnership announcement",
+  "conventional_milestone_at": "UNKNOWN",
+  "scenario_path": "scenario.json",
+  "holdout_group": "DEVELOPMENT",
+  "buyer_path": [
+    {
+      "organization": "Prometheus Hyperscale",
+      "role": "OWNER_OR_PROCUREMENT_ORGANIZATION",
+      "quality": "ORGANIZATION_IDENTIFIED",
+      "evidence_id": "PRF-003-prometheus-capture-observation"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "capture_path": "../../captures/prometheus-v1.json",
+      "capture_id": "prometheus-20261002-v1",
+      "capture_hash": "7fb005204ed9b95e425cea897c4be3d19489b4d87fa04fe70599464b64e8c906",
+      "content_sha256": "7c736d92b8a3ecb1b906a2c753f027605b3f1443cf6a6ebddcd592183b30f2ff",
+      "source_url": "https://www.prometheushyperscale.com/news/prometheus-hyperscale-and-conduit-power-partnership",
+      "source_quote": "Prometheus Hyperscale and Conduit Power announce partnership to deliver reliable hybrid bridge and back-up power solutions for data center builds to be co-located at certain carbon-free energy facilities owned and operated by ENGIE in Texas.\n\n**HOUSTON - Sept. 3, 2025** [BusinessWire](https://www.businesswire.com/news/home/20250903895429/en/Prometheus-Hyperscale-and-Conduit-Power-Form-Partnership-to-Accelerate-Speed-to-Market-for-AI-Data-Centers-in-Texas)\u2013 Prometheus Hyperscale (\u201cPrometheus\u201d), a leading sustainable, next-generation hyperscale data center developer, and Conduit Power LLC (\u201cConduit\u201d), an independent power producer and leading provider of distributed power solutions, announced today a partnership to deliver reliable hybrid bridge and back-up power solutions for data center builds to be co-located at certain carbon-free energy facilities owned and operated by ENGIE in Texas.\n\nThis partnership leverages forward-thinking solutions and existing assets to develop scalable compute infrastructure designed for the age of AI. Conduit\u2019s hybrid gas plus battery power solution, designed in partnership with Gruppo AB (\u201cAB\u201d), one of the largest and most prominent global providers of power generation solutions, prioritizes reliability, sustainability and speed-to-market.\n\nStarting with two projects in Texas, Prometheus will deploy this hybrid power model for near-term bridging and back-up solutions for up to 300MW at each of its next-generation hyperscale data centers. The first facility is expected to come online in 2026, with additional locations planned for 2027 and beyond.\n\n\u201cThis partnership reflects our commitment to building the infrastructure AI needs\u2014fast, clean, and at scale,\u201d said Trenton Thornock, Co-Founder and CEO of Prometheus Hyperscale. \u201cTogether with Conduit and ENGIE, we\u2019re setting a new standard for sustainable hyperscale development.\u201d\n\n\u201cWe couldn\u2019t be more excited to extend our proven low-carbon power solutions and capabilities from the energy industry into the fast-growing world of datacenters,\u201d said Matt Herpich, CEO of Conduit. \u201cThis partnership will power the next wave of digital infrastructure with speed, confidence and sustainability.\u201d",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-003-prometheus-capture-observation",
+      "reviewed_claims": {
+        "project_specific": false,
+        "generation_need_supported": true,
+        "need_reason": "Hybrid bridge and backup generation for two initial data-center projects; named solution partner already announced.",
+        "buyer_organization": "Prometheus Hyperscale",
+        "facility_type": "DATA_CENTER",
+        "power_activity": "BRIDGE",
+        "purchase_type": "LONG_TERM_POWER",
+        "observation_kind": "CURRENT_SOURCE_OBSERVATION"
+      },
+      "event_date": "2026-10-02T13:54:02.567049+00:00",
+      "document_date": "2026-10-02T13:54:02.567049+00:00",
+      "verified_available_at": "2026-10-02T13:54:02.567049+00:00",
+      "observed_at": "2026-10-02T13:54:02.567049+00:00",
+      "observation_kind": "CURRENT_SOURCE_OBSERVATION",
+      "availability_basis": "CAPTURE_TIME_ONLY",
+      "date_semantics": "Dates describe this capture observation record, not original project event or historical publication."
+    },
+    {
+      "capture_path": "../../captures/prometheus-v1.json",
+      "capture_id": "prometheus-20261002-v1",
+      "capture_hash": "7fb005204ed9b95e425cea897c4be3d19489b4d87fa04fe70599464b64e8c906",
+      "content_sha256": "7c736d92b8a3ecb1b906a2c753f027605b3f1443cf6a6ebddcd592183b30f2ff",
+      "source_url": "https://www.prometheushyperscale.com/news/prometheus-hyperscale-and-conduit-power-partnership",
+      "source_quote": "Prometheus Hyperscale and Conduit Power announce partnership to deliver reliable hybrid bridge and back-up power solutions for data center builds to be co-located at certain carbon-free energy facilities owned and operated by ENGIE in Texas.\n\n**HOUSTON - Sept. 3, 2025** [BusinessWire](https://www.businesswire.com/news/home/20250903895429/en/Prometheus-Hyperscale-and-Conduit-Power-Form-Partnership-to-Accelerate-Speed-to-Market-for-AI-Data-Centers-in-Texas)\u2013 Prometheus Hyperscale (\u201cPrometheus\u201d), a leading sustainable, next-generation hyperscale data center developer, and Conduit Power LLC (\u201cConduit\u201d), an independent power producer and leading provider of distributed power solutions, announced today a partnership to deliver reliable hybrid bridge and back-up power solutions for data center builds to be co-located at certain carbon-free energy facilities owned and operated by ENGIE in Texas.\n\nThis partnership leverages forward-thinking solutions and existing assets to develop scalable compute infrastructure designed for the age of AI. Conduit\u2019s hybrid gas plus battery power solution, designed in partnership with Gruppo AB (\u201cAB\u201d), one of the largest and most prominent global providers of power generation solutions, prioritizes reliability, sustainability and speed-to-market.\n\nStarting with two projects in Texas, Prometheus will deploy this hybrid power model for near-term bridging and back-up solutions for up to 300MW at each of its next-generation hyperscale data centers. The first facility is expected to come online in 2026, with additional locations planned for 2027 and beyond.\n\n\u201cThis partnership reflects our commitment to building the infrastructure AI needs\u2014fast, clean, and at scale,\u201d said Trenton Thornock, Co-Founder and CEO of Prometheus Hyperscale. \u201cTogether with Conduit and ENGIE, we\u2019re setting a new standard for sustainable hyperscale development.\u201d\n\n\u201cWe couldn\u2019t be more excited to extend our proven low-carbon power solutions and capabilities from the energy industry into the fast-growing world of datacenters,\u201d said Matt Herpich, CEO of Conduit. \u201cThis partnership will power the next wave of digital infrastructure with speed, confidence and sustainability.\u201d",
+      "reviewed_by": "Codex source review 2026-10-02",
+      "document_relationship": "SOURCE_PAGE",
+      "evidence_id": "PRF-003-prometheus-historical-unresolved",
+      "reviewed_claims": {},
+      "event_date": "UNKNOWN",
+      "document_date": "UNKNOWN",
+      "verified_available_at": "UNKNOWN",
+      "observed_at": "2026-10-02T13:54:02.567049+00:00",
+      "reported_event_date": "2025-09-03",
+      "reported_document_date": "2025-09-03",
+      "availability_basis": "HISTORICAL_VERSION_UNVERIFIED",
+      "date_semantics": "Reported calendar date lacks a verified historical content-version availability boundary; excluded from strict replay."
+    }
+  ],
+  "procurement_status": "PARTNER_ANNOUNCED",
+  "deadline": "UNKNOWN",
+  "case_provenance": {
+    "kind": "REAL_PUBLIC_SOURCE",
+    "acquisition_mode": "BACKTRACE",
+    "historical_availability": "UNKNOWN",
+    "discovery_credit": false,
+    "source_note": "Current primary-source capture; supplier case studies are attributed claims, not independent performance audits."
+  },
+  "negative_evidence": [
+    "Named provider / delivered package; no uncommitted package established."
+  ],
+  "notes": [
+    "Historical availability remains UNKNOWN. Capture observations permit current-state replay only; no pre-RFP or prospective detection credit.",
+    "All documents and amendments remain in one procurement family. DEVELOPMENT is exposed; not a holdout.",
+    "Partnership announcement establishes planned collaboration, not an independently verified executed buying contract. Two unnamed sites are retained as one unresolved family, not counted separately."
+  ],
+  "reported_conventional_milestone_date": "2025-09-03"
+}

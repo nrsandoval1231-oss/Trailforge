@@ -1,0 +1,63 @@
+{
+  "review_date": "2026-10-02",
+  "cases": [
+    {
+      "case_id": "PRF-001",
+      "family": "pseg-tempgen-2026",
+      "vertical": "UTILITY",
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "captures": 2
+    },
+    {
+      "case_id": "PRF-002",
+      "family": "montauk-2021-2024",
+      "vertical": "UTILITY",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "captures": 1
+    },
+    {
+      "case_id": "PRF-003",
+      "family": "prometheus-conduit-texas",
+      "vertical": "DATA_CENTER",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "captures": 1
+    },
+    {
+      "case_id": "PRF-004",
+      "family": "morgan-hill-2027-51",
+      "vertical": "INSTITUTIONAL",
+      "outcome": "NO_OUTCOME_OBSERVED",
+      "captures": 2
+    },
+    {
+      "case_id": "PRF-005",
+      "family": "sunbridge-permian",
+      "vertical": "OIL_GAS",
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "captures": 1
+    },
+    {
+      "case_id": "PRF-006",
+      "family": "ieso-fast-acting-2026",
+      "vertical": "UTILITY",
+      "outcome": "RELEVANT_PROCUREMENT_OBSERVED",
+      "captures": 2
+    },
+    {
+      "case_id": "PRF-007",
+      "family": "azure-sky-commissioning",
+      "vertical": "UTILITY",
+      "outcome": "PRIVATE_BUYING_EVENT_VERIFIED",
+      "captures": 1
+    },
+    {
+      "case_id": "PRF-008",
+      "family": "ieso-forecast-pricing-2026",
+      "vertical": "UTILITY",
+      "outcome": "GENERATION_NOT_IN_SCOPE",
+      "captures": 1
+    }
+  ],
+  "historical_credit": "NONE",
+  "notes": "All 8 families were exposed during development. 11 captures. Current-source observations are not historical availability proof."
+}
