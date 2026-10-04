@@ -1,3 +1,12 @@
 # Hash-bound replay evidence and retained corpus bytes must survive Windows checkouts unchanged.
 .agent/artifacts/pre-rfp-slice-a/** -text whitespace=cr-at-eol
 research/pre-rfp-corpus/** -text whitespace=cr-at-eol
+
+# Preserve approved brand master and evidence bytes across platforms.
+brand/** -text whitespace=cr-at-eol
+output/pdf/trailforge-brand-guide.pdf -text
+.agent/artifacts/brand-056/** -text whitespace=cr-at-eol
+
+# Retain upstream font licenses and the approved token source verbatim.
+brand/trailforge-v1/fonts/*-OFL.txt whitespace=cr-at-eol,-blank-at-eol
+brand/trailforge-v1/tokens.css whitespace=cr-at-eol,-blank-at-eof
