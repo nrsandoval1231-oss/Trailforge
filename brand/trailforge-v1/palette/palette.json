@@ -1,0 +1,16 @@
+{
+  "identity": "Trailforge Jade",
+  "approval_date": "2026-10-03",
+  "wordmark": "TRAILFORGE",
+  "tagline": "Find the project. Forge the path.",
+  "color_space": "sRGB",
+  "colors": [
+    {"name":"Deep Jade","hex":"#126653","rgb":[18,102,83],"role":"Primary action and identity signature"},
+    {"name":"Graphite","hex":"#232B26","rgb":[35,43,38],"role":"Primary text, navigation, and dark ground"},
+    {"name":"Warm Paper","hex":"#F5F4EE","rgb":[245,244,238],"role":"Main canvas and generous reading space"},
+    {"name":"Mist","hex":"#EEF4EF","rgb":[238,244,239],"role":"Secondary surface and quiet grouping"},
+    {"name":"Mint","hex":"#70D1AE","rgb":[112,209,174],"role":"Route accent and emphasis on graphite"},
+    {"name":"Brass","hex":"#B49A60","rgb":[180,154,96],"role":"Restrained detail and labels on graphite"}
+  ],
+  "print_note": "Screen RGB values are authoritative. Print conversions require a specified ICC profile and press proof; no unprofiled CMYK values are supplied."
+}
