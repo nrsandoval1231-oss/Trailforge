@@ -36,7 +36,12 @@ def main():
         "master_hashes": {rel(p): sha(p) for p in masters},
     }
     manifest_path = ROOT / "APPROVED_IDENTITY.json"
-    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if manifest_path.exists():
+        # Approval evidence is byte-bound: validate it without reserializing it.
+        if json.loads(manifest_path.read_text(encoding="utf-8")) != manifest:
+            raise SystemExit("locked approval manifest mismatch")
+    else:
+        manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     palette_files = [ROOT / "palette/palette.json", ROOT / "palette/palette.css", ROOT / "palette/build_palette.py", ROOT / "palette/finalize_brandkit.py", ROOT / "exports/svg/color-palette.svg", ROOT / "exports/png/color-palette-1600.png", ROOT / "README.md", ROOT / "brand-guidelines.md", ROOT / "brandbook.html", ROOT / "APPROVED_IDENTITY.json"]
     completion = {
         "packet": "BRAND-056",

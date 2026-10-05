@@ -5,7 +5,7 @@
   "files": {
     "APPROVED_IDENTITY.json": "8f848d391c05b2d1a21037cd2f839861424990f7605644feb0647d65d207c5fe",
     "brand-guidelines.md": "b3760f501f8e619a2f0fa4acb47ccb1c6b79dc18c84d3dc158e02ba62c47f56f",
-    "brandbook.css": "f7caed94ed6007f7f2cba4334d125743a269ac3c0eab8af925eef0b077f3dcf8",
+    "brandbook.css": "ec100a225f86fec4cbb8b21646fbf618fbbb3fb5535173f7f41506f24dfe7fa9",
     "brandbook.html": "628f74c68057b64148a4ccaa9b745f8af97df14cb4796fe88733f8b618c50461",
     "brandbook.js": "75d94e2b17a44f5ca5e0e60340458a074f000b94680c75f35fb6f8ce64c3edbb",
     "exports/favicon.ico": "3a46cb66ef3b765fabd6c033a19af586230940be867d68c2dd41e3a28a0da2cd",
@@ -63,7 +63,7 @@
     "fonts/Manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
     "fonts/Manrope.ttf": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
     "palette/build_palette.py": "dccaf61ce6e6b20f9ca78c1eb55e13ca58f974c02085259077524521e1abc3f4",
-    "palette/finalize_brandkit.py": "a38b178a64f5d230dd1e56f6ac7a1fc75b8569be8a011c96543017a9e11bb598",
+    "palette/finalize_brandkit.py": "b7da7feea764ba39503deb01cba2b1f419f8ecc507a357ad650ba0347dd3c190",
     "palette/palette.css": "76e60764692ce8cd675cf332110690a10f8ef5a5d5aab3553b7965408aeb7bff",
     "palette/palette.json": "b82d4d1e378ede2f1a27af6f82765009f1093777c821b0a6f6e649e954931aa3",
     "README.md": "0e07ca52e6616d6b2ab73ce3805f6d85f8d25477d67c23fd2464b85fca58de6b",
