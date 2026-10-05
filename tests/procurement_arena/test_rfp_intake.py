@@ -94,3 +94,71 @@ def test_stated_requirement_still_qualifies_alongside_a_rating():
     }))
     assert both.status == AuraRfpScreenStatus.QUALIFIED
     assert both.required_kw == 750
+
+
+def test_planned_outage_continuity_generation_is_not_emergency_scope():
+    result = screen_aura_rental_candidate(
+        _evidence(
+            {
+                "temporary_scope": "Planned temporary generation for switchgear replacement during a scheduled outage",
+                "required_kw": 500,
+                "primary_fuel": "natural gas",
+            }
+        )
+    )
+    assert result.status == AuraRfpScreenStatus.QUALIFIED
+
+
+def test_unplanned_outage_response_remains_rejected():
+    result = screen_aura_rental_candidate(
+        _evidence(
+            {
+                "temporary_scope": "temporary generation during an unplanned outage",
+                "required_kw": 500,
+                "primary_fuel": "natural gas",
+            }
+        )
+    )
+    assert result.status == AuraRfpScreenStatus.REJECTED
+
+
+def test_infinite_capacity_is_unknown_instead_of_qualified():
+    for capacity in (float("inf"), "inf", "Infinity"):
+        result = screen_aura_rental_candidate(
+            _evidence(
+                {
+                    "temporary_scope": "planned construction temporary power",
+                    "required_kw": capacity,
+                    "primary_fuel": "natural gas",
+                }
+            )
+        )
+        assert result.status == AuraRfpScreenStatus.NEEDS_REVIEW
+        assert result.required_kw is None
+
+
+def test_scheduled_outage_mention_does_not_hide_emergency_outage_scope():
+    result = screen_aura_rental_candidate(
+        _evidence(
+            {
+                "temporary_scope": "temporary generation for a scheduled outage and an unplanned outage",
+                "required_kw": 500,
+                "primary_fuel": "natural gas",
+            }
+        )
+    )
+    assert result.status == AuraRfpScreenStatus.REJECTED
+
+
+def test_mw_conversion_overflow_is_not_a_supported_capacity():
+    result = screen_aura_rental_candidate(
+        _evidence(
+            {
+                "temporary_scope": "planned construction temporary power",
+                "required_mw": 1e308,
+                "primary_fuel": "natural gas",
+            }
+        )
+    )
+    assert result.status == AuraRfpScreenStatus.NEEDS_REVIEW
+    assert result.required_kw is None

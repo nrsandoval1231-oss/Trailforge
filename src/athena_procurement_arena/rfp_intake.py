@@ -5,9 +5,11 @@ network, solicitation, outreach, pricing, or submission capability.
 """
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
+from math import isfinite
 from typing import Any
 
 from .foundation import EvidenceEvent
@@ -40,7 +42,7 @@ _PLANNED_SCOPE_TERMS = (
     "bridge power", "grid delay", "utility delay",
 )
 _EMERGENCY_TERMS = (
-    "emergency", "outage", "contingency", "psps", "storm", "restoration", "blackout",
+    "emergency", "contingency", "psps", "storm", "restoration", "blackout",
 )
 _PERMANENT_TERMS = (
     "power purchase agreement", "ppa", "tolling agreement", "capacity product",
@@ -91,8 +93,9 @@ def _capacity_kw(evidence: tuple[EvidenceEvent, ...], kw_fields: frozenset[str],
                 numeric = float(value)
             except (TypeError, ValueError):
                 continue
-            if numeric >= 0:
-                values.append(numeric * 1000 if normalized in mw_fields else numeric)
+            capacity_kw = numeric * 1000 if normalized in mw_fields else numeric
+            if isfinite(capacity_kw) and capacity_kw >= 0:
+                values.append(capacity_kw)
     return max(values, default=None)
 
 
@@ -127,7 +130,10 @@ def screen_aura_rental_candidate(
     commissioning/construction requirement.
     """
     text = _text(evidence)
-    if any(term in text for term in _EMERGENCY_TERMS):
+    # A scheduled electrical outage is planned continuity scope, not disaster response.
+    remaining_scope = re.sub(r"\b(?:planned|scheduled) outage\b", "", text)
+    unplanned_outage = bool(re.search(r"\boutage\b", remaining_scope))
+    if unplanned_outage or any(term in text for term in _EMERGENCY_TERMS):
         return AuraRfpScreen(AuraRfpScreenStatus.REJECTED, ("EMERGENCY_OR_CONTINGENCY_SCOPE",))
     if any(term in text for term in _PERMANENT_TERMS):
         return AuraRfpScreen(AuraRfpScreenStatus.REJECTED, ("PERMANENT_CAPACITY_OR_PPA_SCOPE",))
@@ -161,3 +167,4 @@ def screen_aura_rental_candidate(
         ("PLANNED_POWER_SCOPE", "REQUIRED_CAPACITY_SUPPORTED", "FUEL_COMPATIBLE"),
         required_kw,
     )
+
