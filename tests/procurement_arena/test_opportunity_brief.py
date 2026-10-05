@@ -65,7 +65,7 @@ def test_news_only_signal_is_a_research_target_not_a_qualified_opportunity(tmp_p
     html_path = render_workspace(tmp_path / "ws", tmp_path / "ws" / "index.html")
     page = html_path.read_text(encoding="utf-8")
     assert record["kind"] == "PRE_RFP_PROJECT"
-    assert "RESEARCH_TARGET_ONLY" in page and "NO_PRIMARY_SOURCE_CAPTURED" in page
+    assert "RESEARCH_TARGET_ONLY" in page and "NO_PRIMARY_SOURCE_FOR_POWER_REQUIREMENT" in page
     assert "Find a primary source" in page
 
 
@@ -151,3 +151,78 @@ def test_cited_diesel_only_fuel_makes_a_pre_rfp_signal_not_fit(tmp_path):
     import_opportunity(path, tmp_path / "ws", now=NOW)
     page = render_workspace(tmp_path / "ws", tmp_path / "ws" / "index.html").read_text(encoding="utf-8")
     assert "INCOMPATIBLE_FUEL_CITED" in page and "historical research only" in page
+
+
+def _page(tmp_path):
+    return render_workspace(tmp_path / "ws", tmp_path / "ws" / "index.html").read_text(encoding="utf-8")
+
+
+def _edit(tmp_path, mutate, **kwargs):
+    path = pre_rfp(tmp_path, **kwargs)
+    item = json.loads(path.read_text())
+    mutate(item, item["sources"][0]["capture_file"])
+    path.write_text(json.dumps(item), encoding="utf-8")
+    return path
+
+
+def test_non_power_requirement_does_not_establish_power_relevance(tmp_path):
+    def only_scope(item, ref):
+        item["requirements"] = {"scope": "temporary construction power"}
+        item["requirement_quotes"] = {"scope": item["requirement_quotes"]["scope"]}
+    import_opportunity(_edit(tmp_path, only_scope), tmp_path / "ws", now=NOW)
+    page = _page(tmp_path)
+    assert "POWER_RELEVANCE_NOT_CITED" in page and "ACTIONABLE_SIGNAL" not in page
+
+
+def test_power_requirement_backed_only_by_news_stays_research_target(tmp_path):
+    def mixed_sources(item, ref):
+        item["sources"][0]["source_type"] = "news"
+    import_opportunity(_edit(tmp_path, mixed_sources), tmp_path / "ws", now=NOW)
+    assert "NO_PRIMARY_SOURCE_FOR_POWER_REQUIREMENT" in _page(tmp_path)
+
+
+def test_dual_fuel_with_gas_is_not_rejected_as_diesel(tmp_path):
+    def dual(item, ref):
+        item["requirements"]["fuel"] = "natural gas primary, diesel backup"
+        item["requirement_quotes"]["fuel"] = {"capture_file": ref, "quote": "temporary construction power"}
+    import_opportunity(_edit(tmp_path, dual), tmp_path / "ws", now=NOW)
+    page = _page(tmp_path)
+    assert "INCOMPATIBLE_FUEL_CITED" not in page and "ACTIONABLE_SIGNAL" in page
+
+
+def test_later_exclusion_or_buyer_conflict_is_never_silently_dropped_on_merge(tmp_path):
+    import_opportunity(pre_rfp(tmp_path, buyer_type="OWNER"), tmp_path / "ws", now=NOW)
+    second = json.loads((tmp_path / "hillcrest.json").read_text())
+    second["opportunity_id"] = "hillcrest-2"
+    second["buyer_type"] = "RERENTER"
+    path = tmp_path / "second.json"
+    path.write_text(json.dumps(second), encoding="utf-8")
+    import_opportunity(path, tmp_path / "ws", now=NOW)
+    manifest = json.loads((tmp_path / "ws" / "workspace.json").read_text())
+    assert len(manifest["opportunities"]) == 1
+    assert manifest["opportunities"][0]["buyer_type"] == "RERENTER"
+    assert "buyer_type" in manifest["opportunities"][0]["buyer_conflicts"]
+    assert "EXCLUDED_BUYER" in _page(tmp_path)
+
+
+def test_merged_requirement_is_not_also_listed_unknown(tmp_path):
+    def no_fuel(item, ref):
+        item["requirements"].pop("fuel", None)
+    import_opportunity(_edit(tmp_path, no_fuel), tmp_path / "ws", now=NOW)
+    second = json.loads((tmp_path / "hillcrest.json").read_text())
+    second["opportunity_id"] = "hillcrest-fuel"
+    second["requirements"]["fuel"] = "natural gas"
+    second["requirement_quotes"]["fuel"] = {"capture_file": second["sources"][0]["capture_file"],
+                                            "quote": "temporary construction power"}
+    path = tmp_path / "fuel.json"
+    path.write_text(json.dumps(second), encoding="utf-8")
+    import_opportunity(path, tmp_path / "ws", now=NOW)
+    page = _page(tmp_path)
+    assert "VERIFIED</span> requirements.fuel" in page
+    assert "UNKNOWN</span> requirements.fuel" not in page
+
+
+def test_invalid_buyer_type_writes_nothing_to_the_workspace(tmp_path):
+    with pytest.raises(ValueError, match="buyer_type"):
+        import_opportunity(pre_rfp(tmp_path, buyer_type="friend"), tmp_path / "ws", now=NOW)
+    assert not (tmp_path / "ws" / "captures").exists()

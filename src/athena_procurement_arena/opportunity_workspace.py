@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 from athena_arena.contracts import canonical_hash
 
 from .foundation import ClaimBasis, EvidenceEvent
-from .opportunity_brief import BUYER_TYPES, build_brief
+from .opportunity_brief import BUYER_TYPES, EXCLUDED_BUYER_TYPES, build_brief
 from .public_capture import _public_url, load_capture
 from .rfp_intake import screen_aura_rental_candidate
 
@@ -248,6 +248,11 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
         raise ValueError("kind must be PRE_RFP_PROJECT or ACTIVE_RFP")
     if not item.get("opportunity_id") or not item.get("reviewed_by"):
         raise ValueError("opportunity_id and reviewed_by are required")
+    buyer_type = str(item["buyer_type"]).upper() if item.get("buyer_type") else None
+    if buyer_type is not None and buyer_type not in BUYER_TYPES:
+        raise ValueError(f"buyer_type must be one of {sorted(BUYER_TYPES)}")
+    if item.get("procurement_route") is not None and not isinstance(item["procurement_route"], str):
+        raise ValueError("procurement_route must be a string")
     reviewed_at = _stamp(item["reviewed_at"], "reviewed_at")
     assessment_time = now or datetime.now(UTC)
     workspace = Path(workspace_dir).resolve()
@@ -289,9 +294,6 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
         value = item.get(key, [])
         if value:
             field_evidence[key] = _exact_evidence(key, value, evidence_raw.get(key), captures, input_path.parent, workspace)
-    buyer_type = str(item["buyer_type"]).upper() if item.get("buyer_type") else None
-    if buyer_type is not None and buyer_type not in BUYER_TYPES:
-        raise ValueError(f"buyer_type must be one of {sorted(BUYER_TYPES)}")
     requirements = item.get("requirements", {})
     if not isinstance(requirements, dict):
         raise ValueError("requirements must be an object")
@@ -429,10 +431,17 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
                 merged.update({name: value for name, value in doc.items() if value is not None})
             old["documents"] = list(docs.values())
             for key in ("direct_buyer_orgs", "roles", "procurement_route", "buyer_type"):
-                if not old.get(key) and record.get(key):
-                    old[key] = record[key]
+                prior, incoming = old.get(key), record.get(key)
+                if not incoming:
+                    continue
+                if not prior:
+                    old[key] = incoming
                     if key in record["field_evidence"]:
                         old["field_evidence"][key] = record["field_evidence"][key]
+                elif prior != incoming:
+                    old.setdefault("buyer_conflicts", {})[key] = [prior, incoming]
+                    if key == "buyer_type" and incoming in EXCLUDED_BUYER_TYPES:
+                        old[key] = incoming  # fail closed: an exclusion is never silently dropped
             old["merged_opportunity_ids"] = sorted(set(old.get("merged_opportunity_ids", [])) | {record["opportunity_id"]})
             old["qualification_assessed_at"] = assessment_time.isoformat()
             old["qualification"] = _qualification(old, assessment_time)
@@ -503,7 +512,8 @@ def _brief_html(brief: dict[str, Any]) -> str:
     rows = "".join(
         f"<li class='verified'><span class='tag'>VERIFIED</span> {html.escape(str(fact['field']))}: "
         f"{html.escape(str(fact['value']))} — <q>{html.escape(str(fact['quote']))}</q> "
-        f"<small>{html.escape(str(fact['source_url']))}</small></li>" for fact in brief["facts"])
+        f"<small>{_link(fact['source_url'], fact['source_url']) if fact['source_url'] else 'source URL not recorded'}</small></li>"
+        for fact in brief["facts"])
     inferred = "".join(
         f"<li class='review'><span class='tag'>INFERENCE</span> {html.escape(str(item['statement']))} "
         f"<small>({html.escape(item['basis'])})</small></li>" for item in brief["inferences"])
@@ -554,11 +564,11 @@ def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path
         entries = [f"<h3>{heading}</h3>", f"<p>Lifecycle: <strong>{html.escape(str(lifecycle))}</strong> · Identity: {html.escape(record['identity_resolution'])}</p>"]
         entries.append(_brief_html(brief))
         entries.append(f"<p>Canonical project ID: <code>{html.escape(str(record.get('project_id') or 'UNKNOWN'))}</code> · First seen: {html.escape(str(record.get('first_seen_at') or 'UNKNOWN'))} · Vertical: {html.escape(str(record.get('vertical') or 'UNKNOWN'))}</p>")
-        entries.append(f"<p>Signal family: {html.escape(str(record.get('signal_family') or 'UNKNOWN'))}; next action: {html.escape(str(record['next_action']))}</p>")
+        entries.append(f"<p>Signal family: {html.escape(str(record.get('signal_family') or 'UNKNOWN'))}; operator-supplied note (not derived): {html.escape(str(record['next_action']))}</p>")
         entries.append(f"<p>Power-gap hypothesis: {html.escape(str(record.get('power_gap_hypothesis') or 'UNKNOWN'))}</p>")
         entries.append(f"<p>Direct buyer organizations: {html.escape(', '.join(map(str, record.get('direct_buyer_orgs', []))) or 'UNKNOWN')}</p>")
         deadline = record.get("deadline")
-        entries.append(f"<p>Deadline: {html.escape(str(deadline['value'])) if deadline else 'UNKNOWN'} · 2G fit: {html.escape(qualification['status'])} ({html.escape(', '.join(qualification['reason_codes']))})</p>")
+        entries.append(f"<p>Deadline: {html.escape(str(deadline['value'])) if deadline else 'UNKNOWN'} {'' if record['kind'] == 'PRE_RFP_PROJECT' else ' · 2G fit: ' + html.escape(qualification['status']) + ' (' + html.escape(', '.join(qualification['reason_codes'])) + ')'}</p>")
         entries.append(f"<p>Amendments status: {html.escape(str(qualification.get('amendments_status', 'UNKNOWN')))} · Capture freshness: {html.escape(str(qualification.get('capture_fresh', 'UNKNOWN')))}</p>")
         entries.append("<p>Missing information: " + html.escape(", ".join(record.get("missing_information", [])) or "None identified") + "</p>")
         if record.get("earliest_signal"):
