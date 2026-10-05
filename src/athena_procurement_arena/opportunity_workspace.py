@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 from athena_arena.contracts import canonical_hash
 
 from .foundation import ClaimBasis, EvidenceEvent
+from .opportunity_brief import BUYER_TYPES, EXCLUDED_BUYER_TYPES, build_brief
 from .public_capture import _public_url, load_capture
 from .rfp_intake import screen_aura_rental_candidate
 
@@ -247,6 +248,11 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
         raise ValueError("kind must be PRE_RFP_PROJECT or ACTIVE_RFP")
     if not item.get("opportunity_id") or not item.get("reviewed_by"):
         raise ValueError("opportunity_id and reviewed_by are required")
+    buyer_type = str(item["buyer_type"]).upper() if item.get("buyer_type") else None
+    if buyer_type is not None and buyer_type not in BUYER_TYPES:
+        raise ValueError(f"buyer_type must be one of {sorted(BUYER_TYPES)}")
+    if item.get("procurement_route") is not None and not isinstance(item["procurement_route"], str):
+        raise ValueError("procurement_route must be a string")
     reviewed_at = _stamp(item["reviewed_at"], "reviewed_at")
     assessment_time = now or datetime.now(UTC)
     workspace = Path(workspace_dir).resolve()
@@ -284,7 +290,7 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
     for key, value in known_fields.items():
         if value is not None:
             field_evidence[key] = _exact_evidence(key, value, evidence_raw.get(key), captures, input_path.parent, workspace)
-    for key in ("direct_buyer_orgs", "roles"):
+    for key in ("direct_buyer_orgs", "roles", "procurement_route"):
         value = item.get(key, [])
         if value:
             field_evidence[key] = _exact_evidence(key, value, evidence_raw.get(key), captures, input_path.parent, workspace)
@@ -338,6 +344,7 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
         "requirement_quotes": requirement_quotes, "signal_family": item.get("signal_family"),
         "power_gap_hypothesis": item.get("power_gap_hypothesis"),
         "direct_buyer_orgs": item.get("direct_buyer_orgs", []), "roles": item.get("roles", []),
+        "procurement_route": item.get("procurement_route"), "buyer_type": buyer_type,
         "next_action": item.get("next_action") or "HUMAN_REVIEW_SOURCE_AND_REQUIREMENTS",
         "documents": documents, "notes": item.get("notes", ""),
         "qualification": None, "qualification_assessed_at": assessment_time.isoformat(),
@@ -423,6 +430,18 @@ def import_opportunity(input_file: str | Path, workspace_dir: str | Path, *, now
                 merged = docs.setdefault(key, {})
                 merged.update({name: value for name, value in doc.items() if value is not None})
             old["documents"] = list(docs.values())
+            for key in ("direct_buyer_orgs", "roles", "procurement_route", "buyer_type"):
+                prior, incoming = old.get(key), record.get(key)
+                if not incoming:
+                    continue
+                if not prior:
+                    old[key] = incoming
+                    if key in record["field_evidence"]:
+                        old["field_evidence"][key] = record["field_evidence"][key]
+                elif prior != incoming:
+                    old.setdefault("buyer_conflicts", {})[key] = [prior, incoming]
+                    if key == "buyer_type" and incoming in EXCLUDED_BUYER_TYPES:
+                        old[key] = incoming  # fail closed: an exclusion is never silently dropped
             old["merged_opportunity_ids"] = sorted(set(old.get("merged_opportunity_ids", [])) | {record["opportunity_id"]})
             old["qualification_assessed_at"] = assessment_time.isoformat()
             old["qualification"] = _qualification(old, assessment_time)
@@ -472,6 +491,41 @@ def _verify_retained_sources(record: dict[str, Any], workspace: Path) -> None:
         if digest != document.get("original_sha256"):
             raise ValueError(f"retained original hash mismatch: {document['original_file']}")
 
+_CSS = (":root{--canvas:#F5F4EE;--subtle:#EEF4EF;--ink:#232B26;--muted:#59645D;--action:#126653;--rule:#C9D6CE;"
+        "--unknown-bg:#EEF4EF;--verified-bg:#E2EDE7;--review-bg:#F3EEDF}"
+        "@media(prefers-color-scheme:dark){:root{--canvas:#18221D;--subtle:#232F29;--ink:#F5F4EE;--muted:#CAD4CC;"
+        "--action:#70D1AE;--rule:#3A4A41;--unknown-bg:#232F29;--verified-bg:#28362E;--review-bg:#3A3624}}"
+        "body{font:16px Manrope,system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;"
+        "color:var(--ink);background:var(--canvas)}a{color:var(--action)}"
+        "nav,article,section{background:var(--subtle);padding:1rem;margin:1rem 0;border:1px solid var(--rule);"
+        "border-radius:8px}nav a{margin-right:1.5rem}table{border-collapse:collapse;width:100%}"
+        "td,th{border:1px solid var(--rule);padding:.5rem;text-align:left;vertical-align:top}"
+        "code{font-family:'IBM Plex Mono',monospace;overflow-wrap:anywhere}blockquote{white-space:pre-wrap}"
+        "small{overflow-wrap:anywhere}.brief{border-left:4px solid var(--action);padding-left:1rem}"
+        ".verified{background:var(--verified-bg)}.unknown{background:var(--unknown-bg);color:var(--muted)}"
+        ".review{background:var(--review-bg)}"
+        ".tag{font:12px 'IBM Plex Mono',monospace;padding:.1rem .4rem;border-radius:4px}")
+
+
+def _brief_html(brief: dict[str, Any]) -> str:
+    qualification = brief["qualification"]
+    rows = "".join(
+        f"<li class='verified'><span class='tag'>VERIFIED</span> {html.escape(str(fact['field']))}: "
+        f"{html.escape(str(fact['value']))} — <q>{html.escape(str(fact['quote']))}</q> "
+        f"<small>{_link(fact['source_url'], fact['source_url']) if fact['source_url'] else 'source URL not recorded'}</small></li>"
+        for fact in brief["facts"])
+    inferred = "".join(
+        f"<li class='review'><span class='tag'>INFERENCE</span> {html.escape(str(item['statement']))} "
+        f"<small>({html.escape(item['basis'])})</small></li>" for item in brief["inferences"])
+    unknown = "".join(
+        f"<li class='unknown'><span class='tag'>UNKNOWN</span> {html.escape(item)}</li>" for item in brief["unknowns"])
+    return ("<section class='brief'><h4>Operator brief</h4>"
+            f"<p>{html.escape(brief['opportunity_type'])} · qualification <strong>"
+            f"{html.escape(str(qualification['status']))}</strong> ("
+            f"{html.escape(', '.join(qualification.get('reason_codes', [])))})</p>"
+            f"<p><strong>Next action:</strong> {html.escape(brief['next_action'])}</p>"
+            f"<ul>{rows}{inferred}{unknown}</ul></section>")
+
 
 def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path:
     workspace = Path(workspace_dir).resolve()
@@ -481,6 +535,7 @@ def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path
         raise ValueError("workspace HTML output must be saved inside workspace")
     early, active, pending, expired = [], [], [], []
     details = []
+    briefs: dict[str, dict[str, Any]] = {}
     for record in manifest.get("opportunities", []):
         expected_hash = record.get("record_hash")
         actual_hash = canonical_hash({key: value for key, value in record.items() if key != "record_hash"})
@@ -493,6 +548,8 @@ def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path
         if draft.get("opportunity_id") != record["opportunity_id"]:
             raise ValueError("draft opportunity_id mismatch")
         qualification = _qualification(record, datetime.now(UTC))
+        brief = build_brief(record, qualification)
+        briefs[record["opportunity_id"]] = brief
         _verify_retained_sources(record, workspace)
         if record["kind"] == "PRE_RFP_PROJECT":
             early.append(record)
@@ -505,12 +562,13 @@ def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path
         heading = html.escape(str(record.get("title") or record["opportunity_id"]))
         lifecycle = qualification.get("lifecycle_status", record["kind"])
         entries = [f"<h3>{heading}</h3>", f"<p>Lifecycle: <strong>{html.escape(str(lifecycle))}</strong> · Identity: {html.escape(record['identity_resolution'])}</p>"]
+        entries.append(_brief_html(brief))
         entries.append(f"<p>Canonical project ID: <code>{html.escape(str(record.get('project_id') or 'UNKNOWN'))}</code> · First seen: {html.escape(str(record.get('first_seen_at') or 'UNKNOWN'))} · Vertical: {html.escape(str(record.get('vertical') or 'UNKNOWN'))}</p>")
-        entries.append(f"<p>Signal family: {html.escape(str(record.get('signal_family') or 'UNKNOWN'))}; next action: {html.escape(str(record['next_action']))}</p>")
+        entries.append(f"<p>Signal family: {html.escape(str(record.get('signal_family') or 'UNKNOWN'))}; operator-supplied note (not derived): {html.escape(str(record['next_action']))}</p>")
         entries.append(f"<p>Power-gap hypothesis: {html.escape(str(record.get('power_gap_hypothesis') or 'UNKNOWN'))}</p>")
         entries.append(f"<p>Direct buyer organizations: {html.escape(', '.join(map(str, record.get('direct_buyer_orgs', []))) or 'UNKNOWN')}</p>")
         deadline = record.get("deadline")
-        entries.append(f"<p>Deadline: {html.escape(str(deadline['value'])) if deadline else 'UNKNOWN'} · 2G fit: {html.escape(qualification['status'])} ({html.escape(', '.join(qualification['reason_codes']))})</p>")
+        entries.append(f"<p>Deadline: {html.escape(str(deadline['value'])) if deadline else 'UNKNOWN'} {'' if record['kind'] == 'PRE_RFP_PROJECT' else ' · 2G fit: ' + html.escape(qualification['status']) + ' (' + html.escape(', '.join(qualification['reason_codes'])) + ')'}</p>")
         entries.append(f"<p>Amendments status: {html.escape(str(qualification.get('amendments_status', 'UNKNOWN')))} · Capture freshness: {html.escape(str(qualification.get('capture_fresh', 'UNKNOWN')))}</p>")
         entries.append("<p>Missing information: " + html.escape(", ".join(record.get("missing_information", [])) or "None identified") + "</p>")
         if record.get("earliest_signal"):
@@ -570,9 +628,9 @@ def render_workspace(workspace_dir: str | Path, output_file: str | Path) -> Path
             buyer = ", ".join(map(str, row.get("direct_buyer_orgs", []))) or row.get("identity", {}).get("organization") or "UNKNOWN"
             due = (row.get("deadline") or {}).get("value", "UNKNOWN")
             summary = row.get("power_gap_hypothesis") or row.get("requirements", {}).get("scope") or "UNKNOWN"
-            cards.append(f"<article><h3><a href='#{anchor}'>{html.escape(str(row.get('title') or row['opportunity_id']))}</a></h3><p>Buyer: {html.escape(str(buyer))}</p><p>Deadline: {html.escape(str(due))}</p><p>Power need: {html.escape(str(summary))}</p><p>Next: {html.escape(str(row['next_action']))}</p></article>")
+            cards.append(f"<article><h3><a href='#{anchor}'>{html.escape(str(row.get('title') or row['opportunity_id']))}</a></h3><p>Buyer: {html.escape(str(buyer))}</p><p>Deadline: {html.escape(str(due))}</p><p>Power need: {html.escape(str(summary))}</p><p>Type: {html.escape(briefs[row['opportunity_id']]['opportunity_type'])} · {html.escape(str(briefs[row['opportunity_id']]['qualification']['status']))}</p><p>Next: {html.escape(briefs[row['opportunity_id']]['next_action'])}</p></article>")
         return f"<section><h2>{title} ({len(records)})</h2>" + ("".join(cards) or "<p>None recorded</p>") + "</section>"
-    page = "<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width'><title>Trailforge Opportunity Workspace</title><style>body{font:16px system-ui;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17222e;background:#f5f7f8}nav,article,section{background:white;padding:1rem;margin:1rem 0;border:1px solid #ccd5dc;border-radius:8px}nav a{margin-right:1.5rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd5dc;padding:.5rem;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}blockquote{white-space:pre-wrap}small{overflow-wrap:anywhere}</style><h1>Trailforge Opportunity Workspace</h1><p>Reviewed source evidence only. UNKNOWN fields remain unanswered. No contact or submission is performed.</p><nav><a href='#early'>EARLY PROJECTS</a><a href='#active'>ACTIVE RFPs</a><a href='#pending'>RFPs NEEDING REVIEW</a><a href='#expired'>EXPIRED RFPs</a><a href='#workspace'>RFP WORKSPACE</a><a href='#signal-lab'>SIGNAL LAB</a></nav><div id='early'>" + section("EARLY PROJECTS", early) + "</div><div id='active'>" + section("ACTIVE RFPs", active) + "</div><div id='pending'>" + section("RFPs NEEDING REVIEW", pending) + "</div><div id='expired'>" + section("EXPIRED RFPs", expired) + "</div><div id='workspace'><h2>RFP WORKSPACE</h2>" + "".join(details) + "</div><section id='signal-lab'><h2>SIGNAL LAB</h2><p>Use the existing Trailforge UI and evidence trace commands for temporal signal review. This workspace links the evidence and next action without changing simulation semantics.</p></section></html>"
+    page = "<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width'><title>Trailforge Opportunity Workspace</title><style>" + _CSS + "</style><h1>Trailforge Opportunity Workspace</h1><p>Reviewed source evidence only. UNKNOWN fields remain unanswered. No contact or submission is performed.</p><nav><a href='#early'>EARLY PROJECTS</a><a href='#active'>ACTIVE RFPs</a><a href='#pending'>RFPs NEEDING REVIEW</a><a href='#expired'>EXPIRED RFPs</a><a href='#workspace'>RFP WORKSPACE</a><a href='#signal-lab'>SIGNAL LAB</a></nav><div id='early'>" + section("EARLY PROJECTS", early) + "</div><div id='active'>" + section("ACTIVE RFPs", active) + "</div><div id='pending'>" + section("RFPs NEEDING REVIEW", pending) + "</div><div id='expired'>" + section("EXPIRED RFPs", expired) + "</div><div id='workspace'><h2>RFP WORKSPACE</h2>" + "".join(details) + "</div><section id='signal-lab'><h2>SIGNAL LAB</h2><p>Use the existing Trailforge UI and evidence trace commands for temporal signal review. This workspace links the evidence and next action without changing simulation semantics.</p></section></html>"
     target.parent.mkdir(parents=True, exist_ok=True)
     page = "\n".join(line.rstrip() for line in page.splitlines()) + "\n"
     target.write_text(page, encoding="utf-8")
