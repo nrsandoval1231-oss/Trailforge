@@ -2,6 +2,8 @@
 
 TrailForge is a deterministic early-project signal laboratory for temporary and distributed power.
 
+For the local, evidence-bound public discovery and RFP intake workflow, see [Firecrawl workspace commands](docs/FIRECRAWL_WORKSPACE.md).
+
 Its job is to discover which public signals would have identified a real power project early enough to create a commercial lead-time advantage. TrailForge replays historical project timelines using only evidence available at each point in time, measures when a policy would have surfaced the project, and compares that date with later obvious procurement or construction milestones.
 
 ## Commercial objective

@@ -29,8 +29,28 @@ def test_capture_freezes_content_and_round_trips(tmp_path):
 def test_capture_rejects_non_public_targets():
     with pytest.raises(ValueError, match=r"HTTP\(S\)"):
         capture_markdown("file:///secret", "content", capture_id="cap-1", captured_by="operator")
-    with pytest.raises(ValueError, match="private"):
+    with pytest.raises(ValueError, match="non-public"):
         capture_markdown("http://192.168.1.10/source", "content", capture_id="cap-1", captured_by="operator")
+    for url in ("http://172.17.0.1/source", "http://[fd00::1]/source", "http://127.0.0.1/source",
+                "http://user:password@example.com/source", "http://server.localhost/source"):
+        with pytest.raises(ValueError):
+            capture_markdown(url, "content", capture_id="cap-1", captured_by="operator")
+
+
+@pytest.mark.parametrize("url", [
+    "http://localhost./source", "http://127.1/source", "http://2130706433/source",
+    "http://0177.0.0.1/source", "http://0x7f000001/source", "http://%31%32%37.0.0.1/source",
+])
+def test_capture_rejects_encoded_and_legacy_loopback_aliases(url):
+    with pytest.raises(ValueError):
+        capture_markdown(url, "content", capture_id="cap-loopback", captured_by="operator")
+
+
+def test_capture_keeps_normal_public_and_ipv6_urls():
+    assert capture_markdown("https://example.com/source", "content", capture_id="cap-public",
+                            captured_by="operator").source_url == "https://example.com/source"
+    assert capture_markdown("https://[2606:4700:4700::1111]/source", "content", capture_id="cap-ipv6",
+                            captured_by="operator").source_url == "https://[2606:4700:4700::1111]/source"
 
 
 def test_firecrawl_capture_is_explicit_and_raw(monkeypatch, tmp_path):

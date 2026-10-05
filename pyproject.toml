@@ -15,6 +15,8 @@ brand = ["CairoSVG>=2.7", "fonttools>=4", "Pillow>=10"]
 [project.scripts]
 trailforge = "athena_procurement_arena.cli:main"
 trailforge-ui = "athena_procurement_arena.local_ui:main"
+trailforge-discovery = "athena_procurement_arena.discovery_cli:main"
+trailforge-opportunity = "athena_procurement_arena.opportunity_cli:main"
 
 [tool.setuptools.package-data]
 athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js"]
