@@ -1,0 +1,12 @@
+{
+  "capture_hash": "f83242ee8128055e49131a8f62c6defefd0fe1241f24d8177409924cb0dc0dbd",
+  "capture_id": "synthetic-mining-notice",
+  "captured_at": "2026-01-01T00:00:00+00:00",
+  "captured_by": "Synthetic fixture generator",
+  "content": "SYNTHETIC DEMONSTRATION \u2014 no real mine or customer information.\nname: Synthetic Copper Demonstrator\ncompany: Example Minerals\noperator: Example Mine Operations\nlocation: Example Region\ncommodity: Copper\nmining_method: Open pit\nstage: CONSTRUCTION\nepcm: Example Engineering\nexisting_power: Small camp solar system; plant capacity unknown\nEARLY_WORKS\nPRIME\nEARLY_WORKS permits diesel only.\nEARLY_WORKS power needed June 1, 2026.\nGrid connection planned January 1, 2027.\nEARLY_WORKS package status: PLANNED\nrental\nExample Mine Operations\nGrid delivery follows construction and commissioning.\nEARLY_WORKS normal load is 250 kW.\nCOMMISSIONING\nCOMMISSIONING\nCOMMISSIONING permits propane only.\nCOMMISSIONING power needed June 1, 2026.\nGrid connection planned January 1, 2027.\nCOMMISSIONING package status: OPEN\nrental\nExample Mine Operations\nGrid delivery follows construction and commissioning.\nCOMMISSIONING normal load is 2000 kW.\nOPERATIONS\nPRIME\nOPERATIONS permits natural gas only.\nOPERATIONS power needed June 1, 2026.\nGrid connection planned January 1, 2027.\nOPERATIONS package status: AWARDED\nrental\nExample Mine Operations\nGrid delivery follows construction and commissioning.",
+  "content_sha256": "e9eeaa7d1bd677b8f66f64e4b3495ab709dfb33c38ecc95595f3a782f621ac0a",
+  "provider": "synthetic",
+  "provider_job_id": "",
+  "schema_version": "trailforge-public-capture-v1",
+  "source_url": "https://example.com/synthetic-mining-notice"
+}

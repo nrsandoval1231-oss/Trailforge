@@ -1,0 +1,441 @@
+{
+  "schema_version": "trailforge-mining-import-v1",
+  "project_id": "synthetic-copper",
+  "cutoff": "2026-01-01T00:00:00+00:00",
+  "reviewed_by": "Synthetic demo analyst",
+  "sources": {
+    "notice": {
+      "capture_file": "notice.json",
+      "access": "SYNTHETIC",
+      "share_allowed": true,
+      "published_at": "2026-01-01T00:00:00+00:00",
+      "first_observed_at": "2026-01-01T00:00:00+00:00",
+      "available_at": "2026-01-01T00:00:00+00:00"
+    }
+  },
+  "project": {
+    "name": {
+      "value": "Synthetic Copper Demonstrator",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "name: Synthetic Copper Demonstrator"
+        }
+      ]
+    },
+    "company": {
+      "value": "Example Minerals",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "company: Example Minerals"
+        }
+      ]
+    },
+    "operator": {
+      "value": "Example Mine Operations",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "operator: Example Mine Operations"
+        }
+      ]
+    },
+    "location": {
+      "value": "Example Region",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "location: Example Region"
+        }
+      ]
+    },
+    "commodity": {
+      "value": "Copper",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "commodity: Copper"
+        }
+      ]
+    },
+    "mining_method": {
+      "value": "Open pit",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "mining_method: Open pit"
+        }
+      ]
+    },
+    "stage": {
+      "value": "CONSTRUCTION",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "stage: CONSTRUCTION"
+        }
+      ]
+    },
+    "epcm": {
+      "value": "Example Engineering",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "epcm: Example Engineering"
+        }
+      ]
+    },
+    "existing_power": {
+      "value": "Small camp solar system; plant capacity unknown",
+      "basis": "VERIFIED",
+      "evidence": [
+        {
+          "source": "notice",
+          "quote": "existing_power: Small camp solar system; plant capacity unknown"
+        }
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "requirement_id": "synthetic-copper:early_works:power",
+      "phase": {
+        "value": "EARLY_WORKS",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "EARLY_WORKS"
+          }
+        ]
+      },
+      "use_case": {
+        "value": "PRIME",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "PRIME"
+          }
+        ]
+      },
+      "status": "OBSERVED",
+      "demand": {
+        "normal_kw": {
+          "value": 250,
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "EARLY_WORKS normal load is 250 kW."
+            }
+          ]
+        }
+      },
+      "delivery": {
+        "fuel_constraints": {
+          "value": [
+            "diesel"
+          ],
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "EARLY_WORKS permits diesel only."
+            }
+          ]
+        },
+        "needed_by": {
+          "value": "2026-06-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "EARLY_WORKS power needed June 1, 2026."
+            }
+          ]
+        },
+        "grid_ready_by": {
+          "value": "2027-01-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid connection planned January 1, 2027."
+            }
+          ]
+        }
+      },
+      "procurement": {
+        "package_status": {
+          "value": "PLANNED",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "EARLY_WORKS package status: PLANNED"
+            }
+          ]
+        },
+        "model": {
+          "value": "rental",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "rental"
+            }
+          ]
+        },
+        "buyer_entity_id": {
+          "value": "Example Mine Operations",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Example Mine Operations"
+            }
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "value": "GRID_DELAY",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid delivery follows construction and commissioning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirement_id": "synthetic-copper:commissioning:power",
+      "phase": {
+        "value": "COMMISSIONING",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "COMMISSIONING"
+          }
+        ]
+      },
+      "use_case": {
+        "value": "COMMISSIONING",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "COMMISSIONING"
+          }
+        ]
+      },
+      "status": "OBSERVED",
+      "demand": {
+        "normal_kw": {
+          "value": 2000,
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "COMMISSIONING normal load is 2000 kW."
+            }
+          ]
+        }
+      },
+      "delivery": {
+        "fuel_constraints": {
+          "value": [
+            "propane"
+          ],
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "COMMISSIONING permits propane only."
+            }
+          ]
+        },
+        "needed_by": {
+          "value": "2026-06-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "COMMISSIONING power needed June 1, 2026."
+            }
+          ]
+        },
+        "grid_ready_by": {
+          "value": "2027-01-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid connection planned January 1, 2027."
+            }
+          ]
+        }
+      },
+      "procurement": {
+        "package_status": {
+          "value": "OPEN",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "COMMISSIONING package status: OPEN"
+            }
+          ]
+        },
+        "model": {
+          "value": "rental",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "rental"
+            }
+          ]
+        },
+        "buyer_entity_id": {
+          "value": "Example Mine Operations",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Example Mine Operations"
+            }
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "value": "GRID_DELAY",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid delivery follows construction and commissioning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirement_id": "synthetic-copper:operations:power",
+      "phase": {
+        "value": "OPERATIONS",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "OPERATIONS"
+          }
+        ]
+      },
+      "use_case": {
+        "value": "PRIME",
+        "basis": "VERIFIED",
+        "evidence": [
+          {
+            "source": "notice",
+            "quote": "PRIME"
+          }
+        ]
+      },
+      "status": "OBSERVED",
+      "demand": {},
+      "delivery": {
+        "fuel_constraints": {
+          "value": [
+            "natural gas"
+          ],
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "OPERATIONS permits natural gas only."
+            }
+          ]
+        },
+        "needed_by": {
+          "value": "2026-06-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "OPERATIONS power needed June 1, 2026."
+            }
+          ]
+        },
+        "grid_ready_by": {
+          "value": "2027-01-01T00:00:00+00:00",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid connection planned January 1, 2027."
+            }
+          ]
+        }
+      },
+      "procurement": {
+        "package_status": {
+          "value": "AWARDED",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "OPERATIONS package status: AWARDED"
+            }
+          ]
+        },
+        "model": {
+          "value": "rental",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "rental"
+            }
+          ]
+        },
+        "buyer_entity_id": {
+          "value": "Example Mine Operations",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Example Mine Operations"
+            }
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "value": "GRID_DELAY",
+          "basis": "VERIFIED",
+          "evidence": [
+            {
+              "source": "notice",
+              "quote": "Grid delivery follows construction and commissioning."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

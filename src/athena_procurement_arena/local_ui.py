@@ -18,6 +18,7 @@ from importlib.resources import files
 from pathlib import Path
 
 from .fixtures import load_bundle_mapping
+from .mining import load_project, load_supplier, render_report
 from .policies import BaselineA
 from .runner import create_experiment, replay_experiment, verify_experiment
 
@@ -45,7 +46,9 @@ def safe_path(path: Path) -> Path:
 
 
 class Workbench:
-    def __init__(self, root: Path, bundles: list[Path]):
+    def __init__(self, root: Path, bundles: list[Path], mining_inputs: list[Path] = (), mining_supplier: Path | None = None):
+        self.mining_supplier = load_supplier(safe_path(mining_supplier)) if mining_supplier else load_supplier()
+        self.mining = [load_project(safe_path(path)) for path in mining_inputs]
         self.root = safe_path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
@@ -222,12 +225,29 @@ class Handler(BaseHTTPRequestHandler):
         try:
             with self.server.workbench.lock:
                 app = self.server.workbench
+                if self.path == "/mining/style.css":
+                    self.path = "/style.css"
                 if self.path in ASSETS:
                     name, kind = ASSETS[self.path]
                     asset = files("athena_procurement_arena").joinpath("ui_assets", name)
                     if isinstance(asset, Path):
                         safe_path(asset)
                     self.reply(200, asset.read_bytes(), kind)
+                elif self.path == "/mining":
+                    import html
+                    links = "".join(f'<li><a href="/mining/{i}">{html.escape(p["project_id"])}</a></li>'
+                                    for i, p in enumerate(app.mining))
+                    page = ('<html lang="en"><meta charset="utf-8"><title>Mining intelligence</title>'
+                            '<link rel="stylesheet" href="/style.css"><main><a href="/">Workbench</a>'
+                            '<h1>Mining intelligence</h1><p>Reviewed, source-bound opportunity reports.</p><ul>'
+                            + links + '</ul><p>Import a reviewed source manifest with --mining-input PATH at startup.</p></main></html>')
+                    self.reply(200, page.encode(), "text/html; charset=utf-8")
+                elif self.path.startswith("/mining/"):
+                    index = self.path.removeprefix("/mining/")
+                    if not index.isdigit() or int(index) >= len(app.mining):
+                        self.reply(404, {"error": "Unknown mining report"})
+                    else:
+                        self.reply(200, render_report(app.mining[int(index)], app.mining_supplier).encode(), "text/html; charset=utf-8")
                 elif self.path == "/api/session":
                     self.reply(200, {"token": app.token, "cases": [
                         {"id": alias, "fixture": context["fixture"], "bundle_id": context["bundle_id"]}
@@ -296,6 +316,8 @@ def main(argv=None):
     mode.add_argument("--bundle", type=Path, action="append", help="trusted startup bundle; repeatable")
     mode.add_argument("--saved-only", action="store_true", help="inspect/replay saved runs without a bundle")
     parser.add_argument("--experiments-dir", type=Path, default=Path(".trailforge-experiments"))
+    parser.add_argument("--mining-supplier", type=Path, help="optional supplier offering profile JSON")
+    parser.add_argument("--mining-input", type=Path, action="append", default=[], help="reviewed mining import; repeatable")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     if not 0 <= args.port <= 65535:
@@ -308,7 +330,7 @@ def main(argv=None):
         bundles = [default]
     app = None
     try:
-        app = Workbench(args.experiments_dir, bundles)
+        app = Workbench(args.experiments_dir, bundles, args.mining_input, args.mining_supplier)
         with WorkbenchServer(app, args.port) as server:
             print(f"Trailforge workbench: {server.origin}/ (Ctrl+C to stop)", flush=True)
             server.serve_forever()
