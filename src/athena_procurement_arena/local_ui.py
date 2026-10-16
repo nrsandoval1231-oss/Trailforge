@@ -13,12 +13,13 @@ import stat
 import threading
 import time
 import uuid
+from dataclasses import asdict
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
 from pathlib import Path
 
 from .fixtures import load_bundle_mapping
-from .mining import load_project, load_supplier, render_report
+from .mining import load_project, load_supplier, match_supplier, qualify, render_report
 from .policies import BaselineA
 from .runner import create_experiment, replay_experiment, verify_experiment
 
@@ -28,6 +29,14 @@ CLOSE_DRAIN_BYTES = MAX_BODY + 1024
 CLOSE_DRAIN_SECONDS = 0.25
 ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError)
 ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
+          "/workbench": ("workbench.html", "text/html; charset=utf-8"),
+          "/mountain.webp": ("mountain.webp", "image/webp"),
+          "/mountain-mark.webp": ("mountain-mark.webp", "image/webp"),
+          "/inter.woff2": ("inter.woff2", "font/woff2"),
+          "/product-model.js": ("product-model.js", "text/javascript; charset=utf-8"),
+          "/product.js": ("product.js", "text/javascript; charset=utf-8"),
+          "/product.css": ("product.css", "text/css; charset=utf-8"),
+          "/assessments.json": ("assessments.json", "application/json; charset=utf-8"),
           "/app.js": ("app.js", "text/javascript; charset=utf-8"),
           "/style.css": ("style.css", "text/css; charset=utf-8")}
 
@@ -205,7 +214,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Referrer-Policy", "no-referrer")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; "
-                         "connect-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'")
+                         "connect-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'")
         self.send_header("Connection", "close")
         self.end_headers()
         self.wfile.write(data)
@@ -248,6 +257,14 @@ class Handler(BaseHTTPRequestHandler):
                         self.reply(404, {"error": "Unknown mining report"})
                     else:
                         self.reply(200, render_report(app.mining[int(index)], app.mining_supplier).encode(), "text/html; charset=utf-8")
+                elif self.path == "/api/mining":
+                    self.reply(200, {"supplier": asdict(app.mining_supplier), "projects": [
+                        {"index": i, "project": project, "evaluations": [
+                            {"requirement_id": req["requirement_id"], "qualification": qualify(req),
+                             "match": match_supplier(req, app.mining_supplier,
+                                                     location=project["project"]["location"]["value"])}
+                            for req in project["requirements"]]}
+                        for i, project in enumerate(app.mining)]})
                 elif self.path == "/api/session":
                     self.reply(200, {"token": app.token, "cases": [
                         {"id": alias, "fixture": context["fixture"], "bundle_id": context["bundle_id"]}
@@ -346,3 +363,4 @@ def main(argv=None):
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

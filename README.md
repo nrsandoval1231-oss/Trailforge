@@ -31,3 +31,8 @@ Preserve the verified replay/evidence foundation. Add phase-specific mining powe
 
 ## Non-negotiables
 Separate facts, inference, forecasts and unknowns; prevent future-data leakage; retain source permissions and timestamps; isolate confidential supplier/customer records; do not claim engineering compliance without proof; keep architecture lean; measure commercial usefulness, not alert volume.
+
+
+## Mining opportunity product
+
+The local UI now opens the Dashboard, Mining Opportunity Explorer, Supplier Matching and Project Intelligence workspace. The original research instrument remains at `/workbench`. See [Mining product](docs/MINING_PRODUCT.md) for actual-engine imports, five-project research context, interactive snapshot export and explicit evidence limits. Final visual/mobile acceptance is tracked in [design QA](design-qa.md).

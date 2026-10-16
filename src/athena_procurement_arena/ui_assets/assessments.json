@@ -1,0 +1,147 @@
+{
+  "basis": "SECONDARY_RESEARCH",
+  "as_of": "2026-10-16",
+  "source_note": "research/mining-power-screen-2026-10-16.md",
+  "limitation": "Original import manifests and retained captures are not bundled. These assessments are research context, not imported requirements. No verified open power package in this source set.",
+  "assessments": [
+    {
+      "id": "assessment-0",
+      "name": "Stibnite",
+      "description": "Stibnite, Idaho \u2014 Perpetua",
+      "signal": "Camp installation is active; ATCO announced a 1,052-person camp with Q1 2027 operation. Permanent grid equipment was still being procured/delivered in September 2026. Whether camp energization precedes adequate utility supply is unknown.",
+      "buyer": "Perpetua project team; Hatch controls major procurement. ATCO holds the housing contract. Public vendor-intake route exists.",
+      "action": "First qualification conversation. 2G only if gas/propane is permitted and deliverable. MW, duration, package boundaries and award status are unknown. Idaho Power powerline-materials package is already contracted.",
+      "sources": [
+        {
+          "label": "28 September 2026 owner construction update",
+          "url": "https://perpetuaresources.com/wp-content/uploads/2026/09/Sept-2026-Construction-Update.pdf"
+        },
+        {
+          "label": "Current owner construction/access notices",
+          "url": "https://perpetuaresources.com/project/local-notices/"
+        },
+        {
+          "label": "ATCO housing award, 27 October 2025",
+          "url": "https://www.atco.com/en-ca/about-us/news/2025/123051-atco-structures-accelerates-u-s-expansion-with-179m-worker-housi.html"
+        },
+        {
+          "label": "Hatch EPCM appointment, December 2025",
+          "url": "https://www.hatch.com/About-Us/News-And-Media/2025/12/Perpetua-Resources-selects-Hatch-as-EPCM-for-Stibnite-Gold-Project"
+        },
+        {
+          "label": "Idaho Power procurement contract",
+          "url": "https://perpetuaresources.com/perpetua-resources-commences-detailed-engineering-and-signs-procurement-contract/"
+        },
+        {
+          "label": "Vendor-intake channel",
+          "url": "https://perpetuaresources.com/contact/vendor-intake-form/"
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "id": "assessment-1",
+      "name": "Hermosa",
+      "description": "Hermosa / Taylor, Arizona \u2014 South32",
+      "signal": "Utility states existing distribution cannot meet anticipated demand. South32 reports existing temporary self-generated natural-gas power; 138 kV transition is advancing.",
+      "buyer": "South32 Hermosa; Worley for underground and surface non-process engineering/procurement; Sundt for defined construction scopes.",
+      "action": "Ask only about incremental load, fleet extensions or replacement scope. Existing supply defeats an assumption of an unfilled prime-power need. Natural-gas fit is plausible, but permit equipment configurations and engineering remain unresolved.",
+      "sources": [
+        {
+          "label": "ADEQ technical review, permit 96653, 26 August 2024",
+          "url": "https://static.azdeq.gov/permits/south32/aq_final_tsd.pdf"
+        },
+        {
+          "label": "South32 April 30, 2026 announcement reproduced by Listcorp",
+          "url": "https://www.listcorp.com/asx/s32/south32-limited/news/hermosa-project-update-3346162.html"
+        },
+        {
+          "label": "South32 14 September 2026 site presentation",
+          "url": "https://www.south32.net/docs/default-source/all-financial-results/all-financial-results-reports-and-presentations/hermosa-site-visit-presentation.pdf?sfvrsn=880a2fd0_1"
+        },
+        {
+          "label": "UniSource Rio Rico\u2013Harshaw project",
+          "url": "https://www.uesaz.com/rio-rico-to-harshaw/"
+        },
+        {
+          "label": "Worley procurement scope",
+          "url": "https://www.worley.com/en/insights/our-news/resources/2024/engineering-and-procurement-win-for-south32-hermosa-project"
+        },
+        {
+          "label": "Sundt construction scope",
+          "url": "https://www.sundt.com/projects/arizona-minerals-south32-hermosa-mine/"
+        },
+        {
+          "label": "South32 supplier-access policy",
+          "url": "https://www.south32.net/suppliers/doing-business"
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "id": "assessment-2",
+      "name": "Rhyolite Ridge",
+      "description": "Rhyolite Ridge, Nevada \u2014 Ioneer",
+      "signal": "Planned self-sufficient steam turbine may still require independent startup/commissioning supply. August newsletter makes FID dependent on partnering, economics and Board approval.",
+      "buyer": "Ioneer and Fluor; Hyundai procurement role under non-binding 2026 MOU needs reconciliation.",
+      "action": "Early planning watchlist. No temporary-power load or tender verified. ABB announced permanent steam-generation, electrical distribution and automation scope: do not pitch that as unawarded.",
+      "sources": [
+        {
+          "label": "Ioneer August 2026 newsletter",
+          "url": "https://www.ioneer.com/wp-content/uploads/2026/08/Rhyolite-Ridge-Quarterly-Newsletter-August-2026.pdf"
+        },
+        {
+          "label": "Fluor project description",
+          "url": "https://www.fluor.com/projects/rhyolite-ridge-lithium-boron"
+        },
+        {
+          "label": "ABB awarded power/automation scope",
+          "url": "https://new.abb.com/mining/reference-stories/planning-mine-project/abb-to-lead-power-and-automation-engineering-and-equipment-supply-in-new-order-from-ioneer-at-us-mine"
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "id": "assessment-3",
+      "name": "Thacker Pass",
+      "description": "Thacker Pass, Nevada \u2014 Lithium Americas / GM JV",
+      "signal": "Early utility commissioning in H2 2026; grid energization targeted Q4 2026.",
+      "buyer": "Lithium Americas operations-readiness team and Bechtel EPCM.",
+      "action": "Only residual commissioning/contingency loads merit a question. August update says off-site power work complete and procurement above 80%; no demonstrated grid delay or open generation package.",
+      "sources": [
+        {
+          "label": "Lithium Americas August 13, 2026 update",
+          "url": "https://www.lithiumamericas.com/news/news-details/2026/Lithium-Americas-Reports-Second-Quarter-2026-Results/default.aspx"
+        },
+        {
+          "label": "Earlier February 19, 2026 plan",
+          "url": "https://lithiumamericas.com/news/news-details/2026/Lithium-Americas-Provides-a-Project-Update-and-2026-Capex-Guidance-for-Thacker-Pass/default.aspx"
+        },
+        {
+          "label": "Bechtel project and EPCM scope",
+          "url": "https://www.bechtel.com/projects/thacker-pass/"
+        }
+      ],
+      "rank": 4
+    },
+    {
+      "id": "assessment-4",
+      "name": "Eskay Creek",
+      "description": "Eskay Creek, British Columbia \u2014 Skeena",
+      "signal": "More than 70% complete August 31; initial production targeted Q2 2027. Pre-commissioning and permanent energization form part of remaining scope.",
+      "buyer": "Skeena engineering/construction team. Andrew Osterloh is publicly identified as VP Project Engineering & Construction; contracting authority unverified.",
+      "action": "Late-stage contingency watchlist. March release reports 88% procurement costs committed and BC Hydro tap-in complete. Residual power, fuel and cross-border 2G logistics remain unknown.",
+      "sources": [
+        {
+          "label": "Skeena current construction journey",
+          "url": "https://skeenagoldsilver.com/eskay-creek/construction-journey/"
+        },
+        {
+          "label": "March 31, 2026 owner update",
+          "url": "https://skeenagoldsilver.com/news-release/skeena-gold-silver-confirms-eskay-creek-reaches-49-completion-provides-project-update-initial-production-remains-on-schedule-for-q2-2027/"
+        }
+      ],
+      "rank": 5
+    }
+  ]
+}

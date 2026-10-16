@@ -151,7 +151,8 @@ def test_static_resources_no_get_mutation_and_no_cors(tmp_path):
         for path, (name, kind) in local_ui.ASSETS.items():
             status, headers, body = request(server, path)
             assert status == 200 and headers["Content-Type"] == kind
-            assert body == files("athena_procurement_arena").joinpath("ui_assets", name).read_bytes()
+            expected = files("athena_procurement_arena").joinpath("ui_assets", name).read_bytes()
+            assert body == (json.loads(expected) if kind.startswith("application/json") else expected)
             assert "Access-Control-Allow-Origin" not in headers
             assert headers["Referrer-Policy"] == "no-referrer"
         for path in ("/api/run", "/api/replay", "/../pyproject.toml", "/%2e%2e/pyproject.toml", "/app.js?x=1"):
@@ -374,3 +375,4 @@ def test_transport_drain_is_bounded_and_always_closes(monkeypatch, mode):
         assert transport.calls == 3
     else:
         assert transport.calls == 1
+

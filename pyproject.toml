@@ -20,7 +20,7 @@ trailforge-discovery = "athena_procurement_arena.discovery_cli:main"
 trailforge-opportunity = "athena_procurement_arena.opportunity_cli:main"
 
 [tool.setuptools.package-data]
-athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js"]
+athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js", "ui_assets/*.json", "ui_assets/*.webp", "ui_assets/*.woff2", "ui_assets/*.txt"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -36,3 +36,4 @@ target-version = "py311"
 [tool.ruff.lint]
 # Pinned explicitly so a future Ruff default change cannot silently alter the gate.
 select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+
