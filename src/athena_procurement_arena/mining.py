@@ -170,6 +170,8 @@ def import_project(manifest: dict, base: Path) -> dict:
 
     def field_claim(raw, field):
         if isinstance(raw, list):
+            if any(v is None for v in raw):
+                raise ValueError('conflict requires evidence-bound source claims, not null alternatives')
             alternatives = [claim(v, field) for v in raw]
             if len(alternatives) < 2:
                 raise ValueError('conflict requires at least two source claims')
@@ -362,4 +364,3 @@ def main(argv=None):
 
 if __name__ == '__main__':
     raise SystemExit(main())
-

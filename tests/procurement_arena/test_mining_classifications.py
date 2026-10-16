@@ -88,3 +88,33 @@ def test_valid_classifications_keep_existing_qualification():
     assert len(qualify(req)['hypotheses']) == 3
     assert qualify(req)['procurement'] == 'OPEN'
     assert match_supplier(req)['dimensions']['fuel']['verdict'] == 'POTENTIAL'
+
+
+@pytest.mark.parametrize('path', [
+    ('phase',), ('use_case',), ('demand', 'normal_kw'),
+    ('delivery', 'fuel_constraints'), ('procurement', 'package_status'), ('project', 'name'),
+])
+@pytest.mark.parametrize('mode', ['null_first', 'null_last', 'all_null'])
+def test_conflicts_reject_null_alternatives(path, mode):
+    manifest = raw()
+    target = manifest if path[0] == 'project' else manifest['requirements'][1]
+    for key in path[:-1]:
+        target = target[key]
+    claim = target[path[-1]]
+    target[path[-1]] = {'null_first': [None, claim], 'null_last': [claim, None],
+                        'all_null': [None, None]}[mode]
+    with pytest.raises(ValueError, match='conflict requires'):
+        imported(manifest)
+
+
+@pytest.mark.parametrize('path', [
+    ('demand', 'normal_kw'), ('delivery', 'fuel_constraints'),
+    ('procurement', 'package_status'), ('project', 'name'),
+])
+def test_shared_fields_still_allow_standalone_null(path):
+    manifest = raw()
+    target = manifest if path[0] == 'project' else manifest['requirements'][1]
+    target[path[0]][path[1]] = None
+    project = imported(manifest)
+    result = project if path[0] == 'project' else project['requirements'][1]
+    assert result[path[0]][path[1]]['basis'] == 'UNKNOWN'
