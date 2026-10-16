@@ -24,6 +24,8 @@ uv run --python 3.11 trailforge-ui --saved-only --mining-input scenarios/fixture
 
 Open http://127.0.0.1:8765/mining. This is an operator-reviewed workflow, not autonomous prose extraction or proof of engineering compliance.
 
+The [five-project public-source screen](research/mining-power-screen-2026-10-16.md) records the real-world run, source links, procurement findings, and recommended Stibnite qualification question. No open power tender was verified.
+
 ## Current priority
 Preserve the verified replay/evidence foundation. Add phase-specific mining power requirements, infrastructure dependencies, technology-neutral qualification, supplier-specific matching, buying-chain research, and outcome tracking. Validate against real historical cases and prospective discovery before expanding to other industries.
 
