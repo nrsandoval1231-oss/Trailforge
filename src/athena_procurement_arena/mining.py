@@ -58,8 +58,8 @@ class Claim:
 class PowerRequirement:
     requirement_id: str
     project_id: str
-    phase: Claim
-    use_case: Claim
+    phase: dict
+    use_case: dict
     status: str
     demand: dict[str, Claim]
     delivery: dict[str, Claim]
@@ -196,8 +196,8 @@ def import_project(manifest: dict, base: Path) -> dict:
         status = raw.get('status', 'OBSERVED')
         if status not in STATUSES:
             raise ValueError('invalid requirement status')
-        req = asdict(PowerRequirement(identity, project_id, claim(raw.get('phase'), 'phase'),
-                                     claim(raw.get('use_case'), 'use_case'), status, {}, {}, {}, (),
+        req = asdict(PowerRequirement(identity, project_id, field_claim(raw.get('phase'), 'phase'),
+                                     field_claim(raw.get('use_case'), 'use_case'), status, {}, {}, {}, (),
                                      {'state': 'REVIEWED', 'reviewed_by': reviewer}))
         for group, names in GROUPS.items():
             req[group] = fields(raw.get(group, {}), names)
@@ -206,7 +206,9 @@ def import_project(manifest: dict, base: Path) -> dict:
         if status == 'VERIFIED' and (any(c['basis'] != 'VERIFIED' for c in known) or not known):
             raise ValueError('verified requirement cannot contain estimates, conflicts or unverified classifications')
         req['unknowns'] = [f'{g}.{k}' for g in GROUPS for k, c in req[g].items() if c['basis'] in {'UNKNOWN', 'CONFLICT'}]
-        req['evidence'] = [e for c in known for e in c.get('evidence', [])]
+        req['unknowns'] += [k for k in ('phase', 'use_case') if req[k]['value'] in {None, 'UNKNOWN'}]
+        req['evidence'] = [e for c in known for observation in c.get('alternatives', [c])
+                           for e in observation.get('evidence', [])]
         requirements.append(req)
     if not requirements:
         raise ValueError('at least one phase-specific requirement is required, even if load is unknown')
@@ -242,7 +244,9 @@ def qualify(req):
     return {'need': req['status'], 'researchable': req['status'] not in {'DISPROVEN', 'SUPERSEDED'},
             'procurement': 'UNAVAILABLE' if package in {'AWARDED', 'CANCELED', 'CLOSED'} else 'OPEN' if package == 'OPEN' else 'UNCONFIRMED',
             'hypotheses': hypotheses, 'unknowns': req['unknowns'],
-            'next_action': 'Confirm package scope and any remaining unawarded work' if package in {'AWARDED', 'CANCELED', 'CLOSED'} else
+            'next_action': 'Resolve phase/use-case classifications against the retained source observations' if
+            any(k in req['unknowns'] for k in ('phase', 'use_case')) else
+            'Confirm package scope and any remaining unawarded work' if package in {'AWARDED', 'CANCELED', 'CLOSED'} else
             'Obtain phase load profile and peak demand from the owner/EPC' if value(req, 'demand', 'peak_kw') is None else
             'Confirm buyer, package availability, site-rated capacity and delivery schedule'}
 
@@ -358,3 +362,4 @@ def main(argv=None):
 
 if __name__ == '__main__':
     raise SystemExit(main())
+
