@@ -10,9 +10,19 @@ Read **[Canonical Product Vision](docs/CANONICAL_VISION.md)** for the governing 
 The repository contains a Python deterministic research laboratory with temporal evidence controls, replay, decision ledger, experiment persistence, local workbench, and public-source discovery/opportunity intake. These are foundations, **not** proof of production-ready mining intelligence or autonomous opportunity prediction.
 
 - Workbench: `uv run --python 3.11 trailforge-ui`
-- Validation: `uv run --python 3.11 --with pytest --with ruff python scripts/validate.py`
+- Validation: `uv run --python 3.11 --extra dev python scripts/validate.py`
 - Existing public-source workflow: [Firecrawl workspace](docs/FIRECRAWL_WORKSPACE.md)
 - Historical research methodology: [Pre-RFP strategy](docs/PRE_RFP_DISCOVERY_STRATEGY.md) and [Slice A](docs/PRE_RFP_SLICE_A.md)
+
+## Mining Intelligence Pack v1
+
+The [mining pack](docs/MINING_PACK.md) imports reviewed, authorized source captures into multiple phase-specific requirements, evaluates infrastructure dependencies, qualifies demand independently of suppliers, and renders supplier-specific opportunity reports in the local workbench. Start the synthetic demonstration with:
+
+```sh
+uv run --python 3.11 trailforge-ui --saved-only --mining-input scenarios/fixtures/mining/project.json
+```
+
+Open http://127.0.0.1:8765/mining. This is an operator-reviewed workflow, not autonomous prose extraction or proof of engineering compliance.
 
 ## Current priority
 Preserve the verified replay/evidence foundation. Add phase-specific mining power requirements, infrastructure dependencies, technology-neutral qualification, supplier-specific matching, buying-chain research, and outcome tracking. Validate against real historical cases and prospective discovery before expanding to other industries.

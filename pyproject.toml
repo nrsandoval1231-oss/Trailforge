@@ -13,6 +13,7 @@ dev = ["pytest>=8", "ruff>=0.15", "tinycss2>=1.4", "cssselect2>=0.8"]
 brand = ["CairoSVG>=2.7", "fonttools>=4", "Pillow>=10"]
 
 [project.scripts]
+trailforge-mining = "athena_procurement_arena.mining:main"
 trailforge = "athena_procurement_arena.cli:main"
 trailforge-ui = "athena_procurement_arena.local_ui:main"
 trailforge-discovery = "athena_procurement_arena.discovery_cli:main"
