@@ -332,7 +332,7 @@ function dashboard(root) {
     [state.projects.length, "Imported project records"],
     [
       realReqs.filter((e) => e.qualification.procurement === "OPEN").length,
-      "Confirmed open imported packages",
+      "Open package statuses in imported records",
     ],
     [reqs.length, "Phase records · includes labeled demos"],
   ])

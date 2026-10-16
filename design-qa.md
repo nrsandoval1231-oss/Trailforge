@@ -2,6 +2,39 @@
 
 final result: blocked
 
+## Follow-up validation (isolated Windows checkout)
+
+PR20 head `cc9c079` was reconciled with main `5eb1838` through a clean merge
+(`9989ff0`). Main's phase/use-case conflict fixes are preserved. Independent Sol
+source review found one overstatement: the dashboard called recorded OPEN statuses
+"confirmed" even when the claim basis was OBSERVED. The label now reads
+"Open package statuses in imported records"; classification logic is unchanged.
+
+The complete gate on the integrated source passed: 475 Python tests, one existing
+Windows symlink skip, source compilation, Ruff and three fixture validations.
+Three Node model regressions also passed. A synthetic-only engine snapshot built,
+and loopback HTTP checks returned 200 for root, JS/CSS, font/artwork, assessments,
+frozen `/api/mining`, report index and `/mining/0/`. HTTP checks do not exercise
+browser interactions, downloads, layout, keyboard focus or console behavior.
+
+The supported browser failed at initialization twice (including a fresh reset):
+`failed to prepare MXC sandbox: MXC requires nonempty Unicode host SystemDrive`.
+No browser-policy workaround or alternate browser driver was used. Therefore no
+new rendered desktop/phone acceptance or screenshot is claimed.
+
+The approved board was resolved in Library as
+`libfile_d382c95194b48191bc664e66eefa7a47` (1536 x 1024). Library read returned
+an image pointer and OCR, not inspectable pixels. The current download helper
+reported unavailable materialization; one explicit local-destination transfer
+then failed because its mandatory metadata helper uses `os.setxattr`, unavailable
+on this Windows Python. No helper was patched and no pixel comparison is claimed.
+The eight original real-project manifests/captures remain unrecovered.
+
+A separate owner-private Sites destination was registered as
+`appgprj_6ad2913ac28c8191832cf81b676c835c`. Native packaging failed because its
+Bash script was invoked with a Windows path. Deployment status and any transfer
+artifact are recorded separately; registration alone is not a working preview.
+
 ## Source and implementation
 
 Visual source: approved `TrailForge Industrial Intelligence Board.png` (1536 × 1024), recovered and opened from the owner's artifacts. A composite concept board, not a pixel-exact single-screen specification. Product documentation records the palette, typography and asset authority.
