@@ -18,6 +18,11 @@ def test_campaign_is_seeded_and_compares_control_and_baseline():
     assert first["policies"]["BASELINE_A"]["invariant_failures"] == 0
     assert first["observability"]["executed_policy_runs"] == 200
     assert first["observability"]["failures"] == 0
+    assert first["observability"]["peak_memory_bytes"] is None
+
+def test_campaign_memory_tracing_is_opt_in():
+    result = run_campaign(5, {"BASELINE_A": BaselineA()}, seed=12, trace_memory=True)
+    assert result["observability"]["peak_memory_bytes"] > 0
 
 def test_all_family_templates_execute_for_both_policies():
     result = run_family_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}, seed=30)
