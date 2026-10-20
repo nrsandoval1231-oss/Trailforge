@@ -20,9 +20,30 @@ def test_campaign_is_seeded_and_compares_control_and_baseline():
     assert first["observability"]["failures"] == 0
     assert first["observability"]["peak_memory_bytes"] is None
 
-def test_campaign_memory_tracing_is_opt_in():
+def test_campaign_memory_tracing_is_opt_in(monkeypatch):
+    starts = []
+    real_start = campaign_module.tracemalloc.start
+    monkeypatch.setattr(campaign_module.tracemalloc, "start", lambda *a: starts.append(a) or real_start(*a))
+    run_campaign(5, {"BASELINE_A": BaselineA()}, seed=12)
+    assert starts == []
     result = run_campaign(5, {"BASELINE_A": BaselineA()}, seed=12, trace_memory=True)
-    assert result["observability"]["peak_memory_bytes"] > 0
+    assert len(starts) == 1 and result["observability"]["peak_memory_bytes"] > 0
+    assert not campaign_module.tracemalloc.is_tracing()
+
+def test_campaign_tracing_cleans_up_and_keeps_caller_tracer():
+    def broken_policy(state):
+        raise RuntimeError("policy failure")
+    try:
+        run_campaign(1, {"BROKEN": broken_policy}, trace_memory=True)
+    except RuntimeError:
+        pass
+    assert not campaign_module.tracemalloc.is_tracing()
+    campaign_module.tracemalloc.start()
+    try:
+        run_campaign(2, {"BASELINE_A": BaselineA()}, trace_memory=True)
+        assert campaign_module.tracemalloc.is_tracing()
+    finally:
+        campaign_module.tracemalloc.stop()
 
 def test_all_family_templates_execute_for_both_policies():
     result = run_family_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": BaselineA()}, seed=30)
