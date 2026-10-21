@@ -429,3 +429,14 @@ def test_http_returns_authoritative_relocked_gate_for_unknown_buyer(running):
     assert returned["gate"]["buyer"] == "UNKNOWN"
     assert returned["gate"]["fuel_unlocked"] is False
     assert returned["fuel"]["notes"] == saved["fuel"]["notes"]
+
+
+def test_future_dated_evidence_is_rejected_on_write(tmp_path):
+    store = Store(tmp_path / "future.sqlite3")
+    doc = blank("Project", "", "")
+    future = evidence("scope", "temporary power")
+    future["observed_at"] = "2099-01-01T00:00:00Z"
+    doc["evidence"].append(future)
+    with pytest.raises(ValueError, match="cannot be in the future"):
+        store.save(doc)
+    store.close()

@@ -10,6 +10,7 @@ import re
 import secrets
 import socket
 import stat
+import sys
 import threading
 import time
 import uuid
@@ -37,6 +38,15 @@ APP_ASSETS = {"/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
               "/app/icon-jade.svg": ("icon-jade.svg", "image/svg+xml"),
               "/app/Manrope.ttf": ("Manrope.ttf", "font/ttf"),
               "/app/IBMPlexMono-Regular.ttf": ("IBMPlexMono-Regular.ttf", "font/ttf")}
+
+
+def default_mining_inputs() -> list[Path]:
+    """Real checkout imports (never synthetic), from the source tree or the current directory."""
+    for root in (Path(__file__).resolve().parents[2], Path.cwd()):
+        found = [path for path in (root / "scenarios/fixtures/mining/stibnite/project.json",) if path.is_file()]
+        if found:
+            return found
+    return []
 
 
 def mining_payload(projects: list[dict], supplier) -> dict:
@@ -374,10 +384,13 @@ def main(argv=None):
         if not default.is_file():
             parser.error("No checkout GT-003 bundle found. Supply --bundle PATH or --saved-only.")
         bundles = [default]
-    mining_inputs = args.mining_input
-    if not mining_inputs and not args.no_fixture_mining:
-        base = Path(__file__).resolve().parents[2] / "scenarios/fixtures/mining"
-        mining_inputs = [path for path in (base / "stibnite/project.json",) if path.is_file()]  # real imports only
+    mining_inputs = default_mining_inputs() if not args.no_fixture_mining else []
+    if not args.no_fixture_mining and not mining_inputs:
+        print("No checkout mining imports found (run from the repository root); add projects with --mining-input PATH.",
+              file=sys.stderr, flush=True)
+    for path in args.mining_input:  # explicit inputs add to the defaults, never replace them
+        if path.resolve() not in {p.resolve() for p in mining_inputs}:
+            mining_inputs.append(path)
     app = None
     try:
         app = Workbench(args.experiments_dir, bundles, mining_inputs, args.mining_supplier)

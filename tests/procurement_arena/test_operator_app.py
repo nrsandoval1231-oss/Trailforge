@@ -66,6 +66,36 @@ def test_app_assets_are_packaged_and_csp_allows_only_self(tmp_path, path, kind):
     assert "script-src 'self'" in headers["Content-Security-Policy"]
 
 
+def test_explicit_inputs_add_to_defaults_and_opt_out_removes_them(tmp_path, monkeypatch):
+    seen = {}
+
+    class Stop(Exception):
+        pass
+
+    def fake_workbench(root, bundles, inputs, supplier):
+        seen["inputs"] = [Path(p).resolve() for p in inputs]
+        raise Stop
+
+    monkeypatch.setattr(local_ui, "Workbench", fake_workbench)
+    extra = ROOT / "scenarios/fixtures/mining/project.json"
+    for argv, expected in [
+        (["--saved-only", "--mining-input", str(extra)], [MINING[1].resolve(), extra.resolve()]),
+        (["--saved-only", "--mining-input", str(MINING[1])], [MINING[1].resolve()]),
+        (["--saved-only", "--no-fixture-mining", "--mining-input", str(extra)], [extra.resolve()]),
+    ]:
+        with pytest.raises(Stop):
+            local_ui.main(argv)
+        assert seen["inputs"] == expected
+
+
+def test_default_inputs_fall_back_to_working_directory(tmp_path, monkeypatch):
+    monkeypatch.setattr(local_ui, "__file__", str(tmp_path / "site-packages/pkg/local_ui.py"))
+    monkeypatch.chdir(ROOT)
+    assert local_ui.default_mining_inputs() == [ROOT / "scenarios/fixtures/mining/stibnite/project.json"]
+    monkeypatch.chdir(tmp_path)
+    assert local_ui.default_mining_inputs() == []
+
+
 def test_synthetic_projects_never_reach_any_operator_page(tmp_path):
     with serving(tmp_path) as server:
         _, _, listing = get(server, "/mining")

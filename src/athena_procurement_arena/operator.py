@@ -11,7 +11,7 @@ import secrets
 import sqlite3
 import stat
 import threading
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
 from pathlib import Path
@@ -52,6 +52,15 @@ def aware_timestamp(value: str) -> bool:
         return parsed.tzinfo is not None and parsed.utcoffset() is not None
     except (ValueError, TypeError):
         return False
+
+
+FUTURE_SKEW = timedelta(minutes=5)
+
+
+def not_future(value: str) -> bool:
+    """Evidence and interactions cannot be dated after the moment they are recorded."""
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return parsed <= datetime.now(UTC) + FUTURE_SKEW
 
 
 def traceable_source_url(value: str) -> bool:
@@ -169,6 +178,8 @@ def validate_doc(doc: object) -> dict:
             raise ValueError("evidence excerpt hash mismatch")
         if not aware_timestamp(evidence["observed_at"]):
             raise ValueError("evidence observed time must be an ISO timestamp with timezone")
+        if not not_future(evidence["observed_at"]):
+            raise ValueError("evidence observed time cannot be in the future")
         if evidence["review_status"] == "REVIEWED" and (
             not evidence["reviewer"].strip() or not evidence["excerpt"].strip()
         ):
