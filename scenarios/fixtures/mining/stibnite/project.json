@@ -1,0 +1,256 @@
+{
+  "schema_version": "trailforge-mining-import-v1",
+  "project_id": "stibnite",
+  "cutoff": "2026-10-21T03:30:00+00:00",
+  "reviewed_by": "Nick Sandoval (pending review; drafted by Claude Code)",
+  "sources": {
+    "sept": {
+      "capture_file": "perpetua-sept-2026-update.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2026-09-28T00:00:00+00:00",
+      "first_observed_at": "2026-10-21T01:30:00+00:00",
+      "available_at": "2026-10-21T01:30:00+00:00"
+    },
+    "atco": {
+      "capture_file": "atco-housing-award.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2025-10-27T00:00:00+00:00",
+      "first_observed_at": "2026-10-21T01:30:00+00:00",
+      "available_at": "2026-10-21T01:30:00+00:00"
+    },
+    "hatch": {
+      "capture_file": "hatch-epcm.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2025-12-17T00:00:00+00:00",
+      "first_observed_at": "2026-10-21T01:30:00+00:00",
+      "available_at": "2026-10-21T01:30:00+00:00"
+    },
+    "idaho": {
+      "capture_file": "idaho-power-contract.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2025-02-13T22:33:40+00:00",
+      "first_observed_at": "2026-10-21T01:30:00+00:00",
+      "available_at": "2026-10-21T01:30:00+00:00"
+    },
+    "notices": {
+      "capture_file": "perpetua-local-notices.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2026-10-19T00:00:00+00:00",
+      "first_observed_at": "2026-10-21T03:00:00+00:00",
+      "available_at": "2026-10-21T03:00:00+00:00"
+    },
+    "vendor": {
+      "capture_file": "perpetua-vendor-intake.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2026-08-03T15:44:06+00:00",
+      "first_observed_at": "2026-10-21T03:00:00+00:00",
+      "available_at": "2026-10-21T03:00:00+00:00"
+    }
+  },
+  "project": {
+    "name": {
+      "value": "Stibnite Gold Project",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "hatch",
+          "quote": "as EPCM for Stibnite Gold Project"
+        }
+      ]
+    },
+    "company": {
+      "value": "Perpetua Resources Corp.",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "sept",
+          "quote": "Perpetua Resources Corp. (Nasdaq: PPTA / TSX: PPTA)"
+        }
+      ]
+    },
+    "location": {
+      "value": "Near Yellow Pine, Idaho",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "atco",
+          "quote": "Stibnite Gold Project located near Yellow Pine, Idaho"
+        }
+      ]
+    },
+    "commodity": {
+      "value": "Gold, silver, antimony",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "atco",
+          "quote": "enable gold, silver and antimony mining operations"
+        }
+      ]
+    },
+    "mining_method": {
+      "value": "Open pit",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "sept",
+          "quote": "open-pit gold deposits"
+        }
+      ]
+    },
+    "stage": {
+      "value": "Construction (early works and critical path)",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "sept",
+          "quote": "early works and critical path construction activities continuing through the summer and into the fall"
+        }
+      ]
+    },
+    "epcm": {
+      "value": "Hatch Ltd.",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "hatch",
+          "quote": "selected Hatch Ltd. (“Hatch”) as the Engineering, Procurement, and Construction Management (“EPCM”) contractor"
+        }
+      ]
+    },
+    "decision_makers": {
+      "value": "Michael Wright, VP Projects, Perpetua (role per Oct 2025; confirm current)",
+      "basis": "OBSERVED",
+      "evidence": [
+        {
+          "source": "atco",
+          "quote": "Michael Wright, Vice President, Projects for Perpetua Resources"
+        }
+      ]
+    },
+    "existing_power": null
+  },
+  "requirements": [
+    {
+      "requirement_id": "stibnite:construction:camp",
+      "status": "HYPOTHESIS",
+      "phase": {
+        "value": "CONSTRUCTION",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "sept",
+            "quote": "installation of the Worker Housing Facility"
+          }
+        ]
+      },
+      "use_case": {
+        "value": "CAMP",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "atco",
+            "quote": "1,052-person dormitory lodge and office facilities, which will be operational in Q1 2027"
+          }
+        ]
+      },
+      "demand": {},
+      "delivery": {
+        "site_access": {
+          "value": "Remote central Idaho; since Sept 1, 2026 all traffic through Stibnite runs with a pilot vehicle; large-load deliveries and road works ongoing",
+          "basis": "OBSERVED",
+          "evidence": [
+            {
+              "source": "notices",
+              "quote": "access through Stibnite will be managed using a pilot vehicle system"
+            },
+            {
+              "source": "notices",
+              "quote": "Large load deliveries will slow traffic on Johnson Creek and Stibnite Road."
+            },
+            {
+              "source": "notices",
+              "quote": "located in a remote area of central Idaho within Valley County"
+            }
+          ]
+        }
+      },
+      "procurement": {}
+    },
+    {
+      "requirement_id": "stibnite:construction:powerline-materials",
+      "status": "OBSERVED",
+      "phase": {
+        "value": "CONSTRUCTION",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "sept",
+            "quote": "ongoing powerline procurement"
+          }
+        ]
+      },
+      "use_case": {
+        "value": "OTHER",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "idaho",
+            "quote": "signed a procurement contract with Idaho Power Company (“Idaho Power”) for powerline materials"
+          }
+        ]
+      },
+      "demand": {},
+      "delivery": {},
+      "procurement": {
+        "package_status": {
+          "value": "AWARDED",
+          "basis": "OBSERVED",
+          "evidence": [
+            {
+              "source": "idaho",
+              "quote": "the Company has signed a procurement contract with Idaho Power to begin down payments on several critical long-lead power line items"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "requirement_id": "stibnite:operations:grid-supply",
+      "status": "OBSERVED",
+      "phase": {
+        "value": "OPERATIONS",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "sept",
+            "quote": "the upgraded line will deliver the required grid power needed to run the Project’s processing facility and site operations"
+          },
+          {
+            "source": "notices",
+            "quote": "In 2026, our work includes preparing the Burntlog Route to be our main access road, upgrading transmission lines, and starting to build on-site infrastructure."
+          }
+        ]
+      },
+      "use_case": {
+        "value": "PRIME",
+        "basis": "OBSERVED",
+        "evidence": [
+          {
+            "source": "sept",
+            "quote": "the upgraded line will deliver the required grid power needed to run the Project’s processing facility and site operations"
+          }
+        ]
+      },
+      "demand": {},
+      "delivery": {},
+      "procurement": {}
+    }
+  ]
+}

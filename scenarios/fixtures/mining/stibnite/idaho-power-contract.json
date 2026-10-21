@@ -1,0 +1,12 @@
+{
+  "capture_hash": "c5e7ca0a9ab72badd348a86ae654c0661eb64ac9df2239b3be626699a51d1895",
+  "capture_id": "idaho-power-contract",
+  "captured_at": "2026-10-21T01:30:00+00:00",
+  "captured_by": "Claude Code for Nick Sandoval",
+  "content": "**BOISE, ID** \u2013 Perpetua Resources Corp. (Nasdaq: PPTA / TSX: PPTA) (\u201cPerpetua Resources\u201d or \u201cPerpetua\u201d or the \u201cCompany\u201d), announced today that following the successful completion of basic engineering for the Stibnite Gold Project (\u201cProject\u201d) along with the release of its 2024 Financial Update (\u201cFinancial Update\u201d), the Company has approved commencement of detailed engineering studies with Ausenco Engineering USA South Inc. (\u201cAusenco\u201d) and signed a procurement contract with Idaho Power Company (\u201cIdaho Power\u201d) for powerline materials. The Financial Update reconfirms the robust economics of the Project, indicating a $3.7 billion after-tax net present value (\u201cNPV\u201d) (5%) and an after-tax internal rate of return (\u201cIRR\u201d) in excess of 27% at spot prices2 and is resilient at lower prices including a $1.4 billion after-tax NPV (5%) and 15.4% after-tax IRR at long-term consensus prices3, driven by industry leading1 operating costs.\n\nAs Perpetua advances towards a construction decision later this year, the Company has signed a procurement contract with Idaho Power to begin down payments on several critical long-lead power line items.\n",
+  "content_sha256": "482848ea6dc6d2503bec9d7a66ce7ee5a9e19844188dd10a12125775b632cec6",
+  "provider": "firecrawl",
+  "provider_job_id": "01a15c1d-0ac2-731f-8317-feea1cc37e76",
+  "schema_version": "trailforge-public-capture-v1",
+  "source_url": "https://perpetuaresources.com/perpetua-resources-commences-detailed-engineering-and-signs-procurement-contract/"
+}
