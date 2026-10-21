@@ -49,6 +49,7 @@ function el(tag, attrs, ...children) {
 
 const label = (field) => LABELS[field] || field.replace(/_/g, " ");
 const day = (iso) => (iso ? String(iso).slice(0, 10) : "—");
+const phaseOf = (req) => req.phase.value || "UNKNOWN";  // missing phase is UNKNOWN everywhere
 const humanize = (v) => String(v).replace(/_/g, " ").toLowerCase().replace(/^\w/, (c) => c.toUpperCase());
 
 function tag(text, kind) {
@@ -132,7 +133,7 @@ function renderQueue() {
   const tbody = el("tbody");
   const search = el("input", { type: "search", placeholder: "Filter by project, phase, owner, EPCM…", "aria-label": "Filter requirements", value: state.q });
   const phases = el("select", { "aria-label": "Phase" }, el("option", { value: "", text: "All phases" }),
-    PHASE_ORDER.filter((p) => rows.some((r) => r.req.phase.value === p)).map((p) => el("option", { value: p, text: humanize(p) })));
+    PHASE_ORDER.filter((p) => rows.some((r) => phaseOf(r.req) === p)).map((p) => el("option", { value: p, text: humanize(p) })));
   phases.value = state.phase;
   const hide = el("input", { type: "checkbox" });
   hide.checked = state.hideBlocked;
@@ -141,7 +142,7 @@ function renderQueue() {
     tbody.replaceChildren();
     const needle = state.q.trim().toLowerCase();
     const shown = rows.filter(({ project, req }) => {
-      if (state.phase && req.phase.value !== state.phase) return false;
+      if (state.phase && phaseOf(req) !== state.phase) return false;
       if (state.hideBlocked && req.match.verdict === "DO_NOT_PURSUE") return false;
       if (!needle) return true;
       const p = project.project;

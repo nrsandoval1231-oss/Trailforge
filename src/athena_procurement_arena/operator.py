@@ -19,7 +19,9 @@ from urllib.parse import urlsplit
 
 from .discovery import Discovery
 
-MAX_BODY = 65536
+# Updates resend the whole append-only dossier, so the bound must fit a grown project file
+# (evidence excerpts alone may be 12,000 characters each). Still bounded; loopback + token only.
+MAX_BODY = 8 * 1024 * 1024
 ID = re.compile(r"[0-9a-f]{32}\Z")
 CLAIMS = {"project", "scope", "required_mw", "supply_status", "timing", "duration", "site_constraints", "fuel", "buyer"}
 ROLES = {"OWNER", "DEVELOPER", "EPC", "BUYER", "UTILITY", "ENGINEER", "OTHER"}

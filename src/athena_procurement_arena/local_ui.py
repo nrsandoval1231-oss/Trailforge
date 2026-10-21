@@ -86,7 +86,12 @@ class Workbench:
     def __init__(self, root: Path, bundles: list[Path], mining_inputs: list[Path] = (), mining_supplier: Path | None = None):
         self.mining_supplier = load_supplier(safe_path(mining_supplier)) if mining_supplier else load_supplier()
         # Owner rule: no synthetic data on any operator page (app or legacy /mining reports).
-        loaded = [load_project(safe_path(path)) for path in mining_inputs]
+        loaded = {}
+        for path in mining_inputs:  # later inputs replace earlier ones with the same project_id
+            project = load_project(safe_path(path))
+            loaded.pop(project["project_id"], None)
+            loaded[project["project_id"]] = project
+        loaded = list(loaded.values())
         self.mining = [p for p in loaded if not any(s["access"] == "SYNTHETIC" for s in p["sources"].values())]
         self.withheld_synthetic = len(loaded) - len(self.mining)
         self.root = safe_path(root)

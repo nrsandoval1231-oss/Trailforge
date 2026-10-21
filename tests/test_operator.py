@@ -440,3 +440,14 @@ def test_future_dated_evidence_is_rejected_on_write(tmp_path):
     with pytest.raises(ValueError, match="cannot be in the future"):
         store.save(doc)
     store.close()
+
+
+def test_grown_dossier_still_saves_over_http(running):
+    s = running
+    created = json.loads(request(s, "POST", "/api/projects", {"name": "Big", "location": "", "phase": ""}, s.token)[1])
+    doc = {k: v for k, v in created.items() if k not in {"gate", "_history_lengths"}}
+    for i in range(12):  # well past the old 64 KiB request limit
+        doc["evidence"].append(evidence("project", f"fact {i}", excerpt=("x" * 11990) + f"{i:010d}"))
+    doc["version"] += 1
+    status, body, _ = request(s, "POST", f"/api/projects/{doc['id']}", doc, s.token)
+    assert status == 201, body

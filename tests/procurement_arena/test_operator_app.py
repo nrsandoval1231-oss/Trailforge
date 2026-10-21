@@ -96,6 +96,21 @@ def test_default_inputs_fall_back_to_working_directory(tmp_path, monkeypatch):
     assert local_ui.default_mining_inputs() == []
 
 
+def test_later_import_replaces_same_project_id(tmp_path):
+    import shutil
+    copy = tmp_path / "stibnite-v2"
+    shutil.copytree(MINING[1].parent, copy)
+    manifest = json.loads((copy / "project.json").read_text(encoding="utf-8"))
+    manifest["reviewed_by"] = "Updated reviewer"
+    (copy / "project.json").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+    app = local_ui.Workbench(tmp_path / "wb", [], [MINING[1], copy / "project.json"])
+    try:
+        assert [p["project_id"] for p in app.mining] == ["stibnite"]
+        assert app.mining[0]["reviewed_by"] == "Updated reviewer"
+    finally:
+        app.close()
+
+
 def test_synthetic_projects_never_reach_any_operator_page(tmp_path):
     with serving(tmp_path) as server:
         _, _, listing = get(server, "/mining")
