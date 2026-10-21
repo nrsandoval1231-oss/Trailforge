@@ -12,6 +12,8 @@ from athena_procurement_arena.public_capture import capture_markdown, write_capt
 
 HERE = Path(__file__).parent
 CAPTURED_AT = datetime(2026, 10, 21, 1, 30, tzinfo=UTC)
+LATER = {"perpetua-local-notices": datetime(2026, 10, 21, 3, 0, tzinfo=UTC),
+         "perpetua-vendor-intake": datetime(2026, 10, 21, 3, 0, tzinfo=UTC)}
 CAPTURED_BY = "Claude Code for Nick Sandoval"
 
 SOURCES = {
@@ -84,11 +86,72 @@ Under the EPCM model, Hatch will be responsible for:
 As Perpetua advances towards a construction decision later this year, the Company has signed a procurement contract with Idaho Power to begin down payments on several critical long-lead power line items.
 """,
     ),
+    "perpetua-local-notices": (
+        "https://perpetuaresources.com/project/local-notices/",
+        "01a15c2c-73a0-72d8-b2e1-105577f55d1c",
+        """# We are Building!
+
+Work to develop Stibnite is underway. After years of study, permitting, and preparation, the Project has moved into construction.
+
+## Please Pardon the Disruption
+
+Over the next three years, we will be building the Stibnite Gold Project. In 2026, our work includes preparing the Burntlog Route to be our main access road, upgrading transmission lines, and starting to build on-site infrastructure. During this time, there will be an increase in traffic on the roads that may impact your travel.
+
+Updated October 19, 2026
+
+### Road Update for October 19 – October 25, 2026
+
+- Large load deliveries will slow traffic on Johnson Creek and Stibnite Road.
+  - All large load traffic will have pilot cars.
+- Road maintenance will continue to occur along Johnson Creek and Stibnite Roads.
+- Work crews will be traveling to Stibnite mine site and Burntlog Route.
+- Critical path construction items will continue to occur along Burntlog Route.
+- Stibnite is an active construction zone. Please be prepared for possible delays when passing through
+
+Updated September 21, 2026
+
+### Traffic through Stibnite
+
+Beginning **_September 1, 2026_**, access through Stibnite will be managed using a pilot vehicle system. All traffic will be required to travel through the area with a pilot vehicle, and all visitors should expect to stop at our guard shacks before proceeding. Please plan for additional travel time. Attached are our pilot vehicle schedules.
+
+## Where Idaho Meets Opportunity
+
+The Stibnite Gold Project is located in a remote area of central Idaho within Valley County. The site sits within a historic mining district that has been mined on and off for generations.
+""",
+    ),
+    "perpetua-vendor-intake": (
+        "https://perpetuaresources.com/contact/vendor-intake-form/",
+        "01a15c2c-73c9-776a-b532-0ae3ef89a1c1",
+        """# Vendor Intake Form
+
+If you provide goods or services and are interested in working with Perpetua, start with our vendor intake form.
+
+Does your company have an office in Idaho?
+
+If you are a supplier/manufacturer, please select the category that best describes you:
+
+Process Equipment
+
+Mechanical Equipment
+
+Piping
+
+Electrical Equipment
+
+Control Equipment
+
+Instrumentation
+
+Other
+""",
+    ),
 }
 
 if __name__ == "__main__":
     for capture_id, (url, job, content) in SOURCES.items():
+        if (HERE / f"{capture_id}.json").exists():
+            continue  # captures are immutable; never rewrite a retained source
         capture = capture_markdown(url, content, capture_id=capture_id, captured_by=CAPTURED_BY,
-                                   captured_at=CAPTURED_AT, provider="firecrawl", provider_job_id=job)
+                                   captured_at=LATER.get(capture_id, CAPTURED_AT), provider="firecrawl", provider_job_id=job)
         write_capture(capture, HERE / f"{capture_id}.json")
         print(capture_id, capture.capture_hash[:12])

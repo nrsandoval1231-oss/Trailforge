@@ -1,0 +1,12 @@
+{
+  "capture_hash": "ec0a80c3a9293078ad8e6d76a43c50f77c0cf7908e17ecc32bea1988f8bbb629",
+  "capture_id": "perpetua-vendor-intake",
+  "captured_at": "2026-10-21T03:00:00+00:00",
+  "captured_by": "Claude Code for Nick Sandoval",
+  "content": "# Vendor Intake Form\n\nIf you provide goods or services and are interested in working with Perpetua, start with our vendor intake form.\n\nDoes your company have an office in Idaho?\n\nIf you are a supplier/manufacturer, please select the category that best describes you:\n\nProcess Equipment\n\nMechanical Equipment\n\nPiping\n\nElectrical Equipment\n\nControl Equipment\n\nInstrumentation\n\nOther\n",
+  "content_sha256": "10cfa5c4747bb84deba605a144ef223ae2ccfa701aa5c6e5b2207997ca095c7d",
+  "provider": "firecrawl",
+  "provider_job_id": "01a15c2c-73c9-776a-b532-0ae3ef89a1c1",
+  "schema_version": "trailforge-public-capture-v1",
+  "source_url": "https://perpetuaresources.com/contact/vendor-intake-form/"
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "trailforge-mining-import-v1",
   "project_id": "stibnite",
-  "cutoff": "2026-10-21T02:00:00+00:00",
+  "cutoff": "2026-10-21T03:30:00+00:00",
   "reviewed_by": "Nick Sandoval (pending review; drafted by Claude Code)",
   "sources": {
     "sept": {
@@ -35,6 +35,22 @@
       "published_at": "2025-02-13T22:33:40+00:00",
       "first_observed_at": "2026-10-21T01:30:00+00:00",
       "available_at": "2026-10-21T01:30:00+00:00"
+    },
+    "notices": {
+      "capture_file": "perpetua-local-notices.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2026-10-19T00:00:00+00:00",
+      "first_observed_at": "2026-10-21T03:00:00+00:00",
+      "available_at": "2026-10-21T03:00:00+00:00"
+    },
+    "vendor": {
+      "capture_file": "perpetua-vendor-intake.json",
+      "access": "PUBLIC",
+      "share_allowed": true,
+      "published_at": "2026-08-03T15:44:06+00:00",
+      "first_observed_at": "2026-10-21T03:00:00+00:00",
+      "available_at": "2026-10-21T03:00:00+00:00"
     }
   },
   "project": {
@@ -145,7 +161,26 @@
         ]
       },
       "demand": {},
-      "delivery": {},
+      "delivery": {
+        "site_access": {
+          "value": "Remote central Idaho; since Sept 1, 2026 all traffic through Stibnite runs with a pilot vehicle; large-load deliveries and road works ongoing",
+          "basis": "OBSERVED",
+          "evidence": [
+            {
+              "source": "notices",
+              "quote": "access through Stibnite will be managed using a pilot vehicle system"
+            },
+            {
+              "source": "notices",
+              "quote": "Large load deliveries will slow traffic on Johnson Creek and Stibnite Road."
+            },
+            {
+              "source": "notices",
+              "quote": "located in a remote area of central Idaho within Valley County"
+            }
+          ]
+        }
+      },
       "procurement": {}
     },
     {
@@ -196,6 +231,10 @@
           {
             "source": "sept",
             "quote": "the upgraded line will deliver the required grid power needed to run the Project’s processing facility and site operations"
+          },
+          {
+            "source": "notices",
+            "quote": "In 2026, our work includes preparing the Burntlog Route to be our main access road, upgrading transmission lines, and starting to build on-site infrastructure."
           }
         ]
       },
