@@ -63,7 +63,9 @@ That means:
 6. **Time-safe.** Source published, first observed, and available dates stay
    distinct and visible. The UI never presents later knowledge as if it had been
    known earlier.
-7. **Confidential stays local.** Private documents are marked and never mixed into
+7. **No synthetic data in the app.** Projects with any SYNTHETIC source are withheld
+   from the operator app. Synthetic fixtures exist only for engine tests.
+8. **Confidential stays local.** Private documents are marked and never mixed into
    shared or public evidence.
 
 ## Information architecture
@@ -151,7 +153,7 @@ from settings rather than from the main navigation.
 | Phase | Delivers | Done when |
 | --- | --- | --- |
 | **0. Salvage** | Port the operator storage and tests onto `main`; drop the stale brand copies | Branch tests pass on `main`; branch can be archived |
-| **1. Read-only core** | Queue and project dossier over existing mining imports | The synthetic copper project plus one real project render fully on desktop and phone |
+| **1. Read-only core** | Queue and project dossier over existing mining imports | A real project (Stibnite) renders fully on desktop and phone |
 | **2. Evidence loop** | Capture, review, conflict resolution, append-only corrections | A real source goes from capture to a reviewed claim without editing JSON |
 | **3. Action loop** | Next-action brief, buying chain editing, activity log, fuel/supplier gate | A full cycle from new signal → brief → logged conversation is recorded |
 | **4. Later** | Presentation/share view, multi-supplier, background discovery | Only after phases 1–3 prove useful in real use |
@@ -192,8 +194,9 @@ enrichment, autonomous crawling, price quoting, and forecast accuracy claims.
   `/app`: requirement Queue, project dossier (facts, phase timeline, per-requirement
   need vs. supplier fit, deciding unknowns, hypotheses, copy-only brief), and
   Sources. Data comes from `/api/mining`, which returns the engine's own
-  `qualify` and `match_supplier` results. The synthetic copper fixture and the real
-  Stibnite import (`scenarios/fixtures/mining/stibnite/`) load by default. Checked
+  `qualify` and `match_supplier` results. The real Stibnite import
+  (`scenarios/fixtures/mining/stibnite/`) loads by default; synthetic projects are
+  withheld from every operator page (owner rule, 2026-10-21). Checked
   at 1366px and 390px with no console errors and no horizontal scroll.
 - The old research workbench stays at `/` until Phase 2 replaces its remaining use.
 

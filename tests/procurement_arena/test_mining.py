@@ -159,12 +159,15 @@ def test_real_import_report_and_workbench_http_end_to_end(tmp_path):
     assert 'DO_NOT_PURSUE' in report.read_text()
     with pytest.raises(FileExistsError):
         main(['--input', str(FIXTURE), '--output', str(output)])
-    app = Workbench(tmp_path / 'workbench', [], [FIXTURE])
+    # Operator pages never show synthetic data (owner rule); serve the real Stibnite import.
+    stibnite = FIXTURE.parent / 'stibnite' / 'project.json'
+    app = Workbench(tmp_path / 'workbench', [], [FIXTURE, stibnite])
+    assert app.withheld_synthetic == 1
     server = WorkbenchServer(app, 0)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
-        for path, expected in [('/', 'Mining intelligence reports'), ('/mining', 'synthetic-copper'),
+        for path, expected in [('/', 'Mining intelligence reports'), ('/mining', 'stibnite'),
                                ('/mining/0', 'Infrastructure dependencies &amp; falsifiable hypotheses')]:
             connection = http.client.HTTPConnection('127.0.0.1', server.server_port)
             connection.request('GET', path)

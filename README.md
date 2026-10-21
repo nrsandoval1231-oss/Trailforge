@@ -9,7 +9,7 @@ Read **[Canonical Product Vision](docs/CANONICAL_VISION.md)** for the governing 
 ## What exists today
 The repository contains a Python deterministic research laboratory with temporal evidence controls, replay, decision ledger, experiment persistence, local workbench, and public-source discovery/opportunity intake. These are foundations, **not** proof of production-ready mining intelligence or autonomous opportunity prediction.
 
-- **Operator app:** `uv run --python 3.11 trailforge-ui --saved-only`, then open http://127.0.0.1:8765/app. It loads the synthetic demo and the real Stibnite import by default; add projects with `--mining-input PATH` (repeatable). See [UI vision](docs/UI_VISION.md).
+- **Operator app:** `uv run --python 3.11 trailforge-ui --saved-only`, then open http://127.0.0.1:8765/app. It loads the real Stibnite import by default and never displays synthetic data; add projects with `--mining-input PATH` (repeatable). See [UI vision](docs/UI_VISION.md).
 - Research workbench (replay): http://127.0.0.1:8765/ on the same server
 - Validation: `uv run --python 3.11 --extra dev python scripts/validate.py`
 - Existing public-source workflow: [Firecrawl workspace](docs/FIRECRAWL_WORKSPACE.md)
@@ -17,13 +17,13 @@ The repository contains a Python deterministic research laboratory with temporal
 
 ## Mining Intelligence Pack v1
 
-The [mining pack](docs/MINING_PACK.md) imports reviewed, authorized source captures into multiple phase-specific requirements, evaluates infrastructure dependencies, qualifies demand independently of suppliers, and renders supplier-specific opportunity reports in the local workbench. Start the synthetic demonstration with:
+The [mining pack](docs/MINING_PACK.md) imports reviewed, authorized source captures into multiple phase-specific requirements, evaluates infrastructure dependencies, qualifies demand independently of suppliers, and renders supplier-specific opportunity reports. Run it on the real Stibnite import with:
 
 ```sh
-uv run --python 3.11 trailforge-ui --saved-only --mining-input scenarios/fixtures/mining/project.json
+uv run --python 3.11 trailforge-ui --saved-only
 ```
 
-Open http://127.0.0.1:8765/mining. This is an operator-reviewed workflow, not autonomous prose extraction or proof of engineering compliance.
+Open http://127.0.0.1:8765/app. Synthetic fixtures are used only by engine tests and are never displayed. This is an operator-reviewed workflow, not autonomous prose extraction or proof of engineering compliance.
 
 The [five-project public-source screen](research/mining-power-screen-2026-10-16.md) records the real-world run, source links, procurement findings, and recommended Stibnite qualification question. No open power tender was verified.
 

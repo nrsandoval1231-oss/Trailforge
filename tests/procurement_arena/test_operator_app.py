@@ -45,7 +45,8 @@ def test_mining_api_returns_engine_verdicts_per_requirement(tmp_path):
         status, headers, body = get(server, "/api/mining")
     assert status == 200 and headers["Content-Type"].startswith("application/json")
     data = json.loads(body)
-    assert [p["project_id"] for p in data["projects"]] == ["synthetic-copper", "stibnite"]
+    assert [p["project_id"] for p in data["projects"]] == ["stibnite"]
+    assert data["withheld_synthetic"] == 1  # owner rule: synthetic data is never shown
     for project in data["projects"]:
         for req in project["requirements"]:
             assert req["qualification"] == qualify({k: v for k, v in req.items() if k not in {"qualification", "match"}})
@@ -63,6 +64,13 @@ def test_app_assets_are_packaged_and_csp_allows_only_self(tmp_path, path, kind):
     assert status == 200 and headers["Content-Type"].startswith(kind) and body
     assert "font-src 'self'" in headers["Content-Security-Policy"]
     assert "script-src 'self'" in headers["Content-Security-Policy"]
+
+
+def test_synthetic_projects_never_reach_any_operator_page(tmp_path):
+    with serving(tmp_path) as server:
+        _, _, listing = get(server, "/mining")
+        _, _, api = get(server, "/api/mining")
+    assert b"synthetic" not in listing.lower() and b"Synthetic" not in api
 
 
 def test_app_has_no_send_path_or_inline_script(tmp_path):

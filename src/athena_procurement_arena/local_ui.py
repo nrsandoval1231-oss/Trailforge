@@ -40,15 +40,23 @@ APP_ASSETS = {"/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
 
 
 def mining_payload(projects: list[dict], supplier) -> dict:
-    """Engine verdicts for the operator app; the browser renders, never decides."""
+    """Engine verdicts for the operator app; the browser renders, never decides.
+
+    Owner rule: the operator app never shows synthetic data. Any project with a
+    SYNTHETIC source is withheld and only counted.
+    """
     from dataclasses import asdict
-    out = []
+    out, withheld = [], 0
     for project in projects:
+        if any(source["access"] == "SYNTHETIC" for source in project["sources"].values()):
+            withheld += 1
+            continue
         location = project["project"]["location"]["value"]
         requirements = [{**req, "qualification": qualify(req), "match": match_supplier(req, supplier, location=location)}
                         for req in project["requirements"]]
         out.append({**project, "requirements": requirements})
-    return {"supplier": asdict(supplier), "reference_supplier": supplier == REFERENCE_SUPPLIER, "projects": out}
+    return {"supplier": asdict(supplier), "reference_supplier": supplier == REFERENCE_SUPPLIER, "projects": out,
+            "withheld_synthetic": withheld}
 
 
 def safe_path(path: Path) -> Path:
@@ -67,7 +75,10 @@ def safe_path(path: Path) -> Path:
 class Workbench:
     def __init__(self, root: Path, bundles: list[Path], mining_inputs: list[Path] = (), mining_supplier: Path | None = None):
         self.mining_supplier = load_supplier(safe_path(mining_supplier)) if mining_supplier else load_supplier()
-        self.mining = [load_project(safe_path(path)) for path in mining_inputs]
+        # Owner rule: no synthetic data on any operator page (app or legacy /mining reports).
+        loaded = [load_project(safe_path(path)) for path in mining_inputs]
+        self.mining = [p for p in loaded if not any(s["access"] == "SYNTHETIC" for s in p["sources"].values())]
+        self.withheld_synthetic = len(loaded) - len(self.mining)
         self.root = safe_path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
@@ -254,7 +265,9 @@ class Handler(BaseHTTPRequestHandler):
                                "text/html; charset=utf-8")
                     return
                 if path == "/api/mining":
-                    self.reply(200, mining_payload(app.mining, app.mining_supplier))
+                    payload = mining_payload(app.mining, app.mining_supplier)
+                    payload["withheld_synthetic"] += app.withheld_synthetic
+                    self.reply(200, payload)
                     return
                 if self.path == "/mining/style.css":
                     self.path = "/style.css"
@@ -350,7 +363,7 @@ def main(argv=None):
     parser.add_argument("--mining-supplier", type=Path, help="optional supplier offering profile JSON")
     parser.add_argument("--mining-input", type=Path, action="append", default=[], help="reviewed mining import; repeatable")
     parser.add_argument("--no-fixture-mining", action="store_true",
-                        help="do not load the checkout's synthetic and Stibnite mining imports by default")
+                        help="do not load the checkout's real Stibnite mining import by default")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     if not 0 <= args.port <= 65535:
@@ -364,7 +377,7 @@ def main(argv=None):
     mining_inputs = args.mining_input
     if not mining_inputs and not args.no_fixture_mining:
         base = Path(__file__).resolve().parents[2] / "scenarios/fixtures/mining"
-        mining_inputs = [path for path in (base / "project.json", base / "stibnite/project.json") if path.is_file()]
+        mining_inputs = [path for path in (base / "stibnite/project.json",) if path.is_file()]  # real imports only
     app = None
     try:
         app = Workbench(args.experiments_dir, bundles, mining_inputs, args.mining_supplier)
