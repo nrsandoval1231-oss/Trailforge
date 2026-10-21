@@ -1,0 +1,123 @@
+Building wheel...
+running egg_info
+writing src\athena_trailforge.egg-info\PKG-INFO
+writing dependency_links to src\athena_trailforge.egg-info\dependency_links.txt
+writing entry points to src\athena_trailforge.egg-info\entry_points.txt
+writing requirements to src\athena_trailforge.egg-info\requires.txt
+writing top-level names to src\athena_trailforge.egg-info\top_level.txt
+reading manifest file 'src\athena_trailforge.egg-info\SOURCES.txt'
+writing manifest file 'src\athena_trailforge.egg-info\SOURCES.txt'
+running bdist_wheel
+running build
+running build_py
+copying src\athena_procurement_arena\operator.py -> build\lib\athena_procurement_arena
+running egg_info
+writing src\athena_trailforge.egg-info\PKG-INFO
+writing dependency_links to src\athena_trailforge.egg-info\dependency_links.txt
+writing entry points to src\athena_trailforge.egg-info\entry_points.txt
+writing requirements to src\athena_trailforge.egg-info\requires.txt
+writing top-level names to src\athena_trailforge.egg-info\top_level.txt
+reading manifest file 'src\athena_trailforge.egg-info\SOURCES.txt'
+writing manifest file 'src\athena_trailforge.egg-info\SOURCES.txt'
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\athena_arena
+copying build\lib\athena_arena\contracts.py -> build\bdist.win-amd64\wheel\.\athena_arena
+creating build\bdist.win-amd64\wheel\athena_procurement_arena
+copying build\lib\athena_procurement_arena\athena_optimizer.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\campaign.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\cli.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\discovery.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\domain.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\evaluation.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\fixtures.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\foundation.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\governance.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\identity_review.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\local_ui.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\mutations.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\operator.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+creating build\bdist.win-amd64\wheel\athena_procurement_arena\operator_assets
+copying build\lib\athena_procurement_arena\operator_assets\app.js -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\operator_assets
+copying build\lib\athena_procurement_arena\operator_assets\index.html -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\operator_assets
+copying build\lib\athena_procurement_arena\operator_assets\style.css -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\operator_assets
+copying build\lib\athena_procurement_arena\policies.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\prospective_seal.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\public_capture.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\retrospective_evaluation.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\retrospective_seal.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\rfp_candidate_capture.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\rfp_candidate_queue.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\rfp_intake.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\robustness.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\runner.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\scenarios.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\scenario_dsl.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\shadow.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\signal_ledger.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\signal_review.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\tournament.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\trace_backtest.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\trace_cohort.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+creating build\bdist.win-amd64\wheel\athena_procurement_arena\ui_assets
+copying build\lib\athena_procurement_arena\ui_assets\app.js -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\ui_assets
+copying build\lib\athena_procurement_arena\ui_assets\index.html -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\ui_assets
+copying build\lib\athena_procurement_arena\ui_assets\style.css -> build\bdist.win-amd64\wheel\.\athena_procurement_arena\ui_assets
+copying build\lib\athena_procurement_arena\world.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\__init__.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+copying build\lib\athena_procurement_arena\__main__.py -> build\bdist.win-amd64\wheel\.\athena_procurement_arena
+running install_egg_info
+Copying src\athena_trailforge.egg-info to build\bdist.win-amd64\wheel\.\athena_trailforge-0.1.0-py3.11.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\athena_trailforge-0.1.0.dist-info\WHEEL
+creating 'C:\\Users\\nrsan\\Documents\\Codex\\2026-10-01\\referenced-chatgpt-conversation-this-is-an-2\\work\\wheels-03\\.tmp-wxaablbm\\athena_trailforge-0.1.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'athena_arena/contracts.py'
+adding 'athena_procurement_arena/__init__.py'
+adding 'athena_procurement_arena/__main__.py'
+adding 'athena_procurement_arena/athena_optimizer.py'
+adding 'athena_procurement_arena/campaign.py'
+adding 'athena_procurement_arena/cli.py'
+adding 'athena_procurement_arena/discovery.py'
+adding 'athena_procurement_arena/domain.py'
+adding 'athena_procurement_arena/evaluation.py'
+adding 'athena_procurement_arena/fixtures.py'
+adding 'athena_procurement_arena/foundation.py'
+adding 'athena_procurement_arena/governance.py'
+adding 'athena_procurement_arena/identity_review.py'
+adding 'athena_procurement_arena/local_ui.py'
+adding 'athena_procurement_arena/mutations.py'
+adding 'athena_procurement_arena/operator.py'
+adding 'athena_procurement_arena/policies.py'
+adding 'athena_procurement_arena/prospective_seal.py'
+adding 'athena_procurement_arena/public_capture.py'
+adding 'athena_procurement_arena/retrospective_evaluation.py'
+adding 'athena_procurement_arena/retrospective_seal.py'
+adding 'athena_procurement_arena/rfp_candidate_capture.py'
+adding 'athena_procurement_arena/rfp_candidate_queue.py'
+adding 'athena_procurement_arena/rfp_intake.py'
+adding 'athena_procurement_arena/robustness.py'
+adding 'athena_procurement_arena/runner.py'
+adding 'athena_procurement_arena/scenario_dsl.py'
+adding 'athena_procurement_arena/scenarios.py'
+adding 'athena_procurement_arena/shadow.py'
+adding 'athena_procurement_arena/signal_ledger.py'
+adding 'athena_procurement_arena/signal_review.py'
+adding 'athena_procurement_arena/tournament.py'
+adding 'athena_procurement_arena/trace_backtest.py'
+adding 'athena_procurement_arena/trace_cohort.py'
+adding 'athena_procurement_arena/world.py'
+adding 'athena_procurement_arena/operator_assets/app.js'
+adding 'athena_procurement_arena/operator_assets/index.html'
+adding 'athena_procurement_arena/operator_assets/style.css'
+adding 'athena_procurement_arena/ui_assets/app.js'
+adding 'athena_procurement_arena/ui_assets/index.html'
+adding 'athena_procurement_arena/ui_assets/style.css'
+adding 'athena_trailforge-0.1.0.dist-info/METADATA'
+adding 'athena_trailforge-0.1.0.dist-info/WHEEL'
+adding 'athena_trailforge-0.1.0.dist-info/entry_points.txt'
+adding 'athena_trailforge-0.1.0.dist-info/top_level.txt'
+adding 'athena_trailforge-0.1.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built C:\Users\nrsan\Documents\Codex\2026-10-01\referenced-chatgpt-conversation-this-is-an-2\work\wheels-03\athena_trailforge-0.1.0-py3-none-any.whl

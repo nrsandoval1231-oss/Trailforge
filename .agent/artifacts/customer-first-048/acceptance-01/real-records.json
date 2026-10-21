@@ -1,0 +1,241 @@
+[
+  {
+    "brief": "Draft for owner review \u2014 not sent. Please direct me to the person responsible for commissioning and temporary-power procurement at the Cedar Rapids campus. I would like to understand whether any upcoming phases have an unserved power requirement, who owns that decision, and the MW, timing, duration and site constraints before considering a fuel solution. Existing reporting indicates equipment may already be installed; do not assume an open package.",
+    "evidence": [
+      {
+        "claim": "project",
+        "excerpt": "QTS is building the Cedar Rapids data center campus",
+        "id": "433fb1833fb3f8cb8d072e9cd3bee1b5",
+        "observed_at": "2026-10-01T21:25:29.882439+00:00",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "c425e468c4fb835054fe10a36a47908d3d80274b1fa5e324bf177685280789df",
+        "source_date": "UNKNOWN",
+        "source_url": "https://q.com/data-centers/cedar-rapids/",
+        "supersedes": [],
+        "value": "QTS Cedar Rapids campus"
+      },
+      {
+        "claim": "buyer",
+        "excerpt": "For general questions about purchase orders, please reach out to the Procurement Operations Team.",
+        "id": "957a36878a45b2941edb75d37c4c718d",
+        "observed_at": "2026-10-01T21:25:29.882439+00:00",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "6b7285e053db0166e420a7f4fbeeec51b9e7abd6429b1dfbfec3c59554ec59ef",
+        "source_date": "UNKNOWN",
+        "source_url": "https://q.com/why-qts/doing-business-with-us/",
+        "supersedes": [],
+        "value": "Corporate purchase-order support route only; Cedar Rapids project buyer UNKNOWN"
+      },
+      {
+        "claim": "buyer",
+        "excerpt": "For general questions about purchase orders, please reach out to the Procurement Operations Team.",
+        "id": "5649dcd57d4dedb5b1c04afdb0e47ef4",
+        "observed_at": "2026-10-01T21:25:57.152397+00:00",
+        "review_status": "UNKNOWN",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "6b7285e053db0166e420a7f4fbeeec51b9e7abd6429b1dfbfec3c59554ec59ef",
+        "source_date": "UNKNOWN",
+        "source_url": "https://q.com/why-qts/doing-business-with-us/",
+        "supersedes": [
+          "957a36878a45b2941edb75d37c4c718d"
+        ],
+        "value": "Corporate purchase-order support route only; Cedar Rapids project buyer UNKNOWN"
+      }
+    ],
+    "fuel": {
+      "notes": "",
+      "status": "NOT_STARTED"
+    },
+    "id": "2403dfc89aa1260b0b2c34df892e906e",
+    "interactions": [],
+    "location": "6200 76th Ave SW, Cedar Rapids, Iowa",
+    "name": "QTS Cedar Rapids campus",
+    "organizations": [
+      {
+        "name": "QTS",
+        "role": "DEVELOPER",
+        "source_evidence": "433fb1833fb3f8cb8d072e9cd3bee1b5"
+      }
+    ],
+    "people": [
+      {
+        "contact_route": "ProcurementOps@q.com \u2014 corporate PO support; project authority UNKNOWN",
+        "name": "Procurement Operations Team (routing only)",
+        "organization": "QTS",
+        "role": "OTHER",
+        "source_evidence": "957a36878a45b2941edb75d37c4c718d"
+      }
+    ],
+    "phase": "Construction \u2014 developer-reported",
+    "summary": "Developer confirms project. Secondary reporting describes commissioning generation and installed equipment; current unmet need and unawarded scope remain UNKNOWN. Corporate procurement support is a routing lead, not the confirmed Cedar Rapids project buyer.",
+    "version": 2,
+    "_history_lengths": {
+      "evidence": 3,
+      "organizations": 1,
+      "people": 1,
+      "interactions": 0
+    }
+  },
+  {
+    "brief": "Research brief \u2014 no customer contacted. Identify the owner's project/commissioning lead and confirm whether any temporary or bridge-power need remains unserved. Establish required MW versus dependable supply, service dates, duration, site constraints and buying authority before fuel-provider selection.",
+    "evidence": [
+      {
+        "claim": "project",
+        "excerpt": "approximately two to three years until NV Energy can deliver permanent utility service to the site",
+        "id": "17bdf1ed32f4eb8bafbefde37e01348e",
+        "observed_at": "2026-10-01T21:25:29.882439+00:00",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "f1934762ff7b720a06c771f0d926c11310db172cd7d8dcc521686f3ecec95080",
+        "source_date": "2026-04-20",
+        "source_url": "https://www.documentcloud.org/documents/28069372-dockets-26-04026-original-filing-4-20-2026-epa-uel-svr/?mode=text",
+        "supersedes": [],
+        "value": "South Valley data center \u2014 proposed bridge generation"
+      },
+      {
+        "claim": "scope",
+        "excerpt": "approximately two to three years until NV Energy can deliver permanent utility service to the site",
+        "id": "0169782335b4f82fb50335bc5d4bde84",
+        "observed_at": "2026-10-01T21:25:29.882439+00:00",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "f1934762ff7b720a06c771f0d926c11310db172cd7d8dcc521686f3ecec95080",
+        "source_date": "2026-04-20",
+        "source_url": "https://www.documentcloud.org/documents/28069372-dockets-26-04026-original-filing-4-20-2026-epa-uel-svr/?mode=text",
+        "supersedes": [],
+        "value": "bridge"
+      }
+    ],
+    "fuel": {
+      "notes": "",
+      "status": "NOT_STARTED"
+    },
+    "id": "9948b6b77edfabaab8b237535fe82c52",
+    "interactions": [],
+    "location": "Storey County, Nevada",
+    "name": "South Valley data center \u2014 proposed bridge generation",
+    "organizations": [
+      {
+        "name": "SV RNO Property Owner 1 LLC",
+        "role": "OWNER",
+        "source_evidence": "17bdf1ed32f4eb8bafbefde37e01348e"
+      }
+    ],
+    "people": [],
+    "phase": "Proposed bridge plant \u2014 incumbents named; current status UNKNOWN",
+    "summary": "Retained application supports proposed bridge generation. It already names Aggreko and Stabilis; no open package or early advantage established. Current operation and unmet load UNKNOWN. Retained-source SHA256 verified, live mirror retrieval failed today. No historical availability or outcome attestation.",
+    "version": 1,
+    "_history_lengths": {
+      "evidence": 2,
+      "organizations": 1,
+      "people": 0,
+      "interactions": 0
+    }
+  },
+  {
+    "brief": "Draft only \u2014 no message sent. The public construction-question route is outreachrno18@qdconstruction.com; it is not a confirmed procurement buyer. Ask who owns temporary construction power and commissioning planning for Microsoft Silver Springs. Clarify dependable utility timing, unserved MW if any, required dates and duration, and who controls the power package. Do not propose or select fuel providers before that customer need is understood.",
+    "evidence": [
+      {
+        "claim": "project",
+        "excerpt": "Official owner feed candidate admitted; power need, supply, timing, and buyer remain UNKNOWN.",
+        "id": "cab4b631d764d0b85e95a0c74954aa24",
+        "observed_at": "2026-10-01T22:14:28+00:00",
+        "review_status": "UNKNOWN",
+        "reviewer": "",
+        "sha256": "cb1eda750943df2ee08d8784d04ac37f033a16c237c69f69f33a5766f967e11a",
+        "source_date": "",
+        "source_url": "https://local.microsoft.com/blog/silver-springs-datacenter-construction-update/",
+        "supersedes": [],
+        "value": "UNKNOWN"
+      },
+      {
+        "claim": "project",
+        "excerpt": "Microsoft is beginning early construction work at its datacenter site in Silver Springs, Nevada.\nQ&D Construction LLC is the general contractor for this work.",
+        "id": "45f063e5a44f47539b13e7e9eaf46610",
+        "observed_at": "2026-10-01T22:14:55.588Z",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "3e5da3338aa370361759b671001c37940d160198450e868298ad62eccb26ddaa",
+        "source_date": "2026-09-28 \u2014 official feed date",
+        "source_url": "https://local.microsoft.com/blog/silver-springs-datacenter-construction-update/",
+        "supersedes": [],
+        "value": "Microsoft Silver Springs early construction; Q&D Construction LLC general contractor"
+      }
+    ],
+    "fuel": {
+      "notes": "",
+      "status": "NOT_STARTED"
+    },
+    "id": "99ca5b7acb86e2851fc8a12998cbd78a",
+    "interactions": [],
+    "location": "Silver Springs, Nevada",
+    "name": "Microsoft Silver Springs datacenter",
+    "organizations": [
+      {
+        "name": "Microsoft",
+        "role": "DEVELOPER",
+        "source_evidence": "45f063e5a44f47539b13e7e9eaf46610"
+      },
+      {
+        "name": "Q&D Construction LLC \u2014 general contractor",
+        "role": "OTHER",
+        "source_evidence": "45f063e5a44f47539b13e7e9eaf46610"
+      }
+    ],
+    "people": [],
+    "phase": "Early construction \u2014 source-reported",
+    "summary": "Microsoft reports early site preparation and utility relocation at Silver Springs. Q&D Construction LLC is the general contractor. This establishes a real project, not an unmet temporary-power requirement or buyer authority.",
+    "version": 3,
+    "_history_lengths": {
+      "evidence": 2,
+      "organizations": 2,
+      "people": 0,
+      "interactions": 0
+    }
+  },
+  {
+    "brief": "Research brief \u2014 no customer contacted. Identify the owner's project/commissioning lead and confirm whether any temporary or bridge-power need remains unserved. Establish required MW versus dependable supply, service dates, duration, site constraints and buying authority before fuel-provider selection.",
+    "evidence": [
+      {
+        "claim": "project",
+        "excerpt": "DATA CENTER FOR OWNER CLOP CEDAR RAPIDS, IA LLC.",
+        "id": "93fe81fd164e0e54f686e1a9e9d35de0",
+        "observed_at": "2026-10-01T21:25:29.881439+00:00",
+        "review_status": "REVIEWED",
+        "reviewer": "Codex source inspection (machine-assisted; not owner attestation)",
+        "sha256": "584e2ecf0db069900b8dbdc3006f0f78033a0e0ab02b6c98b134653feb9c294e",
+        "source_date": "2026-06-22",
+        "source_url": "https://apps2.cedar-rapids.org/BuildingPermitViewer/details.aspx?id=a7025abf-6351-428e-9b0d-856ae98b62db",
+        "supersedes": [],
+        "value": "CLOP Cedar Rapids data center"
+      }
+    ],
+    "fuel": {
+      "notes": "",
+      "status": "NOT_STARTED"
+    },
+    "id": "9a3cb3842bb19b2b4ed3490490d57b9c",
+    "interactions": [],
+    "location": "1515 33rd Ave SW, Cedar Rapids, Iowa",
+    "name": "CLOP Cedar Rapids data center",
+    "organizations": [
+      {
+        "name": "CLOP Cedar Rapids, IA LLC",
+        "role": "OWNER",
+        "source_evidence": "93fe81fd164e0e54f686e1a9e9d35de0"
+      }
+    ],
+    "people": [],
+    "phase": "Construction \u2014 city inspection record",
+    "summary": "Permit BP-002597-2026 identifies the project and owner. September 29 footing inspection appears in the current record. Design critical load is not temporary demand. Temporary pole inspection does not prove an unmet rental-power gap. Need, MW gap, duration, utility readiness, EPC and buyer authority remain UNKNOWN.",
+    "version": 1,
+    "_history_lengths": {
+      "evidence": 1,
+      "organizations": 1,
+      "people": 0,
+      "interactions": 0
+    }
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "brief": "SYNTHETIC clarification after fuel relock \u2014 first later customer edit.",
+  "evidence": [
+    {
+      "claim": "scope",
+      "excerpt": "SYNTHETIC: The test project requires bridge power.",
+      "id": "12ff3bcb8be84dbda9629fa90fb2b1cd",
+      "observed_at": "2026-10-01T21:24:40.298Z",
+      "review_status": "REVIEWED",
+      "reviewer": "SYNTHETIC TEST ONLY",
+      "sha256": "fd78cb835b3cde247b09115740d9285762f0506d8adf7dfb4e2ea1b572b07ee9",
+      "source_date": "2026-10-01",
+      "source_url": "https://example.com/synthetic-test",
+      "supersedes": [],
+      "value": "bridge"
+    },
+    {
+      "claim": "buyer",
+      "excerpt": "SYNTHETIC: Synthetic Buyer owns the power procurement decision.",
+      "id": "8b8c9e4f2fed482092da878c6e379b73",
+      "observed_at": "2026-10-01T21:45:41.199Z",
+      "review_status": "REVIEWED",
+      "reviewer": "SYNTHETIC TEST ONLY",
+      "sha256": "423e21f9ed05faa37f0baa213972a1f5ed60cefdc86fc9006db736a9be045d07",
+      "source_date": "2026-10-01",
+      "source_url": "https://example.com/synthetic-buyer",
+      "supersedes": [],
+      "value": "Synthetic Buyer owns project power procurement"
+    },
+    {
+      "claim": "buyer",
+      "excerpt": "",
+      "id": "df87775a5ed54c64a632e43361150c36",
+      "observed_at": "2026-10-01T22:35:41.006Z",
+      "review_status": "UNKNOWN",
+      "reviewer": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_date": "",
+      "source_url": "",
+      "supersedes": [],
+      "value": "SYNTHETIC unresolved buyer authority"
+    },
+    {
+      "claim": "buyer",
+      "excerpt": "SYNTHETIC correction: Synthetic Buyer still owns the project power procurement decision.",
+      "id": "1061407522ac4a3787cb024684d0e5ba",
+      "observed_at": "2026-10-01T22:36:44.386Z",
+      "review_status": "REVIEWED",
+      "reviewer": "SYNTHETIC TEST ONLY",
+      "sha256": "8d887fae0924a22ba39b5e4689fdfb0062471db1b2393c91b2c363860bf8b2a6",
+      "source_date": "",
+      "source_url": "https://example.com/synthetic-buyer-correction",
+      "supersedes": [
+        "df87775a5ed54c64a632e43361150c36"
+      ],
+      "value": "Synthetic Buyer owns project power procurement"
+    },
+    {
+      "claim": "buyer",
+      "excerpt": "",
+      "id": "dd0148a230594776885a9899de2bcbe1",
+      "observed_at": "2026-10-01T22:47:54.455Z",
+      "review_status": "UNKNOWN",
+      "reviewer": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_date": "",
+      "source_url": "",
+      "supersedes": [],
+      "value": "SYNTHETIC second unresolved buyer check for post-relock editing"
+    }
+  ],
+  "fuel": {
+    "notes": "SYNTHETIC final integrated acceptance: customer requirements precede fuel planning. No real customer conversation or supplier selection.",
+    "status": "NOT_STARTED"
+  },
+  "id": "857276aecdcd590d67df4ec469a79504",
+  "interactions": [
+    {
+      "duration": "6 months",
+      "learned_mw": "2",
+      "needs_understood": true,
+      "notes": "SYNTHETIC TEST ONLY. This is not a real customer conversation.",
+      "occurred_at": "2026-10-01T21:46:22.851Z",
+      "person": "Synthetic Buyer",
+      "site_constraints": "SYNTHETIC permitted pad with delivery access",
+      "timing": "2027-02-01"
+    }
+  ],
+  "location": "TEST ONLY",
+  "name": "SYNTHETIC browser acceptance",
+  "organizations": [],
+  "people": [
+    {
+      "contact_route": "TEST ONLY \u2014 no real contact",
+      "name": "Synthetic Buyer",
+      "organization": "TEST CUSTOMER",
+      "role": "BUYER",
+      "source_evidence": "8b8c9e4f2fed482092da878c6e379b73"
+    }
+  ],
+  "phase": "Early signal",
+  "summary": "SYNTHETIC second later edit while buyer unresolved; historical fuel notes remain unchanged.",
+  "version": 11,
+  "gate": {
+    "need": "VERIFIED",
+    "buyer": "UNKNOWN",
+    "conversation": "RECORDED",
+    "fuel_unlocked": false,
+    "claims": {
+      "scope": "VERIFIED",
+      "buyer": "VERIFIED"
+    }
+  },
+  "_history_lengths": {
+    "evidence": 5,
+    "organizations": 0,
+    "people": 1,
+    "interactions": 1
+  }
+}

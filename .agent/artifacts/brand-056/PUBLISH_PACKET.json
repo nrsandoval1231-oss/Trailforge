@@ -1,0 +1,24 @@
+{
+  "objective": "Publish owner-approved brand kit unchanged",
+  "node": "BRAND-PUBLISH-057",
+  "base": "48dcfa0586d77b1af488cae943c14763a2050646",
+  "allowed": [
+    "brand/",
+    "output/pdf/trailforge-brand-guide.pdf",
+    ".agent/artifacts/brand-056/"
+  ],
+  "excluded": [
+    "application",
+    "existing dirty work",
+    "main merge",
+    "deployment"
+  ],
+  "validation": [
+    "all approved asset SHA256 values match",
+    "archive integrity",
+    "diff whitespace",
+    "remote commit identity"
+  ],
+  "authority": "Owner explicitly requests save and push to GitHub",
+  "status": "READY"
+}

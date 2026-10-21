@@ -1,0 +1,42 @@
+{
+  "verdict": "FIX",
+  "review_type": "independent_exact_candidate",
+  "candidate_manifest": ".agent/artifacts/customer-first-048/acceptance-02/CANDIDATE.json",
+  "candidate_manifest_sha256": "8e2ace1e1389bca9df4bef9e23e1e38031ac5739e7c0336ad94ec0495446c770",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-customer-v1",
+  "base_sha": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "started_utc": "2026-10-01T22:39:23.4867213Z",
+  "finished_utc": "2026-10-01T22:41:00.2813599Z",
+  "reviewer_role": "Sol independent reviewer",
+  "findings": [
+    {
+      "id": "RV4",
+      "severity": "BLOCKER",
+      "title": "Preserved lawful fuel notes block all later dossier saves while relocked",
+      "contract": "docs/CUSTOMER_FIRST_V1.md requires correction/unknown demotion to relock fuel without losing history, while the operator can continue project and customer work.",
+      "source": ["src/athena_procurement_arena/operator.py:435", "src/athena_procurement_arena/operator.py:441", "src/athena_procurement_arena/operator_assets/app.js:6"],
+      "evidence": "Independent private temporary SQLite probe: v1 saved sourced reviewed bridge need, sourced buyer, understood test conversation and lawful COORDINATING note (fuel_unlocked=true). v2 appended UNKNOWN buyer evidence, reset status to NOT_STARTED and saved successfully with the original note retained (fuel_unlocked=false). v3 changed only the customer brief, kept the original note unchanged, and Store.save raised 'new or changed fuel notes are locked until the gate is unlocked'. The condition tests 'or not previous_gate[fuel_unlocked]' on every locked save, so normal later edits remain blocked.",
+      "repair_target": "While locked, reject a newly introduced or changed fuel note, but permit an unchanged previously lawful note on every subsequent save. Keep fuel status locked and retain the note; test two or more later unrelated saves after demotion."
+    }
+  ],
+  "prior_findings": {
+    "RV1": "Repaired in this candidate: validate_doc requires a traceable HTTP(S) source URL for REVIEWED scope and buyer claims; gate checks source validity. The browser labels the requirement.",
+    "RV2": "Partially repaired: new notes while initially locked are rejected and lawful notes survive the first relock; RV4 identifies the later-save regression.",
+    "RV3": "Repaired in this candidate: browser displays the saved server gate; retained synthetic browser regression shows UNKNOWN buyer and disabled fuel controls at v7, then exact sourced correction and unlock at v8."
+  },
+  "validation": {
+    "manifest_hash_verified": true,
+    "manifest_files_matched": "13/13",
+    "changed_candidate_files_vs_acceptance_01": ["docs/OPERATOR_QUICKSTART.md", "src/athena_procurement_arena/operator.py", "src/athena_procurement_arena/operator_assets/app.js", "tests/test_operator.py"],
+    "focused_tests": "26 passed, exit 0: uv run --no-project --python 3.11 --with pytest python -m pytest -q tests/test_operator.py tests/test_discovery.py",
+    "retained_full_gate_log": "323 passed, 1 skipped; compile, Ruff and three research fixture bundles PASS; inspected, not rerun during this FIX review",
+    "retained_process_probes": "source-runtime.json and installed-runtime.json each report 15 assertions PASS; inspected as evidence, not a substitute for the independent three-save probe",
+    "retained_browser_and_real_data": "synthetic-browser-final.json shows v8 sourced correction and unlocked synthetic gate; real-records.json retains four projects with no real conversations or fuel unlock; live-discovery.json retains on-demand feed candidates",
+    "diff_check": "git diff --check exit 0",
+    "targeted_probe_db": "private temporary SQLite database; no live desk data mutated"
+  },
+  "nonblocking_limits": ["Two on-demand official feeds do not prove broad coverage or competitive lead time.", "Real customer engagement and fuel coordination remain unproved; full downstream transition is synthetic.", "Mobile viewport behavior remains unverified.", "Arena sealed outcomes and comparative validation remain unfinished."],
+  "metrics": {"audit_tokens": "UNKNOWN", "model": "gpt-6-sol", "reasoning": "medium", "repair_count": 1, "elapsed_to_accepted_seconds": "UNKNOWN: candidate not accepted", "config_identity": "UNKNOWN"},
+  "authority": "Review artifact only; no implementation edit, commit, push, deployment, external message or live desk mutation. Acceptance-01 FIX preserved."
+}

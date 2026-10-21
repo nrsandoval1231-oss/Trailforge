@@ -1,0 +1,41 @@
+{
+  "packet": "BRAND-055",
+  "status": "BUILT_LOCAL_ASSET_CANDIDATE",
+  "scope": "brand/trailforge-v1/**",
+  "base_head": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "validation": {
+    "generator": "PASS",
+    "svg_xml_and_self_containment": "PASS: 19 SVGs parse and contain no remote references or external font dependencies",
+    "outlined_wordmark_and_template_text": "PASS: Manrope and IBM Plex Mono text converted to paths",
+    "canonical_mark_in_templates": "PASS",
+    "png_dimensions_and_transparency": "PASS: 28 PNGs",
+    "favicon": "PASS: includes 16, 32, and 48 px images",
+    "token_json_css_and_contrast_math": "PASS: 9 declared pairs recalculated",
+    "brandbook_links": "PASS: all local links resolve",
+    "inline_styles": "PASS: none",
+    "brandbook_js_syntax": "PASS",
+    "responsive_320px": "PASS: parent browser verified at 320 and 390 px with no overflow",
+    "dark_preview": "PASS: mint foreground and white logo assets switch with theme",
+    "touch_targets": "PASS: navigation and preview controls minimum 44 px",
+    "logo_effects": "PASS: no drop shadow on logo art",
+    "runtime_review": "PASS: parent verified controls and local assets"
+  },
+  "metrics": {
+    "planning_duration": "UNKNOWN",
+    "build_duration": "UNKNOWN",
+    "validation_duration": "UNKNOWN",
+    "audit_duration": "UNKNOWN",
+    "tokens": "UNKNOWN",
+    "repair_count": 0,
+    "lane": "single Luna builder",
+    "model": "gpt-6-luna",
+    "config_identity": "UNKNOWN"
+  },
+  "final_file_hashes": {
+    "brand/trailforge-v1/brandbook.html": "76193D3529FBAECF2BDEC6651829CDD7757F6D44B25ED72180A2049C1645FE9A",
+    "brand/trailforge-v1/brandbook.css": "40F25A9DF11E4585B6F1423B397D8E2EE345F07D05E892CF35B3BF35644942BD",
+    "brand/trailforge-v1/brandbook.js": "75D94E2B17A44F5CA5E0E60340458A074F000B94680C75F35FB6F8CE64C3EDBB",
+    "brand/trailforge-v1/tools/build_brand.py": "984EE631F8555FBC7A456B8985C7AC631E3F264E7BCC5AA83FFC7FAAFA1D7677",
+    "brand/trailforge-v1/exports/favicon.ico": "3A46CB66EF3B765FABD6C033A19AF586230940BE867D68C2DD41E3A28A0DA2CD"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "repository": "C:\\Users\\nrsan\\Nucleus\\02_Projects\\Trailforge",
+  "branch": "codex/trailforge-customer-v1",
+  "base_sha": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "frozen_utc": "2026-10-01T22:11:57.719067+00:00",
+  "identity": "Uncommitted working-tree content hashes, not a release commit",
+  "excluded": "Mutable .agent acceptance bookkeeping, ignored local data and build outputs",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "f13ea44a29d959ad185fc152a0adb2614f392a9d99e93b7911101a2218941ebb"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6e03f0bd4c4b460c392df6f5c29b96fa7915b6e0fdec9fd86e6449ac8682064f"
+    },
+    {
+      "path": "docs/CUSTOMER_FIRST_V1.md",
+      "sha256": "ada8c106438cae29acbcbcd2d4a23ae2f92b88a197358a731fec2a5dfade4e2f"
+    },
+    {
+      "path": "docs/OPERATOR_QUICKSTART.md",
+      "sha256": "39b44605ecfdf148b08a179349aaac4eecf29c37328a5558b89ece55f4f257e7"
+    },
+    {
+      "path": "docs/PRD_ALIGNMENT.md",
+      "sha256": "b35240fb276bbe6706bdb41c10c4b3fa04f5c5ca5259c1cf69cd9b44741f5b4d"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "9da06c578b717eea9663c9da193c79beb8aeb4a659bf73036dcc88e6205c75fa"
+    },
+    {
+      "path": "src/athena_procurement_arena/discovery.py",
+      "sha256": "5f0a24fd7d973d1bb23edf027e7a6387002478e4d9540f70100b41acc44a3681"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator.py",
+      "sha256": "c95e829911e9b4293f6e3067989c2da0c9d2ce327eac51ddc65d5e4cbbe46407"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/app.js",
+      "sha256": "53a9c239321829d8e73f51a2b41fc93a7b63b35d6a67cbc3458ca5c24ce01e2e"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/index.html",
+      "sha256": "ef1183796c705d67a12b94f20645743c7b71742dd6a613708bc55c438f70d841"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/style.css",
+      "sha256": "05df957bbb235640de3d77076f0c46d0b43967093e2bb0c1771051923dece791"
+    },
+    {
+      "path": "tests/test_discovery.py",
+      "sha256": "ed201dadc7ee96aac5f8cb7d6a6373565d08b9663ddc5cc06cb869d2c4e54b8e"
+    },
+    {
+      "path": "tests/test_operator.py",
+      "sha256": "bc052d307bc7ae76d1b7b70d79b06125bc66d4667c225efec8bf94118aea3f52"
+    }
+  ]
+}

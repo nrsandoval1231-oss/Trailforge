@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="jade" data-motion="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>TrailForge · Project desk</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#home" id="home-link" aria-label="TrailForge home"><span class="brand-mark">T</span><span>TRAILFORGE<small>PROJECT FIELDWORK</small></span></a>
+      <p class="nav-caption">WORKSPACE</p>
+      <nav id="main-nav">
+        <button type="button" data-route="home" class="nav-item selected"><span class="nav-icon">⌂</span>Project desk<span class="nav-count" id="nav-project-count">—</span></button>
+        <button type="button" data-route="discover" class="nav-item"><span class="nav-icon">⌕</span>Discover</button>
+        <button type="button" data-route="buyers" class="nav-item"><span class="nav-icon">◎</span>Buyer research</button>
+        <button type="button" data-route="conversations" class="nav-item"><span class="nav-icon">↗</span>Conversations</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-rule"></div><div class="authority-card"><span class="authority-icon">✳</span><strong>Your research, your call.</strong><p>Evidence stays attached to the project. No messages are sent from this desk.</p></div><div class="version-line"><span>LOCAL PROJECT RECORDS</span><span class="live-dot"></span></div></div>
+    </aside>
+    <main id="main" tabindex="-1"><div id="view" aria-live="polite"><div class="loading-state"><span class="spinner"></span>Opening your project desk…</div></div></main>
+  </div>
+  <footer class="site-footer"><span>TRAILFORGE <span class="footer-dot">·</span> CUSTOMER FIRST</span><span>Research evidence is not customer confirmation. Unknown stays visible.</span></footer>
+  <div id="notice" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

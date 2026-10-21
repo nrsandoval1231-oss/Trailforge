@@ -1,5 +1,14 @@
 # Canonical PRD alignment
 
+## Current product direction — 2026-10-01
+
+The owner's latest request extends TrailForge with a customer-first power-project
+application. [Customer-first V1](CUSTOMER_FIRST_V1.md) governs that extension:
+project -> evidenced need -> buyer -> customer conversation -> fuel coordination.
+The Arena specification below continues to govern research mechanics and claims;
+its original no-UI/product-scope exclusions do not override the owner's explicit
+new application request. No external outreach, purchase or deployment is authorized.
+
 ## Authority
 
 The controlling specification is **Athena Procurement Arena — Build Packet #0**,

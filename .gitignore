@@ -8,3 +8,4 @@ build/
 dist/
 uv.lock
 .trailforge-experiments/
+.trailforge-operator.sqlite3*

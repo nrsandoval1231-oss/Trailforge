@@ -1,0 +1,65 @@
+{
+  "state": "Research-only UI and no customer pipeline at baseline",
+  "decision": "Add isolated persistent customer-first desk; preserve Arena semantics",
+  "actions": [
+    "OPERATOR-048",
+    "DISCOVER-049",
+    "XML/transport repair",
+    "independent FIX repair",
+    "specialist successive-save guard repair"
+  ],
+  "outcome": "Independent PASS for bounded local desktop V1",
+  "deterministic_evaluation": {
+    "runtime_assertions_per_source_or_wheel": 16,
+    "existing_skips": 1,
+    "candidate_manifest_sha256": "ad1b3ca86693c4d45ab5be0e9ae30134ccfc0e73e0fb152aa119336ba340830c",
+    "real_conversations": 0,
+    "real_projects": 4,
+    "tests_passed": 323
+  },
+  "attribution": "Positive and negative checks plus independent probes; model summaries were not treated as acceptance",
+  "retained_failures": [
+    "acceptance-01/REVIEW.json",
+    "acceptance-02/REVIEW.json",
+    "project-discovery-049/CONTROLLER-FAILURES.md"
+  ],
+  "lessons": [
+    {
+      "evidence": "RV3; acceptance-02 browser regression and acceptance-03 PASS",
+      "direction": "1 reproduced to0 after repair",
+      "reversibility": "Reassess if offline workflow is added; do not weaken server authority",
+      "promotion": "local execution lesson only",
+      "rule": "Display server qualification rather than duplicate client gate logic",
+      "metric": "independent browser/server gate mismatches"
+    },
+    {
+      "evidence": "RV4; independent Store probe and final browser v10/v11",
+      "direction": "0 to2 successive saves",
+      "reversibility": "Replace regression only with equivalent stronger sequential proof",
+      "promotion": "local execution lesson only",
+      "rule": "Test continued normal work after safety demotion, not only the transition",
+      "metric": "successful unrelated saves with retained locked notes"
+    }
+  ],
+  "timing": {
+    "total_elapsed_to_accepted": "UNKNOWN; task start was not instrumented",
+    "frozen_utc": "2026-10-01T22:46:41.223680+00:00",
+    "planning_duration": "UNKNOWN",
+    "audit_duration_seconds": 336.304,
+    "build_duration": "UNKNOWN",
+    "accepted_utc": "2026-10-01T22:55:45.1860459Z",
+    "task_started_utc": "UNKNOWN",
+    "freeze_to_accept_seconds": 543.9623659
+  },
+  "repair_count": 3,
+  "lane": "Luna serialized primary builds; Terra specialist after exhausted repair budget; independent Sol",
+  "assigned_models": [
+    "Luna gpt-6-luna low",
+    "Terra gpt-5.6-terra medium",
+    "Sol gpt-6-sol medium"
+  ],
+  "loaded_config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "speedup_claim": "NONE",
+  "next_direction": "COMPLETE local V1; broader market and Arena outcomes remain UNKNOWN"
+}

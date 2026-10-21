@@ -1,0 +1,21 @@
+{
+  "candidate": "acceptance-03/CANDIDATE.json",
+  "validation_started_utc": "2026-10-01T22:46:41.223680+00:00",
+  "validation_finished_utc": "2026-10-01T22:49:23.4907053Z",
+  "full_gate_exit": 0,
+  "tests_passed": 323,
+  "tests_skipped": 1,
+  "source_probe_exit": 0,
+  "installed_wheel_probe_exit": 0,
+  "runtime_checks_per_probe": 16,
+  "javascript_syntax_exit": 0,
+  "diff_check_exit": 0,
+  "independent_review": "PASS; see bound REVIEW.json",
+  "planning_duration": "UNKNOWN",
+  "build_duration": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "config_identity": "UNKNOWN",
+  "lane": "serialized Luna builds, Terra exhausted-budget repair, independent Sol",
+  "post_handoff_repairs": 3,
+  "elapsed_to_accepted": "UNKNOWN until independent acceptance"
+}

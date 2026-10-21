@@ -1,0 +1,59 @@
+{
+  "verdict": "FIX",
+  "review_type": "independent_exact_candidate",
+  "candidate_manifest": ".agent/artifacts/customer-first-048/acceptance-01/CANDIDATE.json",
+  "candidate_manifest_sha256": "716ec1165ca626e17c24108f99000b326128e91f8939275e3d988e62e9353279",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-customer-v1",
+  "base_sha": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "started_utc": "2026-10-01T22:23:11.9463834Z",
+  "start_note": "First captured audit clock; preliminary inspection began earlier, at an unmeasured time.",
+  "finished_utc": "2026-10-01T22:25:48.2233572Z",
+  "duration_seconds": "UNKNOWN; first captured clock is a lower bound only",
+  "reviewer_role": "Sol independent reviewer",
+  "findings": [
+    {
+      "id": "RV1",
+      "severity": "BLOCKER",
+      "title": "Reviewed need and buyer can be promoted without a source reference",
+      "contract": "docs/CUSTOMER_FIRST_V1.md requires evidence-backed need and a sourced buyer chain.",
+      "source": ["src/athena_procurement_arena/operator.py:152", "src/athena_procurement_arena/operator.py:267", "src/athena_procurement_arena/operator.py:285", "src/athena_procurement_arena/operator_assets/app.js:17"],
+      "evidence": "Fresh temporary SQLite Store probe saved REVIEWED scope='temporary power' and buyer='Buyer A' with source_url='', only self-entered excerpt/reviewer text. Returned gate need=VERIFIED, buyer=KNOWN. The UI explicitly labels Source URL optional. There is no other source locator field.",
+      "repair_target": "Require a traceable source reference for reviewed scope and buyer evidence, including a supported local document reference if offline evidence is intended; retain UNKNOWN when absent. Add a persistence and gate regression."
+    },
+    {
+      "id": "RV2",
+      "severity": "BLOCKER",
+      "title": "Locked fuel record accepts coordination notes",
+      "contract": "docs/CUSTOMER_FIRST_V1.md requires fuel coordination to stay blocked until verified need and an actual understood customer conversation.",
+      "source": ["src/athena_procurement_arena/operator.py:96", "src/athena_procurement_arena/operator.py:394", "src/athena_procurement_arena/operator_assets/app.js:22"],
+      "evidence": "Fresh temporary SQLite Store saved fuel.status=NOT_STARTED with notes='Call fuel supplier; reserve delivery before customer conversation'. Returned gate need=UNKNOWN, conversation=NONE, fuel_unlocked=false; the notes persisted. UI disables notes while locked, but server validation does not.",
+      "repair_target": "Reject new or edited fuel coordination notes while locked, while retaining notes saved during an earlier lawful unlocked state after a later contradiction. Alternatively, move pre-gate research notes to a separate field. Test both initial lock and later demotion at the server/store boundary."
+    },
+    {
+      "id": "RV3",
+      "severity": "BLOCKER",
+      "title": "Browser displays unlocked fuel when buyer evidence is unresolved",
+      "contract": "The customer-first queue must show honest buyer and fuel states; unknown or contradicted buyer authority must relock fuel.",
+      "source": ["src/athena_procurement_arena/operator_assets/app.js:6", "src/athena_procurement_arena/operator_assets/app.js:22", "src/athena_procurement_arena/operator.py:283"],
+      "evidence": "Independent Node evaluation of the actual localGate function with reviewed buyer A plus a second active UNKNOWN buyer item, a buyer-linked person, understood interaction, and reviewed temporary scope returned buyer=KNOWN and fuel_unlocked=true. Python gate on the equivalent document returned buyer=UNKNOWN and fuel_unlocked=false. The browser filters the UNKNOWN buyer item before deciding the gate; the server requires every active buyer item REVIEWED.",
+      "repair_target": "Use server-authoritative gate state for the displayed workflow, or make the client calculation exactly match the server for unresolved and contradicted evidence. Add a browser-visible regression."
+    }
+  ],
+  "validation": {
+    "manifest_sha256_verified": true,
+    "manifest_files_matched": "13/13",
+    "protected_research_source_changed_by_candidate": false,
+    "focused_tests": "21 passed, exit 0: uv run --no-project --python 3.11 --with pytest python -m pytest -q tests/test_operator.py tests/test_discovery.py",
+    "prior_full_gate_log": "318 passed, 1 skipped; compile, Ruff, three fixture bundles PASS; inspected as retained evidence, not rerun in this review",
+    "wheel_build_log": "success; package assets listed in wheel-build.log",
+    "runtime_evidence": "source-runtime.json and installed-runtime.json each report 12 checks PASS; inspected as retained evidence",
+    "real_acceptance": "real-acceptance.json reports 4 real projects, 17 candidates, zero real conversations and zero unlocked fuel; not independently refetched",
+    "security_inspection": "loopback binding, Host/Origin/token checks, bounded JSON, fixed HTTPS feed endpoints, public-address DNS validation, redirect rejection, 1 MiB XML cap and DOCTYPE/ENTITY rejection were present in actual source",
+    "targeted_probe_db": "private temporary SQLite database; no live desk data mutated",
+    "diff_check": "git diff --check exit 0; 13 candidate hashes matched manifest"
+  },
+  "nonblocking_limits": ["Two on-demand feeds do not prove broad project coverage or competitive lead time.", "Real acceptance contains no customer conversation or fuel unlock; downstream transition is synthetic only.", "Mobile viewport behavior is unverified in retained acceptance.", "Arena sealed outcomes and comparative validation remain unfinished."],
+  "metrics": {"audit_tokens": "UNKNOWN", "model": "gpt-6-sol", "reasoning": "medium", "repair_count": 0, "elapsed_to_accepted_seconds": "UNKNOWN: candidate not accepted", "config_identity": "UNKNOWN"},
+  "authority": "Review artifact only; no implementation edit, commit, push, deployment, external message or live desk mutation."
+}

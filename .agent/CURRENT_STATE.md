@@ -1,27 +1,47 @@
 # TrailForge current state — 2026-10-01
 
-## Latest direction — local UI extension
+## Accepted local operator V1
 
-PR #4 is merged at `3cedc8711ceec0ac411f04911fa24186a0d6ceb1`; local/remote main and post-merge CI36897460144 were verified. The owner authorized the local workbench with Astra as builder. [Packet LOCAL-UI-047](tasks/local-ui-047.md) is VALIDATED, AWAITING INDEPENDENT REVIEW on codex/trailforge-local-ui. [Scope/finish contract](../docs/LOCAL_UI_SCOPE.md) records the narrow no-UI exception. Controller final gate:297 passed/1 Windows-privilege skip; source/installed-wheel lifecycle and real browser save/inspect/replay/restart passed. One Windows transport repair; original failure retained. No commit/push/merge/deploy. South Valley source/availability attestation remains pending. Older local-only S3A statements below are historical, not current release status.
+Canonical checkout: C:/Users/nrsan/Nucleus/02_Projects/Trailforge. Branch
+codex/trailforge-customer-v1; base/main/remote main cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7.
+Changes are local and uncommitted; no push, merge or deployment.
 
-## Accepted local checkpoint
+Owner strategy remains project/customer-first: detect project -> verify temporary,
+bridge or commissioning need -> identify buyer chain -> prepare/log customer
+conversation -> only then fuel coordination. Fuel vendors are never the lead path.
+[Product contract](../docs/CUSTOMER_FIRST_V1.md) extends older Arena-only scope;
+research temporal integrity and outcome authority remain unchanged.
 
-Slices 1 and 2 are merged. Slice 3A is accepted locally for the bounded CLI V1 path. Full Slice 3, V1 and Build Packet #0 are not complete. Research-only; no execution or promotion authority.
+Independent [acceptance-03 REVIEW](artifacts/customer-first-048/acceptance-03/REVIEW.json)
+PASS, bound to13-file manifest SHA256
+ad1b3ca86693c4d45ab5be0e9ae30134ccfc0e73e0fb152aa119336ba340830c.
+Controller and reviewer full gates:323 passed/1 existing Windows privilege skip,
+compile/Ruff/3 bundles PASS. Source and installed wheel each passed16 runtime
+assertions; desktop browser, real-source intake/restart and launcher cold start
+verified. Prior acceptance-01/02 FIX reviews retained; all4 findings repaired.
 
-- Governing intent: [PRD alignment](../docs/PRD_ALIGNMENT.md), [audit and frozen V1](../reports/TRAILFORGE_AUDIT_2026-10-01.md), and [Slice 2 packet](tasks/v1-durable-experiment-044.md).
-- Current graph: [WORK_GRAPH_V1.md](WORK_GRAPH_V1.md).
-- Exact Slice 2 acceptance: [REVIEW.json](artifacts/v1-durable-experiment-044/REVIEW.json), [independent PASS](artifacts/v1-durable-experiment-044/REVIEW-ACCEPTANCE.md), [controller validation](artifacts/v1-durable-experiment-044/ACCEPTANCE-VALIDATION.md), [recovery/metrics](artifacts/v1-durable-experiment-044/EPISODE.json).
-- Exact Slice 3A acceptance: [REVIEW.json](artifacts/v1-reviewed-case-045/REVIEW.json), [independent PASS](artifacts/v1-reviewed-case-045/REVIEW-2.md), [controller validation](artifacts/v1-reviewed-case-045/FINAL-VALIDATION.md), [recovery/metrics](artifacts/v1-reviewed-case-045/EPISODE.json). Direct bundle/fixture selection retains source/reviewer context without manual extraction.
-- All 239 tests, compilation, Ruff, three fixture validations, package build, separate-process save/inspect/replay, tamper rejection, deterministic repeat, execution-disabled inspection and isolated-wheel replay passed. Five source/docs/test hashes bind S3A acceptance; later bookkeeping adds no code review coverage.
+Local desk http://127.0.0.1:8766/ uses ignored .trailforge-operator.sqlite3.
+Four real-source projects,17 feed candidates, zero actual conversations and zero
+fuel unlocks. Microsoft Local/QTS feeds checked only on request; manual review
+retains UNKNOWN facts. Complete customer/fuel transitions are synthetic proof.
+Existing research UI8765 was preserved. User launcher/report/package/exports are
+in the current Codex task outputs folder. [Quickstart](../docs/OPERATOR_QUICKSTART.md).
 
-## Git and retained history
+## Next direction and limits
 
-Prior slices released through PR #3: feature head 7e26b04ce1e41ffdfeb134fd248f8f5e189aba43 merged normally at 096c65345eeeba18de051cbdf73d73cab0068f33. Local and remote main match that merge commit. Fresh 223-test local gate, PR CI and post-merge main CI passed. Both histories and prior review artifacts remain retained. Details: [release baseline](artifacts/v1-reviewed-case-045/RELEASE-BASELINE.md).
+COMPLETE for the bounded local single-operator desktop V1 finish contract.
+Operate/review projects and identify real buyers; external contact requires owner
+authorization. No claim of broad monitoring, automatic buyer enrichment, verified
+buying intent, customer engagement or beating competitors. Mobile behavior is
+unverified. Hosted multiuser use and full Arena sealed-outcome/comparative research
+remain unfinished. Do not convert these unknowns into success.
 
-Prior CURRENT_STATE.md copied byte-for-byte to [historical state](artifacts/v1-durable-experiment-044/CURRENT_STATE-before-slice2.md), SHA-256 FB698BA33688C50260FFEE9127D63B59D5121E0D194595EF84AEF34FB169C087. Historical claims are not current acceptance.
+[Work graph](WORK_GRAPH_CUSTOMER_V1.md), [final evidence](artifacts/customer-first-048/acceptance-03/ACCEPTANCE.md),
+[recovery/learning episode](artifacts/customer-first-048/acceptance-03/EPISODE.json).
 
-## Next direction
 
-CONTINUE V1-S3B evidence review after the accepted [S3A packet](tasks/v1-reviewed-case-045.md) on codex/trailforge-v1-slice3. Start from [retained-source triage](artifacts/v1-reviewed-case-045/EVIDENCE-TRIAGE.md): establish exact claim spans and publication/update availability before admitting a real temporary-power chronology. GT-003 remains an unchanged maintenance negative mechanics case. No guessed availability, invented reviewer approval or fabricated outcomes. S3A is local only, not pushed/merged; full Slice3 is incomplete. Pre-acceptance state preserved in artifacts/v1-reviewed-case-045/CURRENT_STATE-before-acceptance.md.
+## Accepted local Jade UI - 2026-10-03
 
-Remaining V1 work: reviewed real-case acceptance and final portable user workflow proof. Unsealed outcomes remain UNSCORED; real predictive quality, governed holdout comparison and full packet completion remain UNKNOWN. Cancellation sensitivity and public-capture boundary defects remain outside this slice. Main CI passed; new S3A has local validation only. Windows live symlink test privilege unavailable. Hashes provide local integrity, not signatures.
+JADE-APP-054 completed for the bounded working operator UI replacement. Independent REVIEW-R1.json PASS binds the three frontend assets and docs/JADE_OPERATOR_UI.md; original FIX remains retained. Backend authority and owner data are preserved. Controller full gate: 323 passed, one existing Windows skip; compile/Ruff/three bundles PASS. Source runtime probe 16 PASS; repair behavioral probe seven PASS; final browser save-success/reload persistence and owner four-project read-only queue/dossier verified. Layout verified at effective 320px; CSS remained unchanged in R1.
+
+Source app is running at http://127.0.0.1:8766/ using the existing .trailforge-operator.sqlite3. Local changes remain uncommitted. This UI has not been pushed, merged or deployed; the previously merged Jade preview is separate. Historical 13-file acceptance-03 does not certify changed UI. [New validation](artifacts/jade-app-054/VALIDATION.json), [independent review](artifacts/jade-app-054/REVIEW-R1.json), and [working app screenshot](artifacts/jade-app-054/jade-working-app.jpg). Stale Conversations recovery is available in Project Detail; a completed create/admit stays in the refreshed queue if edits during its request preserve the old draft.

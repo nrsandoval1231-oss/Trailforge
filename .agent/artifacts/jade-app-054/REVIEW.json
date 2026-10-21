@@ -1,0 +1,43 @@
+{
+  "task": "JADE-APP-054",
+  "verdict": "FIX",
+  "reviewed_at_utc": "2026-10-03T21:03:14Z",
+  "candidate": {
+    "branch": "codex/trailforge-customer-v1",
+    "head": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+    "sha256": {
+      "src/athena_procurement_arena/operator_assets/app.js": "878291423E95AA08337C1C1BACAFE887FDDAB838199056F8FAB4760E59701D0F",
+      "src/athena_procurement_arena/operator_assets/index.html": "190049892B56AAB579C33E697FE7036C5F7ED0C073655F39ACB9C1C2AAED0C4E",
+      "src/athena_procurement_arena/operator_assets/style.css": "68CAF087904C370C5F4371C414F5117B569BFB55D683DB206D756A048C484C45",
+      "docs/JADE_OPERATOR_UI.md": "27E9508BB5D5B65DC412B57FC54351B881FFA68889ACA8C60687A6F5E91A77A2"
+    }
+  },
+  "reviewed": [
+    "JADE-APP-054 packet and builder completion claim",
+    "original and replacement operator assets",
+    "operator API schema, append-only enforcement, saved fuel gate, origin/token/CSP boundary",
+    "discovery source URL validation",
+    "route transitions and unsaved draft retention"
+  ],
+  "findings": [
+    {
+      "severity": "blocking",
+      "location": "src/athena_procurement_arena/operator_assets/app.js:16,18,55-56",
+      "issue": "Buyer and Conversation renders fetch asynchronously without route identity or request cancellation. Both read dirty before awaiting and assign the GET response to global current after awaiting. A user can navigate to another screen and edit the project while an earlier GET is pending; its late response then overwrites the unsaved draft and appends stale content to the new screen.",
+      "required_repair": "Bind async view loads to the active route/project/request generation; never replace current after the route or draft has changed, and render errors visibly. Verify a delayed GET followed by navigation/edit leaves the draft and active view intact."
+    },
+    {
+      "severity": "blocking",
+      "location": "src/athena_procurement_arena/operator_assets/app.js:16,22,28,52",
+      "issue": "Navigation preserves dirty state, but creating a new project or admitting a discovery candidate replaces current and clears or abandons the unsaved existing project draft without confirmation or recovery. openProject guards only a different project ID, so reopening the same project from the queue can also discard its unsaved edits.",
+      "required_repair": "Apply one draft-preservation/explicit-discard guard to every operation that replaces current, including manual create, discovery admission, and project reopen. Retain the draft when the user declines. Verify each path with an edited existing project."
+    }
+  ],
+  "passing_boundaries": [
+    "New assets use external script/style and DOM text nodes; no HTML string insertion or inline event attributes found.",
+    "The backend remains the authority for append-only history, document version, mutation token, origin, and fuel gate; this review made no backend edits.",
+    "Discovery parser admits HTTPS URLs only for the two configured source hosts."
+  ],
+  "validation_scope": "Independent source review; controller reports full and browser gates separately. Those gates do not exercise the two draft-loss interleavings above.",
+  "next_direction": "Repair only these draft-retention and asynchronous-route issues, rerun affected tests and mandatory gates against the new exact hashes, then request fresh independent review."
+}

@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "svg_count": 20,
+  "png_count": 29,
+  "font_outline_external_dependency_checks": "PASS",
+  "canonical_mark_reuse": "PASS",
+  "favicon_sizes": [
+    16,
+    32,
+    48
+  ],
+  "local_asset_links": 48,
+  "token_aliases_and_measured_pairs": "PASS",
+  "pdf_pages": 9,
+  "existing_app_reviewed_hashes": "UNCHANGED"
+}

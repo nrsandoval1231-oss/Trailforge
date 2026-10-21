@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checks": [
+    "HTML, JavaScript and stylesheet served from package",
+    "early intake without RFP, known MW or fuel",
+    "new fuel notes rejected while customer gate is locked",
+    "reviewed power scope without traceable source rejected",
+    "duplicate JSON keys, missing token and cross-origin request rejected",
+    "evidenced need can precede MW/buyer; fuel remains locked",
+    "stale edit rejected",
+    "server rejects fuel planning before conversation",
+    "source-backed test buyer + understood test conversation unlocks downstream fuel",
+    "dossier export includes retained conversation and source evidence",
+    "separate-process restart retains evidence and brief",
+    "two later customer brief saves work while relocked notes remain unchanged",
+    "lawful notes preserved on relock; changed fuel notes rejected",
+    "contradicted need relocks downstream fuel without deleting history",
+    "explicit correction resolves contradiction and preserves source history",
+    "corrupt dossier remains visible as unreadable and cannot be treated as qualified"
+  ],
+  "installed_wheel": false,
+  "real_conversations": false,
+  "finished_utc": "2026-10-01T22:47:28.867012+00:00"
+}

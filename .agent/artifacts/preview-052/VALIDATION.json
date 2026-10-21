@@ -1,0 +1,19 @@
+{
+  "candidate_sha256": "a25cf61fc1b44fcb801840d77d053998cb773dea8f9d065800f691400c1240e6",
+  "finished_utc": "2026-10-02T23:17:51.735934+00:00",
+  "direction": "COMPLETE within standalone preview contract",
+  "javascript_syntax_exit": 0,
+  "protected_app_manifest_matches": "13/13",
+  "browser": {
+    "route_width_checks": "15/15 no horizontal overflow at 320,768,1280",
+    "additional_width": 390,
+    "verified": "navigation, three-theme controls, motion pause, project intake/search/detail, draft save, signal review, buyer note, research overview",
+    "console_errors": []
+  },
+  "limitations": [
+    "Illustrative browser-session data only",
+    "Working app unchanged",
+    "Evidence/buyer detail buttons remain concept feedback; no backend operation",
+    "Not a production release"
+  ]
+}

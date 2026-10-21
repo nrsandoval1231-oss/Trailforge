@@ -1,0 +1,36 @@
+{
+  "packet": "JADE-APP-054-R1",
+  "status": "FIXES_APPLIED_FOCUSED_CHECKS_PASS_CONTROLLER_VALIDATION_PENDING",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-customer-v1",
+  "base_sha": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "finished_at_utc": "2026-10-03T21:13:22Z",
+  "start_time_utc": "UNKNOWN (not captured at dispatch)",
+  "model": "gpt-6-luna, low (assigned lane)",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "durations": "UNKNOWN",
+  "changed_files": ["src/athena_procurement_arena/operator_assets/app.js"],
+  "sha256": {
+    "src/athena_procurement_arena/operator_assets/app.js": "1282A1FE41F88BAF657BBB0B2AE8BB66C6B217C37A4672E8B745FFEF9DD11030"
+  },
+  "review_preserved": true,
+  "repairs": [
+    "Buyer and conversation views render the selected loaded project synchronously; they no longer issue redundant GET requests that can overwrite edits or append to a later route.",
+    "Discovery responses and errors apply only to the active route generation and latest discovery request.",
+    "All current replacements use one confirmation and generation/revision guard: manual creation, candidate admission, project open including same-project reopen, and server reload.",
+    "If edits change while a replacement request is pending, the existing draft remains open. Save locks view controls, blocks route changes, and invalidates pending replacements until its response is applied."
+  ],
+  "validation": {
+    "node_check": "PASS: node --check src/athena_procurement_arena/operator_assets/app.js (exit 0)",
+    "focused_assertions": {
+      "buyer_and_conversation_sync_without_get": "PASS",
+      "all_current_replacement_paths_guarded": "PASS",
+      "same_project_reopen_uses_unsaved_draft_guard": "PASS",
+      "async_discovery_route_and_request_generation_guard": "PASS",
+      "save_locks_editing_and_invalidates_pending_replacements": "PASS",
+      "REVIEW.json unchanged": "PASS"
+    },
+    "controller_browser_and_full_gate": "PENDING"
+  }
+}

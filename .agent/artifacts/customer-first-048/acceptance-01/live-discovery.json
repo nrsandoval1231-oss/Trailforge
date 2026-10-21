@@ -1,0 +1,213 @@
+{
+  "candidates": [
+    {
+      "id": "c32038c321e9368e2b4bf4b2b33c4aeaef779db1cfd46ed0faa303e2caca9fa8",
+      "source_id": "microsoft-local",
+      "title": "Conserving water in Johannesburg through AI-powered leak reduction",
+      "url": "https://local.microsoft.com/blog/conserving-water-in-johannesburg-through-ai-powered-leak-reduction/",
+      "source_date": "2026-10-01T22:15:25+00:00",
+      "first_seen": "2026-10-01T22:16:02+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "f5921457f31a3a97c32d7450659be704455fe19f2dc08d4f8f763971619c3d65",
+      "project_id": null
+    },
+    {
+      "id": "8c026df81e8deee3a3de325cc5e942a543d13482bf7b6a74435de450f52b06ac",
+      "source_id": "microsoft-local",
+      "title": "Opening doors to opportunity in Olievenhoutbosch",
+      "url": "https://local.microsoft.com/blog/opening-doors-to-opportunity-in-olievenhoutbosch/",
+      "source_date": "2026-10-01T21:10:43+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "cd05e7d347f8ee8bb1255367866d4f80e1ebaa5bf564eec9c212b4eaa0a7bce1",
+      "project_id": null
+    },
+    {
+      "id": "ac37678eb7f692ea557b45b2970ce294f6bd109e5dc062728f7bbf5d1a5330bd",
+      "source_id": "microsoft-local",
+      "title": "Silver Springs datacenter construction update",
+      "url": "https://local.microsoft.com/blog/silver-springs-datacenter-construction-update/",
+      "source_date": "2026-09-28T21:15:43+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "ADMITTED",
+      "snapshot_hash": "b5ce24a7dd7d9cf303341b92c969cfcdbe8880c16e82ecba57901f89afa52776",
+      "project_id": "99ca5b7acb86e2851fc8a12998cbd78a"
+    },
+    {
+      "id": "ea2d09bd200780c86fa81735b3c09f284c654b31eef2c8ee254d353ac57b8eeb",
+      "source_id": "microsoft-local",
+      "title": "Helping Cheyenne nonprofits serve their communities",
+      "url": "https://local.microsoft.com/blog/helping-cheyenne-nonprofits-serve-their-communities/",
+      "source_date": "2026-09-28T21:15:14+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "c0af56118f9ce11713afb805fb032292b4ddb141fd022782962859e81af5d576",
+      "project_id": null
+    },
+    {
+      "id": "55d0e0e47366569cecb7c75ccec0740b23733ab8eed780ca2f46581c0ddcb6b7",
+      "source_id": "microsoft-local",
+      "title": "Responsible development in Prince William County",
+      "url": "https://local.microsoft.com/blog/environmental-planning-update-for-proposed-wellington-datacenter-site/",
+      "source_date": "2026-09-17T23:00:45+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "09e9329cd9973bb26ba969b27c70adb071d6288376dc2da756d2c82426dff01c",
+      "project_id": null
+    },
+    {
+      "id": "eef01ceb7895153f11e03908fcf1221bf65b41e1187f789d6c2075dd097645e9",
+      "source_id": "microsoft-local",
+      "title": "From robotics to community meal resources: Investing in northern Indiana one project at a time",
+      "url": "https://local.microsoft.com/blog/from-robotics-to-community-meal-resources-investing-in-northern-indiana-one-project-at-a-time/",
+      "source_date": "2026-09-17T21:32:46+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "8b693675e2b7cb4ea4f543789be5bc4f93a0a8965be3aeb3ca0b0be8214f1a72",
+      "project_id": null
+    },
+    {
+      "id": "713ef88ab2f319edee779f97d6351e4b37ef4165a74ba5bce818cba23b718470",
+      "source_id": "microsoft-local",
+      "title": "Impak Ekonomi Pusat Data Microsoft di Johor Bahru\u200b",
+      "url": "https://local.microsoft.com/wp-content/uploads/2026/09/Economic-Impact_Malaysia_Malay_FY26_Q4.pdf#new_tab",
+      "source_date": "2026-09-10T21:23:13+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "0ebfe8fb0f4862d8c18b2b00a3b9bda4c1d9e3b75d3c23b86c26cdfd8ad72e38",
+      "project_id": null
+    },
+    {
+      "id": "145a3ba1b8fb796f8c74f10334657f05d90cd3a4798cc50d30d175bfeeed4d44",
+      "source_id": "microsoft-local",
+      "title": "Microsoft\u2019s datacenter economic impact in Johor Bahru\u200b \u2013 English",
+      "url": "https://local.microsoft.com/wp-content/uploads/2026/09/Economic-Impact_Malaysia_English_FY26_Q4.pdf#new_tab",
+      "source_date": "2026-09-09T18:09:28+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "0319a78166130259630998838ddb2ab4ea5961a94d32e56af1449891e4d87e54",
+      "project_id": null
+    },
+    {
+      "id": "4e612d9af13de0941b81f07b022ddd010db912e9912393b30d5e5d45c8268dcc",
+      "source_id": "qts-news",
+      "title": "Southern Conservation Trust Launches 10-Year Forest Restoration at Towaliga Preserve with QTS Data Centers",
+      "url": "https://q.com/news/southern-conservation-trust-launches-10-year-forest-restoration-at-towaliga-preserve-with-qts-data-centers/",
+      "source_date": "2026-09-30T19:24:19+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "15ff2b1ab04aff2d825fa039b5276200403cd3a6606d63666f517b8e426f84f5",
+      "project_id": null
+    },
+    {
+      "id": "8adc3784729828d4818c4d8d7c578c454c14a55261ae0caa5dafa2f341a6461e",
+      "source_id": "qts-news",
+      "title": "QTS Co-CEO on Building Eco-Friendly Data Centers",
+      "url": "https://q.com/news/qts-co-ceo-on-building-eco-friendly-data-centers/",
+      "source_date": "2026-09-10T16:10:07+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "8c67ca7e2b9ae9665a1d8e9e5d79a91ac6aaf14d09a6e54eb672352d0063fc8a",
+      "project_id": null
+    },
+    {
+      "id": "d0e1e6baa8b8e301f38bbbc5661ef8990b23aa4a35081624c3e89d4f4b5d72fe",
+      "source_id": "qts-news",
+      "title": "QTS Launches $1 Billion Global Water Stewardship Pledge",
+      "url": "https://q.com/news/qts-launches-1-billion-global-water-stewardship-pledge/",
+      "source_date": "2026-09-09T20:46:46+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "30cd86262bcc6b2ed8b461b410bdfca61f658d8a717179a92a38396d925d46f0",
+      "project_id": null
+    },
+    {
+      "id": "9d317dfa19fc318000f4b11a68db2f677a171acbad3b72dfa173e6164bc76ae3",
+      "source_id": "qts-news",
+      "title": "QTS to Invest $250 Million in Texas Water Infrastructure and Stewardship Over the Next Decade",
+      "url": "https://q.com/news/qts-to-invest-250-million-in-texas-water-infrastructure-and-stewardship-over-the-next-decade/",
+      "source_date": "2026-08-31T13:10:00+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "35d71ece7067ab3bf1f1c9b95b7b33a27a6a6b783820b569d926125698814f5a",
+      "project_id": null
+    },
+    {
+      "id": "5ad56abf40a4b1f350302efb10cc5e5d1720928ef071ad19d5b0fd5821854196",
+      "source_id": "qts-news",
+      "title": "QTS 2025 Sustainability Report",
+      "url": "https://q.com/news/qts-2025-sustainability-report/",
+      "source_date": "2026-08-26T18:20:46+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "24913b96c32e99f729f1983b6d3632bbb18214bc8611f30792a048817c06b85e",
+      "project_id": null
+    },
+    {
+      "id": "e2c5a08e5595ea86a2b091284a376bf76970d6d3176fe788c35be0e16f056123",
+      "source_id": "qts-news",
+      "title": "New scholarship to offer at least $10,000 to Bessemer City High School graduates",
+      "url": "https://q.com/news/new-scholarship-to-offer-at-least-10000-to-bessemer-city-high-school-graduates/",
+      "source_date": "2026-08-19T17:01:06+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "06cf9a3079fd5830bb3e89099465430fde7ba621d577e033ae04702169348c5c",
+      "project_id": null
+    },
+    {
+      "id": "904a2ce4bad0c1019c9ed0adfccacd796236a914a47090b66457fbfb9b29c5e4",
+      "source_id": "qts-news",
+      "title": "AEP Ohio and Data Center Companies Announce Additional Bill Assistance Funding",
+      "url": "https://q.com/news/aep-ohio-and-data-center-companies-announce-additional-bill-assistance-funding/",
+      "source_date": "2026-08-19T15:59:37+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "3263d6e0ee21712be5c7f69b822bb7774242ca0ee33d609d0fb98d29c48004c3",
+      "project_id": null
+    },
+    {
+      "id": "563a7d3c6ada0736ea11c4a2380f7d6c50c8401449e5bb1edbdf894b7db4764b",
+      "source_id": "qts-news",
+      "title": "ENGIE and QTS Strengthen Renewable Energy Partnership in Texas with ABEI Energy\u2019s Lubio Solar Project",
+      "url": "https://q.com/news/engie-and-qts-strengthen-renewable-energy-partnership-in-texas-with-abei-energys-lubio-solar-project/",
+      "source_date": "2026-08-18T14:00:00+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "b2b36290223344ff20a72a1bd7ac461daea2c87bbc388cc7557ab17520e0971e",
+      "project_id": null
+    },
+    {
+      "id": "e7f1fb5304a4988bbd863ccfa2b0a8fc63f001d4bfcebdc996e98ad18127c7ca",
+      "source_id": "qts-news",
+      "title": "QTS Welcomes West Virginia\u2019s Focus on Responsible Data Center Development",
+      "url": "https://q.com/news/qts-welcomes-west-virginias-focus-on-responsible-data-center-development/",
+      "source_date": "2026-08-17T16:40:49+00:00",
+      "first_seen": "2026-10-01T22:13:59+00:00",
+      "status": "PENDING_REVIEW",
+      "snapshot_hash": "936ce1ae2f6a2a50c4f0c3bc94386af62159fbd754882246af0b5e42b21bc8f4",
+      "project_id": null
+    }
+  ],
+  "feeds": [
+    {
+      "source_id": "microsoft-local",
+      "checked_at": "2026-10-01T22:16:02+00:00",
+      "last_success": "2026-10-01T22:16:02+00:00",
+      "error": "",
+      "fetched_count": 12,
+      "eligible_count": 8,
+      "excluded_count": 4,
+      "dismissed_count": 0
+    },
+    {
+      "source_id": "qts-news",
+      "checked_at": "2026-10-01T22:16:02+00:00",
+      "last_success": "2026-10-01T22:16:02+00:00",
+      "error": "",
+      "fetched_count": 9,
+      "eligible_count": 9,
+      "excluded_count": 0,
+      "dismissed_count": 0
+    }
+  ]
+}

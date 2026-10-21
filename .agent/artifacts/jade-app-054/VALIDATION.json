@@ -1,0 +1,46 @@
+{
+  "candidate": {
+    "src/athena_procurement_arena/operator_assets/index.html": "190049892b56aab579c33e697fe7036c5f7ed0c073655f39acb9c1c2aaed0c4e",
+    "src/athena_procurement_arena/operator_assets/style.css": "68caf087904c370c5f4371c414f5117b569bfb55d683db206d756a048c484c45",
+    "src/athena_procurement_arena/operator_assets/app.js": "1282a1fe41f88baf657bbb0b2ae8bb66c6b217c37a4672e8b745ffef9dd11030",
+    "docs/JADE_OPERATOR_UI.md": "27e9508bb5d5b65dc412b57fc54351b881ffa68889aca8c60687a6f5e91a77a2"
+  },
+  "recorded_utc": "2026-10-03T21:19:00.856966+00:00",
+  "canonical_gate": {
+    "result": "PASS",
+    "tests_passed": 323,
+    "existing_windows_skip": 1,
+    "compile": "PASS",
+    "ruff": "PASS",
+    "fixture_bundles": 3,
+    "exit_code": 0
+  },
+  "syntax": "PASS",
+  "runtime_probe": {
+    "result": "PASS",
+    "assertions": 16,
+    "source": true,
+    "installed_wheel": false
+  },
+  "behavioral_probe": {
+    "result": "PASS",
+    "assertions": 7,
+    "declined_replacements_requests": 0
+  },
+  "browser": {
+    "synthetic_create_evidence_save_buyer_conversation_fuel_unlock_relock_retained_notes": "PASS before R1; backend/index/CSS unchanged",
+    "final_R1_save_wait_for_success_reload_persistence": "PASS",
+    "owner_read_only_queue_and_dossier": "PASS; four projects",
+    "console_errors_final_chrome": 0,
+    "responsive_layout": "IAB effective 320 home/detail/discover/buyers/conversations no overflow; 390/1280 conversations no overflow before R1. CSS unchanged. Chrome viewport override did not change effective width (1920); reset."
+  },
+  "owner_server": {
+    "url": "http://127.0.0.1:8766/",
+    "pid": 29380,
+    "database_mutations": "NONE"
+  },
+  "screenshot": "jade-working-app.jpg",
+  "remote_app_release": false,
+  "repair_count": 1,
+  "timing_tokens_config": "UNKNOWN"
+}

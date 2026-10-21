@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "real_records": 4,
+  "candidates": 17,
+  "unique_urls": true,
+  "first_seen_preserved": true,
+  "idempotent_admission": true,
+  "real_conversations": 0,
+  "fuel_unlocked_records": 0,
+  "feeds": [
+    {
+      "source_id": "microsoft-local",
+      "checked_at": "2026-10-01T22:16:02+00:00",
+      "last_success": "2026-10-01T22:16:02+00:00",
+      "error": "",
+      "fetched_count": 12,
+      "eligible_count": 8,
+      "excluded_count": 4,
+      "dismissed_count": 0
+    },
+    {
+      "source_id": "qts-news",
+      "checked_at": "2026-10-01T22:16:02+00:00",
+      "last_success": "2026-10-01T22:16:02+00:00",
+      "error": "",
+      "fetched_count": 9,
+      "eligible_count": 9,
+      "excluded_count": 0,
+      "dismissed_count": 0
+    }
+  ],
+  "silver_springs_id": "99ca5b7acb86e2851fc8a12998cbd78a"
+}

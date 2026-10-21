@@ -1,0 +1,13 @@
+{
+  "decision": "COMPLETE bounded local UI replacement",
+  "utc": "2026-10-03T21:19:44.792113+00:00",
+  "review": "REVIEW-R1.json PASS",
+  "evaluation": "VALIDATION.json",
+  "repair_count": 1,
+  "candidate_lesson": "Every asynchronous current replacement must share explicit dirty-draft confirmation plus generation/revision guards; saves invalidate pending loads.",
+  "attribution": "Original reviewer FIX identified async render and unguarded replacement draft loss.",
+  "metric": "Unapproved replacement requests on five declined guards: zero; delayed-load draft retention: PASS",
+  "promotion": "candidate only; no policy weakened",
+  "tokens_durations_config": "UNKNOWN",
+  "release": "local only"
+}

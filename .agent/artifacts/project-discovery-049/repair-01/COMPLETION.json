@@ -1,0 +1,42 @@
+{
+  "packet": "DISCOVER-049-R1",
+  "status": "BUILDER_HANDOFF_READY",
+  "repository": "C:/Users/nrsan/Nucleus/02_Projects/Trailforge",
+  "branch": "codex/trailforge-customer-v1",
+  "base_candidate": "DISCOVER-049 integrated working tree; prior COMPLETION.json preserved unchanged",
+  "candidate": "working tree; no commit created",
+  "objective": "Close UTF-16 DTD expansion gap, identify feed transport, and enforce a per-feed total deadline including DNS without bypassing source access controls.",
+  "utc_start": "UNKNOWN; repair start instrumentation not captured",
+  "utc_finish": "2026-10-01T22:11:06Z",
+  "repair_attempt": 1,
+  "lane": "single bounded builder",
+  "model": "UNKNOWN",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "durations": {"planning": "UNKNOWN", "build": "UNKNOWN", "validation": "UNKNOWN", "accepted_elapsed": "UNKNOWN; independent controller review pending"},
+  "changed_files": [
+    {"path": "src/athena_procurement_arena/discovery.py", "sha256": "5F0A24FD7D973D1BB23EDF027E7A6387002478E4D9540F70100B41ACC44A3681"},
+    {"path": "tests/test_discovery.py", "sha256": "ED201DADC7EE96AAC5F8CB7D6A6373565D08B9663DDC5CC06CB869D2C4E54B8E"}
+  ],
+  "validation": [
+    {"command": "uv run --no-project --python 3.11 --with pytest --with ruff ruff check src/athena_procurement_arena/discovery.py tests/test_discovery.py", "result": "PASS"},
+    {"command": "uv run --no-project --python 3.11 --with pytest --with ruff pytest -q tests/test_discovery.py tests/test_operator.py", "result": "PASS: 21 passed"},
+    {"command": "uv run --no-project --python 3.11 python -m compileall -q src/athena_procurement_arena/discovery.py", "result": "PASS"},
+    {"command": "git diff --check -- owned repair files", "result": "PASS"}
+  ],
+  "repair": [
+    "Reject decoded NUL before XML parsing; tests cover BOM-less UTF-16LE and UTF-16BE DTD/entity payloads as well as UTF-8 RSS and Atom.",
+    "Add TrailForge/0.1 (public project research) User-Agent and retain normal Accept. No cookies, browser fingerprints, retries, redirects, or denial bypass.",
+    "Apply a 10-second monotonic per-feed deadline across a globally single-slot daemon DNS resolver, pinned TLS connect/handshake, request, and bounded 64 KiB response reads. Timed-out OS DNS work can leave at most one daemon resolver thread active; the slot stays occupied until it exits, so repeated timeouts cannot create a thread pileup. Public IP and certificate/SNI checks remain.",
+    "The DNS deadline regression stalls a fake resolver, proves bounded return, then releases and joins the resolver slot through its synchronization primitive. Transport tests assert redirect rejection and the identifying User-Agent."
+  ],
+  "live_source_observations": [
+    "Controller reports Microsoft Local returned HTTP 200, 12 fetched, 7 eligible, 5 excluded during its live check.",
+    "Controller reports QTS returned HTTP 403. The denial remains a per-feed error; this repair does not bypass it. Builder did not repeat live source requests."
+  ],
+  "limitations": [
+    "Live browser intake and integrated acceptance remain controller-owned.",
+    "A timed-out system resolver may continue in one daemon thread until the OS call returns; subsequent resolution attempts fail within their deadline while that sole slot remains occupied."
+  ],
+  "authority": "No live feed requests, external actions, source-denial bypass, database operation, commit, or remote action performed by builder."
+}

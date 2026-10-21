@@ -1,0 +1,30 @@
+[
+  {
+    "status": 200,
+    "bytes": 81690,
+    "url": "https://local.microsoft.com/feed/",
+    "item_count": 12,
+    "examples": [
+      {
+        "title": "Opening doors to opportunity in Olievenhoutbosch",
+        "link": "https://local.microsoft.com/blog/opening-doors-to-opportunity-in-olievenhoutbosch/",
+        "pubDate": "Thu, 01 Oct 2026 21:10:43 +0000"
+      }
+    ],
+    "observed_at": "2026-10-01T21:44:03.4607963Z"
+  },
+  {
+    "status": 200,
+    "bytes": 79063,
+    "url": "https://q.com/news/feed/",
+    "item_count": 9,
+    "examples": [
+      {
+        "title": "Southern Conservation Trust Launches 10-Year Forest Restoration at Towaliga Preserve with QTS Data Centers",
+        "link": "https://q.com/news/southern-conservation-trust-launches-10-year-forest-restoration-at-towaliga-preserve-with-qts-data-centers/",
+        "pubDate": "Wed, 30 Sep 2026 19:24:19 +0000"
+      }
+    ],
+    "observed_at": "2026-10-01T21:44:03.6411448Z"
+  }
+]

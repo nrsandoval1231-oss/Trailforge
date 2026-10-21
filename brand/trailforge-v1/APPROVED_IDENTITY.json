@@ -1,0 +1,104 @@
+{
+  "identity": "Trailforge Jade",
+  "approval_date": "2026-10-03",
+  "owner_approval": "love it lock it in! now full brand kit with color palette",
+  "status": "APPROVED_LOCKED",
+  "wordmark": "TRAILFORGE",
+  "tagline": "Find the project. Forge the path.",
+  "palette": [
+    {
+      "name": "Deep Jade",
+      "hex": "#126653",
+      "rgb": [
+        18,
+        102,
+        83
+      ],
+      "role": "Primary action and identity signature"
+    },
+    {
+      "name": "Graphite",
+      "hex": "#232B26",
+      "rgb": [
+        35,
+        43,
+        38
+      ],
+      "role": "Primary text, navigation, and dark ground"
+    },
+    {
+      "name": "Warm Paper",
+      "hex": "#F5F4EE",
+      "rgb": [
+        245,
+        244,
+        238
+      ],
+      "role": "Main canvas and generous reading space"
+    },
+    {
+      "name": "Mist",
+      "hex": "#EEF4EF",
+      "rgb": [
+        238,
+        244,
+        239
+      ],
+      "role": "Secondary surface and quiet grouping"
+    },
+    {
+      "name": "Mint",
+      "hex": "#70D1AE",
+      "rgb": [
+        112,
+        209,
+        174
+      ],
+      "role": "Route accent and emphasis on graphite"
+    },
+    {
+      "name": "Brass",
+      "hex": "#B49A60",
+      "rgb": [
+        180,
+        154,
+        96
+      ],
+      "role": "Restrained detail and labels on graphite"
+    }
+  ],
+  "screen_color_space": "sRGB; RGB values authoritative",
+  "print_conversion": "No unprofiled CMYK values supplied; conversion requires profile and press proof.",
+  "approved_logo": {
+    "path": "brand/trailforge-v1/exports/svg/horizontal-jade.svg",
+    "sha256": "2C6C543D85961BD29BE4E4721FB6D4D371878BB8EA06EB6A61E08AE20EF73E59"
+  },
+  "master_hashes": {
+    "brand/trailforge-v1/exports/svg/app-icon.svg": "C9E739FD739F3F36D4A319D055002A8C3A8D8E61083ADC198CD930BECE728C9D",
+    "brand/trailforge-v1/exports/svg/color-palette.svg": "2049E245A7A65DA8551539F744C7F3136C88045219AA42A5AE37E9201B220B68",
+    "brand/trailforge-v1/exports/svg/horizontal-dark.svg": "5A04FF3BEAD69B261B715D3C0FE089AC2BE5B5F3A5F49E9F67A175BCF83247FD",
+    "brand/trailforge-v1/exports/svg/horizontal-jade.svg": "2C6C543D85961BD29BE4E4721FB6D4D371878BB8EA06EB6A61E08AE20EF73E59",
+    "brand/trailforge-v1/exports/svg/horizontal-white.svg": "30B08E56D707E050AAFC8BD8C1961C4314D5575D3D93B85D4E48AD68165AAAC7",
+    "brand/trailforge-v1/exports/svg/icon-dark.svg": "315E502C5DA7CB2AF6E255006660C4C5EFC8EAF3C3F48BBEFD8995846CAAF438",
+    "brand/trailforge-v1/exports/svg/icon-jade.svg": "753F052B38CB7371C2D5E4BABB309D6945966F1655AA89081B25C6881177A914",
+    "brand/trailforge-v1/exports/svg/icon-white.svg": "071443B2A88922225A13CB14F1D9E12608257015DC4BA244669B10C273218795",
+    "brand/trailforge-v1/exports/svg/mark-construction.svg": "8A7A5B4EEB27F662027AD855819C3AE8F60E44697D92365BB1435FDA7AE27DEF",
+    "brand/trailforge-v1/exports/svg/report-header.svg": "DF3D3E45C1071734F31197065779A8D6860BD325C9B47CB95AAEE3E219A27F09",
+    "brand/trailforge-v1/exports/svg/route-pattern-dark.svg": "51E052B09A5AF925F2AC64C949C721ED3A6AE11EE947521704C4888AF36EB6A9",
+    "brand/trailforge-v1/exports/svg/route-pattern.svg": "8A63313863C4F2FB820B794B408799814C68156330FDEDAA441FBF81C8D11D95",
+    "brand/trailforge-v1/exports/svg/slide-cover.svg": "4FA614A24AA4DCE0DFD3A1C89CD873C9300DCE49E72BBF2B4996C5B8FCC8201C",
+    "brand/trailforge-v1/exports/svg/stacked-dark.svg": "6AD5B9810C47F963F3C197C1BC8838F89ADBF95BF221F3E8B78D722FF406FDA9",
+    "brand/trailforge-v1/exports/svg/stacked-jade.svg": "5F4E47FAE05B557BB2BBE77BE53FC8F16300AB775CF67A89958123CF1DA830DC",
+    "brand/trailforge-v1/exports/svg/stacked-white.svg": "D2CEE9EA11F85E0533FE34AE5971D6C74C50BA4AF857FAB90DD2B4C929BFB236",
+    "brand/trailforge-v1/exports/svg/trailforge-social-card.svg": "44911B30772A126877D418C3F9CA8AFE7BC9BB7955995DC0EB45591AD6B9F232",
+    "brand/trailforge-v1/exports/svg/wordmark-dark.svg": "0D4F7498DD27E40609B205ECDCC577C543DE1EA50BAA23DF00C1D29B30572B7F",
+    "brand/trailforge-v1/exports/svg/wordmark-jade.svg": "73CF5D200FFB3B38E523CDF5DF353C0DF8E415CE9F86C9EE07A36DD7D73126F5",
+    "brand/trailforge-v1/exports/svg/wordmark-white.svg": "E0AB4F7E50A811D1982884D67A75661087D754A4B7A0C72E8306AB83B9D07A33",
+    "brand/trailforge-v1/fonts/IBMPlexMono-OFL.txt": "7E6B2818EDBD8F6A01AE80641CC8F16A51080D08FB4E532BE3A0B6F74ADB07DA",
+    "brand/trailforge-v1/fonts/IBMPlexMono-Regular.ttf": "6A3412F058C7D8DFD9170C41E85ADE48E5156ECB89356110CA57A0A27734AF46",
+    "brand/trailforge-v1/fonts/Manrope-OFL.txt": "58172E0C0FAC2CDA8A37B348164BB55E44B0E69051E557E92B1D3F6910141F7B",
+    "brand/trailforge-v1/fonts/Manrope.ttf": "3AE11C49DB0455A3CC33E37D380F20FDB8C7F8B41DC07625C177E3D87A9D6AE6",
+    "brand/trailforge-v1/tokens.css": "3A2E832B22B820F0925EFFC83E0FA1E76B10FDA78A1065E5899B8B02C5B24BF5",
+    "brand/trailforge-v1/tokens.json": "07A57E873872C472B911692529F34B85F361CC58F65C15F56CDAC2BA7D37A319"
+  }
+}

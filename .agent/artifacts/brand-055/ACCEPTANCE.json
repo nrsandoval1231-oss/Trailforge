@@ -1,0 +1,28 @@
+{
+  "result": "COMPLETE_LOCAL_DESIGN_KIT",
+  "finished_utc": "2026-10-04T00:12:47.710413+00:00",
+  "manifest": "FINAL_MANIFEST.json",
+  "validation": "VALIDATION.json",
+  "browser": {
+    "viewport320": {
+      "innerWidth": 320,
+      "scrollWidth": 305
+    },
+    "viewport390": {
+      "innerWidth": 390,
+      "scrollWidth": 375
+    },
+    "all_images_loaded": true,
+    "dark_metadata": "#CAD4CC",
+    "dark_action_text": "#70D1AE",
+    "jade_gallery_background": "#126653",
+    "theme_and_pause_controls": "PASS",
+    "console_errors": 0
+  },
+  "pdf": "9 pages visually reviewed with canonical outlined SVG signatures",
+  "zip_integrity": "PASS",
+  "repair_count": 2,
+  "existing_app": "reviewed hashes unchanged",
+  "tokens_timings_model_config": "UNKNOWN",
+  "zip_sha256": "5ee633911c4e71f437437d27f2d144b7af7095649c7f1567f8812ba73bfff5f4"
+}

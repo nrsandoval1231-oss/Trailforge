@@ -1,0 +1,21 @@
+{
+  "candidate": "acceptance-02/CANDIDATE.json",
+  "validation_started_utc": "2026-10-01T17:34:04.942754-05:00",
+  "validation_finished_utc": "2026-10-01T22:38:41.7458303Z",
+  "full_gate_exit": 0,
+  "tests_passed": 323,
+  "tests_skipped": 1,
+  "source_probe_exit": 0,
+  "installed_wheel_probe_exit": 0,
+  "runtime_checks_per_probe": 15,
+  "javascript_syntax_exit": 0,
+  "diff_check_exit": 0,
+  "independent_review": "PENDING",
+  "planning_duration": "UNKNOWN",
+  "build_duration": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "config_identity": "UNKNOWN",
+  "lane": "single serialized Luna builds; independent Sol review",
+  "post_handoff_repairs": 2,
+  "elapsed_to_accepted": "UNKNOWN until independent acceptance"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_LOCAL_V1",
+  "accepted_utc": "2026-10-01T22:55:45.1860459Z",
+  "candidate_manifest_sha256": "ad1b3ca86693c4d45ab5be0e9ae30134ccfc0e73e0fb152aa119336ba340830c",
+  "review_sha256": "941A83BD487707E8C1BEF8574BEE58C2A7FE9708146092C32C302E143E32E25A",
+  "source_changes_after_review": false,
+  "authority": "No commit/push/merge/deployment/outreach",
+  "scope": "Usable local single-operator desktop customer-first V1 with manual evidence review and exactly two on-demand official feeds, as bounded by docs/CUSTOMER_FIRST_V1.md. This PASS does not certify live engagement, competitive advantage, broad coverage or completed Arena research.",
+  "limits": [
+    "Two on-demand feeds and manual review do not establish broad project coverage or competitive lead time.",
+    "Real customer engagement and downstream fuel coordination remain unproved; full downstream transition is synthetic.",
+    "Mobile viewport behavior remains unverified.",
+    "Arena sealed outcomes and comparative validation remain unfinished."
+  ]
+}

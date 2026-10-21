@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "athena-trailforge"
 version = "0.1.0"
-description = "Deterministic research-only procurement intelligence arena"
+description = "Customer-first power project desk and deterministic research Arena"
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
@@ -14,9 +14,10 @@ dev = ["pytest>=8", "ruff>=0.15"]
 [project.scripts]
 trailforge = "athena_procurement_arena.cli:main"
 trailforge-ui = "athena_procurement_arena.local_ui:main"
+trailforge-operator = "athena_procurement_arena.operator:main"
 
 [tool.setuptools.package-data]
-athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js"]
+athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js", "operator_assets/*.html", "operator_assets/*.css", "operator_assets/*.js"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

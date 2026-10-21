@@ -1,10 +1,14 @@
 # Trailforge
-#
-Trailforge is Athena's research-only Procurement Arena: a deterministic
-environment for testing evidence-trail policies. It permits explicit,
-reviewer-bound public capture, but has no autonomous discovery, production
-scraper, customer outreach, bid autofill, submission, broker, or execution
-authority.
+
+Trailforge is a customer-first power-project desk for recording real project
+signals, verifying temporary-power needs, mapping the sourced buyer chain, and
+preparing human-led customer conversations. It keeps sources, unknowns, and
+corrections visible. Drafts are never sent from the app, and fuel coordination
+stays downstream of a verified need and an understood customer conversation.
+
+The repository also contains Athena's deterministic Procurement Arena, a
+separate research environment for testing evidence-trail policies. Its
+historical mechanics and research gates remain independent of the operator desk.
 
 ## Build approach
 
@@ -15,6 +19,17 @@ Optional local workbench: run `uv run --python 3.11 trailforge-ui`, then open
 the printed loopback URL to choose GT-003, save, inspect and replay experiments.
 Results remain UNSEALED / UNSCORED. See [local UI quickstart](docs/LOCAL_UI.md)
 for Windows commands, restart recovery, installed-wheel use and boundaries.
+
+For the customer-first local project desk, run
+`uv run --python 3.11 trailforge-operator --data .trailforge-operator.sqlite3`
+and open the printed loopback URL. Its first panel checks the official Microsoft
+Local and QTS News feeds only when requested; review a candidate and explicitly
+create its project file. Coverage is narrow, items are not automatically
+qualified, and feed or excluded-link counts remain visible. It retains project evidence, buyer research,
+conversation drafts and human-entered interactions locally; it does not send
+messages. Fuel coordination stays locked until reviewed power-need evidence and
+a conversation that records MW, timing, duration and site constraints. See
+[operator quickstart](docs/OPERATOR_QUICKSTART.md).
 
 `uv run --python 3.11 --with pytest --with ruff python -m pytest -q`
 
