@@ -173,6 +173,8 @@ def main(argv=None) -> int:
     parser.add_argument("--assembled-at", help="timezone-aware ISO timestamp for build-trace-cohort")
     parser.add_argument("--count", type=int, default=10)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--trace-memory", action="store_true",
+                        help="record peak memory for batch/compare/benchmark (slows throughput)")
     parser.add_argument("--shadow", help="path to prospective shadow record JSON for seal-prospective")
     parser.add_argument("--outcome", help="verified outcome state for seal-prospective")
     parser.add_argument("--verified-by", help="reviewer name for seal-prospective / evaluate-cohort")
@@ -503,7 +505,8 @@ def main(argv=None) -> int:
             "output": completed.stdout.strip(),
         }
     elif args.mode in {"batch", "compare", "benchmark"}:
-        result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
+        result = run_campaign(args.count, {"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed,
+                              trace_memory=args.trace_memory)
     elif args.mode == "tournament":
         regression = run_regression_campaign({"KEYWORD": keyword_rfp, "BASELINE_A": baseline}, args.seed)
         result = regression | {"governance": tournament_pipeline(

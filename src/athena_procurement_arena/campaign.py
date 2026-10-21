@@ -22,27 +22,38 @@ def synthetic_scenario(seed: int) -> Scenario:
                     GroundTruth(f"p-{seed}", "OPEN"), tenant_id=tenant_id)
 
 
-def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1) -> dict[str, Any]:
+def run_campaign(count: int, policies: dict[str, Callable[[Any], tuple[dict[str, Any], str]]], seed: int = 1,
+                 trace_memory: bool = False) -> dict[str, Any]:
     if count < 1:
         raise ValueError("campaign count must be positive")
-    started = time.perf_counter()
-    tracemalloc.start()
-    world_seconds = 0.0
-    totals = {name: {"runs": 0, "actionable": 0, "invariant_failures": 0} for name in policies}
-    for offset in range(count):
-        scenario = synthetic_scenario(seed + offset)
-        for name, policy in policies.items():
-            world = TemporalWorld(scenario, name, policy)
-            world_started = time.perf_counter()
-            world.run()
-            world_seconds += time.perf_counter() - world_started
-            totals[name]["runs"] += 1
-            totals[name]["actionable"] += sum(
-                record.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for record in world.ledger.records)
-            totals[name]["invariant_failures"] += int(not world.ledger.verify())
-    elapsed = time.perf_counter() - started
-    _, peak_memory_bytes = tracemalloc.get_traced_memory()
-    tracemalloc.stop()
+    # tracemalloc taxes every allocation (~5x slower), so it is opt-in and never mixed into throughput claims.
+    owns_tracer = trace_memory and not tracemalloc.is_tracing()
+    if owns_tracer:
+        tracemalloc.start()
+    elif trace_memory:
+        tracemalloc.reset_peak()
+    peak_memory_bytes = None
+    try:
+        started = time.perf_counter()
+        world_seconds = 0.0
+        totals = {name: {"runs": 0, "actionable": 0, "invariant_failures": 0} for name in policies}
+        for offset in range(count):
+            scenario = synthetic_scenario(seed + offset)
+            for name, policy in policies.items():
+                world = TemporalWorld(scenario, name, policy)
+                world_started = time.perf_counter()
+                world.run()
+                world_seconds += time.perf_counter() - world_started
+                totals[name]["runs"] += 1
+                totals[name]["actionable"] += sum(
+                    record.action in {"RESEARCH", "PREPARE", "BID_REVIEW"} for record in world.ledger.records)
+                totals[name]["invariant_failures"] += int(not world.ledger.verify())
+        elapsed = time.perf_counter() - started
+        if trace_memory:
+            _, peak_memory_bytes = tracemalloc.get_traced_memory()
+    finally:
+        if owns_tracer:
+            tracemalloc.stop()
     executed_runs = count * len(policies)
     failures = sum(item["invariant_failures"] for item in totals.values())
     return {"status": "FAIL" if failures else "PASS", "count": count, "seed": seed, "policies": totals,
