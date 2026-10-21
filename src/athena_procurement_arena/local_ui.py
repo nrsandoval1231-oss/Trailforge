@@ -18,7 +18,7 @@ from importlib.resources import files
 from pathlib import Path
 
 from .fixtures import load_bundle_mapping
-from .mining import load_project, load_supplier, render_report
+from .mining import REFERENCE_SUPPLIER, load_project, load_supplier, match_supplier, qualify, render_report
 from .policies import BaselineA
 from .runner import create_experiment, replay_experiment, verify_experiment
 
@@ -30,6 +30,25 @@ ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError)
 ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
           "/app.js": ("app.js", "text/javascript; charset=utf-8"),
           "/style.css": ("style.css", "text/css; charset=utf-8")}
+# Operator app (docs/UI_VISION.md). Client-side routes all serve index.html.
+APP_ASSETS = {"/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
+              "/app/app.css": ("app.css", "text/css; charset=utf-8"),
+              "/app/wordmark-white.svg": ("wordmark-white.svg", "image/svg+xml"),
+              "/app/icon-jade.svg": ("icon-jade.svg", "image/svg+xml"),
+              "/app/Manrope.ttf": ("Manrope.ttf", "font/ttf"),
+              "/app/IBMPlexMono-Regular.ttf": ("IBMPlexMono-Regular.ttf", "font/ttf")}
+
+
+def mining_payload(projects: list[dict], supplier) -> dict:
+    """Engine verdicts for the operator app; the browser renders, never decides."""
+    from dataclasses import asdict
+    out = []
+    for project in projects:
+        location = project["project"]["location"]["value"]
+        requirements = [{**req, "qualification": qualify(req), "match": match_supplier(req, supplier, location=location)}
+                        for req in project["requirements"]]
+        out.append({**project, "requirements": requirements})
+    return {"supplier": asdict(supplier), "reference_supplier": supplier == REFERENCE_SUPPLIER, "projects": out}
 
 
 def safe_path(path: Path) -> Path:
@@ -205,7 +224,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Referrer-Policy", "no-referrer")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; "
-                         "connect-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'")
+                         "connect-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'")
         self.send_header("Connection", "close")
         self.end_headers()
         self.wfile.write(data)
@@ -225,6 +244,18 @@ class Handler(BaseHTTPRequestHandler):
         try:
             with self.server.workbench.lock:
                 app = self.server.workbench
+                path = self.path.split("?", 1)[0]
+                if path in APP_ASSETS:
+                    name, kind = APP_ASSETS[path]
+                    self.reply(200, files("athena_procurement_arena").joinpath("app_assets", name).read_bytes(), kind)
+                    return
+                if path == "/app" or path == "/app/":
+                    self.reply(200, files("athena_procurement_arena").joinpath("app_assets", "index.html").read_bytes(),
+                               "text/html; charset=utf-8")
+                    return
+                if path == "/api/mining":
+                    self.reply(200, mining_payload(app.mining, app.mining_supplier))
+                    return
                 if self.path == "/mining/style.css":
                     self.path = "/style.css"
                 if self.path in ASSETS:
@@ -318,6 +349,8 @@ def main(argv=None):
     parser.add_argument("--experiments-dir", type=Path, default=Path(".trailforge-experiments"))
     parser.add_argument("--mining-supplier", type=Path, help="optional supplier offering profile JSON")
     parser.add_argument("--mining-input", type=Path, action="append", default=[], help="reviewed mining import; repeatable")
+    parser.add_argument("--no-fixture-mining", action="store_true",
+                        help="do not load the checkout's synthetic and Stibnite mining imports by default")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     if not 0 <= args.port <= 65535:
@@ -328,11 +361,15 @@ def main(argv=None):
         if not default.is_file():
             parser.error("No checkout GT-003 bundle found. Supply --bundle PATH or --saved-only.")
         bundles = [default]
+    mining_inputs = args.mining_input
+    if not mining_inputs and not args.no_fixture_mining:
+        base = Path(__file__).resolve().parents[2] / "scenarios/fixtures/mining"
+        mining_inputs = [path for path in (base / "project.json", base / "stibnite/project.json") if path.is_file()]
     app = None
     try:
-        app = Workbench(args.experiments_dir, bundles, args.mining_input, args.mining_supplier)
+        app = Workbench(args.experiments_dir, bundles, mining_inputs, args.mining_supplier)
         with WorkbenchServer(app, args.port) as server:
-            print(f"Trailforge workbench: {server.origin}/ (Ctrl+C to stop)", flush=True)
+            print(f"Trailforge: {server.origin}/app  (research workbench: {server.origin}/)  Ctrl+C to stop", flush=True)
             server.serve_forever()
     except KeyboardInterrupt:
         pass

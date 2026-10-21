@@ -18,9 +18,10 @@ trailforge = "athena_procurement_arena.cli:main"
 trailforge-ui = "athena_procurement_arena.local_ui:main"
 trailforge-discovery = "athena_procurement_arena.discovery_cli:main"
 trailforge-opportunity = "athena_procurement_arena.opportunity_cli:main"
+trailforge-operator = "athena_procurement_arena.operator:main"
 
 [tool.setuptools.package-data]
-athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js"]
+athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js", "operator_assets/*.html", "operator_assets/*.css", "operator_assets/*.js", "app_assets/*.html", "app_assets/*.css", "app_assets/*.js", "app_assets/*.svg", "app_assets/*.ttf", "app_assets/*.txt"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

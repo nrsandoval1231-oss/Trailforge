@@ -9,7 +9,8 @@ Read **[Canonical Product Vision](docs/CANONICAL_VISION.md)** for the governing 
 ## What exists today
 The repository contains a Python deterministic research laboratory with temporal evidence controls, replay, decision ledger, experiment persistence, local workbench, and public-source discovery/opportunity intake. These are foundations, **not** proof of production-ready mining intelligence or autonomous opportunity prediction.
 
-- Workbench: `uv run --python 3.11 trailforge-ui`
+- **Operator app:** `uv run --python 3.11 trailforge-ui --saved-only`, then open http://127.0.0.1:8765/app. It loads the synthetic demo and the real Stibnite import by default; add projects with `--mining-input PATH` (repeatable). See [UI vision](docs/UI_VISION.md).
+- Research workbench (replay): http://127.0.0.1:8765/ on the same server
 - Validation: `uv run --python 3.11 --extra dev python scripts/validate.py`
 - Existing public-source workflow: [Firecrawl workspace](docs/FIRECRAWL_WORKSPACE.md)
 - Historical research methodology: [Pre-RFP strategy](docs/PRE_RFP_DISCOVERY_STRATEGY.md) and [Slice A](docs/PRE_RFP_SLICE_A.md)
