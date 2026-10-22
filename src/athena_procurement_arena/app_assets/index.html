@@ -6,6 +6,7 @@
 <title>TrailForge</title>
 <link rel="icon" href="/app/icon-jade.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/app/app.css">
+<script src="/app/app_ops.js" defer></script>
 <script src="/app/app.js" defer></script>
 </head>
 <body>
@@ -14,8 +15,11 @@
     <a class="brand" href="#/"><img src="/app/wordmark-white.svg" alt="TrailForge" width="148" height="18"></a>
     <ul class="nav">
       <li><a href="#/" data-nav="queue">Queue</a></li>
+      <li><a href="#/evidence" data-nav="evidence">Evidence</a></li>
+      <li><a href="#/activity" data-nav="activity">Activity</a></li>
       <li><a href="#/sources" data-nav="sources">Sources</a></li>
     </ul>
+    <label class="who">Reviewer<input id="reviewer-name" type="text" maxlength="120" autocomplete="name" placeholder="Your name"></label>
     <div class="rail-foot">
       <p>Local · operator only</p>
       <p>Nothing is sent from TrailForge.</p>

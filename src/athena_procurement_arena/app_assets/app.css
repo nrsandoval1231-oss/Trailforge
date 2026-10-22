@@ -150,3 +150,20 @@ blockquote .meta{display:block;margin-top:4px;font:12px/1.4 var(--mono);color:va
   td.next{min-width:0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Evidence + action loop */
+.who{display:grid;gap:4px;font-size:12px;color:#E2EDE7}
+.who input{font:inherit;padding:6px 8px;border-radius:var(--r);border:1px solid var(--graphite-800);background:var(--graphite-800);color:#fff}
+.ops-wrap{padding:0 16px 12px}
+details.ops{margin-top:10px;border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;background:var(--surface)}
+details.ops>summary{font-weight:600;color:var(--text)}
+.ops-form{display:grid;gap:10px;margin-top:8px;max-width:640px}
+.field{display:grid;gap:3px;font-size:13px}
+.field span{color:var(--text-2)}
+.field input,.field select,.field textarea,.conflict select,.conflict input{font:inherit;padding:6px 8px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text)}
+.form-error{color:var(--error);font-size:13px;margin:0}
+.form-error:empty{display:none}
+.conflict{margin-top:6px;padding:8px;background:var(--error-bg);border-radius:var(--r);font-size:13px}
+.inline{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.kv button{padding:2px 8px;font-size:12px}
+@media (max-width:720px){.who{flex:1 1 100%}.ops-wrap{padding:0 8px 12px}}
