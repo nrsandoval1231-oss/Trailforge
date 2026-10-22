@@ -1,4 +1,4 @@
-// TrailForge operator app (docs/UI_VISION.md, Phase 1: read-only Queue + Dossier).
+// TrailForge operator app (docs/UI_VISION.md). Phase 1 views live here; evidence/action loop in app_ops.js.
 // The engine decides; this file only renders /api/mining. All text goes in via text nodes.
 "use strict";
 
@@ -223,6 +223,7 @@ function renderProject(projectId, focus) {
     facts,
     el("section", { class: "panel" }, el("h3", { text: "Phases" }), timeline),
     el("div", { class: "grid" }, cards),
+    opsDossier(project),
     brief);
   view.querySelectorAll(":scope > section, :scope > .grid").forEach((n) => n.classList.add("spaced"));
   if (focus !== undefined) document.getElementById(`req-${focus}`)?.scrollIntoView({ block: "start" });
@@ -258,7 +259,8 @@ function requirementCard(project, req, i) {
 
   return el("article", { class: "req", id: `req-${i}` },
     el("header", {}, el("h2", { text: req.requirement_id }), tag(req.status), procurementTag(q, req)),
-    el("div", { class: "body" }, need, fit));
+    el("div", { class: "body" }, need, fit),
+    el("div", { class: "ops-wrap" }, reviewPanel(project, req)));
 }
 
 function unknownsView(unknowns) {
@@ -285,7 +287,7 @@ function briefText(project) {
     const keyGaps = req.unknowns.map((u) => u.split(".").pop()).filter((u) => KEY_GAPS.includes(u));
     if (keyGaps.length) lines.push(`  Ask: ${keyGaps.map(label).join(", ")}`);
   }
-  return lines.join("\n");
+  return lines.concat(opsBriefLines(project)).join("\n");
 }
 
 function briefPanel(project) {
@@ -319,7 +321,7 @@ function renderSources() {
 function route() {
   if (!DATA) return;
   const parts = location.hash.replace(/^#\/?/, "").split("/").map(decodeURIComponent);
-  const section = parts[0] === "sources" ? "sources" : "queue";
+  const section = ["sources", "evidence", "activity"].includes(parts[0]) ? parts[0] : "queue";
   for (const a of document.querySelectorAll("[data-nav]")) {
     if (a.dataset.nav === section) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
@@ -327,6 +329,12 @@ function route() {
   if (parts[0] === "p" && parts[1]) {
     renderProject(parts[1], parts[2] !== undefined && parts[2] !== "" ? Number(parts[2]) : undefined);
     document.title = `${parts[1]} · TrailForge`;
+  } else if (section === "evidence") {
+    renderEvidence();
+    document.title = "Evidence · TrailForge";
+  } else if (section === "activity") {
+    renderActivity();
+    document.title = "Activity · TrailForge";
   } else if (section === "sources") {
     renderSources();
     document.title = "Sources · TrailForge";
@@ -342,6 +350,7 @@ async function start() {
     const response = await fetch("/api/mining", { headers: { Accept: "application/json" } });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     DATA = await response.json();
+    await loadOps();
   } catch (error) {
     show(el("p", { class: "banner", text: `Could not load mining intelligence: ${error.message}. Restart trailforge-ui and reload.` }));
     return;

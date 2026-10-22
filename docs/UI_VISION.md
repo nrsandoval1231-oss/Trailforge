@@ -1,6 +1,6 @@
 # TrailForge Operator UI — Vision
 
-Status: Approved by owner 2026-10-21. Phases 0 and 1 implemented (see Progress). Governed by
+Status: Approved by owner 2026-10-21. Phases 0-3 implemented (see Progress). Governed by
 [CANONICAL_VISION.md](CANONICAL_VISION.md); where they disagree, the canonical
 vision wins.
 
@@ -200,3 +200,13 @@ enrichment, autonomous crawling, price quoting, and forecast accuracy claims.
   at 1366px and 390px with no console errors and no horizontal scroll.
 - The old research workbench stays at `/` until Phase 2 replaces its remaining use.
 
+- **Phase 2 (evidence loop): done.** Evidence screen and per-requirement review panels: mark a
+  claim reviewed/rejected (reviewer name required), resolve a `CONFLICT` by choosing a cited
+  source, and capture a source excerpt (hashed, first-observed stamped, public/confidential).
+- **Phase 3 (action loop): done.** Buying-chain entries (each needs a source quote), an Activity
+  screen and per-project log of conversations/outcomes, and the fuel gate: `FUEL_PROVIDER`
+  entries are refused until a direct buyer and a logged conversation exist. The copy-only brief
+  includes the recorded chain and activity.
+- All operator judgement is stored in `operator-log.jsonl` under `--experiments-dir`
+  (`operator_log.py`): append-only, hash-chained, tamper-detected on load; corrections are new
+  events that supersede old ones. Imports are never edited. Mutations use the session token.

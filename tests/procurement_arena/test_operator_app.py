@@ -55,7 +55,7 @@ def test_mining_api_returns_engine_verdicts_per_requirement(tmp_path):
 
 
 @pytest.mark.parametrize("path,kind", [
-    ("/app", "text/html"), ("/app/", "text/html"), ("/app/app.js", "text/javascript"),
+    ("/app", "text/html"), ("/app/", "text/html"), ("/app/app.js", "text/javascript"), ("/app/app_ops.js", "text/javascript"),
     ("/app/app.css", "text/css"), ("/app/wordmark-white.svg", "image/svg+xml"), ("/app/Manrope.ttf", "font/ttf"),
 ])
 def test_app_assets_are_packaged_and_csp_allows_only_self(tmp_path, path, kind):

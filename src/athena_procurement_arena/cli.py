@@ -52,6 +52,7 @@ from .runner import (
 )
 from .scenario_dsl import ScenarioDsl
 from .shadow import load_shadow_record
+from .signal_family_report import compare_cohort_signal_families, write_signal_family_report
 from .signal_ledger import SignalType
 from .signal_review import accept_candidate, candidate_from_capture, write_signal
 from .tournament import tournament_pipeline
@@ -119,7 +120,7 @@ def main(argv=None) -> int:
     parser.add_argument("mode", choices=("smoke", "unit", "scenario", "inspect", "batch", "compare", "adversarial",
                                           "counterfactual", "historical", "tournament", "benchmark", "replay",
                                           "optimize", "shortlist", "validate-bundle",
-                                          "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "build-rfp-review-queue", "backtest-traces", "backtest-cohort", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
+                                          "screen-bundle", "capture-public", "review-signal", "capture-rfp-candidate", "accept-rfp-candidate", "build-rfp-review-queue", "backtest-traces", "backtest-cohort", "compare-signal-families", "resolve-traces", "build-trace-cohort", "seal-trace-outcome", "build-outcome-cohort", "evaluate-retrospective", "seal-prospective", "evaluate-cohort"))
     parser.add_argument("--bundle", help="versioned local fixture bundle for shortlist or scenario fixture selection")
     parser.add_argument("--url", help="one public HTTP(S) URL for capture-public")
     parser.add_argument("--capture-id", help="stable capture identifier for capture-public")
@@ -396,6 +397,14 @@ def main(argv=None) -> int:
         result = {"status": "PASS", "mode": "backtest-cohort", "cohort_id": report.cohort_id,
                   "cohort_hash": report.cohort_hash, "report_hash": report.report_hash,
                   "coverage": report.report.coverage, "output": args.output}
+    elif args.mode == "compare-signal-families":
+        if not args.cohort or not args.target_type or not args.output:
+            parser.error("compare-signal-families requires --cohort, --target-type, and --output")
+        family_report = compare_cohort_signal_families(args.cohort, target_signal_type=SignalType(args.target_type))
+        write_signal_family_report(family_report, args.output)
+        result = {"status": "PASS", "mode": "compare-signal-families", "cohort_id": family_report.cohort_id,
+                  "cohort_status": family_report.cohort_status, "report_hash": family_report.report_hash,
+                  "output": args.output}
     elif args.mode == "build-trace-cohort":
         if not args.traces or not args.cohort_id or not args.assembled_by or not args.assembled_at or not args.output:
             parser.error("build-trace-cohort requires --traces, --cohort-id, --assembled-by, --assembled-at, and --output")

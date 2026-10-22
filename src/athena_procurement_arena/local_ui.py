@@ -20,11 +20,13 @@ from pathlib import Path
 
 from .fixtures import load_bundle_mapping
 from .mining import REFERENCE_SUPPLIER, load_project, load_supplier, match_supplier, qualify, render_report
+from .operator_log import OperatorLog, OperatorLogError
 from .policies import BaselineA
 from .runner import create_experiment, replay_experiment, verify_experiment
 
 RUN_ID = re.compile(r"[0-9a-f]{32}\Z")
 MAX_BODY = 4096
+MAX_OPERATOR_BODY = 16384
 CLOSE_DRAIN_BYTES = MAX_BODY + 1024
 CLOSE_DRAIN_SECONDS = 0.25
 ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError)
@@ -32,7 +34,8 @@ ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
           "/app.js": ("app.js", "text/javascript; charset=utf-8"),
           "/style.css": ("style.css", "text/css; charset=utf-8")}
 # Operator app (docs/UI_VISION.md). Client-side routes all serve index.html.
-APP_ASSETS = {"/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
+APP_ASSETS = {"/app/app_ops.js": ("app_ops.js", "text/javascript; charset=utf-8"),
+              "/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
               "/app/app.css": ("app.css", "text/css; charset=utf-8"),
               "/app/wordmark-white.svg": ("wordmark-white.svg", "image/svg+xml"),
               "/app/icon-jade.svg": ("icon-jade.svg", "image/svg+xml"),
@@ -96,6 +99,8 @@ class Workbench:
         self.withheld_synthetic = len(loaded) - len(self.mining)
         self.root = safe_path(root)
         self.root.mkdir(parents=True, exist_ok=True)
+        self.operator_log = OperatorLog(safe_path(self.root / "operator-log.jsonl"),
+                                        {p["project_id"]: p for p in self.mining})
         self.lock = threading.RLock()
         self.token = secrets.token_urlsafe(32)
         self.cases = {}
@@ -279,6 +284,9 @@ class Handler(BaseHTTPRequestHandler):
                     self.reply(200, files("athena_procurement_arena").joinpath("app_assets", "index.html").read_bytes(),
                                "text/html; charset=utf-8")
                     return
+                if path == "/api/operator":
+                    self.reply(200, app.operator_log.view())
+                    return
                 if path == "/api/mining":
                     payload = mining_payload(app.mining, app.mining_supplier)
                     payload["withheld_synthetic"] += app.withheld_synthetic
@@ -323,6 +331,32 @@ class Handler(BaseHTTPRequestHandler):
         except ERRORS as exc:
             self.reply(400, {"error": str(exc)})
 
+    def post_operator(self, app, lengths):
+        if (self.headers.get("Transfer-Encoding") is not None or len(lengths) != 1
+                or len(lengths[0]) > 5 or not lengths[0].isdigit() or not 0 < int(lengths[0]) <= MAX_OPERATOR_BODY):
+            self.reply(400, {"error": f"A bounded Content-Length is required (1–{MAX_OPERATOR_BODY} bytes)."})
+            return
+        try:
+            raw = self.rfile.read(int(lengths[0]))
+            if len(raw) != int(lengths[0]):
+                raise ValueError("incomplete body")
+            body = json.loads(raw)
+            allowed = {"kind", "project_id", "requirement_id", "reviewer", "payload", "supersedes"}
+            if not isinstance(body, dict) or not {"kind", "project_id", "reviewer", "payload"} <= body.keys() \
+                    or body.keys() - allowed:
+                raise OperatorLogError("request must carry kind, project_id, reviewer, payload (and optionally "
+                                       "requirement_id, supersedes)")
+            supersedes = body.get("supersedes")
+            if supersedes is not None and (not isinstance(supersedes, int) or isinstance(supersedes, bool)):
+                raise OperatorLogError("supersedes must be an event id")
+            with app.lock:
+                event = app.operator_log.append(
+                    kind=body["kind"], project_id=body["project_id"], reviewer=body["reviewer"],
+                    payload=body["payload"], requirement_id=body.get("requirement_id"), supersedes=supersedes)
+            self.reply(201, event)
+        except ERRORS as exc:  # OperatorLogError is a ValueError
+            self.reply(400, {"error": str(exc)})
+
     def do_POST(self):
         if not self.guard():
             return
@@ -335,6 +369,9 @@ class Handler(BaseHTTPRequestHandler):
             self.reply(415, {"error": "Content-Type must be application/json"})
             return
         lengths = self.headers.get_all("Content-Length", [])
+        if self.path == "/api/operator":
+            self.post_operator(app, lengths)
+            return
         if (self.headers.get("Transfer-Encoding") is not None or len(lengths) != 1
                 or len(lengths[0]) > 4 or not lengths[0].isdigit() or not 0 < int(lengths[0]) <= MAX_BODY):
             self.reply(400, {"error": "A bounded Content-Length is required (1–4096 bytes)."})
