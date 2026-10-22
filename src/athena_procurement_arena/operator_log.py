@@ -98,6 +98,19 @@ class OperatorLog:
                 return req
         raise OperatorLogError("unknown requirement for this project")
 
+    @staticmethod
+    def _claim(req: dict, field: str) -> dict | None:
+        group, _, name = field.partition(".")
+        return req.get(group, {}).get(name) if name else req.get(field)
+
+    def _claim_hash(self, event: dict) -> str | None:
+        """Hash of the claim as currently imported, or None if it no longer exists."""
+        project = self.projects.get(event["project_id"])
+        req = next((r for r in project["requirements"] if r["requirement_id"] == event["requirement_id"]), None) \
+            if project else None
+        claim = self._claim(req, event["payload"]["field"]) if req else None
+        return canonical_hash(claim) if claim is not None else None
+
     def _live(self, project_id: str, kind: str) -> list[dict]:
         replaced = {e["supersedes"] for e in self.events if e.get("supersedes")}
         return [e for e in self.events
@@ -117,18 +130,19 @@ class OperatorLog:
             if field not in known:
                 raise OperatorLogError("field is not a claim on this requirement")
             return {"field": field, "decision": _choice(payload, "decision", DECISIONS),
-                    "note": _text(payload, "note", required=False)}
+                    "note": _text(payload, "note", required=False),
+                    "claim_hash": canonical_hash(self._claim(req, field))}
         if kind == "conflict_resolution":
             field = _text(payload, "field", limit=120)
-            group, _, name = field.partition(".")
-            claim = req.get(group, {}).get(name) if name else req.get(field)
+            claim = self._claim(req, field)
             if not claim or claim.get("basis") != "CONFLICT":
                 raise OperatorLogError("field is not an unresolved conflict")
             sources = {e["source"] for alt in claim["alternatives"] for e in alt["evidence"]}
             source = _text(payload, "chosen_source", limit=120)
             if source not in sources:
                 raise OperatorLogError("chosen_source must be a source cited by a competing claim")
-            return {"field": field, "chosen_source": source, "note": _text(payload, "note")}
+            return {"field": field, "chosen_source": source, "note": _text(payload, "note"),
+                    "claim_hash": canonical_hash(claim)}
         if kind == "buying_chain":
             role = _choice(payload, "role", ROLES)
             if role in FUEL_ROLES and not self._fuel_gate_open(project_id):
@@ -198,12 +212,14 @@ class OperatorLog:
 
     # ----- reads -----
     def view(self) -> dict[str, Any]:
-        """Current (non-superseded) state per project plus the full event count."""
+        """Per-project events with superseded/stale flags. Stale: the imported claim changed after review."""
         replaced = {e["supersedes"] for e in self.events if e.get("supersedes")}
         out: dict[str, dict[str, list]] = {}
         for event in self.events:
             bucket = out.setdefault(event["project_id"], {kind: [] for kind in KINDS})
-            bucket[event["kind"]].append({**event, "superseded": event["event_id"] in replaced})
+            stale = event["kind"] in ("claim_review", "conflict_resolution") \
+                and event["payload"]["claim_hash"] != self._claim_hash(event)
+            bucket[event["kind"]].append({**event, "superseded": event["event_id"] in replaced, "stale": stale})
         return {"events": len(self.events), "head": self.events[-1]["event_hash"] if self.events else GENESIS,
                 "projects": out}
 

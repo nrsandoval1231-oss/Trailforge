@@ -142,3 +142,15 @@ def test_http_endpoint_requires_token_and_persists(tmp_path):
         thread.join(timeout=5)
         server.server_close()
         app.close()
+
+
+def test_review_goes_stale_when_imported_claim_changes(log, tmp_path):
+    operator, project = log
+    rid = _req(project)
+    operator.append(kind="claim_review", project_id="stibnite", requirement_id=rid, reviewer="N",
+                    payload={"field": "phase", "decision": "REVIEWED"}, now=NOW)
+    assert operator.view()["projects"]["stibnite"]["claim_review"][0]["stale"] is False
+    changed = json.loads(json.dumps(project))
+    changed["requirements"][0]["phase"]["value"] = "COMMISSIONING"
+    reloaded = OperatorLog(tmp_path / "log.jsonl", {"stibnite": changed})
+    assert reloaded.view()["projects"]["stibnite"]["claim_review"][0]["stale"] is True

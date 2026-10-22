@@ -12,7 +12,7 @@ def _sig(project, sid, kind, day, **claims):
         source_sha256="a" * 64, verified_by="reviewer", claims=claims, source_quote=sid)
 
 
-def test_families_compared_independently_with_burden_false_surfaces_and_buyer_path():
+def test_families_compared_independently_with_burden_unresolved_surfaces_and_buyer_path():
     p1 = ProjectTrace("p1", (
         _sig("p1", "a", SignalType.PERMIT_FILED, 0, buyer_path=["EPCM"]),
         _sig("p1", "b", SignalType.PERMIT_FILED, 5),
@@ -25,7 +25,7 @@ def test_families_compared_independently_with_burden_false_surfaces_and_buyer_pa
     by_type = {item.signal_type: item for item in report.families}
     permit = by_type[SignalType.PERMIT_FILED]
     assert (permit.target_cases, permit.surfaced_cases, permit.matched_cases) == (2, 2, 1)
-    assert permit.false_surfaces == 1 and permit.coverage == 0.5
+    assert permit.unresolved_surfaces == 1 and permit.coverage == 0.5
     assert permit.median_lead_days == 100 and permit.signals_per_surfaced_project == 1.5
     assert permit.buyer_path_cases == 1 and not permit.repeatable
     assert by_type[SignalType.EPCM_AWARDED].median_lead_days == 70

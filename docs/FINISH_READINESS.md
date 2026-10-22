@@ -24,7 +24,7 @@ Once a signal family is validated, define the smallest GridLens live integration
 
 `python -m athena_procurement_arena compare-signal-families --cohort COHORT.json --target-type TYPE --output REPORT.json`
 treats each signal type as a one-family policy and reports, per family: coverage, median lead
-time (days), false surfaces, signals per surfaced project (action burden), and buyer-path
+time (days), surfaces with no verified target (unresolved, not counted as false alarms), signals per surfaced project (action burden), and buyer-path
 availability (a `buyer_path` claim on a signal at or before first surface). The report states
 whether the cohort is inside the 20-50 target and whether any family is repeatable (at least
 5 matched projects with positive median lead). The tooling is complete; the cohort itself is

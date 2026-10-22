@@ -32,7 +32,8 @@ async function record(event, errorNode) {
 }
 
 const bucket = (projectId, kind) => ((OP.projects[projectId] || {})[kind] || []);
-const live = (projectId, kind) => bucket(projectId, kind).filter((e) => !e.superseded);
+// Superseded events and decisions made on an earlier version of a changed claim are not live.
+const live = (projectId, kind) => bucket(projectId, kind).filter((e) => !e.superseded && !e.stale);
 const field = (label_, input) => el("label", { class: "field" }, el("span", { text: label_ }), input);
 
 function formPanel(title, hint, fields, submit) {

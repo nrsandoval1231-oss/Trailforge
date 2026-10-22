@@ -22,7 +22,7 @@ class SignalFamilyResult:
     target_cases: int
     surfaced_cases: int
     matched_cases: int
-    false_surfaces: int
+    unresolved_surfaces: int
     signals_per_surfaced_project: float | None
     buyer_path_cases: int
     lead_days: tuple[float, ...]
@@ -53,7 +53,7 @@ class SignalFamilyResult:
             "signal_type": self.signal_type, "target_cases": self.target_cases,
             "surfaced_cases": self.surfaced_cases, "matched_cases": self.matched_cases,
             "coverage": self.coverage, "median_lead_days": self.median_lead_days,
-            "false_surfaces": self.false_surfaces,
+            "unresolved_surfaces": self.unresolved_surfaces,
             "signals_per_surfaced_project": self.signals_per_surfaced_project,
             "buyer_path_cases": self.buyer_path_cases, "buyer_path_rate": self.buyer_path_rate,
             "repeatable": self.repeatable, "lead_days": list(self.lead_days),
@@ -98,7 +98,7 @@ def _has_buyer_path(trace: ProjectTrace, surface_at) -> bool:
 
 
 def _family(traces: tuple[ProjectTrace, ...], family: SignalType, target: SignalType) -> SignalFamilyResult:
-    target_cases = surfaced = matched = false_surfaces = buyer_cases = 0
+    target_cases = surfaced = matched = unresolved_surfaces = buyer_cases = 0
     family_signal_counts: list[int] = []
     leads: list[float] = []
     for trace in traces:
@@ -113,7 +113,8 @@ def _family(traces: tuple[ProjectTrace, ...], family: SignalType, target: Signal
         surfaced += 1
         family_signal_counts.append(len(pool))
         if target_at is None:
-            false_surfaces += 1
+            # No verified target does not prove a false alarm (trace may be incomplete); keep unresolved.
+            unresolved_surfaces += 1
             continue
         first = min(item.observed_at for item in pool)
         matched += 1
@@ -121,7 +122,7 @@ def _family(traces: tuple[ProjectTrace, ...], family: SignalType, target: Signal
         if _has_buyer_path(trace, first):
             buyer_cases += 1
     burden = round(sum(family_signal_counts) / surfaced, 3) if surfaced else None
-    return SignalFamilyResult(family, target_cases, surfaced, matched, false_surfaces, burden,
+    return SignalFamilyResult(family, target_cases, surfaced, matched, unresolved_surfaces, burden,
                               buyer_cases, tuple(sorted(leads)))
 
 
