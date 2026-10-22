@@ -60,12 +60,14 @@ class FindService:
     # ----- catalog -----
     def set_catalog(self, path: Path | None) -> None:
         self.catalog, self.catalog_error = {}, None
-        if path is None:
-            return
-        try:
-            self.catalog = firecrawl_discovery.load_catalog(path)
-        except (OSError, ValueError) as exc:
-            self.catalog_error = f"Discovery catalog could not be loaded: {_describe(exc)}"
+        if path is not None:
+            try:
+                self.catalog = firecrawl_discovery.load_catalog(path)
+            except (OSError, ValueError) as exc:
+                self.catalog_error = f"Discovery catalog could not be loaded: {_describe(exc)}"
+        # hosts the operator pinned searches to are official sources for ranking; stored leads re-rank on next open
+        self.store.set_official_hosts(d for entry in self.catalog.values() for d in entry.get("domains") or []
+                                      if isinstance(d, str))
 
     def catalog_view(self) -> list[dict]:
         return [{"id": key, "query": entry["query"], "domains": list(entry.get("domains", [])),
