@@ -182,7 +182,7 @@ function paintLeads() {
     : el("p", { class: "muted", text: FIND.state.counts.total
       ? "No leads in this list with the current filters." : "No leads yet. Run a search above; nothing is shown until you do." }));
   const other = by("OTHER");
-  FIND.nodes.otherSummary.textContent = `Other (${other.length}): no RFP or project words matched`;
+  FIND.nodes.otherSummary.textContent = `Other (${other.length}): not RFP-like or project-like; each card says why`;
   FIND.nodes.other.replaceChildren(other.length ? el("ul", { class: "leads" }, other.map(leadCard))
     : el("p", { class: "muted", text: "Nothing here." }));
 }
@@ -190,6 +190,18 @@ function paintLeads() {
 function chips(label_, words) {
   return words.length ? el("span", { class: "kwgroup" }, el("span", { class: "k", text: label_ }),
     words.map((w) => el("span", { class: "kw", text: w }))) : null;
+}
+
+// A date quoted from the search snippet beside deadline wording. It is shown as an unverified quote, never as a
+// status: nothing here says a solicitation is open, closed, active or current.
+function deadlineChip(lead) {
+  const hint = lead.matched.deadline_hint;
+  if (!hint) return null;
+  const word = hint.word || String(hint.text || "").split(/\W/)[0];
+  const text = !hint.date ? "Date in snippet could not be read (unverified)"
+    : lead.deadline_status === "past" ? `Date in snippet after "${word}" is in the past: ${hint.date} (unverified)`
+      : `Date in snippet after "${word}": ${hint.date} (unverified)`;
+  return el("span", { class: "kw note", title: `Snippet wording: ${hint.text}`, text });
 }
 
 function leadCard(lead) {
@@ -233,10 +245,12 @@ function leadCard(lead) {
     onclick: () => { FIND.open.has(lead.id) ? FIND.open.delete(lead.id) : FIND.open.add(lead.id); paintLeads(); } });
   if (expanded) paintDetail(lead, detail);
   const m = lead.matched;
+  const explainer = m.explainer || [];
   return el("li", { class: `lead${lead.status === "DISMISSED" ? " dim" : ""}` },
     el("h4", { class: "lead-title", text: lead.title || "(untitled result)" }),
     el("div", { class: "lead-meta" },
-      tag("Unreviewed", "UNKNOWN"), tag(`Heuristic: ${lead.kind === "RFP" ? "RFP-like words" : lead.kind === "PROJECT" ? "project-like words" : "no match"}`, "neutral"),
+      tag("Unreviewed", "UNKNOWN"), tag(`Heuristic: ${lead.kind === "RFP" ? "RFP-like words" : lead.kind === "PROJECT" ? "project-like words" : "not RFP-like or project-like"}`, "neutral"),
+      el("span", { class: "fit-note", title: "Keyword-weight rank, highest first. A heuristic ordering, not a rating.", text: `Rank score ${lead.score}` }),
       lead.status !== "NEW" ? tag(lead.status, "neutral") : null,
       el("span", { class: "mono", text: lead.host }),
       href ? el("a", { href, target: "_blank", rel: "noopener noreferrer", text: "Open source ↗" }) : el("span", { class: "muted", text: "(link withheld)" }),
@@ -244,7 +258,13 @@ function leadCard(lead) {
     lead.snippet ? el("p", { class: "snippet", text: lead.snippet }) : null,
     el("div", { class: "why" }, el("span", { class: "k", text: "Why flagged (word match, not verification):" }),
       chips("RFP words", m.rfp), chips("Project words", m.project), chips("Power words", m.power),
-      !m.rfp.length && !m.project.length && !m.power.length ? el("span", { class: "muted", text: " nothing matched" }) : null),
+      explainer.length ? el("span", { class: "kwgroup" }, el("span", { class: "k", text: "Explainer-like:" }),
+        explainer.map((w) => el("span", { class: "kw note", text: w }))) : null,
+      deadlineChip(lead),
+      lead.kind !== "OTHER" && m.reason ? el("span", { class: "kw note", text: `Caution: ${m.reason}` }) : null,
+      !m.rfp.length && !m.project.length && !m.power.length && !explainer.length
+        ? el("span", { class: "muted", text: " nothing matched" }) : null),
+    lead.kind === "OTHER" && m.reason ? el("p", { class: "fit-note", text: `Why this is in Other: ${m.reason}` }) : null,
     el("p", { class: "fit-note", text: `First seen ${day(lead.first_seen)} · last seen ${day(lead.last_seen)} · surfaced by: ${lead.query_ids.join("; ")}` }),
     capture?.state === "failed" ? el("p", { class: "form-error", role: "alert", text: `Capture failed: ${capture.error}` }) : null,
     el("div", { class: "actions" }, buttons, toggle), error, detail);

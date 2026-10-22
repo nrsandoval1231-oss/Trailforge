@@ -52,35 +52,39 @@ def test_classifier_rfp_project_other_and_keywords():
     assert rfp.kind == "RFP"
     assert {"request for proposal", "rfp"} & set(rfp.rfp) == {"request for proposal"}
     assert {"temporary power", "bridge power", "generator", "MW"} <= set(rfp.power)
-    portal = classify("Notice", "", "https://www.bidnetdirect.com/x")
-    assert portal.kind == "RFP" and portal.rfp == ("host:bidnetdirect.com",)
+    # a portal host with no energy context stays RFP-like but is flagged and ranks lower than one with context
+    portal = classify("Notice", "Temporary power", "https://www.bidnetdirect.com/x")
+    assert portal.kind == "RFP" and portal.rfp == ("host:bidnetdirect.com",) and portal.reason == ""
+    bare = classify("Notice", "", "https://www.bidnetdirect.com/x")
+    assert bare.kind == "RFP" and "no energy or power context" in bare.reason and bare.score < portal.score
     assert classify("IFB 22-04 Substation work", "", "https://a.example/x").kind == "RFP"
     project = classify("Data center campus announced", "Planned substation and 300 megawatts of load",
                        "https://news.example/story")
     assert project.kind == "PROJECT"
     assert {"data center", "announced", "planned", "substation"} <= set(project.project)
-    assert {"megawatt", "substation", "load"} <= set(project.power)
+    assert {"megawatt", "substation"} <= set(project.power) and "load" not in project.power  # `load` is too generic
     other = classify("Best pizza in town", "Great reviews", "https://food.example/menu")
     assert (other.kind, other.rfp, other.project, other.power) == ("OTHER", (), (), ())
     # word boundaries: no match inside other words
     assert classify("Download the bidding guide", "", "https://a.example/").kind == "OTHER"
-    assert classify("", "", "https://a.example/request-for-proposal-2026").kind == "RFP"
+    assert classify("", "", "https://a.example/request-for-proposal-2026-temporary-power").kind == "RFP"
+    assert classify("", "", "https://a.example/request-for-proposal-2026").kind == "OTHER"  # no energy context
     assert classify("x", "x", "https://notsam.gov.evil.example/").rfp == ()
 
 
 # ----- store -----
 def test_store_upsert_never_resurrects_dismissed_and_merges_queries(tmp_path):
     store = LeadStore(tmp_path / "leads.sqlite3")
-    lead_id, is_new = store.upsert_hit("https://example.com/rfp/", "RFP one", "snippet", "web", "q1", NOW)
+    lead_id, is_new = store.upsert_hit("https://example.com/rfp/", "RFP one: temporary power", "snippet", "web", "q1", NOW)
     assert is_new
     same_id, again = store.upsert_hit("https://EXAMPLE.com/rfp?utm_source=a", "", "", "news", "q2",
                                       NOW + timedelta(days=1))
     assert (same_id, again) == (lead_id, False)
     lead = store.get(lead_id)
-    assert lead["query_ids"] == ["q1", "q2"] and lead["title"] == "RFP one"
+    assert lead["query_ids"] == ["q1", "q2"] and lead["title"] == "RFP one: temporary power"
     assert lead["first_seen"] != lead["last_seen"] and lead["kind"] == "RFP"
     store.set_status(lead_id, "dismiss", now=NOW)
-    store.upsert_hit("https://example.com/rfp", "RFP one", "snippet", "web", "q3", NOW + timedelta(days=2))
+    store.upsert_hit("https://example.com/rfp", "RFP one: temporary power", "snippet", "web", "q3", NOW + timedelta(days=2))
     assert store.get(lead_id)["status"] == "DISMISSED"
     assert store.get(lead_id)["query_ids"] == ["q1", "q2", "q3"]
     assert store.set_status(lead_id, "restore")["status"] == "NEW"
@@ -88,7 +92,7 @@ def test_store_upsert_never_resurrects_dismissed_and_merges_queries(tmp_path):
 
 def test_store_snooze_expiry_filters_and_counts(tmp_path):
     store = LeadStore(tmp_path / "leads.sqlite3")
-    a, _ = store.upsert_hit("https://example.com/a", "Solicitation A", "", "web", "q", NOW)
+    a, _ = store.upsert_hit("https://example.com/a", "Solicitation A: temporary power", "", "web", "q", NOW)
     b, _ = store.upsert_hit("https://example.com/b", "Pipeline construction announced", "", "web", "q", NOW)
     store.upsert_hit("https://example.com/c", "Nothing relevant", "100% pure_water", "web", "q", NOW)
     store.set_status(a, "snooze", days=3, now=NOW)

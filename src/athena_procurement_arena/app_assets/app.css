@@ -191,6 +191,7 @@ details.ops>summary{font-weight:600;color:var(--text)}
 .why .k,.kwgroup .k{color:var(--text-2)}
 .kwgroup{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center}
 .kw{font:12px var(--mono);padding:1px 6px;border-radius:4px;background:var(--mist);border:1px solid var(--border)}
+.kw.note{background:transparent;border-style:dashed}
 .actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
 .actions button,.actions select{padding:5px 12px;font-size:13px}
 .actions select{font:inherit;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text);padding:5px 8px}
