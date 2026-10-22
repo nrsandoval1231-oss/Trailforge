@@ -9,6 +9,7 @@ import os
 import re
 import secrets
 import socket
+import sqlite3
 import stat
 import sys
 import threading
@@ -17,8 +18,11 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
 from pathlib import Path
+from urllib.parse import parse_qs
 
 from .fixtures import load_bundle_mapping
+from .lead_search import CUSTOM_QUERY_MAX, MAX_QUERY_IDS, MAX_RESULTS, MAX_SEARCHES, Busy, FindService
+from .leads import KINDS, STATUSES
 from .mining import REFERENCE_SUPPLIER, load_project, load_supplier, match_supplier, qualify, render_report
 from .operator_log import OperatorLog, OperatorLogError
 from .policies import BaselineA
@@ -35,6 +39,7 @@ ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
           "/style.css": ("style.css", "text/css; charset=utf-8")}
 # Operator app (docs/UI_VISION.md). Client-side routes all serve index.html.
 APP_ASSETS = {"/app/app_ops.js": ("app_ops.js", "text/javascript; charset=utf-8"),
+              "/app/app_find.js": ("app_find.js", "text/javascript; charset=utf-8"),
               "/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
               "/app/app.css": ("app.css", "text/css; charset=utf-8"),
               "/app/wordmark-white.svg": ("wordmark-white.svg", "image/svg+xml"),
@@ -99,6 +104,8 @@ class Workbench:
         self.withheld_synthetic = len(loaded) - len(self.mining)
         self.root = safe_path(root)
         self.root.mkdir(parents=True, exist_ok=True)
+        # Find tab: lazy lead store + background search/capture; never holds self.lock while talking to Firecrawl.
+        self.find = FindService(self.root, safe_path)
         self.operator_log = OperatorLog(safe_path(self.root / "operator-log.jsonl"),
                                         {p["project_id"]: p for p in self.mining})
         self.lock = threading.RLock()
@@ -246,10 +253,12 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *_args):
         pass
 
-    def reply(self, status, value, content_type="application/json; charset=utf-8"):
+    def reply(self, status, value, content_type="application/json; charset=utf-8", extra=()):
         data = value if isinstance(value, bytes) else json.dumps(value, ensure_ascii=True).encode()
         self.send_response(status)
         self.send_header("Content-Type", content_type)
+        for name, header in extra:
+            self.send_header(name, header)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("Referrer-Policy", "no-referrer")
@@ -269,8 +278,85 @@ class Handler(BaseHTTPRequestHandler):
             return False
         return True
 
+    def get_find(self, app, path, raw_query):
+        """Find-tab reads. Quick store reads only; Firecrawl work never runs inside a request."""
+        find = app.find
+        query = {key: values[0] for key, values in parse_qs(raw_query, max_num_fields=10).items()}
+        try:
+            if path == "/api/find/state":
+                self.reply(200, {"catalog": find.catalog_view(), "catalog_error": find.catalog_error,
+                                 "limits": {"max_query_ids": MAX_QUERY_IDS, "max_searches": MAX_SEARCHES,
+                                            "max_results": MAX_RESULTS, "custom_query_max": CUSTOM_QUERY_MAX},
+                                 "kinds": list(KINDS), "statuses": list(STATUSES), **find.status()})
+            elif path == "/api/find/status":
+                self.reply(200, find.status())
+            elif path == "/api/find/leads":
+                self.reply(200, {"leads": find.store.leads(kind=query.get("kind"), status=query.get("status"),
+                                                           text=query.get("q"), limit=int(query.get("limit", 200)))})
+            else:
+                match = re.fullmatch(r"/api/find/leads/([0-9a-f]{16})(/capture|/template)?", path)
+                if not match:
+                    self.reply(404, {"error": "Unknown resource"})
+                elif match[2] == "/capture":
+                    self.reply(200, find.capture_text(match[1]))
+                elif match[2] == "/template":
+                    data = json.dumps(find.opportunity_template(match[1]), indent=2, ensure_ascii=True).encode()
+                    self.reply(200, data, extra=(("Content-Disposition",
+                                                  f'attachment; filename="opportunity-input-lead-{match[1]}.json"'),))
+                else:
+                    lead = find.store.get(match[1])
+                    if lead is None:
+                        raise LookupError("unknown lead")
+                    self.reply(200, {"lead": lead})
+        except LookupError as exc:
+            self.reply(404, {"error": str(exc)})
+        except sqlite3.Error:
+            self.reply(500, {"error": "Lead store error; see the experiments directory leads.sqlite3."})
+        except ERRORS as exc:
+            self.reply(400, {"error": str(exc)})
+
+    def post_find(self, app, lengths):
+        """Find-tab mutations (token already checked). Start background work and return immediately."""
+        find, path = app.find, self.path.split("?", 1)[0]
+        match = re.fullmatch(r"/api/find/leads/([0-9a-f]{16})/(status|capture)", path)
+        if path != "/api/find/run" and not match:
+            self.reply(404, {"error": "Unknown resource"})
+            return
+        if (self.headers.get("Transfer-Encoding") is not None or len(lengths) != 1
+                or len(lengths[0]) > 4 or not lengths[0].isdigit() or not 0 < int(lengths[0]) <= MAX_BODY):
+            self.reply(400, {"error": "A bounded Content-Length is required (1–4096 bytes)."})
+            return
+        try:
+            raw = self.rfile.read(int(lengths[0]))
+            if len(raw) != int(lengths[0]):
+                raise ValueError("incomplete body")
+            body = json.loads(raw)
+            allowed = {"query_ids", "custom", "limit"} if path == "/api/find/run" else \
+                {"action", "days"} if match[2] == "status" else {"reviewer"}
+            if not isinstance(body, dict) or body.keys() - allowed:
+                raise ValueError(f"request body must be an object with only: {', '.join(sorted(allowed))}")
+            if path == "/api/find/run":
+                run = find.start_run(body.get("query_ids", []), body.get("custom"), body.get("limit", MAX_RESULTS))
+                self.reply(202, {"run": run})
+            elif match[2] == "status":
+                self.reply(200, {"lead": find.store.set_status(match[1], body.get("action"), body.get("days"))})
+            else:
+                self.reply(202, {"capture": find.start_capture(match[1], body.get("reviewer"))})
+        except Busy as exc:
+            self.reply(409, {"error": str(exc)})
+        except LookupError as exc:
+            self.reply(404, {"error": str(exc)})
+        except sqlite3.Error:
+            self.reply(500, {"error": "Lead store error; see the experiments directory leads.sqlite3."})
+        except ERRORS as exc:
+            self.reply(400, {"error": str(exc)})
+
     def do_GET(self):
         if not self.guard():
+            return
+        path, _, raw_query = self.path.partition("?")
+        if path.startswith("/api/find/"):
+            self.get_find(self.server.workbench, path, raw_query)
             return
         try:
             with self.server.workbench.lock:
@@ -372,6 +458,9 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/api/operator":
             self.post_operator(app, lengths)
             return
+        if self.path.startswith("/api/find/"):
+            self.post_find(app, lengths)
+            return
         if (self.headers.get("Transfer-Encoding") is not None or len(lengths) != 1
                 or len(lengths[0]) > 4 or not lengths[0].isdigit() or not 0 < int(lengths[0]) <= MAX_BODY):
             self.reply(400, {"error": "A bounded Content-Length is required (1–4096 bytes)."})
@@ -416,10 +505,17 @@ def main(argv=None):
     parser.add_argument("--mining-input", type=Path, action="append", default=[], help="reviewed mining import; repeatable")
     parser.add_argument("--no-fixture-mining", action="store_true",
                         help="do not load the checkout's real Stibnite mining import by default")
+    parser.add_argument("--discovery-catalog", type=Path,
+                        help="Find-tab query catalog (default: config/discovery.catalog.json when present)")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     if not 0 <= args.port <= 65535:
         parser.error("port must be between 0 and 65535")
+    catalog = args.discovery_catalog
+    if catalog is None and Path("config/discovery.catalog.json").is_file():
+        catalog = Path("config/discovery.catalog.json")
+    elif catalog is not None and not catalog.is_file():
+        parser.error(f"discovery catalog not found: {catalog}")
     bundles = args.bundle or []
     if not bundles and not args.saved_only:
         default = Path(__file__).resolve().parents[2] / "scenarios/fixtures/verified/gt-003-morgan-hill.json"
@@ -436,6 +532,7 @@ def main(argv=None):
     app = None
     try:
         app = Workbench(args.experiments_dir, bundles, mining_inputs, args.mining_supplier)
+        app.find.set_catalog(catalog)
         with WorkbenchServer(app, args.port) as server:
             print(f"Trailforge: {server.origin}/app  (research workbench: {server.origin}/)  Ctrl+C to stop", flush=True)
             server.serve_forever()

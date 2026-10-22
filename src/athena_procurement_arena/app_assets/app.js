@@ -320,11 +320,24 @@ function renderSources() {
 // ---------- Router ----------
 function route() {
   if (!DATA) return;
+  stopFindPolling();
   const parts = location.hash.replace(/^#\/?/, "").split("/").map(decodeURIComponent);
-  const section = ["sources", "evidence", "activity"].includes(parts[0]) ? parts[0] : "queue";
+  const section = ["sources", "evidence", "activity", "find"].includes(parts[0]) ? parts[0] : "queue";
   for (const a of document.querySelectorAll("[data-nav]")) {
     if (a.dataset.nav === section) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
+  }
+  if (section === "find") {
+    renderFind();  // works with or without imported projects
+    document.title = "Find · TrailForge";
+    window.scrollTo(0, 0);
+    return;
+  }
+  if (!DATA.projects.length) {
+    show(el("h1", { text: "No projects loaded" }),
+      el("p", {}, "Start with ", el("code", { text: "trailforge-ui --mining-input path/to/project.json" }), ", or use the ",
+        el("a", { href: "#/find", text: "Find" }), " tab to look for leads."));
+    return;
   }
   if (parts[0] === "p" && parts[1]) {
     renderProject(parts[1], parts[2] !== undefined && parts[2] !== "" ? Number(parts[2]) : undefined);
@@ -353,11 +366,6 @@ async function start() {
     await loadOps();
   } catch (error) {
     show(el("p", { class: "banner", text: `Could not load mining intelligence: ${error.message}. Restart trailforge-ui and reload.` }));
-    return;
-  }
-  if (!DATA.projects.length) {
-    show(el("h1", { text: "No projects loaded" }),
-      el("p", {}, "Start with ", el("code", { text: "trailforge-ui --mining-input path/to/project.json" }), "."));
     return;
   }
   window.addEventListener("hashchange", route);
