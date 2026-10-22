@@ -137,7 +137,7 @@ def search(query: str, *, search_id: str, output_dir: str | Path, limit: int = 1
                        "--no-highlights", "-o", str(raw_path)]
             if categories:
                 command.extend(("--categories", ",".join(categories)))
-            command.append(effective_query)
+            command.extend(("--", effective_query))  # a query starting with "-" is never read as an option
             completed = _run(command)
             if completed.returncode:
                 raise RuntimeError(f"Firecrawl search failed with exit code {completed.returncode}")
