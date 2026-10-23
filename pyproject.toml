@@ -21,7 +21,7 @@ trailforge-opportunity = "athena_procurement_arena.opportunity_cli:main"
 trailforge-operator = "athena_procurement_arena.operator:main"
 
 [tool.setuptools.package-data]
-athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js", "operator_assets/*.html", "operator_assets/*.css", "operator_assets/*.js", "app_assets/*.html", "app_assets/*.css", "app_assets/*.js", "app_assets/*.svg", "app_assets/*.ttf", "app_assets/*.txt"]
+athena_procurement_arena = ["ui_assets/*.html", "ui_assets/*.css", "ui_assets/*.js", "operator_assets/*.html", "operator_assets/*.css", "operator_assets/*.js", "app_assets/*.html", "app_assets/*.css", "app_assets/*.js"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
