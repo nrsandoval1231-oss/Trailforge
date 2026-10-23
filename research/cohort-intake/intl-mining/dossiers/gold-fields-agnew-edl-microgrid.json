@@ -1,0 +1,74 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "gold-fields-agnew-edl-microgrid",
+  "project_name": "Agnew Gold Mine hybrid renewable microgrid (EDL, 10-year agreement)",
+  "location": "Agnew, Leinster, Northern Goldfields, Western Australia",
+  "owner_or_developer": "Agnew Gold Mining Company Pty Ltd (Gold Fields Group)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), taken from an unverified lead. INCOMPLETE: only the contract-level event (ARENA funding announcement describing EDL's 10-year agreement) was captured. Gold Fields is not ASX-listed so no ASX timestamps exist, and no earlier public precursor (feasibility, permit, tender) was found within the research budget, so no lead time can be measured.",
+  "signals": [],
+  "target": {
+    "target_description": "EDL to design, construct, own and operate the Agnew hybrid microgrid (18 MW wind, 4 MW solar, 13 MW BESS, 16 MW gas) under a 10-year agreement with Gold Fields, as described in ARENA's funding announcement (A$13.5m) dated 19 June 2019. The agreement itself pre-dates this announcement.",
+    "title": "Gold Fields gold mine to be powered with wind, solar and battery (ARENA news)",
+    "observed_at": "2019-07-17T06:33:21+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=arena.gov.au/news/gold-fields-gold-mine-to-be-powered-with-wind-solar-and-battery/&output=json&limit=5",
+      "note": "Earliest Wayback CDX snapshot of this exact URL is 2019-07-17T06:33:21Z (HTTP 200). This is an UPPER BOUND on public availability: the page prints 'Date 19 June 2019', so true availability was probably about four weeks earlier, and the quoted text comes from a later capture of the live page, not from the Wayback snapshot."
+    },
+    "capture_id": "agnew-arena-news",
+    "source_url": "https://arena.gov.au/news/gold-fields-gold-mine-to-be-powered-with-wind-solar-and-battery/",
+    "source_quote": "has today announced $13.5 million in funding to Agnew Gold Mining Company Pty Ltd, part of the Gold Fields Group (Gold Fields) for the development of a high penetration renewable microgrid at its Agnew Gold Mine in the northern Goldfields, Western Australia.\n\nThe renewable hybrid microgrid will consist of five wind turbines delivering an 18 MW wind farm, a 10,000 panel 4 MW solar farm and a 13 MW / 4 MWh Battery Energy Storage System (BESS) with security and reliability of a microgrid underpinned with a 16 MW gas engine power station.\n\nThis will be the first time wind generation as part of a large hybrid microgrid in the mining sector in Australia.\n\nThe renewable energy microgrid is expected to provide 55 to 60 per cent of the energy requirements with the potential meet almost all energy requirement at certain times.\n\nGold Fields will also adopt innovative operational practices such as dynamic load shedding, renewable resource forecasting and IPP-controlled load management to maximise renewable energy use while maintaining system security.\n\nDistributed energy producer EDL will design, construct, own and operate the microgrid to power the Agnew Gold Mine in two stages, under a 10 year agreement with Gold Fields.",
+    "claims": {
+      "term_years": 10,
+      "wind_mw": 18,
+      "solar_mw": 4,
+      "bess_mw": 13,
+      "gas_mw": 16,
+      "supplier": "EDL",
+      "arena_funding_text": "$13.5 million"
+    },
+    "signal_id": "gold-fields-agnew-edl-microgrid-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/agnew-arena-news.json",
+    "source_sha256": "50626f55bc91e18a627fc4202d1d48bb908611947f06f7c956b4244a97a0b41f"
+  },
+  "buyer_path": [
+    {
+      "organization": "Agnew Gold Mining Company Pty Ltd (Gold Fields Group) (owner)",
+      "role": "OWNER",
+      "evidence_signal_id": "gold-fields-agnew-edl-microgrid-target",
+      "quote": "has today announced $13.5 million in funding to Agnew Gold Mining Company Pty Ltd, part of the Gold Fields Group (Gold Fields) for the development of a high penetration renewable microgrid at its Agnew Gold Mine"
+    },
+    {
+      "organization": "EDL (Energy Developments) (power supplier, BOO)",
+      "role": "OTHER",
+      "evidence_signal_id": "gold-fields-agnew-edl-microgrid-target",
+      "quote": "Distributed energy producer EDL will design, construct, own and operate the microgrid to power the Agnew Gold Mine"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": null,
+    "note": "No early signal captured, so no lead time. The ARENA release says stage 1 (gas/diesel/solar) was due mid 2019 and stage 2 'recently started construction', meaning the EDL contract was signed well before this page appeared."
+  },
+  "blockers": [
+    "No pre-contract signal (feasibility, permit, tender) captured; earliest signal list is empty.",
+    "The EDL/Gold Fields agreement date is not stated; the cited page is a government funding release, not the contract announcement.",
+    "Gold Fields is JSE/NYSE-listed (no ASX release); the Gold Fields 'in the news' page (articleID=8087) and the 20 Nov 2019 joint media release were found but not captured.",
+    "Wayback first-seen date is about four weeks after the printed date (upper bound).",
+    "The target is a government funding release describing a contract that already existed; the real earliest procurement-type event (tender, LOI or contract award) is not captured."
+  ],
+  "reviewer_checklist": [
+    "Confirm whether an earlier EDL or Gold Fields announcement (2018) exists, which would be the real target.",
+    "Search for Agnew pre-contract signals (Gold Fields reserve/resource statements, WA EPA referral for wind turbines and pipeline, ARENA application) to test lead time.",
+    "Decide whether this case belongs in the cohort without early signals."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:12:24-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "A government funding announcement describing EDL's 10-year design-construct-own-operate hybrid microgrid (wind, solar, battery, 16 MW gas); long-term on-site supply, and the underlying agreement pre-dates the page (stage 1 was due mid 2019, stage 2 had recently started construction), so this is not an early procurement event."
+}

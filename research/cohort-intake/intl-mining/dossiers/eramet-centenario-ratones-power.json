@@ -1,0 +1,36 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "eramet-centenario-ratones-power",
+  "project_name": "Centenario-Ratones lithium project gas power plant (28 MW, Wartsila O&M)",
+  "location": "Centenario-Ratones salt flat, Salta, Argentina",
+  "owner_or_developer": "Eramine Sudamerica (subsidiary of Eramet)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), taken from an unverified lead. INCOMPLETE and probably not cohort material: the plant is permanent (4 Wartsila 34SG gas engines, 28 MW, newly built, off-grid) and the only captured event is a 3-year Operations & Maintenance agreement booked in March 2024, not the original plant supply or EPC. No early public signal for the power plant was captured, and there is currently no target.",
+  "signals": [],
+  "target": null,
+  "buyer_path": [],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": null,
+    "note": "No signals and no target, so no lead time. The only observation (an O&M contract on an already-built permanent gas plant) is recorded in later_procurement_events, not as a target: it is not a temporary, bridge, rental or new on-site supply procurement."
+  },
+  "blockers": [
+    "Target set to null (reviewer: an O&M contract on a permanent, already-built plant is not a temporary/bridge/rental/on-site-supply procurement); the observation is kept as text in later_procurement_events.",
+    "No signals captured: no early public signal (FID, permit, power requirement, tender) for the power plant.",
+    "Original plant order (Wartsila or other EPC) and its date not found.",
+    "The Wartsila release time ('13:00 UTC+2') is page-printed text from the company newsroom, not an independent timestamp, and the Cision wire page was not captured.",
+    "buyer_path is empty because buyer entries must cite a signal or target; Eramine Sudamerica (Eramet subsidiary) and Wartsila are named in the later-event text only.",
+    "Eramet 2026 expansion (US$350m, RIGI) press releases found in search but not captured; could supply a second, forward-looking case if a power procurement follows."
+  ],
+  "reviewer_checklist": [
+    "Decide whether this dossier should be dropped from the cohort (likely yes: permanent plant, O&M contract only, no early signals).",
+    "Look for the original Wartsila/EPC plant order and Eramet FID press releases (Euronext-timestamped) to supply early signals and a better target."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:12:24-05:00",
+  "later_procurement_events": [
+    "2024-03 (order booked per release; release page-printed 'Press release\n25 April 2024 at 13:00 UTC+2', not independently proven; not used as a dated signal): Wartsila three-year Operations & Maintenance agreement (option for two more years) with Eramine Sudamerica for the already-built off-grid gas power plant. Exact text from capture eramet-wartsila-om: 'Technology group Wärtsilä has signed a three-year Operations & Maintenance (O&M) agreement (with an option to extend for two more years) with Eramine Sudamerica, a subsidiary of the French group Eramet. The Eramet Group has a long history of investment, processing, and innovation, making it one of the key players in mining and metallurgy worldwide. The agreement covers the power plant supplying electricity to the company’s lithium mine, located on the Centenario Ratones salt flat, in Salta, Argentina. The order was booked by Wärtsilä in March 2024. Eramine Sudamérica is set to begin production in 2024, and the first ton of lithium carbonate is expected for the same year. The projected nominal capacity of 24,000 annual tons is expected to be attained by 2025.\\n\\nThe power plant is newly built and has a capacity of 28 MW from four Wärtsilä 34SG engines running on natural gas.'"
+  ]
+}

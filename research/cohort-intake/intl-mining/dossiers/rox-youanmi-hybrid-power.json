@@ -1,0 +1,99 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "rox-youanmi-hybrid-power",
+  "project_name": "Youanmi Gold Project hybrid power station (BOO)",
+  "location": "Youanmi, Mid West, Western Australia (~150 km SW of Mount Magnet)",
+  "owner_or_developer": "Rox Resources Limited (ASX: RXL)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), taken from an unverified lead (Pacific Energy 10-year PPA). Very recent, so the whole chain (DFS, IPP engagement, power tender, FID, PPA) sits within roughly 9 months. The only early signal is in the same release as the earliest procurement-type event, and the PPA date is a trade-press printed date, so no lead time is stated.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Youanmi Definitive Feasibility Study released",
+      "observed_at": "2025-11-13T08:40:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=RXL&timeframe=Y&year=2025",
+        "note": "ASX listing for RXL shows 'Youanmi Gold Project Definitive Feasibility Study' released 13/11/2025 8:40 am (ASX shows Sydney time, AEDT +11:00); PDF idsId=03024845. Listing retrieved via curl, not captured."
+      },
+      "capture_id": "rxl-dfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20251113/pdf/06rw9gr4dfqpfr.pdf",
+      "source_quote": "DFS confirms high-grade, high-margin gold production at Youanmi\n\n**Underground project to produce an average 117,000 oz/pa over an initial 7-year mine life at \na low AISC of A$1,978/oz**",
+      "claims": {
+        "study": "DFS"
+      },
+      "signal_id": "rox-youanmi-hybrid-power-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/rxl-dfs.json",
+      "source_sha256": "98e83b114a251e43c4c0b9a732c8df78b024fb755e49f5384796db4e8248a972"
+    }
+  ],
+  "target": {
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "DFS: Rox engaged multiple IPPs to provide options for a site hybrid BOO power station; engagement intended to lead to a power supply contract, initial pricing provided for the Study",
+    "observed_at": "2025-11-13T08:40:00+11:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=RXL&timeframe=Y&year=2025",
+      "note": "Same ASX release as s1 (13/11/2025 8:40 am Sydney time, AEDT +11:00, idsId=03024845). Agent-asserted from an ASX listing retrieved by curl and not captured."
+    },
+    "capture_id": "rxl-dfs",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20251113/pdf/06rw9gr4dfqpfr.pdf",
+    "source_quote": "Rox engaged multiple Independent Power Providers (IPP) to provide options for a site hybrid \npower station under a Build Own Operate (BOO) model. This engagement is intended to lead to \na power supply contract, however initial pricing was provided to inform appropriate pricing for \nthe Study. In parallel to the power supply, EVOL LNG were engaged to provide an LNG supply \nsolution, where LNG would be supplied from the Mid-West LNG Plant and stored on-site at \nYouanmi.",
+    "claims": {
+      "model": "Build Own Operate (BOO)",
+      "lng_supplier": "EVOL LNG",
+      "fuel": "LNG"
+    },
+    "signal_id": "rox-youanmi-hybrid-power-target",
+    "capture_path": "research/cohort-intake/intl-mining/captures/rxl-dfs.json",
+    "source_sha256": "98e83b114a251e43c4c0b9a732c8df78b024fb755e49f5384796db4e8248a972",
+    "target_description": "In the DFS release, Rox says it engaged multiple IPPs for options for a site hybrid BOO power station, intended to lead to a power supply contract, with initial IPP pricing used to inform the Study. This is the earliest procurement-type event found (proposal solicitation / market sounding); it is in the SAME ASX release as the DFS (s1), so the measured lead time is about zero. Later tender-stage items and the PPA are in later_procurement_events."
+  },
+  "buyer_path": [
+    {
+      "organization": "Rox Resources Limited",
+      "role": "OWNER",
+      "evidence_signal_id": "rox-youanmi-hybrid-power-s1",
+      "quote": "WA gold exploration and development company Rox Resources Limited (**Rox** or the **Company**) is pleased \nto deliver the Definitive Feasibility Study (**DFS** or **Study**) of its 100%-owned Youanmi Gold Project"
+    },
+    {
+      "organization": "EVOL LNG (LNG supply solution engaged alongside the IPPs)",
+      "role": "OTHER",
+      "evidence_signal_id": "rox-youanmi-hybrid-power-target",
+      "quote": "In parallel to the power supply, EVOL LNG were engaged to provide an LNG supply \nsolution"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "rox-youanmi-hybrid-power-s1",
+    "note": "INCOMPLETE and effectively zero: the only early signal (DFS, ASX 13/11/2025 08:40 +11:00) and the earliest procurement-type event found (IPP engagement for BOO options) are in the same ASX release. If a reviewer treats the IPP engagement as pre-tender market sounding rather than a procurement event, the first tender-stage item is the 10/12/2025 development update (s3 previously), 27 days after the DFS; the later PPA is dated only by a trade-press printed date (25 Aug 2026), so no chain to the PPA can be timed."
+  },
+  "blockers": [
+    "The only captured signal (DFS) and the earliest procurement-type event (IPP engagement for BOO options, DFS 'Energy Supply' section) are in the same ASX release: about zero lead time. reviewer: if the IPP engagement is judged market sounding rather than a procurement event, the tender-stage item of 10 Dec 2025 becomes the target (27 days after the DFS).",
+    "The PPA with Pacific Energy is evidenced only by a trade-press article with a date but no timestamp; no ASX announcement or Rox/Pacific primary release for the PPA was captured, so it cannot anchor a lead time.",
+    "Renewables Now capture (rxl-pacific-ppa-rn) lacks the article body and is not cited.",
+    "PFS (24 Jul 2024, idsId=02831555) not captured.",
+    "ASX release times read from ASX listing (Sydney time) via curl; listing pages not captured.",
+    "Captures are PDF-to-markdown conversions."
+  ],
+  "reviewer_checklist": [
+    "Decide whether the DFS 'engaged multiple IPPs' step is a procurement-type event (current choice) or market sounding (then the 10 Dec 2025 tender-stage item is the target).",
+    "Find the primary Pacific Energy or Rox release for the PPA to give the later event an exchange/wire timestamp.",
+    "Confirm ASX timestamps (13/11/2025, 10/12/2025, 14/01/2026, 17/03/2026) and Sydney-time convention.",
+    "Confirm no PPA announcement on the RXL ASX list between 17 Mar and 25 Aug 2026 (only keyword-filtered listing was checked)."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:40-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "IPP engagement for a build-own-operate hybrid (solar, battery, gas) station for a long-life underground gold mine: long-term on-site supply, not temporary or rental power. It is a pre-tender market-sounding / pricing step recorded in the DFS release itself.",
+  "later_procurement_events": [
+    "2025-12-10T08:24+11:00 (ASX listing, agent-asserted; capture rxl-dev-update-dec25) tender stage: 'Tenders under review and/or out for quote for long lead items including:\\n\\n**◦** Fine grind mill\\n\\n**◦** Power supply'",
+    "2026-01-14T08:20+11:00 (ASX listing, agent-asserted; capture rxl-dev-update-jan26) tender results: 'Tender results were also received for the power station Build Own Operate **(BOO)**'",
+    "2026-03-17T08:19+11:00 (ASX listing, agent-asserted; capture rxl-fid) FID: 'The Company will now commence bulk earthworks and issue contracts for the power station and oxygen \\nplant on a build-own-operate (BOO) basis.'",
+    "2026-08-25 (trade-press printed date only, no time; capture rxl-pvmag): Pacific Energy 10-year PPA with Rox. 'has signed a 10-year power purchase agreement\\xa0(PPA) with Perth-based gold and nickel developer\\xa0Rox Resources to supply power' and 'The hybrid plant will combine a 25 MW solar farm and a 9.3 MVA battery energy storage system, along with 11 kV power distribution to the underground feeders and mine village. The system will also include 25 MW of gas generation with provisions for 2 MW of backup diesel.'"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "ioneer-rhyolite-ridge",
+  "project_name": "Rhyolite Ridge Lithium-Boron Project (ioneer, formerly Global Geoscience)",
+  "location": "Esmeralda County, Nevada, USA",
+  "owner_or_developer": "ioneer Ltd (formerly Global Geoscience Limited)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Selected because a dated on-site power-generation package award (ABB, Feb 2022) is public and the PFS (Oct 2018) already stated ~47 MW of on-site generation, giving an indicative ~3.3-year signal-to-award window (UNVERIFIED, see lead_time.note). Selected knowing the outcome.",
+  "signals": [
+    {
+      "signal_id": "ioneer-rhyolite-ridge-s1",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Rhyolite Ridge Pre-Feasibility Study results (Global Geoscience, now ioneer)",
+      "observed_at": "2018-10-25T06:15:00-04:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://www.globenewswire.com/news-release/2018/10/25/1626909/0/en/Outstanding-Results-from-Rhyolite-Ridge-Pre-Feasibility.html",
+        "note": "Only proof is the time printed on the GlobeNewswire release page inside the captured content ('October 25, 2018 06:15 ET'), converted to 2018-10-25T06:15:00-04:00 (EDT). This is page-printed text, not an independent wire record or an ASX release time, so it is not treated as proof of availability."
+      },
+      "source_url": "https://www.globenewswire.com/news-release/2018/10/25/1626909/0/en/Outstanding-Results-from-Rhyolite-Ridge-Pre-Feasibility.html",
+      "capture_path": "research/cohort-intake/us-mining/captures/ioneer-rhyolite-pfs-2018-gnw.json",
+      "capture_id": "ioneer-rhyolite-pfs-2018-gnw",
+      "source_sha256": "84437522f6ce21de2b0c47c0d2c70cc255efebac38a725d1ea052db798b30b2b",
+      "source_quote": "the outcomes of the Pre-Feasibility Study (“PFS”) for the 100%-owned Rhyolite Ridge Lithium-Boron Project",
+      "claims": {}
+    },
+    {
+      "signal_id": "ioneer-rhyolite-ridge-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "PFS envisages on-site sulfuric acid plant generating approximately 47 MW of power (self-generation by design)",
+      "observed_at": "2018-10-25T06:15:00-04:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://www.globenewswire.com/news-release/2018/10/25/1626909/0/en/Outstanding-Results-from-Rhyolite-Ridge-Pre-Feasibility.html",
+        "note": "Only proof is the time printed on the GlobeNewswire release page inside the captured content ('October 25, 2018 06:15 ET'), converted to 2018-10-25T06:15:00-04:00 (EDT). This is page-printed text, not an independent wire record or an ASX release time, so it is not treated as proof of availability."
+      },
+      "source_url": "https://www.globenewswire.com/news-release/2018/10/25/1626909/0/en/Outstanding-Results-from-Rhyolite-Ridge-Pre-Feasibility.html",
+      "capture_path": "research/cohort-intake/us-mining/captures/ioneer-rhyolite-pfs-2018-gnw.json",
+      "capture_id": "ioneer-rhyolite-pfs-2018-gnw",
+      "source_sha256": "84437522f6ce21de2b0c47c0d2c70cc255efebac38a725d1ea052db798b30b2b",
+      "source_quote": "The overall operation is enabled by an on-site 3,500 tpd sulfuric acid plant that will produce acid for leaching, steam for the evaporation and crystallization circuit, and will generate approximately 47 MW of power.",
+      "claims": {
+        "mw": 47,
+        "source_text": "sulfuric acid plant"
+      }
+    },
+    {
+      "signal_id": "ioneer-rhyolite-ridge-s3",
+      "signal_type": "PERMIT_FILED",
+      "title": "ioneer submits Rhyolite Ridge project plan (plan of operations) to the US BLM",
+      "observed_at": "2020-05-20T03:57:24+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of https://www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12 is 20200520035724 (CDX, status 200). The capture was taken from that snapshot (id_ raw form), so the quoted text is the snapshot's text. The snapshot time is an UPPER BOUND on public availability: the article URL is dated 2020-05-12, so the article was probably public up to ~8 days earlier."
+      },
+      "source_url": "https://web.archive.org/web/20200520035724id_/https://www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12",
+      "capture_path": "research/cohort-intake/us-mining/captures/ioneer-rhyolite-miningweekly-2020-wayback.json",
+      "capture_id": "ioneer-rhyolite-miningweekly-2020-wayback",
+      "source_sha256": "6cca2665918cf9af8b81f28040a7ce7d14c1febd379456f775e9c4be00288bc6",
+      "source_quote": "Lithium/boron developer ioneer has submitted its project plan for its Rhyolite Ridge project, in Nevada, to the US Bureau of Land Management (BLM).",
+      "claims": {}
+    },
+    {
+      "signal_id": "ioneer-rhyolite-ridge-s4",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Definitive feasibility study completed (US$785M capex stated)",
+      "observed_at": "2020-05-20T03:57:24+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of https://www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12 is 20200520035724 (CDX, status 200). The capture was taken from that snapshot (id_ raw form), so the quoted text is the snapshot's text. The snapshot time is an UPPER BOUND on public availability: the article URL is dated 2020-05-12, so the article was probably public up to ~8 days earlier."
+      },
+      "source_url": "https://web.archive.org/web/20200520035724id_/https://www.miningweekly.com/article/ioneer-advances-rhyolite-ridge-2020-05-12",
+      "capture_path": "research/cohort-intake/us-mining/captures/ioneer-rhyolite-miningweekly-2020-wayback.json",
+      "capture_id": "ioneer-rhyolite-miningweekly-2020-wayback",
+      "source_sha256": "6cca2665918cf9af8b81f28040a7ce7d14c1febd379456f775e9c4be00288bc6",
+      "source_quote": "A recently completed definitive feasibility study into the Rhyolite Ridge project estimated that it would require a capital investment of $785-million",
+      "claims": {}
+    }
+  ],
+  "target": {
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "ABB wins contract for project management, engineering and supply of power and automation systems incl. steam turbine generator",
+    "observed_at": "2022-02-11T09:10:53+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=new.abb.com/news/detail/87691/abb-to-lead-power-and-automation-engineering-and-equipment-supply-in-new-order-from-ioneer-at-us-mine&output=json&limit=5",
+      "note": "Earliest Wayback snapshot of the ABB release URL is 20220211091053 (CDX, status 200). This is an UPPER BOUND on public availability, and the quoted text comes from a LATER capture (taken in Oct 2026 from the live page), not from that snapshot; the page image path is dated 2022/2/10 and the page states the order was booked in Q1 2022. Reviewer should diff the 2022 snapshot against the capture."
+    },
+    "source_url": "https://new.abb.com/news/detail/87691/abb-to-lead-power-and-automation-engineering-and-equipment-supply-in-new-order-from-ioneer-at-us-mine",
+    "capture_path": "research/cohort-intake/us-mining/captures/ioneer-rhyolite-abb-award.json",
+    "capture_id": "ioneer-rhyolite-abb-award",
+    "source_sha256": "4edbc3c8e6c7b074bd519a0cba27d9fd8812de9be502271f04639d2d4a47e1f0",
+    "source_quote": "Under the contract, ABB will commence work on systems engineering and optimization for the equipment packages, which include a steam turbine generator, medium and low voltage electrical distribution, power management",
+    "claims": {},
+    "target_description": "Award of the on-site power-generation (steam turbine generator), electrical distribution and automation equipment/engineering package to ABB (permanent plant power, not temporary/rental). Trade-press snippets seen during research (NOT captured, unverified) say it was awarded on a limited-notice-to-proceed basis pending FID.",
+    "signal_id": "ioneer-rhyolite-ridge-target"
+  },
+  "buyer_path": [
+    {
+      "organization": "ioneer Ltd (customer named in the ABB release; owner role not shown by the quote)",
+      "role": "OTHER",
+      "evidence_signal_id": "ioneer-rhyolite-ridge-target",
+      "quote": "ABB has won a large contract from Australian-listed ioneer Ltd."
+    },
+    {
+      "organization": "ABB",
+      "role": "OTHER",
+      "evidence_signal_id": "ioneer-rhyolite-ridge-target",
+      "quote": "for project management, engineering and the supply of power and automation systems."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "ioneer-rhyolite-ridge-s1",
+    "note": "UNVERIFIED: the earliest signal (s1/s2) rests on a time printed on the GlobeNewswire page (PRINTED_DATE_ONLY), so no lead time is stated. Indicative only: printed 2018-10-25T06:15-04:00 to the target's Wayback first-seen 2022-02-11T09:10:53Z is about 1205 days; the target-end bound is an upper bound on availability (the true gap may be about a day shorter)."
+  },
+  "blockers": [
+    "Target is a permanent-plant power/automation equipment award (steam turbine generator, distribution), not a temporary/rental/bridge generation procurement. Reviewer must decide if it counts.",
+    "ABB release capture was taken in Oct 2026 from the live page; the 2022 version was not captured, so exact-version equivalence is unproven (Wayback snapshot exists to diff).",
+    "ABB release does not state the award was conditional on FID; that comes from secondary trade coverage not captured here. FID had not occurred as of the repo's Oct 2026 screen, so the award may never convert to an executed supply order.",
+    "Fluor (feasibility/EPCM role) and the DFS release itself (ASX, 2020) were not captured; s4 relies on a trade-press mention of a 'recently completed' DFS.",
+    "PFS release is from Global Geoscience (pre-rename); the name change to ioneer is not evidenced in captured quotes.",
+    "reviewer: decide whether this counts as a procurement of the right kind (permanent steam turbine generator / power and automation package, not temporary or bridge generation).",
+    "s1/s2 time rests on page-printed GlobeNewswire text only (PRINTED_DATE_ONLY); no ASX release time was captured."
+  ],
+  "reviewer_checklist": [
+    "Confirm GlobeNewswire time 06:15 ET on 2018-10-25 (and ideally the ASX announcement time).",
+    "Diff Wayback 20220211091053 ABB snapshot against the captured text.",
+    "Decide whether ABB steam-turbine/power package qualifies as PROCUREMENT_SIGNAL.",
+    "Find ioneer's own ASX announcement of the ABB award (and Fluor role) for a second timestamp.",
+    "Confirm ioneer = Global Geoscience (same legal entity, renamed)."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-23T00:02:25+00:00",
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "us-mining",
+  "target_fit": "PERMANENT_PLANT_OR_GRID",
+  "target_fit_note": "Award of project management, engineering and supply of power and automation systems including a steam turbine generator for the permanent plant: permanent plant power equipment, not temporary, rental or bridge generation. Kept for a human decision rather than dropped."
+}

@@ -1,0 +1,122 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "minres-wodgina-temp-power",
+  "project_name": "Wodgina Lithium Project power (52 MW permanent gas station plus 17 MW interim diesel variation)",
+  "location": "Wodgina, Pilbara, Western Australia",
+  "owner_or_developer": "Mineral Resources Limited (ASX: MIN)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), taken from an unverified lead. Target is the 17 MW temporary-diesel variation to Contract Power's EPC contract. Marked INCOMPLETE because the original award of the 52 MW permanent gas station to Contract Power predates this variation and its announcement was not found, so the true first procurement signal and a longer lead time cannot be established.",
+  "signals": [
+    {
+      "signal_type": "CONSTRUCTION_STARTED",
+      "title": "MinRes states it has already designed and commenced construction of a new power station for increased Wodgina power requirements (no tender or award shown)",
+      "observed_at": "2018-06-15T16:08:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=MIN&timeframe=Y&year=2018",
+        "note": "ASX listing for MIN shows 'Wodgina Project Update' released 15/06/2018 4:08 pm (ASX shows Sydney time, AEST +10:00); PDF idsId=01990924. Listing retrieved via curl by the research agent, not itself captured."
+      },
+      "capture_id": "min-wodgina-update-jun18",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20180615/pdf/43vt43m1pxq9rl.pdf",
+      "source_quote": "The Company has designed and commenced construction of a new power station to meet the increased \npower requirements at Wodgina.",
+      "claims": {
+        "stage": "designed and commenced construction"
+      },
+      "signal_id": "minres-wodgina-temp-power-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/min-wodgina-update-jun18.json",
+      "source_sha256": "4d8406c75cea9f573204806bb4f32159bd3a8a77c093400517188f532825f513"
+    },
+    {
+      "signal_type": "FUEL_SELECTED",
+      "title": "Stage 1 of the Wodgina power station: 26 x 2MW Cummins gas-fuelled generators",
+      "observed_at": "2018-06-15T16:08:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=MIN&timeframe=Y&year=2018",
+        "note": "Same ASX release as signal 1 (15/06/2018 4:08 pm Sydney time, idsId=01990924)."
+      },
+      "capture_id": "min-wodgina-update-jun18",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20180615/pdf/43vt43m1pxq9rl.pdf",
+      "source_quote": "Stage 1 of the power station comprises 26 x 2MW Cummins gas fuelled generators necessary to \nmeet the power requirements of the new crushing plant and the three spodumene concentrate \nbeneficiation modules.",
+      "claims": {
+        "units": 26,
+        "unit_mw": 2,
+        "fuel": "gas"
+      },
+      "signal_id": "minres-wodgina-temp-power-s2",
+      "capture_path": "research/cohort-intake/intl-mining/captures/min-wodgina-update-jun18.json",
+      "source_sha256": "4d8406c75cea9f573204806bb4f32159bd3a8a77c093400517188f532825f513"
+    }
+  ],
+  "target": {
+    "target_description": "Variation order to Pacific Energy's subsidiary Contract Power to install and commission a further 17 MW of temporary (interim) diesel power using MinRes-owned diesel assets, lifting the Wodgina EPC contract to about $30m.",
+    "title": "Contract Power awarded 17 MW interim diesel variation to the MinRes Wodgina EPC contract",
+    "observed_at": "2018-08-21T11:39:00+10:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=MIN&timeframe=Y&year=2018",
+      "note": "ASX listing for MIN shows 'PEA:17MW MIN Variation and Horizon Power Microgrid Contract' (released by Pacific Energy Limited, ASX: PEA, and also listed on MIN's page) at 21/08/2018 11:39 am (Sydney time, AEST +10:00); idsId=02011710."
+    },
+    "capture_id": "min-wodgina-17mw",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20180821/pdf/43xj2f6jyt2hxw.pdf",
+    "source_quote": "Pacific Energy subsidiary, Contract Power, receives variation order to install and commission interim** \n**17 MW diesel power station on behalf of Mineral Resources Ltd at Wodgina Lithium project**\n\n• **Lifts total Wodgina EPC contract value to approximately $30 million",
+    "claims": {
+      "mw": 17,
+      "fuel": "diesel",
+      "type_text": "interim",
+      "contract_value_aud_m_approx": 30
+    },
+    "signal_id": "minres-wodgina-temp-power-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/min-wodgina-17mw.json",
+    "source_sha256": "92e23307c549879b66148e49f473783c84e2075dd46990f2b75aadee16178434"
+  },
+  "buyer_path": [
+    {
+      "organization": "Mineral Resources Limited (MinRes), JV manager of the Wodgina JV (customer)",
+      "role": "OTHER",
+      "evidence_signal_id": "minres-wodgina-temp-power-s1",
+      "quote": "These non-process infrastructure assets will be owned by the Wodgina JV and operated by MRL as the JV \nManager."
+    },
+    {
+      "organization": "Mineral Resources Limited (MinRes), customer issuing the variation",
+      "role": "OTHER",
+      "evidence_signal_id": "minres-wodgina-temp-power-target",
+      "quote": "MinRes has now issued a variation to Contract Power for the design, installation and commissioning of a \nfurther 17 MW of temporary power utilising MinRes supplied and owned diesel power assets."
+    },
+    {
+      "organization": "Contract Power Australia Pty Ltd (Pacific Energy Limited subsidiary), power EPC contractor",
+      "role": "EPC",
+      "evidence_signal_id": "minres-wodgina-temp-power-target",
+      "quote": "Pacific Energy subsidiary, Contract Power, receives variation order to install and commission interim** \n**17 MW diesel power station on behalf of Mineral Resources Ltd at Wodgina Lithium project**\n\n• **Lifts total Wodgina EPC contract value to approximately $30 million"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "minres-wodgina-temp-power-s1",
+    "note": "INCOMPLETE, so no lead time is stated. Indicative only: s1/s2 (ASX 15/06/2018 16:08 +10:00) to the variation release (ASX 21/08/2018 11:39 +10:00) is about 66.8 days, but the first procurement (the 52 MW gas-station award to Contract Power) pre-dates both, and s1 already says the station was designed and under construction, so the interval is not a lead time to procurement."
+  },
+  "blockers": [
+    "First procurement missing: the target capture itself refers to a 'previously announced award ... of a contract to build a 52MW gas fired power station'; that award announcement was not located (Pacific Energy / PEA announcement list returned nothing). It likely pre-dates s1, which already says the station was designed and under construction.",
+    "The target is a variation (interim diesel on MinRes-owned assets) on an existing EPC contract, not a fresh competitive procurement; the release says MinRes' original plan was to hire interim power from a third party.",
+    "No earlier feasibility/permit signals captured for Wodgina power.",
+    "ASX release times read from ASX listing (Sydney time) via curl; listing pages not captured.",
+    "Captures are PDF-to-markdown conversions.",
+    "Wodgina is a JV (non-process infrastructure owned by the Wodgina JV, operated by MRL as JV Manager); MinRes is therefore not recorded as sole owner."
+  ],
+  "reviewer_checklist": [
+    "Find the original Contract Power 52 MW award announcement (Pacific Energy, before 21 Aug 2018) and decide whether it should be the target.",
+    "Confirm ASX timestamps (15/06/2018 4:08 pm, 21/08/2018 11:39 am Sydney time).",
+    "Decide whether a variation order counts as a procurement of the right kind for temporary generation.",
+    "Confirm the Pacific Energy / Contract Power parent-subsidiary relation is as stated in the announcement."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:40-05:00",
+  "target_fit": "BRIDGE_OR_INTERIM",
+  "target_fit_note": "A variation order to an existing EPC contract to install and commission 17 MW of interim/temporary diesel power on MinRes-owned assets (MinRes chose to buy rather than hire the interim units). It is interim power but it is a variation on a contract that already existed, not a fresh competitive procurement; the first procurement (the 52 MW gas station award) is missing."
+}

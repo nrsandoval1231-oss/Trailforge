@@ -1,0 +1,119 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "project-jupiter-dona-ana-nm",
+  "project_name": "Project Jupiter (Oracle/OpenAI, STACK/BorderPlex) on-site microgrid",
+  "vertical": "data-center",
+  "location": "Santa Teresa, Dona Ana County, New Mexico, US",
+  "owner_or_developer": "BorderPlex Digital Assets (with STACK Infrastructure; tenant Oracle for OpenAI)",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Candidate came from the task brief (Oracle/OpenAI Project Jupiter onsite gas). The original gas-turbine design was dropped, so the procurement signal found is for a different technology than first planned.",
+  "signals": [
+    {
+      "signal_id": "project-jupiter-dona-ana-nm-s1",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "title": "NM Governor announces BorderPlex Digital Assets Santa Teresa digital infrastructure campus",
+      "observed_at": "2025-02-25T23:20:04+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.governor.state.nm.us/2025/02/25/governor-announces-partnership-with-borderplex-digital-digital-infrastructure-campus-represents-5-billion-investment-in-santa-teresa-expected-to-create-1000-jobs/&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-02-25T23:20:04Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Government press release dated Feb 25, 2025; earliest Wayback snapshot the same day."
+      },
+      "source_url": "https://www.governor.state.nm.us/2025/02/25/governor-announces-partnership-with-borderplex-digital-digital-infrastructure-campus-represents-5-billion-investment-in-santa-teresa-expected-to-create-1000-jobs/",
+      "capture_path": "research/cohort-intake/data-center/captures/jupiter-governor-announce.json",
+      "capture_id": "jupiter-governor-announce",
+      "source_sha256": "3a905052451ea612e1d47da9c7e1e3a86045aa9fe27b9690a992ea4f6ce8fbee",
+      "source_quote": "BorderPlex Digital’s first integrated Digital Infrastructure Campus will be constructed in Santa Teresa.",
+      "claims": {}
+    },
+    {
+      "signal_id": "project-jupiter-dona-ana-nm-s2",
+      "signal_type": "PERMIT_FILED",
+      "title": "News report (Source NM): Acoma LLC (BorderPlex affiliate) published notices of intent to apply for two NMED air permits for gas microgrids (application filing itself not captured)",
+      "observed_at": "2025-12-03T01:33:59+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://sourcenm.com/2025/12/02/project-jupiters-plan-relies-on-natural-gas-its-impact-on-air-quality-remains-unclear/&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-12-03T01:33:59Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Secondary (news) report. Article says first notices ran in Las Cruces Sun-News in October 2025 and applications were due Nov 13, 2025; those primary notices/NMED records were not captured with provable earlier timestamps. The article's report is of published notices of intent to apply; PERMIT_FILED is the closest enum value and the application filing date was not captured."
+      },
+      "source_url": "https://sourcenm.com/2025/12/02/project-jupiters-plan-relies-on-natural-gas-its-impact-on-air-quality-remains-unclear/",
+      "capture_path": "research/cohort-intake/data-center/captures/jupiter-sourcenm-air.json",
+      "capture_id": "jupiter-sourcenm-air",
+      "source_sha256": "290cf10f8ef823b208efa7685fadc37ae617e4913bfc55a64b0c5411d53e3a1f",
+      "source_quote": "Acoma, LLC, a company affiliated with BorderPlex Digital Assets, which represented Project Jupiter at public meetings, published notices that it intended to apply for two air quality permits with the New Mexico Environment Department.",
+      "claims": {}
+    }
+  ],
+  "target": {
+    "signal_id": "project-jupiter-dona-ana-nm-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "Oracle, BorderPlex and Bloom Energy: Project Jupiter to use up to 2.45 GW Bloom fuel cells, replacing planned gas turbines",
+    "observed_at": "2026-04-27T21:05:58+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/&output=json&limit=5",
+      "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2026-04-27T21:05:58Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Press release dated Apr 27, 2026; earliest Wayback snapshot same day. Wire timestamp not captured. Press release dated Apr 27, 2026 (wire timestamp not captured)."
+    },
+    "source_url": "https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/",
+    "capture_path": "research/cohort-intake/data-center/captures/jupiter-oracle-bloom-pr.json",
+    "capture_id": "jupiter-oracle-bloom-pr",
+    "source_sha256": "fd57010a5ba9b85261226d4f426571123034cd108287618eb73104094607a63d",
+    "source_quote": "Oracle and BorderPlex Digital Assets today announced Project Jupiter will utilize Bloom Energy fuel cells to fully power the AI data center campus in Doña Ana County, New Mexico. As part of Oracle and Bloom’s previously announced [expanded partnership](https://investor.bloomenergy.com/press-releases/press-release-details/2026/Bloom-Energy-and-Oracle-Expand-Strategic-Partnership-to-Deploy-up-to-2-8-GW-to-Accelerate-AI-Infrastructure-Build-Out/default.aspx), the data center will be supported by up to 2.45 GW of installed Bloom fuel cell capacity. This updated power design will replace Project Jupiter’s previously planned gas turbines and diesel generators",
+    "claims": {
+      "gw": 2.45
+    },
+    "target_description": "On-site power supply decision for Project Jupiter: Bloom Energy fuel cells (up to 2.45 GW) replace previously planned gas turbines and diesel generators. Caveats: fuel-cell (not turbine/engine rental) and permanent microgrid; the release refers to a previously announced Oracle-Bloom partnership whose date was not captured."
+  },
+  "buyer_path": [
+    {
+      "organization": "BorderPlex Digital Assets, LLC",
+      "role": "DEVELOPER",
+      "evidence_signal_id": "project-jupiter-dona-ana-nm-s1",
+      "quote": "BorderPlex Digital’s first integrated Digital Infrastructure Campus will be constructed in Santa Teresa."
+    },
+    {
+      "organization": "Acoma, LLC",
+      "role": "OTHER",
+      "evidence_signal_id": "project-jupiter-dona-ana-nm-s2",
+      "quote": "Acoma, LLC, a company affiliated with BorderPlex Digital Assets"
+    },
+    {
+      "organization": "Oracle",
+      "role": "OTHER",
+      "evidence_signal_id": "project-jupiter-dona-ana-nm-target",
+      "quote": "Oracle will continue to bear all energy costs for Project Jupiter"
+    },
+    {
+      "organization": "Bloom Energy",
+      "role": "OTHER",
+      "evidence_signal_id": "project-jupiter-dona-ana-nm-target",
+      "quote": "Oracle and BorderPlex Digital Assets today announced Project Jupiter will utilize Bloom Energy fuel cells to fully power the AI data center campus"
+    }
+  ],
+  "lead_time": {
+    "days": 425.9069,
+    "basis": "PROOF_CITED_TIMESTAMPS",
+    "earliest_signal_id": "project-jupiter-dona-ana-nm-s1",
+    "note": "CAUTION: this 425.9-day figure is measured from s1, a governor's economic-development release whose quote contains NO power or energy content (it only announces the campus), so it is a project-announcement-to-power-decision gap, not a power-signal lead time. Both ends are Wayback CDX upper bounds on availability for text quoted from later captures. Measured from s2 (Source NM report of air-permit notices, Wayback 2025-12-03T01:33:59Z, itself a secondary report) the gap would be about 145.8 days."
+  },
+  "blockers": [
+    "Primary NMED air permit applications (Acoma LLC, about Nov 13-14, 2025; reported withdrawn Apr 2026 by Oil & Gas Watch https://oilandgaswatch.org/facility/rec_d60g1nu349rifoo94bq0, not captured) and Las Cruces Sun-News notices (Oct 10, 2025) not captured with provable timestamps.",
+    "Target is a fuel-cell power decision, not turbine/engine rental; the planned gas-turbine microgrids were canceled, so no gas-generation procurement was ever found.",
+    "Oracle-Bloom \"previously announced expanded partnership\" (date unknown, before Apr 27, 2026) may be an earlier procurement signal; not captured.",
+    "STACK Infrastructure named as developer on county/EIP pages not captured as dated signals; no EPC/electrical contractor identified.",
+    "Dona Ana County IRB approval (Sept 2025) and rezoning/land records not captured.",
+    "reviewer: decide whether this counts as a procurement of the right kind (a permanent Bloom fuel-cell microgrid decision, not a turbine/engine rental or purchase; no contract is quoted).",
+    "not from quote: the 425.9-day lead time uses a governor release with no power content (s1) as the earliest signal; the power-relevant earliest signal is s2."
+  ],
+  "reviewer_checklist": [
+    "Decide whether the Bloom fuel-cell announcement counts as PROCUREMENT_SIGNAL or whether this should be target:null with the turbine-permit filings as the terminal on-site generation signal.",
+    "Pull the NMED air-quality permit application records and notice dates for Acoma East/West microgrids.",
+    "Find the Bloom-Oracle expanded partnership release date and check if it names Jupiter."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:06-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Bloom fuel cells (up to 2.45 GW) as the permanent on-site microgrid replacing previously planned gas turbines and diesel generators; this is a power-design decision, not a rental/bridge turbine procurement, and no purchase contract is shown in the quote."
+}

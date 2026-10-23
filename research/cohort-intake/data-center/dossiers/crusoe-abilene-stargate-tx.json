@@ -1,0 +1,130 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "crusoe-abilene-stargate-tx",
+  "project_name": "Crusoe / Stargate Abilene (Project Ludicrous, Lancium Clean Campus) on-site gas turbines",
+  "vertical": "data-center",
+  "location": "Abilene, Taylor County, Texas, US",
+  "owner_or_developer": "Crusoe (site on land owned by Lancium)",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Candidate came from the task brief (Crusoe/Abilene Stargate) and was checked by source capture.",
+  "signals": [
+    {
+      "signal_id": "crusoe-abilene-stargate-tx-s1",
+      "signal_type": "CONSTRUCTION_STARTED",
+      "title": "BI: Stargate first Abilene data center (Project Ludicrous, owner Abilene DC 1 LLC, a Crusoe affiliate) under construction, ~$1.1B per TDLR filings",
+      "observed_at": "2025-01-25T01:43:49+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.businessinsider.com/texas-stargate-data-center-build-cost-2025-1&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-01-25T01:43:49Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Article prints \"Jan 24, 2025, 8:37 PM ET\" (=2025-01-25T01:37Z), consistent with snapshot. Secondary (news) report of Texas TDLR registration filings; the TDLR filing dates were not captured."
+      },
+      "source_url": "https://www.businessinsider.com/texas-stargate-data-center-build-cost-2025-1",
+      "capture_path": "research/cohort-intake/data-center/captures/crusoe-abilene-bi-cost.json",
+      "capture_id": "crusoe-abilene-bi-cost",
+      "source_sha256": "522dea8108c81e7cab1a32e5c9ac89ba3d6c04e9fa8d3bad8e888dedd2834fd7",
+      "source_quote": "Construction on what appears to be two buildings on Stargate's first data center campus, now underway in Texas, is expected to be complete by the end of the year and cost an estimated $1.1 billion, according to public filings",
+      "claims": {
+        "cost_usd_bn": 1.1
+      }
+    },
+    {
+      "signal_id": "crusoe-abilene-stargate-tx-s2",
+      "signal_type": "PERMIT_FILED",
+      "title": "News report (Business Insider): TCEQ air permit application for 10 on-site simple-cycle gas turbines at the Project Ludicrous address (Crusoe, Abilene)",
+      "observed_at": "2025-01-27T22:30:09+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.businessinsider.com/stargate-data-center-powered-by-natural-gas-2025-1&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-01-27T22:30:09Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Article prints \"Jan 27, 2025, 5:02 PM ET\" (=22:02Z), consistent with snapshot. This is a secondary (news) report of TCEQ filings; the TCEQ filing date itself was not captured. The article is a secondary news report of the application; it does not show the TCEQ filing date, and PERMIT_FILED rests on that report. The article is a secondary news report of the application; it does not show the TCEQ filing date, and PERMIT_FILED rests on that report."
+      },
+      "source_url": "https://www.businessinsider.com/stargate-data-center-powered-by-natural-gas-2025-1",
+      "capture_path": "research/cohort-intake/data-center/captures/crusoe-abilene-bi-tceq.json",
+      "capture_id": "crusoe-abilene-bi-tceq",
+      "source_sha256": "299a5f0ca6d829fe8bb30873bd0d9620becbcddbb1741a6f882b2960b8bc1a99",
+      "source_quote": "These permit applications were filed with the Texas Commission on Environmental Quality by a consulting firm working on behalf of AI cloud startup Crusoe. Crusoe is the owner of [Project Ludicrous](https://www.businessinsider.com/texas-stargate-data-center-build-cost-2025-1), the $1.1 billion data center project in Abilene widely thought to be the first Stargate location.\n\nAn initial application to permit 10 simple-cycle natural gas turbines under Title V of the Clean Air Act — at a site that shares an address with Project Ludicrous — is under review by the TCEQ.",
+      "claims": {
+        "turbines": 10,
+        "permit_program": "Title V",
+        "regulator": "TCEQ"
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "crusoe-abilene-stargate-tx-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "GE Vernova and Crusoe announce 29-unit LM2500XPRESS aeroderivative turbine deal",
+    "observed_at": "2025-07-23T13:46:23+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=https://www.gevernova.com/news/press-releases/ge-vernova-crusoe-announce-major-29-unit-aeroderivative-gas-turbine-deliver-ai-data-centers&output=json&limit=5",
+      "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-07-23T13:46:23Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Press release dateline is July 22, 2025 (ATLANTA); no wire timestamp captured, so the earliest availability evidence cited is the Wayback snapshot. Press release dateline is July 22, 2025 (ATLANTA); no wire timestamp was captured. Because the Wayback date is an upper bound on availability, the true availability of the target may be earlier than 2025-07-23T13:46:23Z, so the real gap to s1 is likely SHORTER than computed (not longer). Press release dateline is July 22, 2025 (ATLANTA); no wire timestamp was captured. Because the Wayback date is an upper bound on availability, the true availability of the target may be earlier than 2025-07-23T13:46:23Z, so the real gap to s1 is likely SHORTER than computed (not longer)."
+    },
+    "source_url": "https://www.gevernova.com/news/press-releases/ge-vernova-crusoe-announce-major-29-unit-aeroderivative-gas-turbine-deliver-ai-data-centers",
+    "capture_path": "research/cohort-intake/data-center/captures/crusoe-abilene-ge-pr.json",
+    "capture_id": "crusoe-abilene-ge-pr",
+    "source_sha256": "5dcad9acbda872bf0fe7fd053f58806fba73ace7aaf7e8765c6ed7445e037aaa",
+    "source_quote": "GE Vernova Inc. (NYSE: GEV) and Crusoe, the industry’s first vertically integrated AI infrastructure provider, today announced a significant deal to deliver 29 units of GE Vernova’s breakthrough LM2500XPRESS aeroderivative gas turbine packages to Crusoe AI data centers.\n\nThe announced order of 19 units, booked in June 2025, builds on the first series of 10 units Crusoe ordered in December 2024",
+    "claims": {
+      "units_total": 29,
+      "units_new": 19,
+      "units_prior": 10
+    },
+    "target_description": "Order of 29 GE Vernova LM2500XPRESS aeroderivative gas turbine packages for Crusoe AI data centers; first 10 units ordered Dec 2024, 19 more booked June 2025. The release does not itself name Abilene; the link to Abilene rests on the BI report that the 10 TCEQ-permitted turbines are half GE and half Solar Turbines."
+  },
+  "buyer_path": [
+    {
+      "organization": "Crusoe",
+      "role": "OWNER",
+      "evidence_signal_id": "crusoe-abilene-stargate-tx-s2",
+      "quote": "Crusoe is the owner of [Project Ludicrous](https://www.businessinsider.com/texas-stargate-data-center-build-cost-2025-1), the $1.1 billion data center project in Abilene widely thought to be the first Stargate location."
+    },
+    {
+      "organization": "GE Vernova",
+      "role": "OTHER",
+      "evidence_signal_id": "crusoe-abilene-stargate-tx-target",
+      "quote": "GE Vernova Inc. (NYSE: GEV) and Crusoe, the industry’s first vertically integrated AI infrastructure provider"
+    },
+    {
+      "organization": "Solar Turbines (Caterpillar subsidiary)",
+      "role": "OTHER",
+      "evidence_signal_id": "crusoe-abilene-stargate-tx-s2",
+      "quote": "the other half come from Solar Turbines, a subsidiary of Caterpillar Inc."
+    },
+    {
+      "organization": "Lancium",
+      "role": "OTHER",
+      "evidence_signal_id": "crusoe-abilene-stargate-tx-s2",
+      "quote": "The data center is located on land owned by energy tech company Lancium"
+    }
+  ],
+  "lead_time": {
+    "days": 179.5018,
+    "basis": "PROOF_CITED_TIMESTAMPS",
+    "earliest_signal_id": "crusoe-abilene-stargate-tx-s1",
+    "note": "s1 (BI construction/cost report, Wayback CDX 2025-01-25T01:43:49Z) to target (GE Vernova/Crusoe order release, Wayback CDX 2025-07-23T13:46:23Z). Both ends are Wayback upper bounds on availability for text quoted from later captures, not proof of first publication; the printed dates are Jan 24, 2025 8:37 PM ET (BI) and July 22, 2025 (GE dateline). The target-end bound can only make the gap look longer than the real one (real gap likely SHORTER), the signal-end bound can make it look shorter; net direction is unknown. The first 10 units were ordered in Dec 2024, before s1, but that order was not public until the July 2025 release; s2 (BI report of the TCEQ application, Wayback 2025-01-27T22:30:09Z) is ~176.6 days before the target."
+  },
+  "blockers": [
+    "Primary TCEQ docket/permit record not captured; the early signal is a secondary news report (Business Insider) of the filings, and the TCEQ received/filed date is unknown.",
+    "GE press release does not name Abilene; matching to the Abilene site relies on the BI description of turbine vendors (5 GE, 5 Solar) and Crusoe being owner of Project Ludicrous.",
+    "Earlier Crusoe/Lancium Abilene announcements (2024) were not captured with provable timestamps, so the true earliest signal is likely earlier than s1.",
+    "Wayback CDX first-seen date used as an upper bound on availability for both signals; no wire timestamp for the GE release.",
+    "Permanent/primary on-site generation purchase rather than short-term rental; fit to the TrailForge temporary-power target must be judged by a reviewer.",
+    "reviewer: decide whether this counts as a procurement of the right kind (a turbine purchase that is not site-specific; first 10 units were ordered Dec 2024, before every captured signal, and became public only with the July 2025 release).",
+    "Permanent/primary on-site generation purchase rather than short-term rental; fit to the TrailForge temporary-power target must be judged by a reviewer.",
+    "reviewer: decide whether this counts as a procurement of the right kind (a turbine purchase that is not site-specific; first 10 units were ordered Dec 2024, before every captured signal, and became public only with the July 2025 release).",
+    "not from quote: the order of 29 units / about 1 GW and the link of the GE order to Abilene rest on the target_description and the BI report of turbine vendors, not on the target quote alone."
+  ],
+  "reviewer_checklist": [
+    "Confirm the BI-described TCEQ application is for the Crusoe Abilene site and find the TCEQ filing/received date and permit number.",
+    "Confirm GE Vernova units in the July 2025 order include the Abilene turbines.",
+    "Decide whether an on-site turbine supply order qualifies as PROCUREMENT_SIGNAL for the cohort.",
+    "Look for any earlier dated public signal (rezoning, Taylor County/Abilene filings, 2024 announcements)."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:02:51-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Purchase of 29 LM2500XPRESS turbine packages for Crusoe AI data centers; the release does not name Abilene, and these are bought (not rented) units for on-site primary/backup power, so it is long-term supply rather than a temporary/rental event. The first 10 units were ordered in Dec 2024, before every captured signal."
+}

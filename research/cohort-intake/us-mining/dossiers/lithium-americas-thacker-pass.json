@@ -1,0 +1,110 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "lithium-americas-thacker-pass",
+  "project_name": "Thacker Pass Lithium Project (Lithium Americas / GM JV)",
+  "location": "Humboldt County, Nevada, USA",
+  "owner_or_developer": "Lithium Americas Corp. (62% JV manager) with General Motors (38%)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Included as a null-target dossier: strong early signals with SEC timestamps but no power procurement signal found. Stays UNRESOLVED, not a negative.",
+  "signals": [
+    {
+      "signal_id": "lithium-americas-thacker-pass-s1",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "S-K 1300 Technical Report Summary for Thacker Pass (pre-feasibility level per its own text)",
+      "observed_at": "2025-01-07T11:57:12+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525002534/0001193125-25-002534-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2025-01-07T11:57:12+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001193125-25-002534, Form 8-K). Exhibit 96.1."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525002534/d909276dex961.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/lithium-americas-thacker-trs-20250107.json",
+      "capture_id": "lithium-americas-thacker-trs-20250107",
+      "source_sha256": "c60a001e32a84a169a2be8bc3c775630e092dc0f6b875a818d2d7db5f85244f7",
+      "source_quote": "presents the results of a Pre-Feasibility Study (“PFS”) evaluation of the Thacker Pass Project.",
+      "claims": {}
+    },
+    {
+      "signal_id": "lithium-americas-thacker-pass-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "Power plan: on-site power generation plus grid power from Harney Electric Cooperative",
+      "observed_at": "2025-01-07T11:57:12+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525002534/0001193125-25-002534-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2025-01-07T11:57:12+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001193125-25-002534, Form 8-K). Exhibit 96.1."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525002534/d909276dex961.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/lithium-americas-thacker-trs-20250107.json",
+      "capture_id": "lithium-americas-thacker-trs-20250107",
+      "source_sha256": "c60a001e32a84a169a2be8bc3c775630e092dc0f6b875a818d2d7db5f85244f7",
+      "source_quote": "Electrical power for the Project will be supplied by on-site power generation and via grid power from\nthe local electric utility cooperative, Harney Electric Cooperative (HEC).",
+      "claims": {
+        "supply_text": "on-site power generation",
+        "utility": "Harney Electric Cooperative"
+      }
+    },
+    {
+      "signal_id": "lithium-americas-thacker-pass-s3",
+      "signal_type": "CONSTRUCTION_APPROVED",
+      "title": "Full notice to proceed issued to EPCM contractor Bechtel and other major contractors in Q4 2024",
+      "observed_at": "2025-03-06T11:07:20+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525047737/0001193125-25-047737-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2025-03-06T11:07:20+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001193125-25-047737, Form 8-K). Exhibit 99.1 to 8-K Items 7.01/9.01."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1966983/000119312525047737/d940383dex991.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/lithium-americas-thacker-fntp-20250306.json",
+      "capture_id": "lithium-americas-thacker-fntp-20250306",
+      "source_sha256": "c27e7992fd0af0563183146ca26dde0b01212d51d8adebb04e3936bcf054f0ab",
+      "source_quote": "In the fourth quarter of 2024, the Company issued Bechtel, the Thacker Pass engineering procurement and\nconstruction management (“ **EPCM**”) contractor, and other major contractors full notice to proceed",
+      "claims": {}
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "Lithium Americas Corp. (JV partner in the Thacker Pass joint venture)",
+      "role": "OWNER",
+      "evidence_signal_id": "lithium-americas-thacker-pass-s3",
+      "quote": "Lithium Americas expects that the strategic investment from Orion will enable it to make an affirmative FID of the Thacker Pass joint venture\n(“ **JV**”) for Phase 1 of Thacker Pass"
+    },
+    {
+      "organization": "Bechtel",
+      "role": "EPCM",
+      "evidence_signal_id": "lithium-americas-thacker-pass-s3",
+      "quote": "Bechtel, the Thacker Pass engineering procurement and\nconstruction management"
+    },
+    {
+      "organization": "Harney Electric Cooperative",
+      "role": "UTILITY",
+      "evidence_signal_id": "lithium-americas-thacker-pass-s2",
+      "quote": "local electric utility cooperative, Harney Electric Cooperative (HEC)"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "lithium-americas-thacker-pass-s1",
+    "note": "No target, so no lead time (the project stays unresolved, not negative)."
+  },
+  "blockers": [
+    "No PROCUREMENT_SIGNAL (temporary/bridge/rental/on-site generation solicitation, contract or award, or PPA/microgrid/O&M agreement) found. Power is HEC grid + on-site steam turbine generators; the repo's 2026-10-16 screen says off-site power work was complete by Aug 2026 and no open generation package was identified.",
+    "Older Thacker Pass technical reports (2021/2022) and permit approval (ROD Jan 2021) signals were not captured, so the earliest signal is Jan 2025 only.",
+    "The Jan 2025 TRS text calls itself a pre-feasibility level study; the FEASIBILITY_COMPLETE type is a loose fit.",
+    "Full-notice-to-proceed is an owner statement in a March 2025 release, not the Q4 2024 event's own timestamp.",
+    "not from quote: the Thacker Pass title description in owner_or_developer (62% JV manager / GM 38%) is not supported by an exact quote in the captures."
+  ],
+  "reviewer_checklist": [
+    "Search NV Energy / Harney Electric Cooperative / Humboldt County filings for a construction-power or temporary-service agreement.",
+    "Decide if this belongs in the cohort without a target (UNRESOLVED).",
+    "Add 2021-2023 signals (ROD, Bechtel EPCM selection) with timestamps if the case is kept."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-23T00:02:26+00:00",
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "us-mining"
+}

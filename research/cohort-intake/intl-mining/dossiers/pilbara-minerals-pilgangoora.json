@@ -1,0 +1,132 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "pilbara-minerals-pilgangoora",
+  "project_name": "Pilgangoora Lithium-Tantalum Project site power station (BOO)",
+  "location": "Pilgangoora, Pilbara, Western Australia",
+  "owner_or_developer": "Pilbara Minerals Limited (ASX: PLS)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Full ASX trail from DFS (power station planned as contractor-operated) through mining proposal approval to the 7-year BOO site power contract awarded to Contract Power Group (11 Sep 2017). Contract Power is the same supplier as in the Wodgina and Karlawinda cases.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Pilgangoora Definitive Feasibility Study (2Mtpa base case)",
+      "observed_at": "2016-09-20T09:15:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=PLS&timeframe=Y&year=2016",
+        "note": "ASX listing for PLS shows 'Pilgangoora DFS Confirms World Class Lithium Project' released 20/09/2016 9:15 am (ASX shows Sydney time; AEST +10:00 as DST began 2 Oct 2016); PDF idsId=01780377. Listing retrieved via curl, not captured."
+      },
+      "capture_id": "pls-dfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20160920/pdf/43b9hfcnxw18g6.pdf",
+      "source_quote": "PILGANGOORA DEFINITIVE FEASIBILITY STUDY CONFIRMS WORLD-CLASS AUSTRALIAN LITHIUM PROJECT",
+      "claims": {
+        "study": "DEFINITIVE FEASIBILITY STUDY"
+      },
+      "signal_id": "pilbara-minerals-pilgangoora-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/pls-dfs.json",
+      "source_sha256": "0ddceaf98d5e379e7b0c292713921ec5fc320b5ce81c6a4c035eeeb4ff8f9cdb"
+    },
+    {
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "DFS operational philosophy: power station to be contractor-operated (no MW, supplier or tender stated)",
+      "observed_at": "2016-09-20T09:15:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=PLS&timeframe=Y&year=2016",
+        "note": "Same ASX release as signal 1 (20/09/2016 9:15 am Sydney time, idsId=01780377)."
+      },
+      "capture_id": "pls-dfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20160920/pdf/43b9hfcnxw18g6.pdf",
+      "source_quote": "• Camp Services – Contractor Operated;\n\n• Power Station – Contractor Operated;",
+      "claims": {
+        "supply_model": "Contractor Operated"
+      },
+      "signal_id": "pilbara-minerals-pilgangoora-s2",
+      "capture_path": "research/cohort-intake/intl-mining/captures/pls-dfs.json",
+      "source_sha256": "0ddceaf98d5e379e7b0c292713921ec5fc320b5ce81c6a4c035eeeb4ff8f9cdb"
+    },
+    {
+      "signal_type": "PERMIT_APPROVED",
+      "title": "Mining Proposal approved by DMP (environmental approval; described as the last of the major approval milestones)",
+      "observed_at": "2017-05-10T08:21:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=PLS&timeframe=Y&year=2017",
+        "note": "ASX listing for PLS shows 'Mining Proposal Approval for Pilgangoora Project' released 10/05/2017 8:21 am (Sydney time, AEST +10:00); idsId=01856004."
+      },
+      "capture_id": "pls-mining-approval",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20170510/pdf/43j4xfcqdb4kh1.pdf",
+      "source_quote": "The approval of the Company’s Mining Proposal by the Department of Mines and Petroleum (“DMP”), in \ncombination with previously approved Native Vegetation Clearing Permit and Project Management Plan, authorises \nPilbara to commence major site works.",
+      "claims": {
+        "approval": "Mining Proposal",
+        "regulator": "DMP"
+      },
+      "signal_id": "pilbara-minerals-pilgangoora-s3",
+      "capture_path": "research/cohort-intake/intl-mining/captures/pls-mining-approval.json",
+      "source_sha256": "ed3b8741dcf65f953832ca1e9e2365e9330db574b23ee8498b574c0d1e103778"
+    }
+  ],
+  "target": {
+    "target_description": "7-year build-own-operate site power contract awarded to Contract Power Group (dual fuel gas/diesel in the first two years, solar-hybrid provision), announced 11 Sep 2017. The build-own-operate wording is in the body text of the same release (see buyer_path), not in the quoted highlight.",
+    "title": "Award of Power Contract to Contract Power Group (site power station BOO)",
+    "observed_at": "2017-09-11T12:48:00+10:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=PLS&timeframe=Y&year=2017",
+      "note": "ASX listing for PLS shows 'Project Update and Award of Power Contract' released 11/09/2017 12:48 pm (Sydney time, AEST +10:00); idsId=01894709."
+    },
+    "capture_id": "pls-power-award",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20170911/pdf/43m78xy0df6cgd.pdf",
+    "source_quote": "7-year site power contract awarded to Contract Power Group, with provision for dual fuel and solar-hybrid \napplications.",
+    "claims": {
+      "term_years": 7,
+      "supplier": "Contract Power Group",
+      "fuel": "dual fuel"
+    },
+    "signal_id": "pilbara-minerals-pilgangoora-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/pls-power-award.json",
+    "source_sha256": "04cfbc3b22ef66d3c1aeb500134fcf388066bd5708e999b4543e29f79ad6b124"
+  },
+  "buyer_path": [
+    {
+      "organization": "Pilbara Minerals Limited",
+      "role": "OWNER",
+      "evidence_signal_id": "pilbara-minerals-pilgangoora-target",
+      "quote": "Pilbara Minerals Limited (ASX: PLS) (**“Pilbara”** or **“the Company”**) is pleased to \nannounce the award of further key contracts, senior personnel appointments and other key developments at its \nflagship 100%-owned **Pilgangoora Lithium-Tantalum Project**"
+    },
+    {
+      "organization": "Contract Power Group (power supplier, BOO)",
+      "role": "OTHER",
+      "evidence_signal_id": "pilbara-minerals-pilgangoora-target",
+      "quote": "A final contract award has now been issued to Australian-owned Contract Power Group for the site power station \nconstruction and ongoing operations. Importantly, the build own operate power contract"
+    }
+  ],
+  "lead_time": {
+    "days": 356.1479,
+    "basis": "PROOF_CITED_TIMESTAMPS",
+    "earliest_signal_id": "pilbara-minerals-pilgangoora-s1",
+    "note": "Target (ASX 11/09/2017 12:48 +10:00) minus the DFS release (s1/s2, ASX 20/09/2016 09:15 +10:00) = 356.1 days. The DFS only says the power station will be contractor-operated, with no tender or supplier identified; the target's 'final contract award' implies earlier preferred-supplier steps that were not located, so the interval is a project-stage gap, not a tender-to-award gap. ASX times were read by the agent from the ASX listing and not captured."
+  },
+  "blockers": [
+    "Earlier preferred-supplier / tender announcements for the power contract (the target says 'final contract award') not located.",
+    "March 2016 PFS (idsId=01721140) not captured.",
+    "ASX release times read from ASX listing (Sydney time) via curl; listing pages not captured.",
+    "Captures are PDF-to-markdown conversions."
+  ],
+  "reviewer_checklist": [
+    "Confirm ASX release timestamps (20/09/2016, 10/05/2017, 11/09/2017) and Sydney-time convention.",
+    "Search for any earlier Pilbara Minerals announcement naming Contract Power as preferred power supplier.",
+    "Confirm the DFS 'Power Station - Contractor Operated' line is accepted as a power-requirement signal.",
+    "Confirm Contract Power Group role mapping (power supplier, not EPC)."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:40-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Seven-year build-own-operate site power contract (dual fuel, solar-hybrid provision) awarded to an IPP for a long-life lithium project: long-term on-site supply, not temporary or rental power. The text says a 'final' award was issued, so earlier preferred-supplier steps exist but were not located."
+}

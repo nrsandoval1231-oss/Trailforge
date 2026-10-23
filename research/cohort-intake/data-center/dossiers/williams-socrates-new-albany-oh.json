@@ -1,0 +1,114 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "INCOMPLETE",
+  "project_id": "williams-socrates-new-albany-oh",
+  "project_name": "Williams Socrates Power Solution Facilities (behind-the-meter, New Albany Ohio)",
+  "vertical": "data-center",
+  "location": "New Albany, Ohio, US",
+  "owner_or_developer": "Williams Companies via Will-Power OH, LLC",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Candidate came from the task brief (Williams Socrates). Offtaker believed to be Meta but no captured source names it.",
+  "signals": [
+    {
+      "signal_id": "williams-socrates-new-albany-oh-s1",
+      "signal_type": "PERMIT_FILED",
+      "title": "OPSB case 25-0185-EL-BLN opened by Will-Power OH, LLC (letter of notification); link to Williams/Socrates is NOT shown in the captured docket",
+      "observed_at": "2025-03-03T23:59:59-05:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=25-0185",
+        "note": "Only proof is the date-only 'Date Opened' field printed on the Ohio PUCO DIS case record for 25-0185 (no time of day, no filing receipt); end-of-day Eastern is used as observed_at. The capture was taken in Oct 2026 from the live docket and the date is the page's own printed text, so it is not an availability proof."
+      },
+      "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=25-0185",
+      "capture_path": "research/cohort-intake/data-center/captures/wmb-socrates-opsb-south.json",
+      "capture_id": "wmb-socrates-opsb-south",
+      "source_sha256": "bec8b2dcf79b03677b86b0bf8c96a947e4e4cb8f47ab3f31c0a24bf9efefa31d",
+      "source_quote": "# 25-0185-EL-BLN | [File a Public Comment](https://dis.puc.state.oh.us/PublicCommentEfiling.aspx?CaseNo=25-0185) |\n| Case Title: | Will-Power OH, LLC |\n| Status: | OPEN-OPEN |\n| Industry Code: | EL-ELECTRIC |\n| Purpose Code: | BLN-letter of notification |\n| Date Opened: | 3/3/2025",
+      "claims": {
+        "case_number": "25-0185-EL-BLN",
+        "date_opened_printed": "3/3/2025"
+      }
+    },
+    {
+      "signal_id": "williams-socrates-new-albany-oh-s2",
+      "signal_type": "PERMIT_FILED",
+      "title": "OPSB case 25-0188-EL-BGN opened by Will-Power OH, LLC (application for certificate / generating station); link to Williams/Socrates is NOT shown in the captured docket",
+      "observed_at": "2025-03-04T23:59:59-05:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=25-0188",
+        "note": "Only proof is the date-only 'Date Opened' field printed on the Ohio PUCO DIS case record for 25-0188 (no time of day, no filing receipt); end-of-day Eastern is used as observed_at. The capture was taken in Oct 2026 from the live docket and the date is the page's own printed text, so it is not an availability proof."
+      },
+      "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=25-0188",
+      "capture_path": "research/cohort-intake/data-center/captures/wmb-socrates-opsb-north.json",
+      "capture_id": "wmb-socrates-opsb-north",
+      "source_sha256": "33f7f0ba7012a6b605c4bba09181d5c50e419e664e719b1baaba5717c4de4f60",
+      "source_quote": "# 25-0188-EL-BGN | [File a Public Comment](https://dis.puc.state.oh.us/PublicCommentEfiling.aspx?CaseNo=25-0188) |\n| Case Title: | Will-Power OH, LLC |\n| Status: | OPEN-OPEN |\n| Industry Code: | EL-ELECTRIC |\n| Purpose Code: | BGN-Application for a certificate/ generating station |\n| Date Opened: | 3/4/2025",
+      "claims": {
+        "case_number": "25-0188-EL-BGN",
+        "date_opened_printed": "3/4/2025"
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "williams-socrates-new-albany-oh-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "Williams Q1 2025 earnings release (8-K exhibit): Socrates commercialized, backed by a long-term fixed-price power purchase agreement",
+    "observed_at": "2025-05-05T20:19:43+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "sec_edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/107263/000010726325000100/",
+      "note": "EDGAR accession 0000107263-25-000100 (Form 8-K, exhibit wmb_20250331xer.htm) acceptanceDateTime 2025-05-05T20:19:43.000Z per data.sec.gov submissions API for CIK 0000107263; SEC full-text search returned this as the earliest Williams filing containing \"Socrates\"."
+    },
+    "source_url": "https://www.sec.gov/Archives/edgar/data/107263/000010726325000100/wmb_20250331xer.htm",
+    "capture_path": "research/cohort-intake/data-center/captures/wmb-q1-2025-earnings.json",
+    "capture_id": "wmb-q1-2025-earnings",
+    "source_sha256": "5cdbf24c260007c5ed39991f48a1bc9274f6926d969aa314655e8b6225b76a22",
+    "source_quote": "Commercialized Socrates, a $1.6 billion Power Innovation project to serve growing AI demand in Ohio, backed by a long-term, fixed-price power purchase agreement",
+    "claims": {
+      "capex_text": "$1.6 billion",
+      "contract": "long-term, fixed-price power purchase agreement"
+    },
+    "target_description": "Williams commercializes Socrates behind-the-meter power project for an AI data center in Ohio under a long-term fixed-price power purchase agreement (power-supply agreement form of signal). Offtaker is not named in this release."
+  },
+  "buyer_path": [
+    {
+      "organization": "Will-Power OH, LLC",
+      "role": "OTHER",
+      "evidence_signal_id": "williams-socrates-new-albany-oh-s1",
+      "quote": "# 25-0185-EL-BLN | [File a Public Comment](https://dis.puc.state.oh.us/PublicCommentEfiling.aspx?CaseNo=25-0185) |\n| Case Title: | Will-Power OH, LLC |\n| Status: | OPEN-OPEN |\n| Industry Code: | EL-ELECTRIC |\n| Purpose Code: | BLN-letter of notification |\n| Date Opened: | 3/3/2025"
+    },
+    {
+      "organization": "Williams Companies, Inc.",
+      "role": "OTHER",
+      "evidence_signal_id": "williams-socrates-new-albany-oh-target",
+      "quote": "Williams (NYSE: WMB) today announced its unaudited financial results for the three months ended March 31, 2025."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "williams-socrates-new-albany-oh-s1",
+    "note": "No lead time stated: the dossier is INCOMPLETE and the earliest signal (s1) rests on a date-only printed docket field (PRINTED_DATE_ONLY). Indicative only: printed 2025-03-03 to EDGAR acceptance 2025-05-05T20:19:43Z is about 63 days, but no captured source shows that Will-Power OH, LLC is Williams' Socrates vehicle."
+  },
+  "blockers": [
+    "Identity gap: neither captured OPSB docket mentions Williams, Socrates or New Albany, and the Williams release does not mention Will-Power OH, LLC; the link between the dockets and Socrates is not established by any captured quote and must be settled by a reviewer before s1/s2 count as Socrates signals.",
+    "Offtaker/data-center owner (reported Meta) not named in any captured source with a timestamp, so no customer-side buyer path is established.",
+    "Docket Date Opened is date-only; the first filed document in case 25-0185 (42 documents) was not captured (View-All capture failed), so the actual filing date/content is unreported.",
+    "Socrates may have surfaced publicly earlier (Ohio local approvals, Williams Q4 2024 call); earliest signal may be earlier than s1.",
+    "Behind-the-meter permanent plant under a PPA, not a rental/temporary unit procurement; equipment suppliers/EPC not captured.",
+    "The captured dockets are live pages fetched Oct 2026. The south docket also shows a 07/22/2026 Notice of Compliance, Completion and In-service Dates (OPERATING signal, after target, not used as a signal).",
+    "reviewer: decide whether this counts as a procurement of the right kind (a power purchase agreement mentioned in an earnings release; buyer unnamed; permanent plant)."
+  ],
+  "reviewer_checklist": [
+    "Open OPSB case 25-0185-EL-BLN and confirm LON filing date and that it is the Socrates South plant.",
+    "Confirm the Q1 2025 earnings release language and whether it is the first public PROCUREMENT_SIGNAL (check Q4 2024 release 2025-02-12).",
+    "Find a source naming the data-center customer and the equipment/EPC suppliers."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:02:51-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "An earnings-release line saying Socrates was commercialized under a long-term fixed-price power purchase agreement for AI demand in Ohio; the buyer is not named, the plant is a permanent behind-the-meter facility, and no equipment, rental or construction contract is shown."
+}
