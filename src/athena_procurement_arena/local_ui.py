@@ -41,11 +41,7 @@ ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
 APP_ASSETS = {"/app/app_ops.js": ("app_ops.js", "text/javascript; charset=utf-8"),
               "/app/app_find.js": ("app_find.js", "text/javascript; charset=utf-8"),
               "/app/app.js": ("app.js", "text/javascript; charset=utf-8"),
-              "/app/app.css": ("app.css", "text/css; charset=utf-8"),
-              "/app/wordmark-white.svg": ("wordmark-white.svg", "image/svg+xml"),
-              "/app/icon-jade.svg": ("icon-jade.svg", "image/svg+xml"),
-              "/app/Manrope.ttf": ("Manrope.ttf", "font/ttf"),
-              "/app/IBMPlexMono-Regular.ttf": ("IBMPlexMono-Regular.ttf", "font/ttf")}
+              "/app/app.css": ("app.css", "text/css; charset=utf-8")}
 
 
 def default_mining_inputs() -> list[Path]:
