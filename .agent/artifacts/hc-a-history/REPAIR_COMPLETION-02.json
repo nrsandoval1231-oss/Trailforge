@@ -1,0 +1,39 @@
+{
+  "schema_version": "agent-harness-repair-completion-v1",
+  "packet_id": "HC-A-HISTORY",
+  "status": "REPAIRED_AWAITING_CONTROLLER_GATES_AND_INDEPENDENT_REVIEW",
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "repair_finished_utc": "2026-10-02T17:31:46.6354559Z",
+  "scope": "minimal report-contract guard repair; case data and retained outputs unchanged",
+  "preserved": [
+    "COMPLETION.json",
+    "REPAIR_COMPLETION.json",
+    "all retained result directories and raw receipts"
+  ],
+  "repair": {
+    "milestone": "_valid_milestone now requires the exact declared release instant to occur in the cited semantic quote, which must explicitly describe a generation-solicitation release.",
+    "buyer_route": "_actionable_at now requires nonempty, non-UNKNOWN organization, organization quote, route quote, and route value before evaluating same-source responsibility and cutoff visibility.",
+    "outputs": "No existing case has a qualifying milestone or buyer route. The repair cannot change the three all-UNKNOWN reports, so no new result directory was written."
+  },
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_historical_cases.py -q",
+      "result": "28 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/historical_case_report.py tests/procurement_arena/test_historical_cases.py",
+      "result": "All checks passed"
+    }
+  ],
+  "adversarial_coverage": [
+    "timestamp absent from otherwise explicit source quote",
+    "archive representation cannot become a solicitation release",
+    "empty buyer route rejected",
+    "future buyer route excluded at cutoff",
+    "synthetic signed positive, negative, and unknown lead arithmetic"
+  ],
+  "limitations": [
+    "No PASS or completion certification.",
+    "Controller must run mandatory full validation and obtain fresh independent Sol review on the exact frozen candidate."
+  ]
+}

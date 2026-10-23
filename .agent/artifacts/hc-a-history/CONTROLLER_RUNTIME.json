@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "started_at_utc": "2026-10-02T17:39:47.764765+00:00",
+  "finished_at_utc": "2026-10-02T17:39:51.046970+00:00",
+  "elapsed_seconds": 3.281,
+  "case_count": 3,
+  "byte_identical_generated_files": 17,
+  "cohort_hash": "d4db87f19254b803a49cab7d0080d56567c3d5ae07e56678b278f2468597f387",
+  "network_connect_attempts": 0,
+  "first_policy_surface_count": 1,
+  "buyer_actionable_count": 0,
+  "supported_lead_count": 0,
+  "files": [
+    {
+      "path": "cohort.json",
+      "sha256": "2cfba63b339bcc6ef9d8ab7dd9e1fcb7319774710159a89b396086bfaa03dc4f"
+    },
+    {
+      "path": "experiments/azure-sky-wind/config.json",
+      "sha256": "e15967a1a50b4e43cf09a87332aa2cc355d39c4400de45fefacc8c82b0502806"
+    },
+    {
+      "path": "experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0"
+    },
+    {
+      "path": "experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254"
+    },
+    {
+      "path": "experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def"
+    },
+    {
+      "path": "experiments/azure-sky-wind/manifest.json",
+      "sha256": "6cf3cc81233483f7b5212621be66335ec5e782a79f600960716c59739a0a5be1"
+    },
+    {
+      "path": "experiments/crusoe-abilene/config.json",
+      "sha256": "40b6c6e16ec0b53e40d4c386d27eee817409f49c81e6d98a2fe19a03da2216b9"
+    },
+    {
+      "path": "experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51"
+    },
+    {
+      "path": "experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f"
+    },
+    {
+      "path": "experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a"
+    },
+    {
+      "path": "experiments/crusoe-abilene/manifest.json",
+      "sha256": "15260454e801f9f2f0c85de79a5d6257f6cab2d9d8c5bcbbe9003ac2f9833e8a"
+    },
+    {
+      "path": "experiments/montauk-2021/config.json",
+      "sha256": "66c593a009ef77a28d653d4950e96b9b4a31b8bad74c456ac25de3fd16fae56d"
+    },
+    {
+      "path": "experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea"
+    },
+    {
+      "path": "experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7"
+    },
+    {
+      "path": "experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3"
+    },
+    {
+      "path": "experiments/montauk-2021/manifest.json",
+      "sha256": "8c3db36788a2739e87457a7e8dbaa280a7ae10fa96d0ff5a8324d4706e2fe0b1"
+    },
+    {
+      "path": "report.md",
+      "sha256": "481e6468c4a12b4660b4dfb797701ebacc2a1244d332cc9f1f54b2fede2d9f59"
+    }
+  ],
+  "imported_blobs_unchanged": 134,
+  "original_dirty_files_unchanged": 73
+}

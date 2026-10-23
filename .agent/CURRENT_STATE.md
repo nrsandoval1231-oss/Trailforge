@@ -1,42 +1,15 @@
-# TrailForge current state — 2026-10-02
+# TrailForge current state - 2026-10-02
 
-Canonical strategy: [Pre-RFP Discovery Strategy](../docs/PRE_RFP_DISCOVERY_STRATEGY.md).
-Finish criterion remains an unseen/prospective, source-backed early pattern with
-tolerable action burden and an identifiable customer path. It is not yet met.
+Canonical intent: [strategy](../docs/PRE_RFP_DISCOVERY_STRATEGY.md) and [product alignment](../docs/PRD_ALIGNMENT.md). Parent Finish Contract remains UNMET.
 
-Active branch: `codex/trailforge-pre-rfp-lab`, based on remote main
-`6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb`. Worktree:
-`C:/Users/nrsan/.codex/worktrees/trailforge-pre-rfp-lab/Trailforge`.
-The original customer-v1 checkout and its dirty operator work remain preserved.
+HC-A-HISTORY bounded implementation ACCEPTED by independent Sol PASS for candidate `a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5` (502 files). [Acceptance](artifacts/hc-a-history/ACCEPTANCE.json), [review](artifacts/hc-a-history/REVIEW.json), [packet](tasks/hc-a-history.md), [graph](WORK_GRAPH_PRE_RFP.md). Bookkeeping is outside source review scope.
 
-## Current bounded result
+Local branch `codex/trailforge-historical-path`, base PR9 `c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b`, managed worktree `C:/Users/nrsan/.codex/worktrees/trailforge-pre-rfp-lab/Trailforge`. Candidate staged but UNCOMMITTED; no push or merge. Original customer-v1 checkout retains its 73 dirty files unchanged. PR7 and PR9 remain OPEN at verified heads; prior CI is not new-candidate CI.
 
-HC-A extends existing scenario, TemporalWorld, frozen ledger and BASELINE_A
-experiment infrastructure with source-bound cases and offline cohort execution.
-A small PRE_RFP_BASELINE_V1 callback allows unknown MW and requires supported
-project, generation reason and organization evidence; it does not self-promote.
+Working path: PR9 runtime plus 134 exact PR7 research blobs, receipt-bound archive availability, family timelines, unchanged fixed policies, offline replay and qualified report. Three exposed development cases: Montauk policy surface 2021-05-07; Crusoe and Azure no surface within retained eligible timelines. All buyer-actionable detections, verified solicitation milestones and commercial lead times UNKNOWN. No discovery credit or holdout claim.
 
-[Seed corpus](../research/pre-rfp-corpus/README.md): eight exposed development
-families, eleven captures; four positive observed outcomes, one negative scope
-look-alike, three unresolved. Historical version availability remains UNKNOWN.
-Capture-observation replay is useful boundary proof, not historical or live
-prediction success. No sealed holdout, Jev or Athena candidate evaluation.
+Gates: 325 tests passed, one skipped; compile, Ruff, three bundles passed. Two offline runs reproduced 17 files byte-for-byte. Windows checkout preserved 494 research files. Original eight-case regression passed. Raw evidence whitespace retained; authored-source diff check passed. Failed attempts and superseded outputs preserved.
 
-## Validation and next direction
+Direction CONTINUE: bounded same-family milestone and then-available buyer-route recovery with measured research-time budget; next curate independent unexposed replacements and freeze holdout/prospective protocol before reading them. Total historical research burden remains UNKNOWN.
 
-Current direction: CONTINUE to HC-A-HISTORY after bounded HC-A implementation
-acceptance. Sol PASS binds source candidate
-`afd3c7eacd95f02f4fbea0def99eecb1c287d1b6884eaa207c853753a305b7a1`.
-Controller gates: 318 passed, 1 existing Windows symlink-privilege skip; compile,
-Ruff, three fixture bundles and two offline real-corpus runs PASS.
-Exact final gates, frozen file identities and independent verdict live in
-[Slice A evidence](artifacts/pre-rfp-slice-a/).
-[Validation report](../docs/PRE_RFP_IMPLEMENTATION_VALIDATION_2026-10-02.md).
-
-[Graph](WORK_GRAPH_PRE_RFP.md), [packet](tasks/pre-rfp-slice-a.md).
-Next implementation frontier after acceptance: recover verified historical
-precursors and expand source-backed acquisition/classification. Exposed cases
-cannot be renamed as an untouched holdout. No merge, outreach or deployment
-is authorized. The current brief does authorize one focused commit/push/PR.
-
-Portability delta independently accepted; original review retained. Fresh Windows checkout: 213 retained files byte-identical, eight cases and eight bundles verified.
+Authority: local work only. No push, merge, paid spending, outreach, submission, deployment, policy promotion, canonical intent change or unrelated UI work.

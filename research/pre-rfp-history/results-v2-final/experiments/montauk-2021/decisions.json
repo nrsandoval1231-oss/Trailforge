@@ -1,0 +1,236 @@
+{
+  "decision_snapshots": [
+    {
+      "action": "IGNORE",
+      "decision_hash": "3de351ac1722b59de0c4cb347e432110d1e4a2ae10279d7a4224d8833843298f",
+      "decision_time": "2021-05-07T11:48:02-05:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "montauk-2021",
+        "seed": 1,
+        "time": "2021-05-07T11:48:02-05:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "UNKNOWN",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "archive_representation_observation": true,
+              "buyer_organization": "PSEG Long Island",
+              "generation_need_supported": true,
+              "need_evidence_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+              "need_reason": "Six modular generators support transmission circuit connections/upgrades and seasonal reliability",
+              "project_responsibility_supported": true,
+              "project_specific": true,
+              "required_mw": 6
+            },
+            "contradictions": [],
+            "document_date": "2021-05-07T11:48:02-05:00",
+            "entity_candidates": [],
+            "event_date": "2021-05-07T11:48:02-05:00",
+            "evidence_id": "montauk-2021-archive-observation",
+            "is_prediction": false,
+            "lineage_family": "montauk-transmission-upgrades-2021",
+            "observed_at": "2026-10-02T16:07:08.727128+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "montauk-2021-archive",
+            "source_spans": [
+              "maximum of six modular compressed natural gas (CNG) fired generators capable of producing"
+            ],
+            "source_version": "09a480937109e3b843e6b97fbbe018f3ae8acea58eb5f52dde5782a59aec2828",
+            "tenant_id": "default",
+            "verified_available_at": "2021-05-07T11:48:02-05:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "montauk-2021-archive-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "generator",
+            "mw"
+          ],
+          "required_mw": 6,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'pseg long island', 'generation_need_supported': true, 'need_evidence_quote': 'maximum of six modular compressed natural gas (cng) fired generators capable of producing', 'need_reason': 'six modular generators support transmission circuit connections/upgrades and seasonal reliability', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': 6}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    },
+    {
+      "action": "IGNORE",
+      "decision_hash": "e9ab8a537138808eff76b6afec0f2098c027f516d0590bbbfcc128530b594820",
+      "decision_time": "2026-10-02T16:07:08.727128+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "montauk-2021",
+        "seed": 1,
+        "time": "2026-10-02T16:07:08.727128+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "UNKNOWN",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "archive_representation_observation": true,
+              "buyer_organization": "PSEG Long Island",
+              "generation_need_supported": true,
+              "need_evidence_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+              "need_reason": "Six modular generators support transmission circuit connections/upgrades and seasonal reliability",
+              "project_responsibility_supported": true,
+              "project_specific": true,
+              "required_mw": 6
+            },
+            "contradictions": [],
+            "document_date": "2021-05-07T11:48:02-05:00",
+            "entity_candidates": [],
+            "event_date": "2021-05-07T11:48:02-05:00",
+            "evidence_id": "montauk-2021-archive-observation",
+            "is_prediction": false,
+            "lineage_family": "montauk-transmission-upgrades-2021",
+            "observed_at": "2026-10-02T16:07:08.727128+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "montauk-2021-archive",
+            "source_spans": [
+              "maximum of six modular compressed natural gas (CNG) fired generators capable of producing"
+            ],
+            "source_version": "09a480937109e3b843e6b97fbbe018f3ae8acea58eb5f52dde5782a59aec2828",
+            "tenant_id": "default",
+            "verified_available_at": "2021-05-07T11:48:02-05:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "montauk-2021-archive-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "generator",
+            "mw"
+          ],
+          "required_mw": 6,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'pseg long island', 'generation_need_supported': true, 'need_evidence_quote': 'maximum of six modular compressed natural gas (cng) fired generators capable of producing', 'need_reason': 'six modular generators support transmission circuit connections/upgrades and seasonal reliability', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': 6}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    }
+  ],
+  "ledger_hash": "c5b74f3215cda11da665862fe95ff28b67d5735cfd4c09ec6b62df65dba66863",
+  "ledger_verified": true,
+  "records": [
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "generator",
+            "mw"
+          ],
+          "required_mw": 6,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'pseg long island', 'generation_need_supported': true, 'need_evidence_quote': 'maximum of six modular compressed natural gas (cng) fired generators capable of producing', 'need_reason': 'six modular generators support transmission circuit connections/upgrades and seasonal reliability', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': 6}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "",
+      "record_hash": "3de351ac1722b59de0c4cb347e432110d1e4a2ae10279d7a4224d8833843298f",
+      "scenario_id": "montauk-2021",
+      "simulation_time": "2021-05-07T11:48:02-05:00",
+      "visible_evidence_ids": [
+        "montauk-2021-archive-observation"
+      ]
+    },
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "generator",
+            "mw"
+          ],
+          "required_mw": 6,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'pseg long island', 'generation_need_supported': true, 'need_evidence_quote': 'maximum of six modular compressed natural gas (cng) fired generators capable of producing', 'need_reason': 'six modular generators support transmission circuit connections/upgrades and seasonal reliability', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': 6}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "OUT_OF_SCOPE",
+          "target_scope": "OUT_OF_SCOPE_NOT_PRIME"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "3de351ac1722b59de0c4cb347e432110d1e4a2ae10279d7a4224d8833843298f",
+      "record_hash": "e9ab8a537138808eff76b6afec0f2098c027f516d0590bbbfcc128530b594820",
+      "scenario_id": "montauk-2021",
+      "simulation_time": "2026-10-02T16:07:08.727128+00:00",
+      "visible_evidence_ids": [
+        "montauk-2021-archive-observation"
+      ]
+    }
+  ]
+}

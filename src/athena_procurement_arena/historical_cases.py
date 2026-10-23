@@ -4,9 +4,12 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field, fields
-from datetime import datetime
+from datetime import UTC, datetime
+from hashlib import sha256
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+from urllib.parse import unquote, urlsplit
 
 from athena_arena.contracts import canonical_hash
 
@@ -175,17 +178,44 @@ def _verify_source_ref(root: Path, ref: EvidenceSourceRef, events: dict[str, Any
     if ref.verified_available_at != UNKNOWN:
         available_at = _timestamp(ref.verified_available_at, "verified_available_at")
         if available_at is not None and available_at < capture.captured_at:
-            proof_path_value = (ref.extra_fields or {}).get("availability_proof_capture_path")
-            proof_hash = (ref.extra_fields or {}).get("availability_proof_capture_hash")
-            if not proof_path_value or not proof_hash:
-                raise ValueError(f"pre-capture availability needs a separately bound historical proof: {ref.evidence_id}")
-            proof_path = (root / proof_path_value).resolve(strict=True)
-            if not proof_path.is_relative_to(corpus_root):
-                raise ValueError(f"availability proof leaves the pre-RFP corpus: {ref.evidence_id}")
-            proof = load_capture(proof_path)
-            if (proof.capture_hash != proof_hash or proof.source_url != ref.source_url
-                    or proof.content_sha256 != ref.content_sha256 or proof.captured_at > available_at):
-                raise ValueError(f"historical availability proof does not bind the exact earlier version: {ref.evidence_id}")
+            archive_proof = (ref.extra_fields or {}).get("archive_version_proof")
+            if archive_proof:
+                _verify_archive_version(root, ref, available_at, archive_proof)
+                if ref.observed_at != capture.captured_at.isoformat():
+                    raise ValueError("archive observed_at must equal the actual retained capture time")
+                # Archive retrieval observes a representation. It does not invent
+                # the original event or document date.
+                proof_capture = load_capture((root / archive_proof["capture_path"]).resolve(strict=True))
+                support_quotes = [ref.source_quote, *((ref.extra_fields or {}).get("claim_evidence_quotes", {}).values())]
+                if any(not quote or quote not in proof_capture.content for quote in support_quotes):
+                    raise ValueError(f"historical quote is absent from archive representation: {ref.evidence_id}")
+                event = events.get(ref.evidence_id)
+                if event is not None:
+                    representation_time = available_at.isoformat()
+                    if ((ref.extra_fields or {}).get("date_semantics") != "REPRESENTATION_OBSERVATION_ONLY"
+                            or event.event_date.isoformat() != representation_time
+                            or event.document_date.isoformat() != representation_time
+                            or event.verified_available_at.isoformat() != representation_time
+                            or event.observed_at.isoformat() != ref.observed_at
+                            or event.source_id != proof_capture.capture_id
+                            or event.source_version != proof_capture.content_sha256
+                            or dict(event.claims) != ref.reviewed_claims
+                            or any(quote not in event.source_spans for quote in support_quotes)):
+                        raise ValueError("archive scenario event must be an exact representation observation")
+                elif ref.replay_included and _fully_dated(ref):
+                    raise ValueError("fully dated archive evidence is missing from scenario")
+            else:
+                proof_path_value = (ref.extra_fields or {}).get("availability_proof_capture_path")
+                proof_hash = (ref.extra_fields or {}).get("availability_proof_capture_hash")
+                if not proof_path_value or not proof_hash:
+                    raise ValueError(f"pre-capture availability needs a separately bound historical proof: {ref.evidence_id}")
+                proof_path = (root / proof_path_value).resolve(strict=True)
+                if not proof_path.is_relative_to(corpus_root):
+                    raise ValueError(f"availability proof leaves the pre-RFP corpus: {ref.evidence_id}")
+                proof = load_capture(proof_path)
+                if (proof.capture_hash != proof_hash or proof.source_url != ref.source_url
+                        or proof.content_sha256 != ref.content_sha256 or proof.captured_at > available_at):
+                    raise ValueError(f"historical availability proof does not bind the exact earlier version: {ref.evidence_id}")
     event = events.get(ref.evidence_id)
     if not ref.replay_included or not _fully_dated(ref):
         if event is not None:
@@ -201,6 +231,9 @@ def _verify_source_ref(root: Path, ref: EvidenceSourceRef, events: dict[str, Any
         raise ValueError(f"scenario event does not match reviewed capture ref: {ref.evidence_id}")
     if ref.source_quote not in event.source_spans:
         raise ValueError(f"scenario event is missing the reviewed source quote: {ref.evidence_id}")
+    for quote in (ref.extra_fields or {}).get("claim_evidence_quotes", {}).values():
+        if not quote or quote not in capture.content or quote not in event.source_spans:
+            raise ValueError(f"scenario event is missing claim-specific source support: {ref.evidence_id}")
     if ref.extra_fields and ref.extra_fields.get("observation_kind") == "CURRENT_SOURCE_OBSERVATION":
         if ref.extra_fields.get("availability_basis") != "CAPTURE_TIME_ONLY":
             raise ValueError("current source observation must declare capture-time-only availability")
@@ -209,6 +242,105 @@ def _verify_source_ref(root: Path, ref: EvidenceSourceRef, events: dict[str, Any
         capture = load_capture((root / ref.capture_path).resolve(strict=True))
         if any(value != capture.captured_at.isoformat() for value in expected_dates[2:]):
             raise ValueError("current source observation availability and observation times must equal capture time")
+
+
+def _verify_archive_version(root: Path, ref: EvidenceSourceRef, available_at: datetime,
+                            proof: dict[str, Any]) -> None:
+    """Verify receipt-bound archived bytes and headers before accepting availability."""
+    required = {"capture_path", "receipt_path", "archive_url", "original_url", "memento_datetime",
+                "body_path", "body_sha256", "headers_path", "headers_sha256", "header_transformation"}
+    if not required.issubset(proof):
+        raise ValueError("archive version proof is incomplete")
+    def contained(value: str) -> Path:
+        path = (root / value).resolve(strict=True)
+        if not path.is_relative_to(root.resolve()):
+            raise ValueError("archive proof path leaves its case directory")
+        return path
+    capture_path = contained(proof["capture_path"])
+    capture = load_capture(capture_path)
+    receipt_path = contained(proof["receipt_path"])
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    if isinstance(receipt.get("records"), list):
+        receipt = next((item for item in receipt["records"] if item.get("source_url") == proof["archive_url"]), {})
+    receipt = receipt.get("archive_receipt", receipt)
+    body_path, headers_path = contained(proof["body_path"]), contained(proof["headers_path"])
+    body_hash = sha256(body_path.read_bytes()).hexdigest()
+    headers_hash = sha256(headers_path.read_bytes()).hexdigest()
+    memento = _timestamp(proof["memento_datetime"], "memento_datetime")
+    archive_url = proof["archive_url"]
+    original_url = proof["original_url"]
+    parsed = urlsplit(archive_url)
+    match = re.fullmatch(r"/web/(\d{14})/(https?://.+)", parsed.path)
+    if parsed.scheme != "https" or parsed.hostname != "web.archive.org" or not match:
+        raise ValueError("archive URL must be an exact Wayback timestamp replay URL")
+    stamp = datetime.strptime(match.group(1), "%Y%m%d%H%M%S").replace(tzinfo=UTC)
+    target_url = unquote(match.group(2))
+    header_text = headers_path.read_text(encoding="utf-8", errors="strict")
+    header_lines = [line.strip() for line in header_text.splitlines() if ":" in line]
+    header_map: dict[str, list[str]] = {}
+    for line in header_lines:
+        key, value = line.split(":", 1)
+        header_map.setdefault(key.lower(), []).append(value.strip())
+    memento_header = (header_map.get("memento-datetime") or header_map.get("memento_datetime") or [None])[0]
+    status_ok = bool(re.search(r"^HTTP/\S+\s+200\b", header_text, flags=re.MULTILINE))
+    link_values = " ".join(header_map.get("link", []))
+    if (body_hash != proof["body_sha256"] or headers_hash != proof["headers_sha256"]
+            or capture_path != contained(ref.capture_path)
+            or capture.source_url != archive_url or archive_url != ref.source_url
+            or target_url != original_url or memento != available_at or stamp != available_at.astimezone(UTC)
+            or available_at > capture.captured_at
+            or receipt.get("memento_datetime_utc", receipt.get("memento_datetime")) not in {
+                proof["memento_datetime"], memento.strftime("%a, %d %b %Y %H:%M:%S GMT")
+            }
+            or receipt.get("source_url", receipt.get("archive_url")) != archive_url
+            or receipt.get("body_sha256", receipt.get("archive_pdf_sha256", receipt.get("sha256"))) != body_hash
+            or receipt.get("headers_sha256", receipt.get("header_sha256")) != headers_hash
+            or not status_ok or memento_header != memento.strftime("%a, %d %b %Y %H:%M:%S GMT")
+            or not re.search(rf'<{re.escape(original_url)}>;\s*rel="original"', link_values, re.I)):
+        raise ValueError(f"archive version receipt mismatch: {ref.evidence_id}")
+    if proof["header_transformation"] not in {
+        "Set-Cookie lines omitted; remaining header values unchanged",
+        "cookie header names omitted; other received values unchanged",
+        "All cookie header names, including archive-original cookie headers, omitted; other received values unchanged.",
+    }:
+        raise ValueError("archive response header transformation is not recognized")
+    body = body_path.read_bytes()
+    representation = archive_representation_text(body)
+    if capture.content != representation:
+        raise ValueError("archive capture content is not the deterministic retained-body representation")
+    if ref.source_quote not in representation:
+        raise ValueError("archive quote is not present in the exact retained body")
+
+
+class _TextOnlyHtml(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(data)
+
+
+def archive_representation_text(body: bytes) -> str:
+    """Deterministically extract searchable text from retained HTML or PDF bytes."""
+    if body.startswith(b"%PDF-"):
+        try:
+            import io
+
+            from pypdf import PdfReader
+
+            reader = PdfReader(io.BytesIO(body), strict=True)
+            return "\n".join(page.extract_text() or "" for page in reader.pages)
+        except Exception as exc:
+            raise ValueError("retained PDF cannot be deterministically text-extracted") from exc
+    try:
+        source = body.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError("archive body must be UTF-8 HTML or PDF") from exc
+    parser = _TextOnlyHtml()
+    parser.feed(source)
+    parser.close()
+    return "\n".join(part for part in parser.parts if part.strip())
 
 
 def _verify_buyer_path(case: HistoricalCase) -> None:
@@ -232,6 +364,8 @@ def _verify_buyer_path(case: HistoricalCase) -> None:
             claims = evidence_by_id[item["evidence_id"]].reviewed_claims
             if claims.get("buyer_organization") != organization:
                 raise ValueError("buyer_path organization must match the reviewed evidence claim")
+            if item["quality"] == "BUYING_RESPONSIBILITY_SUPPORTED" and claims.get("buying_responsibility_supported") is not True:
+                raise ValueError("buyer_path buying responsibility must be source-supported")
 
 
 def validate_family_splits(cases: tuple[HistoricalCase, ...] | list[HistoricalCase]) -> None:

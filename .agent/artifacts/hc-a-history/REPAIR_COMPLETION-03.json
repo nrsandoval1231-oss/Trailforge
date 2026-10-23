@@ -1,0 +1,15 @@
+{
+  "schema_version": "agent-harness-repair-correction-v1",
+  "packet_id": "HC-A-HISTORY",
+  "status": "CORRECTION_AWAITING_CONTROLLER_GATES_AND_INDEPENDENT_REVIEW",
+  "correction": "REPAIR_COMPLETION-02 incorrectly claimed the second guard repair could not alter outputs. The final controller run differs from results-v5-repair2 only in persisted replay experiment manifest hashes and resulting cohort hash.",
+  "cause": "The retained case manifests had changed since results-v5-repair2 (family reconciliation and excluded Crusoe context). create_experiment binds source manifest content SHA256 into config.json and therefore emits new manifest hashes. Decision artifacts, visible evidence, policy surfaces, all lead statuses, and report semantics are unchanged.",
+  "preserved_outputs": ["results-v5-repair2", "results-v5-repair2-repeat"],
+  "final_output": {
+    "path": "research/pre-rfp-history/results-controller-final",
+    "cohort_hash": "d4db87f19254b803a49cab7d0080d56567c3d5ae07e56678b278f2468597f387",
+    "cohort_sha256": "2CFBA63B339BCC6EF9D8AB7DD9E1FCB7319774710159A89B396086BFAA03DC4F"
+  },
+  "documentation": "docs/HISTORICAL_PATH.md now identifies results-controller-final as final. No research README contained a stale history-final output reference.",
+  "limitations": ["No PASS or completion certification.", "Controller still owns final gates and independent review."]
+}

@@ -1,0 +1,11 @@
+# Historical pre-RFP backtrace
+
+The three-family corpus is a development backtrace over retained public evidence. It earns no discovery credit and does not support general-performance estimates. Run it offline with `uv run --python 3.11 python scripts/run_pre_rfp_history.py --output-dir <new-output-directory>`; output paths are write-once. `results-v5/` and `results-v5-repair2/` are retained prior repair runs; the final controller output is `research/pre-rfp-history/results-controller-final/`.
+
+Each archive observation binds the original URL, Wayback timestamp, retained body and headers, Memento response, and deterministic text extraction. `source_observed_at` is when corpus bytes were actually captured. The Wayback instant is a representation observation, never a source document or real event time. The report separately prints retained day-only source document dates, timezone `UNKNOWN`: Montauk 2021-03-11, Azure 2021-03-03, and Crusoe 2024-07-18. Real event dates remain `UNKNOWN`.
+
+The dedicated report API accepts only a loaded, hash-verified case plus its loaded scenario and a persisted replay. It verifies the persisted `BASELINE_A` experiment and freshly recomputes `PRE_RFP_BASELINE_V1`; caller ledger flags and decision rows carry no authority. A report accepts a solicitation milestone only when a predeclared candidate has a source quote that explicitly describes a release event. Buyer actionability requires project responsibility, organization identity, and a concrete route in one source visible at the cutoff. Missing proof remains `UNKNOWN`; a qualified late detection stays a numeric negative.
+
+Undated material remains context and is excluded from replay chronology. The 2025 Crusoe backup-generation observation is cited as excluded context, not procurement evidence. Montauk shares `montauk-2021-2024` with `PRF-002`; Azure shares `azure-sky-commissioning` with `PRF-007`, preventing aliases from crossing cohort splits. No policy training, outreach, provider calls, holdout reads, or promotion occurs. `results-v1` through `results-v5-repair2` are retained prior attempts; `results-controller-final` is the final output, cohort hash `d4db87f19254b803a49cab7d0080d56567c3d5ae07e56678b278f2468597f387`.
+
+PDF extraction is pinned to pypdf 6.19.0 for stable retained-body text.

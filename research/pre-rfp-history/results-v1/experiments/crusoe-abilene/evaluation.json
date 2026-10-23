@@ -1,0 +1,36 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "UNKNOWN",
+      "procurement_episode_id": "crusoe-abilene-lancium-campus",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "archive_representation_observation": true,
+          "buyer_organization": "UNKNOWN",
+          "generation_need_supported": false,
+          "need_reason": "UNKNOWN",
+          "project_specific": true,
+          "required_mw": null
+        },
+        "evidence_id": "crusoe-abilene-archive-observation",
+        "observed_at": "2026-10-02T16:07:08.442163+00:00",
+        "source_id": "crusoe-abilene-archive",
+        "verified_available_at": "2024-07-18T15:55:07+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

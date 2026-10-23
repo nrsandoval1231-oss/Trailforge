@@ -1,0 +1,26 @@
+{
+  "task_id": "HC-A-HISTORY",
+  "verdict": "PASS",
+  "reviewer": "independent Sol",
+  "reviewed_at_utc": "2026-10-02T17:44:58Z",
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "branch": "codex/trailforge-historical-path",
+  "candidate_sha256": "a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5",
+  "candidate_files": 502,
+  "scope": "Bounded local HC-A-HISTORY integration only; this is not parent Finish Contract acceptance, discovery validation, a commercial lead, or release authority.",
+  "findings": [
+    "Independently recomputed the candidate digest and SHA256 for all 502 manifest files: exact match, zero changed paths.",
+    "Archive proof checks original URL, exact Wayback timestamp, Memento header, retained body and header hashes, receipt identity, deterministic body-to-capture text, quote presence, local paths, and actual later acquisition time. Scenario events are representation observations; reported day-only document dates and real-world event dates remain separate.",
+    "The fixed PRE_RFP_BASELINE_V1 is recomputed from the loaded scenario; persisted BASELINE_A experiment artifacts are verified. The policy and comparator source were not changed. Final three-family output remains BACKTRACE with zero discovery credit and all three lead states UNKNOWN; the May 7 Montauk surface is not called buyer-actionable or a solicitation release.",
+    "Montauk and Azure use the same family identifiers as their original PR9 cases, while the 2017 Montauk storage PPA and undated Azure/Crusoe context are not promoted into this replay. All three cases are development material; no holdout or commercial success is claimed.",
+    "Controller gate log hash matches CONTROLLER_GATES.json: 325 passed, 1 skipped, compile and Ruff pass, three bundle checks pass. Controller offline probe reports two fresh runs with 17 byte-identical output files and zero network attempts; original eight-case regression passed. Portability proof reports 494 retained files byte-identical across working tree, index, and fresh Windows checkout with core.autocrlf=true."
+  ],
+  "limits": [
+    "No case has a verified explicit generation solicitation release or a source-supported usable buyer route. Positive real-world lead arithmetic, buyer actionability, and future milestone relevance remain unproven by this development cohort; helper tests are synthetic.",
+    "The full whitespace diff check reports trailing whitespace in retained raw public evidence. The scoped authored-source diff check passes; normalizing raw evidence would break its byte preservation.",
+    "Local tests and replay do not establish independent discovery, precision/recall, a sealed holdout, customer authorization, deployment, or product completion."
+  ],
+  "controller_direction": "CONTINUE",
+  "complete_candidate": false,
+  "source_or_document_edits_by_reviewer": false
+}

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-02T17:18:22.200716+00:00",
+  "direction": "CORRECT",
+  "reason": "Deterministic unsupported positive result plus family identity/date-reporting gaps",
+  "role": "Terra bounded senior repair after two builder-reported repairs",
+  "prior_completion_preserved": true,
+  "policy_promotion": false
+}

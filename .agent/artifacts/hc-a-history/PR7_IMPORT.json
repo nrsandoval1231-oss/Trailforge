@@ -1,0 +1,677 @@
+{
+  "source_commit": "2e18980c70b209ee20fd72df0c489b84815cefd2",
+  "files": [
+    {
+      "source_path": "research/hc-001/README.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/README.md",
+      "sha256": "8b7036d8503216804fcd17ab6bf01e24873562d04cae1944b2afec261991e4f7"
+    },
+    {
+      "source_path": "research/hc-001/RECOVERY-v1.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/RECOVERY-v1.md",
+      "sha256": "f18e93a7727ad8e4c19c320ed1d1efe2aa8f31c9f39872e31bdd3d17efc0f618"
+    },
+    {
+      "source_path": "research/hc-001/captures/azure-announcement.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-announcement.acquisition.json",
+      "sha256": "9b590a5c685c6b095926929d741441805e76fbed1de6f572fd8e3b553c487110"
+    },
+    {
+      "source_path": "research/hc-001/captures/azure-announcement.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-announcement.capture.json",
+      "sha256": "139dce1b45c0b2575a87237043b4856e7522c69eb77a6f126b971ed2f431663b"
+    },
+    {
+      "source_path": "research/hc-001/captures/azure-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-power.acquisition.json",
+      "sha256": "b393c7b1ced15c6d30b7bfc38bfcb88c39f6231d3132de06600b5a9dd8a613fa"
+    },
+    {
+      "source_path": "research/hc-001/captures/azure-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-power.capture.json",
+      "sha256": "e8b2e1fa05cccb26cba64611b0e1f54651f9b3fccec48e856816b9d713d29016"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-announcement.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-announcement.acquisition.json",
+      "sha256": "bdd0bbe9df0dc486eb380012b514814c340fb4b3a76e49e12512b0086f575623"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-announcement.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-announcement.capture.json",
+      "sha256": "fab496e6c7e46924da487d81adb3bd2ef5b8eecdef917a6ad660b1d5537436f1"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-power.acquisition.json",
+      "sha256": "cf39bf6882df34c2c7422e08f58e8e73079d6e4d13a62dd15de5a2af1f23bb11"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-power.capture.json",
+      "sha256": "4a29d2800155d3240fac3170890d4d9c67e0e2da7f094a3d4d57e91db0e039dc"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-specific-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-specific-power.acquisition.json",
+      "sha256": "d560d9b7dc80c2d1518011eb09c640153f9e6d7c9fe04949700379f69e11ebc5"
+    },
+    {
+      "source_path": "research/hc-001/captures/crusoe-specific-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-specific-power.capture.json",
+      "sha256": "080772877bc205e5c510c31e7550997b47eb4ad2f75c099a670fff2c0e5932fb"
+    },
+    {
+      "source_path": "research/hc-001/captures/east-hampton-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/east-hampton-power.acquisition.json",
+      "sha256": "e522e5da8531ee2442c2363e7763fdd71d002a9fe0e55fd8dc23f1803154f995"
+    },
+    {
+      "source_path": "research/hc-001/captures/east-hampton-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/east-hampton-power.capture.json",
+      "sha256": "5344eeff87bb8aed06ec493a45a5108341716d84f32dd7802c4bb641e5fd9bc4"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-early.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-early.acquisition.json",
+      "sha256": "63c087ee0177a6ed4f2e2bff95e2e95c9dbe2663f6df30625606a0dbd2fb9c0b"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-early.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-early.capture.json",
+      "sha256": "eff35dff981aa4068ae6c2cd6dcbf3428d09a2669b845e021c89b89eb160a6be"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-power.acquisition.json",
+      "sha256": "ac46bdd17129810aadc891479dfca1f54d2ab066bd250dfb66eb069ca2e201a8"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-power.capture.json",
+      "sha256": "c625d2663da205e8ce9562c87dc7e1ed09abdedc673de3cc388511a4d7882b24"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-utility.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-utility.acquisition.json",
+      "sha256": "e56bed88b6bb679a2ec86d3bc268dfc88e6c6fb9d62525c442ec9e468b8eb693"
+    },
+    {
+      "source_path": "research/hc-001/captures/montauk-utility.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-utility.capture.json",
+      "sha256": "f64cba300d377c7accf9bf116c7fc46debffe37f996dd06879e1d883c5661b36"
+    },
+    {
+      "source_path": "research/hc-001/captures/prometheus-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/prometheus-power.acquisition.json",
+      "sha256": "f2849470c71e8d1cb583fe31d2be81e0f391413e852695999e462124623f05ea"
+    },
+    {
+      "source_path": "research/hc-001/captures/prometheus-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/prometheus-power.capture.json",
+      "sha256": "88747307378c08f28afe7d6f31ee09446305ea02c9f0fd3fc6a268895b5264cd"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-2024-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-2024-power.acquisition.json",
+      "sha256": "c7154bb64800ab5dbc1d1318f5d4152b33ceb2b4266a549f11f805c789dfd740"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-2024-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-2024-power.capture.json",
+      "sha256": "8fe6cb36f9b4f9d442d27815ee42a6ae223b3de541ab3f865e6c7aff20dbce9a"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-announcement-archive.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement-archive.acquisition.json",
+      "sha256": "e41e7c87c21b993cd7b6f0f7719558c3ace0f90d1f43655844a8f71513ab5983"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-announcement-archive.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement-archive.capture.json",
+      "sha256": "41b031c5a0d2fbce11b544fd54af718512e38d4cf3a8f304ea13f41393a16cf1"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-announcement.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement.acquisition.json",
+      "sha256": "9895bdb69159ea4babc5b035dfb0e74f5b5551c762ae4a011541a9dbdf48a6ed"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-announcement.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement.capture.json",
+      "sha256": "d91dc4d0f4ec440d93d88b0e5f6969e099a2bbb8afb987e2d6afe83ea2020264"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-cnbc-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-cnbc-power.acquisition.json",
+      "sha256": "8e31eaa1d0308a23f8f9bf5135c8199cb5f518004d0c92ef2d66996864d1648f"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-cnbc-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-cnbc-power.capture.json",
+      "sha256": "daaf7b165e677e20fa2a07e113a484fd4ddc230ddf19bf7cf580274159ad7b23"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-dated-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-dated-power.acquisition.json",
+      "sha256": "2521313df195ab9a89ec2f5a37d333def5d0b127f6194adb4fd94c328c3f0ceb"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-dated-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-dated-power.capture.json",
+      "sha256": "b67cec3a51b5ed8c4ab2171bfcfa531ed1cdd048a37133a953484af8764eee5a"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-expansion.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-expansion.acquisition.json",
+      "sha256": "2d32d47d4cbbe8f3bcf6ac5ff9940164ac7f28e982c27ff6d6e06981954b22c1"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-expansion.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-expansion.capture.json",
+      "sha256": "417c27d547a68b0d91c4c2c4872165ad08dad4b9a169bf77050915626609d33b"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-power.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-power.acquisition.json",
+      "sha256": "aeb56b42d863ecb659a43f2fea4ee1cc67419d7542fd23710c70e090698402c4"
+    },
+    {
+      "source_path": "research/hc-001/captures/xai-power.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-power.capture.json",
+      "sha256": "61838a9d70d1be7ac380afedcaf31dd52f9be65035122b10a0631da34d0d2ea9"
+    },
+    {
+      "source_path": "research/hc-001/cohort-input-recovery-v1.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/cohort-input-recovery-v1.json",
+      "sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634"
+    },
+    {
+      "source_path": "research/hc-001/cohort-input.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/cohort-input.json",
+      "sha256": "e008daba8ae85840acf880e33b0073c2318f09dc9b09bd948d6e5491a40f9ed0"
+    },
+    {
+      "source_path": "research/hc-001/originals/east-hampton-2018.pdf",
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/east-hampton-2018.pdf",
+      "sha256": "bd670314d972905204ee067209cd2510adc5b527afd1c78219128d3c3bd27dea"
+    },
+    {
+      "source_path": "research/hc-001/originals/manifest.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/manifest.json",
+      "sha256": "945afdf87586e3faf8aa9a6bd45c93bf17ecff2b05b9547c5c06ad1515ba7824"
+    },
+    {
+      "source_path": "research/hc-001/originals/montauk-2021.pdf",
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/montauk-2021.pdf",
+      "sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a"
+    },
+    {
+      "source_path": "research/hc-001/recovery-builder/COMPLETION.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/COMPLETION.md",
+      "sha256": "d0b385ce7ae1f19140ce731114a9ac71c4ad0bc53727fbce02ba901dc31b8c1a"
+    },
+    {
+      "source_path": "research/hc-001/recovery-builder/limited-searches.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/limited-searches.md",
+      "sha256": "a410b7da3780f825f9eba3d6918ebc78c72d8429fed97a337a130f0be278a32c"
+    },
+    {
+      "source_path": "research/hc-001/recovery-builder/replay-header-receipts.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/replay-header-receipts.txt",
+      "sha256": "573b8f6c84fe84295eb01a51a4c56e2fd2e00f7f504f17eecc163f988769c050"
+    },
+    {
+      "source_path": "research/hc-001/recovery-builder/selected-evidence.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/selected-evidence.json",
+      "sha256": "6a76392d230ea112d90f9ff489356551ef95dc3600779579de0e4c655ac18e9f"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-early-archive.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-early-archive.acquisition.json",
+      "sha256": "28cbb2b86ad9469ead1ea65825efbf89d37986d975cb07814a99695c4c5848e9"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-early-archive.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-early-archive.capture.json",
+      "sha256": "da013fd0d97d3d6d89c5a1769649ebdaf85037eafbcc8dfa970e60264f26807e"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-legacy-announcement-live.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-announcement-live.acquisition.json",
+      "sha256": "64f709e8a3e3a9afbdf78ea2739e58c8e9991e2fc2038d00bb8a39bd6c42910d"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-legacy-announcement-live.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-announcement-live.capture.json",
+      "sha256": "951c0254f604b408184564200019f8ad6d956e6c0610b98128a5882cce3e0a75"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-legacy-target-live.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-target-live.acquisition.json",
+      "sha256": "235a7c59b40dcaec00596a72e35cfa59de175709fdd4ef19955ff97076c8e41e"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-legacy-target-live.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-target-live.capture.json",
+      "sha256": "7f1bf0138184c03eb2ad0e241f10800bac6b7a969b35efd8495bc9277c6a6df1"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-target-archive.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-target-archive.acquisition.json",
+      "sha256": "c265866e563bcc4a6047a2bf7857af6c1718ad6b219e6c39920379da085ab354"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/crusoe-target-archive.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-target-archive.capture.json",
+      "sha256": "a90a21b57069181c35694ee34b1275d53e599795987305dec6f42f85f4055b48"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/montauk-early-archive.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-early-archive.acquisition.json",
+      "sha256": "beec7c624bebd5dbe54a72c1717949fd02f451dc323cde35438ed9044e3ae397"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/montauk-early-archive.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-early-archive.capture.json",
+      "sha256": "ae9188f5dc178193b47dbed8ca06914ef08ca1f86ac5b1979e4ab21bd13a603e"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/montauk-pdf-archive-witness.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-pdf-archive-witness.acquisition.json",
+      "sha256": "94b9041ad60bd42f1991cbf8a31b4cc7dfb1b074e0898b0a07a0d4dd2117e6f1"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/montauk-pdf-archive-witness.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-pdf-archive-witness.capture.json",
+      "sha256": "f05a21d11aa8bed986a8596bbb4958697421905221a1d841201660eb7d1e8df5"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/xai-city-bulletin-archive.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-archive.acquisition.json",
+      "sha256": "11ac3e8fcbf91b23023ab4830858f076cab0683cf90981eb4cc1bca8f6d86acf"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/xai-city-bulletin-archive.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-archive.capture.json",
+      "sha256": "bde2bc26e67c1db9d26dc935583a7739c9bf83938594f287c59d2fa5c95ecc5b"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/xai-city-bulletin-live.acquisition.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-live.acquisition.json",
+      "sha256": "75582d70c0bf3c8f085b0848900ead97b8445b284aeb1aa0faf24f72b76c562d"
+    },
+    {
+      "source_path": "research/hc-001/recovery-captures/xai-city-bulletin-live.capture.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-live.capture.json",
+      "sha256": "2dcc4436f5cc6f1b8521ba031e716c249decebf34f403f2d51a31a6debbf81a6"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/manifest.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/manifest.json",
+      "sha256": "a0c8b8cb148822e9fdc6c3d8dabde797524346ad67ec4d7c0a8e67ff2dd22b2e"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt",
+      "sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-crusoe-announcement-html-normal.html",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-announcement-html-normal.html",
+      "sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-crusoe-target-normal-headers-cookie-omitted.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-target-normal-headers-cookie-omitted.txt",
+      "sha256": "8598a19950a055f56121b3d17cc1453f9be6da346a3a084db0e4deee0eeecae8"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-crusoe-target-normal.html",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-target-normal.html",
+      "sha256": "5a1c46002338387af044bee8f8ce81cf647a4144b64121fbc682ab874c768cf6"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt",
+      "sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt",
+      "sha256": "04be8471825c0726810bb4f5cdb10946e63f6613639cede215b103ee916034a4"
+    },
+    {
+      "source_path": "research/hc-001/recovery-originals/verified-montauk-pseg-normal.html",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pseg-normal.html",
+      "sha256": "4c9e6e6e733fec1b06f24f18e08b5ac84f9f22974238ab2bcf1cae5ec8fbf283"
+    },
+    {
+      "source_path": "research/hc-001/recovery-parent/NOTES.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/NOTES.md",
+      "sha256": "eb2fc63f8c81479dddae21fd9c0279da089048c6d95f6a4d2e001611b0ec40a2"
+    },
+    {
+      "source_path": "research/hc-001/recovery-parent/xai-chamber-current.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/xai-chamber-current.json",
+      "sha256": "df970f40b2b324a60806273a9f412530243f6f7d6246527cbe9b84981716bfb2"
+    },
+    {
+      "source_path": "research/hc-001/recovery-parent/xai-reuters-current.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/xai-reuters-current.json",
+      "sha256": "2a6065959b358317ca3b4bfa93d8f2664564eb7beb4194c043b0960fa950273c"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-crusoe-domain-prefix.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-domain-prefix.txt",
+      "sha256": "9eae88ce1c73e37b542145f38fe64da260b85b0a0e16d38ac6a74969beb1d3f8"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-crusoe-lancium-exact.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-lancium-exact.txt",
+      "sha256": "9d03ede7a84203098b726a3c19242249ec29ceaa4c5a7e5bcc98ca7d000c0139"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-crusoe-lancium-wildcard.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-lancium-wildcard.txt",
+      "sha256": "031bbea7093b8daad156b0d677917ce28d1256fda95fc19ba2bfcf19b0b0ec14"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-crusoe-specific-exact.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-specific-exact.txt",
+      "sha256": "573f84c3ef9a8d79fa72657181af21113b15ad79e7a9c1911c9d35c6010f52bb"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-montauk-lipa-pdf-exact.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-lipa-pdf-exact.txt",
+      "sha256": "573f84c3ef9a8d79fa72657181af21113b15ad79e7a9c1911c9d35c6010f52bb"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-montauk-lipa-wildcard.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-lipa-wildcard.txt",
+      "sha256": "04aa6ae0d4cc053ae35cd61f1aa8406a8043d33ce3e8951bafd3c3176597496b"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-montauk-pseg-exact.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-pseg-exact.txt",
+      "sha256": "e5a76aa360a279eb38798d2ea4ccc0a1b494a51b79bf578c66b557ac9ffa1674"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/cdx-montauk-pseg-wildcard.txt",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-pseg-wildcard.txt",
+      "sha256": "1360d1f95265c341bd7118c18f4eedb34486b7354545d4d4fa01bc7211958f07"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-id-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-id-retrieval.json",
+      "sha256": "3c7883e60c6afa7ed07010daa19b607e5b7921553960cdc67aa119f5ed72e421"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-normal-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-normal-retrieval.json",
+      "sha256": "f080da4a5a7a69128f06ab5b3f14cdb405a17391f1e4f5784b0e55d6847996f7"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-crusoe-announcement-html-normal-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-html-normal-retrieval.json",
+      "sha256": "9a953accc7e59bb1a75b2833511a3a98fb686a57748d7a3c44cf1788ac19a15b"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-crusoe-target-normal-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-target-normal-retrieval.json",
+      "sha256": "d9e057bb50013412289c3a1afda96189a0eca6e38334f2971511ce4d79ac992d"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-montauk-pdf-id-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pdf-id-retrieval.json",
+      "sha256": "0aac68300b87c7bf511044af839ca84507a39f825fc3d27e94b8594b3b83cdb5"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-montauk-pdf-normal-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pdf-normal-retrieval.json",
+      "sha256": "a544652be03df133cd4b8cfe36ed61008eab78bf6b17a8cbe99e0eb7834b8551"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/verified-montauk-pseg-normal-retrieval.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pseg-normal-retrieval.json",
+      "sha256": "16f7309fc44f6e9f5b674078d022eb33af27366c65a01fb801dd0eb6f591718d"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-announcement.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-announcement.json",
+      "sha256": "bbaa86a9bc3c035c7ab5d5b31c71596ccfe81b0219c7adf1a789b78a27c423ef"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-power.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-power.json",
+      "sha256": "8aba268b1ea2128d0723c8fa5659762cba9904d9d94e21bbbe35af2d5c31efa4"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-montauk-pdf-near-20210311.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pdf-near-20210311.json",
+      "sha256": "b595a1415ab64a40e181d85354606fdb7741c0ec08a9aa540e2e65fe4d969659"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-montauk-pdf.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pdf.json",
+      "sha256": "fb25b352e7a7e969dc4e2a22f2b5dacadf8d2989ee9815325e0ec6e295cb585c"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-montauk-pseg-near-20191220.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pseg-near-20191220.json",
+      "sha256": "ba1eb7a5d77909b4028644c7fbb0c81a21460b446ff49f40319783c58f40a2f2"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/builder/wayback-available-montauk-pseg.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pseg.json",
+      "sha256": "04a7f44382dbcb38ba827e05fc10a918007341b80232c3709dd93220d0ee569a"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/cdx-chamber-exact.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-chamber-exact.json",
+      "sha256": "3fe67d26a3512b3ca69e906996e2b3f4facb3e4b559d4fc8292d2ed93ef42ee7"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/cdx-chamber-xai-wildcard.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-chamber-xai-wildcard.json",
+      "sha256": "7214c2a29ff646186e63519b4e9920068d9a916a68a85f1038414aca44a7aa89"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/cdx-city-bulletin.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-city-bulletin.json",
+      "sha256": "bec67acd1e0cf866084c97a89414bfcdaae3c39a5d50f2f8f135d69d15fd43ca"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/search-chamber-official.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-chamber-official.json",
+      "sha256": "68dd37ed07ace9b5674326e3718c9285b10de80ccd1f8659d329561bfd94c39d"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/search-memphis-official.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-memphis-official.json",
+      "sha256": "3b38a04b59b2d88121c25fb73f67442eb90ba82bdcdb1657d93765472110a6ff"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/search-official-power.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-official-power.json",
+      "sha256": "545e9df6fef464b7fe1b54953c29141c6c0aad52f67f17617669fc5db7816c77"
+    },
+    {
+      "source_path": "research/hc-001/recovery-searches/xai/search-official-records.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-official-records.json",
+      "sha256": "c65c639dbc8078fbd312d0dccf190b0deaea2a5017a54143ddb69e90005fab3b"
+    },
+    {
+      "source_path": "research/hc-001/recovery-xai/COMPLETION.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/COMPLETION.json",
+      "sha256": "1961c41e2dea60ed5644ec6d6a9cbbfaa8d42cb157c7b65606e91d6371913a5c"
+    },
+    {
+      "source_path": "research/hc-001/recovery-xai/findings-addendum.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/findings-addendum.md",
+      "sha256": "c0ad97c9e5954711dfed29cf546c57b761f682b4755ebf303f28ecf072db2bbd"
+    },
+    {
+      "source_path": "research/hc-001/recovery-xai/findings.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/findings.md",
+      "sha256": "737d76adfe37dcd6c7d8f5c9f99899c4f22bc901f1b2e23712ef69b5a1111c12"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/83a1871e1e336f3b.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/83a1871e1e336f3b.trace.json",
+      "sha256": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/README.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/README.md",
+      "sha256": "108b9033332ac97ff013e0ec34ff098f5bb4a689ec6fd310fb4db304bc1cd7bb"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/ca5efa0581fd070e.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/ca5efa0581fd070e.trace.json",
+      "sha256": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/f1b07b5f19145fdf.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/f1b07b5f19145fdf.trace.json",
+      "sha256": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/report.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/report.json",
+      "sha256": "d9bef007c2445e4b7d755f745522709047cf1fe51b2e19325afde630d8a84e25"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v1/report.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/report.md",
+      "sha256": "3fd337dfd5a7aacefcaccaa6aa40720be0328ecc1226e00fcb8764fae3092edd"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v2/83a1871e1e336f3b.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/83a1871e1e336f3b.trace.json",
+      "sha256": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v2/ca5efa0581fd070e.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/ca5efa0581fd070e.trace.json",
+      "sha256": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v2/f1b07b5f19145fdf.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/f1b07b5f19145fdf.trace.json",
+      "sha256": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v2/report.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/report.json",
+      "sha256": "3208427124a712b277950f13e00f93ac97c7fc9ec4838f6d07e83464494fd6e6"
+    },
+    {
+      "source_path": "research/hc-001/results-recovery-v2/report.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/report.md",
+      "sha256": "71b05b681cc51cd7420efb29d030b9bd2451507b72ceff38f2189af103c675c3"
+    },
+    {
+      "source_path": "research/hc-001/results/f1b07b5f19145fdf.trace.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results/f1b07b5f19145fdf.trace.json",
+      "sha256": "3ecf9f1770e350a37081220bb7456630fac7b7d33a6a172fbb6f65641357f978"
+    },
+    {
+      "source_path": "research/hc-001/results/report.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/results/report.json",
+      "sha256": "18aa754f547050663768c6e8e173e1039fe26e92d8e6b2aac9df8ba65de35164"
+    },
+    {
+      "source_path": "research/hc-001/results/report.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/results/report.md",
+      "sha256": "05466ef39092201ac5b037d5c49dc273734f339fae7c8c45acb5fde1b14cb36a"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-archive-crusoe.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-crusoe.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-archive-montauk.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-montauk.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-archive-xai-power.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-xai-power.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-archive-xai.md",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-xai.md",
+      "sha256": "bcb0d8f45686e009e9dea505ce9a9bcc7c5ab4826dcededbb689f351af8e7c4b"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-azure-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-azure-search.json",
+      "sha256": "ae36daa48c981664a034dbdea61b8d973614465e389b0923425aa94681b9e88a"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-crusoe-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-crusoe-search.json",
+      "sha256": "afd6dce012e0e5af2564a4c9999e9e453a4e04a1d81514ffcb3224222f642529"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-crusoe-site-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-crusoe-site-search.json",
+      "sha256": "b24cbce913a89604b4d9dcadcab887f45b14ec1f8e64329bfffb4dc88fb51aef"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-montauk-early-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-montauk-early-search.json",
+      "sha256": "cb5017b7886b2f1bb64880bd5be7bb265c26bc220640d3793a53c3ab7022dd38"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-montauk-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-montauk-search.json",
+      "sha256": "5a6692fe8b4130782ad18cf172ae382d07bc89746dc3703f644aa7f9659d8d26"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-prometheus-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-prometheus-search.json",
+      "sha256": "e84028e118401bb24a10dac5c63562882ff6249a85cd3f243b7ed064214f3257"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-2024-power-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-2024-power-search.json",
+      "sha256": "cd0ca8ad64347f9444673eaf9596e534a9499e260f9b547455846d6e3bf2615d"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-dated-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-dated-search.json",
+      "sha256": "4fd02279215f32d2fe93d8e1cbdd336cf757f106937eeb0e019ec91c2e30c5e3"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-early2-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-early2-search.json",
+      "sha256": "bdc7a06c9f455c698ccee7652a6a3632318ef73bf9b53e9fad364f6c592d787e"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-official-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-official-search.json",
+      "sha256": "ecfbdc37197b409326e74f62a585c4971cf2d4eeebd8d83693ec31b3102b4a13"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-owner-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-owner-search.json",
+      "sha256": "f344aaf3739caae16beab1c5c5e99cbf81bde1641e13e5a80ed86e9d29168b0c"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-power-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-power-search.json",
+      "sha256": "2800838a04b879e96f3e71c56fc7ae7578de901c784c790a53d7a773071e6feb"
+    },
+    {
+      "source_path": "research/hc-001/searches/hc-xai-search.json",
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-search.json",
+      "sha256": "8eecdd676d49fe282f509265e046f712700b4622631a627ad7c7e518fbca2bf0"
+    }
+  ],
+  "count": 134,
+  "method": "Exact Git blob bytes; no PR7 runtime, governance, or UI imported"
+}

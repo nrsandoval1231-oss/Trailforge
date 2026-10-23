@@ -1,0 +1,31 @@
+{
+  "attempt_id": "ge-crusoe-order",
+  "request_url": "https://www.gevernova.com/news/print/pdf/node/143884",
+  "started_at_utc": "2026-10-02T15:56:24.969519+00:00",
+  "paid_service_used": false,
+  "status": 200,
+  "final_url": "https://www.gevernova.com/news/print/pdf/node/143884",
+  "headers": {
+    "Content-Type": "application/pdf",
+    "content-disposition": "attachment; filename=\"GE Vernova and Crusoe announce major 29unit aeroderivative gas turbine deal to deliver power to AI data centers.pdf\"",
+    "x-content-type-options": "nosniff",
+    "Edge-Cache-Tag": "www.gevernova.com/news",
+    "x-varnish": "3518015",
+    "x-varnish-service": "MISS",
+    "x-varnish-service-hits": "0",
+    "Vary": "Accept-Encoding",
+    "Cache-Control": "private, no-cache",
+    "Date": "Fri, 02 Oct 2026 15:56:25 GMT",
+    "Transfer-Encoding": "chunked",
+    "Connection": "Transfer-Encoding",
+    "Alt-Svc": "h3=\":443\"; ma=93600",
+    "Strict-Transport-Security": "max-age=86400 ; includeSubDomains",
+    "Akamai-GRN": "0.1bb24668.1790956584.8839057"
+  },
+  "body_path": "ge-crusoe-order.pdf",
+  "sha256": "cfebdb1f8a7638e9c6f2ef0781ac2ef7917c7b73b74be7809f110d6ad0e54b73",
+  "pages": 5,
+  "finished_at_utc": "2026-10-02T15:56:27.119517+00:00",
+  "elapsed_seconds": 2.156,
+  "interpretation": "Current source retrieval; printed dates are not historical version availability; exact family and purchase scope require review."
+}

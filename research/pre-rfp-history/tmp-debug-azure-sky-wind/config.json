@@ -1,0 +1,14 @@
+{
+  "policy_id": "BASELINE_A",
+  "policy_parameters": {},
+  "policy_version": "1.0",
+  "scenario_id": "azure-sky-wind",
+  "scenario_version": "1",
+  "seed": 1,
+  "source_identity": {
+    "git_commit": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+    "git_dirty": true,
+    "package_version": "0.1.0",
+    "source_content_sha256": "b2461361bd917564dd80429a1f2cc6fab8a924dc1886f91aaf0a0e768a0b7cc1"
+  }
+}

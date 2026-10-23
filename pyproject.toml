@@ -7,6 +7,7 @@ name = "athena-trailforge"
 version = "0.1.0"
 description = "Deterministic research-only procurement intelligence arena"
 requires-python = ">=3.11"
+dependencies = ["pypdf==6.19.0"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.15"]

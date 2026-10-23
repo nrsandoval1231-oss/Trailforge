@@ -1,0 +1,14 @@
+{
+  "retrieved_at_utc": "2026-10-02T01:25:44.4409013Z",
+  "request_url": "https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk",
+  "curl_exit_code": 0,
+  "curl_response": [
+    "200",
+    "https://web.archive.org/web/20211018052613/https://www.psegliny.com/reliability/newmontauk",
+    "text/html; charset=utf-8"
+  ],
+  "body_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pseg-normal.html",
+  "headers_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pseg-normal-headers.txt",
+  "body_bytes": 276446,
+  "sha256": "4C9E6E6E733FEC1B06F24F18E08B5AC84F9F22974238AB2BCF1CAE5EC8FBF283"
+}

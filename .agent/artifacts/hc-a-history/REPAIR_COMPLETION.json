@@ -1,0 +1,53 @@
+{
+  "schema_version": "agent-harness-repair-completion-v1",
+  "packet_id": "HC-A-HISTORY",
+  "status": "REPAIRED_AWAITING_CONTROLLER_GATES_AND_INDEPENDENT_REVIEW",
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "branch": "codex/trailforge-historical-path",
+  "repair_started_utc": "UNKNOWN",
+  "repair_finished_utc": "2026-10-02T17:28:46.3496584Z",
+  "repair_count": "controller-reported prior builder repairs exhausted; this is the bounded senior repair",
+  "scope": [
+    "historical_case_report.py",
+    "run_pre_rfp_history.py",
+    "prepare_pre_rfp_history.py",
+    "historical case manifests/scenarios",
+    "focused tests and historical-path documentation"
+  ],
+  "preserved": [
+    "COMPLETION.json",
+    "all existing results-v1 through results-v5 paths",
+    "PR7 imported originals and recovery-attempt receipts",
+    "generic scripts/run_pre_rfp_cohort.py contract restored to base"
+  ],
+  "repair": {
+    "finding": "The prior report API accepted caller-supplied raw case/replay fields, allowing forged positive ledger flags and a fabricated milestone to yield SUPPORTED.",
+    "boundary": "The dedicated report now requires HistoricalCase and Scenario from load_case, verifies the persisted BASELINE_A experiment, and recomputes PRE_RFP_BASELINE_V1. Caller ledger flags and decision rows are ignored.",
+    "milestone_and_buyer_rules": "A milestone needs a predeclared source-bound explicit solicitation-release quote and exact release instant. Actionability needs same-source organization identity, responsibility, and a concrete route visible at the cutoff.",
+    "cohort_repairs": "Montauk uses montauk-2021-2024 with PRF-002; Azure uses azure-sky-commissioning with PRF-007. Crusoe 2025 backup context is retained and excluded from replay. Source document days print separately from archive representation instants."
+  },
+  "validation": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_historical_cases.py -q",
+      "result": "26 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/historical_cases.py src/athena_procurement_arena/historical_case_report.py scripts/prepare_pre_rfp_history.py scripts/run_pre_rfp_history.py scripts/run_pre_rfp_cohort.py tests/procurement_arena/test_historical_cases.py",
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run --python 3.11 python scripts/run_pre_rfp_history.py --output-dir research/pre-rfp-history/results-v5-repair2 and repeat to results-v5-repair2-repeat",
+      "result": "3 cases; identical cohort hash 34d336a475836cd8bef699d58bac47448805f1da957c644750c7bc1428f99c7d; cohort SHA256 A0F349631F19BDACE1DFE4B7A19B99CB27634B1463FEA08704F50F3AE7DCE813; report SHA256 481E6468C4A12B4660B4DFB797701EBACC2A1244D332CC9F1F54B2FEDE2D9F59"
+    },
+    {
+      "command": "git diff --exit-code c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b -- scripts/run_pre_rfp_cohort.py",
+      "result": "exit 0; generic cohort runner restored"
+    }
+  ],
+  "result": "All real leads remain UNKNOWN. Montauk first policy surface is 2021-05-07T16:48:02Z; it has 6 MW source support but no verified release or usable buyer route. Azure names Enel construction and retains undated commissioning context; Crusoe names the owner but does not establish temporary generation procurement.",
+  "limitations": [
+    "This is not a PASS or completion certification.",
+    "Controller must rerun mandatory repository validation and offline proof on the exact frozen candidate, then obtain fresh independent Sol review.",
+    "Historical human research time, token use, and repair start time are UNKNOWN."
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "root": "C:\\Users\\nrsan\\Nucleus\\02_Projects\\Trailforge",
+  "head": "cbb10d33c5604e0ed2a1eac668bfbee6c1cba8e7",
+  "files": [
+    {
+      "path": ".agent/WORK_GRAPH_CUSTOMER_V1.md",
+      "sha256": "7777a009a0561d50bbc5f66a410548e986d9ac9487ac5d262ca89136952c3cf6"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/BASELINE.md",
+      "sha256": "30e088c6612c1cd74aed4f010b4b938b3047f94c9f7b5ba8e14e61b33a2776df"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/BROWSER-DEVELOPMENT-PROOF.md",
+      "sha256": "816727f05586e1033f3b8072afabd9187cd6a1536504e256b1a20805ffa1f2bc"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/COMPLETION.json",
+      "sha256": "a2c75980814fb54cf9b233b19138689d592b019abb9c98328516574d85a80a99"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/CURRENT_STATE-before.md",
+      "sha256": "78d0599d2cd189ee0258aeb60a15ddca63505607d9392abb1be0b1d13caf2296"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/REAL_SOURCE_REVIEW.md",
+      "sha256": "33e4e4767a8354d9967a0625db0f3baf2115c5ee90c062f3abc5d81521558cf7"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/ACCEPTANCE.md",
+      "sha256": "fb91861eb75835b6353d2b6a2767b9322f7c2294aab197ad8d458dc9de8d5f0d"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/CANDIDATE.json",
+      "sha256": "716ec1165ca626e17c24108f99000b326128e91f8939275e3d988e62e9353279"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/REVIEW.json",
+      "sha256": "457dea38abc5d3646608502ebb465a90eb2aed33d007aa063bac0290e5dfe0b5"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/VALIDATION.json",
+      "sha256": "e2aaa903dad867ad69a0fb05e6c3fb32487882996da2b1d576dacdc5c6936aa0"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/full-gate.log",
+      "sha256": "087b99dc1da88bd6fafbb859516ba497a4bf2ef0e2ec4178e1de858dd9fbdb6b"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/installed-runtime.json",
+      "sha256": "be244e572dbc6a8497d0bff768a616c8950375315f777615a7bc68865a502d3f"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/live-discovery.json",
+      "sha256": "758766ba4a07a9cf0960f3c4392899d09faa2178700171af62a7071438db7b3c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/real-acceptance.json",
+      "sha256": "f0ffec2d440225d5a1f3e7ef23d0e67e4877e8748dab6957479e3c2f91da9089"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/real-records.json",
+      "sha256": "639edb180457d8e320254d43e9d363d1cfd076dd0a9bb351927f52ada8ed07e7"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/source-runtime.json",
+      "sha256": "29f5fd25e545737dbbb87d29f0681646a0324ad23f2384a9f48344c09d8ea4ab"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-01/wheel-build.log",
+      "sha256": "afb6ac775f3a5d6fe532164eb7429b9e64ac21cc15bd3d284c39afc95228be16"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/ACCEPTANCE.md",
+      "sha256": "885cb4ff8381bdb71801d483202a3d2742d11c151dc679d36573e7f42cc5f7ee"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/CANDIDATE.json",
+      "sha256": "8e2ace1e1389bca9df4bef9e23e1e38031ac5739e7c0336ad94ec0495446c770"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/REVIEW.json",
+      "sha256": "b6c1f0159345c6dfc10e168b8a903155c909bc746ba2c14b6ae91eeba86d739e"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/VALIDATION.json",
+      "sha256": "385ab5823f5d4f877151ff9ca9406b654b945bfdd0c54c5fe7af0a349e88ec79"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/full-gate.log",
+      "sha256": "07b2aade3b327260c7bfd9ae4591af73967677b5da4dd0d0c13e8a82614891cb"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/installed-runtime.json",
+      "sha256": "b916822a711e4b3745b508d434fcb8dd41426c285065fdb13224908a4e0b4a36"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/live-discovery.json",
+      "sha256": "758766ba4a07a9cf0960f3c4392899d09faa2178700171af62a7071438db7b3c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/real-records.json",
+      "sha256": "639edb180457d8e320254d43e9d363d1cfd076dd0a9bb351927f52ada8ed07e7"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/runtime_probe.py",
+      "sha256": "75e4d0a5a81357fe48566721b7dcf70976279e703f4b9034617f460ad5db2a9e"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/source-runtime.json",
+      "sha256": "490d5f6eb048b0c28084bed81bd71c7c4f666ab6521221590413d5e060cf2fd7"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/synthetic-browser-final.json",
+      "sha256": "4d40b9b5abb062fc5a7660e368f60768f48c7074c1937117e1eef64519b30718"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-02/wheel-build.log",
+      "sha256": "d1ed05df3ee06deb4eadef607c2460af85c1fe51177fbe0eb5d9bf1fd4de3da2"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/ACCEPTANCE.md",
+      "sha256": "e80390b4eeceb0b68b85eee9dfa0c6d7e73bb912384c765b31ea8bb13889ae1c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/CANDIDATE.json",
+      "sha256": "ad1b3ca86693c4d45ab5be0e9ae30134ccfc0e73e0fb152aa119336ba340830c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/COMPLETION.json",
+      "sha256": "f8144e76365d39739b7bcacefe64959f13119695ba681766869c472f11bc580c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/CURRENT_STATE-before-acceptance.md",
+      "sha256": "0f25fb63437a12914b518621c4f6ba1e6d04ecd013f74403fcebb1e4054a8123"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/EPISODE.json",
+      "sha256": "67f84bf3a5c43b850ad03d14df4d0ebab27481a09c7d62a6ef023bc94defbf1f"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/LAUNCHER.md",
+      "sha256": "100ac149a7f13dfd912fec247fee013cd204cce68a367b5c5a68b8fb0a7e672b"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/REVIEW.json",
+      "sha256": "941a83bd487707e8c1bef8574bee58c2a7fe9708146092c32c302e143e32e25a"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/VALIDATION.json",
+      "sha256": "bcaa22d459c78639013ff8917d2a59b8f761564d2ed5799cf2027bd80f2eb09f"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/full-gate.log",
+      "sha256": "890719e975fc8d7ae458f2f110cfd7b7b7fcfd94213e414d64aeeb92866f29cb"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/installed-runtime.json",
+      "sha256": "8ef55163cd25451014b2287d284daa9109d2181bdf4d0a6c9e943aab48de18ad"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/live-discovery.json",
+      "sha256": "758766ba4a07a9cf0960f3c4392899d09faa2178700171af62a7071438db7b3c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/real-records.json",
+      "sha256": "639edb180457d8e320254d43e9d363d1cfd076dd0a9bb351927f52ada8ed07e7"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/runtime_probe.py",
+      "sha256": "5c54e9a7f0b177d01b25a5083cb274558467b2b14db351cb5e6068312f98b48b"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/source-runtime.json",
+      "sha256": "fc78990c84b30b17906e656028bf95dda8673655ccbe706c8bb9f2069f29a05a"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/synthetic-browser-final.json",
+      "sha256": "dd7d6a1eac6c26fa2b8b55e0c9e6f17fb9dac7fdea944d0ed2d0b07470eb146c"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/acceptance-03/wheel-build.log",
+      "sha256": "fc97ed43d2f4e10bc3ee0bb533bd9c90643609886a8502c08f2edaea8e9b3161"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/repair-02/COMPLETION.json",
+      "sha256": "efa1877ef7f36f129b3af810468eb2f4a180d5c3eb61cf973ebfae3695a24c17"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/repair-03/COMPLETION.json",
+      "sha256": "aeb5ebc4f6d89c831a85a8eeb55dd9d961faa2910c1045fb151a849bae179800"
+    },
+    {
+      "path": ".agent/artifacts/customer-first-048/runtime_probe.py",
+      "sha256": "ebf01a2d52bf4c3a18e06ceb0a7dbedd4443acd3c3b3d9c63db6b07d843d2981"
+    },
+    {
+      "path": ".agent/artifacts/project-discovery-049/COMPLETION.json",
+      "sha256": "553e2734bf5f8d6eae0b7286a069c157ba40cb1314a7a48bb0724dc96a5adc95"
+    },
+    {
+      "path": ".agent/artifacts/project-discovery-049/CONTROLLER-FAILURES.md",
+      "sha256": "cd66a1183145c3de242dc83022b109cf8fe13e1c024bde65867ea57257b22747"
+    },
+    {
+      "path": ".agent/artifacts/project-discovery-049/CONTROLLER-SOURCE-VERIFICATION.json",
+      "sha256": "2f0917c26a8794ed75fcadd3012f0f8e25e69e2251bdb212e956517e009daab8"
+    },
+    {
+      "path": ".agent/artifacts/project-discovery-049/REAL-DISCOVERY-CASE.md",
+      "sha256": "9db454f91ec18aef0c2318e8637e265b9eaf30503a74ce40fa6552bb499a53d0"
+    },
+    {
+      "path": ".agent/artifacts/project-discovery-049/repair-01/COMPLETION.json",
+      "sha256": "9bd02ccaafcf1bd48ddea186549bcf68db45be7b89efc7944056abe1d49d8217"
+    },
+    {
+      "path": ".agent/tasks/customer-first-048-r2.md",
+      "sha256": "12b8a2b6ff53005e2970cd506d792dbd24ed7818b85b10d824a8156ba3f5ca8b"
+    },
+    {
+      "path": ".agent/tasks/customer-first-048.md",
+      "sha256": "278596a155c93b8999f6108d21d3ada5b1cccfd0da5efe6ef0862312cb6bb012"
+    },
+    {
+      "path": ".agent/tasks/integration-050.md",
+      "sha256": "00d7d8e4d037cd8b9846293de9588d80bfd38081be54801a376eb228acf8b69d"
+    },
+    {
+      "path": ".agent/tasks/project-discovery-049-r1.md",
+      "sha256": "ba82b160380b16e55bd982c992ee73902fbed544df43b556d59e71cd018e2ce4"
+    },
+    {
+      "path": ".agent/tasks/project-discovery-049.md",
+      "sha256": "367db0644a4e9125bd80907ea732948cd3a6915d290c05315999bac811ac9c30"
+    },
+    {
+      "path": ".agent/tasks/review-customer-v1.md",
+      "sha256": "c8c500c12db24660a7cc7c827a41a33477f1d62f8a29180a47b0bc9f40c66fc0"
+    },
+    {
+      "path": "docs/CUSTOMER_FIRST_V1.md",
+      "sha256": "ada8c106438cae29acbcbcd2d4a23ae2f92b88a197358a731fec2a5dfade4e2f"
+    },
+    {
+      "path": "docs/OPERATOR_QUICKSTART.md",
+      "sha256": "d3efebe129d532bc79a5856876bca1b6b6eb751a55716ea7de27cd0fdbcace0f"
+    },
+    {
+      "path": "src/athena_procurement_arena/discovery.py",
+      "sha256": "5f0a24fd7d973d1bb23edf027e7a6387002478e4d9540f70100b41acc44a3681"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator.py",
+      "sha256": "adcd9333923073f1e10a877fd372393eb45467712d4b6a6e59178e05b0bad1b9"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/app.js",
+      "sha256": "da953b6b0b3fdbb7f46c26795cbcf0aeee8054e50c76d634c059ce82bc6103a3"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/index.html",
+      "sha256": "ef1183796c705d67a12b94f20645743c7b71742dd6a613708bc55c438f70d841"
+    },
+    {
+      "path": "src/athena_procurement_arena/operator_assets/style.css",
+      "sha256": "05df957bbb235640de3d77076f0c46d0b43967093e2bb0c1771051923dece791"
+    },
+    {
+      "path": "tests/test_discovery.py",
+      "sha256": "ed201dadc7ee96aac5f8cb7d6a6373565d08b9663ddc5cc06cb869d2c4e54b8e"
+    },
+    {
+      "path": "tests/test_operator.py",
+      "sha256": "4efd810dd9e9c5f06042847ae7bcc80a9666b48a1db7d469c42b6a40f1cfb7a8"
+    },
+    {
+      "path": ".agent/CURRENT_STATE.md",
+      "sha256": "19934f5ee0a55f3b1fc2ad4dcf98b339b0d5388ccebf29118f6b8c0607234686"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "f13ea44a29d959ad185fc152a0adb2614f392a9d99e93b7911101a2218941ebb"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6e03f0bd4c4b460c392df6f5c29b96fa7915b6e0fdec9fd86e6449ac8682064f"
+    },
+    {
+      "path": "docs/PRD_ALIGNMENT.md",
+      "sha256": "b35240fb276bbe6706bdb41c10c4b3fa04f5c5ca5259c1cf69cd9b44741f5b4d"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "9da06c578b717eea9663c9da193c79beb8aeb4a659bf73036dcc88e6205c75fa"
+    }
+  ]
+}

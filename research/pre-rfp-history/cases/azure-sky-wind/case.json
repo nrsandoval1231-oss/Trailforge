@@ -1,0 +1,100 @@
+{
+  "buyer_path": [],
+  "buying_event_date": "UNKNOWN",
+  "case_id": "azure-sky-wind",
+  "cohort_role": "PURPOSIVE_DEVELOPMENT_FAMILY_NOT_HOLDOUT",
+  "conventional_milestone": "UNKNOWN",
+  "conventional_milestone_at": "UNKNOWN",
+  "conventional_milestone_evidence_id": null,
+  "evidence_sources": [
+    {
+      "archive_version_proof": {
+        "archive_url": "https://web.archive.org/web/20210303170047/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0",
+        "body_path": "captures/archive.body",
+        "body_sha256": "ed212908d8eafff76b62c86a2a1f7fba63651a8b085856865fc26ef88f0262bf",
+        "capture_path": "captures/archive.capture.json",
+        "header_transformation": "All cookie header names, including archive-original cookie headers, omitted; other received values unchanged.",
+        "headers_path": "captures/archive.headers.txt",
+        "headers_sha256": "7d7a23cdfebc91e6cc4b2f764a0d0307e1a56d2dd1c4f4823dfe0f454c3a16e6",
+        "memento_datetime": "2021-03-03T17:00:47Z",
+        "original_url": "https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0",
+        "receipt_path": "captures/archive.receipt.json"
+      },
+      "capture_hash": "45e0d682f58ed155d046fa4fd94e0462d09a91ed2042e804d40ae9ddd3c13e4b",
+      "capture_id": "azure-sky-wind-archive",
+      "capture_path": "captures/archive.capture.json",
+      "content_sha256": "53acd8db653035b33bf9a58aadd42e54d15790891fcf439bf539593a0a9a3d11",
+      "date_semantics": "REPRESENTATION_OBSERVATION_ONLY",
+      "reported_document_date": "2021-03-03",
+      "reported_event_date": "UNKNOWN",
+      "document_date": "2021-03-03T17:00:47+00:00",
+      "event_date": "2021-03-03T17:00:47+00:00",
+      "evidence_id": "azure-sky-wind-archive-observation",
+      "observation_kind": "ARCHIVE_REPRESENTATION_OBSERVATION",
+      "observed_at": "2026-10-02T16:07:08.820861+00:00",
+      "replay_included": true,
+      "reviewed_claims": {
+        "archive_representation_observation": true,
+        "buyer_organization": "Enel Green Power North America",
+        "generation_need_supported": false,
+        "need_reason": "UNKNOWN",
+        "project_responsibility_supported": true,
+        "project_specific": true,
+        "required_mw": null
+      },
+      "source_quote": "has started construction of Azure Sky wind + storage",
+      "source_url": "https://web.archive.org/web/20210303170047/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0",
+      "verified_available_at": "2021-03-03T17:00:47+00:00"
+    },
+    {
+      "capture_hash": "ac0fa100e6891e4d854f2d285d99cd8b903b0841e27615af1a2bf6a7bedbb2ed",
+      "capture_id": "azure-power",
+      "capture_path": "../../pr7/hc-001/captures/azure-power.capture.json",
+      "content_sha256": "8517ec8a4e951d437ff045577be9ae53b124d574605155034452ab38b7b62be7",
+      "document_date": "UNKNOWN",
+      "event_date": "UNKNOWN",
+      "evidence_id": "azure-commissioning-undated",
+      "exclusion_reason": "Original publication and historical availability dates are UNKNOWN",
+      "observed_at": "UNKNOWN",
+      "replay_included": false,
+      "reviewed_claims": {
+        "availability_status": "UNKNOWN",
+        "buyer_organization": "Enel Green Power",
+        "generation_need_supported": true,
+        "need_reason": "commissioning service explicitly reported; timing of original buying event UNKNOWN",
+        "project_responsibility_supported": true,
+        "project_specific": true,
+        "purchase_type": "commissioning_service",
+        "required_mw": null,
+        "usable_direct_route": false
+      },
+      "source_quote": "Aggreko provided off-grid contingency power",
+      "source_url": "https://www.aggreko.com/en-us/case-studies/utilities/hybrid-grid-emulation-system-reduces-emissions-during-wind-turbine-commissioning",
+      "verified_available_at": "UNKNOWN"
+    }
+  ],
+  "facility_type": "wind_generation",
+  "first_buyer_actionable_at": null,
+  "historical_milestones": [],
+  "holdout_group": "DEVELOPMENT",
+  "invalidators": [
+    "Construction and VPPA announcement does not establish temporary generation procurement"
+  ],
+  "known_buying_event": "UNKNOWN",
+  "location": "UNKNOWN",
+  "outcome": "UNKNOWN",
+  "power_activity": "construction",
+  "procurement_family_id": "azure-sky-commissioning",
+  "project_identity": "Azure Sky wind / Throckmorton",
+  "purchase_type": "commissioning_service",
+  "research_burden": {
+    "burden_source": "controller-retained research/pre-rfp-history/recovery-attempts/SUMMARY.json",
+    "elapsed_seconds": null,
+    "paid_retrievals": 0,
+    "retained_http_attempts": 0,
+    "time_status": "UNKNOWN",
+    "web_search_queries": 0
+  },
+  "scenario_path": "scenario.json",
+  "schema_version": "trailforge-pre-rfp-case-v1"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "fixed_policy_source_base": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "policy_ids": [
+    "BASELINE_A",
+    "PRE_RFP_BASELINE_V1"
+  ],
+  "source_sha256_raw": "7068502e161649295e063b624b7c49dd8cb8a4019ccaae84e1b91c96692b6e9b",
+  "changed_from_base": false,
+  "interpretation": "Existing policies preserved; no policy optimization or independent predictive evaluation in this slice."
+}

@@ -1,0 +1,99 @@
+{
+  "buyer_path": [],
+  "buying_event_date": "UNKNOWN",
+  "case_id": "crusoe-abilene",
+  "cohort_role": "PURPOSIVE_DEVELOPMENT_FAMILY_NOT_HOLDOUT",
+  "conventional_milestone": "UNKNOWN",
+  "conventional_milestone_at": "UNKNOWN",
+  "conventional_milestone_evidence_id": null,
+  "evidence_sources": [
+    {
+      "archive_version_proof": {
+        "archive_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+        "body_path": "captures/archive.body",
+        "body_sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe",
+        "capture_path": "captures/archive.capture.json",
+        "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged",
+        "headers_path": "captures/archive.headers.txt",
+        "headers_sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9",
+        "memento_datetime": "2024-07-18T15:55:07Z",
+        "original_url": "https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+        "receipt_path": "captures/archive.receipt.json"
+      },
+      "capture_hash": "bbcfc55a66ac3f905d4d81bfe722d2d7d4e67445950a720bd2482253df457732",
+      "capture_id": "crusoe-abilene-archive",
+      "capture_path": "captures/archive.capture.json",
+      "content_sha256": "45898b76cde8e1a35a19233f1bcd0e3bb8d3e616a529bec0ff333327f52cc4bb",
+      "date_semantics": "REPRESENTATION_OBSERVATION_ONLY",
+      "reported_document_date": "2024-07-18",
+      "reported_event_date": "UNKNOWN",
+      "document_date": "2024-07-18T15:55:07+00:00",
+      "event_date": "2024-07-18T15:55:07+00:00",
+      "evidence_id": "crusoe-abilene-archive-observation",
+      "observation_kind": "ARCHIVE_REPRESENTATION_OBSERVATION",
+      "observed_at": "2026-10-02T16:07:08.442163+00:00",
+      "replay_included": true,
+      "reviewed_claims": {
+        "archive_representation_observation": true,
+        "buyer_organization": "Crusoe",
+        "generation_need_supported": false,
+        "need_reason": "UNKNOWN",
+        "organization_evidence_quote": "Crusoe Energy Systems LLC",
+        "project_responsibility_supported": true,
+        "project_specific": true,
+        "required_mw": null
+      },
+      "source_quote": "Crusoe Energy Systems LLC",
+      "source_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+      "verified_available_at": "2024-07-18T15:55:07+00:00"
+    },
+    {
+      "capture_hash": "8c420f97b3aaad5a4e25109b2ca96367d640b55cf38ef353d0595089d52aedb0",
+      "capture_id": "crusoe-legacy-target-live",
+      "capture_path": "../../pr7/hc-001/recovery-captures/crusoe-legacy-target-live.capture.json",
+      "content_sha256": "00c44e584d76dab73fdb9ac520663624ee4de76d064dfebb1aa7b5a196047cf0",
+      "document_date": "UNKNOWN",
+      "event_date": "UNKNOWN",
+      "evidence_id": "crusoe-2025-backup-context",
+      "exclusion_reason": "2025 backup-generation context is not a verified temporary-generation solicitation",
+      "observed_at": "UNKNOWN",
+      "replay_included": false,
+      "reviewed_claims": {
+        "buyer_organization": "Crusoe",
+        "generation_need_supported": false,
+        "need_reason": "backup generation is described; temporary rental need UNKNOWN",
+        "project_responsibility_supported": true,
+        "project_specific": true,
+        "scope_note": "2025 campus expansion; excluded context, not procurement evidence",
+        "usable_direct_route": false
+      },
+      "source_quote": "natural gas turbines to power its back-up power supply",
+      "source_url": "https://lancium.com/press-release/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts/",
+      "verified_available_at": "UNKNOWN"
+    }
+  ],
+  "facility_type": "data_center",
+  "first_buyer_actionable_at": null,
+  "historical_milestones": [],
+  "holdout_group": "DEVELOPMENT",
+  "invalidators": [
+    "2025 portfolio turbine order is not attributed to Abilene"
+  ],
+  "known_buying_event": "UNKNOWN",
+  "location": "UNKNOWN",
+  "outcome": "UNKNOWN",
+  "power_activity": "construction",
+  "procurement_family_id": "crusoe-abilene-lancium-campus",
+  "project_identity": "Crusoe Abilene / Lancium Clean Campus",
+  "purchase_type": "UNKNOWN",
+  "research_burden": {
+    "burden_source": "controller-retained research/pre-rfp-history/recovery-attempts/SUMMARY.json",
+    "elapsed_seconds": null,
+    "paid_retrievals": 0,
+    "retained_http_attempts": 0,
+    "time_status": "UNKNOWN",
+    "web_search_queries": 0
+  },
+  "scenario_path": "scenario.json",
+  "schema_version": "trailforge-pre-rfp-case-v1"
+}

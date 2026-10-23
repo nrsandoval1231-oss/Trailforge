@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+from dataclasses import replace
 from datetime import datetime
+from pathlib import Path
 
 import pytest
 
@@ -243,3 +245,142 @@ def test_late_surface_retains_numeric_negative_lead(tmp_path):
                          experiment_dir=tmp_path / "experiments" / "case-1")
     assert result["historical_lead_seconds"] == -86400.0
     assert result["lead_status"] == "NO_EARLY_ADVANTAGE"
+
+
+def test_historical_report_requires_loaded_case_not_caller_claims():
+    from athena_procurement_arena.historical_case_report import build_case_report
+
+    with pytest.raises(TypeError, match="HistoricalCase"):
+        build_case_report({"case_id": "forged"}, {}, {"ledger_verified": True}, {})
+
+
+def test_historical_lead_arithmetic_is_explicitly_synthetic_only():
+    from athena_procurement_arena.historical_case_report import historical_lead_status
+
+    assert historical_lead_status(2_592_000.0) == "SUPPORTED"
+    assert historical_lead_status(-2_592_000.0) == "NO_EARLY_ADVANTAGE"
+    assert historical_lead_status(None) == "UNKNOWN"
+
+
+def test_report_milestone_requires_declared_instant_in_explicit_release_quote():
+    from athena_procurement_arena.historical_case_report import _valid_milestone
+    from athena_procurement_arena.historical_cases import EvidenceSourceRef
+
+    timestamp = "2021-02-01T00:00:00+00:00"
+    ref = EvidenceSourceRef("e", "capture.json", "c", "h", "s", "https://example.gov",
+        "Generation solicitation was released for this project.",
+        {"release_event_at": timestamp,
+         "milestone_semantic_evidence_quote": "Generation solicitation was released for this project."},
+        "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", extra_fields={"archive_version_proof": {}})
+    candidate = {"kind": "GENERATION_SOLICITATION_RELEASE", "verification": "VERIFIED", "at": timestamp,
+                 "evidence_id": "e"}
+    assert _valid_milestone({"e": ref}, candidate) is None
+    quoted = EvidenceSourceRef("e", "capture.json", "c", "h", "s", "https://example.gov",
+        f"Generation solicitation was released at {timestamp} for this project.",
+        {"release_event_at": timestamp,
+         "milestone_semantic_evidence_quote": f"Generation solicitation was released at {timestamp} for this project."},
+        "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN",
+        extra_fields={"archive_version_proof": {}, "observation_kind": "ARCHIVE_REPRESENTATION_OBSERVATION"})
+    assert _valid_milestone({"e": quoted}, candidate) is None
+    release = EvidenceSourceRef("e", "capture.json", "c", "h", "s", "https://example.gov",
+        f"Generation solicitation was released at {timestamp} for this project.",
+        {"release_event_at": timestamp,
+         "milestone_semantic_evidence_quote": f"Generation solicitation was released at {timestamp} for this project."},
+        "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN",
+        extra_fields={"archive_version_proof": {}, "observation_kind": "VERIFIED_RELEASE_SOURCE"})
+    assert _valid_milestone({"e": release}, candidate) == candidate
+
+
+def test_report_actionability_rejects_empty_or_future_routes():
+    from athena_procurement_arena.historical_case_report import _actionable_at
+    from athena_procurement_arena.historical_cases import EvidenceSourceRef
+
+    decision = [{"simulation_time": "2021-01-01T00:00:00+00:00", "action": "RESEARCH", "visible_evidence_ids": ["e"]}]
+    common = {"buyer_organization": "Buyer", "project_responsibility_supported": True,
+              "organization_evidence_quote": "Buyer", "usable_direct_route": True,
+              "direct_route_evidence_quote": "", "direct_contact_email": ""}
+    empty = EvidenceSourceRef("e", "capture.json", "c", "h", "s", "https://example.gov", "Buyer", common,
+                              "UNKNOWN", "UNKNOWN", "2021-01-01T00:00:00+00:00", "UNKNOWN")
+    assert _actionable_at(decision, {"e": empty}) is None
+    future_claims = {**common, "direct_route_evidence_quote": "Buyer: buyer@example.gov",
+                     "direct_contact_email": "buyer@example.gov"}
+    future = EvidenceSourceRef("e", "capture.json", "c", "h", "s", "https://example.gov",
+                               "Buyer: buyer@example.gov", future_claims, "UNKNOWN", "UNKNOWN",
+                               "2021-01-02T00:00:00+00:00", "UNKNOWN")
+    assert _actionable_at(decision, {"e": future}) is None
+
+
+def test_archive_receipt_binds_original_url_memento_body_and_headers(tmp_path):
+    from hashlib import sha256
+
+    from athena_procurement_arena.historical_cases import EvidenceSourceRef, _verify_archive_version
+    from athena_procurement_arena.public_capture import capture_markdown, write_capture
+
+    root = tmp_path / "case"
+    evidence = root / "evidence"
+    evidence.mkdir(parents=True)
+    original = "https://example.gov/project"
+    archive = f"https://web.archive.org/web/20200102030405/{original}"
+    observed = "2020-01-02T03:04:05+00:00"
+    from athena_procurement_arena.historical_cases import archive_representation_text
+
+    body = b"<p>Archived project statement</p>"
+    headers = (b"HTTP/1.1 200 OK\nMemento-Datetime: Thu, 02 Jan 2020 03:04:05 GMT\n"
+               b'Link: <https://example.gov/project>; rel="original"\n'
+               b"Content-Type: text/plain\n")
+    (evidence / "body.bin").write_bytes(body)
+    (evidence / "headers.txt").write_bytes(headers)
+    capture = capture_markdown(archive, archive_representation_text(body), capture_id="archive",
+                               captured_by="test", captured_at=_iso("2026-01-01T00:00:00+00:00"))
+    write_capture(capture, evidence / "capture.json")
+    body_hash, header_hash = sha256(body).hexdigest(), sha256(headers).hexdigest()
+    receipt = {"source_url": archive, "memento_datetime_utc": observed,
+               "body_sha256": body_hash, "headers_sha256": header_hash}
+    (evidence / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+    proof = {"capture_path": "evidence/capture.json", "receipt_path": "evidence/receipt.json",
+             "archive_url": archive, "original_url": original, "memento_datetime": observed,
+             "body_path": "evidence/body.bin", "body_sha256": body_hash,
+             "headers_path": "evidence/headers.txt", "headers_sha256": header_hash,
+             "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged"}
+    ref = EvidenceSourceRef("e1", "evidence/capture.json", "archive", capture.capture_hash,
+                            capture.content_sha256, archive, "Archived project statement", {},
+                            "UNKNOWN", "UNKNOWN", observed, "UNKNOWN")
+    _verify_archive_version(root, ref, _iso(observed), proof)
+    (evidence / "body.bin").write_bytes(b"tampered")
+    with pytest.raises(ValueError, match="receipt mismatch"):
+        _verify_archive_version(root, ref, _iso(observed), proof)
+
+
+def test_historical_report_recomputes_replay_and_rejects_tampered_receipt(tmp_path):
+    from athena_procurement_arena.historical_case_report import build_case_report
+    from athena_procurement_arena.historical_cases import load_case, replay_case
+    from athena_procurement_arena.policies import BaselineA
+
+    root = Path(__file__).resolve().parents[2]
+    case_path = root / "research/pre-rfp-history/cases/montauk-2021/case.json"
+    case, scenario = load_case(case_path)
+    replay = replay_case(case_path, mode="BACKTRACE", policy=BaselineA(), experiment_dir=tmp_path / "experiment")
+    replay["ledger_verified"] = False
+    replay["pre_rfp_ledger_verified"] = False
+    report = build_case_report(case, scenario, replay, {})
+    assert report["lead_status"] == "UNKNOWN"
+    decisions_path = Path(replay["experiment_dir"]) / "decisions.json"
+    payload = json.loads(decisions_path.read_text(encoding="utf-8"))
+    payload["ledger_verified"] = False
+    decisions_path.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="artifact hash mismatch"):
+        build_case_report(case, scenario, replay, {})
+
+
+def test_known_alias_families_cannot_be_held_out_across_old_and_history_cases():
+    root = Path(__file__).resolve().parents[2]
+    montauk_old, _ = load_case(root / "research/pre-rfp-corpus/cases/PRF-002/case.json")
+    montauk_new, _ = load_case(root / "research/pre-rfp-history/cases/montauk-2021/case.json")
+    azure_old, _ = load_case(root / "research/pre-rfp-corpus/cases/PRF-007/case.json")
+    azure_new, _ = load_case(root / "research/pre-rfp-history/cases/azure-sky-wind/case.json")
+    assert montauk_old.procurement_family_id == montauk_new.procurement_family_id == "montauk-2021-2024"
+    assert azure_old.procurement_family_id == azure_new.procurement_family_id == "azure-sky-commissioning"
+    with pytest.raises(ValueError, match="procurement family split"):
+        validate_family_splits([montauk_old, replace(montauk_new, holdout_group="HOLDOUT")])
+    with pytest.raises(ValueError, match="procurement family split"):
+        validate_family_splits([azure_old, replace(azure_new, holdout_group="HOLDOUT")])

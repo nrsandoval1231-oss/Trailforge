@@ -1,0 +1,19 @@
+{
+  "state": "PR7 and PR9 open; dirty original checkout preserved; known development cases exposed",
+  "decision": "Reuse PR9 runtime and import exact PR7 research bytes; keep one generation-solicitation milestone selector fixed",
+  "action": "Archive receipt binding, timeline adapter, fixed-policy offline replay and buyer-actionable lead report; bounded fail-closed repairs",
+  "outcome": "3 development cases;1Montaukpolicy surface;0buyeractionable;0supportedlead;unknowns retained",
+  "deterministic_evaluation": [
+    "325 tests passed,1skipped;compile,Ruff,3bundles PASS",
+    "17offlinefilesbyteidentical;494Windowsresearchfilesbyteidentical",
+    "134PR7imports and73dirtyfiles unchanged"
+  ],
+  "attribution": "Archive recovery improves dated observation coverage; it does not establish procurement milestone, buyer route, independent discovery, or tolerable research burden. Initial report boundary accepted unsupported positive; retained controller finding drove repair.",
+  "candidate_lesson": "Bind derived reports to loaded evidence and independently recomputed replay, and regenerate persisted manifests after source changes.",
+  "lesson_status": "CANDIDATE_NOT_PROMOTED",
+  "metric": "unsupported-positive acceptance should decrease; no generalized rate measured",
+  "reversibility": "Local bounded changes remain uncommitted; policy and original evidence unchanged",
+  "next_direction": "CONTINUE",
+  "independent_verdict": "PASS",
+  "candidate_sha256": "a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5"
+}

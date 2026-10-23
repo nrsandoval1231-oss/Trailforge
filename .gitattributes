@@ -1,3 +1,5 @@
 # Hash-bound replay evidence and retained corpus bytes must survive Windows checkouts unchanged.
 .agent/artifacts/pre-rfp-slice-a/** -text whitespace=cr-at-eol
 research/pre-rfp-corpus/** -text whitespace=cr-at-eol
+research/pre-rfp-history/** -text whitespace=cr-at-eol
+.agent/artifacts/hc-a-history/** -text whitespace=cr-at-eol

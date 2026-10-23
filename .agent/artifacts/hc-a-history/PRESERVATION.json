@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "utc": "2026-10-02T16:51:04.229836+00:00",
+  "imported_git_blobs_unchanged": 134,
+  "retained_original_receipt_hashes_verified": 8,
+  "original_dirty_files_unchanged": 73,
+  "interpretation": "Integrity checks only; not source semantic correctness or commercial validation."
+}

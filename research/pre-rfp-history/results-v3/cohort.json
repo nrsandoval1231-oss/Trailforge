@@ -1,0 +1,445 @@
+{
+  "cases": [
+    {
+      "available_evidence_at_surface": [],
+      "case_id": "crusoe-abilene",
+      "discovery_credit": false,
+      "first_buyer_actionable_at": "UNKNOWN",
+      "first_policy_surface_at": "UNKNOWN",
+      "historical_lead_seconds": null,
+      "invalidators": [
+        "2025 portfolio turbine order is not attributed to Abilene"
+      ],
+      "lead_status": "UNKNOWN",
+      "misses_vs_insufficient_evidence": "INSUFFICIENT_EVIDENCE",
+      "missing_reasons": [
+        "NO_VERIFIED_EXPLICIT_GENERATION_SOLICITATION_RELEASE",
+        "NO_POLICY_SURFACE_WITH_SUPPORTED_RESPONSIBILITY_AND_USABLE_DIRECT_ROUTE"
+      ],
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "crusoe-abilene-lancium-campus",
+      "research_burden": {
+        "case_id": "crusoe-abilene",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 1,
+        "new_request_elapsed_seconds": 2.156,
+        "new_search_queries": 2,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "ge-crusoe-order.json"
+        ],
+        "source": "research/pre-rfp-history/recovery-attempts/BURDEN.json",
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      },
+      "source_timeline": [
+        {
+          "buyer_organization": "Crusoe",
+          "document_date": "2024-07-18T10:55:07-05:00",
+          "event_date": "2024-07-18T10:55:07-05:00",
+          "evidence_id": "crusoe-abilene-archive-observation",
+          "generation_need_supported": false,
+          "observed_at": "2026-10-02T16:07:08.442163+00:00",
+          "replay_included": true,
+          "source_quote": "Crusoe Energy Systems LLC",
+          "source_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/",
+          "verified_available_at": "2024-07-18T10:55:07-05:00"
+        }
+      ],
+      "verified_generation_solicitation": "UNKNOWN"
+    },
+    {
+      "available_evidence_at_surface": [
+        {
+          "capture_id": "montauk-2021-archive",
+          "claims": {
+            "archive_representation_observation": true,
+            "buyer_organization": "PSEG Long Island",
+            "generation_need_supported": true,
+            "need_evidence_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+            "need_reason": "Six modular generators support transmission circuit connections/upgrades and seasonal reliability",
+            "project_responsibility_supported": true,
+            "project_specific": true,
+            "required_mw": 6
+          },
+          "evidence_id": "montauk-2021-archive-observation",
+          "source_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+          "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf"
+        }
+      ],
+      "case_id": "montauk-2021",
+      "discovery_credit": false,
+      "first_buyer_actionable_at": "UNKNOWN",
+      "first_policy_surface_at": "2021-05-07T11:48:02-05:00",
+      "historical_lead_seconds": null,
+      "invalidators": [
+        "2017 Montauk Energy Storage Center PPA is a different family",
+        "The 2021 environmental review is not a verified solicitation release"
+      ],
+      "lead_status": "UNKNOWN",
+      "misses_vs_insufficient_evidence": "INSUFFICIENT_EVIDENCE",
+      "missing_reasons": [
+        "NO_VERIFIED_EXPLICIT_GENERATION_SOLICITATION_RELEASE",
+        "NO_POLICY_SURFACE_WITH_SUPPORTED_RESPONSIBILITY_AND_USABLE_DIRECT_ROUTE"
+      ],
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "montauk-transmission-upgrades-2021",
+      "research_burden": {
+        "case_id": "montauk-2021",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 3,
+        "new_request_elapsed_seconds": 6.734,
+        "new_search_queries": 3,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "montauk-pre2020.json",
+          "montauk-procurement-cdx.json",
+          "lipa-procurement2021.json"
+        ],
+        "source": "research/pre-rfp-history/recovery-attempts/BURDEN.json",
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      },
+      "source_timeline": [
+        {
+          "buyer_organization": "PSEG Long Island",
+          "document_date": "2021-05-07T11:48:02-05:00",
+          "event_date": "2021-05-07T11:48:02-05:00",
+          "evidence_id": "montauk-2021-archive-observation",
+          "generation_need_supported": true,
+          "observed_at": "2026-10-02T16:07:08.727128+00:00",
+          "replay_included": true,
+          "source_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+          "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+          "verified_available_at": "2021-05-07T11:48:02-05:00"
+        }
+      ],
+      "verified_generation_solicitation": "UNKNOWN"
+    },
+    {
+      "available_evidence_at_surface": [],
+      "case_id": "azure-sky-wind",
+      "discovery_credit": false,
+      "first_buyer_actionable_at": "UNKNOWN",
+      "first_policy_surface_at": "UNKNOWN",
+      "historical_lead_seconds": null,
+      "invalidators": [
+        "Construction and VPPA announcement does not establish temporary generation procurement"
+      ],
+      "lead_status": "UNKNOWN",
+      "misses_vs_insufficient_evidence": "INSUFFICIENT_EVIDENCE",
+      "missing_reasons": [
+        "NO_VERIFIED_EXPLICIT_GENERATION_SOLICITATION_RELEASE",
+        "NO_POLICY_SURFACE_WITH_SUPPORTED_RESPONSIBILITY_AND_USABLE_DIRECT_ROUTE"
+      ],
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "azure-sky-wind-throckmorton",
+      "research_burden": {
+        "case_id": "azure-sky-wind",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 2,
+        "new_request_elapsed_seconds": 1.719,
+        "new_search_queries": 1,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "azure-2021.json",
+          "azure-2021-body.json"
+        ],
+        "source": "research/pre-rfp-history/recovery-attempts/BURDEN.json",
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      },
+      "source_timeline": [
+        {
+          "buyer_organization": "Enel Green Power North America",
+          "document_date": "2021-03-03T11:00:47-06:00",
+          "event_date": "2021-03-03T11:00:47-06:00",
+          "evidence_id": "azure-sky-wind-archive-observation",
+          "generation_need_supported": false,
+          "observed_at": "2026-10-02T16:07:08.820861+00:00",
+          "replay_included": true,
+          "source_quote": "has started construction of Azure Sky wind + storage",
+          "source_url": "https://web.archive.org/web/20210303170047/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0",
+          "verified_available_at": "2021-03-03T11:00:47-06:00"
+        },
+        {
+          "buyer_organization": "Enel Green Power",
+          "document_date": "UNKNOWN",
+          "event_date": "UNKNOWN",
+          "evidence_id": "azure-commissioning-undated",
+          "generation_need_supported": true,
+          "observed_at": "UNKNOWN",
+          "replay_included": false,
+          "source_quote": "Aggreko provided off-grid contingency power",
+          "source_url": "https://www.aggreko.com/en-us/case-studies/utilities/hybrid-grid-emulation-system-reduces-emissions-during-wind-turbine-commissioning",
+          "verified_available_at": "UNKNOWN"
+        }
+      ],
+      "verified_generation_solicitation": "UNKNOWN"
+    }
+  ],
+  "cohort_hash": "2c3472cf2a1f55691181d849ff5d4f5db52e497871b7bf8d34d34e062c3d9438",
+  "comparator_policy_id": "BASELINE_A",
+  "discovery_credit": false,
+  "mode": "BACKTRACE",
+  "policy_id": "PRE_RFP_BASELINE_V1",
+  "replays": [
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "24b164ea891b3cc4aef557c7eeb7296871dea87a58d695c59cf0c25ea941c373",
+      "case_id": "crusoe-abilene",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "experiments/crusoe-abilene",
+      "experiment_manifest_hash": "64737af3833120298d982f419a964d3fca0f60f1505664bf9011b01a6c453dbf",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "31e6ffed9d767afe1f18ec6dc781329dcb0da148c62d346c0ea4c045e3a0129e",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "11f45410f10f529ab7a3ff19abf2c59813ae1e55baca3d1d44b9b2975662da6f",
+          "simulation_time": "2024-07-18T10:55:07-05:00",
+          "visible_evidence_ids": [
+            "crusoe-abilene-archive-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "569def01a22883d6828bb63cf26292d12685008c4cdf806eb885c5a2a19dca32",
+          "simulation_time": "2026-10-02T16:07:08.442163+00:00",
+          "visible_evidence_ids": [
+            "crusoe-abilene-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "crusoe-abilene-lancium-campus",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "b619e23224249c5ba7d70a6c91d289cce8c43d41994844eaeb9e5a735f66b540",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 0
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "UNKNOWN",
+      "case_hash": "393b9edda9d62145aa8974db6a71237613704fc991810238157588ff2eac8c89",
+      "case_id": "montauk-2021",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "experiments/montauk-2021",
+      "experiment_manifest_hash": "3c8998b429db9349db8104adda8015532bd84436a8d10bef361249ab7b7c4830",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "4950c8568f0f458e63cd2ff9d65d1c0d9a4514218fbd88dd3ca96e7a45cf88af",
+      "pre_rfp_decisions": [
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "montauk-2021-archive-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "fcdd82a55e70ff05889f4ed5363aab5d3c900faffc9c78dbd338a65b5d5da2eb",
+          "simulation_time": "2021-05-07T11:48:02-05:00",
+          "visible_evidence_ids": [
+            "montauk-2021-archive-observation"
+          ]
+        },
+        {
+          "action": "RESEARCH",
+          "forecast": {
+            "basis_evidence_ids": [
+              "montauk-2021-archive-observation"
+            ],
+            "decision": "INVESTIGATE",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "8e10ec4edec7d790499f1bbe9a876c81791cf276178b7c2bc753279ce8b1cff4",
+          "simulation_time": "2026-10-02T16:07:08.727128+00:00",
+          "visible_evidence_ids": [
+            "montauk-2021-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": "RESEARCH",
+      "pre_rfp_first_surface_at": "2021-05-07T11:48:02-05:00",
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "montauk-transmission-upgrades-2021",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "c1c751c9c0fd9e67339500c74979fb398a82da6749ccb140720710914029455b",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 0
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "abb1872d021f381552867af005228daa76cb6d9e0b21479673c8b7902408d104",
+      "case_id": "azure-sky-wind",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "experiments/azure-sky-wind",
+      "experiment_manifest_hash": "049acbc7325d570bdad384a820ad40b3d37d2485694551696bb3db725f26d09b",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "7c361572945c9c2ce45e89a2b9905b57dd2706f78a6d958586e0b6d06929cfdb",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "6c8eea73fac82e25eff8d4e62147b6eb06612909cb701589781dbc065b0a2c3f",
+          "simulation_time": "2021-03-03T11:00:47-06:00",
+          "visible_evidence_ids": [
+            "azure-sky-wind-archive-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "d46ab1200c6806b30e1b41c775ed9709dffbe153a4910bfdeb06bca4ff5860f3",
+          "simulation_time": "2026-10-02T16:07:08.820861+00:00",
+          "visible_evidence_ids": [
+            "azure-sky-wind-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "azure-sky-wind-throckmorton",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "246eabce756f828f9e43f35732686a5163b0c3d0b9b12eb8f47ea4083d4d8a2b",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 1
+    }
+  ],
+  "research_burden": {
+    "all_development": true,
+    "cases": [
+      {
+        "case_id": "montauk-2021",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 3,
+        "new_request_elapsed_seconds": 6.734,
+        "new_search_queries": 3,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "montauk-pre2020.json",
+          "montauk-procurement-cdx.json",
+          "lipa-procurement2021.json"
+        ],
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      },
+      {
+        "case_id": "azure-sky-wind",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 2,
+        "new_request_elapsed_seconds": 1.719,
+        "new_search_queries": 1,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "azure-2021.json",
+          "azure-2021-body.json"
+        ],
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      },
+      {
+        "case_id": "crusoe-abilene",
+        "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim.",
+        "new_public_http_requests": 1,
+        "new_request_elapsed_seconds": 2.156,
+        "new_search_queries": 2,
+        "paid_service_calls": 0,
+        "prior_research_elapsed_seconds": "UNKNOWN",
+        "request_receipts": [
+          "ge-crusoe-order.json"
+        ],
+        "tokens": "UNKNOWN",
+        "total_human_review_seconds": "UNKNOWN"
+      }
+    ],
+    "comparison_attention_budget": "NOT_EVALUATED",
+    "new_public_http_requests": 6,
+    "new_search_queries": 6,
+    "search_calls": 2
+  },
+  "schema_version": "trailforge-pre-rfp-history-v2"
+}

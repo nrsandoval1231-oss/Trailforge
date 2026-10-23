@@ -1,0 +1,8 @@
+[["timestamp","original","statuscode","mimetype","digest"],
+["20250613201914","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","QPZKBWDVVZJNB6HG5O44XYFW3VPM3RND"],
+["20250717033155","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","MEGYHO2R2YFE7TZMYWLUOEBFUMCQ25EU"],
+["20250722180905","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","2DYKIUH4D6C5BJGRYABFV6XC7TFBOMCI"],
+["20250722180917","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","RZGUMRSDASA2TMVX7NQN5L3EM6UX3SLH"],
+["20251017031437","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","FYKJHOZLGARHP6B5NBB6AZ6S3FW5MN2Y"],
+["20251205032235","https://lancium.com/2024/07/18/crusoe-lancium-clean-campus/","200","text/html","AXFKQHC5RJD6F27CB7RCYQD5S4HUPRS4"]]
+

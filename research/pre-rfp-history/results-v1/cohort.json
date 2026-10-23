@@ -1,0 +1,223 @@
+{
+  "baseline_a_surface_count": 0,
+  "case_count": 3,
+  "cohort_hash": "e05a59cce778ce9f5007dc0a9813d60bf69c9fd90ac11f7109c99e7e9a606926",
+  "discovery_credit": false,
+  "discovery_credit_reason": "SLICE_A_REQUIRES_PROSPECTIVE_PRECOMMITTED_NAME_BLIND_VALIDATION",
+  "mode": "BACKTRACE",
+  "negative_count": 0,
+  "positive_count": 0,
+  "pre_rfp_baseline_surface_count": 0,
+  "results": [
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "2a5900012812ba1086ead16f2b272c4570a32e2ab0fb8066bf983101b04654bf",
+      "case_id": "crusoe-abilene",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\research\\pre-rfp-history\\results-v1\\experiments\\crusoe-abilene",
+      "experiment_manifest_hash": "571058163fec12ee7f5b07590c75059c5a01b4985af3df0bbc226574ca17d267",
+      "facility_type": "data_center",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "power_activity": "construction",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "ed1ba02e84490df9d6862432ceb155407d9a745cfecfd77a3c7245e0ae2a94c5",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "60fd9f80a759692771df04d3eaf717ce2ee4cfdad5a8bdce0b22667a59767f1d",
+          "simulation_time": "2024-07-18T15:55:07+00:00",
+          "visible_evidence_ids": [
+            "crusoe-abilene-archive-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "c78d6dad96a7eb748e71833bc661a50205a3a907fc68671c7f2825b92d8cdf83",
+          "simulation_time": "2026-10-02T16:07:08.442163+00:00",
+          "visible_evidence_ids": [
+            "crusoe-abilene-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "crusoe-abilene-lancium-campus",
+      "purchase_type": "temporary_power_service",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "1e118e3ce9b6a94921a479b64df832d7f8ed7cab5aeab49e866cbdfd861f13d0",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 0
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "5ce8366512c855a12059efe6eb975c0694a7e7b2471981549d59a7f2d32b1aff",
+      "case_id": "montauk-2021",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\research\\pre-rfp-history\\results-v1\\experiments\\montauk-2021",
+      "experiment_manifest_hash": "5fa5e185e252ca851ea3f0b83a610c42bc1395a8e8e423c76e4ec398b2f05f11",
+      "facility_type": "utility",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "power_activity": "transmission_upgrade",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "a97ab7d2920944092e1bffc0bfec152c7e1b8a431e36fea82223c040a8ab677b",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "edcc2b7bc62b18d6e4fb7eca49d8f345c99f9208d45f7a14af07471383321fe1",
+          "simulation_time": "2021-05-07T16:48:02+00:00",
+          "visible_evidence_ids": [
+            "montauk-2021-archive-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "a61fd1ed5256564874944c0c6cf2d6bc896f3b87e9ac52122e17293eec38e296",
+          "simulation_time": "2026-10-02T16:07:08.727128+00:00",
+          "visible_evidence_ids": [
+            "montauk-2021-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "montauk-transmission-upgrades-2021",
+      "purchase_type": "temporary_power_service",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "9597c304893d52c52f333e05743deb00fe73496be0e7a96aab0c84a8ebca5744",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 0
+    },
+    {
+      "baseline_first_action": null,
+      "baseline_first_surface_at": null,
+      "buyer_path_at_first_surface": [],
+      "buyer_path_at_first_surface_status": "NO_SURFACE",
+      "case_hash": "e894c6260e5e14a5fa32ced989bc373624754575614b03021488c5e000b1c97a",
+      "case_id": "azure-sky-wind",
+      "conventional_milestone_at": "UNKNOWN",
+      "decision_count": 2,
+      "discovery_credit": false,
+      "discovery_credit_reason": "BACKTRACE_HAS_NO_DISCOVERY_CREDIT",
+      "experiment_dir": "C:\\Users\\nrsan\\.codex\\worktrees\\trailforge-pre-rfp-lab\\Trailforge\\research\\pre-rfp-history\\results-v1\\experiments\\azure-sky-wind",
+      "experiment_manifest_hash": "123f9be306a4664d529be6046fbcb7b427fa70a0ab03dc43b61384d05fb39f40",
+      "facility_type": "wind_generation",
+      "historical_lead_seconds": null,
+      "historical_replay_credit": false,
+      "historical_replay_credit_reason": "NO_INDEPENDENT_DISCOVERY_VALIDATION",
+      "holdout_group": "DEVELOPMENT",
+      "lead_status": "UNKNOWN",
+      "ledger_verified": true,
+      "mode": "BACKTRACE",
+      "outcome": "UNKNOWN",
+      "policy_id": "BASELINE_A",
+      "power_activity": "construction",
+      "pre_rfp_decision_count": 2,
+      "pre_rfp_decision_hash": "529d39ce6bab8d86d5065433219083b70d9650f8b4db881d135269989d0dda07",
+      "pre_rfp_decisions": [
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "532afaa0bc4c2a1cfab38f2fc8aec875c8d9a20a982e2b1f91c0ba6f2185687d",
+          "simulation_time": "2021-03-03T17:00:47+00:00",
+          "visible_evidence_ids": [
+            "azure-sky-wind-archive-observation"
+          ]
+        },
+        {
+          "action": "IGNORE",
+          "forecast": {
+            "basis_evidence_ids": [],
+            "decision": "WATCH",
+            "power_need_mw": null,
+            "power_need_status": "UNKNOWN"
+          },
+          "record_hash": "e2ed48dcbb72f9e8564079b4aae7852f7286a33c067e97cac3567161f32477a6",
+          "simulation_time": "2026-10-02T16:07:08.820861+00:00",
+          "visible_evidence_ids": [
+            "azure-sky-wind-archive-observation"
+          ]
+        }
+      ],
+      "pre_rfp_first_action": null,
+      "pre_rfp_first_surface_at": null,
+      "pre_rfp_ledger_verified": true,
+      "pre_rfp_policy_id": "PRE_RFP_BASELINE_V1",
+      "procurement_family_id": "azure-sky-wind-throckmorton",
+      "purchase_type": "temporary_power_service",
+      "reviewed_buyer_path": [],
+      "scenario_hash": "d7540804a3945a94a7945488eea1340b872c57d912549c46df1fcf6f3657d6e3",
+      "schema_version": "trailforge-pre-rfp-case-replay-v1",
+      "unknown_availability_count": 0
+    }
+  ],
+  "schema_version": "trailforge-pre-rfp-cohort-replay-v1",
+  "supported_historical_lead_count": 0,
+  "unknown_availability_count": 0,
+  "unresolved_count": 3,
+  "vertical_counts": {
+    "data_center": 1,
+    "utility": 1,
+    "wind_generation": 1
+  }
+}

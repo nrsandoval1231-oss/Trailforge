@@ -1,0 +1,44 @@
+HTTP/1.1 200
+Server: nginx
+Date: Fri, 02 Oct 2026 15:53:54 GMT
+Content-Type: text/html;charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+x-archive-orig-accept-ranges: bytes
+x-archive-orig-cache-control: no-cache="set-cookie"
+x-archive-orig-content-security-policy: frame-ancestors https://www.enel.com
+x-archive-orig-date: Wed, 03 Mar 2021 17:00:47 GMT
+x-archive-orig-feature-policy: fullscreen 'self'
+x-archive-orig-last-modified: Wed, 03 Mar 2021 14:33:41 GMT
+x-archive-orig-pragma: no-cache
+x-archive-orig-referrer-policy: no-referrer
+x-archive-orig-server: Apache
+x-archive-orig-strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-archive-orig-vary: Accept-Encoding
+x-archive-orig-x-content-type-options: nosniff
+x-archive-orig-x-permitted-cross-domain-policies: none
+x-archive-orig-x-xss-protection: 1; mode=block
+x-archive-orig-connection: keep-alive
+x-archive-orig-x-cdn: Imperva
+x-archive-orig-transfer-encoding: chunked
+x-archive-orig-x-iinfo: 14-43602400-43602413 NNNN CT(1 2 0) RT(1614790846648 44) q(0 0 0 0) r(1 1) U5
+x-archive-guessed-content-type: text/html
+x-archive-guessed-charset: utf-8
+memento-datetime: Wed, 03 Mar 2021 17:00:47 GMT
+link: <https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="original", <https://web.archive.org/web/timemap/link/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="timemap"; type="application/link-format", <https://web.archive.org/web/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="timegate", <https://web.archive.org/web/20210303170047/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="first memento"; datetime="Wed, 03 Mar 2021 17:00:47 GMT", <https://web.archive.org/web/20210303170047/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="memento"; datetime="Wed, 03 Mar 2021 17:00:47 GMT", <https://web.archive.org/web/20210304205418/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="next memento"; datetime="Thu, 04 Mar 2021 20:54:18 GMT", <https://web.archive.org/web/20260519032017/https://www.enel.com/media/explore/search-press-releases/press/2021/03/enels-first-large-scale-wind--storage-hybrid-project-will-support-kellogg-company-with-renewable-energy0>; rel="last memento"; datetime="Tue, 19 May 2026 03:20:17 GMT"
+content-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org
+x-archive-src: archiveteam_urls_20210303170409_a6aec3ef/urls_20210303170409_a6aec3ef.1606352862.megawarc.warc.zst
+server-timing: TR;dur=0,Tw;dur=0,Tc;dur=1
+x-app-server: wwwb-app253-dc8
+x-ts: 200
+x-tr: 790
+X-location: All
+X-AS: 5650
+X-RL: 0
+X-NA: 0
+X-Page-Cache: MISS
+Server-Timing: MISS
+X-NID: FRONTIER-FRTR
+Referrer-Policy: no-referrer-when-downgrade
+Permissions-Policy: interest-cohort=()
+X-sd: 0

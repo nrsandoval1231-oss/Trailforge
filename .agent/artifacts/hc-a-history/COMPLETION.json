@@ -1,0 +1,68 @@
+{
+  "schema_version": "agent-harness-completion-v1",
+  "packet_id": "HC-A-HISTORY",
+  "status": "IMPLEMENTED_AWAITING_CONTROLLER_GATES_AND_INDEPENDENT_REVIEW",
+  "repository": "C:/Users/nrsan/.codex/worktrees/trailforge-pre-rfp-lab/Trailforge",
+  "branch": "codex/trailforge-historical-path",
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "finish_utc": "2026-10-02T17:02:00Z",
+  "start_utc": "2026-10-02T15:50:36.106736Z (inherited packet start; actual resumed-work start UNKNOWN)",
+  "lane": "single builder",
+  "model": "UNKNOWN to builder",
+  "config_identity": "UNKNOWN",
+  "tokens": "UNKNOWN",
+  "repair_count": 2,
+  "changed_paths": [
+    ".gitattributes",
+    "pyproject.toml",
+    "docs/HISTORICAL_PATH.md",
+    "src/athena_procurement_arena/historical_cases.py",
+    "src/athena_procurement_arena/historical_case_report.py",
+    "scripts/prepare_pre_rfp_history.py",
+    "scripts/run_pre_rfp_history.py",
+    "scripts/run_pre_rfp_cohort.py",
+    "tests/procurement_arena/test_historical_cases.py",
+    "research/pre-rfp-history/cases/**",
+    "research/pre-rfp-history/results-v4/**"
+  ],
+  "commands": [
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_historical_cases.py -q",
+      "exit_code": 0,
+      "result": "25 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/historical_cases.py src/athena_procurement_arena/historical_case_report.py scripts/prepare_pre_rfp_history.py scripts/run_pre_rfp_history.py tests/procurement_arena/test_historical_cases.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run --python 3.11 python scripts/run_pre_rfp_history.py --output-dir research/pre-rfp-history/results-v4",
+      "exit_code": 0,
+      "result": "3 cases; cohort hash 3b796a55456ab693d16dfc64c238103f77d67bb94cdd5d5a2c487cf2c2de2909"
+    },
+    {
+      "command": "uv run --python 3.11 python scripts/run_pre_rfp_history.py --output-dir research/pre-rfp-history/results-v4-repeat",
+      "exit_code": 0,
+      "result": "same cohort hash; cohort/report SHA256 byte-identical"
+    },
+    {
+      "command": "uv run --python 3.11 --with pytest pytest tests/procurement_arena/test_historical_cases.py -q",
+      "exit_code": 0,
+      "result": "25 passed"
+    },
+    {
+      "command": "uv run --python 3.11 --with ruff ruff check src/athena_procurement_arena/historical_cases.py src/athena_procurement_arena/historical_case_report.py scripts/prepare_pre_rfp_history.py scripts/run_pre_rfp_history.py tests/procurement_arena/test_historical_cases.py",
+      "exit_code": 0,
+      "result": "All checks passed"
+    }
+  ],
+  "retained_evidence": "research/pre-rfp-history/pr7/hc-001/recovery-originals/manifest.json; controller preservation artifact reports 134 imported git blobs and 8 original body/header hashes unchanged.",
+  "result": "Montauk policy surface observed; no verified solicitation release or buyer-actionable direct route is established for any family. All qualified historical leads remain UNKNOWN; no discovery credit.",
+  "limitations": [
+    "Historical human research and review time UNKNOWN; HTTP elapsed is not total research burden.",
+    "No holdout or independent discovery validation.",
+    "Controller must run mandatory full repository gate and obtain fresh independent Sol review on frozen candidate."
+  ],
+  "preserved_failed_iterations": "results-v1 retained unchanged and superseded; intermediate output folders from failed runtime attempts remain in working tree as artifacts of bounded retries; final accepted deterministic outputs are results-v4 and results-v4-repeat."
+}

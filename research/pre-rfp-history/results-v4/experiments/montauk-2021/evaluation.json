@@ -1,0 +1,38 @@
+{
+  "declared_truth": {
+    "status": "UNVERIFIED",
+    "values": {
+      "outcome": "UNKNOWN",
+      "procurement_episode_id": "montauk-transmission-upgrades-2021",
+      "solicitation_at": null
+    }
+  },
+  "descriptive": {
+    "decision_count": 2,
+    "visible_evidence_count": 1
+  },
+  "later_evidence": {
+    "status": "UNVERIFIED",
+    "values": [
+      {
+        "claims": {
+          "archive_representation_observation": true,
+          "buyer_organization": "PSEG Long Island",
+          "generation_need_supported": true,
+          "need_evidence_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+          "need_reason": "Six modular generators support transmission circuit connections/upgrades and seasonal reliability",
+          "project_responsibility_supported": true,
+          "project_specific": true,
+          "required_mw": 6
+        },
+        "evidence_id": "montauk-2021-archive-observation",
+        "observed_at": "2026-10-02T16:07:08.727128+00:00",
+        "source_id": "montauk-2021-archive",
+        "verified_available_at": "2021-05-07T16:48:02+00:00"
+      }
+    ]
+  },
+  "outcome_metrics": "UNAVAILABLE",
+  "scoring": "UNSCORED",
+  "status": "UNSEALED"
+}

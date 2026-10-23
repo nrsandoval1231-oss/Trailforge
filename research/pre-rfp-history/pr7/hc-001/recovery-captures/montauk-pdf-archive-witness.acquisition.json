@@ -1,0 +1,30 @@
+{
+  "schema_version": "trailforge-compound-archive-witness-v1",
+  "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+  "retrieved_at": "2026-10-02T01:25:45.2111293Z",
+  "normalized_at": "2026-10-02T01:30:40.896166+00:00",
+  "composition": "Actual returned archive URL, Memento-Datetime response header, downloaded PDF hash, and retained Firecrawl text for byte-identical original PDF. No inferred or appended publication date.",
+  "archive_receipt": {
+    "retrieved_at_utc": "2026-10-02T01:25:45.2111293Z",
+    "request_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+    "curl_exit_code": 0,
+    "curl_response": [
+      "200",
+      "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "application/pdf"
+    ],
+    "body_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pdf-normal.pdf",
+    "headers_path": ".firecrawl\\hc-recovery-builder\\verified-montauk-pdf-normal-headers.txt",
+    "body_bytes": 214827,
+    "sha256": "85FFE159589CE0196A7BEF719938B94D4E35DA1BF601114C6E9D13B7EC3F789A"
+  },
+  "response_headers_cookie_omitted": "HTTP/1.1 200 OK\nServer: nginx\nDate: Fri, 02 Oct 2026 01:25:44 GMT\nContent-Type: application/pdf\nContent-Length: 214827\nConnection: keep-alive\nx-archive-orig-server: nginx\nx-archive-orig-date: Fri, 07 May 2021 16:48:02 GMT\nx-archive-orig-content-length: 214827\nx-archive-orig-connection: keep-alive\nx-archive-orig-keep-alive: timeout=20\nx-archive-orig-last-modified: Mon, 15 Mar 2021 22:21:39 GMT\nx-archive-orig-etag: \"604fddf3-3472b\"\nx-archive-orig-cache-control: public, max-age=31536000\nx-archive-orig-vary: Accept-Encoding\nx-archive-orig-access-control-allow-origin: *\nx-archive-orig-accept-ranges: bytes\ncache-control: max-age=1800\nx-archive-guessed-content-type: application/pdf\naccept-ranges: bytes\nx-archive-orig-content-type: application/pdf\nmemento-datetime: Fri, 07 May 2021 16:48:02 GMT\nlink: <https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel=\"original\", <https://web.archive.org/web/timemap/link/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel=\"timemap\"; type=\"application/link-format\", <https://web.archive.org/web/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf>; rel=\"timegate\"\ncontent-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org\nx-archive-src: CC-MAIN-2021-21-1620243988796.88-0016/CC-MAIN-20210507150814-20210507180814-00326.warc.gz\nserver-timing: captures_list;dur=0.412612, exclusion.robots;dur=0.042820, exclusion.robots.policy;dur=0.033664, esindex;dur=0.007190, cdx.remote;dur=10.332808, LoadShardBlock;dur=251.731089, PetaboxLoader3.datanode;dur=64.486588, PetaboxLoader3.resolve;dur=215.880824, load_resource;dur=59.422503\nx-app-server: wwwb-app206-dc6\nx-ts: 200\nx-tr: 340\nserver-timing: TR;dur=0,Tw;dur=0,Tc;dur=1\ncache-control: private\nX-RL: 0\nX-NA: 0\nX-Page-Cache: BYPASS\nServer-Timing: BYPASS\nX-NID: FRONTIER-FRTR\nReferrer-Policy: no-referrer-when-downgrade\nPermissions-Policy: interest-cohort=()\nX-sd: 0\nX-location: _pdf\n\n",
+  "archive_pdf_sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+  "original_pdf_path": "originals/montauk-2021.pdf",
+  "original_pdf_sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+  "text_capture_path": "captures/montauk-power.capture.json",
+  "text_capture_sha256": "5cc9e58b8b9b2d5becd34e5a00f032e5f3e448cabb6c6fbed2bfdb91f7f58015",
+  "memento_datetime": "Fri, 07 May 2021 16:48:02 GMT",
+  "archive_stamp": "20210507164802",
+  "capture_sha256": "842e27fb0e0edd77c5e1515a124b0e674cee7ab99b629dee26c7f7b676f71cd0"
+}

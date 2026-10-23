@@ -1,0 +1,234 @@
+{
+  "decision_snapshots": [
+    {
+      "action": "IGNORE",
+      "decision_hash": "0df1929314bab9da1f1d2c89121d1debb7aaeee2b3e29cc139099f5fab710ad5",
+      "decision_time": "2021-03-03T17:00:47+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "azure-sky-wind",
+        "seed": 1,
+        "time": "2021-03-03T17:00:47+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "UNKNOWN",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "archive_representation_observation": true,
+              "buyer_organization": "Enel Green Power North America",
+              "generation_need_supported": false,
+              "need_reason": "UNKNOWN",
+              "project_responsibility_supported": true,
+              "project_specific": true,
+              "required_mw": null
+            },
+            "contradictions": [],
+            "document_date": "2021-03-03T17:00:47+00:00",
+            "entity_candidates": [],
+            "event_date": "2021-03-03T17:00:47+00:00",
+            "evidence_id": "azure-sky-wind-archive-observation",
+            "is_prediction": false,
+            "lineage_family": "azure-sky-commissioning",
+            "observed_at": "2026-10-02T16:07:08.820861+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "azure-sky-wind-archive",
+            "source_spans": [
+              "has started construction of Azure Sky wind + storage"
+            ],
+            "source_version": "53acd8db653035b33bf9a58aadd42e54d15790891fcf439bf539593a0a9a3d11",
+            "tenant_id": "default",
+            "verified_available_at": "2021-03-03T17:00:47+00:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "azure-sky-wind-archive-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'enel green power north america', 'generation_need_supported': false, 'need_reason': 'unknown', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': none}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    },
+    {
+      "action": "IGNORE",
+      "decision_hash": "1b6c7bfc0dd7f8543cd79f16b99d14df64ce4262c4a1d8eea4bdce93ea6d33d2",
+      "decision_time": "2026-10-02T16:07:08.820861+00:00",
+      "policy_id": "BASELINE_A",
+      "policy_input": {
+        "scenario_id": "azure-sky-wind",
+        "seed": 1,
+        "time": "2026-10-02T16:07:08.820861+00:00",
+        "visible_evidence": [
+          {
+            "action_support": null,
+            "authority": "UNKNOWN",
+            "claim_basis": "REPORTED",
+            "claims": {
+              "archive_representation_observation": true,
+              "buyer_organization": "Enel Green Power North America",
+              "generation_need_supported": false,
+              "need_reason": "UNKNOWN",
+              "project_responsibility_supported": true,
+              "project_specific": true,
+              "required_mw": null
+            },
+            "contradictions": [],
+            "document_date": "2021-03-03T17:00:47+00:00",
+            "entity_candidates": [],
+            "event_date": "2021-03-03T17:00:47+00:00",
+            "evidence_id": "azure-sky-wind-archive-observation",
+            "is_prediction": false,
+            "lineage_family": "azure-sky-commissioning",
+            "observed_at": "2026-10-02T16:07:08.820861+00:00",
+            "permission_scope": "PUBLIC",
+            "source_id": "azure-sky-wind-archive",
+            "source_spans": [
+              "has started construction of Azure Sky wind + storage"
+            ],
+            "source_version": "53acd8db653035b33bf9a58aadd42e54d15790891fcf439bf539593a0a9a3d11",
+            "tenant_id": "default",
+            "verified_available_at": "2021-03-03T17:00:47+00:00"
+          }
+        ],
+        "visible_evidence_ids": [
+          "azure-sky-wind-archive-observation"
+        ]
+      },
+      "policy_output": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'enel green power north america', 'generation_need_supported': false, 'need_reason': 'unknown', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': none}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      }
+    }
+  ],
+  "ledger_hash": "5ad9d2996f4f789c438254320c9282ff49dc7523557e4ede5e25846c51760c42",
+  "ledger_verified": true,
+  "records": [
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'enel green power north america', 'generation_need_supported': false, 'need_reason': 'unknown', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': none}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "",
+      "record_hash": "0df1929314bab9da1f1d2c89121d1debb7aaeee2b3e29cc139099f5fab710ad5",
+      "scenario_id": "azure-sky-wind",
+      "simulation_time": "2021-03-03T17:00:47+00:00",
+      "visible_evidence_ids": [
+        "azure-sky-wind-archive-observation"
+      ]
+    },
+    {
+      "action": "IGNORE",
+      "forecast": {
+        "patterns": {
+          "entity_count": 1,
+          "hits": [
+            "power",
+            "mw"
+          ],
+          "required_mw": null,
+          "scope": "UNKNOWN",
+          "supply_mw": null,
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS",
+          "text": "{'archive_representation_observation': true, 'buyer_organization': 'enel green power north america', 'generation_need_supported': false, 'need_reason': 'unknown', 'project_responsibility_supported': true, 'project_specific': true, 'required_mw': none}"
+        },
+        "power": {
+          "peak_gap_mw": null,
+          "reason": "supply or load not quantified",
+          "status": "UNKNOWN"
+        },
+        "procurement": {
+          "confidence": 0.4,
+          "state": "EARLY_SIGNAL",
+          "target_scope": "UNKNOWN_TARGET_REQUIREMENTS"
+        },
+        "research": {
+          "budget": 1,
+          "priority": "HIGH"
+        }
+      },
+      "policy_id": "BASELINE_A",
+      "previous_hash": "0df1929314bab9da1f1d2c89121d1debb7aaeee2b3e29cc139099f5fab710ad5",
+      "record_hash": "1b6c7bfc0dd7f8543cd79f16b99d14df64ce4262c4a1d8eea4bdce93ea6d33d2",
+      "scenario_id": "azure-sky-wind",
+      "simulation_time": "2026-10-02T16:07:08.820861+00:00",
+      "visible_evidence_ids": [
+        "azure-sky-wind-archive-observation"
+      ]
+    }
+  ]
+}

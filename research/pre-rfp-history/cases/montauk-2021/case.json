@@ -1,0 +1,76 @@
+{
+  "buyer_path": [],
+  "buying_event_date": "UNKNOWN",
+  "case_id": "montauk-2021",
+  "cohort_role": "PURPOSIVE_DEVELOPMENT_FAMILY_NOT_HOLDOUT",
+  "conventional_milestone": "UNKNOWN",
+  "conventional_milestone_at": "UNKNOWN",
+  "conventional_milestone_evidence_id": null,
+  "evidence_sources": [
+    {
+      "archive_version_proof": {
+        "archive_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+        "body_path": "captures/archive.body",
+        "body_sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+        "capture_path": "captures/archive.capture.json",
+        "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged",
+        "headers_path": "captures/archive.headers.txt",
+        "headers_sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4",
+        "memento_datetime": "2021-05-07T16:48:02Z",
+        "original_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+        "receipt_path": "captures/archive.receipt.json"
+      },
+      "capture_hash": "9035539918cfbccc06ab964087af36236182811bf71be7926b1171b891aed15c",
+      "capture_id": "montauk-2021-archive",
+      "capture_path": "captures/archive.capture.json",
+      "content_sha256": "09a480937109e3b843e6b97fbbe018f3ae8acea58eb5f52dde5782a59aec2828",
+      "date_semantics": "REPRESENTATION_OBSERVATION_ONLY",
+      "reported_document_date": "2021-03-11",
+      "reported_event_date": "UNKNOWN",
+      "document_date": "2021-05-07T16:48:02+00:00",
+      "event_date": "2021-05-07T16:48:02+00:00",
+      "evidence_id": "montauk-2021-archive-observation",
+      "observation_kind": "ARCHIVE_REPRESENTATION_OBSERVATION",
+      "observed_at": "2026-10-02T16:07:08.727128+00:00",
+      "replay_included": true,
+      "reviewed_claims": {
+        "archive_representation_observation": true,
+        "buyer_organization": "PSEG Long Island",
+        "generation_need_supported": true,
+        "need_evidence_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+        "need_reason": "Six modular generators support transmission circuit connections/upgrades and seasonal reliability",
+        "project_responsibility_supported": true,
+        "project_specific": true,
+        "required_mw": 6
+      },
+      "source_quote": "maximum of six modular compressed natural gas (CNG) fired generators capable of producing",
+      "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "verified_available_at": "2021-05-07T16:48:02+00:00"
+    }
+  ],
+  "facility_type": "utility",
+  "first_buyer_actionable_at": null,
+  "historical_milestones": [],
+  "holdout_group": "DEVELOPMENT",
+  "invalidators": [
+    "2017 Montauk Energy Storage Center PPA is a different family",
+    "The 2021 environmental review is not a verified solicitation release"
+  ],
+  "known_buying_event": "UNKNOWN",
+  "location": "UNKNOWN",
+  "outcome": "UNKNOWN",
+  "power_activity": "transmission_upgrade",
+  "procurement_family_id": "montauk-2021-2024",
+  "project_identity": "Montauk transmission upgrades 2021",
+  "purchase_type": "temporary_generation_service",
+  "research_burden": {
+    "burden_source": "controller-retained research/pre-rfp-history/recovery-attempts/SUMMARY.json",
+    "elapsed_seconds": null,
+    "paid_retrievals": 0,
+    "retained_http_attempts": 0,
+    "time_status": "UNKNOWN",
+    "web_search_queries": 0
+  },
+  "scenario_path": "scenario.json",
+  "schema_version": "trailforge-pre-rfp-case-v1"
+}

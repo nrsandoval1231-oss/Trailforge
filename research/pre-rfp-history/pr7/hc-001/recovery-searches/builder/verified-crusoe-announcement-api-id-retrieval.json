@@ -1,0 +1,14 @@
+{
+  "retrieved_at_utc": "2026-10-02T01:27:44.9257115Z",
+  "request_url": "https://web.archive.org/web/20240718173732id_/https://lancium.com/wp-json/wp/v2/posts/3134",
+  "curl_exit_code": 0,
+  "curl_response": [
+    "200",
+    "https://web.archive.org/web/20240718173732id_/https://lancium.com/wp-json/wp/v2/posts/3134",
+    "application/json; charset=UTF-8"
+  ],
+  "body_path": ".firecrawl\\hc-recovery-builder\\verified-crusoe-announcement-api-id.json",
+  "headers_path": ".firecrawl\\hc-recovery-builder\\verified-crusoe-announcement-api-id-headers.txt",
+  "body_bytes": 18748,
+  "sha256": "65EF9847136EB19B6CD6286F6875131D4D3ECEEC8DC607E2BB5FB905E6236B30"
+}

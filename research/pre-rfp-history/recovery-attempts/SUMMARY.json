@@ -1,0 +1,49 @@
+{
+  "schema": "historical-recovery-attempts-v1",
+  "recorded_at_utc": "2026-10-02T15:59:03.584339+00:00",
+  "attempts": [
+    {
+      "case": "Montauk",
+      "receipt": "montauk-pre2020.json",
+      "result": "Closest API snapshot2021-10-18; no earlier recovery. Not proof of absence."
+    },
+    {
+      "case": "Azure Sky",
+      "receipt": "azure-2021.json",
+      "result": "API locator found snapshot2021-03-03T17:00:47Z; verified body+Memento receipt in azure-2021-body.json. Construction observation, not temporary generation buying event."
+    },
+    {
+      "case": "Montauk",
+      "receipt": "montauk-procurement-cdx.json",
+      "result": "Empty wildcard CDX response. Search coverage limitation, not no-procurement evidence."
+    },
+    {
+      "case": "Montauk",
+      "receipt": "lipa-procurement2021.json",
+      "result": "273-page official2021 procurement report read; page156 matched Montauk Energy Storage Center LLC PPA C-000885 awarded2017, not2021 modular temporary generation family. Rejected join; scanned keyword hits not exhaustive review of every contract."
+    },
+    {
+      "case": "Crusoe",
+      "receipt": "ge-crusoe-order.json",
+      "result": "5-page official supplier order release read;29 turbines, month-only Dec2024/June2025 portfolio orders. No Abilene package identity; not selected campus solicitation. Rejected as milestone."
+    }
+  ],
+  "search_calls": 2,
+  "search_queries": 6,
+  "search_query_scope": [
+    "site:lipower.org Montauk2021 temporary generation procurement award rental",
+    "site:enel.com Azure Sky commissioning Aggreko",
+    "site:lancium.com Crusoe Abilene gas turbines procurement contractor",
+    "site:gevernova.com Crusoe2025 29",
+    "site:lipower.org Montauk Aggreko2021",
+    "site:psegliny.com Montauk temporary bid"
+  ],
+  "public_http_attempts": 6,
+  "paid_service_calls": 0,
+  "historical_human_research_time": "UNKNOWN",
+  "total_agent_tokens": "UNKNOWN",
+  "failures": [
+    "pymupdf renderer unavailable; recovered with bundled pypdfium2; text extraction pypdf and visual page inspection completed"
+  ],
+  "interpretation": "All cases exposed development backtraces; no holdout or independent discovery credit; no commercial lead measurements inferred."
+}

@@ -1,0 +1,52 @@
+{
+  "recorded_at_utc": "2026-10-02T15:59:03.584339+00:00",
+  "direction": "CONTINUE: PR9 runtime plus exact retained PR7 evidence only",
+  "prs": [
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/trailforge-firecrawl-vertical-slice",
+      "headRefOid": "2e18980c70b209ee20fd72df0c489b84815cefd2",
+      "mergedAt": null,
+      "number": 7,
+      "state": "OPEN",
+      "url": "https://github.com/nrsandoval1231-oss/Trailforge/pull/7"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/trailforge-pre-rfp-lab",
+      "headRefOid": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+      "mergedAt": null,
+      "number": 9,
+      "state": "OPEN",
+      "url": "https://github.com/nrsandoval1231-oss/Trailforge/pull/9"
+    }
+  ],
+  "remote_main": "6a9ffa332f6dd0b89a14acfcbaed2a99cc7f06cb",
+  "dependencies": "Both descend from fd772eb; PR9 includes canonical strategy main6a9ffa3. Both use shared public_capture, source and trace infrastructure.",
+  "overlap": [
+    "README.md",
+    ".agent/CURRENT_STATE.md",
+    ".gitattributes"
+  ],
+  "reuse": [
+    "PR9 HistoricalCase + TemporalWorld + experiment store",
+    "PR7 archive bodies, headers, captures, original PDFs, recovery history"
+  ],
+  "excluded": [
+    "PR7 separate historical_cohort engine",
+    "PR7 UI/workspace/acquisition runtime changes",
+    "PR7 canonical doc differences",
+    "dirty operator checkout"
+  ],
+  "gaps": [
+    "receipt-bound archive representation",
+    "then-available usable buyer route",
+    "verified generation solicitation milestone",
+    "policy vs commercial lead separation"
+  ],
+  "ci": {
+    "7": "success run36954441372 at head2e18980",
+    "9": "success run37024193024 at headc4a1fc5"
+  },
+  "authority": "LOCAL ONLY; no push or merge"
+}

@@ -1,0 +1,12 @@
+{
+  "body_path": "originals/montauk-2021.pdf",
+  "body_sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+  "content_type": "application/pdf",
+  "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged",
+  "headers_path": "recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt",
+  "headers_sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4",
+  "http_status": 200,
+  "memento_datetime_utc": "2021-05-07T16:48:02Z",
+  "project_id": "montauk-transmission-upgrades-2021",
+  "source_url": "https://web.archive.org/web/20210507164802/https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf"
+}

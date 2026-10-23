@@ -1,0 +1,33 @@
+{
+  "packet_id": "HC-A-HISTORY",
+  "status": "BOUNDED_IMPLEMENTATION_ACCEPTED",
+  "accepted_at_utc": "2026-10-02T17:47:23.621397+00:00",
+  "candidate_sha256": "a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5",
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "branch": "codex/trailforge-historical-path",
+  "review": "REVIEW.json",
+  "gates": "CONTROLLER_GATES.json",
+  "runtime": "CONTROLLER_RUNTIME.json",
+  "portability": "CONTROLLER_PORTABILITY.json",
+  "source_files": 502,
+  "final_report": "research/pre-rfp-history/results-controller-final/report.md",
+  "cohort_hash": "d4db87f19254b803a49cab7d0080d56567c3d5ae07e56678b278f2468597f387",
+  "lead_findings": {
+    "montauk-2021": "Policy surface 2021-05-07T16:48:02Z; commercial lead UNKNOWN",
+    "crusoe-abilene": "No policy surface in retained eligible timeline; commercial lead UNKNOWN",
+    "azure-sky-wind": "No policy surface in retained eligible timeline; commercial lead UNKNOWN"
+  },
+  "parent_finish_contract": "UNMET",
+  "direction": "CONTINUE",
+  "next_bounded_step": "One bounded development evidence packet: recover a same-family generation solicitation release and a then-available direct buyer route under a recorded research-time budget. Keep unresolved results. Separately curate fresh unexposed replacement families, freeze policy/splits/milestone/burden rules before any holdout read, then run prospective name-blind discovery.",
+  "git_state": "staged local candidate; no commit, push or merge",
+  "remote_prs": "7 and9OPEN at previously verified unchanged heads; no exact-new-candidate GitHub CI",
+  "merge_ready": false,
+  "merge_readiness_reason": "Locally accepted only; no published commit or exact-head CI, no push/merge authorization",
+  "authority_preserved": [
+    "BASELINE_A and PRE_RFP_BASELINE_V1 unchanged",
+    "canonical intent unchanged",
+    "134PR7blobs and73originaldirtyfiles unchanged",
+    "no paid services,outreach,submission,deployment,promotion,holdout use"
+  ]
+}

@@ -1,0 +1,2518 @@
+{
+  "base_sha": "c4a1fc52bd3e7ad81a2733958d6a1faa4bf24f8b",
+  "branch": "codex/trailforge-historical-path",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "6a6a7106b160b40ad193ae9edfa8d66b6d3fb7b2ee567079322cdaa187232798",
+      "index_blob": "f104aa4a4c58a690072171c4cb34fa6c4c9e1ba0"
+    },
+    {
+      "path": "docs/HISTORICAL_PATH.md",
+      "sha256": "af4873400e9979242b400754af39f454dfd7de30f8e94b78bbdc9633be4f5cb7",
+      "index_blob": "3f2a11d2881a71ff068f5eff2a6ae3ca9a42826b"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "d9478b55f21bb6d76fd0cf7dd2c79597d6de0d56f6d499d0559fe846d55d3111",
+      "index_blob": "a3e1159fe368f37a831e4c51f9408251e57a004b"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/captures/archive.body",
+      "sha256": "ed212908d8eafff76b62c86a2a1f7fba63651a8b085856865fc26ef88f0262bf",
+      "index_blob": "c4daaedf8434a5adcb2c61c905d85f0ddd24a223"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/captures/archive.capture.json",
+      "sha256": "50fd4d6ce1985ebb0873532464287199108981f141469e0af94ba592da1ecc63",
+      "index_blob": "0c9410f25cd8bfc2372160ac8b555f42395796a8"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/captures/archive.headers.txt",
+      "sha256": "7d7a23cdfebc91e6cc4b2f764a0d0307e1a56d2dd1c4f4823dfe0f454c3a16e6",
+      "index_blob": "f336783b47c21ddf821857349ad9b903e4804d8c"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/captures/archive.receipt.json",
+      "sha256": "2e2e7e9266dfe129996986383ed969eaf626f5c3b5b212ed6adea436ff9e60eb",
+      "index_blob": "d774e2c73e7b423994cc22fde7ea3fee24bcaa66"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/case.json",
+      "sha256": "3b48d8b11831d52702bbccda1db2a7af94030aa36f6ea094fd2cb7c387e1bf51",
+      "index_blob": "614efbce3a06749be4bad65d0ebcedb3f7d9a628"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/azure-sky-wind/scenario.json",
+      "sha256": "41d114f8aec20817c218829c30049f1210fc951823efb36e704d2f8cab8b5823",
+      "index_blob": "ef1a74b2a58072083ca4257713c15f724de809f1"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/captures/archive.body",
+      "sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe",
+      "index_blob": "89d4f7a92d2a46b5677d6275b7ad9fac5ecc3aa8"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/captures/archive.capture.json",
+      "sha256": "99ed5498c879ac192ff78e5c0b4d60e24a10bb74548abb297a1286926550beef",
+      "index_blob": "4d6462ea833ffd5d0cea4e983a9e30e8bc4c026c"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/captures/archive.headers.txt",
+      "sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9",
+      "index_blob": "a53259f69d6435323537ae9699dfb2eeff68193c"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/captures/archive.receipt.json",
+      "sha256": "fd3b9203646a81cdea01803496bd952aea4f87145fc1d1f7ce9d9c9abff3c329",
+      "index_blob": "f07b44b6cdb694a90c2343be754808fa270cf3de"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/case.json",
+      "sha256": "3eac639bc968af775c9df3b49a5ad3167a60584e84e4cd660dfa66ad57ff6df4",
+      "index_blob": "a18347427a49d78dbd74f81d478e00407915b872"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/crusoe-abilene/scenario.json",
+      "sha256": "2f57c9cc5ed3b9ea5760bfae9258a3847236eb698b74c54f720cad0682452d83",
+      "index_blob": "271a56b87a708e690b19a013837bb28a05962594"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/captures/archive.body",
+      "sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+      "index_blob": "e4bd91cafd5aef526fa4c5e60b33c463cb2ddca8"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/captures/archive.capture.json",
+      "sha256": "6efddcdd4cd052b3df58d09e7c61fe86149dc3e92c30992b754a08958ba3d442",
+      "index_blob": "d9fdb28d68d0b8c06cd1d67183437957eca2808a"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/captures/archive.headers.txt",
+      "sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4",
+      "index_blob": "5e1096ee09d24a16a67ad58c7020729c86a2d09a"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/captures/archive.receipt.json",
+      "sha256": "676164142192c6283c835af0324dbe43a73cd09c7d7391103f5742c3625bfe1b",
+      "index_blob": "8bc8db5512bc1dfe0744f3abe45e6e185e8ef5da"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/case.json",
+      "sha256": "c9e2e36dd01c65c9d7053a654d51de0bc6dae942d294e07f62ee6ca7747f7df8",
+      "index_blob": "9cdc54e13c83f72088f71ee588944706bb595ac5"
+    },
+    {
+      "path": "research/pre-rfp-history/cases/montauk-2021/scenario.json",
+      "sha256": "40eb1f2b4884a4bc789208a5d22c0ea3155f4a656afd48766f304dd22fd27431",
+      "index_blob": "3f99ad2b4a9117bd45275c186a2cb3e3b80e6bed"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/README.md",
+      "sha256": "8b7036d8503216804fcd17ab6bf01e24873562d04cae1944b2afec261991e4f7",
+      "index_blob": "330ad6d1c7f2e154f069c4658992658b29184529"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/RECOVERY-v1.md",
+      "sha256": "f18e93a7727ad8e4c19c320ed1d1efe2aa8f31c9f39872e31bdd3d17efc0f618",
+      "index_blob": "930cae377f46b664130ada7bc33400e8dc5de670"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-announcement.acquisition.json",
+      "sha256": "9b590a5c685c6b095926929d741441805e76fbed1de6f572fd8e3b553c487110",
+      "index_blob": "c6abec7e0d808391d82257f4a821c17b80992ba8"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-announcement.capture.json",
+      "sha256": "139dce1b45c0b2575a87237043b4856e7522c69eb77a6f126b971ed2f431663b",
+      "index_blob": "8c8e56461d50057489d56bcd582d42914bd65159"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-power.acquisition.json",
+      "sha256": "b393c7b1ced15c6d30b7bfc38bfcb88c39f6231d3132de06600b5a9dd8a613fa",
+      "index_blob": "9aee091ebe93ce1037dccb8c76c34fda2eb2dd1a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/azure-power.capture.json",
+      "sha256": "e8b2e1fa05cccb26cba64611b0e1f54651f9b3fccec48e856816b9d713d29016",
+      "index_blob": "4fcf0a8da77593786ee7b3e2de639cbd1260d0e1"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-announcement.acquisition.json",
+      "sha256": "bdd0bbe9df0dc486eb380012b514814c340fb4b3a76e49e12512b0086f575623",
+      "index_blob": "09585bebc382829b7ec3ddff066fd2cfff7ce34d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-announcement.capture.json",
+      "sha256": "fab496e6c7e46924da487d81adb3bd2ef5b8eecdef917a6ad660b1d5537436f1",
+      "index_blob": "df07e00de2ff6a14ad8288be5bcc99fcaf5db25f"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-power.acquisition.json",
+      "sha256": "cf39bf6882df34c2c7422e08f58e8e73079d6e4d13a62dd15de5a2af1f23bb11",
+      "index_blob": "da8f211de3bcef2fed5ab0bc4d1b496299a9fc4c"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-power.capture.json",
+      "sha256": "4a29d2800155d3240fac3170890d4d9c67e0e2da7f094a3d4d57e91db0e039dc",
+      "index_blob": "418736d1eb5030ef987d2fcb5c91b01edbfeefda"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-specific-power.acquisition.json",
+      "sha256": "d560d9b7dc80c2d1518011eb09c640153f9e6d7c9fe04949700379f69e11ebc5",
+      "index_blob": "46dc276782ce53f6e8c7a9857cf6fa4c5c6bff09"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/crusoe-specific-power.capture.json",
+      "sha256": "080772877bc205e5c510c31e7550997b47eb4ad2f75c099a670fff2c0e5932fb",
+      "index_blob": "2e28f2ce51b2bbc6992316a26e8a884fc04aaced"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/east-hampton-power.acquisition.json",
+      "sha256": "e522e5da8531ee2442c2363e7763fdd71d002a9fe0e55fd8dc23f1803154f995",
+      "index_blob": "b2e5a86dff7e1b94dde2f2593f431693454cac4b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/east-hampton-power.capture.json",
+      "sha256": "5344eeff87bb8aed06ec493a45a5108341716d84f32dd7802c4bb641e5fd9bc4",
+      "index_blob": "09b2156687fe29c45d5f8c37fa8d1f7b84a875e2"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-early.acquisition.json",
+      "sha256": "63c087ee0177a6ed4f2e2bff95e2e95c9dbe2663f6df30625606a0dbd2fb9c0b",
+      "index_blob": "8536973861f05b671bd0cb155da8bf8d7a3138b6"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-early.capture.json",
+      "sha256": "eff35dff981aa4068ae6c2cd6dcbf3428d09a2669b845e021c89b89eb160a6be",
+      "index_blob": "37b0e447b70996683e6a4f9248032a80b0257097"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-power.acquisition.json",
+      "sha256": "ac46bdd17129810aadc891479dfca1f54d2ab066bd250dfb66eb069ca2e201a8",
+      "index_blob": "8617b38893483f73427ea5b7aba0e2219e6e1938"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-power.capture.json",
+      "sha256": "c625d2663da205e8ce9562c87dc7e1ed09abdedc673de3cc388511a4d7882b24",
+      "index_blob": "7a860b0219ce86d76556546836c05c03001b5634"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-utility.acquisition.json",
+      "sha256": "e56bed88b6bb679a2ec86d3bc268dfc88e6c6fb9d62525c442ec9e468b8eb693",
+      "index_blob": "215214d391fb732c5c592216ac07cbca981f0b08"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/montauk-utility.capture.json",
+      "sha256": "f64cba300d377c7accf9bf116c7fc46debffe37f996dd06879e1d883c5661b36",
+      "index_blob": "b28f55d9a7d11f2437f404e1d10355675157b6aa"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/prometheus-power.acquisition.json",
+      "sha256": "f2849470c71e8d1cb583fe31d2be81e0f391413e852695999e462124623f05ea",
+      "index_blob": "49c5b5f181ce07e27a8f0ef22c31592f808359df"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/prometheus-power.capture.json",
+      "sha256": "88747307378c08f28afe7d6f31ee09446305ea02c9f0fd3fc6a268895b5264cd",
+      "index_blob": "dc97f2bd7c8c75b6c1a2588e79d1fbf0c52c52f1"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-2024-power.acquisition.json",
+      "sha256": "c7154bb64800ab5dbc1d1318f5d4152b33ceb2b4266a549f11f805c789dfd740",
+      "index_blob": "f9dcee86986fa2a8514410c1c1fa2744c10004b6"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-2024-power.capture.json",
+      "sha256": "8fe6cb36f9b4f9d442d27815ee42a6ae223b3de541ab3f865e6c7aff20dbce9a",
+      "index_blob": "1530c1e33c1dbd291424af75a5909e6ddb41dd37"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement-archive.acquisition.json",
+      "sha256": "e41e7c87c21b993cd7b6f0f7719558c3ace0f90d1f43655844a8f71513ab5983",
+      "index_blob": "206e8552d46679ef7f46416073415e33129c7fb0"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement-archive.capture.json",
+      "sha256": "41b031c5a0d2fbce11b544fd54af718512e38d4cf3a8f304ea13f41393a16cf1",
+      "index_blob": "57bae0dcee9130edac1551e8eefe1a052d06205e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement.acquisition.json",
+      "sha256": "9895bdb69159ea4babc5b035dfb0e74f5b5551c762ae4a011541a9dbdf48a6ed",
+      "index_blob": "e51c22aa4ed3763480afb3dee7b65a86617d8e37"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-announcement.capture.json",
+      "sha256": "d91dc4d0f4ec440d93d88b0e5f6969e099a2bbb8afb987e2d6afe83ea2020264",
+      "index_blob": "60cb084b25668b54d17f1b9ac28b680d5c3196f4"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-cnbc-power.acquisition.json",
+      "sha256": "8e31eaa1d0308a23f8f9bf5135c8199cb5f518004d0c92ef2d66996864d1648f",
+      "index_blob": "207773ce9dc3f6402c5ede6218daca1ad556517a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-cnbc-power.capture.json",
+      "sha256": "daaf7b165e677e20fa2a07e113a484fd4ddc230ddf19bf7cf580274159ad7b23",
+      "index_blob": "af3179b27fc2659f7a0b62edd534446039713342"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-dated-power.acquisition.json",
+      "sha256": "2521313df195ab9a89ec2f5a37d333def5d0b127f6194adb4fd94c328c3f0ceb",
+      "index_blob": "af3fdd664b5a6dd82ec194babd6d457c2cbb45c0"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-dated-power.capture.json",
+      "sha256": "b67cec3a51b5ed8c4ab2171bfcfa531ed1cdd048a37133a953484af8764eee5a",
+      "index_blob": "b1df2cef9ed3af4395a313c386bc6e7e4ba2e920"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-expansion.acquisition.json",
+      "sha256": "2d32d47d4cbbe8f3bcf6ac5ff9940164ac7f28e982c27ff6d6e06981954b22c1",
+      "index_blob": "63ae7a6c1c7e55ba325529198683c016af8f51da"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-expansion.capture.json",
+      "sha256": "417c27d547a68b0d91c4c2c4872165ad08dad4b9a169bf77050915626609d33b",
+      "index_blob": "3e0ae9e76296449a916085cf8994e98ece039d77"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-power.acquisition.json",
+      "sha256": "aeb56b42d863ecb659a43f2fea4ee1cc67419d7542fd23710c70e090698402c4",
+      "index_blob": "5d3821ae74d155d058b7248e63b38a858221b6c6"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/captures/xai-power.capture.json",
+      "sha256": "61838a9d70d1be7ac380afedcaf31dd52f9be65035122b10a0631da34d0d2ea9",
+      "index_blob": "5f5b7001ef7268264fa45af5a9e8d22e8d085c43"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/cohort-input-recovery-v1.json",
+      "sha256": "cd1f3348e48690bcb1018fb9b05c278d24ca0fc1c5c17e1a044e02f3ac477634",
+      "index_blob": "6fdac343f55ad9bdd666b60e3c5a56bdfb48442d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/cohort-input.json",
+      "sha256": "e008daba8ae85840acf880e33b0073c2318f09dc9b09bd948d6e5491a40f9ed0",
+      "index_blob": "090abf4601fc3989fa3e57f2b87cb7aebd19d6d6"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/east-hampton-2018.pdf",
+      "sha256": "bd670314d972905204ee067209cd2510adc5b527afd1c78219128d3c3bd27dea",
+      "index_blob": "bab61ec52183cec37b4eb375d2aeba938da023fd"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/manifest.json",
+      "sha256": "945afdf87586e3faf8aa9a6bd45c93bf17ecff2b05b9547c5c06ad1515ba7824",
+      "index_blob": "1765be7ae78173c19487b2782569c1f37f78e808"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/originals/montauk-2021.pdf",
+      "sha256": "85ffe159589ce0196a7bef719938b94d4e35da1bf601114c6e9d13b7ec3f789a",
+      "index_blob": "e4bd91cafd5aef526fa4c5e60b33c463cb2ddca8"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/COMPLETION.md",
+      "sha256": "d0b385ce7ae1f19140ce731114a9ac71c4ad0bc53727fbce02ba901dc31b8c1a",
+      "index_blob": "fd66d250b414c621e0bcb716b3d10a009e85e304"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/limited-searches.md",
+      "sha256": "a410b7da3780f825f9eba3d6918ebc78c72d8429fed97a337a130f0be278a32c",
+      "index_blob": "110f7e357ae53e5f80e84bc6b151907999468b06"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/replay-header-receipts.txt",
+      "sha256": "573b8f6c84fe84295eb01a51a4c56e2fd2e00f7f504f17eecc163f988769c050",
+      "index_blob": "e81815ce0b3de09fdc84ef1dfdfccd570ff0634f"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-builder/selected-evidence.json",
+      "sha256": "6a76392d230ea112d90f9ff489356551ef95dc3600779579de0e4c655ac18e9f",
+      "index_blob": "cd4f8a0ad7a12ef044e674b31fff8b26f927face"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-early-archive.acquisition.json",
+      "sha256": "28cbb2b86ad9469ead1ea65825efbf89d37986d975cb07814a99695c4c5848e9",
+      "index_blob": "a0b463c0475872cd55214336215e7340f44ee3fa"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-early-archive.capture.json",
+      "sha256": "da013fd0d97d3d6d89c5a1769649ebdaf85037eafbcc8dfa970e60264f26807e",
+      "index_blob": "d6fb1c018897da57d8681429f83bcd060b5cd3b9"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-announcement-live.acquisition.json",
+      "sha256": "64f709e8a3e3a9afbdf78ea2739e58c8e9991e2fc2038d00bb8a39bd6c42910d",
+      "index_blob": "922363aff31ee1427399bbb43ca48be962ca85f9"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-announcement-live.capture.json",
+      "sha256": "951c0254f604b408184564200019f8ad6d956e6c0610b98128a5882cce3e0a75",
+      "index_blob": "5a1d9b9e3513b98a27c3fa0854a6546fa7ee91da"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-target-live.acquisition.json",
+      "sha256": "235a7c59b40dcaec00596a72e35cfa59de175709fdd4ef19955ff97076c8e41e",
+      "index_blob": "5950a4fb5d73a1319f93e6f8e1e219df5d5adb79"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-legacy-target-live.capture.json",
+      "sha256": "7f1bf0138184c03eb2ad0e241f10800bac6b7a969b35efd8495bc9277c6a6df1",
+      "index_blob": "3631c666fc0da5c29a4ff1a6274c59a4d01f476d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-target-archive.acquisition.json",
+      "sha256": "c265866e563bcc4a6047a2bf7857af6c1718ad6b219e6c39920379da085ab354",
+      "index_blob": "49385c955c68b6b370b11ff249ddc45c484e14a4"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/crusoe-target-archive.capture.json",
+      "sha256": "a90a21b57069181c35694ee34b1275d53e599795987305dec6f42f85f4055b48",
+      "index_blob": "a86b4deb51623c3de53b6d1dfcbf6a81e014e6e1"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-early-archive.acquisition.json",
+      "sha256": "beec7c624bebd5dbe54a72c1717949fd02f451dc323cde35438ed9044e3ae397",
+      "index_blob": "47e21afe58fd78add5e30bf35969c4a5ccba4274"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-early-archive.capture.json",
+      "sha256": "ae9188f5dc178193b47dbed8ca06914ef08ca1f86ac5b1979e4ab21bd13a603e",
+      "index_blob": "8a83a4f8fe922fcddc8d86cee1786f455ffb2f42"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-pdf-archive-witness.acquisition.json",
+      "sha256": "94b9041ad60bd42f1991cbf8a31b4cc7dfb1b074e0898b0a07a0d4dd2117e6f1",
+      "index_blob": "256a14017f0e65bd19055967228da8afe7096666"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/montauk-pdf-archive-witness.capture.json",
+      "sha256": "f05a21d11aa8bed986a8596bbb4958697421905221a1d841201660eb7d1e8df5",
+      "index_blob": "91086ebd45a247bb497d2426ed018aa3232722ae"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-archive.acquisition.json",
+      "sha256": "11ac3e8fcbf91b23023ab4830858f076cab0683cf90981eb4cc1bca8f6d86acf",
+      "index_blob": "8c0f87f9c6d71517a5ba19d6be533b023c81fcb2"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-archive.capture.json",
+      "sha256": "bde2bc26e67c1db9d26dc935583a7739c9bf83938594f287c59d2fa5c95ecc5b",
+      "index_blob": "f5c0f9d76458700a85a84826285decc4abf15304"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-live.acquisition.json",
+      "sha256": "75582d70c0bf3c8f085b0848900ead97b8445b284aeb1aa0faf24f72b76c562d",
+      "index_blob": "49ee1bb7754b2b56d9879967f60cadd11296e37d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-captures/xai-city-bulletin-live.capture.json",
+      "sha256": "2dcc4436f5cc6f1b8521ba031e716c249decebf34f403f2d51a31a6debbf81a6",
+      "index_blob": "366c936abf5c0a9539fb3825bac0cc6f080233e4"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/manifest.json",
+      "sha256": "a0c8b8cb148822e9fdc6c3d8dabde797524346ad67ec4d7c0a8e67ff2dd22b2e",
+      "index_blob": "4d711c598b9f1b72d3f43fa327da6eee23c0c0da"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt",
+      "sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9",
+      "index_blob": "a53259f69d6435323537ae9699dfb2eeff68193c"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-announcement-html-normal.html",
+      "sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe",
+      "index_blob": "89d4f7a92d2a46b5677d6275b7ad9fac5ecc3aa8"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-target-normal-headers-cookie-omitted.txt",
+      "sha256": "8598a19950a055f56121b3d17cc1453f9be6da346a3a084db0e4deee0eeecae8",
+      "index_blob": "8d6150f346eff8eb323865c218c99a00b016f8b8"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-crusoe-target-normal.html",
+      "sha256": "5a1c46002338387af044bee8f8ce81cf647a4144b64121fbc682ab874c768cf6",
+      "index_blob": "719b6efeed11b5ab47ffcf9c4c249e10d7b38550"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pdf-normal-headers-cookie-omitted.txt",
+      "sha256": "c5159a10d671b832258dc3c4a9fe150eb1c1c3e41cdab331aeebae37a84644a4",
+      "index_blob": "5e1096ee09d24a16a67ad58c7020729c86a2d09a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pseg-normal-headers-cookie-omitted.txt",
+      "sha256": "04be8471825c0726810bb4f5cdb10946e63f6613639cede215b103ee916034a4",
+      "index_blob": "80c95daf97e70af1f02211c59b7d4b1eae9e265e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-originals/verified-montauk-pseg-normal.html",
+      "sha256": "4c9e6e6e733fec1b06f24f18e08b5ac84f9f22974238ab2bcf1cae5ec8fbf283",
+      "index_blob": "0d59b6dcd5a4c30cdaf036dfc644bdaaa9e49472"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/NOTES.md",
+      "sha256": "eb2fc63f8c81479dddae21fd9c0279da089048c6d95f6a4d2e001611b0ec40a2",
+      "index_blob": "c03b38ec0799fa24316e2e6fd33a09e4350fcb9a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/xai-chamber-current.json",
+      "sha256": "df970f40b2b324a60806273a9f412530243f6f7d6246527cbe9b84981716bfb2",
+      "index_blob": "b6d8aba75952d9bf3007b760e8233a2c50e8bc6a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-parent/xai-reuters-current.json",
+      "sha256": "2a6065959b358317ca3b4bfa93d8f2664564eb7beb4194c043b0960fa950273c",
+      "index_blob": "1e99dacc61a0cd7b76139ed104a51c091515ea8e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-domain-prefix.txt",
+      "sha256": "9eae88ce1c73e37b542145f38fe64da260b85b0a0e16d38ac6a74969beb1d3f8",
+      "index_blob": "4a7c2884bbcf7de4d3d0521be738f4b97430ee1b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-lancium-exact.txt",
+      "sha256": "9d03ede7a84203098b726a3c19242249ec29ceaa4c5a7e5bcc98ca7d000c0139",
+      "index_blob": "8934a98dbf810d4e7dd8037a19f74ac6dbb9d66e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-lancium-wildcard.txt",
+      "sha256": "031bbea7093b8daad156b0d677917ce28d1256fda95fc19ba2bfcf19b0b0ec14",
+      "index_blob": "ef1bb42a3bc06703c3cd9dff346e63e8c024b9e0"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-crusoe-specific-exact.txt",
+      "sha256": "573f84c3ef9a8d79fa72657181af21113b15ad79e7a9c1911c9d35c6010f52bb",
+      "index_blob": "b444fccf05297528dd498a04b140d4fd7a9b4a7b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-lipa-pdf-exact.txt",
+      "sha256": "573f84c3ef9a8d79fa72657181af21113b15ad79e7a9c1911c9d35c6010f52bb",
+      "index_blob": "b444fccf05297528dd498a04b140d4fd7a9b4a7b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-lipa-wildcard.txt",
+      "sha256": "04aa6ae0d4cc053ae35cd61f1aa8406a8043d33ce3e8951bafd3c3176597496b",
+      "index_blob": "0cd5a8b6a280b0c400de869353ef4c9cfb1145d7"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-pseg-exact.txt",
+      "sha256": "e5a76aa360a279eb38798d2ea4ccc0a1b494a51b79bf578c66b557ac9ffa1674",
+      "index_blob": "bf4661f5520fcc598a90b11096d92d254b855bbd"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/cdx-montauk-pseg-wildcard.txt",
+      "sha256": "1360d1f95265c341bd7118c18f4eedb34486b7354545d4d4fa01bc7211958f07",
+      "index_blob": "bad172184737c79fe59854dbfe2b80865837cca0"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-id-retrieval.json",
+      "sha256": "3c7883e60c6afa7ed07010daa19b607e5b7921553960cdc67aa119f5ed72e421",
+      "index_blob": "dc3f26434b5cb62e02fa2e0e1ba5a4788daa4528"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-api-normal-retrieval.json",
+      "sha256": "f080da4a5a7a69128f06ab5b3f14cdb405a17391f1e4f5784b0e55d6847996f7",
+      "index_blob": "9160fc4cc9a32d548e524121b39e4b6775b9838e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-announcement-html-normal-retrieval.json",
+      "sha256": "9a953accc7e59bb1a75b2833511a3a98fb686a57748d7a3c44cf1788ac19a15b",
+      "index_blob": "aa94c4ed1b39db4db41aa7369df6cb01c900d4a1"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-crusoe-target-normal-retrieval.json",
+      "sha256": "d9e057bb50013412289c3a1afda96189a0eca6e38334f2971511ce4d79ac992d",
+      "index_blob": "a81bec4a31180da9bb8b596d4b0ed6cf542ab1cb"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pdf-id-retrieval.json",
+      "sha256": "0aac68300b87c7bf511044af839ca84507a39f825fc3d27e94b8594b3b83cdb5",
+      "index_blob": "b8b5cfedc5350bfcfa67a0f663bdeb6cbbf05b3e"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pdf-normal-retrieval.json",
+      "sha256": "a544652be03df133cd4b8cfe36ed61008eab78bf6b17a8cbe99e0eb7834b8551",
+      "index_blob": "2c244a3fcf89355988c4d89969fd8a69706d4093"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/verified-montauk-pseg-normal-retrieval.json",
+      "sha256": "16f7309fc44f6e9f5b674078d022eb33af27366c65a01fb801dd0eb6f591718d",
+      "index_blob": "017132bd78cb7964a87647df416587164ac7f0ca"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-announcement.json",
+      "sha256": "bbaa86a9bc3c035c7ab5d5b31c71596ccfe81b0219c7adf1a789b78a27c423ef",
+      "index_blob": "c1a505a78a397ed97d01ab72907bc3028b1d032b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-crusoe-owner-power.json",
+      "sha256": "8aba268b1ea2128d0723c8fa5659762cba9904d9d94e21bbbe35af2d5c31efa4",
+      "index_blob": "a25a50b4b7046fa33bea4163481c5124acaa557f"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pdf-near-20210311.json",
+      "sha256": "b595a1415ab64a40e181d85354606fdb7741c0ec08a9aa540e2e65fe4d969659",
+      "index_blob": "3fdc9b2af0ec54ba8c337f62187a489cc152091a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pdf.json",
+      "sha256": "fb25b352e7a7e969dc4e2a22f2b5dacadf8d2989ee9815325e0ec6e295cb585c",
+      "index_blob": "4c12a697d96ac439cd887002ab29e49b594b389b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pseg-near-20191220.json",
+      "sha256": "ba1eb7a5d77909b4028644c7fbb0c81a21460b446ff49f40319783c58f40a2f2",
+      "index_blob": "a92b8c458ef1d2caac519f6d6ac3d52cfbcd37e2"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/builder/wayback-available-montauk-pseg.json",
+      "sha256": "04a7f44382dbcb38ba827e05fc10a918007341b80232c3709dd93220d0ee569a",
+      "index_blob": "d9477af28da3ded7140b3df55976e7325b0c4e06"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-chamber-exact.json",
+      "sha256": "3fe67d26a3512b3ca69e906996e2b3f4facb3e4b559d4fc8292d2ed93ef42ee7",
+      "index_blob": "21eaa01eed38ee216f34a0ff6348d31851c102f4"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-chamber-xai-wildcard.json",
+      "sha256": "7214c2a29ff646186e63519b4e9920068d9a916a68a85f1038414aca44a7aa89",
+      "index_blob": "37e3c2beebf3d442a3713ada9f2b52ce0471dd1d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/cdx-city-bulletin.json",
+      "sha256": "bec67acd1e0cf866084c97a89414bfcdaae3c39a5d50f2f8f135d69d15fd43ca",
+      "index_blob": "8819c806b92cde1e300fe4787cfdba2f0ff7fed1"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-chamber-official.json",
+      "sha256": "68dd37ed07ace9b5674326e3718c9285b10de80ccd1f8659d329561bfd94c39d",
+      "index_blob": "223c74f661b11bc937443e136a64220294b11ac7"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-memphis-official.json",
+      "sha256": "3b38a04b59b2d88121c25fb73f67442eb90ba82bdcdb1657d93765472110a6ff",
+      "index_blob": "6cc6ec94bab9398790c9c659e7c0eb6a213f9058"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-official-power.json",
+      "sha256": "545e9df6fef464b7fe1b54953c29141c6c0aad52f67f17617669fc5db7816c77",
+      "index_blob": "dad949f76629602691bde45007efde560b4084a8"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-searches/xai/search-official-records.json",
+      "sha256": "c65c639dbc8078fbd312d0dccf190b0deaea2a5017a54143ddb69e90005fab3b",
+      "index_blob": "d45ff90f61316300269d081450e0161fe42c52d9"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/COMPLETION.json",
+      "sha256": "1961c41e2dea60ed5644ec6d6a9cbbfaa8d42cb157c7b65606e91d6371913a5c",
+      "index_blob": "8b76c5c0cd9d969e2738f63610a3cbba81ee164c"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/findings-addendum.md",
+      "sha256": "c0ad97c9e5954711dfed29cf546c57b761f682b4755ebf303f28ecf072db2bbd",
+      "index_blob": "a5d0814f8a575ac86fd29f3137d99df46692a92f"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/recovery-xai/findings.md",
+      "sha256": "737d76adfe37dcd6c7d8f5c9f99899c4f22bc901f1b2e23712ef69b5a1111c12",
+      "index_blob": "9d2967b59545a37868e4027c9daffbf95850e3fb"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/83a1871e1e336f3b.trace.json",
+      "sha256": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7",
+      "index_blob": "b8dec1c7ab7aacfefb39860d20b29b77bbcb449d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/README.md",
+      "sha256": "108b9033332ac97ff013e0ec34ff098f5bb4a689ec6fd310fb4db304bc1cd7bb",
+      "index_blob": "9c2057b16bc2b1f9d34986224fe40be8f913dbea"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/ca5efa0581fd070e.trace.json",
+      "sha256": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb",
+      "index_blob": "1aac4e37486592a17a014f1cbcfcaf0f9ac6c1bb"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/f1b07b5f19145fdf.trace.json",
+      "sha256": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c",
+      "index_blob": "657595e483225016499f2deadd41498b8bda4690"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/report.json",
+      "sha256": "d9bef007c2445e4b7d755f745522709047cf1fe51b2e19325afde630d8a84e25",
+      "index_blob": "e3cd808894ba68663e88f33392bec41b7181ed54"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v1/report.md",
+      "sha256": "3fd337dfd5a7aacefcaccaa6aa40720be0328ecc1226e00fcb8764fae3092edd",
+      "index_blob": "a4974d6f94a1598f93b2fce8f114e7593af57444"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/83a1871e1e336f3b.trace.json",
+      "sha256": "c98d5f9174973e3dc038f0b39d76bfa5036d8e1ccaebd118ec99dcdf69dbc7f7",
+      "index_blob": "b8dec1c7ab7aacfefb39860d20b29b77bbcb449d"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/ca5efa0581fd070e.trace.json",
+      "sha256": "07c61e215fadf5f125cbd5c1b230d9d7d0886004dcc582bba0daacc5371697eb",
+      "index_blob": "1aac4e37486592a17a014f1cbcfcaf0f9ac6c1bb"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/f1b07b5f19145fdf.trace.json",
+      "sha256": "20dc535bc372fafdb0fd26dd91d0b76a5451ef2e0c23038ee2c351a4317d929c",
+      "index_blob": "657595e483225016499f2deadd41498b8bda4690"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/report.json",
+      "sha256": "3208427124a712b277950f13e00f93ac97c7fc9ec4838f6d07e83464494fd6e6",
+      "index_blob": "ff8b2a43d834cb0036fe003de3d1ef4c365ba03c"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results-recovery-v2/report.md",
+      "sha256": "71b05b681cc51cd7420efb29d030b9bd2451507b72ceff38f2189af103c675c3",
+      "index_blob": "6b446871e365390c352929b13199cd7671983d03"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results/f1b07b5f19145fdf.trace.json",
+      "sha256": "3ecf9f1770e350a37081220bb7456630fac7b7d33a6a172fbb6f65641357f978",
+      "index_blob": "70864f6a25cadcfc48c62ec97f6ddb9fb521cc02"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results/report.json",
+      "sha256": "18aa754f547050663768c6e8e173e1039fe26e92d8e6b2aac9df8ba65de35164",
+      "index_blob": "07faf721f5d5eea262b6127b6037e927918aef9a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/results/report.md",
+      "sha256": "05466ef39092201ac5b037d5c49dc273734f339fae7c8c45acb5fde1b14cb36a",
+      "index_blob": "05c341d1ce834e1488aaad539f97663685309dcc"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-crusoe.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d",
+      "index_blob": "76a78c093a0b21033c69764a629035d5ee4f2e58"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-montauk.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d",
+      "index_blob": "76a78c093a0b21033c69764a629035d5ee4f2e58"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-xai-power.md",
+      "sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d",
+      "index_blob": "76a78c093a0b21033c69764a629035d5ee4f2e58"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-archive-xai.md",
+      "sha256": "bcb0d8f45686e009e9dea505ce9a9bcc7c5ab4826dcededbb689f351af8e7c4b",
+      "index_blob": "8922e23283663b52d13e437efcee9606f72dd984"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-azure-search.json",
+      "sha256": "ae36daa48c981664a034dbdea61b8d973614465e389b0923425aa94681b9e88a",
+      "index_blob": "c1cddd5da1bb7008b141171f13ba844a3a528cd3"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-crusoe-search.json",
+      "sha256": "afd6dce012e0e5af2564a4c9999e9e453a4e04a1d81514ffcb3224222f642529",
+      "index_blob": "625dc13e06a907fef3f3903f70d63b13e111cc6b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-crusoe-site-search.json",
+      "sha256": "b24cbce913a89604b4d9dcadcab887f45b14ec1f8e64329bfffb4dc88fb51aef",
+      "index_blob": "7a454a4cc124e7fb5dc180882c4e4b06b4852507"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-montauk-early-search.json",
+      "sha256": "cb5017b7886b2f1bb64880bd5be7bb265c26bc220640d3793a53c3ab7022dd38",
+      "index_blob": "80596aa64b631373f3acd95039c6f4257dc0fc11"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-montauk-search.json",
+      "sha256": "5a6692fe8b4130782ad18cf172ae382d07bc89746dc3703f644aa7f9659d8d26",
+      "index_blob": "1202e6a246d69a6a16d0c73b352e219a0214ba9b"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-prometheus-search.json",
+      "sha256": "e84028e118401bb24a10dac5c63562882ff6249a85cd3f243b7ed064214f3257",
+      "index_blob": "7cb6e71fd26f76a6441e5c6e4b37e6fc0bf62f63"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-2024-power-search.json",
+      "sha256": "cd0ca8ad64347f9444673eaf9596e534a9499e260f9b547455846d6e3bf2615d",
+      "index_blob": "c9d04a4d20fb597231c2d961466b816cd37eea83"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-dated-search.json",
+      "sha256": "4fd02279215f32d2fe93d8e1cbdd336cf757f106937eeb0e019ec91c2e30c5e3",
+      "index_blob": "cb3a8792ad1ae276523964a360b86648906771f0"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-early2-search.json",
+      "sha256": "bdc7a06c9f455c698ccee7652a6a3632318ef73bf9b53e9fad364f6c592d787e",
+      "index_blob": "5095c807fbfe1e57129f3b712822bce47547ae20"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-official-search.json",
+      "sha256": "ecfbdc37197b409326e74f62a585c4971cf2d4eeebd8d83693ec31b3102b4a13",
+      "index_blob": "7dd9ca66dc15803e7ee38b605814ae2c4656e6bf"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-owner-search.json",
+      "sha256": "f344aaf3739caae16beab1c5c5e99cbf81bde1641e13e5a80ed86e9d29168b0c",
+      "index_blob": "d6071f3f1ee9b08c1f23b3515215df2a3255d93f"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-power-search.json",
+      "sha256": "2800838a04b879e96f3e71c56fc7ae7578de901c784c790a53d7a773071e6feb",
+      "index_blob": "36202880ac5687cab7184b45ecd7674a3ff82a8a"
+    },
+    {
+      "path": "research/pre-rfp-history/pr7/hc-001/searches/hc-xai-search.json",
+      "sha256": "8eecdd676d49fe282f509265e046f712700b4622631a627ad7c7e518fbca2bf0",
+      "index_blob": "ea3f58e721daf5f2d16a28395fc87b4341009092"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/BURDEN.json",
+      "sha256": "b8967c0afe1650caac8697457c1bf3d888dc238b50655b8f8d488d1d0cd20298",
+      "index_blob": "1044fc60f6539a29232f75e6b590b9633f1042f6"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/README.md",
+      "sha256": "68eb78ce31c30775afaa13b16689fbc4095caa0c4ea0611b52b8f37b07b17b32",
+      "index_blob": "7d6bf5704b58de76e0671997a10851069be9b001"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/SUMMARY.json",
+      "sha256": "a791ed6df254491d1dfbc177eaae254bbab7ad43d287d3e0e962a3f27802da84",
+      "index_blob": "a446bead6d8354780aa561d08abd1466ac59a6c1"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/azure-2021-body.json",
+      "sha256": "73c4b053a3576591f4ed46272fac50e69d56f365355ffcf21584b1f055c13689",
+      "index_blob": "c60bd57ea509535fb8eb9b52810aa69b9683b379"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/azure-2021.body",
+      "sha256": "66d34901ad047486615c549933170cf7fc18789d48badc682f60556af25ba65d",
+      "index_blob": "b7eedebc04f23922ffc7c8bfbb8554f5fe33051f"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/azure-2021.headers.txt",
+      "sha256": "7d7a23cdfebc91e6cc4b2f764a0d0307e1a56d2dd1c4f4823dfe0f454c3a16e6",
+      "index_blob": "f336783b47c21ddf821857349ad9b903e4804d8c"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/azure-2021.html",
+      "sha256": "ed212908d8eafff76b62c86a2a1f7fba63651a8b085856865fc26ef88f0262bf",
+      "index_blob": "c4daaedf8434a5adcb2c61c905d85f0ddd24a223"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/azure-2021.json",
+      "sha256": "4625aa657fc1086734402c68bf4823e60513f22061c7899635f35ac425a48e68",
+      "index_blob": "a5b6468084da2a8548d7ff66fc4deacc3acd970e"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/ge-crusoe-order-inspection.png",
+      "sha256": "4397e92cb0fe8e54d2fe8a209962015578925996d6967be1f1061f4e8cf431a2",
+      "index_blob": "468ece92fda2351cd718ca23f9d15d0b5237af97"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/ge-crusoe-order.json",
+      "sha256": "0dc17627a507c30aa5aba239ec1a1f24454dce4b94852e4e55141a918524aece",
+      "index_blob": "a2d2db5e7503f3cb7f90a4791a838c0d6c3c9003"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/ge-crusoe-order.pdf",
+      "sha256": "cfebdb1f8a7638e9c6f2ef0781ac2ef7917c7b73b74be7809f110d6ad0e54b73",
+      "index_blob": "c768c278693e8d31d41f12a5133e74e8765ce9b7"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/ge-crusoe-order.text.txt",
+      "sha256": "dfe9fcb78c8834aa13f69112c518e93b63f1bb7f84afe5223698f80309137bce",
+      "index_blob": "53a1acb99434e95bd39779555eb6a7c9b8941704"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/lipa-procurement2021-inspection.png",
+      "sha256": "6cdfcae3f17d3247a615b5a2e90dd857e6553b23712f548102a327b1ec839801",
+      "index_blob": "f5883fc24e9852774b03eb928a7058a94f6162e1"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/lipa-procurement2021.json",
+      "sha256": "33572571902605620b10fc68f0f865a785e19d59952911a1c7f4c0cc6deb8554",
+      "index_blob": "fe9ed8a81fec6f4525915168d186f6027b35d7fe"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/lipa-procurement2021.pdf",
+      "sha256": "9edac3f67717656750afbacb78647be463073a6a87457927451b202b7a7f7cc5",
+      "index_blob": "de534252e20613fc017ec2f017694145d2a90fb2"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/lipa-procurement2021.text.txt",
+      "sha256": "e4c29fbb2750d3dc521307de74646adc13d2f53eb9c2937cd4391a80691533f8",
+      "index_blob": "8e1132215089f770a0e1c88a430acd8afe5879bd"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/montauk-pre2020.body",
+      "sha256": "4a8c6aa5bcb9840d5fce00e230a0b68d053cf2fd53af1abd2ed2e02fa0bcc2ed",
+      "index_blob": "4b17e929d3d31dd543f66e3f25558b6751c3b9a2"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/montauk-pre2020.json",
+      "sha256": "68578fc33d7aad929008a07919fe0f38dd5f69f436439469e4e873357ed1b5b1",
+      "index_blob": "006f6a9d281c39d11d14f7e40d68ed2400b45384"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/montauk-procurement-cdx.body",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "index_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "research/pre-rfp-history/recovery-attempts/montauk-procurement-cdx.json",
+      "sha256": "9cf236d47a8457190a6664637ff2d0b1919bd6e6c2d7a47af0818ed08e0320d0",
+      "index_blob": "5ce90e5df7f0c92d62483f6920b4fcb9efa19545"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/cohort.json",
+      "sha256": "2cfba63b339bcc6ef9d8ab7dd9e1fcb7319774710159a89b396086bfaa03dc4f",
+      "index_blob": "96dd0701d0284d9b3715e50f9780f34c31534723"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/azure-sky-wind/config.json",
+      "sha256": "e15967a1a50b4e43cf09a87332aa2cc355d39c4400de45fefacc8c82b0502806",
+      "index_blob": "5c5c3fdd7d93e274f91f82d291653867328f687e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0",
+      "index_blob": "e637a34da8e8c6f2c4ca6bb658cdd8d8bb2579f0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254",
+      "index_blob": "9d70e20b480816a140cdd5dcc35a0277059c3f80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def",
+      "index_blob": "42d1ea81cd04201140dcf7e7976207d96bc09c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/azure-sky-wind/manifest.json",
+      "sha256": "6cf3cc81233483f7b5212621be66335ec5e782a79f600960716c59739a0a5be1",
+      "index_blob": "1993e168f0dc70098d346a2f209a65d56902ea0c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/crusoe-abilene/config.json",
+      "sha256": "40b6c6e16ec0b53e40d4c386d27eee817409f49c81e6d98a2fe19a03da2216b9",
+      "index_blob": "7784db481c704b0681c7d72e929b474eca1bb3c0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/crusoe-abilene/manifest.json",
+      "sha256": "15260454e801f9f2f0c85de79a5d6257f6cab2d9d8c5bcbbe9003ac2f9833e8a",
+      "index_blob": "6e9805e326501607b8527b47fbb399f48190077c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/montauk-2021/config.json",
+      "sha256": "66c593a009ef77a28d653d4950e96b9b4a31b8bad74c456ac25de3fd16fae56d",
+      "index_blob": "7f33e29048c8b8da8d19ebdb1d778d908c60e96b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea",
+      "index_blob": "a190bf0271a5b3a612cfc9e2dd3044b980455740"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7",
+      "index_blob": "c3a4bcd73df86922e3868cf14bd68559d3e031d1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3",
+      "index_blob": "61fe751d02098fff716e99a8e98e1900999694e6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/experiments/montauk-2021/manifest.json",
+      "sha256": "8c3db36788a2739e87457a7e8dbaa280a7ae10fa96d0ff5a8324d4706e2fe0b1",
+      "index_blob": "b308512ecfc848f6653a69540abb4a33a254aa08"
+    },
+    {
+      "path": "research/pre-rfp-history/results-controller-final/report.md",
+      "sha256": "481e6468c4a12b4660b4dfb797701ebacc2a1244d332cc9f1f54b2fede2d9f59",
+      "index_blob": "abebab4d1cb54994390807d2d8a620ef885fcc79"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/cohort.json",
+      "sha256": "3dfa9688da8c6392aa4bdcc677723b7bbce9b52a0c8cf522846cca828212f4ca",
+      "index_blob": "277e5ee6eccc3547ce0aa324262d3f82fb6ffc55"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/azure-sky-wind/config.json",
+      "sha256": "59528ddac81e4f874191556c385f28ded1abb435b39d9345219b8360011cc7a1",
+      "index_blob": "12bd67e1810d008262007f0064898594c793bdb4"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/azure-sky-wind/decisions.json",
+      "sha256": "d457c40acfd7078cb03bc31d22bd04d55abcb8007824862221e07b1802436ef5",
+      "index_blob": "a7771c91f775f92066a66c91612ae96afb912767"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "dcf7f43f0a67b4a052c67e190a1da25417678d5f9d30cd955fb6edb3fcafad87",
+      "index_blob": "8828728dd015128f23a02545687ed6aaf09ddc97"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/azure-sky-wind/input.json",
+      "sha256": "776ee97ea46f1e2a23cfd4666b824f9df902fcd12761552949cec51e3b591b6f",
+      "index_blob": "1bf943afd8d92fadada6add8a56f3a89871b0890"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/azure-sky-wind/manifest.json",
+      "sha256": "77211dc1be7f2a129325d5fbd4342217f6b5b1a8fef04ec8759d9e368cfd60fe",
+      "index_blob": "116bc3bb2a93ee4679d7dfc90536ff305ef574aa"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/crusoe-abilene/config.json",
+      "sha256": "d7ab3c6470e8052d2a7597992b8d3fc293839822f5de944e0f4bf584a5fb71d1",
+      "index_blob": "a826bf0584426c6d5a1be7b6f4872a6295bf199d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/crusoe-abilene/decisions.json",
+      "sha256": "84801cb6d653abee09d0e8820a0b66ef45e3e4fe2b82dfb2e53daa6766cddb9f",
+      "index_blob": "19ddec688b605ef93d201399c0526ec38d152dfa"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "02fa51d1ae11469596ef52e3a8eacc15305002fe73706b514a4c9c9d60ac046e",
+      "index_blob": "2f52662919f09b969800a2aeda19b0123c769cd6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/crusoe-abilene/input.json",
+      "sha256": "156e4b8ea9abeb3964611a2e178d896b86724da6cc125b31b59ac32df30e44d9",
+      "index_blob": "413bb287f6751193471a365352100ca157a36eab"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/crusoe-abilene/manifest.json",
+      "sha256": "04f83be0b442d21c7f53eafce975e3e589103a5dde585d0faa8181f6c1cd502a",
+      "index_blob": "21d5caf7de07bb8cffb4c904218ddfd85bbb3bbc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/montauk-2021/config.json",
+      "sha256": "cc920ae480d3fab331799b81c4badeecbfe0bfc351aad3c54ab751abec78b241",
+      "index_blob": "341aee430f41aa2466b1034cea669ba40288d83b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/montauk-2021/decisions.json",
+      "sha256": "1557988310a18df4bb96f1836d663a0c0ad130180a2c8fd5ab94cdd5d4a0a023",
+      "index_blob": "1650bd00ca03f756c551291424dd759dbab17468"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/montauk-2021/evaluation.json",
+      "sha256": "87c8ff2359a99c6951c93ca2b0a6da3f5d7bc311735181f999bab0b0d32e7d0e",
+      "index_blob": "0e59ed4946d45c55bbdc15c5f21a53a24b0cf599"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/montauk-2021/input.json",
+      "sha256": "df14e1fbba2587f92151d8724be9241f3e9b58049a2e230e93670ba2ba214aaf",
+      "index_blob": "92e75a235ffdf29edf6b7ca50d00c3461f90047b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v1/experiments/montauk-2021/manifest.json",
+      "sha256": "d6f36c39ecaa303acb959a06fae6726d3fe4adec5955a6d444bf7e43f8384fef",
+      "index_blob": "c464be8e9980d474f0bb042b3d263a9bda92138d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/cohort.json",
+      "sha256": "9c128eb743694512d156a6f72e1e8cebec183dabd4341a83fd2622f9ee930e89",
+      "index_blob": "2764269a17eb35a62520e5850694a9a43abd5dc4"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/azure-sky-wind/config.json",
+      "sha256": "448b6c2bcb638a7ab5f242ee9573d588a7cb6376221e08ecc356d0b8c56b4fee",
+      "index_blob": "b2d04742890aa3fcc5b58ad0d7459ba177d471c7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/azure-sky-wind/manifest.json",
+      "sha256": "07a6a794c1750583c3ad98710e9e16b40767cc43d85481fa35d7fb30fd063193",
+      "index_blob": "406f9a028b54002da8a420f11578366b43a2636d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/crusoe-abilene/config.json",
+      "sha256": "759d123761a7201f0ea8351bd9ec8eb7579649fcbb121de6970f0a8a33bc9912",
+      "index_blob": "11608d9e6cf7df010b9c442c6bf9460b37c16a42"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/crusoe-abilene/manifest.json",
+      "sha256": "bed9295fe548c7db284e5513c2fb9cc57792a8ac0ec737780a5b272521930670",
+      "index_blob": "2acfbd10bf1e8545f286fcfac976fe93d609af4f"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/montauk-2021/config.json",
+      "sha256": "5c2aef7ae999e701ca1037fa8d47307ba05a95cf16aa30f2aaa9447473569b94",
+      "index_blob": "9d8df861c8c3010ad3fdce9c37d55d229ce63ffc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/experiments/montauk-2021/manifest.json",
+      "sha256": "bc479afb5e699ad7d379d925b22c4d0ca8b416e0c31c6ed07ba5f43d190eedbd",
+      "index_blob": "e01b4b5c3949b60948784ec08e35bb2c284ac23e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-final/report.md",
+      "sha256": "bd72f8de835a3278c332ce85fef36ba6fc0fe5b20ba2137706328266e8110f32",
+      "index_blob": "c127747e88988c274043c4dcbca884c00b59947b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/cohort.json",
+      "sha256": "4f7709abca6b4c12f86a3393399d4fb7ee4d5ce4b3e4316ba862f3bdb02fc6b5",
+      "index_blob": "c9db753397c8b6ee9fd267a947b3e9ffc459d308"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/azure-sky-wind/manifest.json",
+      "sha256": "1ddefc3f7b5496ad90af4cf7716e5baaa2267c9610b409f1ee98142bdea2b4e8",
+      "index_blob": "ca28642e9b467109c8c67df4b861ac0d9bcfb7f2"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/crusoe-abilene/manifest.json",
+      "sha256": "2124020ec01eb4ffdee3c54081cad44aaccf61aeeddfea1c0cf831991eba42d8",
+      "index_blob": "05a55cabe131b8a6c4009db53f6adc8a38990be7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/experiments/montauk-2021/manifest.json",
+      "sha256": "91361ac994e1286a3c67b2f72f86dc7312aa6eac6b653b9ed7f7c548e4402546",
+      "index_blob": "9ddadec977e213ff0e1465c7610ded96ffe184c1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-repeat/report.md",
+      "sha256": "bd72f8de835a3278c332ce85fef36ba6fc0fe5b20ba2137706328266e8110f32",
+      "index_blob": "c127747e88988c274043c4dcbca884c00b59947b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/azure-sky-wind/config.json",
+      "sha256": "62977d29cb0dfdbbf98153066ac17c251ad502718dd993dccc67891032a63fc9",
+      "index_blob": "d0347b491c894c9d83c374f2f33194c11ee01f06"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/azure-sky-wind/manifest.json",
+      "sha256": "99aff0995a5c944380d8caebbcbf8d29b7de7adbf565771afc528d1dedc52168",
+      "index_blob": "a1cbe46d23ad640b61c8c741761868d59374c5c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/crusoe-abilene/config.json",
+      "sha256": "87b1816a6bc40404ce1fc58a75c2460526035d0806b7f42a1a082c88e6edd14a",
+      "index_blob": "294d078655e7ea95d7d5b72f761a56a9e88bdc80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/crusoe-abilene/manifest.json",
+      "sha256": "03fbd3886f87f102be2778e822d8113b766c01e11bcfbd91609368c7ea1b8e08",
+      "index_blob": "605114b9cce76e8d43944c23a62264dcbcb4d791"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/montauk-2021/config.json",
+      "sha256": "a8d07de6c76cdaad674c8c2412c7fb1dc32180cced24dba00b87778a6c2e43cb",
+      "index_blob": "126ee35c4e12ff406427a7b43032fe26cf692b05"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run1/experiments/montauk-2021/manifest.json",
+      "sha256": "ad1d4df38707aef6f62d11345fb80bd92233d49e22086fb01bce3d8655067a2a",
+      "index_blob": "b6f0c0344d6a3f7f91b1ddf5f008492229f56127"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/azure-sky-wind/config.json",
+      "sha256": "679502fbd2827756328d0bd5ff2b4558e0cb9ea4d16b5a6b679f975238078df6",
+      "index_blob": "e78a5225cfd524adb415d8571c39432ccc999c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/azure-sky-wind/manifest.json",
+      "sha256": "f0fd87695dbb5621c4a2b791d5add9486c6289fca3fa03e31f66130a10172b87",
+      "index_blob": "7bfdf1d87da8884bd6b304956191c9d265bde20d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/crusoe-abilene/config.json",
+      "sha256": "97f04f27016a699542ce7d6837530680b5742ae058ac08b88529da587fa2b9e8",
+      "index_blob": "49d63a05c9c43ca1aeebd2a3b4011f21ab8d5aaf"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/crusoe-abilene/manifest.json",
+      "sha256": "a221bb233535c5ca2188435b9c939dc040b3257ac9275cd18859af5342dc305e",
+      "index_blob": "e180ff5d7a9ddca2a601c3e60743200a54e03b82"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/montauk-2021/config.json",
+      "sha256": "65d03de6c8f62e5c64fc97b8d7a107d582c2c120a5fd2399d2e7da0e4b21d9f7",
+      "index_blob": "a8188997135772782ee33ad2364c18ad608a67c0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run2/experiments/montauk-2021/manifest.json",
+      "sha256": "61e73a4f0bb66c66631d46dc2d4fa49b2762aa75ad903fca848518565166390c",
+      "index_blob": "5db54ef887d90ec63daea33a454453c971da9768"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/azure-sky-wind/config.json",
+      "sha256": "befd81651941688e5c62db2576aff703a76fc982540b08d8c538d19c201441ac",
+      "index_blob": "57aac959d427939369ac512f1f7c88859ed26a66"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/azure-sky-wind/manifest.json",
+      "sha256": "d62bf2ca441227be4963445e7c21d7ebe42d82e32ce1618bb398426d081cae59",
+      "index_blob": "fcd7c5b06790c1890b3bea8755a923a200a8052c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/crusoe-abilene/config.json",
+      "sha256": "03c39815af469fff6750eaa1b700419d988a425349eed857c9658216df8c95b8",
+      "index_blob": "369cde3b6d63558d12a4b7e83fdfac95e3a06911"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/crusoe-abilene/manifest.json",
+      "sha256": "dfbfb29f6a110dd352e70ef62018a48da7a0e7f7c028e17aa6ff90b0087997d2",
+      "index_blob": "df94504e452f3e18e166f963e01ece34e9a48f36"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/montauk-2021/config.json",
+      "sha256": "793712a6e807086cf61f18bfa9f63109e56df6e79111e87f8ee87f3d643316b9",
+      "index_blob": "fb280387403849e709f72b26ff899f3c5877c48c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run3/experiments/montauk-2021/manifest.json",
+      "sha256": "2d6e73958913077f887cfd26a887fb626a0a5b2236aeb991776dd380a99c498d",
+      "index_blob": "e74e13f6d0ad1753bb530948b37bdaa4ff16bf63"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/azure-sky-wind/config.json",
+      "sha256": "bac6df1dc4a127c568bffe0713278d4e24735e9023220ab4388a1efa13687221",
+      "index_blob": "2739f257f66c2c550824980f2d0af98f9a4de03e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/azure-sky-wind/manifest.json",
+      "sha256": "4d4ac40ccfbad14fc60eef9d1b2ecd4e5262ac2c211e82e6f9490ab0a03c47ee",
+      "index_blob": "80e1e8d605509ea2d5ad6d15ecf59b5eef6861db"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/crusoe-abilene/config.json",
+      "sha256": "de1953d5f48440340656ba4e6e2c4e441416b996092d8d6d4255aa43fc0cfe13",
+      "index_blob": "75e68306514b7d96aeeb2677c24c0cfe0a6bf5e5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/crusoe-abilene/manifest.json",
+      "sha256": "7b1bb1d65805e8b9c870f195acb06fb3d0d8de40294509858f951ed24132c6ea",
+      "index_blob": "14195719ae1ffebc271991f1b61db34dc70cd140"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/montauk-2021/config.json",
+      "sha256": "c36cc240753e8806918fcf8d5f9bc2526a509946527f2616c49f1f9bcf499208",
+      "index_blob": "f861ebb9ffe8d673756677ed0797b27d2be74a4b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run4/experiments/montauk-2021/manifest.json",
+      "sha256": "bcc95d39612910a1b9903993c66692220fe6b8c1d56a8541fc1201fe9de0d04c",
+      "index_blob": "f6e6768a985a3429fd7be21a985fc11c77849bdf"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/cohort.json",
+      "sha256": "4f7709abca6b4c12f86a3393399d4fb7ee4d5ce4b3e4316ba862f3bdb02fc6b5",
+      "index_blob": "c9db753397c8b6ee9fd267a947b3e9ffc459d308"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/azure-sky-wind/manifest.json",
+      "sha256": "1ddefc3f7b5496ad90af4cf7716e5baaa2267c9610b409f1ee98142bdea2b4e8",
+      "index_blob": "ca28642e9b467109c8c67df4b861ac0d9bcfb7f2"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/crusoe-abilene/manifest.json",
+      "sha256": "2124020ec01eb4ffdee3c54081cad44aaccf61aeeddfea1c0cf831991eba42d8",
+      "index_blob": "05a55cabe131b8a6c4009db53f6adc8a38990be7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/experiments/montauk-2021/manifest.json",
+      "sha256": "91361ac994e1286a3c67b2f72f86dc7312aa6eac6b653b9ed7f7c548e4402546",
+      "index_blob": "9ddadec977e213ff0e1465c7610ded96ffe184c1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2-run5/report.md",
+      "sha256": "bd72f8de835a3278c332ce85fef36ba6fc0fe5b20ba2137706328266e8110f32",
+      "index_blob": "c127747e88988c274043c4dcbca884c00b59947b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/cohort.json",
+      "sha256": "4f7709abca6b4c12f86a3393399d4fb7ee4d5ce4b3e4316ba862f3bdb02fc6b5",
+      "index_blob": "c9db753397c8b6ee9fd267a947b3e9ffc459d308"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/azure-sky-wind/manifest.json",
+      "sha256": "1ddefc3f7b5496ad90af4cf7716e5baaa2267c9610b409f1ee98142bdea2b4e8",
+      "index_blob": "ca28642e9b467109c8c67df4b861ac0d9bcfb7f2"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/crusoe-abilene/manifest.json",
+      "sha256": "2124020ec01eb4ffdee3c54081cad44aaccf61aeeddfea1c0cf831991eba42d8",
+      "index_blob": "05a55cabe131b8a6c4009db53f6adc8a38990be7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/experiments/montauk-2021/manifest.json",
+      "sha256": "91361ac994e1286a3c67b2f72f86dc7312aa6eac6b653b9ed7f7c548e4402546",
+      "index_blob": "9ddadec977e213ff0e1465c7610ded96ffe184c1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v2/report.md",
+      "sha256": "bd72f8de835a3278c332ce85fef36ba6fc0fe5b20ba2137706328266e8110f32",
+      "index_blob": "c127747e88988c274043c4dcbca884c00b59947b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/cohort.json",
+      "sha256": "77b8991e53189a1623653699521279c3107092d86dd787f0c00324b598e8a380",
+      "index_blob": "839ff420c5f80a655fb365a2d8d5fe3c55f1b4ef"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/azure-sky-wind/decisions.json",
+      "sha256": "4c5d033522bf20131ba8e6f7ba42ca2fab715076962ad890b4cc2f8111d9ce71",
+      "index_blob": "7d7e55e753b0ffcce5bf2569b9ff9258fa2cda5e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "c873520975733973ca860e05aeff383fea5c601ce4f857ef5993c1547ca00cb5",
+      "index_blob": "6059890397b22c8d453bbb29f2c8cfb1dd6b9e78"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/azure-sky-wind/input.json",
+      "sha256": "e8b5be4ad1a59a5ea75ee92ea0765f7e9140b6c5107217ae71b0417a692d3f9a",
+      "index_blob": "4d771b9edebef75157891e7ed711f2d4de2dd49f"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/azure-sky-wind/manifest.json",
+      "sha256": "8a034613dde1caf35e8a940bac67178f808e7b459b9c65a20fa6a5fd65a12ba8",
+      "index_blob": "376464112611f12a6128cd44b9bd82abaea13840"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/crusoe-abilene/manifest.json",
+      "sha256": "eac91c8f89ba9b6848e0557869e44c36b1798bed93970b69d06f58d16df318a1",
+      "index_blob": "53c751e34e33dc691c3c6eed0ed28ca12e702486"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/montauk-2021/decisions.json",
+      "sha256": "ae5f39a439d157086834ce32bdcd3de7cc807ca6028cd31b63a01a55bab2c77c",
+      "index_blob": "1a08082adcf15b63b1c155689f90c11df2e3c60d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/montauk-2021/evaluation.json",
+      "sha256": "92f39f824e5b8a0ccb997894a94b46bb5232080450f0b8b96499396364861e83",
+      "index_blob": "6d87fba2f3f6f6c7a0393a0ab0234c36016a94f1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/montauk-2021/input.json",
+      "sha256": "213bfe3fcda1f146620f9d46edb76b5ba9dd57d337f2da9151192f4dfe6cdd70",
+      "index_blob": "a772fd7e10faa91c3d62796f5e7ac035f154b7d8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/experiments/montauk-2021/manifest.json",
+      "sha256": "d1b74e59783ac3e0236004e5f83bfbba234cbbafce15463081b57f9c861788b2",
+      "index_blob": "68fa2a447ff23b9158d93ded37cd1e3ba400e604"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3-repeat/report.md",
+      "sha256": "64a7e9561d94bd0c5754391a4600f9b501f52464457ff5def4f40ba5f7c817aa",
+      "index_blob": "3d6a6acac4e346800ed7549e08fd7ff591895c73"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/cohort.json",
+      "sha256": "da01ca078d60c5dcafb66920d4412a37b93f47f8eb48f1f8106dfdcf2ae5c2e8",
+      "index_blob": "fc7837bed61904221ba438476aa54122c5c3bdaf"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/azure-sky-wind/manifest.json",
+      "sha256": "1ddefc3f7b5496ad90af4cf7716e5baaa2267c9610b409f1ee98142bdea2b4e8",
+      "index_blob": "ca28642e9b467109c8c67df4b861ac0d9bcfb7f2"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/crusoe-abilene/manifest.json",
+      "sha256": "2124020ec01eb4ffdee3c54081cad44aaccf61aeeddfea1c0cf831991eba42d8",
+      "index_blob": "05a55cabe131b8a6c4009db53f6adc8a38990be7"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/experiments/montauk-2021/manifest.json",
+      "sha256": "91361ac994e1286a3c67b2f72f86dc7312aa6eac6b653b9ed7f7c548e4402546",
+      "index_blob": "9ddadec977e213ff0e1465c7610ded96ffe184c1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v3/report.md",
+      "sha256": "64f7f5fe7118d72370e367ed8e4be79efef5aaa5eb4d3fea8f9f4ea6a522e6b1",
+      "index_blob": "f3ac30c25693e4f600420bd55faa378257aec49b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/cohort.json",
+      "sha256": "77b8991e53189a1623653699521279c3107092d86dd787f0c00324b598e8a380",
+      "index_blob": "839ff420c5f80a655fb365a2d8d5fe3c55f1b4ef"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/azure-sky-wind/decisions.json",
+      "sha256": "4c5d033522bf20131ba8e6f7ba42ca2fab715076962ad890b4cc2f8111d9ce71",
+      "index_blob": "7d7e55e753b0ffcce5bf2569b9ff9258fa2cda5e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "c873520975733973ca860e05aeff383fea5c601ce4f857ef5993c1547ca00cb5",
+      "index_blob": "6059890397b22c8d453bbb29f2c8cfb1dd6b9e78"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/azure-sky-wind/input.json",
+      "sha256": "e8b5be4ad1a59a5ea75ee92ea0765f7e9140b6c5107217ae71b0417a692d3f9a",
+      "index_blob": "4d771b9edebef75157891e7ed711f2d4de2dd49f"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/azure-sky-wind/manifest.json",
+      "sha256": "8a034613dde1caf35e8a940bac67178f808e7b459b9c65a20fa6a5fd65a12ba8",
+      "index_blob": "376464112611f12a6128cd44b9bd82abaea13840"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/crusoe-abilene/manifest.json",
+      "sha256": "eac91c8f89ba9b6848e0557869e44c36b1798bed93970b69d06f58d16df318a1",
+      "index_blob": "53c751e34e33dc691c3c6eed0ed28ca12e702486"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/montauk-2021/decisions.json",
+      "sha256": "ae5f39a439d157086834ce32bdcd3de7cc807ca6028cd31b63a01a55bab2c77c",
+      "index_blob": "1a08082adcf15b63b1c155689f90c11df2e3c60d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/montauk-2021/evaluation.json",
+      "sha256": "92f39f824e5b8a0ccb997894a94b46bb5232080450f0b8b96499396364861e83",
+      "index_blob": "6d87fba2f3f6f6c7a0393a0ab0234c36016a94f1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/montauk-2021/input.json",
+      "sha256": "213bfe3fcda1f146620f9d46edb76b5ba9dd57d337f2da9151192f4dfe6cdd70",
+      "index_blob": "a772fd7e10faa91c3d62796f5e7ac035f154b7d8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/experiments/montauk-2021/manifest.json",
+      "sha256": "d1b74e59783ac3e0236004e5f83bfbba234cbbafce15463081b57f9c861788b2",
+      "index_blob": "68fa2a447ff23b9158d93ded37cd1e3ba400e604"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4-repeat/report.md",
+      "sha256": "64a7e9561d94bd0c5754391a4600f9b501f52464457ff5def4f40ba5f7c817aa",
+      "index_blob": "3d6a6acac4e346800ed7549e08fd7ff591895c73"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/cohort.json",
+      "sha256": "77b8991e53189a1623653699521279c3107092d86dd787f0c00324b598e8a380",
+      "index_blob": "839ff420c5f80a655fb365a2d8d5fe3c55f1b4ef"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/azure-sky-wind/config.json",
+      "sha256": "2321ac190eb19637f556b921c675ea9d7fd87a62c733ffeb02f53d710fc313b1",
+      "index_blob": "048ca6588c540710d56bf609ac5d92b1f70e3da5"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/azure-sky-wind/decisions.json",
+      "sha256": "4c5d033522bf20131ba8e6f7ba42ca2fab715076962ad890b4cc2f8111d9ce71",
+      "index_blob": "7d7e55e753b0ffcce5bf2569b9ff9258fa2cda5e"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "c873520975733973ca860e05aeff383fea5c601ce4f857ef5993c1547ca00cb5",
+      "index_blob": "6059890397b22c8d453bbb29f2c8cfb1dd6b9e78"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/azure-sky-wind/input.json",
+      "sha256": "e8b5be4ad1a59a5ea75ee92ea0765f7e9140b6c5107217ae71b0417a692d3f9a",
+      "index_blob": "4d771b9edebef75157891e7ed711f2d4de2dd49f"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/azure-sky-wind/manifest.json",
+      "sha256": "8a034613dde1caf35e8a940bac67178f808e7b459b9c65a20fa6a5fd65a12ba8",
+      "index_blob": "376464112611f12a6128cd44b9bd82abaea13840"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/crusoe-abilene/config.json",
+      "sha256": "e6eba782efee0d1f3611e8f3dd2844e3af8baa49079a50a58a66bffc81410862",
+      "index_blob": "34ae3e7512456d9dc647cb9fcf13f874783d3423"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/crusoe-abilene/manifest.json",
+      "sha256": "eac91c8f89ba9b6848e0557869e44c36b1798bed93970b69d06f58d16df318a1",
+      "index_blob": "53c751e34e33dc691c3c6eed0ed28ca12e702486"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/montauk-2021/config.json",
+      "sha256": "cc7a7ba36d72de5a56fe3dc9e9b74efddd8fde75b97ff19098eaf6b9f3c9655c",
+      "index_blob": "14d774de906bed4532f700989e8cb2aaaa1c2720"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/montauk-2021/decisions.json",
+      "sha256": "ae5f39a439d157086834ce32bdcd3de7cc807ca6028cd31b63a01a55bab2c77c",
+      "index_blob": "1a08082adcf15b63b1c155689f90c11df2e3c60d"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/montauk-2021/evaluation.json",
+      "sha256": "92f39f824e5b8a0ccb997894a94b46bb5232080450f0b8b96499396364861e83",
+      "index_blob": "6d87fba2f3f6f6c7a0393a0ab0234c36016a94f1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/montauk-2021/input.json",
+      "sha256": "213bfe3fcda1f146620f9d46edb76b5ba9dd57d337f2da9151192f4dfe6cdd70",
+      "index_blob": "a772fd7e10faa91c3d62796f5e7ac035f154b7d8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/experiments/montauk-2021/manifest.json",
+      "sha256": "d1b74e59783ac3e0236004e5f83bfbba234cbbafce15463081b57f9c861788b2",
+      "index_blob": "68fa2a447ff23b9158d93ded37cd1e3ba400e604"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v4/report.md",
+      "sha256": "64a7e9561d94bd0c5754391a4600f9b501f52464457ff5def4f40ba5f7c817aa",
+      "index_blob": "3d6a6acac4e346800ed7549e08fd7ff591895c73"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/cohort.json",
+      "sha256": "a0f349631f19bdace1dfe4b7a19b99cb27634b1463fea08704f50f3ae7dce813",
+      "index_blob": "3e903d239bf1dcd983e068759f8ccfcc3c70ce41"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/azure-sky-wind/config.json",
+      "sha256": "e8739f5dd00b65cff5a1f29f6ba91926bee2cd12dc8f7e1be0cfd9dd2f1bee75",
+      "index_blob": "60b354c01c8813e86c8a68feebde607a3d5ab878"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0",
+      "index_blob": "e637a34da8e8c6f2c4ca6bb658cdd8d8bb2579f0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254",
+      "index_blob": "9d70e20b480816a140cdd5dcc35a0277059c3f80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def",
+      "index_blob": "42d1ea81cd04201140dcf7e7976207d96bc09c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/azure-sky-wind/manifest.json",
+      "sha256": "3907719769fe6e5292ae5a400ab42647e97d14923705125d9deb199957d598b7",
+      "index_blob": "afbb065e37b9ed8196efc2d609e7da92bc70fbf8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/crusoe-abilene/config.json",
+      "sha256": "baabce8ec21898661e141979320b37081ee18f0fa3cc14c37dccfca4eceefc54",
+      "index_blob": "13933313951936569008b2da452be0495e170ac0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/crusoe-abilene/manifest.json",
+      "sha256": "9c31ac99727db0b591639a13e5df6a7f71855622321a5105c441f0423274783a",
+      "index_blob": "28d198f95329ad9e0fb233cb5c9fd25bcd731086"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/montauk-2021/config.json",
+      "sha256": "6afb09799789ba35e739627c54bb0bf963ea04f4d8b6de9199fbd0900a9bd9ab",
+      "index_blob": "e399f105028b0959a0b42c143ab758a5bb8f9b07"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea",
+      "index_blob": "a190bf0271a5b3a612cfc9e2dd3044b980455740"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7",
+      "index_blob": "c3a4bcd73df86922e3868cf14bd68559d3e031d1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3",
+      "index_blob": "61fe751d02098fff716e99a8e98e1900999694e6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/experiments/montauk-2021/manifest.json",
+      "sha256": "9e5fa69584964adb181d4563dd77662fa61d844364c83f08391d0685e163145b",
+      "index_blob": "d0e470de32867fb57d131c2f68b48e7c094cdcbe"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2-repeat/report.md",
+      "sha256": "481e6468c4a12b4660b4dfb797701ebacc2a1244d332cc9f1f54b2fede2d9f59",
+      "index_blob": "abebab4d1cb54994390807d2d8a620ef885fcc79"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/cohort.json",
+      "sha256": "a0f349631f19bdace1dfe4b7a19b99cb27634b1463fea08704f50f3ae7dce813",
+      "index_blob": "3e903d239bf1dcd983e068759f8ccfcc3c70ce41"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/azure-sky-wind/config.json",
+      "sha256": "e8739f5dd00b65cff5a1f29f6ba91926bee2cd12dc8f7e1be0cfd9dd2f1bee75",
+      "index_blob": "60b354c01c8813e86c8a68feebde607a3d5ab878"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0",
+      "index_blob": "e637a34da8e8c6f2c4ca6bb658cdd8d8bb2579f0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254",
+      "index_blob": "9d70e20b480816a140cdd5dcc35a0277059c3f80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def",
+      "index_blob": "42d1ea81cd04201140dcf7e7976207d96bc09c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/azure-sky-wind/manifest.json",
+      "sha256": "3907719769fe6e5292ae5a400ab42647e97d14923705125d9deb199957d598b7",
+      "index_blob": "afbb065e37b9ed8196efc2d609e7da92bc70fbf8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/crusoe-abilene/config.json",
+      "sha256": "baabce8ec21898661e141979320b37081ee18f0fa3cc14c37dccfca4eceefc54",
+      "index_blob": "13933313951936569008b2da452be0495e170ac0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/crusoe-abilene/manifest.json",
+      "sha256": "9c31ac99727db0b591639a13e5df6a7f71855622321a5105c441f0423274783a",
+      "index_blob": "28d198f95329ad9e0fb233cb5c9fd25bcd731086"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/montauk-2021/config.json",
+      "sha256": "6afb09799789ba35e739627c54bb0bf963ea04f4d8b6de9199fbd0900a9bd9ab",
+      "index_blob": "e399f105028b0959a0b42c143ab758a5bb8f9b07"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea",
+      "index_blob": "a190bf0271a5b3a612cfc9e2dd3044b980455740"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7",
+      "index_blob": "c3a4bcd73df86922e3868cf14bd68559d3e031d1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3",
+      "index_blob": "61fe751d02098fff716e99a8e98e1900999694e6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/experiments/montauk-2021/manifest.json",
+      "sha256": "9e5fa69584964adb181d4563dd77662fa61d844364c83f08391d0685e163145b",
+      "index_blob": "d0e470de32867fb57d131c2f68b48e7c094cdcbe"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repair2/report.md",
+      "sha256": "481e6468c4a12b4660b4dfb797701ebacc2a1244d332cc9f1f54b2fede2d9f59",
+      "index_blob": "abebab4d1cb54994390807d2d8a620ef885fcc79"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/cohort.json",
+      "sha256": "9c04c30b09f7a9dd86e73fd0f06869bfd94b053dbc079ac1a08e26f71ea96fcd",
+      "index_blob": "f1597dc28e91bb135347d06a8fbb15ab5ae25154"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/azure-sky-wind/config.json",
+      "sha256": "e8739f5dd00b65cff5a1f29f6ba91926bee2cd12dc8f7e1be0cfd9dd2f1bee75",
+      "index_blob": "60b354c01c8813e86c8a68feebde607a3d5ab878"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0",
+      "index_blob": "e637a34da8e8c6f2c4ca6bb658cdd8d8bb2579f0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254",
+      "index_blob": "9d70e20b480816a140cdd5dcc35a0277059c3f80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def",
+      "index_blob": "42d1ea81cd04201140dcf7e7976207d96bc09c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/azure-sky-wind/manifest.json",
+      "sha256": "3907719769fe6e5292ae5a400ab42647e97d14923705125d9deb199957d598b7",
+      "index_blob": "afbb065e37b9ed8196efc2d609e7da92bc70fbf8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/crusoe-abilene/config.json",
+      "sha256": "baabce8ec21898661e141979320b37081ee18f0fa3cc14c37dccfca4eceefc54",
+      "index_blob": "13933313951936569008b2da452be0495e170ac0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/crusoe-abilene/manifest.json",
+      "sha256": "9c31ac99727db0b591639a13e5df6a7f71855622321a5105c441f0423274783a",
+      "index_blob": "28d198f95329ad9e0fb233cb5c9fd25bcd731086"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/montauk-2021/config.json",
+      "sha256": "6afb09799789ba35e739627c54bb0bf963ea04f4d8b6de9199fbd0900a9bd9ab",
+      "index_blob": "e399f105028b0959a0b42c143ab758a5bb8f9b07"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea",
+      "index_blob": "a190bf0271a5b3a612cfc9e2dd3044b980455740"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7",
+      "index_blob": "c3a4bcd73df86922e3868cf14bd68559d3e031d1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3",
+      "index_blob": "61fe751d02098fff716e99a8e98e1900999694e6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/experiments/montauk-2021/manifest.json",
+      "sha256": "9e5fa69584964adb181d4563dd77662fa61d844364c83f08391d0685e163145b",
+      "index_blob": "d0e470de32867fb57d131c2f68b48e7c094cdcbe"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5-repeat/report.md",
+      "sha256": "4794b39229df6b57fa1ad42314f3cfde5e6b8561741b54b6ac9faa2c878f648c",
+      "index_blob": "bd4a8c9731735d48a2d309718774601ccd4d1dce"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/cohort.json",
+      "sha256": "9c04c30b09f7a9dd86e73fd0f06869bfd94b053dbc079ac1a08e26f71ea96fcd",
+      "index_blob": "f1597dc28e91bb135347d06a8fbb15ab5ae25154"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/azure-sky-wind/config.json",
+      "sha256": "e8739f5dd00b65cff5a1f29f6ba91926bee2cd12dc8f7e1be0cfd9dd2f1bee75",
+      "index_blob": "60b354c01c8813e86c8a68feebde607a3d5ab878"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/azure-sky-wind/decisions.json",
+      "sha256": "20dd95180c67d4140f7274df8fe0b322d918b7e96af7057545fcd3fd0bb879d0",
+      "index_blob": "e637a34da8e8c6f2c4ca6bb658cdd8d8bb2579f0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/azure-sky-wind/evaluation.json",
+      "sha256": "d19842b9d0877abc468f9918273d402d949699de781a85229f36cc3c17870254",
+      "index_blob": "9d70e20b480816a140cdd5dcc35a0277059c3f80"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/azure-sky-wind/input.json",
+      "sha256": "ecc13cfdab90f8f937df80e3c3cee09f772f91df6f1338c49229e02805061def",
+      "index_blob": "42d1ea81cd04201140dcf7e7976207d96bc09c9b"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/azure-sky-wind/manifest.json",
+      "sha256": "3907719769fe6e5292ae5a400ab42647e97d14923705125d9deb199957d598b7",
+      "index_blob": "afbb065e37b9ed8196efc2d609e7da92bc70fbf8"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/crusoe-abilene/config.json",
+      "sha256": "baabce8ec21898661e141979320b37081ee18f0fa3cc14c37dccfca4eceefc54",
+      "index_blob": "13933313951936569008b2da452be0495e170ac0"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/crusoe-abilene/decisions.json",
+      "sha256": "d759df5d4bc15fb9c62880af8253537b3febc1024aa0d8593559bd35c69fcb51",
+      "index_blob": "da5df2fb36eb0c78c72678636b586a9a274a88bc"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/crusoe-abilene/evaluation.json",
+      "sha256": "93838ab08ecbadd825573b79072ee224f76304aa2aa91742f4f6cf359ac3c89f",
+      "index_blob": "e494fb62cc0c3154d06deccf7d562e438ff75b4c"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/crusoe-abilene/input.json",
+      "sha256": "5ddbcd550e6b197623a021c4315234ca608f4e7ab5c7c91ad78780b0faa8487a",
+      "index_blob": "3f2ca87f5225dd092853bf7e4b371010ce3f08cb"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/crusoe-abilene/manifest.json",
+      "sha256": "9c31ac99727db0b591639a13e5df6a7f71855622321a5105c441f0423274783a",
+      "index_blob": "28d198f95329ad9e0fb233cb5c9fd25bcd731086"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/montauk-2021/config.json",
+      "sha256": "6afb09799789ba35e739627c54bb0bf963ea04f4d8b6de9199fbd0900a9bd9ab",
+      "index_blob": "e399f105028b0959a0b42c143ab758a5bb8f9b07"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/montauk-2021/decisions.json",
+      "sha256": "a44e764acc7d210ba7364028d0e556dba41169643620be231b7c6f036cca05ea",
+      "index_blob": "a190bf0271a5b3a612cfc9e2dd3044b980455740"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/montauk-2021/evaluation.json",
+      "sha256": "4274e328c6b9c0107a98e3122ebdfae4743b3c3eb6a462d86358c0c65cff19e7",
+      "index_blob": "c3a4bcd73df86922e3868cf14bd68559d3e031d1"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/montauk-2021/input.json",
+      "sha256": "b04281ff4e537be2271057e5b9aa7ad8a0f2c3f686d3324f97810b929cbc71f3",
+      "index_blob": "61fe751d02098fff716e99a8e98e1900999694e6"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/experiments/montauk-2021/manifest.json",
+      "sha256": "9e5fa69584964adb181d4563dd77662fa61d844364c83f08391d0685e163145b",
+      "index_blob": "d0e470de32867fb57d131c2f68b48e7c094cdcbe"
+    },
+    {
+      "path": "research/pre-rfp-history/results-v5/report.md",
+      "sha256": "4794b39229df6b57fa1ad42314f3cfde5e6b8561741b54b6ac9faa2c878f648c",
+      "index_blob": "bd4a8c9731735d48a2d309718774601ccd4d1dce"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-azure-sky-wind/config.json",
+      "sha256": "bac6df1dc4a127c568bffe0713278d4e24735e9023220ab4388a1efa13687221",
+      "index_blob": "2739f257f66c2c550824980f2d0af98f9a4de03e"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-azure-sky-wind/decisions.json",
+      "sha256": "6bad2e163728f3a205c213571d9d84080f9b388f36a0a4cf0c524b17ac773767",
+      "index_blob": "7ee259bbf85e947211ab0057fd7ddbf629f61461"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-azure-sky-wind/evaluation.json",
+      "sha256": "2ef6faadd144ffb9a4f5f7b79d1cf25f8958424baf116762e57cdd73e4a593f4",
+      "index_blob": "544d63cebd8493a65a76bbb01eed40edb16d11a9"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-azure-sky-wind/input.json",
+      "sha256": "218bbc90aea22cc407b4a7e8e7c5c16b3d9d12e8f5f1255fdb374ff6142bd1a7",
+      "index_blob": "e55aaaa0896268c3f3be9d0b20a810239aac1759"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-azure-sky-wind/manifest.json",
+      "sha256": "4d4ac40ccfbad14fc60eef9d1b2ecd4e5262ac2c211e82e6f9490ab0a03c47ee",
+      "index_blob": "80e1e8d605509ea2d5ad6d15ecf59b5eef6861db"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-crusoe-abilene/config.json",
+      "sha256": "de1953d5f48440340656ba4e6e2c4e441416b996092d8d6d4255aa43fc0cfe13",
+      "index_blob": "75e68306514b7d96aeeb2677c24c0cfe0a6bf5e5"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-crusoe-abilene/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-crusoe-abilene/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-crusoe-abilene/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-crusoe-abilene/manifest.json",
+      "sha256": "7b1bb1d65805e8b9c870f195acb06fb3d0d8de40294509858f951ed24132c6ea",
+      "index_blob": "14195719ae1ffebc271991f1b61db34dc70cd140"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-2021/config.json",
+      "sha256": "c36cc240753e8806918fcf8d5f9bc2526a509946527f2616c49f1f9bcf499208",
+      "index_blob": "f861ebb9ffe8d673756677ed0797b27d2be74a4b"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-2021/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-2021/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-2021/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-2021/manifest.json",
+      "sha256": "bcc95d39612910a1b9903993c66692220fe6b8c1d56a8541fc1201fe9de0d04c",
+      "index_blob": "f6e6768a985a3429fd7be21a985fc11c77849bdf"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-x/config.json",
+      "sha256": "c36cc240753e8806918fcf8d5f9bc2526a509946527f2616c49f1f9bcf499208",
+      "index_blob": "f861ebb9ffe8d673756677ed0797b27d2be74a4b"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-x/decisions.json",
+      "sha256": "d5c86a36a377c95dd6cdfc31acb59a2ebf043c43f9458c4ed8011d25224e18a3",
+      "index_blob": "073b0cc85a56164b7befae9f82801aa03af654d6"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-x/evaluation.json",
+      "sha256": "ea070004d48db1a157181792516a08b572ddc0dc1a14b5206873fd8e3d041851",
+      "index_blob": "3fdd31c4e1d133001b83d05ed7b70a2bdb39b46d"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-x/input.json",
+      "sha256": "c773e5ea4eb4bbd0c07bbad8b757ad348b7a037d1d0bd5279732b9a45f01a2a3",
+      "index_blob": "377b2c3f2ba94cb79cc143edbda6015a73d6fc53"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug-montauk-x/manifest.json",
+      "sha256": "bcc95d39612910a1b9903993c66692220fe6b8c1d56a8541fc1201fe9de0d04c",
+      "index_blob": "f6e6768a985a3429fd7be21a985fc11c77849bdf"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug/config.json",
+      "sha256": "de1953d5f48440340656ba4e6e2c4e441416b996092d8d6d4255aa43fc0cfe13",
+      "index_blob": "75e68306514b7d96aeeb2677c24c0cfe0a6bf5e5"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug/decisions.json",
+      "sha256": "400c5069f2ac62b9b281fab5a0ee82c4e8a22ef71cb1173415268312a60ac7df",
+      "index_blob": "3915a6970292f50d411762906ca6c854f6e34dba"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug/evaluation.json",
+      "sha256": "6cb3adc8b22152cb66bb305b2cc69f439990b4fb2acd31739bed7713d28557f1",
+      "index_blob": "85f1c6f7775cf1bf49d9c46bb048ca88e3bbb4c6"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug/input.json",
+      "sha256": "030c47c90ab46af158518c712ed0c8fa2ae93bbf5c25b5d5f49d5000404757dd",
+      "index_blob": "78278b269bfc2f7d265056a0a2e353d865df9bf7"
+    },
+    {
+      "path": "research/pre-rfp-history/tmp-debug/manifest.json",
+      "sha256": "7b1bb1d65805e8b9c870f195acb06fb3d0d8de40294509858f951ed24132c6ea",
+      "index_blob": "14195719ae1ffebc271991f1b61db34dc70cd140"
+    },
+    {
+      "path": "scripts/prepare_pre_rfp_history.py",
+      "sha256": "895634bd562979cd580cbc96232c00d206fe1850806323c0aad4f37a43bcf0da",
+      "index_blob": "a162e84fba1d034d1b31c5fd2854e6f4cd9e58c9"
+    },
+    {
+      "path": "scripts/run_pre_rfp_history.py",
+      "sha256": "4c35fe221d363142fa798d3ce1a7df098d8ed5f5bf88d8d3520709c2c8fdf5a8",
+      "index_blob": "1a1501c318e9517ab50a7eec25859d65abfe6b9c"
+    },
+    {
+      "path": "src/athena_procurement_arena/historical_case_report.py",
+      "sha256": "b94093085d509acf6df364433eac402e6061abae42ab19f614e8d756952630d7",
+      "index_blob": "a99a6c9f5a1b9caa966c145413d4b06d12b8337a"
+    },
+    {
+      "path": "src/athena_procurement_arena/historical_cases.py",
+      "sha256": "3741e9e4bdfd2131b1e55294b1f4830db4a99f51cc93d8d9e59245f82d1ac04a",
+      "index_blob": "048bacb4b4ad2069168f2d83c7c248a7f187f845"
+    },
+    {
+      "path": "tests/procurement_arena/test_historical_cases.py",
+      "sha256": "985ac74e067af196c983edcb23badc88a5bf0e4fe83513c68e4308aafdf8348a",
+      "index_blob": "18c44d51a87b06179625a3e219a3680487ce3f6f"
+    }
+  ],
+  "excluded": ".agent bookkeeping; source, tests, docs and all new research are bound",
+  "candidate_sha256": "a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5"
+}

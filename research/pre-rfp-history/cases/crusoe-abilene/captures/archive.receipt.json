@@ -1,0 +1,12 @@
+{
+  "body_path": "recovery-originals/verified-crusoe-announcement-html-normal.html",
+  "body_sha256": "2f23c81b575c947faed242cb7d87c38b8d20bf44fdcf3e8fd2ee1123bb4d9dbe",
+  "content_type": "text/html; charset=UTF-8",
+  "header_transformation": "Set-Cookie lines omitted; remaining header values unchanged",
+  "headers_path": "recovery-originals/verified-crusoe-announcement-html-normal-headers-cookie-omitted.txt",
+  "headers_sha256": "9cf2b042336049e9a7961c4a3740570e266fce3deb3e9b849fc1542f5b0103e9",
+  "http_status": 200,
+  "memento_datetime_utc": "2024-07-18T15:55:07Z",
+  "project_id": "crusoe-abilene-lancium-campus",
+  "source_url": "https://web.archive.org/web/20240718155507/https://lancium.com/press-release/crusoe-lancium-clean-campus/"
+}

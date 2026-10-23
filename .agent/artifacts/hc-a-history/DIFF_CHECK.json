@@ -1,0 +1,8 @@
+{
+  "full_diff_check": "FAIL_RETAINED_SOURCE_FORMATTING",
+  "authored_scope_check": "PASS",
+  "command": "git diff --cached --check -- .gitattributes pyproject.toml src scripts tests docs/HISTORICAL_PATH.md .agent/tasks/hc-a-history.md",
+  "authored_scope_exit_code": 0,
+  "reason": "Retained public HTML, HTTP bodies and PDF text extracts contain original trailing whitespace. They remain byte-preserved; controller probe also has a nonfunctional trailing blank line. No claim that full raw-evidence diff check is clean.",
+  "source_changes_after_gate": "None; final explanatory doc changed output pointer only before candidate freeze."
+}

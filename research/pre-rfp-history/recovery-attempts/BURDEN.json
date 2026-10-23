@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "case_id": "montauk-2021",
+      "new_public_http_requests": 3,
+      "new_search_queries": 3,
+      "new_request_elapsed_seconds": 6.734,
+      "request_receipts": [
+        "montauk-pre2020.json",
+        "montauk-procurement-cdx.json",
+        "lipa-procurement2021.json"
+      ],
+      "paid_service_calls": 0,
+      "prior_research_elapsed_seconds": "UNKNOWN",
+      "total_human_review_seconds": "UNKNOWN",
+      "tokens": "UNKNOWN",
+      "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim."
+    },
+    {
+      "case_id": "azure-sky-wind",
+      "new_public_http_requests": 2,
+      "new_search_queries": 1,
+      "new_request_elapsed_seconds": 1.719,
+      "request_receipts": [
+        "azure-2021.json",
+        "azure-2021-body.json"
+      ],
+      "paid_service_calls": 0,
+      "prior_research_elapsed_seconds": "UNKNOWN",
+      "total_human_review_seconds": "UNKNOWN",
+      "tokens": "UNKNOWN",
+      "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim."
+    },
+    {
+      "case_id": "crusoe-abilene",
+      "new_public_http_requests": 1,
+      "new_search_queries": 2,
+      "new_request_elapsed_seconds": 2.156,
+      "request_receipts": [
+        "ge-crusoe-order.json"
+      ],
+      "paid_service_calls": 0,
+      "prior_research_elapsed_seconds": "UNKNOWN",
+      "total_human_review_seconds": "UNKNOWN",
+      "tokens": "UNKNOWN",
+      "interpretation": "HTTP latency is not total research burden; no tolerability or false-positive-rate claim."
+    }
+  ],
+  "new_public_http_requests": 6,
+  "new_search_queries": 6,
+  "search_calls": 2,
+  "all_development": true,
+  "comparison_attention_budget": "NOT_EVALUATED"
+}

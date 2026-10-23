@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "retained_files": 494,
+  "working_index_fresh_checkout_bytes": "IDENTICAL",
+  "core_autocrlf": true,
+  "candidate_sha256": "a7ba2f5ee6dbc2c3026e6eb3a7917675b776b4d09b4adfed8be3f13bc120bee5",
+  "started_at_utc": "2026-10-02T17:41:25.688529+00:00",
+  "finished_at_utc": "2026-10-02T17:43:29.329557+00:00",
+  "elapsed_seconds": 123.64
+}

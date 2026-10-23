@@ -1,0 +1,35 @@
+{
+  "packet_id": "HC-A-HISTORY",
+  "lane": "single builder with bounded Terra recovery and independent Sol review",
+  "first_recorded_stage_utc": "2026-10-02T15:50:36.106736+00:00",
+  "actual_task_start_utc": "UNKNOWN",
+  "finished_at_utc": "2026-10-02T17:47:23.621397+00:00",
+  "planning_seconds": "UNKNOWN",
+  "build_seconds": "UNKNOWN",
+  "validation_seconds": {
+    "pytest": 65.61,
+    "offline_proof": 3.281,
+    "windows_byte_proof": 123.64,
+    "full_gate": "UNKNOWN"
+  },
+  "audit_seconds": "UNKNOWN",
+  "repair_count": {
+    "luna_reported": 2,
+    "terra_bounded_repairs": 2,
+    "documentation_correction": 1
+  },
+  "models": {
+    "luna_role": "gpt-6-luna low",
+    "terra_role": "gpt-5.6-terra medium",
+    "reviewer_role": "gpt-6-sol medium",
+    "effective_config_identity": "UNKNOWN"
+  },
+  "tokens": {
+    "measured": "UNKNOWN"
+  },
+  "elapsed_to_accepted_seconds": 7007.514661,
+  "total_research_time": "UNKNOWN",
+  "paid_service_calls": 0,
+  "performance_comparison": "NOT_CLAIMED",
+  "elapsed_scope": "Measured from first recorded stage, not actual task start; includes interrupted work and review"
+}
