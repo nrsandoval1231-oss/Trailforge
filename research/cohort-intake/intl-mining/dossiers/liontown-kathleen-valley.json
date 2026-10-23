@@ -1,0 +1,156 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "liontown-kathleen-valley",
+  "project_name": "Kathleen Valley Lithium Project hybrid power station",
+  "location": "Kathleen Valley, Northern Goldfields, Western Australia",
+  "owner_or_developer": "Liontown Resources Limited (ASX: LTR)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), chosen because the entire sequence - PFS, DFS, competitive power tender, Letter of Award - is on ASX with exchange release timestamps. The power solution changed between PFS (grid tee-off plus 4.4 MW solar) and DFS (3rd-party on-site hybrid facility), so lead time depends on which earlier signal a reviewer accepts as 'power-relevant'.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Updated Pre-Feasibility Study released (grid tee-off plus 4.4 MW solar assumed)",
+      "observed_at": "2020-10-09T09:30:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=LTR&timeframe=Y&year=2020",
+        "note": "ASX company-announcements listing for LTR shows 'Updated KV PFS - Substantial increase in NPV and Mine Life' released 09/10/2020 9:30 am (ASX displays Sydney time; AEDT = +11:00); PDF idsId=02291898. Listing retrieved by the research agent via curl, not itself captured."
+      },
+      "capture_id": "ltr-kv-pfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20201009/pdf/44nj542yfqcwgt.pdf",
+      "source_quote": "Updated Pre-Feasibility Study (PFS) showcases the strong potential to develop a stateof-the-art, second-generation lithium-tantalum mining and processing operation at the",
+      "claims": {
+        "study": "PFS"
+      },
+      "signal_id": "liontown-kathleen-valley-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/ltr-kv-pfs.json",
+      "source_sha256": "b8dcb2c71a4bf49bb4b9282ea821e917746235307bd98bda52aacd0727e344c0"
+    },
+    {
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "PFS states site-wide online power demand 13.5 MW (grid connection assumed)",
+      "observed_at": "2020-10-09T09:30:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=LTR&timeframe=Y&year=2020",
+        "note": "Same ASX release as signal 1 (09/10/2020 9:30 am Sydney time, idsId=02291898)."
+      },
+      "capture_id": "ltr-kv-pfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20201009/pdf/44nj542yfqcwgt.pdf",
+      "source_quote": "A 132kV overhead power line runs adjacent to the main highway. A tee-off sub-station will be built\ntogether with a transformer to drop the voltage from 132kV to 11kV with an overhead powerline to \nan HV switch room at the plant site.\n\nA 4.4MW solar farm located adjacent to the proposed accommodation village plus backup \nemergency power supply generator/s of 2MW has also been included within capital allowances. Total \nanticipated site wide *online* power demand including underground is 13.5MW.",
+      "claims": {
+        "mw": 13.5,
+        "solar_mw": 4.4,
+        "grid_kv": 132
+      },
+      "signal_id": "liontown-kathleen-valley-s2",
+      "capture_path": "research/cohort-intake/intl-mining/captures/ltr-kv-pfs.json",
+      "source_sha256": "b8dcb2c71a4bf49bb4b9282ea821e917746235307bd98bda52aacd0727e344c0"
+    },
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Definitive Feasibility Study completed",
+      "observed_at": "2021-11-11T09:33:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=LTR&timeframe=Y&year=2021",
+        "note": "ASX listing for LTR shows 'Kathleen Valley DFS confirms Tier-1 global lithium project' released 11/11/2021 9:33 am (Sydney time, AEDT +11:00); idsId=02450567."
+      },
+      "capture_id": "ltr-kv-dfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20211111/pdf/452v4dtgf2cs05.pdf",
+      "source_quote": "Definitive Feasibility Study (DFS) confirms the potential to develop a state-of-the-art, secondgeneration lithium-tantalum mining and processing operation at the 100%-owned Kathleen",
+      "claims": {
+        "study": "DFS"
+      },
+      "signal_id": "liontown-kathleen-valley-s3",
+      "capture_path": "research/cohort-intake/intl-mining/captures/ltr-kv-dfs.json",
+      "source_sha256": "9279be2a9049105cbc5e7d26cba6f9591995db66b26ca1f9aa7e5a372bcdf6b9"
+    },
+    {
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "DFS: power to be provided by a 3rd party via a dedicated on-site facility (gas, solar, wind, battery); site demand ~25 MW",
+      "observed_at": "2021-11-11T09:33:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=LTR&timeframe=Y&year=2021",
+        "note": "Same ASX release as signal 3 (11/11/2021 9:33 am Sydney time, idsId=02450567)."
+      },
+      "capture_id": "ltr-kv-dfs",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20211111/pdf/452v4dtgf2cs05.pdf",
+      "source_quote": "Power will be provided by a 3rd party via a dedicated on-site power facility. A combined gas, solar, wind and battery storage solution will ensure a start-up mix of 60% renewables (inclusive 100% gas redundancy). For personal use onlyTotal anticipated site wide online power demand including the underground mine is ~25MW at a mining rate of 4Mtpa.",
+      "claims": {
+        "supplier_type": "3rd party",
+        "location": "on-site",
+        "mw_demand_approx": 25,
+        "start_up_renewables_pct": 60
+      },
+      "signal_id": "liontown-kathleen-valley-s4",
+      "capture_path": "research/cohort-intake/intl-mining/captures/ltr-kv-dfs.json",
+      "source_sha256": "9279be2a9049105cbc5e7d26cba6f9591995db66b26ca1f9aa7e5a372bcdf6b9"
+    }
+  ],
+  "target": {
+    "target_description": "Letter of Award to Zenith Energy for a 15-year BOO 95 MW wind/solar/battery/gas hybrid power station following a competitive tender (a binding PPA followed 20 Dec 2022).",
+    "title": "Letter of Award for Kathleen Valley Hybrid Power Station (follows a competitive tender; tender run-up not public)",
+    "observed_at": "2022-09-12T09:01:00+10:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=LTR&timeframe=Y&year=2022",
+      "note": "ASX listing for LTR shows 'Letter of Award for Kathleen Valley Hybrid Power Station' released 12/09/2022 9:01 am (Sydney time, AEST +10:00); idsId=02566729."
+    },
+    "capture_id": "ltr-kv-loa",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20220912/pdf/45dzm30n67937n.pdf",
+    "source_quote": "Zenith Energy will finance, design, construct, own, operate and maintain a 95MW hybrid power station at Kathleen Valley\n**(Hybrid Power Station)** for an initial term of 15 years from commercial operation",
+    "claims": {
+      "mw": 95,
+      "term_years": 15,
+      "supplier": "Zenith Energy"
+    },
+    "signal_id": "liontown-kathleen-valley-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/ltr-kv-loa.json",
+    "source_sha256": "a9d38b2438e240bb308b1cf2df7a69f4ae44018ceddc4d3d93b3f89e212dd350"
+  },
+  "buyer_path": [
+    {
+      "organization": "Liontown Resources Limited (project owner / power offtaker)",
+      "role": "OWNER",
+      "evidence_signal_id": "liontown-kathleen-valley-target",
+      "quote": "Liontown has executed a Letter of Award with Zenith Energy, one of Australia's leading independent power \nproducers, to supply electricity to its Kathleen Valley Lithium Project in Western Australia for a period of 15 years."
+    },
+    {
+      "organization": "Zenith Energy Pty Ltd (independent power producer, BOO power supplier)",
+      "role": "OTHER",
+      "evidence_signal_id": "liontown-kathleen-valley-target",
+      "quote": "Zenith Energy will finance, design, construct, own, operate and maintain a 95MW hybrid power station at Kathleen Valley"
+    }
+  ],
+  "lead_time": {
+    "days": 703.0215,
+    "basis": "PROOF_CITED_TIMESTAMPS",
+    "earliest_signal_id": "liontown-kathleen-valley-s1",
+    "note": "CAUTION: the 703-day figure is measured from the PFS (ASX 09/10/2020), which assumed GRID power (132 kV tee-off) plus a 4.4 MW solar farm; it is NOT a signal of a third-party on-site power procurement. The first signal naming third-party on-site generation is the DFS (s4, ASX 11/11/2021), and DFS-to-Letter-of-Award is about 305 days. A reviewer should decide which is the legitimate earliest signal. ASX times were read from the ASX listing by the agent and not captured."
+  },
+  "blockers": [
+    "ASX release times were read from the ASX announcements listing (Sydney time) via curl; the listing page itself is not captured as evidence.",
+    "PFS power assumption (grid) differs from the eventual third-party on-site solution, so the PFS-to-target gap (about 703 days) overstates the lead time; the DFS-to-target gap (about 305 days) is the more relevant figure.",
+    "Buyer-side tender run-up (competitive tender timing, shortlisted bidders) not found in public sources.",
+    "Captures are PDF-to-markdown; quotes containing markdown artefacts (e.g. *online*) are verbatim from the capture, not the original PDF text."
+  ],
+  "reviewer_checklist": [
+    "Open the ASX listing for LTR 2020/2021/2022 and confirm the three release timestamps and time zone convention.",
+    "Confirm the PFS grid-power assumption vs the DFS third-party assumption and decide which signal anchors lead time.",
+    "Confirm Zenith Energy is the awarded supplier and that this is the first procurement-level event (earlier tender not public).",
+    "Confirm the project is not already in the cohort and that hindsight selection is acceptable for a development case."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:39-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Letter of Award to an IPP to finance, build, own and operate a 95 MW hybrid (wind/solar/battery/thermal) off-grid power station for an initial 15-year term: long-term on-site supply, not temporary or rental power. The release says it follows a competitive tender, so the tender stage pre-dates the target but is not public."
+}

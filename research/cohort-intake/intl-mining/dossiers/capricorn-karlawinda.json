@@ -1,0 +1,150 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "capricorn-karlawinda",
+  "project_name": "Karlawinda Gold Project gas power station",
+  "location": "Pilbara region, Western Australia (near Newman)",
+  "owner_or_developer": "Capricorn Metals Ltd (ASX: CMM)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). On-ASX trail from a feasibility study that explicitly assumed an Independent Power Producer gas station (Oct 2017) to the executed power supply agreement with Contract Power Australia (announced Jun 2020). Contract Power is also the contractor named in the unverified MinRes Wodgina lead, so this is a second Contract Power data point.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Karlawinda Feasibility Study released",
+      "observed_at": "2017-10-23T11:06:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=CMM&timeframe=Y&year=2017",
+        "note": "ASX announcements listing for CMM shows 'Feasibility Study Outlines Robust High Margin Gold Project' released 23/10/2017 11:06 am (ASX shows Sydney time, AEDT +11:00); PDF idsId=01911010. Listing retrieved via curl by the research agent, not itself captured."
+      },
+      "capture_id": "cmm-fs-2017",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20171023/pdf/43ngngckrftrbk.pdf",
+      "source_quote": "The Feasibility Study assumed that power for the Project will be supplied under a long-term power purchase \nagreement (LTPPA), with an Independent Power Producer who will establish a gas fired power station on site.",
+      "claims": {
+        "power_model": "LTPPA",
+        "supplier_type": "Independent Power Producer"
+      },
+      "signal_id": "capricorn-karlawinda-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/cmm-fs-2017.json",
+      "source_sha256": "aa932e0ec42f02e5023268de21750c8e994fe00bc6d28518cd04eb431853f876"
+    },
+    {
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "Feasibility Study: gas-fired IPP station on site, estimated 13.3 MW requirement",
+      "observed_at": "2017-10-23T11:06:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=CMM&timeframe=Y&year=2017",
+        "note": "Same ASX release as signal 1 (23/10/2017 11:06 am Sydney time, idsId=01911010)."
+      },
+      "capture_id": "cmm-fs-2017",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20171023/pdf/43ngngckrftrbk.pdf",
+      "source_quote": "The Feasibility Study assumed that power for the Project will be supplied under a long-term power purchase \nagreement (LTPPA), with an Independent Power Producer who will establish a gas fired power station on site. The \nLTPPA is based on providing a secure supply for the estimated 13.3 MW power requirement of the Project.",
+      "claims": {
+        "mw": 13.3,
+        "fuel": "gas"
+      },
+      "signal_id": "capricorn-karlawinda-s2",
+      "capture_path": "research/cohort-intake/intl-mining/captures/cmm-fs-2017.json",
+      "source_sha256": "aa932e0ec42f02e5023268de21750c8e994fe00bc6d28518cd04eb431853f876"
+    },
+    {
+      "signal_type": "EPCM_AWARDED",
+      "title": "GR Engineering named preferred Process Design & Construct contractor under a CONDITIONAL letter of intent (processing plant; not an award, not EPCM, not power)",
+      "observed_at": "2018-04-23T08:48:00+10:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=CMM&timeframe=Y&year=2018",
+        "note": "ASX listing for CMM shows 'GR Engineering Appointed as Preferred Contractor' released 23/04/2018 8:48 am (Sydney time, AEST +10:00); idsId=01973467. signal_type EPCM_AWARDED is a placeholder: the enum has no letter-of-intent or design-and-construct type, and this is a conditional LOI for a Process Design & Construct contract on the processing plant, not an EPCM award and not a power item."
+      },
+      "capture_id": "cmm-gr-pref",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20180423/pdf/43tdgscdstcfp1.pdf",
+      "source_quote": "Conditional Letter of Intent issued for the appointment of** \n**Western Australian engineering company GR Engineering** \n**Services Ltd (ASX: GNG) as preferred contractor for the** \n**Karlawinda Gold Project Process Design and Construct** \n**Contract.**\n\n• **The contract will be for the construction of a new 3.0Mtpa**\n**Carbon-in-Leach (CIL) processing facility and other\nsupporting plant infrastructure.**\n\n• **The contract is for a Lump Sum Turnkey Price of A$93.1M,",
+      "claims": {
+        "contractor": "GR Engineering",
+        "price_aud_m": 93.1,
+        "status": "Conditional Letter of Intent"
+      },
+      "signal_id": "capricorn-karlawinda-s3",
+      "capture_path": "research/cohort-intake/intl-mining/captures/cmm-gr-pref.json",
+      "source_sha256": "d4183064d968d03e373ba0586c8a1b99a14b03f88a54f8d85658672e851f9021"
+    }
+  ],
+  "target": {
+    "target_description": "Power supply agreement with Contract Power Australia to build, own and operate a 16 MW gas-fuelled station with 2 MW diesel back-up at Karlawinda (plus APA gas transport/lateral pipeline), announced 23 June 2020.",
+    "title": "Key Project Contracts Executed: power supply agreement with Contract Power Australia (BOO gas station); APA gas transport agreement",
+    "observed_at": "2020-06-23T08:22:00+10:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=CMM&timeframe=Y&year=2020",
+      "note": "ASX listing for CMM shows 'Key Project Contracts Executed' released 23/06/2020 8:22 am (Sydney time, AEST +10:00); idsId=02246889. The power supply agreement was 'recently executed' before this date; signing date itself not stated. The quote says the power supply agreement was 'recently executed'; the signing date is not stated, so the true procurement date is earlier than the announcement."
+    },
+    "capture_id": "cmm-contracts",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20200623/pdf/44jvln08xxtjhd.pdf",
+    "source_quote": "The Company has also recently executed a power supply agreement with Contract Power Australia Pty Ltd (Contract Power). Under the terms of the agreement, Contract Power will build, own and operate a 16MW gas fuelled power station with 2MW of diesel back-up at Karlawinda.",
+    "claims": {
+      "mw": 16,
+      "backup_mw": 2,
+      "fuel": "gas",
+      "supplier": "Contract Power Australia Pty Ltd"
+    },
+    "signal_id": "capricorn-karlawinda-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/cmm-contracts.json",
+    "source_sha256": "7c736be53fbd9070694215ec3783f9ec444a00f5ff7a627f61b4f3640728f436"
+  },
+  "buyer_path": [
+    {
+      "organization": "Capricorn Metals Ltd",
+      "role": "OWNER",
+      "evidence_signal_id": "capricorn-karlawinda-target",
+      "quote": "Capricorn Metals Ltd (ASX: CMM) (“Capricorn” or the “Company”) is pleased to advise that it has entered into agreements with APA Group (ASX: APA) for the transportation of gas from the Goldfields Gas Pipeline (GGP) to the Karlawinda Gold Project (Karlawinda)."
+    },
+    {
+      "organization": "Contract Power Australia Pty Ltd (power supplier, BOO)",
+      "role": "OTHER",
+      "evidence_signal_id": "capricorn-karlawinda-target",
+      "quote": "The Company has also recently executed a power supply agreement with Contract Power Australia Pty Ltd (Contract Power). Under the terms of the agreement, Contract Power will build, own and operate a 16MW gas fuelled power station with 2MW of diesel back-up at Karlawinda."
+    },
+    {
+      "organization": "APA Group (gas transport / lateral pipeline)",
+      "role": "OTHER",
+      "evidence_signal_id": "capricorn-karlawinda-target",
+      "quote": "APA will also build, own and operate the lateral pipeline that links the GGP to Karlawinda."
+    },
+    {
+      "organization": "GR Engineering Services Ltd (preferred process plant Design & Construct contractor, conditional LOI only)",
+      "role": "OTHER",
+      "evidence_signal_id": "capricorn-karlawinda-s3",
+      "quote": "Conditional Letter of Intent issued for the appointment of** \n**Western Australian engineering company GR Engineering** \n**Services Ltd (ASX: GNG) as preferred contractor for the** \n**Karlawinda Gold Project Process Design and Construct** \n**Contract.**\n\n• **The contract will be for the construction of a new 3.0Mtpa**\n**Carbon-in-Leach (CIL) processing facility and other\nsupporting plant infrastructure.**\n\n• **The contract is for a Lump Sum Turnkey Price of A$93.1M,"
+    }
+  ],
+  "lead_time": {
+    "days": 973.9278,
+    "basis": "PROOF_CITED_TIMESTAMPS",
+    "earliest_signal_id": "capricorn-karlawinda-s1",
+    "note": "Target (ASX 23/06/2020 08:22 +10:00) minus the feasibility-study release (s1/s2, ASX 23/10/2017 11:06 +11:00). The FS only ASSUMED an IPP gas station via an LTPPA; it is a planning assumption, not a solicitation. No power tender, EOI or LOI was captured between the FS and the executed agreement. The agreement was 'recently executed' before the 2020 announcement, so the true gap to the procurement is shorter than computed. Both timestamps are ASX listing times read by the agent and not captured."
+  },
+  "blockers": [
+    "Contract Power agreement signing date not stated ('recently executed'); target observed_at is the ASX announcement time.",
+    "ASX release times read from ASX listing (Sydney time) via curl; listing pages not captured.",
+    "No power-related tender, EOI or LOI between the 2017 FS and the 2020 agreement was captured, so the executed agreement is used as the earliest power procurement-type event found. (The FS also records a formal EPC tender with four shortlisted contractors for the processing plant, which is not a power procurement.)",
+    "s3 uses EPCM_AWARDED as a placeholder for a conditional letter of intent for the processing-plant Design & Construct contract; it is not an award, not EPCM, and not power-related.",
+    "No construction-approval / FID or mining-permit signal captured for this dossier.",
+    "Captures are PDF-to-markdown conversions; owner role inferred from the company executing the agreements for its own project."
+  ],
+  "reviewer_checklist": [
+    "Confirm ASX release timestamps (23/10/2017, 23/04/2018, 23/06/2020) and Sydney-time convention.",
+    "Confirm Contract Power Australia is the power supplier named and check the role classification.",
+    "Decide whether an LTPPA assumption in a feasibility study counts as a power-requirement signal for lead time.",
+    "Decide whether s3 (conditional LOI for the processing plant D&C contract) belongs in the dossier at all; its type EPCM_AWARDED is a placeholder."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:39-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Build-own-operate power supply agreement for a 16 MW gas-fuelled station with 2 MW diesel back-up, i.e. long-term on-site supply (a BOO power-station contract), not a temporary or rental unit; announced as already executed, so no tender stage is visible."
+}

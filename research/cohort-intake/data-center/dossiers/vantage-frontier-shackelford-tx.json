@@ -1,0 +1,105 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "INCOMPLETE",
+  "project_id": "vantage-frontier-shackelford-tx",
+  "project_name": "Vantage Frontier campus on-site microgrid (VoltaGrid)",
+  "vertical": "data-center",
+  "location": "Shackelford County, Texas, US",
+  "owner_or_developer": "Vantage Data Centers",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Candidate came from the task brief (Vantage Frontier / VoltaGrid).",
+  "signals": [
+    {
+      "signal_id": "vantage-frontier-shackelford-tx-s1",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "title": "Vantage Data Centers unveils $25B Frontier campus, 1.4GW, Shackelford County TX",
+      "observed_at": "2025-08-20T13:40:12+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://vantage-dc.com/news/vantage-data-centers-unveils-plans-for-frontier-a-25b-mega-campus-in-texas-to-meet-unprecedented-ai-demand/&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-08-20T13:40:12Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Press release dateline DENVER Aug. 19, 2025; wire timestamp not captured, so Wayback is the earliest cited availability."
+      },
+      "source_url": "https://vantage-dc.com/news/vantage-data-centers-unveils-plans-for-frontier-a-25b-mega-campus-in-texas-to-meet-unprecedented-ai-demand/",
+      "capture_path": "research/cohort-intake/data-center/captures/vantage-frontier-announce-pr.json",
+      "capture_id": "vantage-frontier-announce-pr",
+      "source_sha256": "6f872921ae5b3a1540098323f5e4886d0ddd1041e80c59ca0d1069f4b639b002",
+      "source_quote": "today announced its largest investment to date of over $25 billion to develop a mega-scale 1.4GW data center campus in Shackelford County, Texas",
+      "claims": {
+        "capacity_gw": 1.4,
+        "investment_usd_bn": 25
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "vantage-frontier-shackelford-tx-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "News report (Business Insider): TCEQ documents reported to show VoltaGrid approved to operate 210 gas generators (700 MW) near Frontier site",
+    "observed_at": "2025-10-23T17:26:03+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=https://www.businessinsider.com/openai-building-natural-gas-microgrid-at-new-texas-data-center-2025-10&output=json&limit=5",
+      "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-10-23T17:26:03Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Article prints \"Oct 23, 2025, 1:17 PM ET\" (=17:17Z), consistent with snapshot. Secondary report of TCEQ registrations; the TCEQ registration dates are not captured and may be earlier than this article. The TCEQ registration dates themselves are not captured."
+    },
+    "source_url": "https://www.businessinsider.com/openai-building-natural-gas-microgrid-at-new-texas-data-center-2025-10",
+    "capture_path": "research/cohort-intake/data-center/captures/vantage-frontier-bi-microgrid.json",
+    "capture_id": "vantage-frontier-bi-microgrid",
+    "source_sha256": "99808f4bfa0703bb27add8c0026e6945b74afcf9968c48e8dea232998c3ddb60",
+    "source_quote": "Public documents filed with the Texas Commission on Environmental Quality show that Voltagrid has been approved to operate 210 industrial gas generators with a combined capacity of 700 megawatts on land leased near the site.",
+    "claims": {
+      "generators": 210,
+      "mw": 700
+    },
+    "target_description": "VoltaGrid TCEQ air-quality registrations for 210 Jenbacher gas generators (700 MW) to form an on-site behind-the-meter microgrid for the Vantage Frontier data center (Oracle/OpenAI Stargate site per BI)."
+  },
+  "buyer_path": [
+    {
+      "organization": "Vantage Data Centers",
+      "role": "DEVELOPER",
+      "evidence_signal_id": "vantage-frontier-shackelford-tx-s1",
+      "quote": "a leading global provider of hyperscale data centers, today announced its largest investment"
+    },
+    {
+      "organization": "VoltaGrid",
+      "role": "OTHER",
+      "evidence_signal_id": "vantage-frontier-shackelford-tx-target",
+      "quote": "Voltagrid has been approved to operate 210 industrial gas generators"
+    },
+    {
+      "organization": "Oracle",
+      "role": "OTHER",
+      "evidence_signal_id": "vantage-frontier-shackelford-tx-target",
+      "quote": "Oracle's development partners for the Shackelford County site"
+    },
+    {
+      "organization": "Jenbacher (engine maker)",
+      "role": "OTHER",
+      "evidence_signal_id": "vantage-frontier-shackelford-tx-target",
+      "quote": "The generators are made by Jenbacher, an Austrian engine company."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "vantage-frontier-shackelford-tx-s1",
+    "note": "INCOMPLETE dossier, so no lead time is stated. Indicative only: Wayback CDX first-seen date of the Vantage announcement (2025-08-20T13:40:12Z) to the Wayback first-seen date of the BI report (2025-10-23T17:26:03Z) is about 64.2 days, both ends upper bounds on availability for text quoted from later captures; the underlying TCEQ registration dates were not captured and likely precede the article, so the true gap to the permit event may be shorter."
+  },
+  "blockers": [
+    "Only one early signal (project announcement) found; a second early public signal (county abatement, rezoning, TCEQ filing date) was not located, so the dossier is INCOMPLETE.",
+    "Target is a secondary news report of TCEQ registrations; no primary TCEQ record/date captured.",
+    "A Vantage-VoltaGrid partnership release dated Feb 11, 2025 (portfolio-wide, no site named) exists on voltagrid.com but its earliest Wayback snapshot is 2026, so it is not usable as a timestamped signal and does not name Frontier.",
+    "VoltaGrid/Oracle 2.3 GW release (Oct 15, 2025) does not name the site; not used.",
+    "No rezoning/county abatement/utility filings captured for the earliest local signals.",
+    "Target is a registration/approval to operate, not a purchase/rental contract; the equipment contract itself is not public in captured sources.",
+    "reviewer: decide whether this counts as a procurement of the right kind (a news report of permit registrations is a permit/status event, not a purchase or rental contract)."
+  ],
+  "reviewer_checklist": [
+    "Locate the TCEQ standard-permit registration records for VoltaGrid (210 engines) and their received/approval dates; replace the BI secondary source.",
+    "Confirm the Oracle fact sheet naming Vantage and VoltaGrid and that the engines serve Frontier.",
+    "Look for Shackelford County / Albany TX local filings predating Aug 2025."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:06-05:00",
+  "target_fit": "PERMIT_OR_STATUS_ONLY",
+  "target_fit_note": "The quoted text is a news report of TCEQ air-permit registrations / approval to operate for VoltaGrid generators, which is a permit status event rather than a purchase or rental contract; the equipment contract is not in any captured source."
+}

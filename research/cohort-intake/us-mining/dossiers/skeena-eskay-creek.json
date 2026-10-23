@@ -1,0 +1,136 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "skeena-eskay-creek",
+  "project_name": "Eskay Creek Gold-Silver Project (Skeena)",
+  "location": "Golden Triangle, northwest British Columbia, Canada",
+  "owner_or_developer": "Skeena Resources Limited",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Canadian remote project chosen because the feasibility studies (2022, 2023) stated the grid power plan and a power-supply agreement was later signed (May 2025), all with EDGAR 6-K timestamps. Selected knowing the outcome.",
+  "signals": [
+    {
+      "signal_id": "skeena-eskay-creek-s1",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Eskay Creek NI 43-101 Technical Report and Feasibility Study (effective Sept 6, 2022; amended Sept 19, 2022)",
+      "observed_at": "2022-09-21T01:54:55+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465922101694/0001104659-22-101694-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2022-09-21T01:54:55+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001104659-22-101694, Form 6-K). This is the amended & restated report; the original was filed on Sept 14, 2022 (not captured). Amended version timestamp used."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465922101694/tm2225806d5_ex99-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/skeena-eskay-fs-20220921.json",
+      "capture_id": "skeena-eskay-fs-20220921",
+      "source_sha256": "6c758caafa52dc9b99045e2f813ad8bb577c6e8a506ca8d835f689fd068ecab5",
+      "source_quote": "Eskay Creek Project<br>NI 43-101 Technical Report<br>and Feasibility Study <br>British Columbia, Canada<br>Effective Date: September 6, 2022<br>Amended & Restated Report Date: September 19, 2022\\*<br>Prepared for: Skeena Resources Limited",
+      "claims": {}
+    },
+    {
+      "signal_id": "skeena-eskay-creek-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "2022 FS: BC Hydro will supply power via existing Volcano Creek interconnection ~17 km from the project",
+      "observed_at": "2022-09-21T01:54:55+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465922101694/0001104659-22-101694-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2022-09-21T01:54:55+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001104659-22-101694, Form 6-K). same filing as s1"
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465922101694/tm2225806d5_ex99-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/skeena-eskay-fs-20220921.json",
+      "capture_id": "skeena-eskay-fs-20220921",
+      "source_sha256": "6c758caafa52dc9b99045e2f813ad8bb577c6e8a506ca8d835f689fd068ecab5",
+      "source_quote": "BC Hydro will\nsupply power to the Eskay Creek Project where the system supply point will be the existing Volcano Creek interconnection point, which\nis located approximately 17 km to the northwest of the Eskay Creek Project.",
+      "claims": {
+        "utility": "BC Hydro",
+        "interconnect_km": 17
+      }
+    },
+    {
+      "signal_id": "skeena-eskay-creek-s3",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "NI 43-101 Technical Report on Updated Feasibility Study (effective Nov 14, 2023)",
+      "observed_at": "2023-12-22T21:32:04+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465923128842/0001104659-23-128842-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2023-12-22T21:32:04+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001104659-23-128842, Form 6-K). Exhibit 99.2 filed Dec 22, 2023; headline results were first press-released Nov 14, 2023 (not captured)."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465923128842/tm2333211d1_ex99-2.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/skeena-eskay-ufs-20231222.json",
+      "capture_id": "skeena-eskay-ufs-20231222",
+      "source_sha256": "55127cad3ab85a695fd2656990f46c60c72e4e6b12982992f6bec10eae45b8c6",
+      "source_quote": "NI 43-101 Technical Report on Updated Feasibility Study",
+      "claims": {}
+    },
+    {
+      "signal_id": "skeena-eskay-creek-s4",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "Updated FS: grid connection via Coast Mountain Hydro-owned 287 kV line, power purchased from BC Hydro, 48 MVA capability, standby diesel for critical loads",
+      "observed_at": "2023-12-22T21:32:04+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465923128842/0001104659-23-128842-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2023-12-22T21:32:04+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001104659-23-128842, Form 6-K). same filing as s3"
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1713748/000110465923128842/tm2333211d1_ex99-2.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/skeena-eskay-ufs-20231222.json",
+      "capture_id": "skeena-eskay-ufs-20231222",
+      "source_sha256": "55127cad3ab85a695fd2656990f46c60c72e4e6b12982992f6bec10eae45b8c6",
+      "source_quote": "Power will be purchased from BC Hydro\nwho will supply the power over 2L379. The point of interconnection on 2L379 will be near Volcano Creek where a transmission line tap\nexists for the Coast Mountain Hydro-owned Volcano Creek generating station. The Eskay Creek power system will be capable of supplying\n48 MVA to the Eskay Creek substation",
+      "claims": {
+        "mva": 48,
+        "utility": "BC Hydro"
+      }
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "Skeena Resources Limited (commissioner of the technical report; owner role not shown by this quote)",
+      "role": "OTHER",
+      "evidence_signal_id": "skeena-eskay-creek-s1",
+      "quote": "Eskay Creek Project<br>NI 43-101 Technical Report<br>and Feasibility Study <br>British Columbia, Canada<br>Effective Date: September 6, 2022<br>Amended & Restated Report Date: September 19, 2022\\*<br>Prepared for: Skeena Resources Limited"
+    },
+    {
+      "organization": "BC Hydro",
+      "role": "UTILITY",
+      "evidence_signal_id": "skeena-eskay-creek-s4",
+      "quote": "Power will be purchased from BC Hydro\nwho will supply the power over 2L379"
+    },
+    {
+      "organization": "Coast Mountain Hydro Limited Partnership (owner of the Volcano Creek generating station and the tap point per the 2023 report)",
+      "role": "OTHER",
+      "evidence_signal_id": "skeena-eskay-creek-s4",
+      "quote": "The point of interconnection on 2L379 will be near Volcano Creek where a transmission line tap\nexists for the Coast Mountain Hydro-owned Volcano Creek generating station."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "skeena-eskay-creek-s1",
+    "note": "No target, so no lead time. The only procurement-type observation (a signed grid interconnection and transmission agreement, May 2025) is grid infrastructure, not a temporary, bridge, rental or on-site generation procurement, and is recorded in later_procurement_events."
+  },
+  "blockers": [
+    "Target set to null (reviewer: a grid interconnection/transmission agreement is not a solicitation or award for temporary/bridge/rental/on-site generation); kept as text in later_procurement_events. Case stays a target_fit-review candidate, not a negative.",
+    "No construction-camp or commissioning temporary-power procurement found (repo's 2026-10-16 screen lists residual pre-commissioning power as unknown).",
+    "Permit approval (BC EA certificate) and construction-decision/EPCM signals were not captured for this dossier; chronology is thin between 2023-12 and 2025-05.",
+    "s1 timestamp is the amended FS (2022-09-21); original FS filed 2022-09-14 would be earlier.",
+    "Third-party recipient of the BC Hydro 'facility agreement' mentioned in the 2023 report was not located.",
+    "The Skeena ownership of the project is shown only in the later CMH release ('100%-owned Eskay Creek'), which is not a signal here; signal captures show Skeena only as the party the report was prepared for."
+  ],
+  "reviewer_checklist": [
+    "Confirm EDGAR acceptance datetimes via the accession index pages.",
+    "Decide whether the interconnection/transmission service agreement should be a target (current choice: null target, kept as a later event).",
+    "Add BC Environmental Assessment Certificate and construction-decision signals with timestamps if the cohort needs them.",
+    "Check for any temporary-power/camp power contract (Aggreko/others) in later Skeena releases."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-23T00:02:26+00:00",
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "us-mining",
+  "later_procurement_events": [
+    "2025-05-22 (6-K accepted 2025-05-22T11:02:37Z per the submissions API, agent-asserted; capture skeena-eskay-cmh-20250522): signed interconnection and transmission agreement with Coast Mountain Hydro LP (grid connection, not generation). Exact text: 'is pleased to complete a signed interconnection and transmission agreement (the “agreement”) with Coast Mountain Hydro Limited\\nPartnership (“CMH”). The agreement allows Skeena to connect to CMH’s transmission line for the Company’s 100%-owned\\nEskay Creek Gold-Silver Project'"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "INCOMPLETE",
+  "project_id": "fermi-america-project-matador-amarillo-tx",
+  "project_name": "Fermi America Project Matador (HyperGrid) early on-site generation",
+  "vertical": "data-center",
+  "location": "Carson County near Amarillo, Texas, US",
+  "owner_or_developer": "Fermi America (Fermi Inc.) with Texas Tech University System as landowner",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Not in the task brief; found while checking SEC full-text for on-site generation names. Strongest on turbine-lease fit (TM2500 mobile units) but early-signal side is thin.",
+  "signals": [
+    {
+      "signal_id": "fermi-america-project-matador-amarillo-tx-s1",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "title": "Texas Tech University System and Fermi America announce 11 GW-class Amarillo-area energy and intelligence campus",
+      "observed_at": "2025-06-28T12:57:37+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.texastech.edu/stories/25-06-ttu-system-and-fermi-america-announce-partnership.php&output=json&limit=5",
+        "note": "Earliest Wayback Machine CDX snapshot of this exact URL is 2025-06-28T12:57:37Z (UTC). This is an UPPER BOUND on public availability, not proof of when the text appeared: the page prints June 26, 2025 (announcement made Wednesday June 25), and the quoted text comes from a later capture (captured 2026-10-22), not from the Wayback snapshot; Wayback shows the URL existed, not that this text did."
+      },
+      "source_url": "https://www.texastech.edu/stories/25-06-ttu-system-and-fermi-america-announce-partnership.php",
+      "capture_path": "research/cohort-intake/data-center/captures/fermi-matador-ttus-announce.json",
+      "capture_id": "fermi-matador-ttus-announce",
+      "source_sha256": "12aa341c446eebbfd596af3009e21208219540aeacec9153eee9b1bb994d077f",
+      "source_quote": "The Texas Tech University System (TTU System) announced a collaboration with leading\nenergy and technology company [Fermi America](https://fermiamerica.com/) on Wednesday (June 25) to create one of the most significant power campuses in the\nU.S. and the largest advanced energy, private grid and intelligence development in\nthe world.\n\nLocated on approximately 5,800 acres in the Texas Panhandle, an area with a long history\nof energy production and a solid foundation of natural resources, the Advanced Energy\nand Intelligence Campus will support the growing demands of artificial intelligence\n(AI), data innovation and sustainable energy.\n\nThe site will include 18 million square feet of data centers and generate up to 11\ngigawatts of IT capacity from natural gas, solar, wind and clean nuclear energy, providing\na comprehensive solution to the demands of AI innovation.",
+      "claims": {
+        "data_center_area_text": "18 million square feet",
+        "it_capacity_gw": 11
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "fermi-america-project-matador-amarillo-tx-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "Fermi S-11 (EDGAR): letter of intent (Aug 25, 2025) with Mobile Power Solutions for a long-term capital lease of 120 MW of TM2500 units described as interim/bridge power",
+    "observed_at": "2025-09-06T01:40:54+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "sec_edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/2071778/000121390025085175/",
+      "note": "EDGAR accession 0001213900-25-085175 (Form S-11, ea0252333-01.htm) acceptanceDateTime 2025-09-06T01:40:54.000Z per the data.sec.gov submissions API for CIK 0002071778 (EDGAR filingDate field shows 2025-09-08). Agent-asserted proof; the submissions API response was not captured, so a reviewer must open it. The LOI itself is dated Aug 25, 2025 in the filing text; only the S-11 acceptance time is cited as availability."
+    },
+    "source_url": "https://www.sec.gov/Archives/edgar/data/2071778/000121390025085175/ea0252333-01.htm",
+    "capture_path": "research/cohort-intake/data-center/captures/fermi-s11-20250908.json",
+    "capture_id": "fermi-s11-20250908",
+    "source_sha256": "dde223fc07e31d8eb127cf7728d1f5027208a89bc81ae2e9b30b8403e5aa10af",
+    "source_quote": "220 MW TM2500 MPS Rentals: Up to 220 MW of GE aeroderivative TM2500 units (the “TM2500s,”) which will be leased from Mobile Power Solutions LLC (“MPS”), a Texas-based mobile power rental enterprise, offering flexible interim power generation assets for near-term bridge capacity uses. Compared to our frame-class gas turbines, these mobile units are lower-efficiency, higher-heat rate generators, but are rapidly deployable allowing us to meet initial tenant power needs. Due to their higher operating costs and lower efficiency, our intent is to temporarily utilize as few of the TM2500s as required to meet the ramping of data center loads. On August25, 2025, Fermi and MPS entered into a letter of intent for a long-term capital lease of 120 MW of TM2500s.",
+    "claims": {
+      "loi_mw": 120,
+      "unit_model_text": "TM2500",
+      "max_mw_described": 220
+    },
+    "target_description": "Letter of intent (Aug 25, 2025), disclosed in the S-11, between Fermi and Mobile Power Solutions for a long-term capital lease of 120 MW of TM2500 mobile gas-turbine units, which the filing describes as interim power for near-term bridge capacity. Earliest procurement-type event found for temporary/mobile generation at this project."
+  },
+  "buyer_path": [
+    {
+      "organization": "Fermi America",
+      "role": "DEVELOPER",
+      "evidence_signal_id": "fermi-america-project-matador-amarillo-tx-s1",
+      "quote": "[Fermi America](https://fermiamerica.com/) is a leading energy development company that powers the future of artificial intelligence."
+    },
+    {
+      "organization": "Mobile Power Solutions (MPS)",
+      "role": "OTHER",
+      "evidence_signal_id": "fermi-america-project-matador-amarillo-tx-target",
+      "quote": "Mobile Power Solutions LLC (“MPS”), a Texas-based mobile power rental enterprise"
+    },
+    {
+      "organization": "Siemens Energy AG",
+      "role": "OTHER",
+      "evidence_signal_id": "fermi-america-project-matador-amarillo-tx-target",
+      "quote": "originally procured by Firebird through a turnkey equipment contract with Siemens Energy AG"
+    },
+    {
+      "organization": "Texas Tech University System",
+      "role": "OTHER",
+      "evidence_signal_id": "fermi-america-project-matador-amarillo-tx-s1",
+      "quote": "The Texas Tech University System (TTU System) announced a collaboration with leading\nenergy and technology company [Fermi America](https://fermiamerica.com/) on Wednesday"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "fermi-america-project-matador-amarillo-tx-s1",
+    "note": "Dossier is INCOMPLETE (only one distinct early signal), so no lead time is computed. Indicative only: Wayback CDX upper bound on the TTUS page (2025-06-28T12:57:37Z) to the EDGAR acceptance time of the S-11 that discloses the MPS LOI (2025-09-06T01:40:54Z) is about 70 days; because the first date is an upper bound on availability, the true gap could be longer."
+  },
+  "blockers": [
+    "Only one early signal is captured (the TTUS announcement page); the early-signal side is thin and a second, independent pre-procurement signal (air-permit application, county or utility filing with a timestamp) was not captured. TCEQ 6 GW preliminary approval was announced Nov 4, 2025, after the target.",
+    "The Siemens SGT-800 equipment purchase (May 9, 2025 EPA with Firebird) is disclosed in the same S-11 as the MPS LOI; it is permanent plant equipment and is not used as the target.",
+    "reviewer: the TTUS announcement time is a Wayback upper bound for a later-captured page; no earlier source for it was captured.",
+    "EPC/installation contractor not captured."
+  ],
+  "reviewer_checklist": [
+    "Open the EDGAR submissions API / filing index and confirm the S-11 acceptance time 2025-09-06T01:40:54Z and that the MPS LOI sentence appears in the filing as filed.",
+    "Decide whether an LOI for a long-term capital lease counts as the right kind of procurement (see target_fit_note).",
+    "Find a second, independent early signal and the TCEQ air permit application filing date(s) for Project Matador and any Carson County/Amarillo local filings.",
+    "Find a wire timestamp (PR Newswire/Yahoo) for the Oct 30, 2025 release if it is to be used as a later event."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:06-05:00",
+  "target_fit": "BRIDGE_OR_INTERIM",
+  "target_fit_note": "The quoted S-11 text calls the leased TM2500s interim power for near-term bridge capacity and says Fermi intends to use as few as needed; but the LOI is for a long-term capital lease (not a short rental), so it is bridge-in-function, long-term in contract form.",
+  "later_procurement_events": [
+    "2025-10-30 (printed dateline; earliest Wayback CDX snapshot 2025-11-04T07:47:34Z, an upper bound, not independently captured as a snapshot): PR Newswire release 'Fermi America secures agreement with Mobile Power Solutions for 157.5 MW of GE TM2500 turbines' (capture fermi-matador-mps-tm2500-pr). Exact text: 'has entered a long-term capital lease agreement with Mobile Power Solutions (MPS) for seven GE TM2500 gas turbines, totaling 157.5 megawatts (MW) of nameplate capacity'",
+    "S-11 also discloses a May 9, 2025 Equipment Purchase Agreement with Firebird LNG to acquire a Siemens 6x1 SGT-800 combined-cycle equipment contract (permanent frame-class plant equipment, not temporary power); disclosed to the public in the same S-11 as the MPS LOI."
+  ]
+}

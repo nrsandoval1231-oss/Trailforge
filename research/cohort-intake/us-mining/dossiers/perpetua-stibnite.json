@@ -1,0 +1,111 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "perpetua-stibnite",
+  "project_name": "Stibnite Gold Project (Perpetua Resources)",
+  "location": "Valley County, Idaho, USA (remote; Stibnite mining district)",
+  "owner_or_developer": "Perpetua Resources Corp.",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Chosen because the SEC EDGAR record gives machine-readable acceptance timestamps for a feasibility/power-plan signal (Jan 2022), the permit decision (Jan 2025) and a utility grid-upgrade equipment agreement (Feb 2025, recorded as a later event, not a target). Selected knowing the outcome.",
+  "signals": [
+    {
+      "signal_id": "perpetua-stibnite-s1",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "S-K 1300 Technical Report Summary (Exhibit 96.1) summarizing the 2020 Feasibility Study",
+      "observed_at": "2022-01-03T13:32:59+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465922000158/0001104659-22-000158-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2022-01-03T13:32:59+00:00 (UTC, from data.sec.gov submissions API acceptanceDateTime for accession 0001104659-22-000158); Exhibit 96.1 to Form 8-K. The underlying 2020 NI 43-101 Feasibility Study is older but its own public availability was NOT independently cited here, so this 2022 filing is the earliest EDGAR timestamp cited for this dossier."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465922000158/tm2135611d1_ex96-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/perpetua-stibnite-trs-20220103.json",
+      "capture_id": "perpetua-stibnite-trs-20220103",
+      "source_sha256": "a005339a07ff067c08403c18ea17e7bedc2b841e060990880800bce20aaf126e",
+      "source_quote": "The TRS summarizes a 2020 Feasibility Study (FS)",
+      "claims": {}
+    },
+    {
+      "signal_id": "perpetua-stibnite-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "Grid power selected as primary supply; 60 MW load requires upgrading ~63 mi of Idaho Power lines to 138 kV",
+      "observed_at": "2022-01-03T13:32:59+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465922000158/0001104659-22-000158-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2022-01-03T13:32:59+00:00 (UTC, from data.sec.gov submissions API acceptanceDateTime for accession 0001104659-22-000158); same filing as s1"
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465922000158/tm2135611d1_ex96-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/perpetua-stibnite-trs-20220103.json",
+      "capture_id": "perpetua-stibnite-trs-20220103",
+      "source_sha256": "a005339a07ff067c08403c18ea17e7bedc2b841e060990880800bce20aaf126e",
+      "source_quote": "Grid power was selected\nas the preferred primary power supply for the Project based on its low operating cost, low unit prices, and Idaho Power Company’s\nexisting clean energy portfolio. The existing grid network would need to be upgraded to provide the power necessary to support\nthe 60-megawatt ( **MW**) load.",
+      "claims": {
+        "mw": 60,
+        "utility": "Idaho Power Company"
+      }
+    },
+    {
+      "signal_id": "perpetua-stibnite-s3",
+      "signal_type": "PERMIT_APPROVED",
+      "title": "USFS issues Final Record of Decision approving the Stibnite mine plan",
+      "observed_at": "2025-01-06T12:03:47+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465925001050/0001104659-25-001050-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2025-01-06T12:03:47+00:00 (UTC, from data.sec.gov submissions API acceptanceDateTime for accession 0001104659-25-001050); Form 8-K Item 8.01 filed after the Jan 3, 2025 ROD; the ROD itself was issued Jan 3 but this 8-K is the earliest EDGAR timestamp cited for this exact text."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1526243/000110465925001050/tm251953d1_8k.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/perpetua-stibnite-8k-rod-20250106.json",
+      "capture_id": "perpetua-stibnite-8k-rod-20250106",
+      "source_sha256": "b4db20f2bd1b1a54bbdb7a38761888ed087beed9f44a82cec2a13b31c2cd2818",
+      "source_quote": "On January 3, 2025, the United States Forest\nService (“USFS”) issued the Final Record of Decision (\"ROD\") approving the mine plan of Perpetua Resources Corp.\n(the “Company”) for the Stibnite Gold Project",
+      "claims": {
+        "decision_date_text": "January 3, 2025"
+      }
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "Perpetua Resources Corp.",
+      "role": "OWNER",
+      "evidence_signal_id": "perpetua-stibnite-s3",
+      "quote": "On January 3, 2025, the United States Forest\nService (“USFS”) issued the Final Record of Decision (\"ROD\") approving the mine plan of Perpetua Resources Corp.\n(the “Company”) for the Stibnite Gold Project"
+    },
+    {
+      "organization": "Idaho Power Company",
+      "role": "UTILITY",
+      "evidence_signal_id": "perpetua-stibnite-s2",
+      "quote": "Grid power was selected\nas the preferred primary power supply for the Project based on its low operating cost, low unit prices, and Idaho Power Company’s\nexisting clean energy portfolio."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "perpetua-stibnite-s1",
+    "note": "No target, so no lead time. The only procurement-type observation (an Idaho Power long-lead grid-upgrade equipment agreement, Feb 2025) is utility-side grid infrastructure, not a temporary, bridge, rental or on-site generation procurement, and is recorded in later_procurement_events."
+  },
+  "blockers": [
+    "Target set to null (reviewer: the Idaho Power long-lead grid-upgrade equipment agreement is not a temporary, bridge, rental or on-site generation procurement); it is kept as text in later_procurement_events. Case stays a target_fit-review candidate, not a negative.",
+    "No camp/construction temporary-power procurement found in public sources (repo's own 2026-10-16 screen lists camp power as an open question).",
+    "Earliest cited signal is the Jan 2022 EDGAR filing; the 2020 FS press release / SEDAR filing and earlier permit-filing signals (Plan of Operations 2016) were not captured, so the earliest-signal choice is not exhaustive.",
+    "Hatch Ltd EPCM agreement (8-K accepted 2025-12-22T14:23:25Z) post-dates the Feb 2025 grid agreement and is recorded only in later_procurement_events.",
+    "Idaho Power procurement contract page on perpetuaresources.com returned 403 to automated fetch and was not captured; the 8-K is used instead."
+  ],
+  "reviewer_checklist": [
+    "Confirm acceptance datetimes against EDGAR filing index pages (links in availability_evidence.url); confirm UTC interpretation of acceptanceDateTime.",
+    "Decide whether any of this case's observations should become a target (current choice: none; the Feb 2025 Idaho Power agreement is a later event).",
+    "Check that the TRS 60 MW figure is the right 'power requirement' (the TRS also states a 50- to 60 MW range).",
+    "Check whether an earlier signal (2020 FS release, 2016 Plan of Operations, 2021 Idaho Power facilities agreement) can be given a timestamp."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-23T00:02:25+00:00",
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "us-mining",
+  "later_procurement_events": [
+    "2025-02-13 (8-K accepted 2025-02-13T22:29:39Z per the submissions API, agent-asserted; capture perpetua-stibnite-8k-ipco-20250213): agreement with Idaho Power Company for long-lead grid-upgrade equipment. Exact text: 'On February\\xa013, 2025, Perpetua entered into\\nan agreement with Idaho Power Company (“IPCo”) to begin procurement of long lead equipment required to increase the electrical\\ncapacity to the plant.\\xa0 This is an important step to ensure parts are available for installation under a future construction agreement.\\nUnder the terms of the agreement, Perpetua is responsible for paying all costs incurred by IPCo as they procure new equipment from vendors\\nwith an estimated cost of $90.2 million.'",
+    "2025-12-18 (8-K accepted 2025-12-22T14:23:25Z, agent-asserted; capture perpetua-stibnite-8k-hatch-20251222): EPCM services agreement with Hatch Ltd. Exact text: 'entered into an engineering, procurement, and construction management services agreement (the “Agreement”) with Hatch\\nLtd.'"
+  ]
+}

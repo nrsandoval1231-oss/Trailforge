@@ -1,0 +1,93 @@
+{
+  "status": "INCOMPLETE",
+  "project_id": "bellevue-gold-hybrid-power",
+  "project_name": "Bellevue Gold Project hybrid power station",
+  "location": "Bellevue, Northern Goldfields, Western Australia (~35 km from Agnew)",
+  "owner_or_developer": "Bellevue Gold Limited (ASX: BGL)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout). Full ASX trail: Stage 1 Feasibility Study (which already records IPP proposals from five WA IPPs), EPC award for the processing plant, then an Early Works Agreement with EDL for the off-grid hybrid power station (long-lead items). Adjacent to the Agnew/EDL lead from the starting list.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Bellevue Gold Project Stage One Feasibility Study released",
+      "observed_at": "2021-02-18T08:48:00+11:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "exchange_announcement",
+        "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=BGL&timeframe=Y&year=2021",
+        "note": "ASX announcements listing for BGL shows 'Bellevue Gold Stage 1 Feasibility Study' released 18/02/2021 8:48 am (ASX shows Sydney time, AEDT +11:00); PDF idsId=02342810. Listing retrieved via curl by the research agent, not itself captured. Agent-asserted; a reviewer must open the ASX listing."
+      },
+      "capture_id": "bgl-fs1",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20210218/pdf/44ss8npfwt62g2.pdf",
+      "source_quote": "ASX ANNOUNCEMENT**\n\n**18/02/2021**\n\n#### Bellevue Gold Project Stage One Feasibility Study\n\n## Bellevue set to generate strong profits and robust free cashflows",
+      "claims": {
+        "study": "Stage One Feasibility Study"
+      },
+      "signal_id": "bellevue-gold-hybrid-power-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/bgl-fs1.json",
+      "source_sha256": "1b77b090a47c042572b93bead18ba802e60101dae7ec028fe74915cd9d47ed72"
+    }
+  ],
+  "target": {
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "FS1 section 5.7: contract with an IPP to be sought for a Build-Own-Operate island power station; proposals received from five WA IPPs",
+    "observed_at": "2021-02-18T08:48:00+11:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "exchange_announcement",
+      "url": "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=BGL&timeframe=Y&year=2021",
+      "note": "Same ASX release as s1 (18/02/2021 8:48 am Sydney time, AEDT +11:00, idsId=02342810). Agent-asserted from an ASX listing retrieved by curl and not captured."
+    },
+    "capture_id": "bgl-fs1",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20210218/pdf/44ss8npfwt62g2.pdf",
+    "source_quote": "A contract with an established Independent Power Producer (IPP) will be sought to construct a gas-only or dualfuel island power station with solar renewables contribution. This will be a Build-Own-Operate (BOO) model \nselling unit rate power (“kWh rate”) via a Power Purchase Agreement (PPA).\n\nProposals have been received from five (5) reputable WA-based IPPs with varying configurations of engines, fuels, \nrenewables contributions, contract terms, and chargeable fixed and variable rates. The site peak load is estimated \nto be approximately 10MW with an average load of approximately 8.5MW. It is expected that at least 2MW of \nsolar capacity will be incorporated into the station.",
+    "claims": {
+      "ipp_proposals": 5,
+      "peak_load_mw_approx": 10,
+      "avg_load_mw_approx": 8.5,
+      "model": "Build-Own-Operate (BOO)"
+    },
+    "signal_id": "bellevue-gold-hybrid-power-target",
+    "capture_path": "research/cohort-intake/intl-mining/captures/bgl-fs1.json",
+    "source_sha256": "1b77b090a47c042572b93bead18ba802e60101dae7ec028fe74915cd9d47ed72",
+    "target_description": "Stage One Feasibility Study section 5.7 (same ASX release as s1): an IPP contract on a BOO/PPA basis will be sought and proposals have already been received from five WA IPPs. Earliest procurement-type event found (proposal solicitation); it is in the SAME release as the only signal, so the measured lead time is about zero and the case offers no earlier power signal."
+  },
+  "buyer_path": [
+    {
+      "organization": "Bellevue Gold Limited",
+      "role": "OTHER",
+      "evidence_signal_id": "bellevue-gold-hybrid-power-s1",
+      "quote": "For further information regarding Bellevue Gold Limited please visit the ASX platform (ASX:BGL)"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "bellevue-gold-hybrid-power-s1",
+    "note": "INCOMPLETE and effectively zero: the only signal (FS1 release, 18/02/2021 08:48 +11:00) and the earliest procurement-type event (IPP proposals received, section 5.7) are in the same ASX release, so there is no lead time. The later EDL early-works agreement is about 592 days after the FS1 release but is not the earliest procurement event. This case is of little use as a lead-time example unless an earlier power signal is found."
+  },
+  "blockers": [
+    "Both the only captured signal and the target come from the same ASX release (FS1, 18/02/2021): zero lead time; no earlier power-related signal was captured.",
+    "ASX release times read from ASX listing (Sydney time) via curl; listing pages not captured.",
+    "Binding PPA (hybrid power agreement, 25 May 2023, idsId=02669472) and the EDL Early Works Agreement (3 Oct 2022) are later procurement events, kept as text in later_procurement_events.",
+    "FS1 section 5.7 does not name EDL; EDL is named only from Oct 2022 in the captured material.",
+    "Captures are PDF-to-markdown conversions.",
+    "Buyer path is thin: the owner role is not shown by an exact quote (the ASX issuer is Bellevue Gold Limited), so the role is recorded as OTHER.",
+    "not from quote: the FS1 exec-summary power parameters are quoted from section 5.7 only; EDL's ~13 MW site load and 80% renewables figures come from the later EDL release (kept in later_procurement_events)."
+  ],
+  "reviewer_checklist": [
+    "Confirm the ASX release timestamp 18/02/2021 08:48 (Sydney time incl. DST) from the ASX listing.",
+    "Decide whether FS1 section 5.7 (proposals received) counts as the earliest procurement-type event, or whether the case should stay out of the cohort for lack of an earlier signal.",
+    "Search for pre-2021 Bellevue power studies or announcements that would give a genuine earlier signal."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:40-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Solicitation of IPP proposals for a build-own-operate island power station selling power under a PPA for the life of the mine: long-term on-site supply, not temporary or rental power. It sits in the same feasibility-study release as the only signal.",
+  "later_procurement_events": [
+    "2022-07-20T08:19+10:00 (ASX listing, agent-asserted; capture bgl-epc): processing-plant Engineering, Procurement and Construction (EPC) contract (not power-related, and EPC rather than EPCM) awarded to GR Engineering Services. Exact text: 'Engineering, Procurement and Construction (EPC) contract for the 1Mtpa \\nprocessing plant awarded to GR Engineering Services Limited (GRES) (ASX: GNG) for a total fixed contract price of \\n$87.8 million.'",
+    "2022-10-03T09:19+11:00 (ASX listing, agent-asserted): Early Works Agreement with Energy Developments Pty Ltd (EDL) for an off-grid hybrid power station incl. long-lead items (capture bgl-edl-early). Exact text: 'Bellevue has signed an Early Works Agreement with Energy Developments Pty Ltd (EDL), a Tier-1 provider \\nof sustainable distributed energy, for an off-grid hybrid power station to be built at its Bellevue Gold' ... site power requirement of ~13MW (hybrid wind/solar/battery/thermal; forecast average 80% renewable) per the same release.",
+    "2023-05-25 (not captured): binding hybrid power agreement (ASX idsId=02669472)."
+  ]
+}

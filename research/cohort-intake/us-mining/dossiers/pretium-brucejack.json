@@ -1,0 +1,156 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "pretium-brucejack",
+  "project_name": "Brucejack Gold Mine (Pretium Resources)",
+  "location": "Northwest British Columbia, Canada (remote; ~65 km NNW of Stewart)",
+  "owner_or_developer": "Pretium Resources Inc. (referred to as Pretivm in filings)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout); Canadian remote project included because it has an unusually explicit 'construction power generators' statement and a full set of EDGAR-timestamped 6-Ks. Selected knowing the outcome.",
+  "signals": [
+    {
+      "signal_id": "pretium-brucejack-s1",
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Updated NI 43-101 Feasibility Study results announced (Tetra Tech)",
+      "observed_at": "2014-06-20T22:12:53+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983514000325/0001199835-14-000325-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2014-06-20T22:12:53+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001199835-14-000325, Form 6-K). Material change report for the June 19, 2014 news release; accepted before its 2014-06-23 filing date."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983514000325/exhibit_99-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/pretium-brucejack-fs-announce-20140620.json",
+      "capture_id": "pretium-brucejack-fs-announce-20140620",
+      "source_sha256": "a13ae0aada1175adce63e3057e40a91dcb3599f37e7be908631f58bc1a931623",
+      "source_quote": "Pretivm announced the results of an updated National Instrument 43-101-compliant Feasibility Study completed by Tetra Tech for the Brucejack Project in northern British Columbia.",
+      "claims": {}
+    },
+    {
+      "signal_id": "pretium-brucejack-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "FS technical report: BC Hydro supply limited to 20 MW connected load; ~9 MW underground",
+      "observed_at": "2014-07-10T18:41:33+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983514000355/0001199835-14-000355-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2014-07-10T18:41:33+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001199835-14-000355, Form 6-K). Exhibit 99.1 = full FS technical report."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983514000355/exhibit_99-1.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/pretium-brucejack-fs-report-20140710.json",
+      "capture_id": "pretium-brucejack-fs-report-20140710",
+      "source_sha256": "b828533b8e98d92e0c54daba316e3b7788fb45016eefa01c55bccf0f468021c3",
+      "source_quote": "BC Hydro indicated that the total electric power supply available for the Brucejack site will be limited to a connected load of 20 MW. The maximum underground connected load to support full production and development activities will be approximately 9 MW, inclusive of ventilation and heating.",
+      "claims": {
+        "mw": 20,
+        "underground_mw": 9,
+        "utility": "BC Hydro"
+      }
+    },
+    {
+      "signal_id": "pretium-brucejack-s3",
+      "signal_type": "EPCM_AWARDED",
+      "title": "AMEC awarded the EPCM contract in 2014; contracts incl. transmission line to be awarded after EA Decision Statement",
+      "observed_at": "2015-08-10T22:32:19+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000350/0001199835-15-000350-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2015-08-10T22:32:19+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001199835-15-000350, Form 6-K). Q2 2015 MD&A. The EPCM award itself occurred in 2014 but its own announcement was not captured, so this is the earliest CITED availability of the statement."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000350/exhibit_99-2.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/pretium-brucejack-q2-2015.json",
+      "capture_id": "pretium-brucejack-q2-2015",
+      "source_sha256": "4152dc2a6f0d8a7c86bc7913a01ce3615897a7c794ee40625ffaf220cc7e8bbd",
+      "source_quote": "AMEC was awarded the EPCM contract in 2014 and continues to work on engineering and procurement.  With our receipt of an Environmental Assessment Decision Statement from the Minister of the Environment of Canada, we will be awarding contracts including bulk earthworks, transmission line and long lead items.",
+      "claims": {}
+    },
+    {
+      "signal_id": "pretium-brucejack-s4",
+      "signal_type": "PERMIT_APPROVED",
+      "title": "Positive federal Environmental Assessment Decision Statement received (July 30, 2015)",
+      "observed_at": "2015-08-10T22:32:19+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000350/0001199835-15-000350-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2015-08-10T22:32:19+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001199835-15-000350, Form 6-K). same filing as s3"
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000350/exhibit_99-2.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/pretium-brucejack-q2-2015.json",
+      "capture_id": "pretium-brucejack-q2-2015",
+      "source_sha256": "4152dc2a6f0d8a7c86bc7913a01ce3615897a7c794ee40625ffaf220cc7e8bbd",
+      "source_quote": "On July 30, 2015, we announced that a positive Environmental Assessment Decision Statement was received from the Federal Minister of the Environment.",
+      "claims": {}
+    },
+    {
+      "signal_id": "pretium-brucejack-s5",
+      "signal_type": "CONSTRUCTION_STARTED",
+      "title": "Construction commenced September 5, 2015",
+      "observed_at": "2015-11-09T21:33:14+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "sec_edgar",
+        "url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000498/0001199835-15-000498-index.htm",
+        "note": "SEC EDGAR acceptance datetime 2015-11-09T21:33:14+00:00 (UTC, data.sec.gov submissions acceptanceDateTime, accession 0001199835-15-000498, Form 6-K). Q3 2015 MD&A (same filing as target)."
+      },
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1508844/000119983515000498/exhibit_99-2.htm",
+      "capture_path": "research/cohort-intake/us-mining/captures/pretium-brucejack-q3-2015.json",
+      "capture_id": "pretium-brucejack-q3-2015",
+      "source_sha256": "5c07282d2ba09f6ea385fef86b54ab6b5039d07f98445a06fa9b55032a8c6a49",
+      "source_quote": "Construction at the Brucejack Project commenced on September 5, 2015.",
+      "claims": {}
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "Pretium Resources Inc. (Pretivm)",
+      "role": "OWNER",
+      "evidence_signal_id": "pretium-brucejack-s1",
+      "quote": "Pretivm announced the results of an updated National Instrument 43-101-compliant Feasibility Study completed by Tetra Tech for the Brucejack Project"
+    },
+    {
+      "organization": "AMEC",
+      "role": "EPCM",
+      "evidence_signal_id": "pretium-brucejack-s3",
+      "quote": "AMEC was awarded the EPCM contract in 2014"
+    },
+    {
+      "organization": "BC Hydro",
+      "role": "UTILITY",
+      "evidence_signal_id": "pretium-brucejack-s2",
+      "quote": "BC Hydro indicated that the total electric power supply available for the Brucejack site will be limited to a connected load of 20 MW"
+    },
+    {
+      "organization": "Tetra Tech",
+      "role": "OTHER",
+      "evidence_signal_id": "pretium-brucejack-s1",
+      "quote": "Feasibility Study completed by Tetra Tech"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "pretium-brucejack-s1",
+    "note": "No target, so no lead time. The only generator-related observation is a status line saying construction-power generators were already delivered and commissioned (recorded in later_procurement_events); it is not a procurement event and it post-dates the real procurement decision."
+  },
+  "blockers": [
+    "Target set to null (reviewer: 'generators delivered and commissioned' is a status line, not a solicitation or award, with no rent-vs-buy or vendor detail); the line is kept as text in later_procurement_events. Case stays a target_fit-review candidate, not a negative.",
+    "AMEC EPCM award date (2014) not independently captured; s3 timestamp is the 2015 MD&A that restates it.",
+    "No temporary-power solicitation found; BC Hydro grid (NTL tap) was the permanent plan so generator need was a construction-phase bridge (inference, not from a quote).",
+    "Earlier 2013 technical report 6-K (0001199835-13-000387) exists but was not used.",
+    "All dates on 6-Ks use EDGAR acceptance time; the acceptance time for 0001199835-14-000325 precedes its 2014-06-23 filing date (accepted on a Friday evening)."
+  ],
+  "reviewer_checklist": [
+    "Confirm 20 MW BC Hydro limit is in the FS section 16.9.4 and still applied in the 2015 updated FS.",
+    "Look for the Q1/Q2 2015 statements that first mention ordering the construction power generators (an earlier, better target); none was found in the Q2 2015 capture.",
+    "Confirm AMEC EPCM award date and obtain its announcement timestamp."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-23T00:02:26+00:00",
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "us-mining",
+  "later_procurement_events": [
+    "2015-11-09 (6-K accepted 2015-11-09T21:33:14Z per the submissions API, agent-asserted; capture pretium-brucejack-q3-2015) status line only: 'All long lead items have been ordered, including the ball mill, SAG mill, and transformers. Construction power generators have been delivered to site and commissioned.' (no solicitation, award, vendor, or rent-vs-buy detail; the generators were already commissioned when this was reported)."
+  ]
+}

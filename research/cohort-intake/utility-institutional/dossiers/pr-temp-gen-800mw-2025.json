@@ -1,0 +1,134 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "pr-temp-gen-800mw-2025",
+  "project_name": "Puerto Rico 800 MW temporary emergency generation (3PPO RFP 3PPO-0314-20-TPG), Aguirre and Costa Sur",
+  "vertical": "utility-institutional",
+  "location": "Puerto Rico (Aguirre and Costa Sur power plants)",
+  "owner_or_developer": "PREPA (Puerto Rico Electric Power Authority); procurement run by the P3 Authority's Independent Third-Party Procurement Office (3PPO)",
+  "selection_note": "Chosen because a regulator docket (NEPR-MI-2024-0005) gives dated, public chronology from the need finding through RFP to contract filing, with explicit named entities. Hindsight-selected development case after the outcome was known; not a sealed holdout; not independently cited.",
+  "signals": [
+    {
+      "signal_id": "pr-temp-gen-800mw-2025-s1",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "Genera PR asks PREB for expedited approval of ~800 MW temporary mobile generation after Aguirre Unit 1 failure",
+      "observed_at": "2025-02-26T00:00:00-04:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/02/20250226-MI20240005-Request-for-Expedited-Approval-of-Emergency-Gen-Cap-Solutions.pdf",
+        "note": "Only proof is the date in the PREB docket file name (20250226) and LUMA's Mar 6 motion ('On February 26, 2025, Genera PR, LLC filed ...'); the captured PDF text itself carries no receipt stamp, so this is a printed/derived date. A server Last-Modified header on the file (Thu, 27 Feb 2025 20:28:22 GMT, fetched 2026-10-22) is corroborating but not an accepted proof type, and the earliest Wayback CDX snapshot of the exact URL (2025-07-26T17:23:34Z) is only a late upper bound. Time of day unknown; midnight AST used as a placeholder."
+      },
+      "source_url": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/02/20250226-MI20240005-Request-for-Expedited-Approval-of-Emergency-Gen-Cap-Solutions.pdf",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/prtemp2025-genera-request.json",
+      "capture_id": "prtemp2025-genera-request",
+      "source_sha256": "35a704aeaa20cefb76a4dd0a2a9cc85340e3fc791e61ba35f21d7637b8147a08",
+      "source_quote": "The proposed options by Genera include one and/or a combination of the following measures:\n\na. installing additional Temporary Mobile Generators of approximately 800MW \nfor 18 months;",
+      "claims": {
+        "mw": 800,
+        "term_months": 18
+      }
+    },
+    {
+      "signal_id": "pr-temp-gen-800mw-2025-s2",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "LUMA position filed with PREB: recurring 700-850 MW generation supply deficit (resource adequacy reports) worsened by Aguirre Unit 1 failure",
+      "observed_at": "2025-04-05T10:55:42+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://energia.pr.gov/wp-content/uploads/sites/7/2025/03/20250306-MI20240005-Motion-Subm-LUMAs-Position-Regarding-Genera-Request.pdf&output=text&fl=timestamp,statuscode&limit=2",
+        "note": "Earliest Wayback CDX snapshot of the exact URL is 20250405105542 (HTTP 200). This is an UPPER BOUND on public availability and the quoted text comes from a later capture of the live PDF, not from the Wayback snapshot. The motion was filed Mar 6, 2025 (cited as 'filed by LUMA on March 6, 2025' in PREB's July 4, 2025 resolution) and the server Last-Modified is Fri, 07 Mar 2025 14:12:03 GMT, so true availability was probably about 30 days earlier than observed_at."
+      },
+      "source_url": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/03/20250306-MI20240005-Motion-Subm-LUMAs-Position-Regarding-Genera-Request.pdf",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/prtemp2025-luma-position.json",
+      "capture_id": "prtemp2025-luma-position",
+      "source_sha256": "70e8b798000956f82bff6a69d75094a3d5d11f19af75d23f0f8caa2f2e4a0ba1",
+      "source_quote": "Puerto Rico has a generation supply deficit of between 700-850 MW",
+      "claims": {
+        "mw_deficit_low": 700,
+        "mw_deficit_high": 850
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "pr-temp-gen-800mw-2025-t1",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "PREPA motion (PREB docket stamp Jun 20, 2025) reports 3PPO RFP No. 3PPO-0314-20-TPG issued Mar 25, 2025 for up to 800 MW of temporary emergency generation; seven proposals received",
+    "observed_at": "2025-06-20T21:12:00-04:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "government_docket",
+      "url": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/06/20250620-MI20240005-Motion-to-submit-800MW-contract.pdf",
+      "note": "The captured PDF carries the PREB docket receipt stamp 'NEPR Received: Jun 20, 2025 9:12 PM' (Puerto Rico time, UTC-4). Earliest Wayback snapshot is 2025-06-27T22:18:45Z; server Last-Modified is 24 Jun 2025 12:33:29 GMT. NOTE: the RFP itself was issued Mar 25, 2025, EARLIER than this observed_at; the RFP document and the 3PPO issue notice were not captured, so this timestamp is the first captured public evidence of the procurement, not the procurement's own start, and it makes any lead time measured to it LONGER than to the RFP issuance."
+    },
+    "source_url": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/06/20250620-MI20240005-Motion-to-submit-800MW-contract.pdf",
+    "capture_path": "research/cohort-intake/utility-institutional/captures/prtemp2025-contract-motion.json",
+    "capture_id": "prtemp2025-contract-motion",
+    "source_sha256": "d5f3fb1eec35be534ad85ad35d307fbf9157046419f96ce2d3631dc5c3dad4aa",
+    "source_quote": "On March 25, 2025, the 3PPO issued RFP No. 3PPO-0314-20-TPG for the\nprocurement of up to 800 MW of temporary emergency generation capacity. The objective of the RFP was to identify one or more qualified providers capable of deploying and operating generation solutions—such as barges or mobile gas turbines—at the Aguirre and Costa Sur substations. The 3PPO received and evaluated seven proposals, which resulted in the selection of one proponent.",
+    "claims": {
+      "mw": 800,
+      "rfp_issue_date_text": "March 25, 2025",
+      "proposals_received_text": "seven proposals",
+      "locations": "Aguirre and Costa Sur"
+    },
+    "target_description": "Competitive 3PPO procurement (RFP issued Mar 25, 2025) for up to 800 MW of temporary emergency generation (barges or mobile gas turbines at Aguirre and Costa Sur), as reported in PREPA's Jun 20, 2025 motion submitting the proposed contract to PREB; the RFP is the earliest procurement-type event found, and the motion is the first captured public evidence of it."
+  },
+  "buyer_path": [
+    {
+      "organization": "PREPA (Puerto Rico Electric Power Authority)",
+      "role": "UTILITY",
+      "evidence_signal_id": "pr-temp-gen-800mw-2025-t1",
+      "quote": "COMES NOW** the Puerto Rico Electric Power Authority (hereinafter, PREPA) through its undersigned legal representation and, very respectfully, informs and requests as follows"
+    },
+    {
+      "organization": "3PPO (Independent Third-Party Procurement Office, P3 Authority)",
+      "role": "OTHER",
+      "evidence_signal_id": "pr-temp-gen-800mw-2025-t1",
+      "quote": "On March 25, 2025, the 3PPO issued RFP No. 3PPO-0314-20-TPG for the\nprocurement of up to 800 MW of temporary emergency generation capacity."
+    },
+    {
+      "organization": "P3 Authority (Public-Private Partnerships Authority)",
+      "role": "OTHER",
+      "evidence_signal_id": "pr-temp-gen-800mw-2025-t1",
+      "quote": "ordered PREPA to take specific actions. Among those directives, the Energy Bureau ordered PREPA to notify the Puerto Rico Public-Private Partnerships Authority (“P3A”) to activate the services of the Third-Party\n\nProcurement Office"
+    },
+    {
+      "organization": "Genera PR LLC",
+      "role": "OTHER",
+      "evidence_signal_id": "pr-temp-gen-800mw-2025-s2",
+      "quote": "On February 26, 2025, Genera PR, LLC (\"Genera\") filed with this Puerto Rico"
+    },
+    {
+      "organization": "LUMA Energy, LLC / LUMA Energy Servco, LLC (system operator)",
+      "role": "UTILITY",
+      "evidence_signal_id": "pr-temp-gen-800mw-2025-s2",
+      "quote": "LUMA analyses the adequacy of the generation supply portfolio each year in the annual Resource \nAdequacy Report as part of its obligation under the Transmission and Distribution System Operation and \nMaintenance Agreement"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "pr-temp-gen-800mw-2025-s1",
+    "note": "UNVERIFIED: the earliest signal (s1, Feb 26 2025) is PRINTED_DATE_ONLY. For reference only: s2 (Wayback upper bound 2025-04-05) to the target docket stamp (2025-06-20 21:12 AST) is about 77 days, and s1 to the target about 115 days. The RFP was actually issued Mar 25 2025, only ~27 days after s1, and the target timestamp is the contract-filing docket stamp rather than RFP issuance, so any figure measured to it overstates the lead to the procurement event."
+  },
+  "blockers": [
+    "Date conflict on the PREB order that triggered the procurement: PREPA's Jun 20, 2025 motion (target capture) says the Energy Bureau issued its Resolution and Order on March 14, 2025 (paragraphs 1 and 4), while the PREB's Jul 4, 2025 resolution (capture prtemp2025-prebjuly4) calls it the 'March 19 Resolution'. Neither order was captured and the conflict is unresolved; no date is asserted here.",
+    "The 3PPO RFP document itself and its Mar 25, 2025 issue notice were not captured; the target timestamp is the contract-filing docket stamp (Jun 20, 2025), not RFP issuance.",
+    "s1 availability is printed-date only (no receipt stamp in the capture).",
+    "Capture text contains replacement characters (PDF encoding) in places; quotes chosen to avoid them.",
+    "Winning vendor is not named in captured text (contract exhibits are confidential); secondary search results name Power Expectations LLC but that was not captured, so it is not asserted here.",
+    "Contract later cancelled/reprocured as RFP TPG2 per secondary search results; outcome not cited."
+  ],
+  "reviewer_checklist": [
+    "Confirm Feb 26 2025 filing time on the PREB docket (NEPR-MI-2024-0005) to upgrade s1 to PROOF_CITED.",
+    "Locate the 3PPO RFP issue notice (Mar 25, 2025) and decide whether the target should be RFP issuance rather than contract filing.",
+    "Locate the Mar 19, 2025 PREB order and capture it.",
+    "Confirm whether this counts as a buyer-path identifiable case (buyer is PREPA via 3PPO; vendors are bidders)."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:52-05:00",
+  "target_fit": "TEMPORARY_OR_RENTAL",
+  "target_fit_note": "A regulator-ordered, 3PPO-run competitive procurement for up to 800 MW of temporary emergency generation capacity (barges or mobile gas turbines), i.e. temporary/rental-type power at utility plant sites; bidders and the winning vendor are not named in the captured text."
+}

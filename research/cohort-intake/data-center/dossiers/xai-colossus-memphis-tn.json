@@ -1,0 +1,113 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "xai-colossus-memphis-tn",
+  "project_name": "xAI Colossus (Memphis) on-site gas turbines",
+  "vertical": "data-center",
+  "location": "3231 Paul R Lowry Road, Memphis, Shelby County, Tennessee, US",
+  "owner_or_developer": "xAI (permit holder CTC Property LLC)",
+  "selection_note": "Hindsight-selected development case (chosen because on-site/behind-the-meter generation for it is now publicly known); NOT a sealed holdout. Lead-time numbers are therefore optimistic by construction. Included as a cautionary case: equipment was deployed before permitting, so conventional lead-time logic is distorted.",
+  "signals": [
+    {
+      "signal_id": "xai-colossus-memphis-tn-s1",
+      "signal_type": "PROJECT_ANNOUNCED",
+      "title": "Greater Memphis Chamber: xAI announces Memphis supercomputer site",
+      "observed_at": "2025-01-29T03:25:10+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://memphischamber.com/blog/press-release/velocity-meets-potency-xai-announces-memphis-as-new-home/&output=json&limit=5",
+        "note": "Earliest Wayback Machine CDX snapshot of this exact URL is 2025-01-29T03:25:10Z (UTC). This is an UPPER BOUND on public availability: the page prints June 5/6, 2024, and the quoted text comes from a later capture, not from the Wayback snapshot. Using the printed date would lengthen the gap by about 238 days (about 7.8 months), but the printed date is UNVERIFIED."
+      },
+      "source_url": "https://memphischamber.com/blog/press-release/velocity-meets-potency-xai-announces-memphis-as-new-home/",
+      "capture_path": "research/cohort-intake/data-center/captures/xai-colossus-chamber-announce.json",
+      "capture_id": "xai-colossus-chamber-announce",
+      "source_sha256": "30844ba17c2c7d62e0130e3865ce91086e0e74d38cb00a7e5bab18118c262926",
+      "source_quote": "MEMPHIS, TN, Wednesday, June 5, 2024 –** xAI’s Gigafactory of Compute – the World’s largest supercomputer – would be located in Memphis, Tennessee.",
+      "claims": {
+        "printed_date_text": "June 5, 2024"
+      }
+    },
+    {
+      "signal_id": "xai-colossus-memphis-tn-s2",
+      "signal_type": "PERMIT_FILED",
+      "title": "News report (Prism): Shelby County Health Dept told Prism by email it is reviewing an air permit application submitted by xAI for turbines",
+      "observed_at": "2025-06-18T18:47:30+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://prismreports.org/2025/06/18/xai-memphis-data-center-pollution/&output=json&limit=5",
+        "note": "Earliest Wayback Machine snapshot of this exact URL in the CDX index is 2025-06-18T18:47:30Z (UTC); is an UPPER BOUND on public availability (the quoted text comes from a later capture of the live page, not from the Wayback snapshot). Secondary (news) source. The permit itself says the application is dated Jan 3, 2025 (amended Jan 7, Feb 5, Feb 27, 2025) while Prism says CTC Property applied in April; the SCHD application date/public notice date was not captured. PERMIT_FILED rests on a news article quoting an emailed health-department statement, not on a permit-application record."
+      },
+      "source_url": "https://prismreports.org/2025/06/18/xai-memphis-data-center-pollution/",
+      "capture_path": "research/cohort-intake/data-center/captures/xai-colossus-prism-permit.json",
+      "capture_id": "xai-colossus-prism-permit",
+      "source_sha256": "5167c7a504968ac3dec6ac1e641ea4b567a42fe1023c398741f0ce82c7400f24",
+      "source_quote": "“SCHD is currently reviewing the air permit application submitted by xAI for a synthetic minor source under the state regulations and the Clean Air Act,” the Shelby County Health Department said in emailed statement to Prism.",
+      "claims": {
+        "permitting_body": "Shelby County Health Department",
+        "permit_type": "synthetic minor source"
+      }
+    },
+    {
+      "signal_id": "xai-colossus-memphis-tn-s3",
+      "signal_type": "PERMIT_APPROVED",
+      "title": "SCHD construction permit 01156-01PC issued July 2, 2025: 15 Solar SMT-130 natural gas turbines (permit holder CTC Property LLC; xAI not named in the permit)",
+      "observed_at": "2025-07-03T01:24:50+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.shelbytnhealth.com/DocumentCenter/View/7174/01156-01PC-070225Permit&output=json&limit=5",
+        "note": "Earliest Wayback Machine CDX snapshot of this exact URL is 2025-07-03T01:24:50Z (UTC); the capture is that Wayback snapshot itself (id_ replay), and the live URL now returns 404. The snapshot time is an UPPER BOUND on public availability of the permit (issued July 2, 2025). The permit text does not name xAI; the xAI link rests on other sources (Prism report)."
+      },
+      "source_url": "https://web.archive.org/web/20250703012450id_/https://www.shelbytnhealth.com/DocumentCenter/View/7174/01156-01PC-070225Permit",
+      "capture_path": "research/cohort-intake/data-center/captures/xai-colossus-schd-permit-pdf.json",
+      "capture_id": "xai-colossus-schd-permit-pdf",
+      "source_sha256": "373c605340672604aae33060b0974ec0da6f97c99314ee23c8c9003dea473a0b",
+      "source_quote": "CONSTRUCTION PERMIT\n\nCOMPANY NAME: CTC Property LLC\n\nCOMPANY ADDRESS: 3231 Paul R Lowry Road, Memphis, TN 38109\n\nPERMIT NUMBER: 01156-01PC\n\nISSUANCE DATE: July 2, 2025\n\nEXPIRATION DATE: January 2, 2027\n\nSOURCE DESCRIPTION Fifteen (15) Solar SMT-130 (16.48 MW capacity each) Natural Gas-Fired Combustion Turbines",
+      "claims": {
+        "units": 15,
+        "mw_each": 16.48,
+        "permit_number": "01156-01PC",
+        "issuance_date_text": "July 2, 2025"
+      }
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "CTC Property LLC",
+      "role": "OTHER",
+      "evidence_signal_id": "xai-colossus-memphis-tn-s3",
+      "quote": "COMPANY NAME: CTC Property LLC\n\nCOMPANY ADDRESS: 3231 Paul R Lowry Road, Memphis, TN 38109"
+    },
+    {
+      "organization": "xAI",
+      "role": "DEVELOPER",
+      "evidence_signal_id": "xai-colossus-memphis-tn-s1",
+      "quote": "xAI’s Gigafactory of Compute – the World’s largest supercomputer – would be located in Memphis, Tennessee."
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "xai-colossus-memphis-tn-s1",
+    "note": "No target, so no lead time. SIGN PROBLEM: the turbines were installed and operating from summer 2024, before every captured signal (the Prism article says xAI began constructing the facilities 'last summer' without applying for a permit), so the physical procurement precedes s1 and a conventional lead-time calculation would be meaningless. The permit (s3) is a regulatory event for already-installed turbines, kept as a PERMIT_APPROVED signal, not as a procurement target."
+  },
+  "blockers": [
+    "No dated SCHD application/public-notice document captured; Prism says April 2025 application, permit text says application dated Jan 3, 2025 - unresolved discrepancy.",
+    "The turbine procurement/rental transaction itself (who supplied the ~35 turbines in 2024) is not in captured sources; target is a permit, not a purchase/rental contract.",
+    "Solaris Energy Infrastructure / xAI JV link was searched in SEC full-text for 2024-2026; the Solaris SEC hits obtained did not name xAI in the 2025 filings checked, so it is not asserted.",
+    "Target set to null (reviewer: the SCHD permit is for turbines that were already installed in 2024, so it is not a temporary/bridge/rental procurement; kept as PERMIT_APPROVED signal s3).",
+    "Chamber announcement availability rests only on a Jan 2025 Wayback CDX first-seen date (upper bound; event printed June 2024).",
+    "Identity: the permit holder CTC Property LLC is not shown in any captured text to be owned by or affiliated with xAI; the permit does not name xAI.",
+    "Prior procurement not in captures: Prism text 'xAI did not apply for a permit when it began constructing the facilities last summer...' implies turbines were installed in summer 2024; the supplier/rental contract is unknown."
+  ],
+  "reviewer_checklist": [
+    "Decide whether this case should be target:null/excluded because the turbines predate every captured signal (current choice: target null).",
+    "Find SCHD public notice date for the permit application (Feb-Apr 2025) and the earliest 2024 evidence of turbines (SELC records request Aug 2024).",
+    "Confirm CTC Property LLC is an xAI affiliate (permit lists it as owner of the Paul R Lowry site)."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:02:51-05:00"
+}

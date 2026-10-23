@@ -1,0 +1,110 @@
+{
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "gold-road-gruyere-apa-power",
+  "project_name": "Gruyere Gold Project gas pipeline and 45 MW power station (APA)",
+  "location": "Yamarna greenstone belt, ~200 km NE of Laverton, Western Australia",
+  "owner_or_developer": "Gruyere JV (Gold Road Resources Ltd, ASX: GOR, and Gold Fields Limited, 50:50)",
+  "selection_note": "Hindsight-selected development case (not a sealed holdout), taken from an unverified lead (Gruyere - APA microgrid). Notable because the owner's own Aug 2016 update states a Build-Own-Operate power tender was issued in March 2016 (a tender-stage procurement event, used as the target) and APA's announcement in June 2017 is the award (recorded as a later event). Timestamps are date-only because Gold Road is now delisted and its ASX announcement listing is unavailable.",
+  "signals": [
+    {
+      "signal_type": "FEASIBILITY_COMPLETE",
+      "title": "Aug 2016 owner update refers to a Pre-Feasibility Study announced to ASX on 8 February 2016 (the PFS itself is not captured; date is taken from this later document's text)",
+      "observed_at": "2016-02-08T00:00:00+11:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+        "note": "Date-only: the 8 February 2016 date appears only inside the Aug 2016 update text ('ASX announcement dated 8 February 2016'); the PFS announcement was not captured and no release time was obtained. observed_at uses midnight Sydney time as a placeholder."
+      },
+      "capture_id": "gor-aug16",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+      "source_quote": "Ongoing  FS  work  has  added  considerable  detail  to  technical,  permitting,  and  financial \naspects  of  the  Pre‐Feasibility  Study  **(PFS)**  (ASX  announcement  dated  8  February  2016).",
+      "claims": {
+        "announcement_date_text": "8  February  2016"
+      },
+      "signal_id": "gold-road-gruyere-apa-power-s1",
+      "capture_path": "research/cohort-intake/intl-mining/captures/gor-aug16.json",
+      "source_sha256": "507d6e3ee85566e054cdb841a04250735ba1dec673f76398d7f429afe9abcdc2"
+    },
+    {
+      "signal_type": "FUEL_SELECTED",
+      "title": "Aug 2016 FS update: planned power supply is a Build-Own-Operate gas-fired plant with fuel supplied by gas pipeline",
+      "observed_at": "2016-08-01T00:00:00+10:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+        "note": "Only proof is the date in the ASX PDF path (20160801) / document text; no release time was obtained because Gold Road is delisted and the ASX announcements listing returns no rows (earliest Wayback snapshot of the PDF is 2019-04-16, later than the print date). observed_at uses midnight Sydney time as a placeholder for a date-only value."
+      },
+      "capture_id": "gor-aug16",
+      "source_url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+      "source_quote": "Power supply under a Build‐Own‐Operate contract for a gas‐fired power generation plant with the fuel \nsupplied by gas pipeline",
+      "claims": {
+        "fuel": "gas",
+        "model": "Build‐Own‐Operate"
+      },
+      "signal_id": "gold-road-gruyere-apa-power-s2",
+      "capture_path": "research/cohort-intake/intl-mining/captures/gor-aug16.json",
+      "source_sha256": "507d6e3ee85566e054cdb841a04250735ba1dec673f76398d7f429afe9abcdc2"
+    }
+  ],
+  "target": {
+    "target_description": "The owner's FS update states that requests for tender for a Build-Own-Operate power supply for Gruyere were issued in March 2016 and tenders have been received. This is the earliest procurement-type event found (tender stage); it is disclosed publicly only through this Aug 2016 update. The APA award (June 2017) is recorded in later_procurement_events.",
+    "title": "Aug 2016 owner update states Gold Road issued requests for tender in March 2016 for a Build-Own-Operate power supply and has received tenders",
+    "observed_at": "2016-08-01T00:00:00+10:00",
+    "availability_confidence": "PRINTED_DATE_ONLY",
+    "availability_evidence": {
+      "kind": "printed_date",
+      "url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+      "note": "Only proof is the date in the ASX PDF path (20160801) / document text; no release time was obtained because Gold Road is delisted and the ASX announcements listing returns no rows (earliest Wayback snapshot of the PDF is 2019-04-16, later than the print date). observed_at uses midnight Sydney time as a placeholder for a date-only value. The RFT itself is dated March 2016 inside the text (an event date, not a public-availability date); no March 2016 document was captured."
+    },
+    "capture_id": "gor-aug16",
+    "source_url": "https://announcements.asx.com.au/asxpdf/20160801/pdf/438zr50nj58f25.pdf",
+    "source_quote": "Gold Road issued requests for tender for a Build‐Own‐Operate solution for the power supply for the Gruyere \nProject in March 2016.  Tenders have been received from a number of parties for gas‐only, diesel only and diesel \nstart‐up  converting  to  gas‐fired  options.",
+    "claims": {
+      "rft_issued_text": "in March 2016",
+      "model": "Build‐Own‐Operate"
+    },
+    "signal_id": "gold-road-gruyere-apa-power-target",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "capture_path": "research/cohort-intake/intl-mining/captures/gor-aug16.json",
+    "source_sha256": "507d6e3ee85566e054cdb841a04250735ba1dec673f76398d7f429afe9abcdc2"
+  },
+  "buyer_path": [
+    {
+      "organization": "Gold Road Resources Ltd (ASX: GOR)",
+      "role": "OWNER",
+      "evidence_signal_id": "gold-road-gruyere-apa-power-target",
+      "quote": "Gold Road Resources Limited (**Gold Road** or the **Company**) is pleased to provide an update \non  the Feasibility  Study  **(FS)** currently  underway  on  its  Gruyere  Project"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "gold-road-gruyere-apa-power-s1",
+    "note": "UNVERIFIED: the earliest signal (PFS date) and the target are date-only printed values (PRINTED_DATE_ONLY). Indicative only (not a lead time): 2016-02-08 to the 2016-08-01 update is about 175 days, but the RFT itself was issued in March 2016 (about 1 month after the PFS), and the public learned of it only through the Aug 2016 update. The later APA award (ASX 21/06/2017 08:30 +10:00, agent-asserted) is about 324 days after the Aug 2016 update and about 15 months after the RFT."
+  },
+  "blockers": [
+    "All signals and the target are PRINTED_DATE_ONLY: Gold Road is delisted and the ASX announcement listing for GOR returns nothing; earliest Wayback snapshot of the PDF is 2019. No lead time is stated.",
+    "The PFS (8 Feb 2016) and the March 2016 RFT documents themselves were not captured; their dates come only from the Aug 2016 update text.",
+    "Gruyere feasibility study completion (Oct 2016) and JV formation (Nov 2016) announcements not captured.",
+    "The APA announcement is the award; the preceding 15-year transport and electricity supply agreement signing dates are not separately sourced. Gold Fields and APA appear in the buyer chain only through the later APA release (not a signal or target here), so buyer_path lists only Gold Road.",
+    "ASX release time for the APA award read from the APA ASX listing (Sydney time) via curl; the listing is not captured.",
+    "Captured Aug 2016 text contains non-breaking spaces and U+2010 hyphens exactly as in the capture."
+  ],
+  "reviewer_checklist": [
+    "Find a timestamped Gold Road/Gold Fields source for the Aug 2016 update (e.g. listcorp, marketindex, Gold Fields archive) or accept PRINTED_DATE_ONLY.",
+    "Locate the 8 Feb 2016 PFS announcement and any March 2016 RFT-era source to test a lead time.",
+    "Confirm ASX timestamp 21/06/2017 8:30 am Sydney time for the APA award release and the JV owners' roles (APA is a pipeline/power BOO owner, not a utility offtaker)."
+  ],
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "vertical": "intl-mining",
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:11:40-05:00",
+  "target_fit": "ONSITE_LONG_TERM_SUPPLY",
+  "target_fit_note": "Owner-issued request for tender for a build-own-operate power supply (gas-only, diesel-only and diesel-to-gas options) for a long-life mine: long-term on-site supply, not temporary or rental power. It is a tender-stage event disclosed in a later update, not a contract award.",
+  "later_procurement_events": [
+    "Same Aug 2016 update (highlights): 'Power\\xa0supply\\xa0contract\\xa0tenders,\\xa0gas\\xa0vs\\xa0diesel\\xa0options,\\xa0being\\xa0reviewed' (tender-stage item, not an award).",
+    "2017-06-21T08:30+10:00 (ASX listing read by the agent, not captured): APA announcement of the award (capture gor-apa-power). Exact text: 'APA will design, build, own and operate the 198 kilometre pipeline (to be known as the “Yamarna \\nGas Pipeline”) and 45 megawatt gas-fired power station, with a total cost of construction of around $180 million.' and 'A 15 year transportation agreement has been entered into to support a 15 year Electricity Supply Agreement with the \\nGruyere JV to deliver the necessary energy for the project.' JV composition per same release: 'The Gruyere Project is a 50:50 joint venture between the ASX listed Gold Road Resources Ltd (ASX: GOR) and the global\\nminer Gold Fields Limited (together, ”Gruyere JV”).'"
+  ]
+}

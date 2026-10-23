@@ -1,0 +1,110 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "PROPOSED_UNREVIEWED",
+  "project_id": "lipa-montauk-temp-gen-2020",
+  "project_name": "LIPA/PSEG Long Island Montauk Temporary Generation Facility (2017-2024 seasonal CNG generators)",
+  "vertical": "utility-institutional",
+  "location": "Montauk, East Hampton, New York",
+  "owner_or_developer": "Long Island Power Authority (LIPA), operated by PSEG Long Island",
+  "selection_note": "Chosen as a recurring seasonal temporary-generation project with dated regulatory-environmental filings; included with target=null because no rental/procurement document was located (UNRESOLVED). Hindsight-selected development case after the outcome was known; not a sealed holdout; not independently cited.",
+  "signals": [
+    {
+      "signal_id": "lipa-montauk-temp-gen-2020-s1",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "PSEG Long Island says South Fork high-demand summer days require use of emergency generation; Montauk substation replacement workshop announced",
+      "observed_at": "2019-02-26T00:00:00-05:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://www.easthamptonstar.com/archive/pseg-discuss-montauk-substation-plans",
+        "note": "Article prints 'Feb. 26, 2019'. No Wayback CDX snapshot of the exact URL was found, so availability is unproven; time of day unknown (midnight EST placeholder)."
+      },
+      "source_url": "https://www.easthamptonstar.com/archive/pseg-discuss-montauk-substation-plans",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/lipamtk-ehstar2019.json",
+      "capture_id": "lipamtk-ehstar2019",
+      "source_sha256": "5832dcc96e5bac8a4a9cb4c1b6282d6ef9ea7754a8312ede6323ce5eed8beb84",
+      "source_quote": "on the South Fork it is forecast to grow at an annual rate of 2.4 percent from 2019 to 2030, David Gaier, PSEG Long Island's director of communications, said in a Feb. 20 email to The Star. Moreover, he said, high-demand days, which typically occur in the summer, require use of emergency generation.",
+      "claims": {
+        "demand_growth_pct_per_year": 2.4
+      }
+    },
+    {
+      "signal_id": "lipa-montauk-temp-gen-2020-s2",
+      "signal_type": "PERMIT_APPROVED",
+      "title": "LIPA SEQRA Negative Declaration for Montauk Temporary Generation Facility Project (3 MW, summer 2020)",
+      "observed_at": "2020-09-23T03:49:47+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.lipower.org/wp-content/uploads/2020/04/MTK-Neg-Dec-SIGNED-4242020.pdf&output=text&fl=timestamp,statuscode&limit=2",
+        "note": "Earliest Wayback CDX snapshot of the exact URL is 20200923034947 (HTTP 200). This is an UPPER BOUND on public availability: the document is dated April 24, 2020 (printed, and listed under April 2020 on LIPA's environmental-assessments page), so true availability was likely about 5 months earlier; the quoted text comes from a later capture of the live PDF, not from the Wayback snapshot."
+      },
+      "source_url": "https://www.lipower.org/wp-content/uploads/2020/04/MTK-Neg-Dec-SIGNED-4242020.pdf",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/lipamtk-negdec2020.json",
+      "capture_id": "lipamtk-negdec2020",
+      "source_sha256": "c1ff7f0106a1524f1e2dc0c23ae7ec6b2b447f1b363d3b32a37be473f7cc2a65",
+      "source_quote": "The Proposed Action will provide 3MW of additional power generation capability to be utilized as needed to meet the seasonal electrical demands of the community of Montauk during peak periods starting in May 2020 and ending in September 2020",
+      "claims": {
+        "mw": 3,
+        "season_text": "starting in May 2020 and ending in September 2020"
+      }
+    },
+    {
+      "signal_id": "lipa-montauk-temp-gen-2020-s3",
+      "signal_type": "PERMIT_APPROVED",
+      "title": "LIPA SEQRA Negative Declaration for Montauk Temporary Generation Facility (up to six CNG generators, 6 MW, 2021-2024)",
+      "observed_at": "2021-05-07T16:48:02+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf&output=text&fl=timestamp,statuscode&limit=2",
+        "note": "Earliest Wayback CDX snapshot of the exact URL is 20210507164802 (HTTP 200). This is an UPPER BOUND on public availability: the document is dated March 11, 2021 (printed); the quoted text comes from a later capture of the live PDF, not from the Wayback snapshot."
+      },
+      "source_url": "https://www.lipower.org/wp-content/uploads/2021/03/MTK-2021-Neg-Dec-signed.pdf",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/lipamtk-negdec2021.json",
+      "capture_id": "lipamtk-negdec2021",
+      "source_sha256": "deef86acbcf68b2c4577d304f5a0ddb7ca04fbc07823148788d24f3d51ed7053",
+      "source_quote": "The Proposed Action consists of the installation and as-needed use as described below of a \nmaximum of six modular compressed natural gas (CNG) fired generators capable of producing \na total combined output of six megawatts of power",
+      "claims": {
+        "units_max_text": "maximum of six",
+        "output_text": "six megawatts",
+        "fuel": "compressed natural gas"
+      }
+    }
+  ],
+  "target": null,
+  "buyer_path": [
+    {
+      "organization": "Long Island Power Authority (LIPA)",
+      "role": "OWNER",
+      "evidence_signal_id": "lipa-montauk-temp-gen-2020-s2",
+      "quote": "The Long Island Power Authority (“Authority”) has determined, based on information provided by PSEG Long Island and the Environmental Assessment Form Parts 1, 2 & 3 prepared by PSEG Long Island"
+    },
+    {
+      "organization": "PSEG Long Island",
+      "role": "UTILITY",
+      "evidence_signal_id": "lipa-montauk-temp-gen-2020-s2",
+      "quote": "based on information provided by PSEG Long Island and the Environmental Assessment Form Parts 1, 2 & 3 prepared by PSEG Long Island"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "lipa-montauk-temp-gen-2020-s1",
+    "note": "No procurement target found (UNRESOLVED, not negative); lead time not computable."
+  },
+  "blockers": [
+    "No procurement/contract/award document for the temporary generators was found: target is null (UNRESOLVED, not negative). Neither the generators' rental/purchase nor a vendor appears in the captures.",
+    "The generators operated in summers 2017-2019 before the first captured filing; s1-s3 are all later than the original project start, so these are re-approvals, not early-warning signals for the original procurement.",
+    "s1 has no provable timestamp; s2/s3 rest only on late Wayback snapshots (upper bounds) (printed dates Apr 24 2020 / Mar 11 2021 are earlier).",
+    "The generator vendor/rental company is not named in captured text; no EPC/electrical contractor named.",
+    "The 2020 negative declaration (s2) says six generators were available in the summers of 2017-2019, before every captured signal, so all captured signals post-date the original procurement."
+  ],
+  "reviewer_checklist": [
+    "Decide whether to keep as a target-null case or reject for lack of any procurement milestone.",
+    "Look in LIPA board packets / PSEG LI procurement archives for the 2017 original rental procurement and vendor.",
+    "Confirm whether the East Hampton Star Feb 2019 article is the right earliest signal (Wayback not found)."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:52-05:00"
+}

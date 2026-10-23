@@ -1,0 +1,97 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "INCOMPLETE",
+  "project_id": "gpa-aggreko-temp-power-2024",
+  "project_name": "Guam Power Authority 20 MW Aggreko temporary power after Typhoon Mawar",
+  "vertical": "utility-institutional",
+  "location": "Guam",
+  "owner_or_developer": "Guam Power Authority (GPA), governed by the Consolidated Commission on Utilities (CCU)",
+  "selection_note": "Chosen as a post-typhoon emergency capacity case with a named rental vendor and regulator/AG approvals. Hindsight-selected development case after the outcome was known; not a sealed holdout; not independently cited.",
+  "signals": [
+    {
+      "signal_id": "gpa-aggreko-temp-power-2024-s1",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "GPA reply in OPA procurement appeal OPA-PA-23-004: post-Typhoon Mawar imminent need for additional power generation (Yigo Diesel Multi-Step Bid GPA-023-23)",
+      "observed_at": "2023-11-22T07:52:06+00:00",
+      "availability_confidence": "UNKNOWN",
+      "availability_evidence": {
+        "kind": "other",
+        "url": "https://gwosa2.opaguam.org/sites/default/files/opa-pa-23-004_guam_power_authoritys_reply_to_dooiks_protest_and_opposition_to_its_motion_for_confrimation_of_substantial_interest.pdf",
+        "note": "No printed filing date on the reply; it responds to a Nov 17 2023 opposition so it post-dates Nov 17 2023. observed_at is the server Last-Modified header (Wed, 22 Nov 2023 07:52:06 GMT) fetched 2026-10-22 - not an accepted proof type, hence UNKNOWN. Earliest Wayback snapshot of the exact URL = 2024-07-16T15:44:44Z (after the target)."
+      },
+      "source_url": "https://gwosa2.opaguam.org/sites/default/files/opa-pa-23-004_guam_power_authoritys_reply_to_dooiks_protest_and_opposition_to_its_motion_for_confrimation_of_substantial_interest.pdf",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/gpatemp2024-opa-reply.json",
+      "capture_id": "gpatemp2024-opa-reply",
+      "source_sha256": "addb3871d0b9fe242cd6cfac85df650c6228f728ff60d0c06a25b2ef0631d308",
+      "source_quote": "Following the aftermath of Typhoon Mawar and the damage caused to \nGPA’s generating units and the under-construction Ukudu Plant it is abundantly clear that GPA\nhas demonstrated an imminent need for additional power generation",
+      "claims": {
+        "event": "Typhoon Mawar"
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "gpa-aggreko-temp-power-2024-t1",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "CCU approves emergency power projects; GPA awards contract to Aggreko for 20 MW temporary power within 100 days",
+    "observed_at": "2024-03-03T00:37:55+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=https://www.pacificislandtimes.com/post/emergency-power-projects-approved-to-bridge-guams-capacity-gap-pending-completion-of-ukudu-plant&output=text&fl=timestamp,statuscode&limit=3",
+      "note": "Earliest Wayback CDX snapshot of the exact URL is 20240303003755 (HTTP 200). This is an UPPER BOUND on public availability and the quoted text comes from a later capture of the live page. The captured text carries no printed date; a separate non-captured fetch showed the article dated Jan 25, 2024 (CCU meeting Tuesday Jan 23, 2024), which is not used as a proof."
+    },
+    "source_url": "https://www.pacificislandtimes.com/post/emergency-power-projects-approved-to-bridge-guams-capacity-gap-pending-completion-of-ukudu-plant",
+    "capture_path": "research/cohort-intake/utility-institutional/captures/gpatemp2024-pit-ccu.json",
+    "capture_id": "gpatemp2024-pit-ccu",
+    "source_sha256": "9c4111756b77b9e031ff1df91949c8e0650b1774587def8cc28c986f7970a464",
+    "source_quote": "GPA has awarded a contract to Aggreko for 20 MW of temporary power within\n\n100 days.",
+    "claims": {
+      "mw": 20,
+      "delivery_days": 100
+    },
+    "target_description": "GPA temporary power rental contract (Aggreko, 20 MW, about 2 years) approved by CCU Jan 2024; later AG/PUC approval and notice to proceed around Mar-Apr 2024 per another article (not captured)"
+  },
+  "buyer_path": [
+    {
+      "organization": "Guam Power Authority (GPA)",
+      "role": "UTILITY",
+      "evidence_signal_id": "gpa-aggreko-temp-power-2024-t1",
+      "quote": "The Guam Power Authority said the projects will render a short-term solution to bridge the gap in Guam's power capacity while awaiting the commissioning of the Ukudu Power Plant"
+    },
+    {
+      "organization": "Aggreko",
+      "role": "OTHER",
+      "evidence_signal_id": "gpa-aggreko-temp-power-2024-t1",
+      "quote": "GPA has awarded a contract to Aggreko for 20 MW of temporary power within"
+    },
+    {
+      "organization": "Consolidated Commission on Utilities (CCU)",
+      "role": "OTHER",
+      "evidence_signal_id": "gpa-aggreko-temp-power-2024-t1",
+      "quote": "The Consolidated Commission on Utilities has approved two emergency power projects"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "gpa-aggreko-temp-power-2024-s1",
+    "note": "s1 availability is UNKNOWN (server Last-Modified only); lead time cannot be cited."
+  },
+  "blockers": [
+    "Only one precursor signal and its timestamp is unproven (UNKNOWN); the OPA document concerns the Yigo Diesel repair bid GPA-023-23, not the Aggreko rental, so it evidences capacity need, not the rental procurement itself.",
+    "Target is a trade-press article with no printed date in the capture; Wayback snapshot (2024-03-03) is about 6 weeks after the Jan 23 2024 CCU meeting.",
+    "Official CCU resolutions (FY2024-16, FY2024-11), GPA IFB/RFP documents and the PUC docket were not retrievable (guamccu.org agenda PDF returned 404 / unparseable via capture).",
+    "Procurement history in secondary search results: an earlier 2023 temporary-power bid was protested and cancelled, then emergency procurement under Bill 206; not captured.",
+    "AG/PUC approval (about Mar 28 2024) article exists but was not kept as a signal.",
+    "The captured OPA reply concerns Multi-Step Bid GPA-023-23 (restoration of existing Yigo Diesel units), not the Aggreko rental; no tender or RFP document for the Aggreko award was captured, so the award is the earliest procurement-type event only because nothing earlier was found."
+  ],
+  "reviewer_checklist": [
+    "Find CCU/GPA resolution FY2024-16 text and the PUC docket for the petition; capture with docket stamps.",
+    "Establish the earliest dated public signal (Typhoon Mawar damage statement, Sept 2023 CCU authorization) with provable timestamps.",
+    "Confirm the Jan 23 2024 CCU approval date from an official source."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:52-05:00",
+  "target_fit": "TEMPORARY_OR_RENTAL",
+  "target_fit_note": "Emergency 20 MW temporary-power contract awarded to Aggreko to be delivered within 100 days; the same article calls the projects a short-term bridge until the Ukudu plant is commissioned, so this is a genuine temporary/rental award, but only the award (not the tender) is visible."
+}

@@ -1,0 +1,12 @@
+{
+  "capture_hash": "ab1d849e3f5830ecaaf9875b179d14b74e6ad6d80e43e15320aa6c276205877f",
+  "capture_id": "cmm-contracts",
+  "captured_at": "2026-10-22T23:54:21.626524+00:00",
+  "captured_by": "claude-research-agent (unreviewed)",
+  "content": "### 23 June 2020\n\nCompany Announcements Office Australian Securities Exchange Limited Level 4, 20 Bridge Street Sydney NSW 2000\n\n## KEY PROJECT CONTRACTS EXECUTED\n\nCapricorn Metals Ltd (ASX: CMM) (\u201cCapricorn\u201d or the \u201cCompany\u201d) is pleased to advise that it has entered into agreements with APA Group (ASX: APA) for the transportation of gas from the Goldfields Gas Pipeline (GGP) to the Karlawinda Gold Project (Karlawinda). As part of the agreement APA will also build, own and operate the lateral pipeline that links the GGP to Karlawinda. It is expected that approximately 3Tj of gas per day will be transported through the pipeline for power generation at Karlawinda.\n\nThe Company has also recently executed a power supply agreement with Contract Power Australia Pty Ltd (Contract Power). Under the terms of the agreement, Contract Power will build, own and operate a 16MW gas fuelled power station with 2MW of diesel back-up at Karlawinda.\n\n### Comments\n\n### Capricorn Executive Chairman Mark Clark commented:\n\n\u201cWe look forward to a successful long-term partnership with these high-quality companies to meet our energy requirements. The completion of these contracts, combined with the current low price of gas in Western Australia present Capricorn with a very attractive cost of power generation for the operation of the Karlawinda project.\u201d\n\nFor and on behalf of the Board\n\nKim Massey Chief Executive Officer\n\n### For further information, please contact:\n\n# For personal use only\n\nMr Kim Massey Chief Executive Officer **E:** enquiries@capmet.com.au **T:** +61 8 9212 4600\n",
+  "content_sha256": "7c736be53fbd9070694215ec3783f9ec444a00f5ff7a627f61b4f3640728f436",
+  "provider": "firecrawl",
+  "provider_job_id": "",
+  "schema_version": "trailforge-public-capture-v1",
+  "source_url": "https://announcements.asx.com.au/asxpdf/20200623/pdf/44jvln08xxtjhd.pdf"
+}

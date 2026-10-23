@@ -1,0 +1,101 @@
+{
+  "schema_version": "trailforge-cohort-dossier-v0",
+  "status": "INCOMPLETE",
+  "project_id": "vi-wapa-unit27-lease-2020",
+  "project_name": "VI WAPA Unit 27 emergency lease (26 MW, Randolph Harley, St. Thomas) after APR Energy rental exit",
+  "vertical": "utility-institutional",
+  "location": "St. Thomas, U.S. Virgin Islands",
+  "owner_or_developer": "Virgin Islands Water and Power Authority (WAPA)",
+  "selection_note": "Chosen as a small institutional emergency-lease case where the vendor-exit trigger and the board action are both publicly dated. Hindsight-selected development case after the outcome was known; not a sealed holdout; not independently cited.",
+  "signals": [
+    {
+      "signal_id": "vi-wapa-unit27-lease-2020-s1",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "APR Energy announces it is taking back rented generators from VI WAPA for payment default",
+      "observed_at": "2020-03-11T16:04:59+00:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "wayback_cdx",
+        "url": "https://web.archive.org/cdx/search/cdx?url=https://stthomassource.com/content/2020/03/10/company-tells-wapa-it-is-taking-rental-generators-back/&output=text&fl=timestamp,statuscode&limit=2",
+        "note": "Earliest Wayback CDX snapshot of the exact URL is 20200311160459 (HTTP 200); the article prints 'March 10, 2020'. This is an UPPER BOUND on public availability (about 1 day after the printed date), and the quoted text comes from a later capture of the live page, not from the Wayback snapshot."
+      },
+      "source_url": "https://stthomassource.com/content/2020/03/10/company-tells-wapa-it-is-taking-rental-generators-back/",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/wapa2020-apr-exit.json",
+      "capture_id": "wapa2020-apr-exit",
+      "source_sha256": "36909154aa066e397d9666ab05d7475fd2418a09ae6c1d1ab25a15b02381bab9",
+      "source_quote": "APR Energy, a company the Water and Power Authority rents several generators from, issued a statement Tuesday saying it is taking its generators back Wednesday because WAPA is in default on rental payments.",
+      "claims": {
+        "vendor": "APR Energy",
+        "reason_text": "default on rental payments"
+      }
+    }
+  ],
+  "target": {
+    "signal_id": "vi-wapa-unit27-lease-2020-t1",
+    "signal_type": "PROCUREMENT_SIGNAL",
+    "title": "WAPA Governing Board approves two-year lease of 26 MW Unit 27 from GE; separate RFP for 15 MW temporary leased generation planned",
+    "observed_at": "2020-05-11T19:03:03+00:00",
+    "availability_confidence": "PROOF_CITED",
+    "availability_evidence": {
+      "kind": "wayback_cdx",
+      "url": "https://web.archive.org/cdx/search/cdx?url=https://stcroixsource.com/2020/04/30/wapa-board-approves-leasing-generating-unit-to-lower-operating-cost/&output=text&fl=timestamp,statuscode&limit=2",
+      "note": "Earliest Wayback CDX snapshot of the exact URL is 20200511190303 (HTTP 200). This is an UPPER BOUND on public availability, and the quoted text comes from a later capture of the live page. The article is a WAPA press release printed 'April 30, 2020' (11 days earlier than the snapshot, unproven), so a gap measured to the Wayback date is up to about 11 days LONGER than one measured to the printed date."
+    },
+    "source_url": "https://stcroixsource.com/2020/04/30/wapa-board-approves-leasing-generating-unit-to-lower-operating-cost/",
+    "capture_path": "research/cohort-intake/utility-institutional/captures/wapa2020-board-lease.json",
+    "capture_id": "wapa2020-board-lease",
+    "source_sha256": "fcfd515c6a8d9fc88a95466899f1fdcc8607ad7348a82ca5993de0460a43f57b",
+    "source_quote": "In an emergency meeting Monday, the Governing Board of the Virgin Islands Water and Power Authority approved the lease of a 26-megawatt generator for the Randolph Harley Power Plant on St. Thomas and extended various lines of credit with Banco Popular.\n\n“WAPA will lease Unit 27, which is already on site, from its original manufacturer, General Electric. The unit was previously leased from APR Energy which no longer does business with the Authority,” said Lawrence J. Kupfer, executive director/CEO.\n\nCEO of Electric Systems Clinton Hedrington Jr. said WAPA had tried unsuccessfully to procure leased generation services and was later approached by GE Power with an offer to lease the unit.\n\n“Not only did GE propose to lease the unit, it will make the modifications necessary for the unit to burn LPG fuel to generate electricity. In the two years that Unit 27 has been at the Harley plant, it has only burned diesel fuel. This scenario is a win-win for WAPA as Unit 27 is already on site and can immediately provide additional generation. The unit will then be modified to burn the lower-cost propane fuel, and once on LPG, provide the capacity required for the Harley plant to be on 100% propane,” said Hendrington.\n\nHe recommended the board’s approval of a two-year lease of Unit 27",
+    "claims": {
+      "mw": 26,
+      "lease_term_text": "two-year lease"
+    },
+    "target_description": "Emergency board approval of lease of Unit 27 (26 MW, Randolph Harley plant, St. Thomas) from General Electric; WAPA also said it would issue an RFP for 15 MW of temporary leased generation (RFP itself not found)"
+  },
+  "buyer_path": [
+    {
+      "organization": "Virgin Islands Water and Power Authority (WAPA)",
+      "role": "UTILITY",
+      "evidence_signal_id": "vi-wapa-unit27-lease-2020-t1",
+      "quote": "the Governing Board of the Virgin Islands Water and Power Authority"
+    },
+    {
+      "organization": "General Electric",
+      "role": "OTHER",
+      "evidence_signal_id": "vi-wapa-unit27-lease-2020-t1",
+      "quote": "WAPA will lease Unit 27, which is already on site, from its original manufacturer, General Electric."
+    },
+    {
+      "organization": "APR Energy",
+      "role": "OTHER",
+      "evidence_signal_id": "vi-wapa-unit27-lease-2020-s1",
+      "quote": "APR Energy, a company the Water and Power Authority rents several generators from"
+    }
+  ],
+  "lead_time": {
+    "days": null,
+    "basis": "UNVERIFIED",
+    "earliest_signal_id": "vi-wapa-unit27-lease-2020-s1",
+    "note": "INCOMPLETE (one signal), so no lead time is stated. Indicative only: Wayback first-seen dates 2020-03-11T16:04:59Z to 2020-05-11T19:03:03Z are 61.1 days apart, but both are upper bounds on availability for later-captured text. The printed dates (Mar 10 and Apr 30, 2020) are 51 days apart, so the Wayback-based figure is about 10 days LONGER than the printed-date gap. The precursor is a vendor-exit event, i.e. a reactive short-fuse signal, and no earlier planning signal was captured."
+  },
+  "blockers": [
+    "Both sources are local news/press-release coverage, not board minutes or PSC docket; the WAPA board resolution and any RFP document were not found.",
+    "Target is a lease of a unit already on site (not a new rental installation) and the promised 15 MW RFP was not found, so the bridge-generation procurement outcome is UNRESOLVED.",
+    "A PSC 2019 leased-generation surcharge article (Apr 17, 2019) was reviewed and deliberately excluded as only loosely related.",
+    "INCOMPLETE: only one precursor signal (validator requires 2 for PROPOSED_UNREVIEWED); Unit 27 had been on site for two years so the early signal is the vendor exit, not project planning.",
+    "The target quote itself says WAPA 'had tried unsuccessfully to procure leased generation services' before GE approached it with an offer: an earlier, undated procurement attempt exists that was not captured.",
+    "not from quote: the APR dispute detail that units 26 and 27 were required to run on LPG comes from other text in the s1 capture and is not asserted as a claim."
+  ],
+  "reviewer_checklist": [
+    "Confirm via WAPA board minutes / PSC docket the emergency meeting of Monday Apr 27, 2020.",
+    "Find the 15 MW temporary generation RFP and award, if any.",
+    "Judge whether a reactive vendor-exit signal is a legitimate early signal family for the cohort."
+  ],
+  "created_by": "claude-research-agent (unreviewed)",
+  "created_at": "2026-10-22T19:03:52-05:00",
+  "target_fit": "TEMPORARY_OR_RENTAL",
+  "target_fit_note": "Emergency board approval of a two-year lease of Unit 27 (26 MW, already on site) from GE after the APR Energy rental exit: a genuine lease/rental of generation, but of a unit already installed at the plant, so it is not a new temporary installation.",
+  "later_procurement_events": [
+    "Same article (planned, not issued; no RFP document found): 'The lease of Unit 27 is in addition to another Request for Proposal WAPA will issue for 15 megawatts of temporary leased generation. The additional leased generation will bridge the gap until new WAPA-owned generators, funded by federal grants, are commissioned and brought online in two years.'"
+  ]
+}
