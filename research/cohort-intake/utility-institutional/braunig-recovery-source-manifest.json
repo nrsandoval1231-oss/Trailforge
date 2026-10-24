@@ -1,0 +1,106 @@
+[
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-nso-march13.json",
+    "source_url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-01",
+    "content_sha256": "89bebdc1439bc45ad5228d7bbfa3d5dadfb7823067f926531c24141b0142764f",
+    "capture_hash": "b654f29a572da228d13c387e34fbc247ab1a856511ba3523c709e62473f01f16",
+    "provider_job_id": "01a16bd1-ef9a-7449-91a4-9515d710ca4f",
+    "captured_at": "2026-10-24T02:56:56.413764+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-reliability-april22.json",
+    "source_url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-03",
+    "content_sha256": "1412625b423952286bec2ec8324f19d22f16193f9864c93e1b45f0646a0ec917",
+    "capture_hash": "0419e135d65c8fc8615e6b3aba665b8dabb49ac76f62262fe20047746a8bcad7",
+    "provider_job_id": "01a16bd3-75d0-7669-bc0f-48eacb8fdf88",
+    "captured_at": "2026-10-24T02:56:56.414316+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-puct-april23.json",
+    "source_url": "https://interchange.puc.texas.gov/Documents/55999_30_1386625.PDF",
+    "content_sha256": "5ead35c48323cee366020b2116b1fe082b1aa6762e0a7533892aea1e8a7a5d35",
+    "capture_hash": "4f7a60aa93c176ddf6f86e22f0bfee8e8d11fee824230e69b450a994d4598ced",
+    "provider_job_id": "01a16bd3-757d-762e-9d9c-e1d0708b0f64",
+    "captured_at": "2026-10-24T02:56:56.414572+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-puct-july9.json",
+    "source_url": "https://interchange.puc.texas.gov/Documents/55999_48_1408614.PDF",
+    "content_sha256": "88b013383d22368215d32590badd01a1b1af8872590dff04d1c45f920a35d5a0",
+    "capture_hash": "c646eb5e61f8c236cd08c0074cef865b6570743aa806951672065737df7b21ff",
+    "provider_job_id": "01a16bd1-ef7a-7578-8c13-b8068eb7e84c",
+    "captured_at": "2026-10-24T02:56:56.414847+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-solicitation-july25.json",
+    "source_url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-05",
+    "content_sha256": "b484350a37e5e7b34b0698a84ab875aca8e0dad181ae7d6834501653423d55d4",
+    "capture_hash": "706e7b9ac447be875b79e0ffccd83371e86ed57a128b1313dd9249cf98ebbb12",
+    "provider_job_id": "01a16bd1-ef85-724d-a636-cc124af98d84",
+    "captured_at": "2026-10-24T02:56:56.415054+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-archive-index.json",
+    "source_url": "https://lists.ercot.com/cgi-bin/wa?A0=NOTICE_CONTRACTS",
+    "content_sha256": "c307858c40fff23e9b549d5ff8cae4f15bc4f24d3fe25427a9f9037580e230a3",
+    "capture_hash": "5e62822782f436e7532531497d70297f73ba38080e0b90452b93438dd07e4562",
+    "provider_job_id": "01a16bd1-ef60-7690-a3b5-e38e1efd9d90",
+    "captured_at": "2026-10-24T02:56:56.415245+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-archive-nso.json",
+    "source_url": "https://lists.ercot.com/cgi-bin/wa?A2=NOTICE_CONTRACTS;caef6358.2403&S=",
+    "content_sha256": "0894833d6ae073d00e7409ffe775bfa2f3eefaf6acfda799c41841a4256d07f2",
+    "capture_hash": "8cccbf39a677b63a1f9f0cc00b56d5d7ade9d604587dab42842f9699eebe9eb2",
+    "provider_job_id": "01a16bd3-7700-765a-9b8f-929ccde9fbc8",
+    "captured_at": "2026-10-24T02:56:56.416137+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-archive-solicitation.json",
+    "source_url": "https://lists.ercot.com/cgi-bin/wa?A2=NOTICE_CONTRACTS;e565a415.2407&S=",
+    "content_sha256": "b8df73550495ea1d3465e22e499be9b14e768829c19e2f40a677e3e8a319445b",
+    "capture_hash": "1de0c587a007f9cdba73571e5a5f4b5f09c3bd1f5d214ee2de9643a17473635e",
+    "provider_job_id": "01a16bd3-75ea-71c7-bd9c-7e26024c7461",
+    "captured_at": "2026-10-24T02:56:56.416355+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-original-rfp.json",
+    "source_url": "https://www.ercot.com/files/docs/2024/07/25/Must-Run-Alternative-RFP-for-Braunig-Resources-2024_07_25.pdf",
+    "content_sha256": "59149b689c4f9d3f65fd9026a6c5f23fd53cc5c8511194f52f3f759ca3d8ded9",
+    "capture_hash": "1ce63d0cd9cdcb44cdaf004de2a1163b7ffecab3a53bcd42cc88e9bf580cc248",
+    "provider_job_id": "01a16bd3-fee0-77a8-96bb-14913dce31f9",
+    "captured_at": "2026-10-24T02:56:56.416582+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-december-board.json",
+    "source_url": "https://www.ercot.com/files/docs/2024/11/25/9-ercot-staff-recommendation-regarding-ercot-board-approval-of-reliability-must-run-rmr-and-must-run-alternative-mra-agreements-related-to-cps-energy-braunig-resources.pdf",
+    "content_sha256": "0200920ad88330f631e72a727fe8b04e254d9b3667248bdd10c00de3a17e9423",
+    "capture_hash": "23da11f8510df0f302bfb5655f0be004d3f674b0696473cbe89ee9ea1d85799c",
+    "provider_job_id": "01a16bd3-fd7c-728e-b173-5d9ddcf0ff3c",
+    "captured_at": "2026-10-24T02:56:56.417238+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-emergency-agreement.json",
+    "source_url": "https://www.ercot.com/files/docs/2025/06/05/Agreement-for-Emergency-Generation-Service.pdf",
+    "content_sha256": "5f340a4044d90379ce19ce24002f15812c2f11eeee7e3497df90cd7fad6ab77f",
+    "capture_hash": "11edfef9d2b03a0268e52f20091bd42d76f9720154b91cfc914aa100299f891a",
+    "provider_job_id": "01a16bd3-fdab-74c8-90ff-8d1305278128",
+    "captured_at": "2026-10-24T02:56:56.417784+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-puct-august9.json",
+    "source_url": "https://interchange.puc.texas.gov/Documents/55999_53_1418357.PDF",
+    "content_sha256": "af137e62a0c47a0a5784c5d659d5fda4e855e1ba203a967173bbe161fdfa5c31",
+    "capture_hash": "895c4c8ca86f0b05cb3d2f6398ac6779ad39da16f6a95dc893530d988dcc513f",
+    "provider_job_id": "01a16bd3-fdc2-713f-83c9-30fdec752ecb",
+    "captured_at": "2026-10-24T02:56:56.418772+00:00"
+  },
+  {
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-cdx-empty.json",
+    "source_url": "https://web.archive.org/cdx/search/cdx?url=www.ercot.com/services/comm/mkt_notices/M-C031324-05&output=json&filter=statuscode:200&filter=mimetype:text/html&collapse=timestamp:6",
+    "content_sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d",
+    "capture_hash": "c49c288b059abb39c6d23c54f3c0f3f3812bec2173c3ed2a3f51dac550980970",
+    "provider_job_id": "01a16bd3-fe16-73de-8f0d-161ffe592ef0",
+    "captured_at": "2026-10-24T02:56:56.419077+00:00"
+  }
+]
