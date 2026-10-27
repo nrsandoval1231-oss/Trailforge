@@ -2,7 +2,19 @@ const $ = selector => document.querySelector(selector);
 const main = $('#main');
 const state = { query: '', archived: false, selected: new Set(), cohortName: '', editor: null, evidenceProject: null, archiveProject: null, routeVersion: 0 };
 const openers = new WeakMap();
-const knownSignalTypes = ['PROJECT_ANNOUNCED', 'PERMIT_FILED', 'PERMIT_APPROVED', 'PROCUREMENT_SIGNAL'];
+const knownSignalTypes = [
+  'PROJECT_ANNOUNCED',
+  'PERMIT_FILED',
+  'PERMIT_APPROVED',
+  'POWER_REQUIREMENT',
+  'FEASIBILITY_COMPLETED',
+  'EPCM_AWARDED',
+  'CONSTRUCTION_APPROVED',
+  'FUEL_SELECTED',
+  'CONSTRUCTION_STARTED',
+  'OPERATIONS_STARTED',
+  'PROCUREMENT_SIGNAL'
+];
 function node(tag, attributes = {}, ...children) {
   const element = document.createElement(tag);
   for (const [key, value] of Object.entries(attributes)) {
