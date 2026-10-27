@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#232B26">
+  <title>TrailForge · Historical signal workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <div class="shell">
+    <header class="rail">
+      <a class="brand" href="#/" aria-label="TrailForge home">
+        <svg width="32" height="36" viewBox="0 0 32 36" aria-hidden="true"><path d="M4 30 16 5l12 25M10 21h12M16 5v26" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>TrailForge<small>Research instruments</small></span>
+      </a>
+      <nav aria-label="Workbench">
+        <a href="#/" data-nav="projects">Projects</a>
+        <a href="#/reports" data-nav="reports">Retained reports</a>
+      </nav>
+      <p class="rail-note">Local evidence.<br>Reproducible decisions.</p>
+      <span class="local-badge">LOCAL WORKBENCH</span>
+    </header>
+    <div class="workspace">
+      <div class="workspace-bar"><span>HISTORICAL RESEARCH</span><span>Pre-RFP baseline · v1.0</span></div>
+      <p id="notice" class="notice" role="status" hidden></p>
+      <main id="main" tabindex="-1" aria-busy="true"><p class="loading" role="status">Loading workbench…</p></main>
+      <footer>Historical evidence review · No predictive or commercial success is implied.</footer>
+    </div>
+  </div>
+  <dialog id="project-dialog" aria-labelledby="project-dialog-title">
+    <form id="project-form" novalidate>
+      <div class="dialog-heading"><h2 id="project-dialog-title">New project</h2><button type="button" class="quiet" data-close="project-dialog" aria-label="Close project editor">Close</button></div>
+      <p>Keep the project identity and research notes together. Evidence is retained separately.</p>
+      <label for="project-name-input">Project name <span aria-hidden="true">*</span></label>
+      <input id="project-name-input" name="name" required maxlength="160" autocomplete="off">
+      <label for="project-location-input">Location</label>
+      <input id="project-location-input" name="location" maxlength="160" autocomplete="off">
+      <label for="project-notes-input">Research notes</label>
+      <textarea id="project-notes-input" name="notes" maxlength="6000" rows="7"></textarea>
+      <p id="project-form-error" class="error" role="alert"></p>
+      <button id="refresh-project-revision" type="button" class="secondary" hidden>Load current revision for retry</button>
+      <p id="revision-message" role="status"></p>
+      <div class="dialog-actions"><button type="button" class="secondary" data-close="project-dialog">Cancel</button><button id="save-project" type="submit">Save project</button></div>
+    </form>
+  </dialog>
+  <dialog id="archive-dialog" aria-labelledby="archive-title">
+    <form id="archive-form">
+      <h2 id="archive-title">Archive project?</h2>
+      <p>This removes the project from the default collection. Its evidence and frozen report references remain retained. You can restore it later.</p>
+      <p id="archive-error" class="error" role="alert"></p>
+      <div class="dialog-actions"><button id="cancel-archive" type="button" class="secondary" data-close="archive-dialog">Cancel</button><button id="confirm-archive" type="submit">Archive project</button></div>
+    </form>
+  </dialog>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-dialog-title">
+    <form id="evidence-form" novalidate>
+      <div class="dialog-heading"><h2 id="evidence-dialog-title">Append evidence</h2><button type="button" class="quiet" data-close="evidence-dialog" aria-label="Close evidence intake">Close</button></div>
+      <p>Evidence is append-only. Preserve the exact excerpt, then select a contiguous quote from it. Source URLs are references and are never fetched.</p>
+      <label for="evidence-title">Evidence title *</label><input id="evidence-title" name="title" required maxlength="200">
+      <label for="evidence-signal-type">Evidence category *</label>
+      <select id="evidence-signal-type" name="signalType" required aria-describedby="signal-help signal-selection-help">
+        <option value="" selected disabled>Choose an evidence category</option>
+        <optgroup label="Historical replay evidence — availability attestation required">
+          <option value="PROJECT_ANNOUNCED">Project announced — historical replay evidence</option>
+          <option value="PERMIT_FILED">Permit filed — historical replay evidence</option>
+          <option value="PERMIT_APPROVED">Permit approved — historical replay evidence</option>
+          <option value="POWER_REQUIREMENT">Power requirement — historical replay evidence</option>
+          <option value="FEASIBILITY_COMPLETED">Feasibility completed — historical replay evidence</option>
+          <option value="EPCM_AWARDED">EPCM awarded — historical replay evidence</option>
+          <option value="CONSTRUCTION_APPROVED">Construction approved — historical replay evidence</option>
+          <option value="FUEL_SELECTED">Fuel selected — historical replay evidence</option>
+          <option value="CONSTRUCTION_STARTED">Construction started — historical replay evidence</option>
+          <option value="OPERATIONS_STARTED">Operations started — historical replay evidence</option>
+        </optgroup>
+        <optgroup label="Comparison context — excluded from policy inputs">
+          <option value="PROCUREMENT_SIGNAL">Procurement signal — comparison only</option>
+        </optgroup>
+      </select>
+      <p id="signal-help" class="hint">Choose the category supported by the source. Historical replay uses only operator-attested non-procurement evidence available at each decision time. Procurement is comparison-only and never enters policy inputs.</p>
+      <p id="signal-selection-help" class="hint" role="status">Choose the category supported by this source before saving.</p>
+      <label for="evidence-url">Public source URL *</label><input id="evidence-url" name="sourceUrl" type="url" required placeholder="https://example.org/document">
+      <label for="evidence-excerpt">Exact source excerpt *</label><textarea id="evidence-excerpt" name="excerpt" rows="7" maxlength="20000" required></textarea>
+      <label for="evidence-quote">Exact quote within excerpt *</label><textarea id="evidence-quote" name="quote" rows="3" required aria-describedby="quote-help"></textarea>
+      <p id="quote-help" class="hint">Whitespace and punctuation must match. The server hashes the exact UTF-8 excerpt.</p>
+      <fieldset><legend>Separate evidence clocks</legend>
+        <p class="hint">Use timezone-aware ISO timestamps, for example 2025-03-01T12:00:00Z. Leave unknown clocks blank. Future instants are not accepted.</p>
+        <label for="evidence-event-at">Event time</label><input id="evidence-event-at" name="eventAt" placeholder="YYYY-MM-DDTHH:mm:ssZ" autocomplete="off">
+        <label for="evidence-document-at">Document time</label><input id="evidence-document-at" name="documentAt" placeholder="YYYY-MM-DDTHH:mm:ssZ" autocomplete="off">
+        <label for="evidence-availability">Availability review</label><select id="evidence-availability" name="availabilityStatus"><option value="UNREVIEWED">UNREVIEWED — awaiting availability review</option><option value="ATTESTED">ATTESTED — operator assertion</option></select>
+        <p id="unreviewed-help" class="hint">No historical availability is inferred from a source URL, event date, or document date.</p>
+        <div id="attestation-fields" hidden>
+          <p class="callout">An operator attestation is an assertion about historical availability. It is not independent authentication. All three clocks are required; event and document times must not follow availability.</p>
+          <label for="evidence-available-at">Historical availability time *</label><input id="evidence-available-at" name="availableAt" placeholder="YYYY-MM-DDTHH:mm:ssZ" disabled>
+          <label for="evidence-reviewer">Reviewer *</label><input id="evidence-reviewer" name="reviewer" maxlength="120" disabled>
+          <label for="evidence-proof">Availability proof URL *</label><input id="evidence-proof" name="proofUrl" type="url" disabled>
+          <label for="evidence-availability-note">Availability explanation *</label><textarea id="evidence-availability-note" name="availabilityNote" rows="4" maxlength="2000" disabled></textarea>
+        </div>
+      </fieldset>
+      <fieldset><legend>Bounded baseline claims</legend>
+        <p class="hint">Leave unsupported claims unspecified. Investigation requires identity, generation need, a known need reason, and a known buyer in one visible record. Any explicit suppressor wins.</p>
+        <label for="claim-project-specific">Project identity supported</label><select id="claim-project-specific" name="project_specific"><option value="">Unspecified</option><option value="true">True</option><option value="false">False</option></select>
+        <label for="claim-generation-need">Generation need supported</label><select id="claim-generation-need" name="generation_need_supported"><option value="">Unspecified</option><option value="true">True</option><option value="false">False</option></select>
+        <label for="claim-need-reason">Need reason</label><textarea id="claim-need-reason" name="need_reason" maxlength="1000" rows="2"></textarea>
+        <label for="claim-buyer">Buyer organization</label><input id="claim-buyer" name="buyer_organization" maxlength="1000">
+        <label for="claim-generation-excluded">Generation explicitly not in scope</label><select id="claim-generation-excluded" name="generation_not_in_scope"><option value="">Unspecified</option><option value="true">True — suppress</option><option value="false">False</option></select>
+        <label for="claim-awarded">Explicitly awarded</label><select id="claim-awarded" name="awarded"><option value="">Unspecified</option><option value="true">True — suppress</option><option value="false">False</option></select>
+        <label for="claim-supply-resolved">Supply explicitly resolved</label><select id="claim-supply-resolved" name="supply_resolved"><option value="">Unspecified</option><option value="true">True — suppress</option><option value="false">False</option></select>
+      </fieldset>
+      <p id="evidence-error" class="error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" class="secondary" data-close="evidence-dialog">Cancel</button><button id="save-evidence" type="submit">Append evidence</button></div>
+    </form>
+  </dialog>
+  <dialog id="import-dialog" aria-labelledby="import-title">
+    <form id="import-form" novalidate>
+      <div class="dialog-heading"><h2 id="import-title">Import public trace references</h2><button type="button" class="quiet" data-close="import-dialog">Close</button></div>
+      <p>Paste a trailforge-project-trace-v1 JSON object. Original signals and supplied hashes are retained as unauthenticated reference context. Observation dates do not establish historical availability.</p>
+      <label for="import-name">Project name *</label><input id="import-name" name="name" maxlength="160" required>
+      <label for="import-id">Project ID (optional)</label><input id="import-id" name="id" maxlength="64" pattern="[a-z0-9][a-z0-9-]{0,63}" aria-describedby="import-id-help"><p id="import-id-help" class="hint">Lowercase letters, digits, and hyphens. Leave blank to generate an ID.</p>
+      <label for="import-json">Trace JSON *</label><textarea id="import-json" name="trace" rows="12" required spellcheck="false"></textarea>
+      <p id="import-error" class="error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" class="secondary" data-close="import-dialog">Cancel</button><button id="save-import" type="submit">Import references</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
