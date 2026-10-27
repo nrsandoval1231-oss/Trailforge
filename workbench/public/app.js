@@ -275,7 +275,7 @@ function home(projects, reports) {
     list.replaceChildren();
     listCount.textContent = `${filtered.length} project${filtered.length === 1 ? '' : 's'} shown`;
     if (!filtered.length) {
-      list.append(projects.length ? empty('No matching projects', 'Try a different search or include archived projects. Your cohort selection is retained.') : empty('Begin with a project', 'Create your first project to retain source excerpts and research notes. Nothing is acquired automatically.'));
+      list.append(projects.length ? empty('No projects match', 'Try a different search or include archived projects. Your cohort selection is retained.') : empty('Begin with a project', 'Create your first project to retain source excerpts and research notes. Nothing is acquired automatically.'));
     }
     for (const project of filtered) {
       const open = button(project.name, () => goProject(project), { className: 'project-open', 'data-open-project': project.id });
