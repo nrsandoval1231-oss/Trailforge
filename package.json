@@ -1,0 +1,11 @@
+{
+  "name": "trailforge-historical-workbench",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node workbench/server.mjs",
+    "test": "node --test"
+  }
+}

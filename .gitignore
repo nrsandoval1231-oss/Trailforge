@@ -11,3 +11,5 @@ uv.lock
 .trailforge-runs/
 local-output/
 workspace-output/
+/data/
+/workbench/data/

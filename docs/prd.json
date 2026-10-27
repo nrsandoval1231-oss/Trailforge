@@ -1,0 +1,675 @@
+{
+  "title": "TrailForge Historical Signal Workbench",
+  "purpose": "Finish TrailForge with a usable local workbench for assembling project evidence, comparing early research signals with later procurement milestones, and retaining reproducible cohort reports. Preserve the existing Python research system and artifacts while adding a dependency-free application that runs in the supported Node sandbox.",
+  "outcomes": [
+    "An operator can create, search, edit, archive, and restore historical research projects without losing evidence.",
+    "Source excerpts, exact quotes, separate evidence clocks, and explicit availability attestations remain attached to each project.",
+    "An operator can run the existing bounded Pre-RFP baseline semantics over selected projects and inspect evidence visible at each decision time.",
+    "Frozen reports show signed historical lead, buyer evidence, coverage, action burden, and explicit unresolved states without claiming predictive or commercial success.",
+    "Saved projects and reports survive reloads and server restarts; reports can be independently replayed and exported.",
+    "The finished workbench is responsive, accessible, entirely local, and documented with reproducible run and verification instructions."
+  ],
+  "acceptance": [
+    "The application starts with Node.js 22, no installation or build step, and no network access or credentials.",
+    "All existing Python code, tests, retained evidence, brand assets, and omitted repository files remain untouched.",
+    "Project edits require the current revision. Stale writes return 409 and leave stored state unchanged.",
+    "Archiving removes a project from the default collection while retaining its evidence and frozen report references; archived projects can be restored.",
+    "Evidence is append-only. Exact quote membership and excerpt hashes are validated, and missing historical availability never becomes zero or an inferred date.",
+    "Operator-attested availability requires a reviewer, availability timestamp, proof URL, and explanation. The UI identifies this as an operator assertion rather than independent authentication.",
+    "Replay uses only attested non-target evidence available at each decision time. Procurement milestones remain outside policy inputs.",
+    "The Pre-RFP baseline suppresses when visible evidence explicitly states generation_not_in_scope, awarded, or supply_resolved; otherwise it investigates only when one visible evidence record supports project identity, generation need, a known need reason, and a known buyer organization.",
+    "Historical lead equals comparison availability minus first investigation time, preserving negative values. Missing milestones or surfaces remain unresolved.",
+    "Frozen report inputs and result hashes remain unchanged after subsequent project edits or archiving. Replay recomputes results from the retained inputs.",
+    "Existing project-trace JSON can be imported as retained reference context without automatically authenticating its hashes, promoting availability, or treating reported observation dates as historical proof.",
+    "The protected browser journey creates and edits a project and proves persistence after reload.",
+    "Browser scenarios prove phone controls, archive cancellation, retained editor values after a recoverable save failure, and creation and replay of an unresolved evidence report.",
+    "The application has useful empty, loading, no-results, validation, persistence-error, and integrity-failure states, with no document overflow at the declared preview sizes.",
+    "All scaffolded acceptance tests pass with node --test."
+  ],
+  "visualDirection": "Use TrailForge's supplied jade (#126653), graphite (#232B26), warm paper (#F5F4EE), mist (#EEF4EF), mint (#70D1AE), and restrained brass (#B49A60). Build a polished research instrument: graphite navigation rail, a generous paper workspace, precise date typography, clear source quotations, and thin ruled timelines. The home view leads with 'Historical signal workbench', a short explanation, New project, and a searchable project collection. Show meaningful counts for projects, retained reports, and unresolved availability, never invented success metrics. Desktop uses a compact project collection alongside a substantial detail or report workspace; phones use a wrapping header and stacked cards. Reports emphasize first surfaced time, comparison time, signed lead, and uncertainty before raw JSON. Use native system fonts, local CSS and JavaScript, and small code-native SVG marks only. Accessible labels, visible keyboard focus, 44px primary touch targets, readable contrast, reduced-motion support, wrapping hashes and URLs, and explicit text badges are required. Dialogs should feel like careful field notebooks, with spacious labeled inputs and persistent inline errors. Avoid marketing imagery, generic dashboard charts, decorative maps, and unsupported opportunity claims.",
+  "architecture": {
+    "description": "Add an isolated Node.js 22 standard-library workbench under workbench/. One import-safe HTTP server serves workbench/public/ and the JSON API. Pure domain functions implement the narrow, documented PreRfpBaselineV1 compatibility behavior and existing trace-reference intake; they do not replace or execute the Python Arena. An independent serialized JSON store writes only DATA_DIR/workbench.json using atomic replacement. Existing Python entrypoints and artifacts remain available through their existing workflows. The web application starts empty and performs no runtime acquisition. All assets are local. Tests use temporary directories and ephemeral loopback ports.",
+    "start": [
+      "node",
+      "workbench/server.mjs"
+    ],
+    "port": 3000,
+    "profile": "node-stdlib"
+  },
+  "interfaces": [
+    {
+      "module": "workbench/domain.mjs",
+      "contract": "Export canonicalHash(value), createProject(input,{now}), updateProject(project,patch,{now}), appendEvidence(project,input,{now}), importTrace(input,{now}), buildReport(projects,{id,name,now}), and verifyReport(report). now is an ISO timestamp; functions are synchronous, deterministic, detached, and never mutate arguments or perform I/O. canonicalHash is SHA-256 of recursively key-sorted JSON, retaining array order, rejecting non-finite numbers and unsupported values. Domain validation errors carry status=400; revision mismatches carry status=409 and code='STALE_REVISION'. Project IDs are lowercase ASCII slugs matching /^[a-z0-9][a-z0-9-]{0,63}$/; optional IDs are generated by the server before calling domain functions."
+    },
+    {
+      "module": "Project and evidence JSON contract",
+      "contract": "createProject accepts {id,name,location?,notes?}; name is trimmed text 1..160 characters, location defaults to '' and is at most 160, notes defaults to '' and is at most 6000. Return {id,name,location,notes,revision:1,archived:false,createdAt:now,updatedAt:now,evidence:[]}. updateProject accepts only {revision,name?,location?,notes?,archived?}, requires revision===project.revision, and increments revision exactly once. appendEvidence accepts {revision,id,signalType,title,sourceUrl,excerpt,quote,eventAt?,documentAt?,availableAt?,availabilityStatus?,reviewer?,proofUrl?,availabilityNote?,claims?}; append increments the project revision. Evidence IDs use the project slug syntax and must be unique within the project. Supported signal types are the eleven existing SignalType values in signal_ledger.py; PROCUREMENT_SIGNAL is the comparison target. title is 1..200 characters; excerpt is 1..20000; quote must be a nonempty exact contiguous substring of excerpt. Retain excerpt without whitespace normalization and compute sourceSha256 from its exact UTF-8 bytes. HTTP(S) URLs are references only and are never fetched; reject credentials, localhost, .local hosts, and non-public IP literals. eventAt, documentAt, and availableAt default to null. Timestamps must be valid timezone-aware ISO instants no later than now. availabilityStatus defaults to UNREVIEWED, which requires availableAt=null. ATTESTED requires all three timestamps, eventAt<=availableAt, documentAt<=availableAt, reviewer 1..120 characters, proofUrl, and availabilityNote 1..2000 characters. Stamp recordedAt=now. Claims allow only project_specific, generation_need_supported, need_reason, buyer_organization, generation_not_in_scope, awarded, supply_resolved; boolean fields require booleans and text fields require strings up to 1000 characters. Omitted claims remain absent. Evidence cannot be patched or deleted."
+    },
+    {
+      "module": "Frozen report JSON contract",
+      "contract": "buildReport requires 1..50 distinct projects and {id,name,now}; name is 1..200 characters. Return {schemaVersion:1,id,name,createdAt:now,policyId:'PRE_RFP_BASELINE_V1',policyVersion:'1.0',inputs,cases,summary,inputHash,resultHash}. Sort detached inputs and cases by project ID. For each project, decision times are distinct sorted availableAt values of ATTESTED non-target evidence. At each time expose only those ATTESTED non-target records with availableAt<=time. SUPPRESS wins if any visible record has one of the three suppressors exactly true; its basis is the sorted IDs of suppressing records. Otherwise INVESTIGATE requires a single record with project_specific===true, generation_need_supported===true, and nonblank/non-UNKNOWN need_reason and buyer_organization, comparing UNKNOWN case-insensitively; basis contains all qualifying IDs sorted. Otherwise WATCH with empty basis. Each decision is {at,decision,basisEvidenceIds,visibleEvidenceIds,visibleEvidence,buyerOrganizations}; IDs and unique buyer organizations are sorted. A case is {projectId,projectName,firstSurfaceAt,comparisonAt,leadDays,status,unknownAvailabilityCount,decisions}; firstSurfaceAt is the earliest INVESTIGATE time, comparisonAt is the earliest ATTESTED PROCUREMENT_SIGNAL availableAt, and leadDays is their signed difference in days rounded to three decimals or null. Status is EARLY for positive measured lead, NO_EARLY_ADVANTAGE for measured lead<=0, otherwise UNKNOWN_AVAILABILITY if any project evidence is unreviewed, otherwise NO_SURFACE if no investigation, otherwise MISSING_MILESTONE. unknownAvailabilityCount counts UNREVIEWED evidence. summary is {projectCount,surfacedCount,targetCount,matchedCount,unresolvedCount,medianLeadDays,coverage,decisionCount}; matchedCount counts cases with numeric lead, unresolvedCount=projectCount-matchedCount, coverage=matchedCount/targetCount rounded to six decimals or null when targetCount=0, median uses the lower middle of sorted measured leads, and decisionCount counts all retained decisions. inputHash=canonicalHash(inputs); resultHash=canonicalHash({policyId,policyVersion,cases,summary}), excluding report identity and creation time. verifyReport never repairs data and returns {integrity:'PASS'|'FAIL',replay:'PASS'|'FAIL',checks:{inputHash:boolean,resultHash:boolean,recomputedResult:boolean}}; recomputedResult requires supported schema/policy and identical recomputed cases/summary."
+    },
+    {
+      "module": "Legacy project-trace import",
+      "contract": "importTrace accepts {id,name,trace}, with trace using schema_version='trailforge-project-trace-v1', nonempty project_id, a 64-hex trace_hash, and 1..500 signals in the existing ProjectSignal.as_dict shape. Require signal_id, matching project_id, supported signal_type, timezone-aware observed_at, title, 64-hex source_sha256, and evidence_class='PUBLIC' with an acceptable source_url. Optional source_quote and all original JSON fields remain preserved. Reject duplicate signal IDs and malformed input. Return a normal new project with evidence:[] and importContext:{verification:'NOT_AUTHENTICATED',traceHash:trace.trace_hash,original:detachedTrace}. Do not manufacture a capture excerpt, reviewer attestation, or availableAt from these references. The UI presents original signals as 'Imported reference — availability unreviewed'; users add separately supported evidence through the normal append form."
+    },
+    {
+      "module": "workbench/store.mjs",
+      "contract": "Export async openStore({dataDir}) returning {snapshot(),transact(mutator),close()}. Initial state is {schemaVersion:1,projects:[],reports:[]}. snapshot synchronously returns a detached copy. transact queues synchronous mutators, clones the latest state, awaits durable atomic replacement of dataDir/workbench.json, publishes the new state only after successful persistence, and resolves to a detached mutator return value. A throwing mutator commits nothing. Preserve ordered concurrent transactions. Only dataDir may be written; temporary replacement files also live there. close waits for pending transactions. Opening malformed or unsupported persisted JSON fails clearly without replacing it. No source-tree paths, network, or external database are used."
+    },
+    {
+      "module": "workbench/server.mjs",
+      "contract": "Export async startServer({port,dataDir}={}) returning {url,close}. Bind 127.0.0.1; explicit options override PORT/DATA_DIR, which override defaults 3000 and './data'. port=0 is supported; url contains the assigned port. Importing this module creates no listener or files. Direct invocation starts the app and prints its loopback URL. Resolve static assets relative to import.meta.url, independent of cwd. close asynchronously closes HTTP and storage. API responses are JSON with no-store; errors are {error:string,code:string}, including 400 validation, 404 missing resource, 409 stale revision/duplicate ID, 413 bodies exceeding 256 KiB, and 422 invalid report integrity. Accept JSON media type with an optional charset. Do not expose arbitrary file paths or execute submitted content. Reject cross-origin mutation requests when Origin is present; allow absent Origin for local API clients. Unknown API routes return JSON 404. Never return index.html for missing API or asset paths."
+    },
+    {
+      "module": "HTTP API envelopes",
+      "contract": "GET /api/projects?q=&includeArchived=true returns {projects}, sorted by name then ID; search is a case-insensitive literal substring across name, location, and notes and excludes archived records by default. POST /api/projects accepts create fields with optional id and returns 201 {project}. GET /api/projects/:id returns {project}, including archived records. PATCH /api/projects/:id accepts updateProject fields and returns {project}. DELETE /api/projects/:id accepts {revision}, archives through updateProject, and returns {project}. POST /api/projects/:id/evidence accepts appendEvidence fields with optional evidence id and returns 201 {project}. POST /api/imports/traces returns 201 {project}. POST /api/reports accepts {id?,name,projectIds}, requires distinct existing active projects, freezes their snapshots, persists the report, and returns 201 {report}. GET /api/reports returns {reports}, newest first, with each item {id,name,createdAt,summary,integrity}; list items with invalid report hashes remain listed with integrity='FAIL'. GET /api/reports/:id returns {report,verification} only on successful integrity, otherwise 422. POST /api/reports/:id/replay accepts {} and returns verification with 200 for a complete match or 422 for failure. GET /api/reports/:id/export returns the verified frozen report as application/json with attachment Content-Disposition, otherwise 422. Reports have no edit/delete endpoint."
+    },
+    {
+      "module": "workbench/public/index.html, app.js, styles.css",
+      "contract": "Use hash routes #/, #/projects/:id, #/reports, and #/reports/:id so reload retains the active view; every route loads from GET /. Stable selectors: #project-list, #project-search, #show-archived, #new-project, #project-dialog, #project-form-error, #project-name-input, #project-location-input, #project-notes-input, #save-project, #project-name, #project-notes, #edit-project, #back-projects, #archive-project, #archive-dialog, #confirm-archive, #cancel-archive, #restore-project, #add-evidence, #evidence-dialog, #evidence-title, #evidence-url, #evidence-excerpt, #evidence-quote, #save-evidence, #evidence-list, #run-project-report, #report-title, #report-result, #verify-replay, and #replay-status. Project-list open buttons carry data-open-project equal to the project ID. Saving a new project opens its detail; editing opens prefilled controls and updates visible detail only after success. Archive opens a named native dialog, Escape and Cancel leave state unchanged, confirmation returns to the list; #show-archived toggles archived inclusion without clearing search. Saving errors show 'Could not save project' in #project-form-error and preserve all values for retry. #evidence-list shows 'Awaiting availability review' for unreviewed excerpts. #run-project-report creates and opens a single-project report named '<project name> · Pre-RFP review'. Unresolved reports show 'Historical lead unresolved' inside #report-result. A successful explicit replay shows 'Replay matched' in #replay-status. Render submitted text with textContent or equivalent DOM nodes, never innerHTML. Native dialogs trap focus, support Escape, and restore focus to their opener."
+    }
+  ],
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "description": "Project collection and all hash-routed project, evidence, and report views."
+    },
+    {
+      "method": "GET",
+      "path": "/app.js",
+      "description": "Local browser application module."
+    },
+    {
+      "method": "GET",
+      "path": "/styles.css",
+      "description": "Local responsive TrailForge stylesheet."
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects",
+      "description": "Search active projects; optionally include archived records."
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "description": "Create a historical research project."
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/:id",
+      "description": "Read a project and its retained evidence."
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/projects/:id",
+      "description": "Edit metadata or restore an archived project using its current revision."
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/projects/:id",
+      "description": "Archive a project without deleting retained evidence."
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/:id/evidence",
+      "description": "Append validated source evidence."
+    },
+    {
+      "method": "POST",
+      "path": "/api/imports/traces",
+      "description": "Retain an existing public project-trace artifact as unreviewed reference context."
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports",
+      "description": "List retained cohort reports with integrity status."
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports",
+      "description": "Freeze and evaluate a selected cohort."
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/:id",
+      "description": "Inspect a verified frozen report."
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/:id/replay",
+      "description": "Verify retained hashes and deterministically recompute the report."
+    },
+    {
+      "method": "GET",
+      "path": "/api/reports/:id/export",
+      "description": "Download the verified frozen JSON report."
+    }
+  ],
+  "nonGoals": [
+    "Replacing the Python Arena, its CLI, existing operator applications, or its general policy framework.",
+    "Live opportunity aggregation, Firecrawl integration, autonomous research, or runtime network acquisition.",
+    "Customer outreach, proposal submission, fuel-provider discovery, pricing, or execution authority.",
+    "Authenticating historical evidence merely because a user supplies a URL, hash, reviewer name, or proof citation.",
+    "Inventing a reviewed historical cohort, sealing outcomes, or claiming forecast accuracy from preview data.",
+    "Hosted accounts, collaboration, databases, distributed services, and additional package dependencies."
+  ],
+  "decisions": [
+    "Interpret 'finish this project' through the supplied architecture and scope documents: complete historical signal inspection and reproducible cohort work, rather than expanding the live commercial queue.",
+    "Use an additive workbench/ application because the supported runtime is Node.js 22 and the mature repository is Python. Preserve all existing code and unknown omitted files; do not introduce a Python subprocess dependency.",
+    "Implement only the small documented PreRfpBaselineV1 compatibility behavior and temporal comparison contract. This is a bounded offline workbench adapter, not a port of the Arena engine.",
+    "Correct the rejected scaffold path by placing the required dependency-free Node manifest at package.json in the repository root. Its start script runs node workbench/server.mjs and its test script runs node --test. Keep the operator guide at workbench/README.md to preserve existing root documentation. No nested workbench/package.json is created.",
+    "Keep source evidence append-only and use reversible project archiving. Metadata edits cannot rewrite evidence or change frozen reports.",
+    "Distinguish operator-attested availability, imported references, artifact integrity, deterministic replay, and independently established historical truth throughout the UI.",
+    "Use availability timestamps for both first surface and procurement comparison, retain separate event and document clocks, and preserve negative historical lead.",
+    "Import existing public ProjectTrace JSON as retained reference material only. Foreign trace hashes are preserved but not reauthenticated, and observation timestamps never automatically become verified availability.",
+    "Start empty. Preview seeding uses the supplied Puerto Rico and Stibnite research context, explicitly leaves availability unreviewed, and does not manufacture source verification or lead-time credit.",
+    "Use native browser controls and dependency-free DOM rendering with local assets. Preserve the supplied brand palette without modifying locked or omitted brand files.",
+    "Allow deterministic custom IDs for API intake and preview seeding, while generating IDs for ordinary browser-created records.",
+    "Place all runtime state and atomic replacement files under DATA_DIR; reject corrupt persisted state instead of silently resetting the operator's work.",
+    "The scaffold-path repair changes only manifest placement, its relative scripts, and the corresponding operator instructions; task IDs, acceptance tests, browserJourney, browserScenarios, previewViewports, outcomes, and acceptance remain preserved."
+  ],
+  "journey": [
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "body": "{\"id\":\"puerto-rico-power\",\"name\":\"USACE Puerto Rico power stabilization\",\"location\":\"Puerto Rico\",\"notes\":\"Historical research trace. Sources sought: February 24, 2023; solicitation: July 5, 2023; award: September 28, 2023. Historical availability and outcome sealing still require separate review.\"}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/puerto-rico-power/evidence",
+      "body": "{\"revision\":1,\"id\":\"rfi-reference\",\"signalType\":\"PROJECT_ANNOUNCED\",\"title\":\"Retained sources-sought reference\",\"sourceUrl\":\"https://sam.gov/opp/1a404673b5e94630a73d67e2933fa5a4/view\",\"excerpt\":\"Research note from the retained project documentation: Sources sought — February 24, 2023. The earliest retained RFI to the award spans 215 days. This does not establish the earliest available signal.\",\"quote\":\"Sources sought — February 24, 2023.\",\"eventAt\":\"2023-02-24T00:00:00Z\",\"availabilityStatus\":\"UNREVIEWED\",\"claims\":{}}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/puerto-rico-power/evidence",
+      "body": "{\"revision\":2,\"id\":\"procurement-reference\",\"signalType\":\"PROCUREMENT_SIGNAL\",\"title\":\"Formal solicitation reference · W912HN23R5005\",\"sourceUrl\":\"https://sam.gov/opp/74982163ff3243a4b718562cac8a0d46/view\",\"excerpt\":\"Research note from the retained project documentation: Formal solicitation — July 5, 2023. Named review and verified historical availability remain required.\",\"quote\":\"Formal solicitation — July 5, 2023.\",\"eventAt\":\"2023-07-05T00:00:00Z\",\"availabilityStatus\":\"UNREVIEWED\",\"claims\":{}}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "body": "{\"id\":\"stibnite-camp\",\"name\":\"Stibnite construction camp\",\"location\":\"Idaho, United States\",\"notes\":\"Historical construction-power research. Camp load remains unknown; retain the power-gap hypothesis separately from verified requirements. Review direct buyer evidence before drawing commercial conclusions.\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/projects/stibnite-camp",
+      "body": "{\"revision\":1,\"notes\":\"Historical construction-power research. Camp load remains unknown. Next: locate a retained primary-source excerpt and establish its historical availability; identify the direct project buying path.\"}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports",
+      "body": "{\"id\":\"initial-availability-review\",\"name\":\"Construction power · availability review\",\"projectIds\":[\"puerto-rico-power\",\"stibnite-camp\"]}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/initial-availability-review/replay",
+      "body": "{}"
+    }
+  ],
+  "browserJourney": [
+    {
+      "action": "click",
+      "selector": "#new-project",
+      "value": ""
+    },
+    {
+      "action": "fill",
+      "selector": "#project-name-input",
+      "value": "Stibnite camp chronology"
+    },
+    {
+      "action": "fill",
+      "selector": "#project-location-input",
+      "value": "Idaho"
+    },
+    {
+      "action": "fill",
+      "selector": "#project-notes-input",
+      "value": "Confirm first-observed timestamps before replay."
+    },
+    {
+      "action": "click",
+      "selector": "#save-project",
+      "value": ""
+    },
+    {
+      "action": "assertText",
+      "selector": "#project-name",
+      "value": "Stibnite camp chronology"
+    },
+    {
+      "action": "click",
+      "selector": "#edit-project",
+      "value": ""
+    },
+    {
+      "action": "fill",
+      "selector": "#project-name-input",
+      "value": "Stibnite construction chronology"
+    },
+    {
+      "action": "fill",
+      "selector": "#project-notes-input",
+      "value": "Find primary evidence for availability and the direct buyer path."
+    },
+    {
+      "action": "click",
+      "selector": "#save-project",
+      "value": ""
+    },
+    {
+      "action": "assertText",
+      "selector": "#project-name",
+      "value": "Stibnite construction chronology"
+    },
+    {
+      "action": "reload",
+      "selector": "",
+      "value": ""
+    },
+    {
+      "action": "assertText",
+      "selector": "#project-name",
+      "value": "Stibnite construction chronology"
+    },
+    {
+      "action": "assertText",
+      "selector": "#project-notes",
+      "value": "Find primary evidence for availability and the direct buyer path."
+    }
+  ],
+  "browserScenarios": [
+    {
+      "name": "Phone project intake and reversible archive",
+      "width": 390,
+      "height": 844,
+      "steps": [
+        {
+          "action": "click",
+          "selector": "#new-project",
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "selector": "#project-name-input",
+          "value": "Puerto Rico archive follow-up"
+        },
+        {
+          "action": "fill",
+          "selector": "#project-location-input",
+          "value": "Puerto Rico"
+        },
+        {
+          "action": "screenshot",
+          "selector": "",
+          "value": "phone-project-editor"
+        },
+        {
+          "action": "click",
+          "selector": "#save-project",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-name",
+          "value": "Puerto Rico archive follow-up"
+        },
+        {
+          "action": "click",
+          "selector": "#archive-project",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#archive-dialog",
+          "value": "Archive project"
+        },
+        {
+          "action": "screenshot",
+          "selector": "",
+          "value": "phone-archive-dialog"
+        },
+        {
+          "action": "press",
+          "selector": "#cancel-archive",
+          "value": "Escape"
+        },
+        {
+          "action": "assertAbsent",
+          "selector": "#archive-dialog[open]",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-name",
+          "value": "Puerto Rico archive follow-up"
+        },
+        {
+          "action": "click",
+          "selector": "#archive-project",
+          "value": ""
+        },
+        {
+          "action": "click",
+          "selector": "#confirm-archive",
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "selector": "#project-search",
+          "value": "Puerto Rico archive follow-up"
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-list",
+          "value": "No projects match"
+        },
+        {
+          "action": "click",
+          "selector": "#show-archived",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-list",
+          "value": "Puerto Rico archive follow-up"
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-list",
+          "value": "Archived"
+        },
+        {
+          "action": "reload",
+          "selector": "",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "main",
+          "value": "Historical signal workbench"
+        }
+      ],
+      "expectedFailures": []
+    },
+    {
+      "name": "Failed project save retains editor values and permits retry",
+      "width": 1280,
+      "height": 800,
+      "steps": [
+        {
+          "action": "click",
+          "selector": "#new-project",
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "selector": "#project-name-input",
+          "value": "Stibnite source inventory"
+        },
+        {
+          "action": "fill",
+          "selector": "#project-location-input",
+          "value": "Idaho"
+        },
+        {
+          "action": "fill",
+          "selector": "#project-notes-input",
+          "value": "Keep the source inventory intact if saving is interrupted."
+        },
+        {
+          "action": "click",
+          "selector": "#save-project",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-form-error",
+          "value": "Could not save project"
+        },
+        {
+          "action": "assertValue",
+          "selector": "#project-name-input",
+          "value": "Stibnite source inventory"
+        },
+        {
+          "action": "assertValue",
+          "selector": "#project-notes-input",
+          "value": "Keep the source inventory intact if saving is interrupted."
+        },
+        {
+          "action": "screenshot",
+          "selector": "",
+          "value": "recoverable-save-error"
+        },
+        {
+          "action": "click",
+          "selector": "#save-project",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-name",
+          "value": "Stibnite source inventory"
+        },
+        {
+          "action": "reload",
+          "selector": "",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-name",
+          "value": "Stibnite source inventory"
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-notes",
+          "value": "Keep the source inventory intact if saving is interrupted."
+        }
+      ],
+      "expectedFailures": [
+        {
+          "method": "POST",
+          "path": "/api/projects",
+          "status": 503,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "Unreviewed evidence produces an honest retained report",
+      "width": 1280,
+      "height": 800,
+      "steps": [
+        {
+          "action": "click",
+          "selector": "#new-project",
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "selector": "#project-name-input",
+          "value": "Puerto Rico chronology review"
+        },
+        {
+          "action": "click",
+          "selector": "#save-project",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#project-name",
+          "value": "Puerto Rico chronology review"
+        },
+        {
+          "action": "click",
+          "selector": "#add-evidence",
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "selector": "#evidence-title",
+          "value": "Retained chronology research note"
+        },
+        {
+          "action": "fill",
+          "selector": "#evidence-url",
+          "value": "https://sam.gov/opp/1a404673b5e94630a73d67e2933fa5a4/view"
+        },
+        {
+          "action": "fill",
+          "selector": "#evidence-excerpt",
+          "value": "The earliest retained RFI to this award spans 215 days."
+        },
+        {
+          "action": "fill",
+          "selector": "#evidence-quote",
+          "value": "The earliest retained RFI to this award spans 215 days."
+        },
+        {
+          "action": "screenshot",
+          "selector": "",
+          "value": "evidence-intake"
+        },
+        {
+          "action": "click",
+          "selector": "#save-evidence",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#evidence-list",
+          "value": "Retained chronology research note"
+        },
+        {
+          "action": "assertText",
+          "selector": "#evidence-list",
+          "value": "Awaiting availability review"
+        },
+        {
+          "action": "click",
+          "selector": "#run-project-report",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#report-title",
+          "value": "Puerto Rico chronology review · Pre-RFP review"
+        },
+        {
+          "action": "assertText",
+          "selector": "#report-result",
+          "value": "Historical lead unresolved"
+        },
+        {
+          "action": "click",
+          "selector": "#verify-replay",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#replay-status",
+          "value": "Replay matched"
+        },
+        {
+          "action": "reload",
+          "selector": "",
+          "value": ""
+        },
+        {
+          "action": "assertText",
+          "selector": "#report-title",
+          "value": "Puerto Rico chronology review · Pre-RFP review"
+        },
+        {
+          "action": "assertText",
+          "selector": "#report-result",
+          "value": "Historical lead unresolved"
+        }
+      ],
+      "expectedFailures": []
+    }
+  ],
+  "previewViewports": [
+    {
+      "label": "desktop",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "label": "phone",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "label": "narrow",
+      "width": 320,
+      "height": 740
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Implement temporal domain rules and frozen report compatibility",
+      "description": "Create the pure domain module exactly as specified. Preserve separate clocks and unknowns, exact excerpt bytes, append-only evidence, revision checks, and the existing bounded PreRfpBaselineV1 semantics. Implement sorted deterministic report snapshots, signed lead, lower-median summaries, independent hash/replay checks, and lossless public trace-reference intake without automatic authentication. Reject unsupported fields rather than silently accepting new authority or numeric power claims. Keep every existing Python file and artifact unchanged.",
+      "writes": [
+        "workbench/domain.mjs"
+      ],
+      "tests": [
+        "tests/workbench-domain.test.mjs"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "t2",
+      "title": "Build durable isolated JSON persistence",
+      "description": "Implement the independent serialized JSON store using only Node standard-library filesystem APIs. Queue concurrent mutations over the latest committed snapshot, isolate caller objects, atomically replace workbench.json, and publish state only after successful persistence. Failed mutations leave both disk and memory unchanged. Preserve corrupt input bytes and fail startup clearly. Write only inside the supplied dataDir and make close safe to call more than once.",
+      "writes": [
+        "workbench/store.mjs"
+      ],
+      "tests": [
+        "tests/workbench-store.test.mjs"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "t3",
+      "title": "Expose the local workbench API and import-safe server",
+      "description": "Implement startServer and direct CLI startup with PORT/DATA_DIR support, loopback binding, ephemeral ports, cwd-independent static resolution, and graceful idempotent close. Integrate domain validation with transactional persistence for project CRUD/archive/restore, literal search, evidence append, legacy trace intake, immutable cohort reports, replay, and verified export. Generate ordinary record IDs, accept explicit valid IDs, and return the exact envelopes/statuses. Invalid report artifacts remain discoverable as failures and never render or export healthy results. Serve only the declared public asset files, reject cross-origin browser mutations, bound JSON bodies, and provide actionable JSON errors. API-focused tests must pass before frontend files are present; missing static assets may return 404 until T4 integrates.",
+      "writes": [
+        "workbench/server.mjs"
+      ],
+      "tests": [
+        "tests/workbench-domain.test.mjs",
+        "tests/workbench-store.test.mjs",
+        "tests/workbench-api.test.mjs"
+      ],
+      "dependsOn": [
+        "t1",
+        "t2"
+      ]
+    },
+    {
+      "id": "t4",
+      "title": "Finish the responsive TrailForge research workbench and operator guide",
+      "description": "Build the complete local UI in workbench/public/ with the strong visual direction and every documented stable selector. Home includes project search, archive inclusion, a first-project empty state, project cards, a retained-reports navigation entry, and a 1..50 project cohort selection flow with report naming. Project detail supports prefilled metadata editing, explicit archive confirmation and restoration, append-only evidence intake, imported reference inspection, and a direct single-project report action. Evidence intake exposes all clocks, exact quote validation, signal type, UNREVIEWED versus ATTESTED availability, reviewer/proof/explanation, and the bounded baseline claim fields with clear labels. Default evidence remains unreviewed. Provide a public trace JSON paste/import dialog and retain input on errors. Report detail presents integrity separately from replay, per-case statuses and signed lead, cohort denominators and unresolved counts, decision-time buttons that expose only each decision's visible evidence, retained comparison context, and JSON export. Never substitute raw future evidence into the selected decision panel. Render integrity failures as failures with no healthy result cards. Implement useful loading/error/retry states; failed project saves retain exact editor values and allow manual retry. Use accessible native dialogs, Escape cancellation, focus restoration, semantic labels, safe DOM text rendering, and all declared responsive sizes. Preserve hash routes after reload and ensure all protected journeys and scenarios pass unchanged. Add workbench/README.md documenting Node 22, the zero-dependency/zero-install/no-build workflow, repository-root 'node workbench/server.mjs' and 'node --test', optional repository-root 'npm start' and 'npm test', PORT and DATA_DIR overrides, writable external data directories for read-only source deployments, backup/export, revision conflicts, evidence-attestation limits, imported trace limits, and the relationship to the preserved Python workflows. Explain that the scaffolded package.json is at the repository root; do not create or reference a nested workbench/package.json. Do not overwrite an existing root README or any omitted file.",
+      "writes": [
+        "workbench/public/",
+        "workbench/README.md"
+      ],
+      "tests": [
+        "tests/workbench-domain.test.mjs",
+        "tests/workbench-store.test.mjs",
+        "tests/workbench-api.test.mjs",
+        "tests/workbench-assets.test.mjs"
+      ],
+      "dependsOn": [
+        "t3"
+      ]
+    }
+  ],
+  "revision": 1,
+  "originalIntent": "finish this project"
+}
