@@ -30,7 +30,6 @@
       <footer>Historical evidence review · No predictive or commercial success is implied.</footer>
     </div>
   </div>
-
   <dialog id="project-dialog" aria-labelledby="project-dialog-title">
     <form id="project-form" novalidate>
       <div class="dialog-heading"><h2 id="project-dialog-title">New project</h2><button type="button" class="quiet" data-close="project-dialog" aria-label="Close project editor">Close</button></div>
@@ -47,7 +46,6 @@
       <div class="dialog-actions"><button type="button" class="secondary" data-close="project-dialog">Cancel</button><button id="save-project" type="submit">Save project</button></div>
     </form>
   </dialog>
-
   <dialog id="archive-dialog" aria-labelledby="archive-title">
     <form id="archive-form">
       <h2 id="archive-title">Archive project?</h2>
@@ -56,16 +54,25 @@
       <div class="dialog-actions"><button id="cancel-archive" type="button" class="secondary" data-close="archive-dialog">Cancel</button><button id="confirm-archive" type="submit">Archive project</button></div>
     </form>
   </dialog>
-
   <dialog id="evidence-dialog" aria-labelledby="evidence-dialog-title">
     <form id="evidence-form" novalidate>
       <div class="dialog-heading"><h2 id="evidence-dialog-title">Append evidence</h2><button type="button" class="quiet" data-close="evidence-dialog" aria-label="Close evidence intake">Close</button></div>
       <p>Evidence is append-only. Preserve the exact excerpt, then select a contiguous quote from it. Source URLs are references and are never fetched.</p>
       <label for="evidence-title">Evidence title *</label><input id="evidence-title" name="title" required maxlength="200">
-      <label for="evidence-signal-type">Signal type *</label>
-      <input id="evidence-signal-type" name="signalType" list="signal-types" value="PROCUREMENT_SIGNAL" required autocomplete="off" aria-describedby="signal-help">
-      <datalist id="signal-types"><option value="PROCUREMENT_SIGNAL"></option></datalist>
-      <p id="signal-help" class="hint">Enter an exact SignalType value from the existing signal ledger. Imported reference types appear as suggestions. PROCUREMENT_SIGNAL is comparison context and never a policy input.</p>
+      <label for="evidence-signal-type">Evidence category *</label>
+      <select id="evidence-signal-type" name="signalType" required aria-describedby="signal-help signal-selection-help">
+        <option value="" selected disabled>Choose an evidence category</option>
+        <optgroup label="Historical replay evidence — availability attestation required">
+          <option value="PROJECT_ANNOUNCED">Project announced — historical replay evidence</option>
+          <option value="PERMIT_FILED">Permit filed — historical replay evidence</option>
+          <option value="PERMIT_APPROVED">Permit approved — historical replay evidence</option>
+        </optgroup>
+        <optgroup label="Comparison context — excluded from policy inputs">
+          <option value="PROCUREMENT_SIGNAL">Procurement signal — comparison only</option>
+        </optgroup>
+      </select>
+      <p id="signal-help" class="hint">Choose the category supported by the source. Historical replay uses only operator-attested non-procurement evidence available at each decision time. Procurement is comparison-only and never enters policy inputs.</p>
+      <p id="signal-selection-help" class="hint" role="status">Choose the category supported by this source before saving.</p>
       <label for="evidence-url">Public source URL *</label><input id="evidence-url" name="sourceUrl" type="url" required placeholder="https://example.org/document">
       <label for="evidence-excerpt">Exact source excerpt *</label><textarea id="evidence-excerpt" name="excerpt" rows="7" maxlength="20000" required></textarea>
       <label for="evidence-quote">Exact quote within excerpt *</label><textarea id="evidence-quote" name="quote" rows="3" required aria-describedby="quote-help"></textarea>
@@ -98,7 +105,6 @@
       <div class="dialog-actions"><button type="button" class="secondary" data-close="evidence-dialog">Cancel</button><button id="save-evidence" type="submit">Append evidence</button></div>
     </form>
   </dialog>
-
   <dialog id="import-dialog" aria-labelledby="import-title">
     <form id="import-form" novalidate>
       <div class="dialog-heading"><h2 id="import-title">Import public trace references</h2><button type="button" class="quiet" data-close="import-dialog">Close</button></div>

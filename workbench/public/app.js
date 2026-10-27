@@ -1,14 +1,14 @@
-const $ = (selector) => document.querySelector(selector);
+const $ = selector => document.querySelector(selector);
 const main = $('#main');
-const state = { query: '', archived: false, selected: new Set(), cohortName: '', project: null, editor: null, evidenceProject: null, archiveProject: null, routeVersion: 0 };
+const state = { query: '', archived: false, selected: new Set(), cohortName: '', editor: null, evidenceProject: null, archiveProject: null, routeVersion: 0 };
 const openers = new WeakMap();
-
+const knownSignalTypes = ['PROJECT_ANNOUNCED', 'PERMIT_FILED', 'PERMIT_APPROVED', 'PROCUREMENT_SIGNAL'];
 function node(tag, attributes = {}, ...children) {
   const element = document.createElement(tag);
   for (const [key, value] of Object.entries(attributes)) {
     if (value === null || value === undefined || value === false) continue;
     if (key === 'className') element.className = value;
-    else if (key === 'checked' || key === 'disabled' || key === 'hidden') element[key] = Boolean(value);
+    else if (['checked', 'disabled', 'hidden'].includes(key)) element[key] = Boolean(value);
     else element.setAttribute(key, String(value));
   }
   for (const child of children.flat(Infinity)) {
@@ -17,9 +17,9 @@ function node(tag, attributes = {}, ...children) {
   return element;
 }
 function button(text, action, attributes = {}) {
-  const result = node('button', { type: 'button', ...attributes }, text);
-  result.addEventListener('click', action);
-  return result;
+  const control = node('button', { type: 'button', ...attributes }, text);
+  control.addEventListener('click', action);
+  return control;
 }
 function badge(text, kind = '') { return node('span', { className: `badge ${kind}` }, text); }
 function empty(title, text) { return node('div', { className: 'empty' }, node('h3', {}, title), node('p', {}, text)); }
@@ -42,11 +42,7 @@ async function api(path, options = {}) {
   let body;
   try { body = await response.json(); } catch { throw new Error('The local server returned an unreadable response. Retry when it is available.'); }
   if (!response.ok) {
-    const error = new Error(body.error || `Request failed (${response.status}).`);
-    error.status = response.status;
-    error.code = body.code;
-    error.body = body;
-    throw error;
+    throw Object.assign(new Error(body.error || `Request failed (${response.status}).`), { status: response.status, code: body.code, body });
   }
   return body;
 }
@@ -67,9 +63,7 @@ for (const dialog of document.querySelectorAll('dialog')) {
     else main.focus();
   });
 }
-for (const control of document.querySelectorAll('[data-close]')) {
-  control.addEventListener('click', () => document.getElementById(control.dataset.close).close());
-}
+for (const control of document.querySelectorAll('[data-close]')) control.addEventListener('click', () => document.getElementById(control.dataset.close).close());
 function validation(form, error, prefix = '') {
   if (form.checkValidity()) return true;
   error.textContent = `${prefix}Complete the required fields and check their formats.`;
@@ -79,7 +73,6 @@ function validation(form, error, prefix = '') {
 function projectPath(id) { return `/api/projects/${encodeURIComponent(id)}`; }
 function goProject(project) { location.hash = `/projects/${encodeURIComponent(project.id)}`; }
 function goReport(report) { location.hash = `/reports/${encodeURIComponent(report.id)}`; }
-
 function openProjectEditor(project, opener) {
   state.editor = project ? { id: project.id, revision: project.revision } : null;
   $('#project-dialog-title').textContent = project ? 'Edit project' : 'New project';
@@ -91,7 +84,7 @@ function openProjectEditor(project, opener) {
   $('#refresh-project-revision').hidden = true;
   showDialog('project-dialog', opener);
 }
-$('#project-form').addEventListener('submit', async (event) => {
+$('#project-form').addEventListener('submit', async event => {
   event.preventDefault();
   const error = $('#project-form-error');
   error.textContent = '';
@@ -114,7 +107,7 @@ $('#project-form').addEventListener('submit', async (event) => {
     }
   });
 });
-$('#refresh-project-revision').addEventListener('click', async (event) => {
+$('#refresh-project-revision').addEventListener('click', async event => {
   if (!state.editor) return;
   await busy(event.currentTarget, async () => {
     try {
@@ -126,7 +119,6 @@ $('#refresh-project-revision').addEventListener('click', async (event) => {
     } catch (failure) { $('#project-form-error').textContent = `Could not save project. ${failure.message}`; }
   });
 });
-
 function openArchive(project, opener) {
   state.archiveProject = { id: project.id, revision: project.revision };
   $('#archive-title').textContent = `Archive ${project.name}?`;
@@ -134,7 +126,7 @@ function openArchive(project, opener) {
   showDialog('archive-dialog', opener);
   $('#cancel-archive').focus();
 }
-$('#archive-form').addEventListener('submit', async (event) => {
+$('#archive-form').addEventListener('submit', async event => {
   event.preventDefault();
   const project = state.archiveProject;
   if (!project) return;
@@ -147,7 +139,6 @@ $('#archive-form').addEventListener('submit', async (event) => {
     } catch (failure) { $('#archive-error').textContent = `${failure.message} No archive was confirmed by this request. Close and reload the project before retrying a revision conflict.`; }
   });
 });
-
 function syncAttestation() {
   const attested = $('#evidence-availability').value === 'ATTESTED';
   $('#attestation-fields').hidden = !attested;
@@ -156,21 +147,37 @@ function syncAttestation() {
   $('#evidence-event-at').required = attested;
   $('#evidence-document-at').required = attested;
 }
+function signalLabel(type) {
+  const label = type.toLowerCase().replaceAll('_', ' ');
+  return `${label[0].toUpperCase()}${label.slice(1)}${type === 'PROCUREMENT_SIGNAL' ? ' — comparison only' : ' — historical replay evidence'}`;
+}
+function syncSignalHelp() {
+  const type = $('#evidence-signal-type').value;
+  $('#signal-selection-help').textContent = !type ? 'Choose the category supported by this source before saving.' : type === 'PROCUREMENT_SIGNAL' ? 'Comparison only: this record may establish the procurement comparison time, but its claims never enter historical replay.' : 'Historical replay evidence: this record enters replay only after historical availability is explicitly operator-attested. Classification alone does not establish availability or qualify an investigation.';
+}
 $('#evidence-availability').addEventListener('change', syncAttestation);
+$('#evidence-signal-type').addEventListener('change', syncSignalHelp);
 function openEvidence(project, opener) {
   state.evidenceProject = { id: project.id, revision: project.revision };
   $('#evidence-form').reset();
   $('#evidence-quote').setCustomValidity('');
   $('#evidence-error').textContent = '';
-  const types = new Set(['PROCUREMENT_SIGNAL']);
+  const types = new Set(knownSignalTypes);
   for (const evidence of project.evidence || []) types.add(evidence.signalType);
   for (const signal of project.importContext?.original?.signals || []) types.add(signal.signal_type);
-  $('#signal-types').replaceChildren(...[...types].filter(Boolean).sort().map(type => node('option', { value: type })));
+  const early = [...types].filter(type => type && type !== 'PROCUREMENT_SIGNAL').sort();
+  $('#evidence-signal-type').replaceChildren(
+    node('option', { value: '', selected: true, disabled: true }, 'Choose an evidence category'),
+    node('optgroup', { label: 'Historical replay evidence — availability attestation required' }, early.map(type => node('option', { value: type }, signalLabel(type)))),
+    node('optgroup', { label: 'Comparison context — excluded from policy inputs' }, node('option', { value: 'PROCUREMENT_SIGNAL' }, signalLabel('PROCUREMENT_SIGNAL')))
+  );
+  $('#evidence-signal-type').value = '';
+  syncSignalHelp();
   syncAttestation();
   showDialog('evidence-dialog', opener);
 }
 for (const id of ['evidence-quote', 'evidence-excerpt']) document.getElementById(id).addEventListener('input', () => $('#evidence-quote').setCustomValidity(''));
-$('#evidence-form').addEventListener('submit', async (event) => {
+$('#evidence-form').addEventListener('submit', async event => {
   event.preventDefault();
   const error = $('#evidence-error');
   error.textContent = '';
@@ -204,7 +211,7 @@ $('#evidence-form').addEventListener('submit', async (event) => {
       if (failure.status === 409) {
         error.textContent += ' Your evidence values are retained. Refresh the revision below, then retry explicitly.';
         if (!$('#refresh-evidence-revision')) {
-          const refresh = button('Load current revision for retry', async (click) => {
+          error.after(button('Load current revision for retry', async click => {
             await busy(click.currentTarget, async () => {
               try {
                 const result = await api(projectPath(project.id));
@@ -213,16 +220,14 @@ $('#evidence-form').addEventListener('submit', async (event) => {
                 click.currentTarget.remove();
               } catch (refreshFailure) { error.textContent = refreshFailure.message; }
             });
-          }, { id: 'refresh-evidence-revision', className: 'secondary' });
-          error.after(refresh);
+          }, { id: 'refresh-evidence-revision', className: 'secondary' }));
         }
       }
     }
   });
 });
 $('#evidence-dialog').addEventListener('close', () => $('#refresh-evidence-revision')?.remove());
-
-$('#import-form').addEventListener('submit', async (event) => {
+$('#import-form').addEventListener('submit', async event => {
   event.preventDefault();
   const error = $('#import-error');
   error.textContent = '';
@@ -240,16 +245,15 @@ $('#import-form').addEventListener('submit', async (event) => {
     } catch (failure) { error.textContent = `Could not import references. ${failure.message} Your input is retained.`; }
   });
 });
-
+function stat(value, label) { return node('div', { className: 'stat' }, node('strong', {}, value), node('span', {}, label)); }
 function home(projects, reports) {
+  main.className = projects.length ? 'home-view populated-home' : 'home-view';
   const active = projects.filter(project => !project.archived);
   for (const id of state.selected) if (!active.some(project => project.id === id)) state.selected.delete(id);
   const unknown = projects.reduce((count, project) => count + (project.evidence || []).filter(item => item.availabilityStatus === 'UNREVIEWED').length + (project.importContext?.original?.signals?.length || 0), 0);
-  const heading = node('div', { className: 'heading-row' }, node('div', {}, node('p', { className: 'eyebrow' }, 'EVIDENCE BEFORE OUTCOMES'), node('h1', {}, 'Historical signal workbench'), node('p', { className: 'intro' }, 'Assemble project evidence, inspect what was available at each decision time, and retain reproducible Pre-RFP reviews.')));
-  const newProject = button('New project', event => openProjectEditor(null, event.currentTarget), { id: 'new-project' });
-  const importButton = button('Import trace JSON', event => { $('#import-error').textContent = ''; showDialog('import-dialog', event.currentTarget); }, { className: 'secondary', id: 'import-trace' });
-  heading.append(node('div', { className: 'actions' }, newProject, importButton));
-  const stats = node('div', { className: 'stats', 'aria-label': 'Retained collection counts' }, stat(active.length, 'Active projects'), stat(reports.length, 'Retained reports'), stat(unknown, 'Availability unreviewed'));
+  const heading = node('div', { className: 'heading-row' }, node('div', {}, projects.length ? null : node('p', { className: 'eyebrow' }, 'EVIDENCE BEFORE OUTCOMES'), node('h1', {}, 'Historical signal workbench'), node('p', { className: 'intro' }, projects.length ? 'Retain evidence and replay historical Pre-RFP decisions.' : 'Assemble project evidence, inspect what was available at each decision time, and retain reproducible Pre-RFP reviews.')));
+  heading.append(node('div', { className: 'actions' }, button('New project', event => openProjectEditor(null, event.currentTarget), { id: 'new-project' }), button('Import trace', event => { $('#import-error').textContent = ''; showDialog('import-dialog', event.currentTarget); }, { className: 'secondary', id: 'import-trace' })));
+  const stats = node('div', { className: 'stats collection-counts', 'aria-label': 'Retained collection counts' }, stat(active.length, 'Active projects'), stat(reports.length, 'Retained reports'), stat(unknown, 'Availability unreviewed'));
   const search = node('input', { id: 'project-search', type: 'search', placeholder: 'Name, location, or notes', autocomplete: 'off' });
   search.value = state.query;
   const showArchived = node('input', { id: 'show-archived', type: 'checkbox', checked: state.archived });
@@ -274,12 +278,9 @@ function home(projects, reports) {
     const filtered = projects.filter(project => (state.archived || !project.archived) && [project.name, project.location, project.notes].some(value => String(value || '').toLowerCase().includes(query))).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
     list.replaceChildren();
     listCount.textContent = `${filtered.length} project${filtered.length === 1 ? '' : 's'} shown`;
-    if (!filtered.length) {
-      list.append(projects.length ? empty('No projects match', 'Try a different search or include archived projects. Your cohort selection is retained.') : empty('Begin with a project', 'Create your first project to retain source excerpts and research notes. Nothing is acquired automatically.'));
-    }
+    if (!filtered.length) list.append(projects.length ? empty('No projects match', 'Try a different search or include archived projects. Your cohort selection is retained.') : empty('Begin with a project', 'Create your first project to retain source excerpts and research notes. Nothing is acquired automatically.'));
     for (const project of filtered) {
-      const open = button(project.name, () => goProject(project), { className: 'project-open', 'data-open-project': project.id });
-      const card = node('article', { className: 'project-card' }, open, node('p', {}, project.location || 'Location not recorded'), node('div', { className: 'card-meta' }, badge(project.archived ? 'Archived' : 'Active'), node('small', {}, `${project.evidence.length} evidence records · revision ${project.revision}`)));
+      const card = node('article', { className: 'project-card' }, button(project.name, () => goProject(project), { className: 'project-open', 'data-open-project': project.id }), node('p', {}, project.location || 'Location not recorded'), node('div', { className: 'card-meta' }, badge(project.archived ? 'Archived' : 'Active'), node('small', {}, `${project.evidence.length} evidence records · revision ${project.revision}`)));
       if (!project.archived) {
         const check = node('input', { type: 'checkbox', checked: state.selected.has(project.id), 'aria-label': `Select ${project.name} for cohort` });
         check.addEventListener('change', () => {
@@ -309,8 +310,6 @@ function home(projects, reports) {
   main.replaceChildren(heading, stats, node('div', { className: 'collection-layout' }, node('section', { 'aria-labelledby': 'collection-heading' }, node('h2', { id: 'collection-heading' }, 'Project collection'), node('div', { className: 'collection-toolbar' }, node('label', { for: 'project-search' }, 'Search projects'), search, node('label', { className: 'check-label', for: 'show-archived' }, showArchived, 'Include archived projects')), listCount, list), cohort));
   drawList();
 }
-function stat(value, label) { return node('div', { className: 'stat' }, node('strong', {}, value), node('span', {}, label)); }
-
 function evidenceCard(evidence) {
   const attested = evidence.availabilityStatus === 'ATTESTED';
   const card = node('article', { className: 'evidence-card' }, badge(attested ? 'Operator-attested availability' : 'Awaiting availability review', attested ? '' : 'unresolved'), node('h3', {}, evidence.title), node('p', { className: 'hint' }, `${evidence.signalType} · ${evidence.id}`), sourceLink(evidence.sourceUrl), node('blockquote', {}, evidence.quote), node('dl', { className: 'facts' }, field('Event time', date(evidence.eventAt)), field('Document time', date(evidence.documentAt)), field('Historical availability', attested ? date(evidence.availableAt) : 'Unreviewed — no availability established'), field('Recorded locally', date(evidence.recordedAt))), detail('Retained exact excerpt', node('pre', {}, evidence.excerpt)), node('p', { className: 'hash' }, `Excerpt SHA-256: ${evidence.sourceSha256}`));
@@ -322,14 +321,12 @@ function evidenceCard(evidence) {
 function importedReferences(context) {
   const section = node('section', { className: 'section', 'aria-labelledby': 'references-heading' }, node('h2', { id: 'references-heading' }, 'Imported reference context'), badge('NOT_AUTHENTICATED', 'unresolved'), node('p', {}, 'Original trace hashes are retained assertions. Observation timestamps are not proof of historical availability. Add separately supported evidence through the normal evidence form.'), node('p', { className: 'hash' }, `Supplied trace hash: ${context.traceHash}`));
   const signals = node('div', { className: 'evidence-list' });
-  for (const signal of context.original?.signals || []) {
-    signals.append(node('article', { className: 'evidence-card' }, badge('Imported reference — availability unreviewed', 'unresolved'), node('h3', {}, signal.title), node('p', { className: 'hint' }, `${signal.signal_type} · ${signal.signal_id}`), sourceLink(signal.source_url), signal.source_quote ? node('blockquote', {}, signal.source_quote) : node('p', { className: 'hint' }, 'No source quote supplied.'), node('p', {}, `Reported observation: ${signal.observed_at}`), node('p', { className: 'hash' }, `Supplied source hash: ${signal.source_sha256}`)));
-  }
+  for (const signal of context.original?.signals || []) signals.append(node('article', { className: 'evidence-card' }, badge('Imported reference — availability unreviewed', 'unresolved'), node('h3', {}, signal.title), node('p', { className: 'hint' }, `${signal.signal_type} · ${signal.signal_id}`), sourceLink(signal.source_url), signal.source_quote ? node('blockquote', {}, signal.source_quote) : node('p', { className: 'hint' }, 'No source quote supplied.'), node('p', {}, `Reported observation: ${signal.observed_at}`), node('p', { className: 'hash' }, `Supplied source hash: ${signal.source_sha256}`)));
   section.append(detail(`Inspect ${context.original?.signals?.length || 0} original signal references`, signals), detail('Complete retained trace JSON', node('pre', {}, JSON.stringify(context.original, null, 2))));
   return section;
 }
 function projectDetail(project) {
-  state.project = project;
+  main.className = 'project-view';
   const errors = node('p', { id: 'action-error', className: 'error', role: 'alert' });
   const edit = button('Edit project', event => openProjectEditor(project, event.currentTarget), { id: 'edit-project' });
   const archive = button('Archive project', event => openArchive(project, event.currentTarget), { id: 'archive-project', className: 'secondary' });
@@ -347,38 +344,53 @@ function projectDetail(project) {
       catch (failure) { errors.textContent = `Could not create report. ${failure.message} Retry when the local store is available.`; }
     });
   }, { id: 'run-project-report', className: 'secondary', disabled: project.archived });
-  const heading = node('div', {}, node('a', { id: 'back-projects', href: '#/', className: 'inline-link' }, '← Back to projects'), node('p', { className: 'eyebrow' }, 'PROJECT FIELD NOTEBOOK'), node('h1', { id: 'project-name' }, project.name), node('div', { className: 'card-meta' }, badge(project.archived ? 'Archived project' : 'Active project'), node('span', { className: 'hint' }, `Revision ${project.revision} · ${project.id}`)), node('div', { className: 'actions' }, edit, project.archived ? restore : archive, runReport), errors);
+  const heading = node('div', { className: 'project-heading' }, node('a', { id: 'back-projects', href: '#/', className: 'inline-link' }, '← Back to projects'), node('h1', { id: 'project-name' }, project.name), node('div', { className: 'card-meta' }, badge(project.archived ? 'Archived project' : 'Active project'), node('span', { className: 'hint' }, `Revision ${project.revision} · ${project.id}`)), node('div', { className: 'actions' }, edit, project.archived ? restore : archive, runReport), errors);
   if (project.archived) heading.append(node('p', { className: 'callout' }, 'This project is archived. Its evidence remains retained. Restore it before including it in a new report.'));
-  const metadata = node('div', { className: 'detail-grid' }, node('section', {}, node('h2', {}, 'Research notes'), node('div', { id: 'project-notes', className: 'notes' }, project.notes || 'No research notes yet.')), node('aside', { className: 'panel' }, node('h2', {}, 'Project record'), node('dl', { className: 'metadata' }, field('Location', project.location || 'Not recorded'), field('Created', project.createdAt), field('Updated', project.updatedAt)), node('p', { className: 'hint' }, 'Evidence is append-only. Metadata edits do not alter frozen reports.')));
+  const record = detail('Project record and timestamps', node('div', {}, node('dl', { className: 'metadata' }, field('Location', project.location || 'Not recorded'), field('Created', project.createdAt), field('Updated', project.updatedAt)), node('p', { className: 'hint' }, 'Evidence is append-only. Metadata edits do not alter frozen reports.')));
+  record.className = 'project-record';
+  const metadata = node('div', { className: 'project-context' }, node('section', {}, node('h2', {}, 'Research notes'), node('div', { id: 'project-notes', className: 'notes' }, project.notes || 'No research notes yet.')), record);
   const evidenceList = node('div', { id: 'evidence-list', className: 'evidence-list' });
   if (!project.evidence.length) evidenceList.append(empty('No captured evidence yet', 'Append an exact excerpt and quote. Historical availability stays unreviewed until an operator explicitly attests it.'));
   else evidenceList.append(...project.evidence.map(evidenceCard));
-  const section = node('section', { className: 'section', 'aria-labelledby': 'evidence-heading' }, node('div', { className: 'section-heading' }, node('h2', { id: 'evidence-heading' }, `Retained evidence · ${project.evidence.length}`), button('Add evidence', event => openEvidence(project, event.currentTarget), { id: 'add-evidence' })), evidenceList);
+  const section = node('section', { className: 'section retained-evidence', 'aria-labelledby': 'evidence-heading' }, node('div', { className: 'section-heading' }, node('h2', { id: 'evidence-heading' }, `Retained evidence · ${project.evidence.length}`), button('Add evidence', event => openEvidence(project, event.currentTarget), { id: 'add-evidence' })), evidenceList);
   main.replaceChildren(heading, metadata, section);
   if (project.importContext) main.append(importedReferences(project.importContext));
 }
-
 function reportList(reports) {
   const list = node('div', { className: 'report-list' });
   if (!reports.length) list.append(empty('No frozen reports yet', 'Run a review from a project or select a cohort in the project collection. Reports retain their inputs even as projects change.'));
   for (const report of reports) {
     const passed = report.integrity === 'PASS';
     const card = node('article', { className: 'report-card' }, badge(passed ? 'Integrity PASS' : 'Integrity FAIL', passed ? '' : 'failure'), node('h2', {}, node('a', { href: `#/reports/${encodeURIComponent(report.id)}` }, report.name)), node('p', {}, `Frozen ${date(report.createdAt)}`));
-    if (passed) card.append(node('p', {}, `${report.summary.projectCount} projects · ${report.summary.matchedCount} measured leads · ${report.summary.unresolvedCount} unresolved`));
-    else card.append(node('p', { className: 'error' }, 'Integrity failed. Results are withheld; this retained record needs investigation.'));
+    card.append(passed ? node('p', {}, `${report.summary.projectCount} projects · ${report.summary.matchedCount} measured leads · ${report.summary.unresolvedCount} unresolved`) : node('p', { className: 'error' }, 'Integrity failed. Results are withheld; this retained record needs investigation.'));
     list.append(card);
   }
   main.replaceChildren(node('p', { className: 'eyebrow' }, 'RETAINED RESEARCH'), node('h1', {}, 'Frozen cohort reports'), node('p', { className: 'intro' }, 'Reports preserve the selected project revisions and their evidence. Integrity checks retained hashes; explicit replay independently recomputes the bounded baseline.'), node('a', { href: '#/', className: 'inline-link' }, '← Select projects for a new report'), list);
 }
 function signedLead(value) { return typeof value === 'number' ? `${value > 0 ? '+' : ''}${value} days` : 'Historical lead unresolved'; }
+function reportOutcome(result, index) {
+  const unresolved = result.leadDays === null;
+  const explanations = {
+    UNKNOWN_AVAILABILITY: 'Historical availability remains unreviewed for retained evidence.',
+    NO_SURFACE: 'No visible evidence supported an investigation under this baseline.',
+    MISSING_MILESTONE: 'An investigation surfaced, but no attested procurement comparison is available.'
+  };
+  return node('article', { className: 'report-outcome', 'aria-labelledby': `outcome-${index}` },
+    node('div', { className: 'outcome-heading' }, node('h2', { id: `outcome-${index}` }, result.projectName), badge(result.status, unresolved ? 'unresolved' : '')),
+    node('p', { className: 'lead-label' }, 'Signed historical lead'),
+    node('p', { className: unresolved ? 'lead-value unresolved-lead' : 'lead-value signed-lead' }, signedLead(result.leadDays)),
+    node('p', { className: 'hint' }, unresolved ? explanations[result.status] || 'A first investigation time and an attested procurement comparison are both required.' : 'Comparison availability minus first investigation time; this is a historical measurement.'),
+    node('dl', { className: 'facts outcome-clocks' }, field('First surface / investigation time', result.firstSurfaceAt || 'Unresolved — no investigation'), field('Comparison availability', result.comparisonAt || 'Unresolved — no attested milestone'))
+  );
+}
 function reportCase(result, input) {
-  const caseNode = node('article', { className: 'report-case' }, node('h2', {}, result.projectName), node('div', { className: 'case-status' }, badge(result.status, result.leadDays === null ? 'unresolved' : '')), node('dl', { className: 'facts' }, field('First investigation / surfaced time', result.firstSurfaceAt || 'Unresolved — no investigation'), field('Comparison availability', result.comparisonAt || 'Unresolved — no attested milestone'), field('Signed historical lead', signedLead(result.leadDays), 'signed-lead')), node('p', { className: 'hint' }, `${result.unknownAvailabilityCount} unreviewed evidence records · ${result.decisions.length} retained decisions`));
+  const caseNode = node('article', { className: 'report-case' }, node('h2', {}, `${result.projectName} · decision-time evidence`), node('p', { className: 'hint' }, `${result.unknownAvailabilityCount} unreviewed evidence records · ${result.decisions.length} retained decisions`));
   const panel = node('section', { className: 'decision-panel', 'aria-label': 'Evidence visible at selected decision time', 'aria-live': 'polite' });
   const times = node('div', { className: 'decision-times', 'aria-label': 'Select decision time' });
   const controls = [];
   function selectDecision(decision, selected) {
     controls.forEach(control => control.setAttribute('aria-pressed', String(control === selected)));
-    panel.replaceChildren(node('h4', {}, `${decision.decision} · ${decision.at}`), node('p', { className: 'hint' }, 'Only attested non-procurement evidence available at or before this decision time is shown below.'), node('p', {}, `Basis evidence: ${decision.basisEvidenceIds.length ? decision.basisEvidenceIds.join(', ') : 'None — WATCH has no qualifying basis'}`), node('p', {}, `Visible evidence IDs: ${decision.visibleEvidenceIds.length ? decision.visibleEvidenceIds.join(', ') : 'None'}`), node('p', {}, `Buyer organizations: ${decision.buyerOrganizations.length ? decision.buyerOrganizations.join('; ') : 'No known buyer in visible evidence'}`));
+    panel.replaceChildren(node('h3', {}, `${decision.decision} · ${decision.at}`), node('p', { className: 'hint' }, 'Only attested non-procurement evidence available at or before this decision time is shown below.'), node('p', {}, `Basis evidence: ${decision.basisEvidenceIds.length ? decision.basisEvidenceIds.join(', ') : 'None — WATCH has no qualifying basis'}`), node('p', {}, `Visible evidence IDs: ${decision.visibleEvidenceIds.length ? decision.visibleEvidenceIds.join(', ') : 'None'}`), node('p', {}, `Buyer organizations: ${decision.buyerOrganizations.length ? decision.buyerOrganizations.join('; ') : 'No known buyer in visible evidence'}`));
     const visible = node('div', { className: 'evidence-list' });
     if (!decision.visibleEvidence.length) visible.append(empty('No visible evidence', 'No policy evidence was available at this decision time.'));
     else visible.append(...decision.visibleEvidence.map(evidenceCard));
@@ -389,7 +401,6 @@ function reportCase(result, input) {
     controls.push(control);
     times.append(control);
   }
-  caseNode.append(node('h3', { className: 'section' }, 'Decision-time evidence'));
   if (result.decisions.length) { caseNode.append(times, panel); selectDecision(result.decisions[0], controls[0]); }
   else caseNode.append(empty('No decision times available', 'Decision times require attested non-target evidence. Unreviewed references and procurement milestones do not create policy decisions.'));
   const comparisons = (input?.evidence || []).filter(evidence => evidence.signalType === 'PROCUREMENT_SIGNAL');
@@ -401,13 +412,16 @@ function reportCase(result, input) {
 }
 function reportDetail(report, verification) {
   if (verification?.integrity !== 'PASS') { integrityFailure(); return; }
+  main.className = 'report-view';
   const integrity = badge('Integrity PASS');
   const replayStatus = node('p', { id: 'replay-status', role: 'status' }, 'Explicit replay has not been run in this view.');
-  const result = node('section', { id: 'report-result', 'aria-label': 'Frozen report results' });
+  const result = node('section', { id: 'report-result', 'aria-label': 'Frozen report results' }, report.cases.map(reportOutcome));
   const summary = report.summary;
-  result.append(node('div', { className: 'stats' }, stat(summary.projectCount, 'Projects in frozen cohort'), stat(summary.matchedCount, 'Measured historical leads'), stat(summary.unresolvedCount, 'Unresolved cases')), node('dl', { className: 'facts' }, field('Surfaced / all projects', `${summary.surfacedCount} / ${summary.projectCount}`), field('With comparison target / all projects', `${summary.targetCount} / ${summary.projectCount}`), field('Coverage: matched / targets', summary.coverage === null ? 'Unresolved — no comparison targets' : `${summary.matchedCount} / ${summary.targetCount} = ${summary.coverage}`)), node('dl', { className: 'facts' }, field('Median measured lead (lower middle)', summary.medianLeadDays === null ? 'Historical lead unresolved' : signedLead(summary.medianLeadDays)), field('Action burden: retained decisions', summary.decisionCount), field('Policy', `${report.policyId} · ${report.policyVersion}`)), node('p', { className: 'callout' }, 'Historical lead = comparison availability − first investigation time. Negative and zero values are retained. Missing surfaces or milestones remain unresolved. Coverage is measured cases divided by cases with an attested comparison target; it is not predictive accuracy.'));
-  if (summary.unresolvedCount) result.append(node('p', {}, 'Historical lead unresolved for one or more cases. Inspect each explicit status below.'));
-  for (const item of report.cases) result.append(reportCase(item, report.inputs.find(project => project.id === item.projectId)));
+  const statistics = detail('Cohort statistics and baseline method', node('div', {}, node('div', { className: 'stats' }, stat(summary.projectCount, 'Projects in frozen cohort'), stat(summary.matchedCount, 'Measured historical leads'), stat(summary.unresolvedCount, 'Unresolved cases')), node('dl', { className: 'facts' }, field('Surfaced / all projects', `${summary.surfacedCount} / ${summary.projectCount}`), field('With comparison target / all projects', `${summary.targetCount} / ${summary.projectCount}`), field('Coverage: matched / targets', summary.coverage === null ? 'Unresolved — no comparison targets' : `${summary.matchedCount} / ${summary.targetCount} = ${summary.coverage}`)), node('dl', { className: 'facts' }, field('Median measured lead (lower middle)', summary.medianLeadDays === null ? 'Historical lead unresolved' : signedLead(summary.medianLeadDays)), field('Action burden: retained decisions', summary.decisionCount), field('Policy', `${report.policyId} · ${report.policyVersion}`)), node('p', { className: 'callout' }, 'Historical lead = comparison availability − first investigation time. Negative and zero values are retained. Missing surfaces or milestones remain unresolved. Coverage is measured cases divided by cases with an attested comparison target; it is not predictive accuracy.')));
+  function withhold(title, message) {
+    result.replaceChildren(node('div', { className: 'failure-panel' }, node('h2', {}, title), node('p', {}, message)));
+    statistics.hidden = true;
+  }
   const replayButton = button('Verify replay', async event => {
     replayStatus.textContent = 'Recomputing retained report inputs…';
     await busy(event.currentTarget, async () => {
@@ -417,7 +431,7 @@ function reportDetail(report, verification) {
           replayStatus.textContent = 'Replay failed. Results withheld pending integrity review.';
           integrity.textContent = `Integrity ${replay.integrity || 'FAIL'}`;
           integrity.className = 'badge failure';
-          result.replaceChildren(node('div', { className: 'failure-panel' }, node('h2', {}, 'Report verification failed'), node('p', {}, 'The retained report could not be verified and replayed. Healthy result cards are withheld.')));
+          withhold('Report verification failed', 'The retained report could not be verified and replayed. Healthy result cards are withheld.');
           return;
         }
         replayStatus.textContent = 'Replay matched';
@@ -426,7 +440,7 @@ function reportDetail(report, verification) {
         if (failure.status === 422) {
           integrity.textContent = 'Verification FAIL';
           integrity.className = 'badge failure';
-          result.replaceChildren(node('div', { className: 'failure-panel' }, node('h2', {}, 'Report verification failed'), node('p', {}, 'Results are withheld. Retained inputs could not be verified and replayed.')));
+          withhold('Report verification failed', 'Results are withheld. Retained inputs could not be verified and replayed.');
         }
       }
     });
@@ -448,20 +462,23 @@ function reportDetail(report, verification) {
         if (failure.status === 422) {
           integrity.textContent = 'Integrity FAIL';
           integrity.className = 'badge failure';
-          result.replaceChildren(node('div', { className: 'failure-panel' }, node('h2', {}, 'Report integrity failure'), node('p', {}, 'Results and export are withheld.')));
+          withhold('Report integrity failure', 'Results and export are withheld.');
         }
       }
     });
   }, { className: 'secondary', id: 'export-report' });
   const checks = node('dl', { className: 'metadata' }, field('Input hash check', verification.checks.inputHash ? 'PASS' : 'FAIL'), field('Result hash check', verification.checks.resultHash ? 'PASS' : 'FAIL'), field('Recomputed result at load', verification.checks.recomputedResult ? 'PASS' : 'FAIL'));
-  main.replaceChildren(node('a', { href: '#/reports', className: 'inline-link' }, '← Retained reports'), node('p', { className: 'eyebrow' }, 'FROZEN HISTORICAL REVIEW'), node('h1', { id: 'report-title' }, report.name), node('p', { className: 'hint' }, `Frozen ${report.createdAt} · ${report.id}`), integrity, node('div', { className: 'actions' }, replayButton, exportButton), replayStatus, exportError, detail('Integrity checks and retained hashes', node('div', {}, checks, node('p', { className: 'hash' }, `Inputs: ${report.inputHash}`), node('p', { className: 'hash' }, `Results: ${report.resultHash}`))), result, detail('Frozen report JSON — includes all retained input context', node('pre', {}, JSON.stringify(report, null, 2))));
+  const verificationPanel = node('section', { className: 'report-verification', 'aria-label': 'Report verification and export' }, node('div', { className: 'verification-heading' }, integrity, node('p', { className: 'hint' }, `Frozen ${report.createdAt} · ${report.id}`)), node('div', { className: 'actions' }, replayButton, exportButton), replayStatus, exportError, detail('Integrity checks and retained hashes', node('div', {}, checks, node('p', { className: 'hash' }, `Inputs: ${report.inputHash}`), node('p', { className: 'hash' }, `Results: ${report.resultHash}`))));
+  result.append(verificationPanel, statistics);
+  for (const item of report.cases) result.append(reportCase(item, report.inputs.find(project => project.id === item.projectId)));
+  main.replaceChildren(node('a', { href: '#/reports', className: 'inline-link' }, '← Retained reports'), node('h1', { id: 'report-title' }, report.name), result, detail('Frozen report JSON — includes all retained input context', node('pre', {}, JSON.stringify(report, null, 2))));
 }
 function integrityFailure(message = 'The retained report failed integrity checks. Results and export are withheld.') {
   main.replaceChildren(node('a', { href: '#/reports', className: 'inline-link' }, '← Retained reports'), node('div', { className: 'failure-panel', role: 'alert' }, badge('Integrity FAIL', 'failure'), node('h1', { id: 'report-title' }, 'Report integrity failure'), node('p', {}, message), button('Retry integrity check', route, { className: 'secondary' })));
 }
-
 async function route() {
   const version = ++state.routeVersion;
+  main.className = '';
   main.setAttribute('aria-busy', 'true');
   main.replaceChildren(node('p', { className: 'loading', role: 'status' }, 'Loading retained records…'));
   const hash = location.hash || '#/';
@@ -492,9 +509,7 @@ async function route() {
       if (version !== state.routeVersion) return;
       reportDetail(report, verification);
       document.title = `${report.name} · TrailForge`;
-    } else {
-      main.replaceChildren(empty('View not found', 'Use the navigation to open the project collection or retained reports.'), node('a', { href: '#/', className: 'inline-link' }, 'Back to projects'));
-    }
+    } else main.replaceChildren(empty('View not found', 'Use the navigation to open the project collection or retained reports.'), node('a', { href: '#/', className: 'inline-link' }, 'Back to projects'));
   } catch (failure) {
     if (version !== state.routeVersion) return;
     if (failure.status === 422) integrityFailure(failure.message);
