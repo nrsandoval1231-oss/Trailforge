@@ -167,11 +167,13 @@ function openEvidence(project, opener) {
   for (const signal of project.importContext?.original?.signals || []) types.add(signal.signal_type);
   const early = [...types].filter(type => type && type !== 'PROCUREMENT_SIGNAL').sort();
   $('#evidence-signal-type').replaceChildren(
-    node('option', { value: '', selected: true, disabled: true }, 'Choose an evidence category'),
-    node('optgroup', { label: 'Historical replay evidence — availability attestation required' }, early.map(type => node('option', { value: type }, signalLabel(type)))),
+    node('optgroup', { label: 'Historical replay evidence — availability attestation required' }, early.map(type => node('option', { value: type, selected: type === 'PROJECT_ANNOUNCED' }, signalLabel(type)))),
     node('optgroup', { label: 'Comparison context — excluded from policy inputs' }, node('option', { value: 'PROCUREMENT_SIGNAL' }, signalLabel('PROCUREMENT_SIGNAL')))
   );
-  $('#evidence-signal-type').value = '';
+  // A new excerpt starts as a project announcement with unreviewed availability.
+  // The category remains editable; neither this default nor a source URL attests it.
+  $('#evidence-signal-type').value = 'PROJECT_ANNOUNCED';
+  $('#evidence-availability').value = 'UNREVIEWED';
   syncSignalHelp();
   syncAttestation();
   showDialog('evidence-dialog', opener);
