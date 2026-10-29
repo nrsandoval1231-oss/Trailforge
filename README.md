@@ -1,35 +1,26 @@
 # TrailForge
 
-**Supplier-centric opportunity intelligence.** TrailForge identifies emerging commercial requirements before buyers publicly procure them, then matches those requirements to suppliers with evidence-backed technical and commercial qualification.
+**Procurement intelligence for early detection, active RFPs/RFIs, and historical research.** Discover early. Pursue intelligently. Learn from history.
 
-**First market:** remote mining power — technology-neutral discovery across diesel, gas, LNG, propane, solar, wind, battery, hybrid, grid, and power-as-a-service. **First reference supplier:** 2G Energy Rental, without restricting the underlying discovery engine to 2G's fleet.
+**Canonical direction (October 29, 2026):** [Product Requirements Document](docs/PRD.md) · [Canonical Vision](docs/CANONICAL_VISION.md). These supersede older mining-first predictive-opportunity descriptions where they conflict.
 
-Read **[Canonical Product Vision](docs/CANONICAL_VISION.md)** for the governing product intent, mining requirements, architecture, data contracts, confidentiality rules, milestones, and validation criteria.
+## Product
+- **Discover:** RFIs, sources-sought, advance notices and upcoming bids, clearly distinguishing research from solicitations.
+- **Live:** authoritative, currently open RFP/RFQ/RFI/tender notices with deadline, timezone, amendments and documents.
+- **Archive:** expired, canceled, awarded and withdrawn solicitations retained for research.
+- **Intelligence:** recurring issuers, historical procurement, buyer patterns and estimated rebid windows.
 
-## What exists today
-The repository contains a Python deterministic research laboratory with temporal evidence controls, replay, decision ledger, experiment persistence, local workbench, and public-source discovery/opportunity intake. These are foundations, **not** proof of production-ready mining intelligence or autonomous opportunity prediction.
+First vertical: energy and temporary/bridge power, industrial infrastructure and mining; first reference supplier 2G Energy Rental. Underlying engine stays supplier-independent.
 
-- **Operator app:** `uv run --python 3.11 trailforge-ui --saved-only`, then open http://127.0.0.1:8765/app. It loads the real Stibnite import by default and never displays synthetic data; add projects with `--mining-input PATH` (repeatable). See [UI vision](docs/UI_VISION.md).
-- **Find leads:** the operator app's **Find** tab (http://127.0.0.1:8765/app#/find) runs explicit, confirmed Firecrawl web/news searches from the discovery catalog or a custom query, stores hits as *unreviewed* leads (heuristic RFP-like / project-like labels with the matched words shown), and lets you capture, dismiss, snooze, or restore them and download an empty opportunity-input template for the existing import flow. Searches spend Firecrawl credits; nothing is verified or sent. See [Find leads](docs/FIND_LEADS.md).
-- Research workbench (replay): http://127.0.0.1:8765/ on the same server
-- Validation: `uv run --python 3.11 --extra dev python scripts/validate.py`
-- Existing public-source workflow: [Firecrawl workspace](docs/FIRECRAWL_WORKSPACE.md)
-- Historical research methodology: [Pre-RFP strategy](docs/PRE_RFP_DISCOVERY_STRATEGY.md) and [Slice A](docs/PRE_RFP_SLICE_A.md)
+## What actually exists
+Today the repo has a Python research lab, temporal evidence/replay, local operator interface, Firecrawl-backed **manual** Find searches, heuristic lead ranking and a mining intelligence pack. Candidate labels and snippet dates do **not** verify a live RFP, status, deadline or compliance. Scheduled source monitoring, authoritative lifecycle verification, full procurement records, amendments and archive intelligence are **new requirements**, not shipped features.
 
-## Mining Intelligence Pack v1
-
-The [mining pack](docs/MINING_PACK.md) imports reviewed, authorized source captures into multiple phase-specific requirements, evaluates infrastructure dependencies, qualifies demand independently of suppliers, and renders supplier-specific opportunity reports. Run it on the real Stibnite import with:
-
-```sh
-uv run --python 3.11 trailforge-ui --saved-only
-```
-
-Open http://127.0.0.1:8765/app. Synthetic fixtures are used only by engine tests and are never displayed. This is an operator-reviewed workflow, not autonomous prose extraction or proof of engineering compliance.
-
-The [five-project public-source screen](research/mining-power-screen-2026-10-16.md) records the real-world run, source links, procurement findings, and recommended Stibnite qualification question. No open power tender was verified.
-
-## Current priority
-Preserve the verified replay/evidence foundation. Add phase-specific mining power requirements, infrastructure dependencies, technology-neutral qualification, supplier-specific matching, buying-chain research, and outcome tracking. Validate against real historical cases and prospective discovery before expanding to other industries.
+- Start local operator: `uv run --python 3.11 trailforge-ui --saved-only`, open http://127.0.0.1:8765/app.
+- Current Find tab: http://127.0.0.1:8765/app#/find, see [existing behavior](docs/FIND_LEADS.md).
+- Existing research replay: http://127.0.0.1:8765/.
+- Tests: `uv run --python 3.11 --extra dev python scripts/validate.py`.
+- Earlier mining work: [Mining Pack](docs/MINING_PACK.md); earlier predictive research: [Historical methodology](docs/PRE_RFP_DISCOVERY_STRATEGY.md).
+- [New UI direction](docs/UI_VISION.md) · [Delivery gates](docs/FINISH_READINESS.md).
 
 ## Non-negotiables
-Separate facts, inference, forecasts and unknowns; prevent future-data leakage; retain source permissions and timestamps; isolate confidential supplier/customer records; do not claim engineering compliance without proof; keep architecture lean; measure commercial usefulness, not alert volume.
+Document type ≠ procurement stage ≠ verified lifecycle status. RFI does not imply purchase. No "open" from a snippet, no invented contacts or deadlines, no deleted expired leads, no lost amendment history, no unlicensed redistribution. Separate observation, inference and prediction; favor source-backed actions and supplier fit over alert volume. Keep existing working components until migrated and tested.
