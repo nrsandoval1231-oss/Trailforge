@@ -1,34 +1,18 @@
-@font-face{font-family:Manrope;src:url("fonts/Manrope.ttf") format("truetype");font-style:normal;font-weight:200 800;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("fonts/IBMPlexMono-Regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
-:root{
-  /* Primitive palette */
-  --p-jade-700:#126653;--p-jade-800:#104F42;--p-graphite-900:#232B26;--p-graphite-800:#303A34;
-  --p-paper-50:#F5F4EE;--p-paper-100:#EEF4EF;--p-paper-200:#E2EDE7;--p-mint-400:#70D1AE;
-  --p-brass-400:#B49A60;--p-slate-600:#59645D;--p-slate-500:#707B73;--p-error-800:#8A3027;--p-error-100:#FCECE9;
-  /* Semantic light theme */
-  --s-canvas:var(--p-paper-50);--s-canvas-subtle:var(--p-paper-100);--s-surface:#FFFFFF;--s-text-primary:var(--p-graphite-900);
-  --s-text-secondary:var(--p-slate-600);--s-text-inverse:var(--p-paper-50);--s-action:var(--p-jade-700);--s-action-hover:var(--p-jade-800);
-  --s-focus:var(--p-jade-700);--s-border:#D8DED8;--s-unknown:var(--p-slate-600);--s-verified:var(--p-jade-700);--s-review:var(--p-graphite-900);--s-error:var(--p-error-800);
-  --type-body:16px;--type-meta:12px;--font-body:Manrope,"Segoe UI",sans-serif;--font-technical:"IBM Plex Mono",Consolas,monospace;
-  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;
-  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-pill:999px;
-  /* Component tokens */
-  --c-button-primary-bg:var(--s-action);--c-button-primary-fg:#FFFFFF;--c-button-primary-hover:var(--s-action-hover);
-  --c-button-disabled-bg:#D9E1DA;--c-button-disabled-fg:var(--p-slate-600);--c-focus-ring:var(--s-focus);
-  --c-unknown-bg:var(--p-paper-100);--c-unknown-fg:var(--p-slate-600);--c-verified-bg:var(--p-paper-200);--c-verified-fg:var(--p-jade-700);
-  --c-review-bg:#F3EEDF;--c-review-fg:var(--p-graphite-900);--c-error-bg:var(--p-error-100);--c-error-fg:var(--p-error-800);
-  --c-glass-bg:rgba(255,255,255,.92);--c-glass-fallback:#FFFFFF;--c-glass-blur:12px;--c-glass-text:var(--s-text-primary)
+/* TrailForge CANONICAL brand tokens, Oct 29 2026. Former Jade theme retired. */
+:root {
+ --tf-obsidian:#171E1B; --tf-forest:#34483C; --tf-brass:#D7B77B; --tf-limestone:#F4F0E7; --tf-copper:#A76C4A;
+ --s-canvas:var(--tf-limestone); --s-canvas-subtle:#F4F0E7; --s-surface:#F4F0E7;
+ --s-text-primary:var(--tf-obsidian); --s-text-secondary:var(--tf-forest); --s-text-inverse:var(--tf-limestone);
+ --s-action:var(--tf-copper); --s-action-hover:var(--tf-forest); --s-focus:var(--tf-brass); --s-border:#D7B77B;
+ --s-unknown:var(--tf-forest); --s-verified:var(--tf-forest); --s-review:var(--tf-copper); --s-error:#8A3027;
+ --type-body:16px; --type-meta:12px; --font-body:Inter,Arial,sans-serif; --font-technical:Inter,Arial,sans-serif;
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;
+ --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-pill:999px;
+ --c-button-primary-bg:var(--tf-forest);--c-button-primary-fg:var(--tf-limestone);--c-button-primary-hover:var(--tf-copper);
+ --c-button-disabled-bg:#D7B77B;--c-button-disabled-fg:var(--tf-forest);--c-focus-ring:var(--tf-brass);
+ --c-unknown-bg:var(--tf-limestone);--c-unknown-fg:var(--tf-forest);--c-verified-bg:var(--tf-limestone);--c-verified-fg:var(--tf-forest);
+ --c-review-bg:var(--tf-limestone);--c-review-fg:var(--tf-obsidian);--c-error-bg:#FCECE9;--c-error-fg:#8A3027;
+ --c-glass-bg:rgba(244,240,231,.92);--c-glass-fallback:var(--tf-limestone);--c-glass-blur:12px;--c-glass-text:var(--tf-obsidian);
+ --s-disabled:var(--tf-forest);--c-button-secondary-bg:transparent;--c-button-secondary-fg:var(--tf-obsidian);--c-button-secondary-border:var(--tf-brass);--c-focus-width:3px;--c-focus-offset:2px;
 }
-[data-theme="dark"]{
-  color-scheme:dark;--s-canvas:#18221D;--s-canvas-subtle:#232F29;--s-surface:#28362E;--s-text-primary:#F5F4EE;--s-text-secondary:#CAD4CC;
-  --s-text-inverse:#232B26;--s-action:#70D1AE;--s-action-hover:#92E2C2;--s-focus:#70D1AE;--s-border:#536158;
-  --s-unknown:#D2DBD4;--s-verified:#8BE0BE;--s-review:#F0DDA9;--s-error:#FFB6A9;
-  --c-button-primary-bg:#70D1AE;--c-button-primary-fg:#232B26;--c-button-primary-hover:#92E2C2;--c-button-disabled-bg:#37453C;--c-button-disabled-fg:#C1CAC2;
-  --c-unknown-bg:#303B34;--c-unknown-fg:#D2DBD4;--c-verified-bg:#1D463A;--c-verified-fg:#8BE0BE;--c-review-bg:#49412D;--c-review-fg:#F0DDA9;--c-error-bg:#4A2E29;--c-error-fg:#FFB6A9;
-  --c-glass-bg:rgba(40,54,46,.94);--c-glass-fallback:#28362E;--c-glass-text:#F5F4EE
-}
-
-/* Dark semantic mappings and secondary control states */
-:root{--s-disabled:var(--p-slate-600);--c-button-secondary-bg:transparent;--c-button-secondary-fg:var(--s-text-primary);--c-button-secondary-border:var(--s-border);--c-focus-width:3px;--c-focus-offset:2px}
-[data-theme="dark"]{--s-disabled:#C1CAC2;--c-button-secondary-bg:transparent;--c-button-secondary-fg:var(--s-text-primary);--c-button-secondary-border:var(--s-border)}
-
+[data-theme="dark"] { color-scheme:dark; --s-canvas:var(--tf-obsidian);--s-canvas-subtle:var(--tf-forest);--s-surface:var(--tf-forest);--s-text-primary:var(--tf-limestone);--s-text-secondary:var(--tf-limestone);--s-text-inverse:var(--tf-obsidian);--s-action:var(--tf-brass);--s-action-hover:var(--tf-copper);--s-focus:var(--tf-brass);--s-border:var(--tf-copper);--c-button-primary-bg:var(--tf-brass);--c-button-primary-fg:var(--tf-obsidian);--c-button-primary-hover:var(--tf-copper);--c-button-secondary-fg:var(--tf-limestone);--c-button-secondary-border:var(--tf-brass);--c-glass-bg:rgba(23,30,27,.94);--c-glass-fallback:var(--tf-obsidian);--c-glass-text:var(--tf-limestone); }
