@@ -1,0 +1,12 @@
+{
+  "capture_hash": "c49c288b059abb39c6d23c54f3c0f3f3812bec2173c3ed2a3f51dac550980970",
+  "capture_id": "braunig-20261023-cdx-empty",
+  "captured_at": "2026-10-24T02:56:56.419077+00:00",
+  "captured_by": "Codex research agent (unreviewed)",
+  "content": "```json\n[]\n\n```",
+  "content_sha256": "a64ac82aeeae680db27f5f5c25a98a1942938d3aaedd50aeac00cf02c067b57d",
+  "provider": "firecrawl",
+  "provider_job_id": "01a16bd3-fe16-73de-8f0d-161ffe592ef0",
+  "schema_version": "trailforge-public-capture-v1",
+  "source_url": "https://web.archive.org/cdx/search/cdx?url=www.ercot.com/services/comm/mkt_notices/M-C031324-05&output=json&filter=statuscode:200&filter=mimetype:text/html&collapse=timestamp:6"
+}

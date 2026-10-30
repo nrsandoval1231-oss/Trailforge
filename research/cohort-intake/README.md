@@ -17,8 +17,8 @@ timestamp is agent-asserted until a human checks it (many are Wayback first-seen
 | us-mining | 5 | 4 | 1 | 1 | 0 |
 | intl-mining | 9 | 4 | 5 | 8 | 3 |
 | data-center | 6 | 3 | 3 | 5 | 2 |
-| utility-institutional | 5 | 3 | 2 | 4 | 0 |
-| **Total** | **25** | **14** | **11** | **18** | **5** |
+| utility-institutional | 5 | 2 | 3 | 4 | 0 |
+| **Total** | **25** | **13** | **12** | **18** | **5** |
 
 The five lead times with cited proof (Crusoe, Project Jupiter, Karlawinda, Kathleen Valley, Pilgangoora)
 are all `ONSITE_LONG_TERM_SUPPLY` targets, two of them (Jupiter, Kathleen Valley) measured from signals that
@@ -30,14 +30,18 @@ backed by cited proof**, so no signal family can be called useful from this batc
 1. `fermi-america-project-matador-amarillo-tx`: SEC S-11 describes a Mobile Power Solutions TM2500 lease as
    "interim power generation assets for near-term bridge capacity" (closest fit to the product thesis);
    needs a second early signal and a decision on the letter-of-intent as target.
-2. `ercot-braunig-mobile-gen-2025`, `pr-temp-gen-800mw-2025`, `gpa-aggreko-temp-power-2024`,
+2. `pr-temp-gen-800mw-2025`, `gpa-aggreko-temp-power-2024`,
    `vi-wapa-unit27-lease-2020`, `minres-wodgina-temp-power`: temporary / rental / interim targets whose lead
    times are unverified or whose first procurement event is missing.
 3. The on-site supply mining cases (`liontown`, `capricorn`, `pilbara`, `gold-road`, `bellevue`, `rox`):
    decide whether long-term build-own-operate supply counts as the relevant buying event.
-4. Cases with `target: null` stay unresolved, not negative.
+4. `ercot-braunig-mobile-gen-2025`: first solicitation recovered as July 25, 2024; broad seasonal MRA service via QSEs, not a direct rental tender. INCOMPLETE with null lead time. See [recovery note](utility-institutional/braunig-earliest-solicitation-recovery.md).
+5. Cases with `target: null` stay unresolved, not negative.
 
 ## Evidence
 
-`<vertical>/captures/*.json` are unchanged `capture-public` outputs (about 9 MB total); `<vertical>/dossiers/*.json`
-are the proposals. Captures made on 2026-10-22 may differ from what was public on the signal date.
+`<vertical>/captures/*.json` contain frozen source text; `<vertical>/dossiers/*.json` are proposals.
+Original batch captures are unchanged. The Braunig recovery adds captures made with `capture_markdown`
+from unedited Firecrawl response markdown, retaining scrape IDs, retrieval times and hashes in a source manifest.
+These present-day captures may differ from what was public on the signal date; hashes do not prove historical availability.
+

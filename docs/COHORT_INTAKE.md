@@ -153,8 +153,9 @@ Dossier files themselves are parsed with duplicate-key detection at any depth; a
 ## What the validator does not prove
 
 It checks that quotes exist in the **stored** capture file and that the capture file is self-consistent (content hash
-and capture hash). It cannot prove that the capture is a faithful copy of the live source: every capture currently
-has provider `firecrawl` and an empty `provider_job_id`, so there is no independent receipt. It also cannot prove
+and capture hash). It cannot prove that the capture is a faithful copy of the live source: the initial batch
+has provider `firecrawl` and empty `provider_job_id` values. Later captures may retain provider scrape IDs,
+which aid retrieval auditing but do not independently prove historical publication or faithful extraction. It also cannot prove
 that a quote means what the dossier says, that a date proof is genuine, that the project identity is right, or that
 the target is the earliest procurement event. Those are the human reviewer's job.
 
@@ -221,3 +222,4 @@ A named reviewer must complete this for each dossier before any `ProjectSignal` 
    `buyer_path` into `claims["buyer_path"]`), and run `resolve-traces` -> `build-trace-cohort` ->
    `compare-signal-families`.
 9. Keep cases without a target as unresolved.
+

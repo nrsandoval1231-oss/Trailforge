@@ -1,13 +1,49 @@
 {
   "schema_version": "trailforge-cohort-dossier-v0",
-  "status": "PROPOSED_UNREVIEWED",
+  "status": "INCOMPLETE",
   "project_id": "ercot-braunig-mobile-gen-2025",
-  "project_name": "ERCOT/CPS Energy Braunig retirement: CenterPoint-leased mobile generators relocated to San Antonio (Life Cycle Power)",
+  "project_name": "ERCOT Braunig retirement response: first MRA reliability-service solicitation and later mobile generation",
   "vertical": "utility-institutional",
   "location": "San Antonio / Bexar County, Texas (ERCOT grid)",
-  "owner_or_developer": "ERCOT (procuring entity); CPS Energy (retiring owner); CenterPoint Energy Houston Electric (lessee); Life Cycle Power (equipment provider)",
-  "selection_note": "Chosen because a PUCT docket receipt, ERCOT market notice and board action give an unusually well-timestamped chain. It is a redeployment of already-leased units rather than a fresh rental RFP award, so fit to the 'procurement' target is debatable. Hindsight-selected development case after the outcome was known; not a sealed holdout; not independently cited.",
+  "owner_or_developer": "ERCOT (reliability-service procurer); CPS Energy (retiring resource owner and utility). Later arrangement: Prime Power Solutions d/b/a Life Cycle Power (generator owner/operator and ERCOT contractor); CenterPoint (existing equipment lessee). PUCT is the regulator, not the buyer.",
+  "selection_note": "Hindsight-selected historical development case, not a holdout or current opportunity. First solicitation recovered on 2026-10-23. Public retirement and reliability signals preceded a broad MRA competition; the eventual mobile-generator arrangement must not be back-projected into the original procurement. No human review or accepted-cohort entry has occurred.",
   "signals": [
+    {
+      "signal_id": "ercot-braunig-mobile-gen-2025-s0",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "CPS Energy proposed suspension of three Braunig units; earliest recovered public precursor, not a solicitation",
+      "observed_at": "2024-03-13T16:10:00-05:00",
+      "availability_confidence": "PRINTED_DATE_ONLY",
+      "availability_evidence": {
+        "kind": "printed_date",
+        "url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-01",
+        "note": "Notice date and sent time only. Separate ERCOT LISTSERV index corroborates the sender timestamp, but no accepted independent public-availability proof was recovered. Do not treat this as a proven observation time."
+      },
+      "source_url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-01",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-nso-march13.json",
+      "capture_id": "braunig-20261023-nso-march13",
+      "source_sha256": "89bebdc1439bc45ad5228d7bbfa3d5dadfb7823067f926531c24141b0142764f",
+      "source_quote": "The NSOs indicate that, as of March 31, 2025, the Generation Resources will indefinitely suspend operations.",
+      "claims": {}
+    },
+    {
+      "signal_id": "ercot-braunig-mobile-gen-2025-s-april23",
+      "signal_type": "POWER_REQUIREMENT",
+      "title": "PUCT filing receipt: ERCOT reliability deficiencies and request to delay RMR/MRA processes",
+      "observed_at": "2024-04-23T17:33:03-05:00",
+      "availability_confidence": "PROOF_CITED",
+      "availability_evidence": {
+        "kind": "government_docket",
+        "url": "https://interchange.puc.texas.gov/Documents/55999_30_1386625.PDF",
+        "note": "PUCT filing receipt preserved in this capture; Central daylight time. Agent-cited proof, pending named human review."
+      },
+      "source_url": "https://interchange.puc.texas.gov/Documents/55999_30_1386625.PDF",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-puct-april23.json",
+      "capture_id": "braunig-20261023-puct-april23",
+      "source_sha256": "5ead35c48323cee366020b2116b1fe082b1aa6762e0a7533892aea1e8a7a5d35",
+      "source_quote": "Therefore, the Braunig Resources are needed to support ERCOT System reliability.",
+      "claims": {}
+    },
     {
       "signal_id": "ercot-braunig-mobile-gen-2025-s1",
       "signal_type": "POWER_REQUIREMENT",
@@ -17,7 +53,7 @@
       "availability_evidence": {
         "kind": "government_docket",
         "url": "https://interchange.puc.texas.gov/Documents/55999_33_1389410.PDF",
-        "note": "PUCT Interchange 'Filing Receipt' printed on the document: 'Filing Date - 2024-05-01 01:20:39 PM', Control Number 55999, Item 33 (Central time, CDT = UTC-5). Server last-modified header = Wed, 01 May 2024 18:20:55 GMT, consistent. Earlier public notices (CPS NSOs Mar 13 2024, ERCOT market notice Apr 22 2024) exist but were not captured."
+        "note": "Existing PUCT filing receipt: Filing Date - 2024-05-01 01:20:39 PM, Control Number 55999, Item 33 (CDT). Original capture retained. Earlier March 13 and April 22 notices and April 23 docket filing have now been recovered; see companion recovery note."
       },
       "source_url": "https://interchange.puc.texas.gov/Documents/55999_33_1389410.PDF",
       "capture_path": "research/cohort-intake/utility-institutional/captures/ercotmobile2025-puct-55999-33.json",
@@ -30,99 +66,87 @@
       }
     },
     {
-      "signal_id": "ercot-braunig-mobile-gen-2025-s2",
+      "signal_id": "ercot-braunig-mobile-gen-2025-s-july9",
       "signal_type": "POWER_REQUIREMENT",
-      "title": "KSAT (Aug 2024): all three Braunig units produce 859 MW; CPS Energy wants to close them, ERCOT argues they are vital to the grid",
-      "observed_at": "2024-08-21T10:39:50+00:00",
+      "title": "PUCT filing publishes planned July 25 MRA RFP release; advance schedule, not invitation to bid",
+      "observed_at": "2024-07-09T08:49:17-05:00",
       "availability_confidence": "PROOF_CITED",
       "availability_evidence": {
-        "kind": "wayback_cdx",
-        "url": "https://web.archive.org/cdx/search/cdx?url=https://ksat.com/news/local/2024/08/21/cps-energy-ercot-battle-over-closing-3-gas-powered-plants-in-san-antonio&output=text&fl=timestamp,statuscode&limit=2",
-        "note": "Earliest Wayback CDX snapshot of the exact URL is 20240821103950 (HTTP 200); the article prints 'Published: August 21, 2024 at 4:39 AM, Updated: August 23, 2024'. This is an UPPER BOUND on public availability, and the quoted text comes from a capture fetched in 2026 (not the Wayback snapshot), so it may include the Aug 23 update."
+        "kind": "government_docket",
+        "url": "https://interchange.puc.texas.gov/Documents/55999_48_1408614.PDF",
+        "note": "PUCT filing receipt preserved in this capture; Central daylight time. Agent-cited proof, pending named human review."
       },
-      "source_url": "https://ksat.com/news/local/2024/08/21/cps-energy-ercot-battle-over-closing-3-gas-powered-plants-in-san-antonio",
-      "capture_path": "research/cohort-intake/utility-institutional/captures/ercotmobile2025-ksat-aug2024.json",
-      "capture_id": "ercotmobile2025-ksat-aug2024",
-      "source_sha256": "44867a47acb0deb3a76f2435a76af427c5376b9bf6d7a2b3b47a4f6298ce49a6",
-      "source_quote": "Collectively, all three units produce 859 megawatts of power, according to [a presentation given by CPS leaders at an ERCOT meeting in Austin on Tuesday.](https://www.ercot.com/files/docs/2024/08/16/5-1-update-on-cps-energy-reliability-must-run-rmr-and-must-run-alternative-mra-process.pdf)\n\nWhile CPS Energy wants to shut the plants down, ERCOT argues that the units are vital to the state’s power grid.",
-      "claims": {
-        "mw": 859
-      }
+      "source_url": "https://interchange.puc.texas.gov/Documents/55999_48_1408614.PDF",
+      "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-puct-july9.json",
+      "capture_id": "braunig-20261023-puct-july9",
+      "source_sha256": "88b013383d22368215d32590badd01a1b1af8872590dff04d1c45f920a35d5a0",
+      "source_quote": "| CPS NSO Part III and budget due and MRA RFP Release Date | Thursday, July 25, 2024 |",
+      "claims": {}
     }
   ],
   "target": {
     "signal_id": "ercot-braunig-mobile-gen-2025-target",
     "signal_type": "PROCUREMENT_SIGNAL",
-    "title": "ERCOT market notice M-D122024-01 (Dec 20, 2024): RFP for Must-Run Alternatives to the Life Cycle Power mobile generation solution (15 CenterPoint-leased units) and Braunig Units 1 & 2",
-    "observed_at": "2024-12-20T16:24:00-06:00",
+    "title": "First Braunig MRA solicitation: ERCOT notice M-C031324-05, July 25, 2024",
+    "observed_at": "2024-07-25T18:00:00-05:00",
     "availability_confidence": "PRINTED_DATE_ONLY",
     "availability_evidence": {
       "kind": "printed_date",
-      "url": "https://ercot.com/services/comm/mkt_notices/M-D122024-01",
-      "note": "Only proof is text printed in the capture: the distribution-email header 'Sent:12/20/24, 4:24 PM' (Central time, CST = UTC-6) and 'NOTICE DATE: December 20, 2024'. An email 'Sent' stamp is not an exchange/docket/Wayback proof type, and the earliest Wayback snapshot of the notice URL is only 2025-07-25 (later). The agent also saw an HTTP Last-Modified of Fri, 20 Dec 2024 21:19:00 GMT on the companion RFP PDF (capture ercotmobile2025-ercot-moa); that header is not quoted in a capture and is not an accepted proof type."
+      "url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-05",
+      "note": "Printed notice date and sent header are corroborated by original RFP version 1.0 and ERCOT LISTSERV index (July 25, 2024 18:00:30 -0500). LISTSERV sender time is not an allowed proof kind in COHORT_INTAKE.md. The exact-URL CDX query returned an empty result; wildcard query did not return usable content. August 9 docket and December board paper confirm prior issuance, not exact July publication time. Retain PRINTED_DATE_ONLY; do not substitute a later confirmation date as the first procurement endpoint."
     },
-    "source_url": "https://ercot.com/services/comm/mkt_notices/M-D122024-01",
-    "capture_path": "research/cohort-intake/utility-institutional/captures/ercotmobile2025-notice.json",
-    "capture_id": "ercotmobile2025-notice",
-    "source_sha256": "34ba018d6d66f67b707447ab950b2766afcc18e929f4ab587bb2475d8f50b5ee",
-    "source_quote": "ERCOT has begun discussions with CenterPoint Energy Houston Electric, LLC (CenterPoint), CPS Energy, and Prime Power Solutions, LLC, dba Life Cycle Power (Life Cycle), to explore the idea of temporarily using 15 mobile generators that CenterPoint is currently leasing from Life Cycle as an alternative to committing Braunig Units 1 and 2 through an RMR agreement.  This potential solution is still being developed, but in the interest of time, ERCOT has issued a Request for Proposal (RFP) seeking one or more MRAs that may be more cost-effective than contracting for the use of the Life Cycle mobile generators or committing Units 1 and 2 through an RMR Agreement.  The RFP can be found on [ERCOT’s website](https://www.ercot.com/about/procurement/rfp).\n\nThe characteristics and operating parameters of the Life Cycle generators, as well as desired characteristics and operating parameters of MRA proposals, can be found in the RFP. Deadlines, including those for submitting a mandatory Statement of Intent (January 10, 2025) and for submitting a proposal (January 15, 2025)",
-    "claims": {
-      "mobile_generators": 15,
-      "rfp_proposal_deadline_text": "January 15, 2025"
-    },
-    "target_description": "ERCOT market notice of Dec 20, 2024 announcing an RFP for Must-Run Alternatives, issued while ERCOT explores temporarily using 15 mobile generators CenterPoint leases from Life Cycle Power instead of an RMR agreement for Braunig Units 1 and 2. Earliest dated procurement-type event captured; the notice itself says an EARLIER MRA RFP drew no qualified proposals (undated, not captured)."
+    "source_url": "https://www.ercot.com/services/comm/mkt_notices/M-C031324-05",
+    "capture_path": "research/cohort-intake/utility-institutional/captures/braunig-20261023-solicitation-july25.json",
+    "capture_id": "braunig-20261023-solicitation-july25",
+    "source_sha256": "b484350a37e5e7b34b0698a84ab875aca8e0dad181ae7d6834501653423d55d4",
+    "source_quote": "ERCOT has issued a Request for Proposal (RFP) seeking one or more Must-Run Alternatives (MRA) to a Reliability Must-Run (RMR) contract with CPS Energy to address projected reliability needs associated with the proposed suspension of BRAUNIG\\_VHB1, BRAUNIG\\_VHB2, and BRAUNIG\\_VHB3 (“Braunig Resources”).  ERCOT has also posted, on the MIS Secure Area, the Parts III of the Notifications of Suspension of Operations (NSO) for the Braunig Resources, which CPS Energy submitted today.",
+    "claims": {},
+    "target_description": "Earliest documented issued solicitation recovered for the Braunig retirement response. Original RFP version 1.0, notice M-C031324-05, July 9 prospective docket schedule and December 3 board paper agree on July 25, 2024. Broader seasonal MRA reliability-service competition via QSEs, not a direct mobile-generator rental order. No earlier issued solicitation was found in this scoped search."
   },
   "buyer_path": [
     {
-      "organization": "ERCOT (Electric Reliability Council of Texas)",
+      "organization": "ERCOT",
       "role": "OTHER",
       "evidence_signal_id": "ercot-braunig-mobile-gen-2025-target",
-      "quote": "ERCOT has issued a Request for Proposal (RFP) seeking one or more MRAs"
-    },
-    {
-      "organization": "CenterPoint Energy Houston Electric, LLC (lessee of the mobile generators)",
-      "role": "OTHER",
-      "evidence_signal_id": "ercot-braunig-mobile-gen-2025-target",
-      "quote": "15 mobile generators that CenterPoint is currently leasing from Life Cycle"
+      "quote": "ERCOT has issued a Request for Proposal (RFP) seeking one or more Must-Run Alternatives (MRA)"
     },
     {
       "organization": "CPS Energy",
       "role": "UTILITY",
       "evidence_signal_id": "ercot-braunig-mobile-gen-2025-s1",
       "quote": "On March 13, 2024, CPS Energy submitted to Electric Reliability Council of Texas, Inc. (ERCOT) Parts I and II of Notifications of Suspension of Operations (NSOs) regarding CPS Energy’s planned retirement of three Generation Resources, BRAUNIG_VHB1, BRAUNIG_VHB2, and BRAUNIG_VHB3. CPS Energy proposes to retire these Generation Resources on March 31, 2025."
-    },
-    {
-      "organization": "Prime Power Solutions, LLC dba Life Cycle Power",
-      "role": "OTHER",
-      "evidence_signal_id": "ercot-braunig-mobile-gen-2025-target",
-      "quote": "Prime Power Solutions, LLC, dba Life Cycle Power (Life Cycle), to explore the idea of temporarily using 15 mobile generators that CenterPoint is currently leasing from Life Cycle"
     }
   ],
   "lead_time": {
     "days": null,
     "basis": "UNVERIFIED",
-    "earliest_signal_id": "ercot-braunig-mobile-gen-2025-s1",
-    "note": "UNVERIFIED because the target time rests on a printed email-header stamp (PRINTED_DATE_ONLY). Indicative only: PUCT filing receipt 2024-05-01T13:20:39-05:00 (s1, PROOF_CITED) to the notice 'Sent' stamp 2024-12-20T16:24-06:00 is about 233 days. The notice itself says an earlier MRA RFP drew no qualified proposals before the Dec 3, 2024 ERCOT board vote, so an earlier (undated, uncaptured) procurement-type event exists. The later board approval (Feb 25, 2025) is recorded in later_procurement_events."
+    "earliest_signal_id": "ercot-braunig-mobile-gen-2025-s0",
+    "note": "No numerical advantage is claimed: the earliest recovered March notice and July solicitation lack acceptable independent availability proof. April 23 and July 9 docket receipts establish dated precursors but do not repair the target timestamp. Remove the previous indicative 233-day December-based result. Later confirmation dates must not replace first issuance to inflate warning. July 9 procurement scheduling is already discoverable conventionally, so RFP-release lead time alone would not establish a unique detector advantage."
   },
   "blockers": [
-    "EARLIER RFP: the Dec 20, 2024 notice says ERCOT had already sought MRA proposals after the March 2024 NSOs and received no qualified proposals (before the Dec 3, 2024 board vote). That first RFP is the true earliest procurement-type event; its date and documents were not captured, so the Dec 20 notice is used as the earliest DATED event found.",
-    "Target time is a printed email-header 'Sent' stamp (PRINTED_DATE_ONLY); Wayback of the notice URL is only 2025-07-25.",
-    "Target is a regulator-driven grid-reliability RFP linked to a redeployment of already-leased units, not a buyer's rental RFP award; reviewer must decide whether it qualifies as a procurement of the right kind.",
-    "Earliest true precursor (CPS NSOs Mar 13, 2024 and ERCOT Apr 22, 2024 market notice) not captured as dated public documents; s1 is the first captured one.",
-    "The ERCOT board staff recommendation PDF (linked in the Feb 2025 article, 2025/02/24 path) and the RFP PDF text (capture ercotmobile2025-ercot-moa) were not used as quote sources.",
-    "The Life Cycle contract/price terms were not captured; no electrical contractor or EPC is named. Figures such as ~30 MW per unit are not in any captured quote and are not asserted."
+    "Independent accepted availability proof for March 13 notice and July 25 first solicitation remains missing; LISTSERV date corroboration is preserved but is not a press-wire, exchange/regulator release or docket receipt. No schema proof rules were weakened.",
+    "Original RFP is broad MRA reliability-service procurement via QSEs. BRIDGE_OR_INTERIM is a qualified service-duration mapping, not temporary/rental equipment evidence; human scope review required.",
+    "No identified potential equipment-rental customer or eligible winning QSE in the first RFP; no qualified MRA proposals were received according to the December board material. Vendor eligibility, location/effectiveness and operating constraints must be evaluated before inferring a supplier opportunity.",
+    "No named human has reviewed this dossier; it has not entered the accepted cohort. This is a historical case, not an active sales lead.",
+    "Earliest means earliest documented issued solicitation recovered in the notices, original RFP, PUCT filings and board materials searched; not an exhaustive proof that no earlier private discussion or public planning signal existed."
   ],
   "reviewer_checklist": [
-    "Find the first MRA RFP (after the March 2024 NSOs) and its date; it would replace the Dec 20, 2024 notice as the target.",
-    "Decide whether the notice 'Sent' stamp can be re-proved (Wayback of ERCOT notice pages or a mailing-list archive) or must stay PRINTED_DATE_ONLY.",
-    "Capture the ERCOT board staff recommendation PDF (ercot.com/files/docs/2025/02/24/...) for the later approval event.",
-    "Capture the CPS NSO (Mar 13, 2024) market notice to establish a 2024-03 earliest signal."
+    "Check original July 25 RFP version 1.0 and notice against stored captures; December board paper explicitly calls July 25 the original RFP.",
+    "Re-prove public availability using an accepted independent source before assigning lead_time.days. Do not treat the July 9 planned release date or August 9 retrospective filing as proof of exact July 25 publication.",
+    "Decide whether broad interim reliability-service procurement belongs in the intended cohort; do not count it as demonstrated rental demand.",
+    "Check QSE-only contractual route, geographical effectiveness and technical eligibility; distinguish ERCOT buyer from PUCT regulator, CPS utility, CenterPoint lessee and Life Cycle contractor.",
+    "Compare against advance procurement scheduling as well as formal RFP discovery; name a human reviewer only after that person actually completes review."
   ],
   "created_by": "claude-research-agent (unreviewed)",
   "created_at": "2026-10-22T19:03:52-05:00",
-  "target_fit": "TEMPORARY_OR_RENTAL",
-  "target_fit_note": "ERCOT is exploring the temporary use of 15 leased mobile generators and issued an RFP for must-run alternatives to compete with them and with an RMR agreement for Braunig Units 1 and 2: temporary/rental generation in a regulator-driven grid-reliability process, not a conventional buyer RFP for site power.",
+  "target_fit": "BRIDGE_OR_INTERIM",
+  "target_fit_note": "Closest existing schema category for seasonal reliability service during April 2025-March 2027. The RFP admits generation, storage and demand response and contracts only with qualified QSEs. This label describes the bounded service period, NOT proof of temporary equipment procurement, a rental requirement, or a rental customer. Keep out of a rental-positive cohort pending explicit scope review.",
   "later_procurement_events": [
-    "2025-02-25 (KSAT/Texas Tribune article printed 'Published: February 25, 2025 at 2:37 PM'; earliest Wayback CDX snapshot 20250225210210, an upper bound; capture ercotmobile2025-ksat-approval): ERCOT board approval of the Life Cycle mobile-generation plan. Exact text: 'Texas’ main grid operator on Tuesday approved a $54 million plan to replace two aging natural gas-powered plants near San Antonio with the massive mobile generators that CenterPoint Energy came under fire for not deploying in the wake of Hurricane Beryl in July.' and '15 mobile generators currently leased by CenterPoint will be moved from Houston to San Antonio this summer.'"
+    "2024-08-09: PUCT 55999 item 53 filing receipt at 14:56:29 CDT corroborates July 25 RFP issuance; capture braunig-20261023-puct-august9. This is retrospective corroboration, not a replacement procurement date. Cover-letter printed July 18, 2023 conflicts with receipt/context; use receipt only for availability.",
+    "2024-08-21: Revised MRA RFP; eventual proposal deadline October 7, 2024, per December board paper (capture braunig-20261023-december-board). Original July RFP deadline was September 9. Original KSAT August signal s2 is later than the first solicitation and was removed from signals; its capture remains unchanged.",
+    "2024-12-03: Board staff paper describes original July 25 RFP, August revision and no qualified proposals; recommends Unit 3 RMR and further evaluation of mobile generation for Units 1-2. Capture braunig-20261023-december-board is a staff recommendation, not itself board minutes proving the vote.",
+    "2024-12-20: M-D122024-01 is a SECOND solicitation for alternatives to proposed use of CenterPoint-leased Life Cycle generators and Braunig Units 1-2. Original capture ercotmobile2025-notice remains unchanged; printed-date-only, not earliest procurement.",
+    "2025-02-25 (KSAT/Texas Tribune article printed 'Published: February 25, 2025 at 2:37 PM'; earliest Wayback CDX snapshot 20250225210210, an upper bound; capture ercotmobile2025-ksat-approval): ERCOT board approval of the Life Cycle mobile-generation plan. Exact text: 'Texas’ main grid operator on Tuesday approved a $54 million plan to replace two aging natural gas-powered plants near San Antonio with the massive mobile generators that CenterPoint Energy came under fire for not deploying in the wake of Hurricane Beryl in July.' and '15 mobile generators currently leased by CenterPoint will be moved from Houston to San Antonio this summer.'",
+    "2025-06-04: Effective date printed on Agreement for Emergency Generation Service between ERCOT and Prime Power Solutions LLC d/b/a Life Cycle Power (capture braunig-20261023-emergency-agreement). Recitals identify Life Cycle as mobile-generator owner/operator, CenterPoint as existing lessee under 2021 lease, and release of lease obligations enabling ERCOT service. This is a later emergency-generation service agreement, not an award under the original July competition; printed effective date is not independent publication proof."
   ]
 }
