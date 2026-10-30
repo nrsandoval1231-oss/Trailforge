@@ -8,7 +8,7 @@
  --type-body:16px; --type-meta:12px; --font-body:Inter,Arial,sans-serif; --font-technical:Inter,Arial,sans-serif;
  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;
  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-pill:999px;
- --c-button-primary-bg:var(--tf-copper);--c-button-primary-fg:var(--tf-limestone);--c-button-primary-hover:var(--tf-forest);
+ --c-button-primary-bg:var(--tf-forest);--c-button-primary-fg:var(--tf-limestone);--c-button-primary-hover:var(--tf-copper);
  --c-button-disabled-bg:#D7B77B;--c-button-disabled-fg:var(--tf-forest);--c-focus-ring:var(--tf-brass);
  --c-unknown-bg:var(--tf-limestone);--c-unknown-fg:var(--tf-forest);--c-verified-bg:var(--tf-limestone);--c-verified-fg:var(--tf-forest);
  --c-review-bg:var(--tf-limestone);--c-review-fg:var(--tf-obsidian);--c-error-bg:#FCECE9;--c-error-fg:#8A3027;
